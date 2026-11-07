@@ -1,0 +1,139 @@
+id: unit.s0-03
+title: { ko: 단어 화면 보는 법, en: Reading a word page }
+lessons:
+  - id: lesson.s0-03.1
+    title: { ko: 품사와 뜻, en: Parts of speech and meanings }
+    goal: { ko: 단어의 품사와 지금 알아야 할 뜻을 찾을 수 있어요, en: Find a word’s part of speech and the meaning you need now }
+    introduces: []
+    steps:
+      - type: listen
+        en: "[I]{who} [have]{do} [a big dog]{what}."
+        ko: 나는 큰 개가 있어요.
+        literal: 나는 / 가지고 있다 / 큰 개 한 마리를
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          단어 화면 맨 위에는 단어와 함께 품사가 나와요. 품사는 단어가 문장에서 하는 일에 따라 나눈 이름이에요. 이름을 외우지 않아도 되고, 자주 보다 보면 익숙해져요.
+
+          `dog`, `apple`처럼 사람, 동물, 물건의 이름은 명사예요. `eat`처럼 하는 일이나 `have`처럼 어떤 상태를 말하는 단어는 동사예요. `big`처럼 어떤지를 말하는 단어는 형용사예요. `I`, `you`처럼 명사 대신 쓰는 말은 대명사예요.
+
+          앞 단원에서 본 "누가", "한다", "무엇을"과 이어서 보면 쉬워요. "한다" 자리에는 동사가 오고, "누가"와 "무엇을" 자리에는 명사나 대명사가 자주 와요.
+        examples:
+          - en: "[I]{who} [have]{do} [a big dog]{what}."
+            ko: 나는 큰 개가 있어요.
+            literal: 나는 / 가지고 있다 / 큰 개 한 마리를
+      - type: readPassage
+        checkVocab: false
+        sentences:
+          - en: I have a big dog.
+            ko: 나는 큰 개가 있어요.
+        questions:
+          - ko: "\"개\"를 뜻하는 단어는 무엇인가요?"
+            options:
+              - { en: dog, correct: true }
+              - { en: big, why: "`big`은 \"큰\"이에요. 개가 어떤지 말하는 형용사예요." }
+              - { en: have, why: "`have`는 \"가지고 있다\"예요. 상태를 말하는 동사예요." }
+          - ko: 동사는 무엇인가요?
+            options:
+              - { en: have, correct: true }
+              - { en: dog, why: "`dog`는 동물의 이름이라 명사예요." }
+              - { en: big, why: "`big`은 어떤지 말하는 형용사예요." }
+          - ko: "\"큰\"을 뜻하는 단어의 품사는 무엇인가요?"
+            options:
+              - { ko: 형용사, correct: true }
+              - { ko: 명사, why: "명사는 `dog`처럼 이름이에요. `big`은 개가 어떤지 말해요." }
+              - { ko: 동사, why: "동사는 `have`처럼 하는 일이나 상태예요. `big`은 개가 어떤지 말해요." }
+      - type: explain
+        checkVocab: false
+        text: |
+          한 단어에 뜻이 여러 개일 때가 많아요. `run`은 "달리다"지만 아래 두 번째 예문처럼 "운영하다"라는 뜻도 있어요.
+
+          단어 화면 맨 위의 "지금 알아야 할 뜻"에는 지금까지 배운 뜻만 나와요. 다른 뜻은 그 아래 "나중에 배울 뜻"에 접혀 있고, 뜻마다 몇 단계에서 배우는지 적혀 있어요.
+
+          처음에는 맨 위의 뜻만 보면 돼요. 접힌 뜻까지 한꺼번에 외우려고 하면 헷갈리기 쉬워요. 그 뜻이 필요한 과가 오면 그때 배워요.
+        examples:
+          - en: I run every morning.
+            ko: 나는 매일 아침 달려요.
+          - en: "@Ana runs a bakery."
+            ko: 아나는 빵집을 운영해요.
+      - type: readPassage
+        checkVocab: false
+        sentences:
+          - en: I run every morning.
+            ko: 나는 매일 아침 달려요.
+        questions:
+          - ko: 이 문장은 무슨 뜻인가요?
+            options:
+              - { ko: 나는 매일 아침 달려요, correct: true }
+              - { ko: 나는 매일 아침 가게를 운영해요, why: "운영할 가게가 문장에 없어요. 여기서 `run`은 \"달리다\"예요." }
+              - { ko: 나는 매일 아침 걸어요, why: "걷는 건 `walk`예요. `run`은 달리는 거예요." }
+          - ko: 이 단어의 단어 화면을 열면 어디부터 보면 될까요?
+            options:
+              - { ko: 맨 위의 지금 알아야 할 뜻, correct: true }
+              - { ko: 접혀 있는 나중에 배울 뜻, why: "\"운영하다\" 같은 접힌 뜻은 그 뜻을 배우는 과가 오면 봐도 돼요." }
+              - { ko: 맨 아래 칸부터 차례로, why: 아래 칸은 궁금할 때 보면 돼요. 맨 위의 뜻이 먼저예요. }
+      - type: arrange
+        ko: 나는 큰 개가 있어요.
+        en: I have a big dog.
+        checkVocab: false
+      - type: shadow
+        en: I run every morning.
+        ko: 나는 매일 아침 달려요.
+        checkVocab: false
+  - id: lesson.s0-03.2
+    title: { ko: 예문과 소리, en: Examples and sound }
+    goal: { ko: 예문을 듣고 따라 읽을 수 있어요, en: Listen to an example and read along }
+    introduces: []
+    steps:
+      - type: listen
+        en: I drink water every day.
+        ko: 나는 매일 물을 마셔요.
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          단어 화면의 뜻 옆에는 소리 버튼이 두 개 있어요. 하나는 미국식, 하나는 영국식이에요. 이 앱은 미국식이 기본이고, 설정에서 바꿀 수 있어요. 단어 화면에서 `water`의 두 버튼을 번갈아 눌러 보면 차이가 꽤 커요.
+
+          뜻 아래에는 예문과 번역이 있어요. 단어만 듣는 것보다 예문으로 들으면 어떻게 쓰는지까지 같이 남아요. 예문을 들었으면 소리 내서 한 번 따라 읽어 보세요.
+        examples:
+          - en: I drink water every day.
+            ko: 나는 매일 물을 마셔요.
+      - type: shadow
+        en: I drink water every day.
+        ko: 나는 매일 물을 마셔요.
+        checkVocab: false
+      - type: listenChoose
+        en: I drink water every morning.
+        checkVocab: false
+        options:
+          - { ko: 나는 매일 아침 물을 마셔요, correct: true }
+          - { ko: 나는 매일 아침 물을 사요, why: "사는 건 `buy`예요. `drink`는 마신다는 뜻이에요." }
+          - { ko: 나는 매일 밤 물을 마셔요, why: "밤은 `night`예요. 끝에 들린 `morning`은 아침이에요." }
+      - type: explain
+        checkVocab: false
+        text: |
+          1단계 단어에는 한글 발음도 같이 보여요. 소리에 가까운 참고일 뿐이라 영어 소리와 똑같지는 않아요. 2단계부터는 숨겨지고, 설정에서 다시 켤 수 있어요.
+
+          더 아래에는 자주 같이 쓰는 말, 같은 뿌리에서 나온 단어 가족, 콩글리시와 흔한 실수가 있어요. 처음부터 다 읽지 않아도 돼요. 궁금할 때 내려 보면 돼요.
+
+          예를 들어 "핸드폰"은 콩글리시예요. 미국에서는 `cell phone`이나 그냥 `phone`이라고 해요.
+        examples:
+          - en: My cell phone is new.
+            ko: 내 휴대폰은 새 거예요.
+      - type: readPassage
+        checkVocab: false
+        sentences:
+          - en: My cell phone is new.
+            ko: 내 휴대폰은 새 거예요.
+        questions:
+          - ko: 이 문장에서 "휴대폰"은 영어로 무엇인가요?
+            options:
+              - { en: cell phone, correct: true }
+              - { en: handphone, why: "\"핸드폰\"은 콩글리시예요. 미국에서는 `cell phone`이라고 해요." }
+              - { en: phone call, why: "`phone call`은 전화 통화예요. 휴대폰 기계는 `cell phone`이에요." }
+      - type: arrange
+        ko: 나는 매일 물을 마셔요.
+        en: I drink water every day.
+        accept: [Every day I drink water.]
+        checkVocab: false

@@ -2,7 +2,11 @@
 stages:
   - id: stage.s0
     title: { ko: 출발, en: Getting started }
-    units: []
+    canDo:
+      - { ko: 매일 무엇을 어떻게 공부할지 알아요, en: Know how to study with the app each day }
+      - { ko: 영어와 한국어의 어순 차이를 알아요, en: Know how English word order differs from Korean }
+      - { ko: 단어 화면과 발음기호를 읽을 수 있어요, en: Read a word page and its pronunciation }
+    units: [unit.s0-01, unit.s0-02, unit.s0-03, unit.s0-04, unit.s0-05]
   - id: stage.s1
     title: { ko: 소리와 글자, en: Sounds and letters }
     units: []
