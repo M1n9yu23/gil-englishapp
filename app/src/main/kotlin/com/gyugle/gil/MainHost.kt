@@ -46,6 +46,7 @@ import com.gyugle.gil.core.navigation.rememberNavigationState
 import com.gyugle.gil.feature.curriculum.impl.presentation.curriculumEntries
 import com.gyugle.gil.feature.dictionary.impl.presentation.dictionaryEntries
 import com.gyugle.gil.feature.lesson.impl.presentation.lessonEntries
+import com.gyugle.gil.feature.review.impl.presentation.reviewEntries
 
 private val destinations = TopLevelDestination.entries
 
@@ -108,6 +109,7 @@ fun MainHost(
 private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
     curriculumEntries(navigator)
     lessonEntries(navigator)
+    reviewEntries(navigator)
     dictionaryEntries(navigator)
     tabRootPlaceholderEntries(navigator)
 }

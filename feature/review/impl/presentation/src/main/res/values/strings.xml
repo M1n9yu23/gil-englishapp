@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="review_close">Close the review</string>
+    <string name="review_progress_description">Card <xliff:g id="card" example="3">%1$d</xliff:g> of <xliff:g id="count" example="20">%2$d</xliff:g></string>
+    <string name="review_play">Play</string>
+    <string name="review_check">Check</string>
+    <string name="review_continue">Continue</string>
+    <string name="review_answer_label">Your answer</string>
+
+    <string name="review_instruction_meaning">Choose the meaning.</string>
+    <string name="review_instruction_english">Choose the English.</string>
+    <string name="review_instruction_listen">Listen and choose what you hear.</string>
+    <string name="review_instruction_letter_by_ear">Listen and choose the letter.</string>
+    <string name="review_instruction_letter_by_name">Choose the letter with this name.</string>
+    <string name="review_instruction_sound">Choose the word with this sound.</string>
+    <string name="review_instruction_spell_by_ear">Listen and spell the word.</string>
+    <string name="review_instruction_spell_by_meaning">Spell the word for this meaning.</string>
+    <string name="review_instruction_blank">Write the missing word.</string>
+
+    <string name="review_feedback_correct">That’s right.</string>
+    <string name="review_feedback_close">Almost. Check the spelling.</string>
+    <string name="review_feedback_wrong">Here’s the answer.</string>
+    <string name="review_feedback_comes_back">You’ll see this one again soon.</string>
+
+    <string name="review_error_title">Couldn’t open your review</string>
+    <string name="review_error_body">Reading your study record failed. Try again.</string>
+    <string name="review_error_retry">Try again</string>
+
+    <string name="review_empty_title">No more reviews today</string>
+    <string name="review_empty_no_cards">Finish a lesson and what you learn comes back here to review.</string>
+    <string name="review_empty_action">Go back</string>
+    <string name="review_next_tomorrow">Your next review is tomorrow.</string>
+    <plurals name="review_next_in_days">
+        <item quantity="one">Your next review is in <xliff:g id="days" example="1">%d</xliff:g> day.</item>
+        <item quantity="other">Your next review is in <xliff:g id="days" example="3">%d</xliff:g> days.</item>
+    </plurals>
+
+    <string name="review_result_title">Review done</string>
+    <string name="review_result_score">You got <xliff:g id="right" example="14">%1$d</xliff:g> of <xliff:g id="answered" example="20">%2$d</xliff:g> right.</string>
+    <string name="review_result_again">To look at again</string>
+    <plurals name="review_result_remaining">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> more review is due today.</item>
+        <item quantity="other"><xliff:g id="count" example="12">%d</xliff:g> more reviews are due today.</item>
+    </plurals>
+    <string name="review_result_keep_going">Keep reviewing</string>
+    <string name="review_result_done">Done</string>
+</resources>

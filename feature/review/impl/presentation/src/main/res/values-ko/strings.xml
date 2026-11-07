@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="review_close">복습 닫기</string>
+    <string name="review_progress_description"><xliff:g id="count" example="20">%2$d</xliff:g>장 중 <xliff:g id="card" example="3">%1$d</xliff:g>번째 카드</string>
+    <string name="review_play">소리 듣기</string>
+    <string name="review_check">확인</string>
+    <string name="review_continue">계속</string>
+    <string name="review_answer_label">답</string>
+
+    <string name="review_instruction_meaning">뜻을 고르세요.</string>
+    <string name="review_instruction_english">알맞은 영어를 고르세요.</string>
+    <string name="review_instruction_listen">듣고 들린 것을 고르세요.</string>
+    <string name="review_instruction_letter_by_ear">듣고 글자를 고르세요.</string>
+    <string name="review_instruction_letter_by_name">이 이름의 글자를 고르세요.</string>
+    <string name="review_instruction_sound">이 소리가 들어 있는 단어를 고르세요.</string>
+    <string name="review_instruction_spell_by_ear">듣고 철자를 쓰세요.</string>
+    <string name="review_instruction_spell_by_meaning">이 뜻의 단어를 영어로 쓰세요.</string>
+    <string name="review_instruction_blank">빈칸에 들어갈 단어를 쓰세요.</string>
+
+    <string name="review_feedback_correct">맞았어요.</string>
+    <string name="review_feedback_close">거의 맞았어요. 철자를 확인해 보세요.</string>
+    <string name="review_feedback_wrong">정답은 이거예요.</string>
+    <string name="review_feedback_comes_back">곧 다시 나와요.</string>
+
+    <string name="review_error_title">복습을 열지 못했어요</string>
+    <string name="review_error_body">학습 기록을 읽지 못했어요. 다시 시도해 주세요.</string>
+    <string name="review_error_retry">다시 시도</string>
+
+    <string name="review_empty_title">오늘 복습은 끝났어요</string>
+    <string name="review_empty_no_cards">수업을 마치면 배운 것을 여기서 복습해요.</string>
+    <string name="review_empty_action">돌아가기</string>
+    <string name="review_next_tomorrow">다음 복습은 내일이에요.</string>
+    <plurals name="review_next_in_days">
+        <item quantity="other">다음 복습은 <xliff:g id="days" example="3">%d</xliff:g>일 뒤예요.</item>
+    </plurals>
+
+    <string name="review_result_title">복습을 마쳤어요</string>
+    <string name="review_result_score"><xliff:g id="answered" example="20">%2$d</xliff:g>개 중 <xliff:g id="right" example="14">%1$d</xliff:g>개를 맞혔어요.</string>
+    <string name="review_result_again">다시 볼 것</string>
+    <plurals name="review_result_remaining">
+        <item quantity="other">오늘 복습이 <xliff:g id="count" example="12">%d</xliff:g>개 더 남았어요.</item>
+    </plurals>
+    <string name="review_result_keep_going">이어서 복습하기</string>
+    <string name="review_result_done">끝내기</string>
+</resources>
