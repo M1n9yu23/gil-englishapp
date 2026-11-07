@@ -16,18 +16,7 @@
 package com.gyugle.gil.feature.review.api
 
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
 /** About how long one review card takes, for plans and reminders that say how long reviews take. */
 val REVIEW_TIME_PER_CARD: Duration = 30.seconds
-
-/**
- * About how many minutes [cards] reviews take: rounded up and at least one, so a few cards never
- * read as "about 0 minutes".
- */
-fun reviewMinutes(cards: Int): Int {
-    val total = REVIEW_TIME_PER_CARD * cards
-    val whole = total.inWholeMinutes.toInt()
-    return if (total > whole.minutes) whole + 1 else whole.coerceAtLeast(1)
-}

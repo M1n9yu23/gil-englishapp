@@ -22,5 +22,5 @@ dependencies {
     api(projects.feature.goal.api)
     api(projects.feature.progress.api)
     api(projects.feature.curriculum.api)
-    api(projects.feature.review.api)
+    implementation(projects.feature.review.api)
 }

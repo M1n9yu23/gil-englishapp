@@ -24,8 +24,8 @@ import com.gyugle.gil.feature.home.impl.domain.model.TodayPlan
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.review.api.REVIEW_TIME_PER_CARD
-import com.gyugle.gil.feature.review.api.reviewMinutes
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.minutes
 
 /** Reviews take at most this share of the daily goal before the plan turns to new lessons. */
 internal const val REVIEW_SHARE_OF_GOAL = 0.5
@@ -90,7 +90,14 @@ fun planToday(
     )
 }
 
-private fun reviewBlock(count: Int) = ReviewBlock(count, reviewMinutes(count))
+private fun reviewBlock(count: Int) = ReviewBlock(count, minutesFor(count))
+
+/** Rounded up and at least one, as a reminder says it, so a few cards never take "about 0 minutes". */
+private fun minutesFor(cards: Int): Int {
+    val total = REVIEW_TIME_PER_CARD * cards
+    val whole = total.inWholeMinutes.toInt()
+    return if (total > whole.minutes) whole + 1 else whole.coerceAtLeast(1)
+}
 
 /**
  * Cards reviewed on [today], from their schedule: a card last rated today after the lesson that

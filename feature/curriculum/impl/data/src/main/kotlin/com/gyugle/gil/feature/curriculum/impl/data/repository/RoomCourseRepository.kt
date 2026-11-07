@@ -88,7 +88,7 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
             val lessons = database.lessonDao()
             val done = completed.mapTo(mutableSetOf()) { it.value }
             val id = lessons.lessonIds().firstOrNull { it !in done } ?: return@read Outcome.Success(null)
-            val lesson = checkNotNull(lessons.lesson(id))
+            val lesson = checkNotNull(lessons.lesson(id)) { "Lesson $id is listed but cannot be read" }
             // The compiler checks every lesson's unit, so a missing one means a broken file.
             val unit = checkNotNull(database.courseDao().unit(lesson.unitId)) { "Lesson $id has no unit" }
             Outcome.Success(
