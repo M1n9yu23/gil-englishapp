@@ -26,3 +26,8 @@ sealed interface CurriculumRoute : NavKey
 @Serializable
 @SerialName("curriculum.path")
 data object PathRoute : CurriculumRoute
+
+/** One unit and its lessons, opened from the path map. */
+@Serializable
+@SerialName("curriculum.unit")
+data class UnitRoute(val unitId: UnitId) : CurriculumRoute
