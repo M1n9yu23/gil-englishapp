@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "cards": [
+    {
+      "item": "sense.hello.interj.greeting",
+      "stability": 3.17,
+      "difficulty": 2.118,
+      "dueDay": "2026-11-08",
+      "lastReviewDay": "2026-11-05",
+      "lastReviewAt": "2026-11-05T11:20:00Z",
+      "reviewCount": 1,
+      "lapseCount": 0,
+      "introducedAt": "2026-11-05T11:20:00Z"
+    },
+    {
+      "item": "sound.letter-a",
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "dueDay": "2026-11-07",
+      "lastReviewDay": "2026-11-06",
+      "lastReviewAt": "2026-11-06T12:00:00Z",
+      "reviewCount": 2,
+      "lapseCount": 1,
+      "introducedAt": "2026-11-05T11:20:00Z"
+    },
+    {
+      "item": "pattern.how-are-you",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "dueDay": "2026-11-09",
+      "lastReviewDay": "2026-11-06",
+      "lastReviewAt": "2026-11-06T12:05:00.250Z",
+      "reviewCount": 1,
+      "lapseCount": 0,
+      "introducedAt": "2026-11-06T12:05:00.250Z"
+    }
+  ],
+  "reviews": [
+    {
+      "item": "sense.hello.interj.greeting",
+      "rating": "good",
+      "reviewedAt": "2026-11-05T11:20:00Z",
+      "day": "2026-11-05",
+      "stability": 3.17,
+      "difficulty": 2.118,
+      "dueDay": "2026-11-08"
+    },
+    {
+      "item": "sound.letter-a",
+      "rating": "good",
+      "reviewedAt": "2026-11-05T11:20:00Z",
+      "day": "2026-11-05",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "dueDay": "2026-11-08"
+    },
+    {
+      "item": "sound.letter-a",
+      "rating": "again",
+      "reviewedAt": "2026-11-06T12:00:00Z",
+      "day": "2026-11-06",
+      "stability": 0.212,
+      "difficulty": 6.4133,
+      "dueDay": "2026-11-07"
+    },
+    {
+      "item": "pattern.how-are-you",
+      "rating": "hard",
+      "reviewedAt": "2026-11-06T12:05:00.250Z",
+      "day": "2026-11-06",
+      "stability": 2.3065,
+      "difficulty": 2.11810397,
+      "dueDay": "2026-11-09"
+    }
+  ],
+  "lessons": [
+    { "lesson": "lesson.s1-15.1", "completedAt": "2026-11-05T11:20:00Z", "day": "2026-11-05" },
+    { "lesson": "lesson.s1-15.2", "completedAt": "2026-11-06T12:05:00.250Z", "day": "2026-11-06" },
+    { "lesson": "lesson.s1-15.1", "completedAt": "2026-11-06T12:30:00Z", "day": "2026-11-06" }
+  ],
+  "studyTime": [
+    { "day": "2026-11-05", "millis": 720000 },
+    { "day": "2026-11-06", "millis": 185500 }
+  ],
+  "saved": [
+    { "item": "sense.hello.interj.greeting", "savedAt": "2026-11-05T11:30:00Z" }
+  ],
+  "mistakes": [
+    { "item": "sound.letter-a", "count": 2, "lastAt": "2026-11-06T12:00:00Z", "lastDay": "2026-11-06" }
+  ]
+}
