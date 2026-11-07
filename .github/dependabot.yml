@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      # The Kotlin compiler, its Compose plugin and KSP must move together.
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin*"
+          - "com.google.devtools.ksp*"
+      test:
+        patterns:
+          - "org.junit*"
+          - "org.robolectric*"
+          - "io.github.takahirom.roborazzi*"
+          - "app.cash.turbine*"
+          - "com.willowtreeapps.assertk*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
