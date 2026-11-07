@@ -18,12 +18,12 @@ package com.gyugle.gil.core.presentation
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.net.toUri
 import androidx.core.os.ConfigurationCompat
 import java.net.URLEncoder
 import timber.log.Timber
@@ -50,13 +50,13 @@ fun contentReportUrl(location: String, appVersion: String, shown: String?, korea
 /** Opens the content report form in the browser. [canReport] is false on a phone without one. */
 @Stable
 class ContentReporter internal constructor(private val context: Context, private val korean: Boolean) {
-    private val probe = Intent(Intent.ACTION_VIEW, Uri.parse(NEW_ISSUE_URL)).addCategory(Intent.CATEGORY_BROWSABLE)
+    private val probe = Intent(Intent.ACTION_VIEW, NEW_ISSUE_URL.toUri()).addCategory(Intent.CATEGORY_BROWSABLE)
 
     val canReport: Boolean get() = probe.resolveActivity(context.packageManager) != null
 
     fun report(location: String, shown: String?) {
         val url = contentReportUrl(location, appVersion(), shown, korean)
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).addCategory(Intent.CATEGORY_BROWSABLE)
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri()).addCategory(Intent.CATEGORY_BROWSABLE)
         try {
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
