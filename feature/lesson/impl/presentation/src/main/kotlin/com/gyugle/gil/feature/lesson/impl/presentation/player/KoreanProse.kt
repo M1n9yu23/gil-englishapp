@@ -47,12 +47,28 @@ internal fun KoreanProse(
     Text(text = annotated, modifier = modifier, style = style.copy(localeList = KoreanLocale), color = color)
 }
 
-/** Odd-numbered parts between backticks are English. An unmatched backtick is kept as text. */
+/**
+ * Odd-numbered parts between backticks are English. An unmatched backtick is kept as text.
+ *
+ * Lines may break where the English locale starts or ends, which would leave the particle of
+ * "`Hi.`도" alone at the start of a line. A word joiner keeps English together with Korean that
+ * touches it; screen readers skip it.
+ */
 internal fun proseOf(text: String): AnnotatedString = buildAnnotatedString {
     val parts = text.split('`')
     if (parts.size % 2 == 0) {
         append(text)
         return@buildAnnotatedString
     }
-    parts.forEachIndexed { index, part -> if (index % 2 == 1) appendEnglish(part) else append(part) }
+    parts.forEachIndexed { index, part ->
+        if (index % 2 == 0) {
+            append(part)
+        } else {
+            if (parts[index - 1].lastOrNull()?.isWhitespace() == false) append(WORD_JOINER)
+            appendEnglish(part)
+            if (parts[index + 1].firstOrNull()?.isWhitespace() == false) append(WORD_JOINER)
+        }
+    }
 }
+
+private const val WORD_JOINER = '⁠'
