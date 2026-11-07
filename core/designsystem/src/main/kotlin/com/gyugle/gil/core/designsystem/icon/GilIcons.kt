@@ -50,20 +50,11 @@ object GilIcons {
     val DictionaryFilled: Painter
         @Composable get() = painterResource(R.drawable.ic_dictionary_filled)
 
-    val Mic: Painter
-        @Composable get() = painterResource(R.drawable.ic_mic)
-
-    val PlayArrow: Painter
-        @Composable get() = painterResource(R.drawable.ic_play_arrow)
-
     val Route: Painter
         @Composable get() = painterResource(R.drawable.ic_route)
 
     val RouteFilled: Painter
         @Composable get() = painterResource(R.drawable.ic_route_filled)
-
-    val Stop: Painter
-        @Composable get() = painterResource(R.drawable.ic_stop)
 
     val Today: Painter
         @Composable get() = painterResource(R.drawable.ic_today)
