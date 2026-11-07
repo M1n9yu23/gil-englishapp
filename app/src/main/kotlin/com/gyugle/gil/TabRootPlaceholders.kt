@@ -49,13 +49,6 @@ fun EntryProviderScope<NavKey>.tabRootPlaceholderEntries(navigator: Navigator) {
             onAction = { navigator.goTo(PathRoute) }
         )
     }
-    entry<PathRoute> {
-        TabRootPlaceholder(
-            title = R.string.main_tab_path,
-            emptyTitle = R.string.curriculum_path_empty_title,
-            emptyBody = R.string.curriculum_path_empty_body
-        )
-    }
     entry<WordsRoute> {
         TabRootPlaceholder(
             title = R.string.main_tab_words,

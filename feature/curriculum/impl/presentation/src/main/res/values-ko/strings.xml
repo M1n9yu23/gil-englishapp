@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="curriculum_content_language">ko</string>
+    <string name="curriculum_path_title">길</string>
+    <string name="curriculum_path_current_stage">지금 여기</string>
+    <string name="curriculum_path_can_do_heading">이 단계를 마치면</string>
+    <string name="curriculum_path_stage_not_ready">준비 중</string>
+    <plurals name="curriculum_unit_lesson_count">
+        <item quantity="other">과 <xliff:g id="count" example="4">%d</xliff:g>개</item>
+    </plurals>
+    <string name="curriculum_path_open_unit">단원 열기</string>
+
+    <string name="curriculum_error_unavailable_title">학습 내용을 열지 못했어요</string>
+    <string name="curriculum_error_unavailable_body">휴대폰 저장 공간이 부족하면 이럴 수 있어요. 공간을 비운 뒤 다시 시도해 주세요.</string>
+    <string name="curriculum_error_not_found_title">이 단원은 이제 코스에 없어요</string>
+    <string name="curriculum_error_not_found_body">앱을 업데이트하면서 옮겨졌을 수 있어요. 길로 돌아가 단원을 다시 골라 주세요.</string>
+    <string name="curriculum_error_retry">다시 열기</string>
+    <string name="curriculum_error_back">길로 돌아가기</string>
+</resources>

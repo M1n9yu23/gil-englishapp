@@ -22,6 +22,7 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberDecoratedNavEntries
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.scene.Scene
 import com.gyugle.gil.core.navigation.NavigationState
 
 /**
@@ -51,9 +52,18 @@ fun NavigationState.toEntries(entryProvider: (NavKey) -> NavEntry<NavKey>): List
     return stacksInUse.flatMap { decorated.getValue(it) }
 }
 
+private const val TAB_METADATA_KEY = "gil.tab"
+
+/** The tab of the scene's top entry, so a transition can tell a tab switch from a move in a tab. */
+internal fun Scene<NavKey>.tab(): NavKey? = entries.lastOrNull()?.metadata?.get(TAB_METADATA_KEY) as NavKey?
+
 private fun NavEntry<NavKey>.inTab(key: NavKey, topLevelRoute: NavKey): NavEntry<NavKey> {
     val entry = this
-    return NavEntry(key = key, contentKey = "$topLevelRoute/$contentKey", metadata = metadata) {
+    return NavEntry(
+        key = key,
+        contentKey = "$topLevelRoute/$contentKey",
+        metadata = metadata + (TAB_METADATA_KEY to topLevelRoute)
+    ) {
         entry.Content()
     }
 }

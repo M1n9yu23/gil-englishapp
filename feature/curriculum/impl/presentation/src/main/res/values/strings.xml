@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Not shown. Each language folder sets its own code, which picks the content language: keep "en" here and "ko" in values-ko. -->
+    <string name="curriculum_content_language">en</string>
+    <string name="curriculum_path_title">Path</string>
+    <!-- Under the title of the stage the learner is in now. -->
+    <string name="curriculum_path_current_stage">You are here</string>
+    <string name="curriculum_path_can_do_heading">After this stage, you can</string>
+    <!-- Under the title of a stage that has no units yet. -->
+    <string name="curriculum_path_stage_not_ready">Not ready yet</string>
+    <plurals name="curriculum_unit_lesson_count">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> lesson</item>
+        <item quantity="other"><xliff:g id="count" example="4">%d</xliff:g> lessons</item>
+    </plurals>
+    <!-- Screen reader action for a unit row. -->
+    <string name="curriculum_path_open_unit">open unit</string>
+
+    <string name="curriculum_error_unavailable_title">Couldn’t open the lessons</string>
+    <string name="curriculum_error_unavailable_body">This can happen when your phone is low on storage. Free up some space, then try again.</string>
+    <string name="curriculum_error_not_found_title">This unit isn’t in the course anymore</string>
+    <string name="curriculum_error_not_found_body">An app update may have moved it. Go back to the path and pick a unit there.</string>
+    <string name="curriculum_error_retry">Try again</string>
+    <string name="curriculum_error_back">Back to the path</string>
+</resources>

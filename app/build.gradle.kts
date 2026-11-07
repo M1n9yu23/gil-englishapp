@@ -77,6 +77,8 @@ dependencies {
     implementation(projects.core.navigation)
     implementation(projects.feature.home.api)
     implementation(projects.feature.curriculum.api)
+    implementation(projects.feature.curriculum.impl.presentation)
+    implementation(projects.feature.curriculum.impl.data)
     implementation(projects.feature.dictionary.api)
     implementation(projects.feature.stats.api)
 

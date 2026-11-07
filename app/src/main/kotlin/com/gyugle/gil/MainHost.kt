@@ -19,6 +19,8 @@ import androidx.compose.animation.ContentTransform
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -34,19 +36,36 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.EntryProviderScope
+import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.navigation.NavigationState
 import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.core.navigation.rememberNavigationState
+import com.gyugle.gil.feature.curriculum.impl.presentation.curriculumEntries
 
 private val destinations = TopLevelDestination.entries
 
-/** The tabbed part of the app: one back stack per tab, and the bar only on a tab's root. */
+private object MainHostTokens {
+    /** A short shift is enough to show direction; a full-width slide would read as travel. */
+    val SlideDistance = 30.dp
+}
+
+/**
+ * The tabbed part of the app: one back stack per tab, and the bar only on a tab's root.
+ * [entries] are the screens; tests pass their own so that they need no DI graph.
+ */
 @Composable
-fun MainHost(modifier: Modifier = Modifier) {
+fun MainHost(
+    modifier: Modifier = Modifier,
+    entries: EntryProviderScope<NavKey>.(Navigator) -> Unit = { navigator -> mainEntries(navigator) }
+) {
     val navigationState = rememberNavigationState(
         destinations.first().route,
         *destinations.drop(1).map { it.route }.toTypedArray()
@@ -64,23 +83,46 @@ fun MainHost(modifier: Modifier = Modifier) {
             }
         }
     ) { innerPadding ->
-        val fade = GilTheme.motion.fade
-        // Every transition fades, including a pushed screen's. Tab switches should fade (they are
-        // not forward or back); a slide for pushed screens must leave them alone.
-        val transition: ContentTransform = fadeIn(tween(fade)) togetherWith fadeOut(tween(fade))
+        val transitions = rememberMainTransitions()
         NavDisplay(
-            entries = navigationState.toEntries(
-                entryProvider {
-                    tabRootPlaceholderEntries(navigator)
-                }
-            ),
+            entries = navigationState.toEntries(entryProvider { entries(navigator) }),
             modifier = Modifier
                 .padding(innerPadding)
                 .consumeWindowInsets(innerPadding),
-            transitionSpec = { transition },
-            popTransitionSpec = { transition },
-            predictivePopTransitionSpec = { transition },
+            // A tab switch is neither forward nor back, so it fades; moving within a tab slides.
+            transitionSpec = { if (initialState.tab() == targetState.tab()) transitions.push else transitions.fade },
+            popTransitionSpec = { if (initialState.tab() == targetState.tab()) transitions.pop else transitions.fade },
+            predictivePopTransitionSpec = { _ ->
+                if (initialState.tab() == targetState.tab()) transitions.pop else transitions.fade
+            },
             onBack = navigator::goBack
+        )
+    }
+}
+
+/** Every screen of the main host. Remove a tab's placeholder when its feature brings the root. */
+private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
+    curriculumEntries(navigator)
+    tabRootPlaceholderEntries(navigator)
+}
+
+private class MainTransitions(val fade: ContentTransform, val push: ContentTransform, val pop: ContentTransform)
+
+@Composable
+private fun rememberMainTransitions(): MainTransitions {
+    val motion = GilTheme.motion
+    val distance = with(LocalDensity.current) { MainHostTokens.SlideDistance.roundToPx() }
+    return remember(motion, distance) {
+        val enter = tween<Float>(motion.enter, easing = motion.enterEasing)
+        val exit = tween<Float>(motion.exit, easing = motion.exitEasing)
+        val enterOffset = tween<IntOffset>(motion.enter, easing = motion.enterEasing)
+        val exitOffset = tween<IntOffset>(motion.exit, easing = motion.exitEasing)
+        MainTransitions(
+            fade = fadeIn(tween(motion.fade)) togetherWith fadeOut(tween(motion.fade)),
+            push = (slideInHorizontally(enterOffset) { distance } + fadeIn(enter)) togetherWith
+                (slideOutHorizontally(exitOffset) { -distance } + fadeOut(exit)),
+            pop = (slideInHorizontally(enterOffset) { -distance } + fadeIn(enter)) togetherWith
+                (slideOutHorizontally(exitOffset) { distance } + fadeOut(exit))
         )
     }
 }

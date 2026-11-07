@@ -43,7 +43,7 @@ class MainHostScreenshotTest {
 
     private fun capture(@StringRes tab: Int? = null) {
         composeRule.mainClock.autoAdvance = false
-        composeRule.setContent { GilTheme { MainHost() } }
+        composeRule.setContent { GilTheme { MainHost(entries = { testMainEntries(it) }) } }
         if (tab != null) {
             val label = composeRule.activity.getString(tab)
             composeRule.onNode(hasText(label) and isSelectable()).performClick()
@@ -74,8 +74,6 @@ class MainHostScreenshotTest {
     @Test
     @Config(qualifiers = "en-w320dp-h640dp-xhdpi", fontScale = 2f)
     fun today_narrowEnglishFontScale2_keepsBarLabelsWhole() = capture()
-
-    @Test fun path_light_showsNoUnits() = capture(R.string.main_tab_path)
 
     @Test fun words_light_showsNoSavedWords() = capture(R.string.main_tab_words)
 

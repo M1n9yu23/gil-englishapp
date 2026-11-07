@@ -1,0 +1,51 @@
+/*
+ * Copyright 2026 MinGyu
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.gyugle.gil
+
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
+import androidx.navigation3.runtime.EntryProviderScope
+import androidx.navigation3.runtime.NavKey
+import com.gyugle.gil.core.navigation.Navigator
+import com.gyugle.gil.feature.curriculum.api.PathRoute
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+const val TEST_PATH_ROOT = "Path root"
+const val TEST_OPEN_PAGE = "Open page"
+const val TEST_PAGE = "Pushed page"
+
+@Serializable
+@SerialName("test.page")
+data object TestPageRoute : NavKey
+
+/**
+ * The main host's placeholders, with the Path root swapped for a stand-in that needs no DI graph.
+ * Its button pushes [TestPageRoute] onto the Path stack.
+ */
+fun EntryProviderScope<NavKey>.testMainEntries(navigator: Navigator) {
+    entry<PathRoute> {
+        Column(modifier = Modifier.fillMaxSize()) {
+            Text(TEST_PATH_ROOT)
+            Text(TEST_OPEN_PAGE, modifier = Modifier.clickable { navigator.goTo(TestPageRoute) })
+        }
+    }
+    entry<TestPageRoute> { Text(TEST_PAGE, modifier = Modifier.fillMaxSize()) }
+    tabRootPlaceholderEntries(navigator)
+}
