@@ -1,5 +1,7 @@
 # Trademarks and brand assets
 
+[한국어](TRADEMARKS.ko.md)
+
 The source code and the learning content in this repository are licensed under the
 [Apache License 2.0](LICENSE). The license does not cover the project's name or its brand assets.
 

@@ -1,0 +1,32 @@
+# 상표와 브랜드 자산
+
+[English](TRADEMARKS.md)
+
+이 저장소의 소스 코드와 학습 내용은 [Apache License 2.0](LICENSE)을 따릅니다.
+프로젝트 이름과 브랜드 자산에는 이 라이선스가 적용되지 않습니다.
+
+## 이름
+
+이 앱의 이름으로 쓰는 "Gil"과 "길"은 이 프로젝트의 상호입니다.
+Apache License 2.0 제6조에도 이 라이선스가 상호를 쓸 권리를 주지 않는다고 나와 있습니다.
+
+## 브랜드 자산
+
+앱 아이콘을 비롯한 브랜드 그림은 MinGyu가 저작권을 가지며, 모든 권리를 보유합니다.
+이 파일들은 Apache License 2.0으로 배포하지 않습니다. 대상은 다음 런처 아이콘 리소스입니다.
+
+- `app/src/main/res/mipmap-*/ic_launcher*`
+- `app/src/main/res/drawable/ic_launcher_background.xml`
+- `app/src/main/res/drawable/ic_launcher_foreground.xml`
+- `app/src/main/res/drawable/ic_launcher_monochrome.xml`
+
+## 포크
+
+프로젝트를 포크해서 공부하고, 그 위에 새로운 것을 만들어도 됩니다.
+포크로 만든 앱을 앱 스토어나 다른 곳에 배포한다면 다음을 지켜 주세요.
+
+- 이름과 아이콘을 다르게 바꾸세요.
+- 애플리케이션 ID를 다르게 쓰세요.
+- 원래 앱이거나 이 프로젝트가 보증하는 앱처럼 보이게 하지 마세요.
+
+Gil을 바탕으로 만들었다고 밝히고 이 저장소 링크를 거는 것은 괜찮습니다.

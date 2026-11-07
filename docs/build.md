@@ -1,6 +1,8 @@
 # Build
 
-Gil builds with Gradle and the Android Gradle plugin. You need Android Studio (its bundled JDK is enough) and the Android SDK. Nothing else: the app has no API keys, no network calls and no services to sign up for.
+[한국어](build.ko.md)
+
+Gil builds with Gradle and the Android Gradle plugin. You need Android Studio and the Android SDK. The JDK bundled with Android Studio is enough. The app uses no API keys or network services, so there is nothing to sign up for.
 
 ```
 ./gradlew :app:assembleDebug

@@ -1,7 +1,9 @@
 # Gil
 
+[한국어](README.ko.md)
+
 Gil (길, Korean for "path") is an Android app that teaches English to Korean speakers, starting from the alphabet.
-It runs entirely on the phone: no server, no account, and no internet permission.
+It runs entirely on the phone. There is no server or account, and the app does not request the internet permission.
 
 The app is in early development and has no release yet.
 
