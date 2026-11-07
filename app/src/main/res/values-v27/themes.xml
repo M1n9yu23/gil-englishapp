@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dark navigation bar buttons on the light paper; the attribute needs API 27. -->
+    <style name="Theme.Gil.Starting" parent="Base.Theme.Gil.Starting">
+        <item name="android:windowLightNavigationBar">@bool/light_system_bars</item>
+    </style>
+</resources>

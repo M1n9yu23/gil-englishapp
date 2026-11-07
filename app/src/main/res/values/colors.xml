@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The window and splash before Compose draws: GilTheme's background, onSurface and tertiary. -->
+    <color name="paper">#FFF4F3EF</color>
+    <color name="ink">#FF1F2A44</color>
+    <color name="seal">#FFA93A29</color>
+</resources>

@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gil</string>
+
+    <string name="main_tab_today">Today</string>
+    <string name="main_tab_path">Path</string>
+    <string name="main_tab_words">Words</string>
+    <string name="main_tab_progress">Stats</string>
+
+    <string name="home_today_empty_title">Nothing to study yet</string>
+    <string name="home_today_empty_body">Pick your first unit on the path. Each day’s lessons and reviews will gather here.</string>
+    <string name="home_today_empty_action">Open the path</string>
+    <string name="curriculum_path_empty_title">No units yet</string>
+    <string name="curriculum_path_empty_body">Units open one at a time, starting from the first stage.</string>
+    <string name="dictionary_words_empty_title">No saved words yet</string>
+    <string name="dictionary_words_empty_body">Tap a word during a lesson to add it to your word list.</string>
+    <string name="stats_home_empty_title">Your history starts with your first lesson</string>
+    <string name="stats_home_empty_body">Your study time and streak will show here.</string>
 </resources>

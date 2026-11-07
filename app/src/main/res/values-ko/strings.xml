@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">길</string>
+
+    <string name="main_tab_today">오늘</string>
+    <string name="main_tab_path">길</string>
+    <string name="main_tab_words">단어</string>
+    <string name="main_tab_progress">기록</string>
+
+    <string name="home_today_empty_title">아직 오늘 할 공부가 없어요</string>
+    <string name="home_today_empty_body">길에서 첫 단원을 골라 보세요. 공부할 과와 복습이 여기에 모여요.</string>
+    <string name="home_today_empty_action">길 보기</string>
+    <string name="curriculum_path_empty_title">아직 열린 단원이 없어요</string>
+    <string name="curriculum_path_empty_body">단원은 첫 단계부터 하나씩 열려요.</string>
+    <string name="dictionary_words_empty_title">아직 저장한 단어가 없어요</string>
+    <string name="dictionary_words_empty_body">과를 공부하다가 단어를 눌러 단어장에 넣어 보세요.</string>
+    <string name="stats_home_empty_title">첫 과를 마치면 기록이 생겨요</string>
+    <string name="stats_home_empty_body">공부한 시간과 연속 학습일이 여기에 쌓여요.</string>
+</resources>

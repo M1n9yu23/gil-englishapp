@@ -17,6 +17,8 @@ import java.util.Properties
 
 plugins {
     alias(libs.plugins.convention.android.application.compose)
+    alias(libs.plugins.convention.hilt)
+    alias(libs.plugins.convention.android.screenshot)
 }
 
 // Upload key settings stay out of git. Without the file, release builds come out unsigned.
@@ -27,6 +29,11 @@ val keystoreProperties = Properties().apply {
 val hasUploadKey = keystoreProperties.getProperty("KEYSTORE_PATH") != null
 
 android {
+    androidResources {
+        // Lists en and ko for the per-app language setting; the default is in resources.properties.
+        generateLocaleConfig = true
+    }
+
     signingConfigs {
         if (hasUploadKey) {
             create("release") {
@@ -67,8 +74,14 @@ android {
 
 dependencies {
     implementation(projects.core.designsystem)
+    implementation(projects.core.navigation)
+    implementation(projects.feature.home.api)
+    implementation(projects.feature.curriculum.api)
+    implementation(projects.feature.dictionary.api)
+    implementation(projects.feature.stats.api)
+
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.timber)
 }
