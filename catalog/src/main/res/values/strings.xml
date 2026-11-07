@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="catalog_app_name">Gil catalog</string>
+    <string name="catalog_title">Design system</string>
+
+    <string name="catalog_section_colors">Colors</string>
+    <string name="catalog_section_type">Type</string>
+    <string name="catalog_section_spacing">Spacing</string>
+    <string name="catalog_section_buttons">Buttons</string>
+    <string name="catalog_section_rows">List rows</string>
+    <string name="catalog_section_english">English text</string>
+    <string name="catalog_section_progress">Progress</string>
+    <string name="catalog_section_states">States</string>
+    <string name="catalog_section_icons">Icons</string>
+
+    <string name="catalog_sample_type">Step by step along the path</string>
+    <string name="catalog_sample_primary">Continue</string>
+    <string name="catalog_sample_secondary">Play again</string>
+    <string name="catalog_sample_text_action">Report a mistake</string>
+    <string name="catalog_sample_row_title">Greetings</string>
+    <string name="catalog_sample_row_supporting">12 words, 8 sentences</string>
+    <string name="catalog_sample_row_plain">Reminder time</string>
+    <string name="catalog_sample_row_plain_value">8:00 PM</string>
+    <string name="catalog_sample_empty_title">No saved words yet</string>
+    <string name="catalog_sample_empty_body">Tap a word during a lesson to add it to your word list.</string>
+    <string name="catalog_sample_empty_action">Start today\'s lesson</string>
+    <string name="catalog_sample_error_title">Couldn\'t load your progress</string>
+    <string name="catalog_sample_error_body">This can happen when your phone is low on storage.</string>
+    <string name="catalog_sample_error_retry">Reload</string>
+    <string name="catalog_sample_inline_before">"To ask for water, start with "</string>
+    <string name="catalog_sample_inline_after">.</string>
+
+    <string name="catalog_sample_english_focus" translatable="false">Could I get a glass of water?</string>
+    <string name="catalog_sample_english_body" translatable="false">I usually walk to work.</string>
+    <string name="catalog_sample_inline_english" translatable="false">Could I get</string>
+    <string name="catalog_sample_ipa" translatable="false">ˈwɔːtər</string>
+    <string name="catalog_sample_ipa_word" translatable="false">water</string>
+</resources>
