@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen reader label of the back arrow in the top bar. -->
+    <string name="common_navigate_back">Back</string>
+    <!-- Screen reader label of a screen whose content is still loading. -->
+    <string name="common_loading">Loading</string>
+</resources>
