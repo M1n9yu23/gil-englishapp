@@ -50,9 +50,10 @@ fun contentReportUrl(location: String, appVersion: String, shown: String?, korea
 /** Opens the content report form in the browser. [canReport] is false on a phone without one. */
 @Stable
 class ContentReporter internal constructor(private val context: Context, private val korean: Boolean) {
-    private val probe = Intent(Intent.ACTION_VIEW, NEW_ISSUE_URL.toUri()).addCategory(Intent.CATEGORY_BROWSABLE)
-
-    val canReport: Boolean get() = probe.resolveActivity(context.packageManager) != null
+    /** Asked once: screens read it on every recomposition, and the answer is a system call. */
+    val canReport: Boolean = Intent(Intent.ACTION_VIEW, NEW_ISSUE_URL.toUri())
+        .addCategory(Intent.CATEGORY_BROWSABLE)
+        .resolveActivity(context.packageManager) != null
 
     fun report(location: String, shown: String?) {
         val url = contentReportUrl(location, appVersion(), shown, korean)
