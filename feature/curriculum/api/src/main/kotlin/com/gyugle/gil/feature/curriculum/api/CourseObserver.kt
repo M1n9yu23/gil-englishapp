@@ -28,4 +28,10 @@ interface CourseObserver {
 
     /** The lesson the course starts with. [ContentError.UNAVAILABLE] when reading fails. */
     suspend fun getFirstLessonId(): Outcome<LessonId, ContentError>
+
+    /**
+     * The first lesson in course order that is not in [completed], or null when every lesson is.
+     * [ContentError.UNAVAILABLE] when reading fails.
+     */
+    suspend fun getNextLesson(completed: Set<LessonId>): Outcome<LessonOverview?, ContentError>
 }

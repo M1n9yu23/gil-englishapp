@@ -55,6 +55,12 @@ interface LessonDao {
     @Query("SELECT id FROM lesson WHERE coursePosition > :coursePosition ORDER BY coursePosition LIMIT 1")
     suspend fun nextLessonId(coursePosition: Int): String?
 
+    @Query("SELECT COUNT(*) FROM lesson_step WHERE lessonId = :lessonId")
+    suspend fun stepCount(lessonId: String): Int
+
+    @Query("SELECT id FROM lesson ORDER BY coursePosition")
+    suspend fun lessonIds(): List<String>
+
     @Query("SELECT id FROM lesson ORDER BY coursePosition LIMIT 1")
     suspend fun firstLessonId(): String?
 }

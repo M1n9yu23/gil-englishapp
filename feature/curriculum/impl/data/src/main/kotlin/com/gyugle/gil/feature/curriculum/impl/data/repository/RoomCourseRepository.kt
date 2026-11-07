@@ -20,6 +20,8 @@ import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LessonOverview
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
@@ -80,4 +82,23 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         val id = checkNotNull(database.lessonDao().firstLessonId()) { "The course has no lessons" }
         Outcome.Success(LessonId(id))
     }
+
+    override suspend fun getNextLesson(completed: Set<LessonId>): Outcome<LessonOverview?, ContentError> =
+        databases.read { database ->
+            val lessons = database.lessonDao()
+            val done = completed.mapTo(mutableSetOf()) { it.value }
+            val id = lessons.lessonIds().firstOrNull { it !in done } ?: return@read Outcome.Success(null)
+            val lesson = checkNotNull(lessons.lesson(id))
+            // The compiler checks every lesson's unit, so a missing one means a broken file.
+            val unit = checkNotNull(database.courseDao().unit(lesson.unitId)) { "Lesson $id has no unit" }
+            Outcome.Success(
+                LessonOverview(
+                    id = LessonId(lesson.id),
+                    title = LocalizedText(lesson.titleKo, lesson.titleEn),
+                    unitTitle = LocalizedText(unit.titleKo, unit.titleEn),
+                    stepCount = lessons.stepCount(id),
+                    newItemCount = lessons.itemCount(id)
+                )
+            )
+        }
 }

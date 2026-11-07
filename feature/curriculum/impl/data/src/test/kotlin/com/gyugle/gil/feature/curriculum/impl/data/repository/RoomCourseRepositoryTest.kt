@@ -27,6 +27,7 @@ import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LessonItem
+import com.gyugle.gil.feature.curriculum.api.LessonOverview
 import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.PatternId
@@ -229,6 +230,33 @@ class RoomCourseRepositoryTest {
     @Test
     fun getFirstLessonId_returnsTheLowestCoursePosition() = runTest {
         assertThat(repository.getFirstLessonId()).isEqualTo(Outcome.Success(LessonId("lesson.a.1")))
+    }
+
+    @Test
+    fun getNextLesson_firstLessonNotCompleted_inCourseOrder() = runTest {
+        assertThat(repository.getNextLesson(emptySet())).isEqualTo(
+            Outcome.Success(
+                LessonOverview(
+                    id = LessonId("lesson.a.1"),
+                    title = LocalizedText("lesson.a.1 ko", "lesson.a.1 en"),
+                    unitTitle = LocalizedText("가", "A"),
+                    stepCount = 2,
+                    newItemCount = 4
+                )
+            )
+        )
+        val next = (repository.getNextLesson(setOf(LessonId("lesson.a.1"))) as Outcome.Success).data
+        assertThat(next?.id).isEqualTo(LessonId("lesson.a.2"))
+        // A lesson taken out of order does not move the plan past the one before it.
+        val skipped = (repository.getNextLesson(setOf(LessonId("lesson.a.2"))) as Outcome.Success).data
+        assertThat(skipped?.id).isEqualTo(LessonId("lesson.a.1"))
+    }
+
+    @Test
+    fun getNextLesson_everyLessonCompleted_null() = runTest {
+        val all = setOf(LessonId("lesson.a.1"), LessonId("lesson.a.2"))
+
+        assertThat(repository.getNextLesson(all)).isEqualTo(Outcome.Success(null))
     }
 
     @Test
