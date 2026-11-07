@@ -35,6 +35,12 @@ object GilIcons {
     val ArrowBack: Painter
         @Composable get() = painterResource(R.drawable.ic_arrow_back)
 
+    val Bookmark: Painter
+        @Composable get() = painterResource(R.drawable.ic_bookmark)
+
+    val BookmarkFilled: Painter
+        @Composable get() = painterResource(R.drawable.ic_bookmark_filled)
+
     val Check: Painter
         @Composable get() = painterResource(R.drawable.ic_check)
 
@@ -50,11 +56,20 @@ object GilIcons {
     val DictionaryFilled: Painter
         @Composable get() = painterResource(R.drawable.ic_dictionary_filled)
 
+    val ExpandMore: Painter
+        @Composable get() = painterResource(R.drawable.ic_expand_more)
+
+    val MoreVert: Painter
+        @Composable get() = painterResource(R.drawable.ic_more_vert)
+
     val Route: Painter
         @Composable get() = painterResource(R.drawable.ic_route)
 
     val RouteFilled: Painter
         @Composable get() = painterResource(R.drawable.ic_route_filled)
+
+    val Search: Painter
+        @Composable get() = painterResource(R.drawable.ic_search)
 
     val Today: Painter
         @Composable get() = painterResource(R.drawable.ic_today)

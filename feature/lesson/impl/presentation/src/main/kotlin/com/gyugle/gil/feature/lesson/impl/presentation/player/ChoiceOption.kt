@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.IpaText
+import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.component.PressableSurface
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme

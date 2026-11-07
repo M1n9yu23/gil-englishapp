@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.lesson.impl.presentation.player
+package com.gyugle.gil.core.designsystem.component
 
 import assertk.assertThat
 import assertk.assertions.containsExactly

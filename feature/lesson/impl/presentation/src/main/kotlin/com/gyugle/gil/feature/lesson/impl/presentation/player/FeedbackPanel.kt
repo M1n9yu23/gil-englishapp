@@ -30,6 +30,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextDecoration
 import com.gyugle.gil.core.designsystem.component.EnglishText
+import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.lesson.impl.presentation.player.FeedbackUi

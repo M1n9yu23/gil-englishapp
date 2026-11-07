@@ -62,6 +62,7 @@ import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.component.ErrorState
 import com.gyugle.gil.core.designsystem.component.GilProgressBar
+import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.component.LoadingState
 import com.gyugle.gil.core.designsystem.component.PrimaryActionButton
 import com.gyugle.gil.core.designsystem.component.SecondaryActionButton
@@ -74,7 +75,6 @@ import com.gyugle.gil.core.presentation.permissions.rememberPermissionController
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.lesson.impl.presentation.player.FeedbackPanel
-import com.gyugle.gil.feature.lesson.impl.presentation.player.KoreanProse
 import kotlinx.coroutines.launch
 
 private object LessonScreenTokens {

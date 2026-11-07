@@ -38,13 +38,13 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.IpaText
+import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.component.PathMark
 import com.gyugle.gil.core.designsystem.component.PrimaryActionButton
 import com.gyugle.gil.core.designsystem.component.SecondaryActionButton
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
-import com.gyugle.gil.feature.lesson.impl.presentation.player.KoreanProse
 
 /** The end of a lesson: time spent, the lesson's goal, what it introduced, and where to go next. */
 @Composable

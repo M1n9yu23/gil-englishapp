@@ -38,14 +38,14 @@ import androidx.compose.ui.text.intl.LocaleList
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
+import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.component.SecondaryActionButton
+import com.gyugle.gil.core.designsystem.component.SoundButton
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.lesson.impl.presentation.player.ChoiceOption
-import com.gyugle.gil.feature.lesson.impl.presentation.player.KoreanProse
 import com.gyugle.gil.feature.lesson.impl.presentation.player.OptionMark
-import com.gyugle.gil.feature.lesson.impl.presentation.player.SoundButton
 import com.gyugle.gil.feature.lesson.impl.presentation.player.TileBoard
 
 /** The instruction above a step, or null for a step that explains itself. */

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.lesson.impl.presentation.player
+package com.gyugle.gil.core.designsystem.component
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.FilledTonalIconButton
@@ -37,12 +37,7 @@ private object SoundButtonTokens {
  * sentence. [description] names what plays, for screen readers.
  */
 @Composable
-internal fun SoundButton(
-    onClick: () -> Unit,
-    description: String,
-    modifier: Modifier = Modifier,
-    large: Boolean = false
-) {
+fun SoundButton(onClick: () -> Unit, description: String, modifier: Modifier = Modifier, large: Boolean = false) {
     if (large) {
         FilledTonalIconButton(
             onClick = onClick,

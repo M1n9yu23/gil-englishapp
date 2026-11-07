@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.lesson.impl.presentation.player
+package com.gyugle.gil.core.designsystem.component
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,7 +25,6 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.intl.LocaleList
-import com.gyugle.gil.core.designsystem.component.appendEnglish
 
 private val KoreanLocale = LocaleList("ko-KR")
 
@@ -37,7 +36,7 @@ private val KoreanLocale = LocaleList("ko-KR")
  * phrases rather than in the middle of a word.
  */
 @Composable
-internal fun KoreanProse(
+fun KoreanProse(
     text: String,
     modifier: Modifier = Modifier,
     style: TextStyle = MaterialTheme.typography.bodyLarge,
