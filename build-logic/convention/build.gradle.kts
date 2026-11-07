@@ -38,6 +38,7 @@ dependencies {
     compileOnly(libs.compose.gradle.plugin)
     compileOnly(libs.ksp.gradle.plugin)
     compileOnly(libs.room.gradle.plugin)
+    compileOnly(libs.roborazzi.gradle.plugin)
 }
 
 tasks.validatePlugins {
@@ -78,6 +79,10 @@ gradlePlugin {
         register("room") {
             id = libs.plugins.convention.room.get().pluginId
             implementationClass = "RoomConventionPlugin"
+        }
+        register("androidScreenshot") {
+            id = libs.plugins.convention.android.screenshot.get().pluginId
+            implementationClass = "AndroidScreenshotConventionPlugin"
         }
     }
 }
