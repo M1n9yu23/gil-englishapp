@@ -83,7 +83,7 @@ class MainHostTest {
         setMainHost()
 
         tab(R.string.main_tab_today).assertIsSelected()
-        composeRule.onNodeWithText(text(R.string.home_today_empty_title)).assertExists()
+        composeRule.onNodeWithText(TEST_TODAY_ROOT).assertExists()
     }
 
     @Test
@@ -104,7 +104,7 @@ class MainHostTest {
         composeRule.waitForIdle()
 
         tab(R.string.main_tab_today).assertIsSelected()
-        composeRule.onNodeWithText(text(R.string.home_today_empty_title)).assertExists()
+        composeRule.onNodeWithText(TEST_TODAY_ROOT).assertExists()
         assertThat(deepLink).isNull()
     }
 
@@ -127,7 +127,7 @@ class MainHostTest {
         composeRule.runOnUiThread { composeRule.activity.onBackPressedDispatcher.onBackPressed() }
 
         tab(R.string.main_tab_today).assertIsSelected()
-        composeRule.onNodeWithText(text(R.string.home_today_empty_title)).assertExists()
+        composeRule.onNodeWithText(TEST_TODAY_ROOT).assertExists()
     }
 
     @Test
@@ -138,16 +138,6 @@ class MainHostTest {
         composeRule.runOnUiThread { composeRule.activity.onBackPressedDispatcher.onBackPressed() }
 
         composeRule.runOnIdle { assertThat(composeRule.activity.isFinishing).isTrue() }
-    }
-
-    @Test
-    fun mainHost_todayEmptyActionClicked_opensPath() {
-        setMainHost()
-
-        composeRule.onNodeWithText(text(R.string.home_today_empty_action)).performClick()
-
-        tab(R.string.main_tab_path).assertIsSelected()
-        composeRule.onNodeWithText(TEST_PATH_ROOT).assertExists()
     }
 
     @Test
@@ -201,7 +191,7 @@ class MainHostTest {
 
         composeRule.runOnUiThread { composeRule.activity.onBackPressedDispatcher.onBackPressed() }
 
-        assertThat(leftEdgeMidTransition(text(R.string.home_today_empty_title))).isEqualTo(Spacing().screenMargin)
+        assertThat(leftEdgeMidTransition(TEST_TODAY_ROOT)).isEqualTo(Spacing().screenMargin)
     }
 
     @Test

@@ -28,9 +28,6 @@ import androidx.navigation3.runtime.NavKey
 import com.gyugle.gil.core.designsystem.component.EmptyState
 import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.theme.GilTheme
-import com.gyugle.gil.core.navigation.Navigator
-import com.gyugle.gil.feature.curriculum.api.PathRoute
-import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.stats.api.StatsHomeRoute
 
 /**
@@ -38,16 +35,7 @@ import com.gyugle.gil.feature.stats.api.StatsHomeRoute
  * state its real screen shows to a learner who has not started yet. Remove a tab's entry here when
  * its feature adds one.
  */
-fun EntryProviderScope<NavKey>.tabRootPlaceholderEntries(navigator: Navigator) {
-    entry<TodayRoute> {
-        TabRootPlaceholder(
-            title = R.string.main_tab_today,
-            emptyTitle = R.string.home_today_empty_title,
-            emptyBody = R.string.home_today_empty_body,
-            action = R.string.home_today_empty_action,
-            onAction = { navigator.goTo(PathRoute) }
-        )
-    }
+fun EntryProviderScope<NavKey>.tabRootPlaceholderEntries() {
     entry<StatsHomeRoute> {
         TabRootPlaceholder(
             title = R.string.main_tab_progress,
@@ -62,18 +50,11 @@ private fun TabRootPlaceholder(
     @StringRes title: Int,
     @StringRes emptyTitle: Int,
     @StringRes emptyBody: Int,
-    modifier: Modifier = Modifier,
-    @StringRes action: Int? = null,
-    onAction: () -> Unit = {}
+    modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxSize()) {
         GilTopBar(title = stringResource(title))
-        EmptyState(
-            title = stringResource(emptyTitle),
-            body = stringResource(emptyBody),
-            actionLabel = action?.let { stringResource(it) },
-            onAction = onAction
-        )
+        EmptyState(title = stringResource(emptyTitle), body = stringResource(emptyBody))
     }
 }
 
@@ -83,10 +64,9 @@ private fun TabRootPlaceholderPreview() {
     GilTheme {
         Surface {
             TabRootPlaceholder(
-                title = R.string.main_tab_today,
-                emptyTitle = R.string.home_today_empty_title,
-                emptyBody = R.string.home_today_empty_body,
-                action = R.string.home_today_empty_action
+                title = R.string.main_tab_progress,
+                emptyTitle = R.string.stats_home_empty_title,
+                emptyBody = R.string.stats_home_empty_body
             )
         }
     }

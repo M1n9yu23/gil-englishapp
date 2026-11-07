@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- "ko" when the app shows Korean. Picks the language of content text such as lesson titles. -->
+    <string name="home_content_language">en</string>
+
+    <string name="home_title">Today</string>
+    <string name="home_studied_today"><xliff:g id="minutes" example="12">%1$d</xliff:g> min studied today</string>
+    <string name="home_goal">Goal: <xliff:g id="minutes" example="20">%1$d</xliff:g> min</string>
+
+    <string name="home_message_first_day">Start with the first lesson. What you learn there comes back for review from the next day on.</string>
+    <string name="home_message_goal_met">You’ve reached today’s goal. Keep going if you like.</string>
+    <string name="home_message_review_heavy">There’s a lot to review today, so reviews come first and new words wait a little.</string>
+
+    <string name="home_block_review">Review</string>
+    <string name="home_block_more_review">More review</string>
+    <plurals name="home_block_review_size">
+        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> card · about <xliff:g id="minutes" example="1">%2$d</xliff:g> min</item>
+        <item quantity="other"><xliff:g id="count" example="12">%1$d</xliff:g> cards · about <xliff:g id="minutes" example="6">%2$d</xliff:g> min</item>
+    </plurals>
+    <string name="home_block_review_done">Done for today</string>
+    <string name="home_block_lesson_detail"><xliff:g id="unit" example="Greetings">%1$s</xliff:g> · about <xliff:g id="minutes" example="12">%2$d</xliff:g> min</string>
+    <string name="home_block_lesson_enough">That’s plenty of new words for today, but you can still take it.</string>
+    <string name="home_block_course_done">You’ve finished every lesson so far</string>
+    <string name="home_block_course_done_detail">More are on the way</string>
+
+    <string name="home_continue">Continue</string>
+    <string name="home_start_first_lesson">Start the first lesson</string>
+
+    <string name="home_week_title">This week</string>
+    <string name="home_streak"><xliff:g id="days" example="3">%1$d</xliff:g>-day streak</string>
+    <plurals name="home_week_description">
+        <item quantity="one">Studied <xliff:g id="days" example="1">%d</xliff:g> day this week</item>
+        <item quantity="other">Studied <xliff:g id="days" example="3">%d</xliff:g> days this week</item>
+    </plurals>
+
+    <string name="home_error_title">Couldn’t make today’s plan</string>
+    <string name="home_error_body">Reading the lessons or your study record failed. Try again.</string>
+    <string name="home_error_retry">Try again</string>
+</resources>

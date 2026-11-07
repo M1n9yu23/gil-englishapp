@@ -6,10 +6,6 @@
     <string name="main_tab_path">Path</string>
     <string name="main_tab_words">Words</string>
     <string name="main_tab_progress">Stats</string>
-
-    <string name="home_today_empty_title">Nothing to study yet</string>
-    <string name="home_today_empty_body">Pick your first unit on the path. Each day’s lessons and reviews will gather here.</string>
-    <string name="home_today_empty_action">Open the path</string>
     <string name="stats_home_empty_title">Your history starts with your first lesson</string>
     <string name="stats_home_empty_body">Your study time and streak will show here.</string>
 </resources>
