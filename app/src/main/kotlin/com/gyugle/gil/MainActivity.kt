@@ -15,25 +15,73 @@
  */
 package com.gyugle.gil
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val viewModel: AppStartViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Before super.onCreate, so the splash theme is swapped for the app theme in time.
-        installSplashScreen()
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        // Until the first read of the onboarding flag, so neither host flashes before the other.
+        splashScreen.setKeepOnScreenCondition { viewModel.host.value == AppHost.Loading }
         enableEdgeToEdge()
+        // A recreated activity already opened its link; its back stacks were restored instead. From
+        // Recents the old intent comes back with its link, which was opened back then.
+        val fromRecents = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+        if (savedInstanceState == null && !fromRecents) viewModel.onIntentData(intent.dataString)
         setContent {
             GilTheme {
-                MainHost()
+                val host by viewModel.host.collectAsStateWithLifecycle()
+                val deepLink by viewModel.deepLink.collectAsStateWithLifecycle()
+                val fade = tween<Float>(GilTheme.motion.fade)
+                AnimatedContent(
+                    targetState = host,
+                    // The splash screen already hides the first host appearing; fading it in again lags.
+                    transitionSpec = {
+                        if (initialState == AppHost.Loading) {
+                            EnterTransition.None togetherWith ExitTransition.None
+                        } else {
+                            fadeIn(fade) togetherWith fadeOut(fade)
+                        }
+                    },
+                    label = "host"
+                ) { shown ->
+                    when (shown) {
+                        // The splash screen covers this frame.
+                        AppHost.Loading -> Unit
+
+                        AppHost.Onboarding -> OnboardingHost()
+
+                        AppHost.Main -> MainHost(deepLink = deepLink, onDeepLinkOpen = viewModel::onDeepLinkHandled)
+                    }
+                }
             }
         }
+    }
+
+    /** A reminder tapped while the app is open arrives here, not through [getIntent]. */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        viewModel.onIntentData(intent.dataString)
     }
 }

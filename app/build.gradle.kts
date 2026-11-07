@@ -74,16 +74,26 @@ android {
 
 dependencies {
     implementation(projects.core.designsystem)
+    implementation(projects.core.domain)
     implementation(projects.core.navigation)
+    implementation(projects.core.speech)
     implementation(projects.feature.home.api)
     implementation(projects.feature.curriculum.api)
     implementation(projects.feature.curriculum.impl.presentation)
     implementation(projects.feature.curriculum.impl.data)
+    implementation(projects.feature.progress.impl.data)
+    implementation(projects.feature.goal.impl.data)
+    implementation(projects.feature.reminder.impl.data)
+    implementation(projects.feature.onboarding.api)
+    implementation(projects.feature.onboarding.impl.data)
+    implementation(projects.feature.onboarding.impl.presentation)
     implementation(projects.feature.dictionary.api)
     implementation(projects.feature.stats.api)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.timber)
 }

@@ -17,11 +17,15 @@ package com.gyugle.gil
 
 import android.app.Application
 import android.os.StrictMode
+import com.gyugle.gil.feature.reminder.impl.data.ReminderStartup
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 import timber.log.Timber
 
 @HiltAndroidApp
 class GilApplication : Application() {
+    @Inject lateinit var reminderStartup: ReminderStartup
+
     override fun onCreate() {
         super.onCreate()
         // Release builds plant no tree, so nothing is logged there.
@@ -29,6 +33,7 @@ class GilApplication : Application() {
             Timber.plant(Timber.DebugTree())
             enableStrictMode()
         }
+        reminderStartup.start()
     }
 
     // Violations are logged, not fatal, so a debug run keeps going; read them in logcat.

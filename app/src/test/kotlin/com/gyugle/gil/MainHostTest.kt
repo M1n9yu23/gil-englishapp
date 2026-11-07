@@ -18,6 +18,9 @@ package com.gyugle.gil
 import android.app.Application
 import androidx.activity.ComponentActivity
 import androidx.annotation.StringRes
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.hasText
@@ -33,9 +36,12 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isGreaterThan
 import assertk.assertions.isLessThan
+import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.designsystem.theme.Spacing
+import com.gyugle.gil.core.navigation.DeepLinkTarget
+import com.gyugle.gil.feature.home.api.TodayRoute
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -78,6 +84,28 @@ class MainHostTest {
 
         tab(R.string.main_tab_today).assertIsSelected()
         composeRule.onNodeWithText(text(R.string.home_today_empty_title)).assertExists()
+    }
+
+    @Test
+    fun mainHost_todayLinkWhileDeepInAnotherTab_showsTodayAndClearsTheLink() {
+        var deepLink by mutableStateOf<DeepLinkTarget?>(null)
+        composeRule.setContent {
+            GilTheme {
+                MainHost(deepLink = deepLink, onDeepLinkOpen = {
+                    deepLink = null
+                }, entries = { testMainEntries(it) })
+            }
+        }
+        tab(R.string.main_tab_path).performClick()
+        composeRule.onNodeWithText(TEST_OPEN_PAGE).performClick()
+        composeRule.waitForIdle()
+
+        deepLink = DeepLinkTarget(TodayRoute)
+        composeRule.waitForIdle()
+
+        tab(R.string.main_tab_today).assertIsSelected()
+        composeRule.onNodeWithText(text(R.string.home_today_empty_title)).assertExists()
+        assertThat(deepLink).isNull()
     }
 
     @Test
