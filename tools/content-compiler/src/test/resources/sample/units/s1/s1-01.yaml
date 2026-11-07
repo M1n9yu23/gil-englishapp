@@ -1,0 +1,25 @@
+id: unit.s1-01
+title: { ko: 짧은 이와 긴 이, en: Short and long i }
+lessons:
+  - id: lesson.s1-01.1
+    title: { ko: ship과 sheep, en: Ship and sheep }
+    goal: { ko: 짧은 이와 긴 이를 듣고 구별할 수 있어요, en: Hear the difference between ship and sheep }
+    introduces: [sound.i-short, sound.i-long]
+    steps:
+      - type: explain
+        text: |
+          `ship`은 짧게, `sheep`은 길게 소리 내요.
+
+          둘 다 우리말로는 "이"처럼 들리지만 영어에서는 다른 소리예요.
+      - type: minimalPair
+        words: [ship, sheep]
+        answer: sheep
+        why: 길게 소리 나면 `sheep`이에요.
+        item: sound.i-long
+      - type: listenChoose
+        en: ship
+        checkVocab: false
+        item: sound.i-short
+        options:
+          - { en: ship, correct: true }
+          - { en: sheep, why: 길게 소리 나야 `sheep`이에요. }

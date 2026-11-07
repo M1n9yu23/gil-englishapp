@@ -1,0 +1,70 @@
+id: unit.a1-01
+title: { ko: 인사와 소개, en: Greetings }
+lessons:
+  - id: lesson.a1-01.1
+    title: { ko: 저는 학생이에요, en: I am a student }
+    goal: { ko: 자기가 학생이라고 말할 수 있어요, en: Say that you are a student }
+    introduces: [sense.i.pron.self, sense.am.v.be, sense.a.art.one, sense.student.n.learner, pattern.nice-to-meet-you]
+    steps:
+      - type: listen
+        en: I am a student.
+        ko: 저는 학생이에요.
+      - type: chooseMeaning
+        en: student
+        item: sense.student.n.learner
+        options:
+          - { ko: 학생, correct: true }
+          - { ko: 선생님, why: 선생님은 `teacher`예요. }
+          - { ko: 친구, why: 친구는 `friend`예요. }
+      - type: arrange
+        ko: 저는 학생이에요.
+        en: I am a student.
+      - type: fillBlank
+        en: I ___ a student.
+        ko: 저는 학생이에요.
+        answers: [am]
+        item: sense.am.v.be
+      - type: dictation
+        en: I am a student.
+        ko: 저는 학생이에요.
+      - type: dialogue
+        lines:
+          - { speaker: Mina, en: "Nice to meet you, @Mina.", ko: "만나서 반가워요, 미나 씨." }
+        options:
+          - { en: Nice to meet you., correct: true }
+          - { en: I am a student., why: 인사에는 인사로 답해요. }
+  - id: lesson.a1-01.2
+    title: { ko: 매일 아침 달려요, en: I run every morning }
+    goal: { ko: 매일 하는 일을 말할 수 있어요, en: Say what you do every day }
+    introduces: [sense.run.v.move-fast, sense.every.det.each, sense.morning.n.early-day]
+    steps:
+      - type: explain
+        text: |
+          영어는 `I run`처럼 "누가" 다음에 "한다"가 바로 와요.
+        examples:
+          - en: "[I]{who} [run]{do} [every morning]{when}."
+            ko: 저는 매일 아침 달려요.
+            literal: 나는 / 달린다 / 매일 아침
+            grammar: grammar.word-order
+      - type: spell
+        sense: sense.run.v.move-fast
+      - type: chooseEnglish
+        ko: 아침
+        item: sense.morning.n.early-day
+        options:
+          - { en: morning, correct: true }
+          - { en: student, why: "`student`는 학생이에요." }
+      - type: shadow
+        en: I run every morning.
+        ko: 저는 매일 아침 달려요.
+      - type: readPassage
+        sentences:
+          - en: I am a student.
+            ko: 저는 학생이에요.
+          - en: I run every morning.
+            ko: 저는 매일 아침 달려요.
+        questions:
+          - ko: 이 사람은 매일 아침 무엇을 하나요?
+            options:
+              - { ko: 달려요, correct: true }
+              - { ko: 공부해요, why: 학생이지만 아침에 하는 일은 달리기예요. }

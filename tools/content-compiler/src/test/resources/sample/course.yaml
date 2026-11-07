@@ -1,0 +1,11 @@
+stages:
+  - id: stage.s1
+    title: { ko: 소리와 글자, en: Sounds and letters }
+    canDo:
+      - { ko: 짧은 i와 긴 ee 소리를 구별할 수 있어요, en: Tell short i from long ee }
+    units: [unit.s1-01]
+  - id: stage.a1
+    title: { ko: 첫걸음, en: First steps }
+    units: [unit.a1-01]
+inflections:
+  past: pattern.past-simple

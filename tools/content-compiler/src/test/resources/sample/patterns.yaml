@@ -1,0 +1,13 @@
+- id: pattern.nice-to-meet-you
+  text: Nice to meet you.
+  ko: 만나서 반가워요.
+  examples:
+    - en: Nice to meet you, @Mina.
+      ko: 만나서 반가워요, 미나 씨.
+- id: pattern.past-simple
+  text: ~ed
+  ko: 과거에 한 일
+  level: a2
+  examples:
+    - en: I ran every morning.
+      ko: 저는 매일 아침 달렸어요.

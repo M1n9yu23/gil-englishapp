@@ -1,0 +1,80 @@
+- word: I
+  id: word.i
+  senses:
+    - id: sense.i.pron.self
+      pos: pronoun
+      ko: 나, 저
+      examples:
+        - en: I am a student.
+          ko: 저는 학생이에요.
+- word: am
+  id: word.am
+  ipa: æm
+  senses:
+    - id: sense.am.v.be
+      pos: verb
+      ko: ~이다, ~에 있다
+      examples:
+        - en: I am a student.
+          ko: 저는 학생이에요.
+- word: a
+  id: word.a
+  ipa: ə
+  senses:
+    - id: sense.a.art.one
+      pos: article
+      ko: 하나의
+      examples:
+        - en: I am a student.
+          ko: 저는 학생이에요.
+- word: student
+  id: word.student
+  hangul: 스튜던트
+  senses:
+    - id: sense.student.n.learner
+      pos: noun
+      ko: 학생
+      examples:
+        - en: I am a student.
+          ko: 저는 학생이에요.
+  family: [study]
+  notes:
+    - kind: usage
+      ko: 대학생뿐 아니라 초등학생, 중학생에게도 써요.
+- word: run
+  id: word.run
+  forms: { past: ran, pastParticiple: run }
+  senses:
+    - id: sense.run.v.move-fast
+      pos: verb
+      ko: 달리다
+      examples:
+        - en: I run every morning.
+          ko: 저는 매일 아침 달려요.
+    - id: sense.run.v.manage
+      pos: verb
+      ko: 운영하다
+      level: b1
+      examples:
+        - en: She runs a small cafe.
+          ko: 그녀는 작은 카페를 운영해요.
+  collocations:
+    - { en: run fast, ko: 빨리 달리다 }
+- word: every
+  id: word.every
+  senses:
+    - id: sense.every.det.each
+      pos: determiner
+      ko: 매~, 모든
+      examples:
+        - en: I run every morning.
+          ko: 저는 매일 아침 달려요.
+- word: morning
+  id: word.morning
+  senses:
+    - id: sense.morning.n.early-day
+      pos: noun
+      ko: 아침
+      examples:
+        - en: I run every morning.
+          ko: 저는 매일 아침 달려요.

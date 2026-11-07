@@ -1,0 +1,10 @@
+- id: sound.i-short
+  symbol: ɪ
+  spelling: i
+  ko: 입을 살짝 벌리고 짧게 "이"라고 해요.
+  examples: [ship, sit]
+- id: sound.i-long
+  symbol: iː
+  spelling: ee, ea
+  ko: 입꼬리를 옆으로 당기고 길게 "이이"라고 해요.
+  examples: [sheep, seat]

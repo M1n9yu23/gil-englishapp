@@ -1,0 +1,9 @@
+- id: grammar.word-order
+  title: 영어의 어순
+  body: |
+    영어는 "누가, 한다, 무엇을" 순서로 말해요.
+
+    때를 나타내는 말은 보통 문장 끝에 와요.
+  examples:
+    - en: I run every morning.
+      ko: 저는 매일 아침 달려요.

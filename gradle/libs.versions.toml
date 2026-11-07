@@ -30,6 +30,8 @@ javaxInject = "1"
 room = "2.8.5"
 
 timber = "5.0.1"
+kaml = "0.104.0"
+sqliteJdbc = "3.54.1.0"
 aboutLibraries = "15.3.0"
 
 junit = "6.1.3"
@@ -90,6 +92,8 @@ androidx-hilt-lifecycle-viewmodel-compose = { module = "androidx.hilt:hilt-lifec
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidxHilt" }
 
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+kaml = { module = "com.charleskorn.kaml:kaml", version.ref = "kaml" }
+sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqliteJdbc" }
 aboutlibraries-core = { module = "com.mikepenz:aboutlibraries-core", version.ref = "aboutLibraries" }
 
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }

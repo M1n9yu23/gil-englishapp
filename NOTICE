@@ -21,3 +21,9 @@ Material Symbols (https://github.com/google/material-design-icons)
 Copyright Google LLC.
 Licensed under the Apache License, Version 2.0.
 Files: core/designsystem/src/main/res/drawable/ic_*.xml
+
+The CMU Pronouncing Dictionary (https://github.com/cmusphinx/cmudict)
+Copyright (C) 1993-2015 Carnegie Mellon University. All rights reserved.
+Licensed under a BSD 2-clause style license. The IPA in the app's content
+database is derived from it.
+Full text: tools/content-compiler/src/main/resources/cmudict/LICENSE
