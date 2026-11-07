@@ -15,6 +15,8 @@
  */
 package com.gyugle.gil.core.designsystem.theme
 
+import androidx.compose.animation.core.CubicBezierEasing
+import androidx.compose.animation.core.Easing
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
@@ -37,7 +39,15 @@ data class Motion(
     val pressIn: Int = 90,
     val pressOut: Int = 160,
     /** A value or state changing in place. */
-    val fade: Int = 150
+    val fade: Int = 150,
+    /** A screen coming in, with [enterEasing]. */
+    val enter: Int = 250,
+    /** A screen going out, with [exitEasing]. */
+    val exit: Int = 200,
+    /** Material's emphasized decelerate: a quick start that settles gently. */
+    val enterEasing: Easing = CubicBezierEasing(0.05f, 0.7f, 0.1f, 1f),
+    /** Material's emphasized accelerate: a gentle start that leaves quickly. */
+    val exitEasing: Easing = CubicBezierEasing(0.3f, 0f, 0.8f, 0.15f)
 )
 
 // Internal so that GilTheme stays the only place that provides them.
