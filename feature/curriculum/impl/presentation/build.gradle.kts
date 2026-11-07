@@ -21,4 +21,6 @@ plugins {
 dependencies {
     implementation(projects.feature.curriculum.api)
     implementation(projects.feature.curriculum.impl.domain)
+    // A lesson row opens the lesson player.
+    implementation(projects.feature.lesson.api)
 }

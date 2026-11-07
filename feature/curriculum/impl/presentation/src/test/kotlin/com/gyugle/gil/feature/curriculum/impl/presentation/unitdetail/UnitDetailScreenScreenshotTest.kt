@@ -33,7 +33,7 @@ class UnitDetailScreenScreenshotTest {
     @get:Rule val composeRule = createComposeRule()
 
     private fun capture(state: UnitDetailState) = composeRule.captureScreen {
-        UnitDetailScreen(state = state, onAction = {}, onBack = {})
+        UnitDetailScreen(state = state, onAction = {}, onBack = {}, onLessonClick = {})
     }
 
     private val loaded = UnitDetailState(isLoading = false, unit = UnitDetailPreviewData.unit)

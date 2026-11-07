@@ -52,7 +52,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.R as CoreR
 import com.gyugle.gil.core.designsystem.component.ErrorState
 import com.gyugle.gil.core.designsystem.component.GilTopBar
+import com.gyugle.gil.core.designsystem.component.PressableSurface
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.presentation.ContentErrorUi
 import com.gyugle.gil.feature.curriculum.impl.presentation.R
@@ -72,12 +74,13 @@ private object UnitDetailTokens {
 fun UnitDetailRoot(
     unitId: UnitId,
     onBack: () -> Unit,
+    onLessonClick: (LessonId) -> Unit,
     viewModel: UnitDetailViewModel = hiltViewModel<UnitDetailViewModel, UnitDetailViewModel.Factory>(
         creationCallback = { factory -> factory.create(unitId.value) }
     )
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    UnitDetailScreen(state = state, onAction = viewModel::onAction, onBack = onBack)
+    UnitDetailScreen(state = state, onAction = viewModel::onAction, onBack = onBack, onLessonClick = onLessonClick)
 }
 
 @Composable
@@ -85,6 +88,7 @@ fun UnitDetailScreen(
     state: UnitDetailState,
     onAction: (UnitDetailAction) -> Unit,
     onBack: () -> Unit,
+    onLessonClick: (LessonId) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxSize()) {
@@ -98,7 +102,7 @@ fun UnitDetailScreen(
             when (content) {
                 UnitDetailContent.Loading -> UnitLoading()
                 is UnitDetailContent.Failed -> UnitError(content.error, onAction, onBack)
-                is UnitDetailContent.Loaded -> LessonList(content.unit)
+                is UnitDetailContent.Loaded -> LessonList(content.unit, onLessonClick)
             }
         }
     }
@@ -130,7 +134,7 @@ private fun UnitError(error: ContentErrorUi, onAction: (UnitDetailAction) -> Uni
 }
 
 @Composable
-private fun LessonList(unit: UnitDetailUi) {
+private fun LessonList(unit: UnitDetailUi, onLessonClick: (LessonId) -> Unit) {
     val spacing = GilTheme.spacing
     // A pushed screen has no bottom bar, so it keeps its last row clear of the navigation bar.
     val navigationBar = WindowInsets.navigationBars.asPaddingValues()
@@ -153,21 +157,32 @@ private fun LessonList(unit: UnitDetailUi) {
         }
         itemsIndexed(unit.lessons, key = { _, lesson -> lesson.id.value }) { index, lesson ->
             if (index > 0) HorizontalDivider(modifier = Modifier.padding(start = UnitDetailTokens.TextStart))
-            LessonRow(lesson)
+            LessonRow(lesson, onClick = { onLessonClick(lesson.id) })
         }
     }
 }
 
 /** A lesson with its number on the first line of the title, however far the goal wraps. */
 @Composable
-private fun LessonRow(lesson: LessonRowUi) {
+private fun LessonRow(lesson: LessonRowUi, onClick: () -> Unit) {
+    val spacing = GilTheme.spacing
+    PressableSurface(
+        onClick = onClick,
+        clickLabel = stringResource(R.string.curriculum_lesson_open),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        LessonRowContent(lesson)
+    }
+}
+
+@Composable
+private fun LessonRowContent(lesson: LessonRowUi) {
     val spacing = GilTheme.spacing
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = UnitDetailTokens.RowMinHeight)
-            .padding(horizontal = spacing.screenMargin, vertical = spacing.itemGap)
-            .semantics(mergeDescendants = true) {},
+            .padding(horizontal = spacing.screenMargin, vertical = spacing.itemGap),
         horizontalArrangement = Arrangement.spacedBy(spacing.itemGap)
     ) {
         Text(
@@ -235,7 +250,8 @@ private fun UnitDetailScreenPreview() {
             UnitDetailScreen(
                 state = UnitDetailState(isLoading = false, unit = UnitDetailPreviewData.unit),
                 onAction = {},
-                onBack = {}
+                onBack = {},
+                onLessonClick = {}
             )
         }
     }

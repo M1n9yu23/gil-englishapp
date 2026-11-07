@@ -16,4 +16,5 @@
     <string name="curriculum_error_not_found_body">앱을 업데이트하면서 옮겨졌을 수 있어요. 길로 돌아가 단원을 다시 골라 주세요.</string>
     <string name="curriculum_error_retry">다시 열기</string>
     <string name="curriculum_error_back">길로 돌아가기</string>
+    <string name="curriculum_lesson_open">수업 열기</string>
 </resources>
