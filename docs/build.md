@@ -74,6 +74,7 @@ Shared build setup is in `build-logic/convention`, an included build. A module's
 | `gil.android.application.compose` | `:app` | The above plus Compose and the Navigation 3 ViewModel decorator |
 | `gil.hilt` | Any module with `@Inject` classes or Hilt modules | Hilt through KSP |
 | `gil.room` | The module that owns a Room database | Room through KSP; schemas exported to `schemas/` |
+| `gil.root` | The root project | A `check` task and the document translation check |
 
 Each plugin is registered in `build-logic/convention/build.gradle.kts` with the id from the catalog, and modules apply it by alias:
 
@@ -95,7 +96,47 @@ Unit tests run on JUnit 6 (Jupiter) with AssertK, Turbine and `kotlinx-coroutine
 
 Device tests go in `src/androidTest`. A module without that directory builds no test APK and gets no device test dependencies.
 
+## Checks
+
+Before opening a pull request, run what CI runs:
+
+```
+./gradlew spotlessCheck verifyDocTranslations lintDebug testDebugUnitTest assembleDebug verifyNoInternetPermission
+```
+
+### Formatting
+
+Spotless formats every `.kt` and `.kts` file with ktlint in the `android_studio` style plus the Compose rules from compose-rules. It also adds the Apache 2.0 license header from `spotless/license-header.txt`. The rule settings are in `.editorconfig`:
+
+- Material 2 APIs are not allowed.
+- Collection parameters of composables must be stable types.
+- Preview functions end in `Preview`.
+- The only `CompositionLocal`s allowed are the design system tokens `LocalSpacing` and `LocalMotion`.
+
+```
+./gradlew spotlessApply   # fix
+./gradlew spotlessCheck   # verify
+```
+
+### Lint
+
+Android Lint fails the build on any warning. These checks are raised to errors because they guard text and accessibility: `HardcodedText`, `ContentDescription`, `SmallSp`, `SpUsage`, `TypographyEllipsis`, `TypographyDashes`, `UnusedResources` and `MissingTranslation`. Checks that only report newer dependency versions are off, since Dependabot handles updates. The app module runs with `checkDependencies`, so unused resources and missing translations are found across every module it uses.
+
+To keep a warning on purpose, suppress it at the narrowest place, such as `tools:ignore` on one element or `@Suppress` on one declaration, and add a comment that says why.
+
+### Document translations
+
+Every public document exists in English (`name.md`) and Korean (`name.ko.md`), and each one links to the other within its first five lines. Issue forms pair the same way (`name.yml`, `name.ko.yml`). The pull request template holds both languages in one file. `LICENSE` and `NOTICE` are legal texts and stay in English only.
+
+`./gradlew verifyDocTranslations` checks the pairs and the links. It looks only at files git does not ignore, and `./gradlew check` runs it too.
+
+### Continuous integration
+
+`.github/workflows/ci.yml` runs the commands above on every push to `main` and on every pull request. The workflow can only read the repository, and each action is pinned to a commit SHA. Dependabot (`.github/dependabot.yml`) proposes Gradle and GitHub Actions updates once a week. Kotlin and KSP come in one pull request because they must change together.
+
 ## Design decisions
 
 - **No `kotlin-android` plugin.** AGP 9 compiles Kotlin itself, and applying the Kotlin Android plugin on top of it fails the build.
 - **Plugin ids start with `gil.`, not a reverse domain.** The plugins are never published, so they only need to be unique inside this build.
+- **Convention plugin entries in the catalog have no version.** The root project applies `gil.root`, which puts `build-logic` on the classpath of every module. Gradle then rejects a request for one of its plugins that names a version, even `unspecified`.
+- **One Spotless setup at the root.** It covers every module and `build-logic` with a single list of targets, and writes LF line endings to match `.gitattributes`.
