@@ -15,6 +15,8 @@
  */
 plugins {
     alias(libs.plugins.convention.jvm.library)
+    // FakeProgressObserver and FakeProgressCommands, for the features that read or write progress.
+    `java-test-fixtures`
 }
 
 dependencies {

@@ -20,17 +20,19 @@ import com.gyugle.gil.core.domain.EmptyOutcome
 import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
-import com.gyugle.gil.feature.progress.api.CardState
-import com.gyugle.gil.feature.progress.api.ProgressCommands
-import com.gyugle.gil.feature.progress.api.ReviewRating
 import kotlin.time.Duration
 
-/** Records the calls a lesson makes. [completeError], when set, fails [completeLesson]. */
-class FakeProgressCommands : ProgressCommands {
+/**
+ * Records the calls made to it. [completeError] and [saveError], when set, fail [completeLesson]
+ * and [setSaved]. With an [observer], [setSaved] also changes its word list, newest first.
+ */
+class FakeProgressCommands(private val observer: FakeProgressObserver? = null) : ProgressCommands {
     val completed = mutableListOf<Pair<LessonId, Map<StudyItemId, ReviewRating>>>()
     val mistakes = mutableListOf<StudyItemId>()
     val studyTime = mutableListOf<Duration>()
+    val saved = mutableListOf<Pair<StudyItemId, Boolean>>()
     var completeError: DataError.Local? = null
+    var saveError: DataError.Local? = null
 
     override suspend fun completeLesson(
         lessonId: LessonId,
@@ -42,15 +44,21 @@ class FakeProgressCommands : ProgressCommands {
     }
 
     override suspend fun recordReview(itemId: StudyItemId, rating: ReviewRating): Outcome<CardState, DataError.Local> =
-        error("A lesson never records a review")
+        error("Not used by the tests of this fake")
 
     override suspend fun recordStudyTime(duration: Duration): EmptyOutcome<DataError.Local> {
         studyTime += duration
         return Outcome.Success(Unit)
     }
 
-    override suspend fun setSaved(itemId: StudyItemId, saved: Boolean): EmptyOutcome<DataError.Local> =
-        Outcome.Success(Unit)
+    override suspend fun setSaved(itemId: StudyItemId, saved: Boolean): EmptyOutcome<DataError.Local> {
+        saveError?.let { return Outcome.Failure(it) }
+        this.saved += itemId to saved
+        observer?.savedItems?.value?.let { current ->
+            observer.savedItems.value = if (saved) listOf(itemId) + (current - itemId) else current - itemId
+        }
+        return Outcome.Success(Unit)
+    }
 
     override suspend fun recordMistake(itemId: StudyItemId): EmptyOutcome<DataError.Local> {
         mistakes += itemId

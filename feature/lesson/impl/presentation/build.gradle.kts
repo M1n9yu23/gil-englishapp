@@ -29,4 +29,5 @@ dependencies {
 
     testImplementation(testFixtures(projects.core.speech))
     testImplementation(testFixtures(projects.feature.curriculum.api))
+    testImplementation(testFixtures(projects.feature.progress.api))
 }
