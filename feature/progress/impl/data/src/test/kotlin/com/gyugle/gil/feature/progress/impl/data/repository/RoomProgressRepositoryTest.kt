@@ -244,6 +244,8 @@ class RoomProgressRepositoryTest {
         repository.clearMistake(hello)
         repository.clearMistake(hello)
 
-        assertThat(repository.observeMistakes().first()).containsExactly(Mistake(bye, count = 1, lastDay = clock.today()))
+        assertThat(
+            repository.observeMistakes().first()
+        ).containsExactly(Mistake(bye, count = 1, lastDay = clock.today()))
     }
 }
