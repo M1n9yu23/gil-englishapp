@@ -97,15 +97,16 @@ fun AnnotatedString.Builder.appendEnglish(text: String) {
  * A pronunciation such as `ˈwɔːtər`, shown between slashes. Screen readers cannot read IPA
  * symbols, so they read [spokenWord], the English word it spells, with an English voice. With a
  * null [spokenWord] they skip it: where the word is already read out, or must not be given away.
+ * [prominent] sets it at the size of a focus sentence, for a question that is the IPA itself.
  */
 @Composable
-fun IpaText(ipa: String, spokenWord: String?, modifier: Modifier = Modifier) {
+fun IpaText(ipa: String, spokenWord: String?, modifier: Modifier = Modifier, prominent: Boolean = false) {
     val spoken = remember(spokenWord) { spokenWord?.let { buildAnnotatedString { appendEnglish(it) } } }
     Text(
         text = "/$ipa/",
         modifier = modifier.clearAndSetSemantics { if (spoken != null) text = spoken },
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        style = IpaStyle
+        color = if (prominent) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant,
+        style = if (prominent) FocusStyle else IpaStyle
     )
 }
 
