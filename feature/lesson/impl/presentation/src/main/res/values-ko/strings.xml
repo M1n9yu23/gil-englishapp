@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="lesson_content_language" translatable="false">ko</string>
+
+    <string name="lesson_close">수업 나가기</string>
+    <string name="lesson_progress_description"><xliff:g id="count" example="9">%2$d</xliff:g>단계 중 <xliff:g id="step" example="3">%1$d</xliff:g>단계</string>
+    <string name="lesson_again_label">한 번 더</string>
+    <string name="lesson_no_voice">이 휴대폰에 아직 영어 음성이 없어요. 듣기 문제는 글자로 보여 주고, 받아쓰기와 소리 구별은 건너뛰어요.</string>
+
+    <string name="lesson_play">듣기</string>
+    <string name="lesson_play_slowly">천천히 듣기</string>
+    <string name="lesson_play_conversation">대화 듣기</string>
+    <string name="lesson_continue">계속</string>
+    <string name="lesson_check">확인</string>
+    <string name="lesson_show_meaning">뜻 보기</string>
+
+    <string name="lesson_instruction_listen">듣고 소리 내서 말해 보세요.</string>
+    <string name="lesson_instruction_choose">알맞은 것을 고르세요.</string>
+    <string name="lesson_instruction_listen_choose">듣고 알맞은 것을 고르세요.</string>
+    <string name="lesson_instruction_minimal_pair">들린 단어를 고르세요.</string>
+    <string name="lesson_instruction_arrange">단어를 순서대로 눌러 문장을 만드세요.</string>
+    <string name="lesson_instruction_fill_blank_choose">빈칸에 들어갈 말을 고르세요.</string>
+    <string name="lesson_instruction_fill_blank_type">빈칸에 들어갈 말을 쓰세요.</string>
+    <string name="lesson_instruction_spell">듣고 철자를 쓰세요.</string>
+    <string name="lesson_instruction_dictation">듣고 문장을 받아쓰세요.</string>
+    <string name="lesson_instruction_shadow">듣고 소리 내서 따라 말해 보세요.</string>
+    <string name="lesson_instruction_dialogue">대화를 듣고 알맞은 대답을 고르세요.</string>
+    <string name="lesson_instruction_passage">읽고 물음에 답하세요.</string>
+
+    <string name="lesson_answer_label">답</string>
+    <string name="lesson_tile_remove"><xliff:g id="word" example="name">%1$s</xliff:g> 빼기</string>
+    <string name="lesson_tiles_empty">고른 단어가 여기에 놓여요.</string>
+    <string name="lesson_choice_picked">고른 답</string>
+
+    <string name="lesson_feedback_correct">맞아요.</string>
+    <string name="lesson_feedback_close">거의 맞았어요. 철자를 확인해 보세요.</string>
+    <string name="lesson_feedback_wrong">정답은 이거예요.</string>
+    <string name="lesson_feedback_comes_back">이 문제는 수업이 끝나기 전에 한 번 더 나와요.</string>
+    <string name="lesson_feedback_you_wrote">쓴 답</string>
+    <string name="lesson_feedback_word_wrong">문장에 없는 말</string>
+
+    <string name="lesson_record">녹음</string>
+    <string name="lesson_record_stop">멈추기</string>
+    <string name="lesson_record_again">다시 녹음</string>
+    <string name="lesson_play_mine">내 목소리 듣기</string>
+    <string name="lesson_recording">녹음하는 중</string>
+    <string name="lesson_mic_reason">내 목소리를 녹음해서 원래 소리와 번갈아 들을 수 있어요. 녹음은 이 휴대폰 메모리에만 있다가 다음 단계로 넘어가면 지워져요.</string>
+    <string name="lesson_mic_allow">마이크 허용</string>
+    <string name="lesson_mic_denied">마이크가 없어도 듣고 따라 말하면 돼요.</string>
+    <string name="lesson_mic_open_settings">설정 열기</string>
+    <string name="lesson_recording_failed">녹음하지 못했어요. 다시 해 보세요.</string>
+
+    <string name="lesson_resume_title">이어서 할까요?</string>
+    <string name="lesson_resume_body">지난번에 <xliff:g id="count" example="9">%2$d</xliff:g>단계 중 <xliff:g id="step" example="4">%1$d</xliff:g>단계에서 멈췄어요.</string>
+    <string name="lesson_resume_continue">이어서 하기</string>
+    <string name="lesson_resume_restart">처음부터 하기</string>
+
+    <string name="lesson_exit_title">수업을 그만할까요?</string>
+    <string name="lesson_exit_body">한 곳까지 저장돼서 다음에 여기서 이어서 할 수 있어요.</string>
+    <string name="lesson_exit_confirm">그만하기</string>
+    <string name="lesson_exit_dismiss">계속하기</string>
+
+    <string name="lesson_result_title">수업을 마쳤어요</string>
+    <plurals name="lesson_result_minutes">
+        <item quantity="other"><xliff:g id="minutes" example="12">%1$d</xliff:g>분 공부했어요.</item>
+    </plurals>
+    <string name="lesson_result_items">이번 수업에서 배운 것</string>
+    <string name="lesson_result_comes_back">곧 다시 나와요</string>
+    <string name="lesson_result_next">다음 수업</string>
+    <string name="lesson_result_done">마치기</string>
+    <string name="lesson_result_save_failed">이 수업을 기록에 저장하지 못했어요.</string>
+    <string name="lesson_result_retry">다시 시도</string>
+
+    <string name="lesson_error_unavailable_title">수업을 열지 못했어요</string>
+    <string name="lesson_error_unavailable_body">휴대폰 저장 공간이 부족하면 이럴 수 있어요. 공간을 비운 뒤 다시 시도해 주세요.</string>
+    <string name="lesson_error_not_found_title">이 수업은 이제 코스에 없어요</string>
+    <string name="lesson_error_not_found_body">앱을 업데이트하면서 옮겨졌을 수 있어요. 돌아가서 수업을 다시 골라 주세요.</string>
+    <string name="lesson_error_retry">다시 열기</string>
+    <string name="lesson_error_back">돌아가기</string>
+</resources>

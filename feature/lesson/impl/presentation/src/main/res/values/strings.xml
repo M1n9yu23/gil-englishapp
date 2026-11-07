@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- "ko" when the app shows Korean. Picks the language of content text such as lesson titles. -->
+    <string name="lesson_content_language" translatable="false">en</string>
+
+    <string name="lesson_close">Leave the lesson</string>
+    <string name="lesson_progress_description">Step <xliff:g id="step" example="3">%1$d</xliff:g> of <xliff:g id="count" example="9">%2$d</xliff:g></string>
+    <string name="lesson_again_label">Once more</string>
+    <string name="lesson_no_voice">This phone has no English voice yet, so listening steps show their text, and dictation and sound pairs are skipped.</string>
+
+    <string name="lesson_play">Play</string>
+    <string name="lesson_play_slowly">Play slowly</string>
+    <string name="lesson_play_conversation">Play the conversation</string>
+    <string name="lesson_continue">Continue</string>
+    <string name="lesson_check">Check</string>
+    <string name="lesson_show_meaning">Show the meaning</string>
+
+    <string name="lesson_instruction_listen">Listen, then say it aloud.</string>
+    <string name="lesson_instruction_choose">Choose the answer.</string>
+    <string name="lesson_instruction_listen_choose">Listen and choose the answer.</string>
+    <string name="lesson_instruction_minimal_pair">Choose the word you heard.</string>
+    <string name="lesson_instruction_arrange">Tap the words to build the sentence.</string>
+    <string name="lesson_instruction_fill_blank_choose">Choose the word for the blank.</string>
+    <string name="lesson_instruction_fill_blank_type">Write the word for the blank.</string>
+    <string name="lesson_instruction_spell">Listen and spell the word.</string>
+    <string name="lesson_instruction_dictation">Listen and write the sentence.</string>
+    <string name="lesson_instruction_shadow">Listen, then copy it out loud.</string>
+    <string name="lesson_instruction_dialogue">Listen to the conversation and choose the reply.</string>
+    <string name="lesson_instruction_passage">Read it and answer the questions.</string>
+
+    <string name="lesson_answer_label">Your answer</string>
+    <string name="lesson_tile_remove">Remove <xliff:g id="word" example="name">%1$s</xliff:g></string>
+    <string name="lesson_tiles_empty">Your sentence appears here.</string>
+    <string name="lesson_choice_picked">Your choice</string>
+
+    <string name="lesson_feedback_correct">That’s right.</string>
+    <string name="lesson_feedback_close">Almost. Check the spelling.</string>
+    <string name="lesson_feedback_wrong">Here’s the answer.</string>
+    <string name="lesson_feedback_comes_back">This one comes back before the lesson ends.</string>
+    <string name="lesson_feedback_you_wrote">You wrote</string>
+    <string name="lesson_feedback_word_wrong">not in the sentence</string>
+
+    <string name="lesson_record">Record</string>
+    <string name="lesson_record_stop">Stop</string>
+    <string name="lesson_record_again">Record again</string>
+    <string name="lesson_play_mine">Play my voice</string>
+    <string name="lesson_recording">Recording</string>
+    <string name="lesson_mic_reason">Record yourself and play it next to the model. The recording stays in memory on this phone and is gone when you move on.</string>
+    <string name="lesson_mic_allow">Allow the microphone</string>
+    <string name="lesson_mic_denied">Without the microphone, just listen and say it aloud.</string>
+    <string name="lesson_mic_open_settings">Open settings</string>
+    <string name="lesson_recording_failed">Couldn’t record. Try again.</string>
+
+    <string name="lesson_resume_title">Pick up where you left off?</string>
+    <string name="lesson_resume_body">Last time you stopped at step <xliff:g id="step" example="4">%1$d</xliff:g> of <xliff:g id="count" example="9">%2$d</xliff:g>.</string>
+    <string name="lesson_resume_continue">Continue</string>
+    <string name="lesson_resume_restart">Start over</string>
+
+    <string name="lesson_exit_title">Leave the lesson?</string>
+    <string name="lesson_exit_body">Your place is saved, so you can pick up here next time.</string>
+    <string name="lesson_exit_confirm">Leave</string>
+    <string name="lesson_exit_dismiss">Keep going</string>
+
+    <string name="lesson_result_title">Lesson done</string>
+    <plurals name="lesson_result_minutes">
+        <item quantity="one">You studied for <xliff:g id="minutes" example="1">%1$d</xliff:g> minute.</item>
+        <item quantity="other">You studied for <xliff:g id="minutes" example="12">%1$d</xliff:g> minutes.</item>
+    </plurals>
+    <string name="lesson_result_items">New in this lesson</string>
+    <string name="lesson_result_comes_back">Comes back soon</string>
+    <string name="lesson_result_next">Next lesson</string>
+    <string name="lesson_result_done">Done</string>
+    <string name="lesson_result_save_failed">Couldn’t save this lesson to your record.</string>
+    <string name="lesson_result_retry">Try again</string>
+
+    <string name="lesson_error_unavailable_title">Couldn’t open the lesson</string>
+    <string name="lesson_error_unavailable_body">This can happen when your phone is low on storage. Free up some space, then try again.</string>
+    <string name="lesson_error_not_found_title">This lesson isn’t in the course anymore</string>
+    <string name="lesson_error_not_found_body">An app update may have moved it. Go back and pick a lesson there.</string>
+    <string name="lesson_error_retry">Try again</string>
+    <string name="lesson_error_back">Go back</string>
+</resources>
