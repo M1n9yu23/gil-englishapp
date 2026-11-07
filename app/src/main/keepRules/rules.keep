@@ -10,3 +10,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# Keep line numbers for retracing crash reports; file names collapse to "SourceFile".
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
