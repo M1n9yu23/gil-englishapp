@@ -30,6 +30,9 @@ interface MistakeDao {
     @Query("UPDATE mistake SET count = count + 1, lastAt = :at, lastDay = :day WHERE itemId = :itemId")
     suspend fun addMistake(itemId: String, at: Long, day: Long)
 
+    @Query("DELETE FROM mistake WHERE itemId = :itemId")
+    suspend fun delete(itemId: String)
+
     @Query("SELECT * FROM mistake ORDER BY lastAt DESC, itemId")
     fun observeAll(): Flow<List<MistakeEntity>>
 

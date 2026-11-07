@@ -49,4 +49,10 @@ interface ProgressCommands {
     suspend fun setSaved(itemId: StudyItemId, saved: Boolean): EmptyOutcome<DataError.Local>
 
     suspend fun recordMistake(itemId: StudyItemId): EmptyOutcome<DataError.Local>
+
+    /**
+     * Takes the item off the list of mistakes, once the learner gets it right in a review. An item
+     * that is not on the list changes nothing.
+     */
+    suspend fun clearMistake(itemId: StudyItemId): EmptyOutcome<DataError.Local>
 }

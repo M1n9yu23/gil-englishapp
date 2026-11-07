@@ -235,4 +235,15 @@ class RoomProgressRepositoryTest {
             Mistake(bye, count = 1, lastDay = clock.today() - 1)
         )
     }
+
+    @Test
+    fun clearMistake_removesOnlyThatItem() = runTest {
+        repository.recordMistake(hello)
+        repository.recordMistake(bye)
+
+        repository.clearMistake(hello)
+        repository.clearMistake(hello)
+
+        assertThat(repository.observeMistakes().first()).containsExactly(Mistake(bye, count = 1, lastDay = clock.today()))
+    }
 }

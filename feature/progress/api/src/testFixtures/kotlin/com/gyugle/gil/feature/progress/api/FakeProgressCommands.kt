@@ -23,16 +23,22 @@ import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import kotlin.time.Duration
 
 /**
- * Records the calls made to it. [completeError] and [saveError], when set, fail [completeLesson]
- * and [setSaved]. With an [observer], [setSaved] also changes its word list, newest first.
+ * Records the calls made to it. [completeError], [saveError] and [reviewError], when set, fail
+ * [completeLesson], [setSaved] and [recordReview]. With an [observer], [setSaved] also changes its
+ * word list, newest first, [recordReview] moves the item's card to [nextDueDay], and
+ * [clearMistake] takes the item off its mistakes.
  */
 class FakeProgressCommands(private val observer: FakeProgressObserver? = null) : ProgressCommands {
     val completed = mutableListOf<Pair<LessonId, Map<StudyItemId, ReviewRating>>>()
     val mistakes = mutableListOf<StudyItemId>()
     val studyTime = mutableListOf<Duration>()
     val saved = mutableListOf<Pair<StudyItemId, Boolean>>()
+    val reviews = mutableListOf<Pair<StudyItemId, ReviewRating>>()
+    val clearedMistakes = mutableListOf<StudyItemId>()
     var completeError: DataError.Local? = null
     var saveError: DataError.Local? = null
+    var reviewError: DataError.Local? = null
+    var nextDueDay = StudyDay(100)
 
     override suspend fun completeLesson(
         lessonId: LessonId,
@@ -43,8 +49,21 @@ class FakeProgressCommands(private val observer: FakeProgressObserver? = null) :
         return Outcome.Success(Unit)
     }
 
-    override suspend fun recordReview(itemId: StudyItemId, rating: ReviewRating): Outcome<CardState, DataError.Local> =
-        error("Not used by the tests of this fake")
+    override suspend fun recordReview(itemId: StudyItemId, rating: ReviewRating): Outcome<CardState, DataError.Local> {
+        reviewError?.let { return Outcome.Failure(it) }
+        reviews += itemId to rating
+        val before = observer?.cards?.value?.firstOrNull { it.itemId == itemId }
+        val after = CardState(
+            itemId = itemId,
+            stabilityDays = before?.stabilityDays ?: 1.0,
+            dueDay = nextDueDay,
+            lastReviewDay = before?.lastReviewDay ?: StudyDay(0),
+            reviewCount = (before?.reviewCount ?: 0) + 1,
+            lapseCount = (before?.lapseCount ?: 0) + if (rating == ReviewRating.AGAIN) 1 else 0
+        )
+        observer?.cards?.let { cards -> cards.value = cards.value.filter { it.itemId != itemId } + after }
+        return Outcome.Success(after)
+    }
 
     override suspend fun recordStudyTime(duration: Duration): EmptyOutcome<DataError.Local> {
         studyTime += duration
@@ -62,6 +81,12 @@ class FakeProgressCommands(private val observer: FakeProgressObserver? = null) :
 
     override suspend fun recordMistake(itemId: StudyItemId): EmptyOutcome<DataError.Local> {
         mistakes += itemId
+        return Outcome.Success(Unit)
+    }
+
+    override suspend fun clearMistake(itemId: StudyItemId): EmptyOutcome<DataError.Local> {
+        clearedMistakes += itemId
+        observer?.mistakes?.let { list -> list.value = list.value.filter { it.itemId != itemId } }
         return Outcome.Success(Unit)
     }
 }

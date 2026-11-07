@@ -176,5 +176,8 @@ class RoomProgressRepository @Inject constructor(
         }
     }
 
+    override suspend fun clearMistake(itemId: StudyItemId): EmptyOutcome<DataError.Local> =
+        databaseCall { mistakes.delete(itemId.value) }
+
     private val Instant.millis: Long get() = toEpochMilliseconds()
 }
