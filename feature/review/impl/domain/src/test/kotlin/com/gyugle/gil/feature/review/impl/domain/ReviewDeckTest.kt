@@ -67,7 +67,14 @@ class ReviewDeckTest {
     private val p = SoundId("sound.p")
 
     private val lexicon = FakeLexiconObserver(
-        word("three", three, "3, 셋", Sentence(1, "Two, three, four.", "둘, 셋, 넷."), Sentence(2, "Three.", "셋.")),
+        word(
+            "three",
+            three,
+            "3, 셋",
+            Sentence(1, "Two, three, four.", "둘, 셋, 넷."),
+            Sentence(2, "Three.", "셋."),
+            Sentence(3, "Three, two, three.", "셋, 둘, 셋.")
+        ),
         word("two", two, "2, 둘"),
         word("four", four, "4, 넷"),
         word("hi", hi, "안녕"),
@@ -93,6 +100,17 @@ class ReviewDeckTest {
         sentences += SentenceBreakdown(
             sentence = Sentence(2, "Three.", "셋."),
             words = listOf(SentenceWord(0, 5, WordId("word.three"), "three", meaning(three, "3, 셋"))),
+            chunks = emptyList(),
+            literalKo = null,
+            grammar = null
+        )
+        // The sense twice, apart: a blank would swallow the word between.
+        sentences += SentenceBreakdown(
+            sentence = Sentence(3, "Three, two, three.", "셋, 둘, 셋."),
+            words = listOf(
+                SentenceWord(0, 5, WordId("word.three"), "three", meaning(three, "3, 셋")),
+                SentenceWord(12, 17, WordId("word.three"), "three", meaning(three, "3, 셋"))
+            ),
             chunks = emptyList(),
             literalKo = null,
             grammar = null
@@ -159,7 +177,7 @@ class ReviewDeckTest {
 
     @Test
     fun cardFor_wellKnownWord_blanksItInASentenceWithOtherWords() = runTest {
-        // Every seed must pass over the sentence that is only the word itself.
+        // Every seed must pass over the sentence that is only the word and the one with it twice.
         for (seed in 1..10) {
             val made = cardFor(card(three, stability = 30.0, reviews = 4), pool(three, two), seed = seed)
 
@@ -217,15 +235,25 @@ class ReviewDeckTest {
 
             assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
                 assertThat(it.options[it.answer].text).isEqualTo("fan")
-                // five has an f sound, so only van can stand for v.
-                assertThat(it.options.map { option -> option.text }).containsExactlyInAnyOrder("fan", "van", "pen")
+                // five has an f sound, so only van can stand for v; letter words come last.
+                assertThat(it.options.map { option -> option.text })
+                    .containsExactlyInAnyOrder("fan", "van", "pen", "apple")
             }
         }
     }
 
     @Test
-    fun cardFor_soundWithNoOtherSoundsLearned_null() = runTest {
-        assertThat(cardFor(card(f), pool(f, letterA))).isNull()
+    fun cardFor_soundLearnedAlone_takesWrongOptionsFromLetterWords() = runTest {
+        val made = cardFor(card(f), pool(f, letterA))
+
+        assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+            assertThat(it.options.map { option -> option.text }).containsExactlyInAnyOrder("fan", "apple")
+        }
+    }
+
+    @Test
+    fun cardFor_soundWithNoOtherSoundOrLetter_null() = runTest {
+        assertThat(cardFor(card(f), pool(f))).isNull()
     }
 
     @Test

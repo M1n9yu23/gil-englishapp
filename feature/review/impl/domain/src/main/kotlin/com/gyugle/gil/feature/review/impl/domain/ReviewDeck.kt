@@ -27,6 +27,7 @@ import com.gyugle.gil.feature.curriculum.api.WordEntry
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.review.impl.domain.model.CardKind
 import com.gyugle.gil.feature.review.impl.domain.model.ReviewCard
+import javax.inject.Inject
 import kotlin.random.Random
 
 /** Up to this many wrong options next to the right one. */
@@ -37,7 +38,7 @@ internal const val MAX_DISTRACTORS = 3
  * card never offers a word the learner has not met; letters, which every learner knows the set
  * of, are the exception and fill up from the alphabet.
  */
-class ReviewDeck(private val lexicon: LexiconObserver) {
+class ReviewDeck @Inject constructor(private val lexicon: LexiconObserver) {
 
     /**
      * A card for [card]'s item, of the first kind in [cardKinds] the content can make, with options
@@ -153,7 +154,9 @@ class ReviewDeck(private val lexicon: LexiconObserver) {
 
     /**
      * One example of the sound against words of other sounds the learner knows that do not have
-     * the sound, judged by their IPA.
+     * the sound, judged by their IPA. Letters count too: their examples are ordinary words, and
+     * the course teaches every letter before the first sound, so a sound learned alone still has
+     * wrong options.
      */
     private suspend fun findSound(
         item: LessonItem,
@@ -167,8 +170,9 @@ class ReviewDeck(private val lexicon: LexiconObserver) {
         }
         val right = entry.examples.randomOrNull(random) ?: return Outcome.Success(null)
         val ownWords = entry.examples.map { it.text }.toSet()
-        val others = pool.mapNotNull { other -> (other.id as? SoundId)?.takeIf { it != id && !it.isLetter } }
+        val others = pool.mapNotNull { other -> (other.id as? SoundId)?.takeIf { it != id } }
             .shuffled(random)
+            .sortedBy { if (it.isLetter) 1 else 0 }
         val wrong = mutableListOf<SoundExample>()
         for (other in others) {
             if (wrong.size == MAX_DISTRACTORS) break
@@ -219,11 +223,14 @@ class ReviewDeck(private val lexicon: LexiconObserver) {
                 is Outcome.Failure -> if (read.error == ContentError.NOT_FOUND) continue else return read
                 is Outcome.Success -> read.data
             }
-            val words = breakdown.words.filter { it.sense?.id == id }
+            val words = breakdown.words.filter { it.sense?.id == id }.sortedBy { it.start }
             if (words.isEmpty()) continue
-            val start = words.minOf { it.start }
-            val end = words.maxOf { it.end }
             val text = breakdown.sentence.text
+            // Words of one sense apart, as in "pick it up", would blank the words between them too.
+            val apart = words.zipWithNext().any { (a, b) -> text.substring(a.end, b.start).isNotBlank() }
+            if (apart) continue
+            val start = words.first().start
+            val end = words.last().end
             val rest = text.removeRange(start, end)
             if (rest.none { it.isLetterOrDigit() }) continue
             return Outcome.Success(
