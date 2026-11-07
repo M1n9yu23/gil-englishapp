@@ -6,7 +6,7 @@
     <string name="curriculum_path_can_do_heading">이 단계를 마치면</string>
     <string name="curriculum_path_stage_not_ready">준비 중</string>
     <plurals name="curriculum_unit_lesson_count">
-        <item quantity="other">과 <xliff:g id="count" example="4">%d</xliff:g>개</item>
+        <item quantity="other">수업 <xliff:g id="count" example="4">%d</xliff:g>개</item>
     </plurals>
     <string name="curriculum_path_open_unit">단원 열기</string>
 

@@ -22,7 +22,7 @@
     <string name="catalog_sample_row_plain">알림 시간</string>
     <string name="catalog_sample_row_plain_value">오후 8:00</string>
     <string name="catalog_sample_empty_title">아직 저장한 단어가 없어요</string>
-    <string name="catalog_sample_empty_body">과를 공부하다가 단어를 눌러 단어장에 넣어 보세요.</string>
+    <string name="catalog_sample_empty_body">수업 중에 단어를 눌러 단어장에 넣어 보세요.</string>
     <string name="catalog_sample_empty_action">오늘 공부 시작하기</string>
     <string name="catalog_sample_error_title">학습 기록을 불러오지 못했어요</string>
     <string name="catalog_sample_error_body">휴대폰 저장 공간이 부족하면 이럴 수 있어요.</string>
