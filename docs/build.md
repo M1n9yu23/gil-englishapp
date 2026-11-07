@@ -24,3 +24,4 @@ CI runs the second line on every pull request.
 - Every user-facing string needs an English (`values/`) and a Korean (`values-ko/`) version.
 - Kotlin files need the license header; `spotlessApply` adds it.
 - The app must not request the INTERNET permission, from its own manifest or from a library.
+- Learning content in `content/` must pass its checks. See [content.md](content.md).
