@@ -22,6 +22,42 @@ The app's own settings live in the same file, as version keys with a `project` p
 
 Bytecode targets Java 17.
 
+## Build types
+
+| Type | Application ID | R8 | Signed with | Use |
+|---|---|---|---|---|
+| `debug` | `com.gyugle.gil.debug` | Off | Debug key | Day-to-day development |
+| `staging` | `com.gyugle.gil.staging` | On | Debug key | Testing the release code on a device before shipping |
+| `release` | `com.gyugle.gil` | On | Upload key, if configured | Google Play |
+
+The three IDs differ, so all three install side by side. `staging` starts as a copy of `release` and falls back to `release` for any dependency that has no `staging` variant.
+
+```
+./gradlew :app:assembleStaging
+./gradlew :app:bundleRelease
+```
+
+### Signing a release
+
+Release builds are signed only when a `keystore.properties` file exists in the project root. Without it, `assembleRelease` produces an unsigned APK and everything else still builds. The file is ignored by git and looks like this:
+
+```
+KEYSTORE_PATH=/path/outside/the/repository/upload.jks
+KEYSTORE_PASSWORD=...
+KEY_ALIAS=upload
+KEY_PASSWORD=...
+```
+
+Keep the keystore itself outside the repository. Google Play holds the app signing key; this key is only the upload key.
+
+### R8
+
+R8 shrinks and obfuscates `staging` and `release` through the `optimization` block. Keep rules live in `app/src/main/keepRules/`. The only rule the app adds keeps line numbers so stack traces can be retraced with `app/build/outputs/mapping/release/mapping.txt`. Libraries bring their own rules.
+
+## No INTERNET permission
+
+Gil runs entirely offline, and the build enforces it. Every application module gets a `verify<Variant>NoInternetPermission` task that reads the merged manifest and fails if `android.permission.INTERNET` appears in it, whether it comes from the app or from a library. `./gradlew check` runs them all, and `./gradlew verifyNoInternetPermission` runs only these tasks.
+
 ## Convention plugins
 
 Shared build setup is in `build-logic/convention`, an included build. A module's build file applies one or two of these plugins and then lists only its own dependencies.
@@ -32,7 +68,7 @@ Shared build setup is in `build-logic/convention`, an included build. A module's
 | `gil.android.library` | Android library modules | Namespace from the module path, SDK levels, unit and device tests |
 | `gil.android.library.compose` | Shared UI modules (`core:designsystem`, `core:presentation`, `core:navigation`) | The above plus Compose and Material 3 |
 | `gil.android.feature` | `feature:<name>:impl:presentation` | The above plus Hilt, ViewModel support and the shared UI modules |
-| `gil.android.application` | Application modules | Application ID, version and SDK levels from the catalog |
+| `gil.android.application` | Application modules | Application ID, version and SDK levels from the catalog; the INTERNET permission check |
 | `gil.android.application.compose` | `:app` | The above plus Compose and the Navigation 3 ViewModel decorator |
 | `gil.hilt` | Any module with `@Inject` classes or Hilt modules | Hilt through KSP |
 | `gil.room` | The module that owns a Room database | Room through KSP; schemas exported to `schemas/` |
