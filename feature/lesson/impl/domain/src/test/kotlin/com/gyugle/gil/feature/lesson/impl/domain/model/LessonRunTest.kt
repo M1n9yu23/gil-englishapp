@@ -103,6 +103,21 @@ class LessonRunTest {
     }
 
     @Test
+    fun answer_retryWithoutAFirstAnswer_recordsItAsFirst() {
+        // Only a damaged saved run looks like this; it must not crash.
+        val run = LessonRun(
+            stepCount = 1,
+            firstPassSize = 1,
+            queue = listOf(0, 0),
+            position = 1,
+            outcomes = emptyMap(),
+            studiedMillis = 0
+        )
+
+        assertThat(run.answer(AnswerGrade.CORRECT).outcomes).isEqualTo(mapOf(0 to StepOutcome(AnswerGrade.CORRECT)))
+    }
+
+    @Test
     fun studied_addsPositiveTimeOnly() {
         val run = LessonRun.start(stepCount = 1).studied(1_500).studied(0).studied(-20).studied(500)
 

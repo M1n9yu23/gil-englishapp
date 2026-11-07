@@ -42,11 +42,11 @@ import com.gyugle.gil.core.designsystem.component.SecondaryActionButton
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
-import com.gyugle.gil.feature.lesson.impl.presentation.component.ChoiceOption
-import com.gyugle.gil.feature.lesson.impl.presentation.component.KoreanProse
-import com.gyugle.gil.feature.lesson.impl.presentation.component.OptionMark
-import com.gyugle.gil.feature.lesson.impl.presentation.component.SoundButton
-import com.gyugle.gil.feature.lesson.impl.presentation.component.TileBoard
+import com.gyugle.gil.feature.lesson.impl.presentation.player.ChoiceOption
+import com.gyugle.gil.feature.lesson.impl.presentation.player.KoreanProse
+import com.gyugle.gil.feature.lesson.impl.presentation.player.OptionMark
+import com.gyugle.gil.feature.lesson.impl.presentation.player.SoundButton
+import com.gyugle.gil.feature.lesson.impl.presentation.player.TileBoard
 
 /** The instruction above a step, or null for a step that explains itself. */
 @Composable
@@ -348,7 +348,8 @@ private fun ColumnScope.TypedContent(
                 }, description = stringResource(R.string.lesson_play), large = true)
             }
             KoreanProse(text = prompt.ko, style = MaterialTheme.typography.titleLarge)
-            IpaText(ipa = prompt.ipa, spokenWord = "")
+            // Read aloud, the word would give the spelling away.
+            IpaText(ipa = prompt.ipa, spokenWord = null)
         }
 
         TypedPrompt.Dictation -> if (hasVoice) {

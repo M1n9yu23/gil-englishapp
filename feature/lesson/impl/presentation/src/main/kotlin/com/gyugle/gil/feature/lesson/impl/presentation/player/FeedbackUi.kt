@@ -16,13 +16,6 @@
 package com.gyugle.gil.feature.lesson.impl.presentation.player
 
 import androidx.compose.runtime.Immutable
-
-enum class GradeUi { CORRECT, CLOSE, WRONG }
-
-/** A typed word, and whether the sentence has it. */
-@Immutable
-data class MarkedWordUi(val text: String, val matched: Boolean)
-
 /**
  * The answer shown after checking.
  *

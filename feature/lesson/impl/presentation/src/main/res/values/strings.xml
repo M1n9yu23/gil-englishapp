@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- "ko" when the app shows Korean. Picks the language of content text such as lesson titles. -->
-    <string name="lesson_content_language" translatable="false">en</string>
+    <string name="lesson_content_language">en</string>
 
     <string name="lesson_close">Leave the lesson</string>
     <string name="lesson_progress_description">Step <xliff:g id="step" example="3">%1$d</xliff:g> of <xliff:g id="count" example="9">%2$d</xliff:g></string>
@@ -31,6 +31,7 @@
     <string name="lesson_answer_label">Your answer</string>
     <string name="lesson_tile_remove">Remove <xliff:g id="word" example="name">%1$s</xliff:g></string>
     <string name="lesson_tiles_empty">Your sentence appears here.</string>
+    <string name="lesson_choice_correct">Right answer</string>
     <string name="lesson_choice_picked">Your choice</string>
 
     <string name="lesson_feedback_correct">That’s right.</string>

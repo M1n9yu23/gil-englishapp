@@ -15,8 +15,5 @@
  */
 package com.gyugle.gil.feature.lesson.impl.domain.model
 
-import kotlinx.serialization.Serializable
-
 /** The answers to one graded step: the first, and the one when it came back after a miss. */
-@Serializable
 data class StepOutcome(val first: AnswerGrade, val retry: AnswerGrade? = null)

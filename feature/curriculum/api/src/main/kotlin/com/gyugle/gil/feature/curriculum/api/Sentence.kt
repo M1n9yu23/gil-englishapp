@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.curriculum.api.model
+package com.gyugle.gil.feature.curriculum.api
 
 /** An English sentence and, where the content gives one, its Korean translation. */
 data class Sentence(val id: Long, val text: String, val ko: String?)

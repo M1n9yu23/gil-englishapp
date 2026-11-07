@@ -29,7 +29,7 @@ sealed interface LessonAction {
     data object OnPlayClick : LessonAction
     data object OnPlaySlowlyClick : LessonAction
 
-    /** Plays one sentence of the step, such as an example or a line of a dialogue. */
+    /** Plays one example sentence of an explanation. */
     data class OnPlaySentenceClick(val text: String) : LessonAction
     data object OnShowMeaningClick : LessonAction
 

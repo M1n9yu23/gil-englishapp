@@ -32,9 +32,10 @@ import com.gyugle.gil.core.speech.VoiceRecording
 import com.gyugle.gil.core.speech.VoiceState
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
+import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
+import com.gyugle.gil.feature.curriculum.api.LessonStep
+import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.lesson.impl.domain.introducedRatings
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
@@ -62,8 +63,11 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
+import timber.log.Timber
 
 /**
  * Plays one lesson: asks whether to continue a run left halfway, shows each step, grades it,
@@ -71,7 +75,7 @@ import kotlinx.coroutines.withTimeoutOrNull
  *
  * The run is saved after every answer and step, and when the screen leaves the front, so leaving
  * the lesson or losing the process keeps the place. A return after process death goes straight
- * back to the step; opening the lesson again later asks first.
+ * back to the step, or to the result; opening the lesson again later asks first.
  */
 @HiltViewModel(assistedFactory = LessonViewModel.Factory::class)
 class LessonViewModel @AssistedInject constructor(
@@ -112,6 +116,12 @@ class LessonViewModel @AssistedInject constructor(
     private var showsNoVoiceNotice = false
     private var result: ResultUi? = null
 
+    /** The ratings of a finished lesson, kept until [ProgressCommands.completeLesson] succeeds. */
+    private var pendingRatings: Map<StudyItemId, ReviewRating> = emptyMap()
+
+    /** Writes runs one at a time, so a later run never lands before an earlier one. */
+    private val saveLock = Mutex()
+
     /** When the time now counting started; null while the screen is in the background. */
     private var activeSince: Instant? = null
     private var isResumed = false
@@ -121,7 +131,12 @@ class LessonViewModel @AssistedInject constructor(
 
     init {
         load()
-        viewModelScope.launch { speaker.status.collect { render() } }
+        viewModelScope.launch {
+            speaker.status.collect { status ->
+                if (status !is SpeakerStatus.Connecting) skipIfSoundless()
+                render()
+            }
+        }
     }
 
     fun onAction(action: LessonAction) {
@@ -211,8 +226,9 @@ class LessonViewModel @AssistedInject constructor(
                 isResumed = false
                 soundJob?.cancel()
                 recorder.stop()
+                val millis = takeStudyTime()
                 viewModelScope.launch {
-                    flushStudyTime()
+                    recordStudyTime(millis)
                     saveRun()
                 }
             }
@@ -226,6 +242,7 @@ class LessonViewModel @AssistedInject constructor(
                 .onSuccess { loaded ->
                     lesson = loaded
                     _state.update { it.copy(title = loaded.title.toLocalizedTextUi()) }
+                    if (restoreResult(loaded)) return@onSuccess
                     val saved = runs.get(lessonId)?.takeIf { it.stepCount == loaded.steps.size && !it.isFinished }
                     when {
                         saved == null -> begin(startRun(loaded))
@@ -259,6 +276,10 @@ class LessonViewModel @AssistedInject constructor(
 
     private fun restart() {
         val loaded = lesson ?: return
+        // Only from the question, and only once: the new run takes a moment to start.
+        if (_state.value.phase !is LessonPhase.AskResume) return
+        savedRun = null
+        _state.update { it.copy(phase = LessonPhase.Loading) }
         viewModelScope.launch {
             runs.clear(lessonId)
             begin(startRun(loaded))
@@ -335,7 +356,9 @@ class LessonViewModel @AssistedInject constructor(
         run = current.answer(grade)
         viewModelScope.launch {
             saveRun()
-            if (grade == AnswerGrade.WRONG && !current.isRetry && item != null) progress.recordMistake(item)
+            if (grade == AnswerGrade.WRONG && !current.isRetry && item != null) {
+                progress.recordMistake(item).onFailure { Timber.w("Could not record a mistake: %s", it) }
+            }
         }
     }
 
@@ -367,49 +390,83 @@ class LessonViewModel @AssistedInject constructor(
     private fun leave() {
         _state.update { it.copy(isExitConfirmShown = false) }
         soundJob?.cancel()
+        val millis = takeStudyTime()
         viewModelScope.launch {
-            flushStudyTime()
+            recordStudyTime(millis)
             saveRun()
             eventChannel.send(LessonEvent.Close)
         }
     }
 
+    /**
+     * Shows the result and saves it. Everything before the save happens at once, so the lesson
+     * still reaches the record if the screen goes away right after the last step.
+     */
     private fun finish() {
         val loaded = lesson ?: return
         val finished = run ?: return
-        val ratings = introducedRatings(loaded.introduced.map { it.id }, loaded.steps, finished)
-        result = ResultUi(
-            minutes = 0,
-            goal = loaded.goal.toLocalizedTextUi(),
-            items = loaded.introduced.map { item ->
-                ResultItemUi(item.text, item.ipa, item.meaningKo, comesBackSoon = ratings[item.id] != ReviewRating.GOOD)
-            },
-            hasNext = loaded.next != null,
-            isSaving = true,
-            saveFailed = false
-        )
-        viewModelScope.launch {
-            flushStudyTime()
-            result = result?.copy(minutes = minutesOf(run?.studiedMillis ?: 0))
-            render()
-            saveResult()
-        }
+        val millis = takeStudyTime()
+        pendingRatings = introducedRatings(loaded.introduced.map { it.id }, loaded.steps, finished)
+        val minutes = minutesOf(run?.studiedMillis ?: finished.studiedMillis)
+        savedStateHandle[KEY_RESULT_MINUTES] = minutes
+        savedStateHandle[KEY_RESULT_RATINGS] =
+            ArrayList(pendingRatings.map { (item, rating) -> "${item.value}=${rating.name}" })
+        result = resultOf(loaded, minutes, pendingRatings)
+        render()
+        saveResult()
+        viewModelScope.launch { recordStudyTime(millis) }
     }
 
+    /** After process death on the result: the same result, saved again if it was not saved yet. */
+    private fun restoreResult(loaded: Lesson): Boolean {
+        val minutes = savedStateHandle.get<Int>(KEY_RESULT_MINUTES) ?: return false
+        val stored = savedStateHandle.get<ArrayList<String>>(KEY_RESULT_RATINGS) ?: return false
+        pendingRatings = stored.mapNotNull { entry ->
+            val parts = entry.split('=').takeIf { it.size == 2 } ?: return@mapNotNull null
+            val id = StudyItemId.parse(parts[0]) ?: return@mapNotNull null
+            val rating = ReviewRating.entries.firstOrNull { it.name == parts[1] } ?: return@mapNotNull null
+            id to rating
+        }.toMap()
+        result = resultOf(loaded, minutes, pendingRatings)
+        if (savedStateHandle.get<Boolean>(KEY_RESULT_SAVED) == true) {
+            result = result?.copy(isSaving = false)
+            render()
+        } else {
+            saveResult()
+        }
+        return true
+    }
+
+    private fun resultOf(loaded: Lesson, minutes: Int, ratings: Map<StudyItemId, ReviewRating>) = ResultUi(
+        minutes = minutes,
+        goal = loaded.goal.toLocalizedTextUi(),
+        items = loaded.introduced.map { item ->
+            ResultItemUi(item.text, item.ipa, item.meaningKo, comesBackSoon = ratings[item.id] != ReviewRating.GOOD)
+        },
+        hasNext = loaded.next != null,
+        isSaving = true,
+        saveFailed = false
+    )
+
     private fun saveResult() {
-        val loaded = lesson ?: return
-        val finished = run ?: return
+        if (result == null) return
         result = result?.copy(isSaving = true, saveFailed = false)
         render()
+        val ratings = pendingRatings
         viewModelScope.launch {
-            val ratings = introducedRatings(loaded.introduced.map { it.id }, loaded.steps, finished)
             // Leaving the result while it saves must not cut the write short.
             val saved = withContext(NonCancellable) {
                 progress.completeLesson(lessonId, ratings).onSuccess { runs.clear(lessonId) }
             }
             saved
-                .onSuccess { result = result?.copy(isSaving = false) }
-                .onFailure { result = result?.copy(isSaving = false, saveFailed = true) }
+                .onSuccess {
+                    savedStateHandle[KEY_RESULT_SAVED] = true
+                    result = result?.copy(isSaving = false)
+                }
+                .onFailure {
+                    Timber.w("Could not save a finished lesson: %s", it)
+                    result = result?.copy(isSaving = false, saveFailed = true)
+                }
             render()
         }
     }
@@ -478,21 +535,42 @@ class LessonViewModel @AssistedInject constructor(
         if (isResumed && run != null && activeSince == null && result == null) activeSince = clock.now()
     }
 
-    /** Adds the time since counting started to the run and to today's study time. */
-    private suspend fun flushStudyTime() {
-        val since = activeSince ?: return
+    /**
+     * Ends the time counted so far, adds it to the run and returns it for [recordStudyTime]. Done
+     * at once, before anything suspends, so two callers never count the same time.
+     */
+    private fun takeStudyTime(): Long {
+        val since = activeSince ?: return 0
         val now = clock.now()
         activeSince = if (isResumed && result == null) now else null
         val millis = (now - since).inWholeMilliseconds
-        if (millis <= 0) return
+        if (millis <= 0) return 0
         run = run?.studied(millis)
-        progress.recordStudyTime(millis.milliseconds)
+        return millis
+    }
+
+    private suspend fun recordStudyTime(millis: Long) {
+        if (millis <= 0) return
+        progress.recordStudyTime(millis.milliseconds).onFailure { Timber.w("Could not record study time: %s", it) }
     }
 
     private suspend fun saveRun() {
+        saveLock.withLock {
+            // The newest run once the lock is ours, so an older one never overwrites it.
+            val latest = run?.takeIf { !it.isFinished } ?: return
+            runs.save(lessonId, latest).onFailure { Timber.w("Could not save the place in a lesson: %s", it) }
+        }
+    }
+
+    /** A sound-only step on screen when the voice turns out to be missing is passed over. */
+    private fun skipIfSoundless() {
         val current = run ?: return
-        if (current.isFinished) return
-        runs.save(lessonId, current)
+        val step = currentStep() ?: return
+        if (result != null || hasVoice() || !step.needsSound() || input.feedback != null) return
+        showsNoVoiceNotice = true
+        run = current.next()
+        viewModelScope.launch { saveRun() }
+        enterStep()
     }
 
     private fun currentStep(): LessonStep? = run?.currentStep?.let { lesson?.steps?.getOrNull(it) }
@@ -543,6 +621,9 @@ class LessonViewModel @AssistedInject constructor(
     companion object {
         private const val KEY_STARTED = "started"
         private const val KEY_TEXT = "text"
+        private const val KEY_RESULT_MINUTES = "result_minutes"
+        private const val KEY_RESULT_RATINGS = "result_ratings"
+        private const val KEY_RESULT_SAVED = "result_saved"
 
         /** How long a new lesson waits for the speech engine before treating it as missing. */
         private val VOICE_WAIT = 3.seconds
@@ -551,12 +632,6 @@ class LessonViewModel @AssistedInject constructor(
         private val MAX_RECORDING = 10.seconds
     }
 }
-
-/** Whole minutes, rounded up, and never less than one: a finished lesson took some time. */
-internal fun minutesOf(studiedMillis: Long): Int =
-    maxOf(1, ((studiedMillis + MILLIS_PER_MINUTE - 1) / MILLIS_PER_MINUTE).toInt())
-
-private const val MILLIS_PER_MINUTE = 60_000L
 
 private fun SpeakerStatus.hasVoice(): Boolean =
     this is SpeakerStatus.Connected && voice(SpeechLanguage.AMERICAN_ENGLISH) == VoiceState.INSTALLED
@@ -568,18 +643,4 @@ private fun PermissionState.toMicrophoneUi(): MicrophoneUi = when (this) {
     PermissionState.DENIED -> MicrophoneUi.DENIED
     PermissionState.PERMANENTLY_DENIED -> MicrophoneUi.PERMANENTLY_DENIED
     PermissionState.NOT_DETERMINED -> MicrophoneUi.NOT_ASKED
-}
-
-internal fun ContentError.toLessonErrorUi(): LessonErrorUi = when (this) {
-    ContentError.UNAVAILABLE -> LessonErrorUi(
-        title = UiText.StringResource(R.string.lesson_error_unavailable_title),
-        body = UiText.StringResource(R.string.lesson_error_unavailable_body),
-        canRetry = true
-    )
-
-    ContentError.NOT_FOUND -> LessonErrorUi(
-        title = UiText.StringResource(R.string.lesson_error_not_found_title),
-        body = UiText.StringResource(R.string.lesson_error_not_found_body),
-        canRetry = false
-    )
 }

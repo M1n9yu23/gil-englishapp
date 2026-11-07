@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="lesson_content_language" translatable="false">ko</string>
+    <string name="lesson_content_language">ko</string>
 
     <string name="lesson_close">수업 나가기</string>
     <string name="lesson_progress_description"><xliff:g id="count" example="9">%2$d</xliff:g>단계 중 <xliff:g id="step" example="3">%1$d</xliff:g>단계</string>
@@ -30,6 +30,7 @@
     <string name="lesson_answer_label">답</string>
     <string name="lesson_tile_remove"><xliff:g id="word" example="name">%1$s</xliff:g> 빼기</string>
     <string name="lesson_tiles_empty">고른 단어가 여기에 놓여요.</string>
+    <string name="lesson_choice_correct">정답</string>
     <string name="lesson_choice_picked">고른 답</string>
 
     <string name="lesson_feedback_correct">맞아요.</string>

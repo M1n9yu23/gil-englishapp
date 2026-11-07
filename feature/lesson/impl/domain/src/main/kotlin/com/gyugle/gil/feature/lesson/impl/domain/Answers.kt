@@ -15,7 +15,7 @@
  */
 package com.gyugle.gil.feature.lesson.impl.domain
 
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
+import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.DictationCheck
 import com.gyugle.gil.feature.lesson.impl.domain.model.MarkedWord

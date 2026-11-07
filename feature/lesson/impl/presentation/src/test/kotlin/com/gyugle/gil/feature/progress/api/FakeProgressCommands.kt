@@ -13,38 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.lesson.impl.presentation.fake
+package com.gyugle.gil.feature.progress.api
 
 import com.gyugle.gil.core.domain.DataError
 import com.gyugle.gil.core.domain.EmptyOutcome
 import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
-import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
-import com.gyugle.gil.feature.lesson.impl.domain.repository.LessonRunRepository
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.progress.api.ProgressCommands
 import com.gyugle.gil.feature.progress.api.ReviewRating
-import com.gyugle.gil.feature.progress.api.StudyClock
-import com.gyugle.gil.feature.progress.api.StudyDay
 import kotlin.time.Duration
-import kotlin.time.Instant
-
-class FakeLessonRunRepository : LessonRunRepository {
-    val runs = mutableMapOf<LessonId, LessonRun>()
-
-    override suspend fun get(lessonId: LessonId): LessonRun? = runs[lessonId]
-
-    override suspend fun save(lessonId: LessonId, run: LessonRun): EmptyOutcome<DataError.Local> {
-        runs[lessonId] = run
-        return Outcome.Success(Unit)
-    }
-
-    override suspend fun clear(lessonId: LessonId): EmptyOutcome<DataError.Local> {
-        runs.remove(lessonId)
-        return Outcome.Success(Unit)
-    }
-}
 
 /** Records the calls a lesson makes. [completeError], when set, fails [completeLesson]. */
 class FakeProgressCommands : ProgressCommands {
@@ -77,11 +56,4 @@ class FakeProgressCommands : ProgressCommands {
         mistakes += itemId
         return Outcome.Success(Unit)
     }
-}
-
-/** A clock that moves only when a test moves it. */
-class FakeStudyClock(var now: Instant = Instant.parse("2026-11-07T10:00:00Z")) : StudyClock {
-    override fun now(): Instant = now
-
-    override fun dayOf(instant: Instant): StudyDay = StudyDay(instant.epochSeconds / 86_400)
 }

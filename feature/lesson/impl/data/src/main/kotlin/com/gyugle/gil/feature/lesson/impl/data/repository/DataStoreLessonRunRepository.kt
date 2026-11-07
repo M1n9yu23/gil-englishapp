@@ -24,6 +24,9 @@ import com.gyugle.gil.core.domain.DataError
 import com.gyugle.gil.core.domain.EmptyOutcome
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.lesson.impl.data.di.LessonPreferences
+import com.gyugle.gil.feature.lesson.impl.data.dto.LessonRunDto
+import com.gyugle.gil.feature.lesson.impl.data.mapper.toLessonRunDto
+import com.gyugle.gil.feature.lesson.impl.data.mapper.toLessonRunOrNull
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
 import com.gyugle.gil.feature.lesson.impl.domain.repository.LessonRunRepository
 import javax.inject.Inject
@@ -42,7 +45,7 @@ internal class DataStoreLessonRunRepository @Inject constructor(
     override suspend fun get(lessonId: LessonId): LessonRun? {
         val saved = store.dataOrEmpty().first()[key(lessonId)] ?: return null
         return try {
-            json.decodeFromString<LessonRun>(saved).takeIf { it.isConsistent() }
+            json.decodeFromString<LessonRunDto>(saved).toLessonRunOrNull()
         } catch (e: SerializationException) {
             // A broken entry only costs the place in one lesson; the lesson starts from the top.
             Timber.w("Dropped an unreadable lesson run: %s", e::class.simpleName)
@@ -54,20 +57,12 @@ internal class DataStoreLessonRunRepository @Inject constructor(
     }
 
     override suspend fun save(lessonId: LessonId, run: LessonRun): EmptyOutcome<DataError.Local> =
-        store.editCatching { it[key(lessonId)] = json.encodeToString(run) }
+        store.editCatching { it[key(lessonId)] = json.encodeToString(run.toLessonRunDto()) }
 
     override suspend fun clear(lessonId: LessonId): EmptyOutcome<DataError.Local> =
         store.editCatching { it.remove(key(lessonId)) }
 
     private fun key(lessonId: LessonId) = stringPreferencesKey("run.${lessonId.value}")
-
-    /** A run edited by hand or written by a buggy build could point outside its own steps. */
-    private fun LessonRun.isConsistent(): Boolean = stepCount >= 0 &&
-        firstPassSize in 0..queue.size &&
-        position in 0..queue.size &&
-        queue.all { it in 0 until stepCount } &&
-        outcomes.keys.all { it in 0 until stepCount } &&
-        studiedMillis >= 0
 
     private companion object {
         val json = Json { ignoreUnknownKeys = true }

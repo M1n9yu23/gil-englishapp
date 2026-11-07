@@ -16,33 +16,6 @@
 package com.gyugle.gil.feature.lesson.impl.presentation.player
 
 import androidx.compose.runtime.Immutable
-
-/** An English sentence and its Korean translation, shown only where the step allows it. */
-@Immutable
-data class SentenceUi(val text: String, val ko: String?)
-
-/** An answer to pick, in the order shown. [ipa] is set for the words of a sound pair. */
-@Immutable
-data class OptionUi(val text: String, val english: Boolean, val ipa: String? = null)
-
-/** A word tile of a sentence to build. */
-@Immutable
-data class TileUi(val text: String)
-
-@Immutable
-data class DialogueLineUi(val speaker: String, val text: String)
-
-/** Whether the learner may record, and what happened to the last recording. */
-@Immutable
-data class RecorderUi(
-    val microphone: MicrophoneUi,
-    val isRecording: Boolean = false,
-    val hasRecording: Boolean = false,
-    val failed: Boolean = false
-)
-
-enum class MicrophoneUi { NOT_ASKED, GRANTED, DENIED, PERMANENTLY_DENIED }
-
 /** The step on screen, in the form its composable draws. */
 @Immutable
 sealed interface StepUi {
@@ -54,7 +27,7 @@ sealed interface StepUi {
 
     /**
      * Picking one of [options]. [correct] and [picked] are known once the step is answered; before
-     * that [correct] is empty, so nothing on screen gives the answer away.
+     * that [correct] is null, so nothing on screen gives the answer away.
      */
     data class Choice(val prompt: ChoicePrompt, val options: List<OptionUi>, val picked: Int?, val correct: Int?) :
         StepUi
@@ -63,47 +36,4 @@ sealed interface StepUi {
     data class Arrange(val ko: String, val bank: List<TileUi>, val chosen: List<Int>) : StepUi
 
     data class Typed(val prompt: TypedPrompt, val text: String) : StepUi
-}
-
-/** What sits above the options of a [StepUi.Choice]. */
-@Immutable
-sealed interface ChoicePrompt {
-    /** An English sentence to understand. */
-    data class English(val text: String) : ChoicePrompt
-
-    /** A sentence only heard. [text] is shown once answered, or when there is no voice. */
-    data class Audio(val text: String?) : ChoicePrompt
-
-    /** A Korean prompt answered in English. Backticks mark English inside it. */
-    data class Korean(val text: String) : ChoicePrompt
-
-    /** Two words told apart by sound. */
-    data object SoundPair : ChoicePrompt
-
-    /** An English sentence with `___` for the blank, and its meaning in Korean. */
-    data class Blank(val text: String, val ko: String) : ChoicePrompt
-
-    data class Dialogue(val lines: List<DialogueLineUi>, val question: String?) : ChoicePrompt
-
-    /**
-     * A passage and one of its questions. The translations stay hidden until every question is
-     * answered, when [showsTranslations] turns true.
-     */
-    data class Passage(
-        val sentences: List<SentenceUi>,
-        val showsTranslations: Boolean,
-        val question: String,
-        val questionNumber: Int,
-        val questionCount: Int
-    ) : ChoicePrompt
-}
-
-/** What sits above the answer field of a [StepUi.Typed]. */
-@Immutable
-sealed interface TypedPrompt {
-    data class Spell(val ko: String, val ipa: String) : TypedPrompt
-
-    data object Dictation : TypedPrompt
-
-    data class Blank(val text: String, val ko: String) : TypedPrompt
 }

@@ -25,6 +25,7 @@ dependencies {
     implementation(projects.feature.curriculum.api)
     implementation(projects.feature.progress.api)
     implementation(projects.core.speech)
+    implementation(libs.timber)
 
     testImplementation(testFixtures(projects.core.speech))
     testImplementation(testFixtures(projects.feature.curriculum.api))

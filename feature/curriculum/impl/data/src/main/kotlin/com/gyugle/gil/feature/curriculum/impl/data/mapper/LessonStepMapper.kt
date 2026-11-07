@@ -15,13 +15,13 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.data.mapper
 
+import com.gyugle.gil.feature.curriculum.api.Choice
+import com.gyugle.gil.feature.curriculum.api.DialogueLine
+import com.gyugle.gil.feature.curriculum.api.LessonStep
+import com.gyugle.gil.feature.curriculum.api.PairWord
+import com.gyugle.gil.feature.curriculum.api.PassageQuestion
+import com.gyugle.gil.feature.curriculum.api.Sentence
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
-import com.gyugle.gil.feature.curriculum.api.model.Choice
-import com.gyugle.gil.feature.curriculum.api.model.DialogueLine
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
-import com.gyugle.gil.feature.curriculum.api.model.PairWord
-import com.gyugle.gil.feature.curriculum.api.model.PassageQuestion
-import com.gyugle.gil.feature.curriculum.api.model.Sentence
 import com.gyugle.gil.feature.curriculum.impl.data.dto.LineDto
 import com.gyugle.gil.feature.curriculum.impl.data.dto.OptionDto
 import com.gyugle.gil.feature.curriculum.impl.data.dto.PairWordDto

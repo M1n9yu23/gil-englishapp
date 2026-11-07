@@ -19,7 +19,7 @@ plugins {
 
 dependencies {
     // The rules work on the curriculum's steps and produce progress ratings.
-    api(projects.feature.lesson.api)
+    api(projects.feature.curriculum.api)
     api(projects.feature.progress.api)
     api(projects.core.domain)
 }

@@ -15,8 +15,8 @@
  */
 package com.gyugle.gil.feature.lesson.impl.domain
 
+import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
 import com.gyugle.gil.feature.lesson.impl.domain.model.StepOutcome
@@ -44,8 +44,8 @@ fun itemRatings(steps: List<LessonStep>, run: LessonRun): Map<StudyItemId, Revie
     }
 
 /**
- * The first rating of each item the lesson [introduced], for `completeLesson`. An item no graded
- * step asked about was only shown, which counts as good.
+ * The rating each item the lesson [introduced] starts its review card with, for `completeLesson`:
+ * its worst in the lesson. An item no graded step asked about was only shown, which counts as good.
  */
 fun introducedRatings(
     introduced: List<StudyItemId>,

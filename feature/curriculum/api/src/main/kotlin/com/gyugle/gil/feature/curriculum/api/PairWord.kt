@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.curriculum.api.model
+package com.gyugle.gil.feature.curriculum.api
 
 /** A word of a minimal pair, such as ship or sheep. [ipa] has no slashes. */
 data class PairWord(val text: String, val ipa: String)

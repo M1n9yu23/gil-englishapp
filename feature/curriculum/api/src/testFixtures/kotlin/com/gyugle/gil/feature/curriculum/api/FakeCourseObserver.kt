@@ -16,7 +16,7 @@
 package com.gyugle.gil.feature.curriculum.api
 
 import com.gyugle.gil.core.domain.Outcome
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
+import com.gyugle.gil.feature.curriculum.api.Lesson
 
 /**
  * A [CourseObserver] over [lessons]. A missing lesson is [ContentError.NOT_FOUND]; [error], when

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.lesson.impl.presentation.component
+package com.gyugle.gil.feature.lesson.impl.presentation.player
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -63,6 +63,7 @@ internal fun ChoiceOption(option: OptionUi, mark: OptionMark, onClick: () -> Uni
     val colors = MaterialTheme.colorScheme
     val shape = MaterialTheme.shapes.medium
     val pickedLabel = stringResource(R.string.lesson_choice_picked)
+    val correctLabel = stringResource(R.string.lesson_choice_correct)
     val background = if (mark == OptionMark.CORRECT) colors.primaryContainer else colors.surface
     val content = when (mark) {
         OptionMark.CORRECT -> colors.onPrimaryContainer
@@ -75,7 +76,13 @@ internal fun ChoiceOption(option: OptionUi, mark: OptionMark, onClick: () -> Uni
         shape = shape,
         modifier = modifier
             .fillMaxWidth()
-            .semantics { if (mark == OptionMark.PICKED_WRONG) stateDescription = pickedLabel }
+            .semantics {
+                when (mark) {
+                    OptionMark.PICKED_WRONG -> stateDescription = pickedLabel
+                    OptionMark.CORRECT -> stateDescription = correctLabel
+                    else -> Unit
+                }
+            }
     ) {
         Row(
             modifier = Modifier
@@ -100,7 +107,8 @@ internal fun ChoiceOption(option: OptionUi, mark: OptionMark, onClick: () -> Uni
                         style = MaterialTheme.typography.bodyLarge.copy(textDecoration = decoration)
                     )
                 }
-                if (option.ipa != null) IpaText(ipa = option.ipa, spokenWord = option.text)
+                // The word itself is read just above.
+                if (option.ipa != null) IpaText(ipa = option.ipa, spokenWord = null)
                 if (mark == OptionMark.PICKED_WRONG) {
                     Text(text = pickedLabel, style = MaterialTheme.typography.labelMedium, color = colors.error)
                 }

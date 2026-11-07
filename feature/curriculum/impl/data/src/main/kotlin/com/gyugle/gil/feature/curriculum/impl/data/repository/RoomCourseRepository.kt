@@ -18,9 +18,9 @@ package com.gyugle.gil.feature.curriculum.impl.data.repository
 import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
+import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.UnitId
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabase
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto

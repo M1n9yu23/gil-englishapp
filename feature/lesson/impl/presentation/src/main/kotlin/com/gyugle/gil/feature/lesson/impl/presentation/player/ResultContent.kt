@@ -43,7 +43,7 @@ import com.gyugle.gil.core.designsystem.component.SecondaryActionButton
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
-import com.gyugle.gil.feature.lesson.impl.presentation.component.KoreanProse
+import com.gyugle.gil.feature.lesson.impl.presentation.player.KoreanProse
 
 /** The end of a lesson: time spent, the lesson's goal, what it introduced, and where to go next. */
 @Composable
@@ -146,7 +146,8 @@ private fun ResultItemRow(item: ResultItemUi) {
     ) {
         Column(modifier = Modifier.weight(1f)) {
             EnglishText(text = item.text)
-            item.ipa?.let { IpaText(ipa = it, spokenWord = item.text) }
+            // The row is read as one, and the word is already in it.
+            item.ipa?.let { IpaText(ipa = it, spokenWord = null) }
         }
         Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.End) {
             item.meaningKo?.let { KoreanProse(text = it, style = MaterialTheme.typography.bodyMedium) }

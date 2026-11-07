@@ -43,7 +43,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -165,7 +164,6 @@ private fun LessonList(unit: UnitDetailUi, onLessonClick: (LessonId) -> Unit) {
 /** A lesson with its number on the first line of the title, however far the goal wraps. */
 @Composable
 private fun LessonRow(lesson: LessonRowUi, onClick: () -> Unit) {
-    val spacing = GilTheme.spacing
     PressableSurface(
         onClick = onClick,
         clickLabel = stringResource(R.string.curriculum_lesson_open),

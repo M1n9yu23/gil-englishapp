@@ -34,24 +34,25 @@ import com.gyugle.gil.core.speech.FakeVoiceRecorder
 import com.gyugle.gil.core.speech.SpeakerStatus
 import com.gyugle.gil.core.speech.SpeechLanguage
 import com.gyugle.gil.core.speech.SpeechRate
+import com.gyugle.gil.feature.curriculum.api.Choice
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
+import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LessonItem
+import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.PairWord
+import com.gyugle.gil.feature.curriculum.api.PassageQuestion
 import com.gyugle.gil.feature.curriculum.api.SenseId
+import com.gyugle.gil.feature.curriculum.api.Sentence
 import com.gyugle.gil.feature.curriculum.api.SoundId
-import com.gyugle.gil.feature.curriculum.api.model.Choice
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
-import com.gyugle.gil.feature.curriculum.api.model.LessonItem
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
-import com.gyugle.gil.feature.curriculum.api.model.PairWord
-import com.gyugle.gil.feature.curriculum.api.model.PassageQuestion
-import com.gyugle.gil.feature.curriculum.api.model.Sentence
+import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
-import com.gyugle.gil.feature.lesson.impl.presentation.fake.FakeLessonRunRepository
-import com.gyugle.gil.feature.lesson.impl.presentation.fake.FakeProgressCommands
-import com.gyugle.gil.feature.lesson.impl.presentation.fake.FakeStudyClock
+import com.gyugle.gil.feature.lesson.impl.domain.repository.FakeLessonRunRepository
+import com.gyugle.gil.feature.progress.api.FakeProgressCommands
+import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
@@ -220,7 +221,7 @@ class LessonViewModelTest {
     }
 
     @Test
-    fun minimalPair_playsOnlyTheAnswerWord() {
+    fun minimalPair_entered_playsOnlyTheAnswerWord() {
         val viewModel = viewModel()
         viewModel.continueStep()
         viewModel.pickText("부채")
@@ -441,7 +442,7 @@ class LessonViewModelTest {
     }
 
     @Test
-    fun shadow_recordThenPlayMine() {
+    fun shadow_recordedThenPlayed_playsTheRecording() {
         val shadowLesson = lesson.copy(steps = listOf(LessonStep.Shadow(Sentence(1, "Five.", "다섯."))))
         course.lessons[0] = shadowLesson
         val viewModel = viewModel()
@@ -488,6 +489,87 @@ class LessonViewModelTest {
     }
 
     @Test
+    fun result_afterProcessDeathOnceSaved_showsItAgainWithoutSavingTwice() {
+        val handle = SavedStateHandle(
+            mapOf(
+                "started" to true,
+                "result_minutes" to 7,
+                "result_ratings" to arrayListOf("sound.f=GOOD", "sound.v=AGAIN", "sense.fan.n.cooler=GOOD"),
+                "result_saved" to true
+            )
+        )
+
+        val result = (viewModel(handle).state.value.phase as LessonPhase.Finished).result
+
+        assertThat(result.minutes).isEqualTo(7)
+        assertThat(result.isSaving).isFalse()
+        assertThat(result.items.map { it.comesBackSoon }).isEqualTo(listOf(false, true, false))
+        assertThat(progress.completed).isEmpty()
+    }
+
+    @Test
+    fun result_afterProcessDeathBeforeSaving_savesTheSameRatings() {
+        val handle = SavedStateHandle(
+            mapOf("started" to true, "result_minutes" to 3, "result_ratings" to arrayListOf("sound.v=HARD"))
+        )
+
+        viewModel(handle)
+
+        assertThat(progress.completed.single())
+            .isEqualTo(lesson.id to mapOf<StudyItemId, ReviewRating>(v to ReviewRating.HARD))
+    }
+
+    @Test
+    fun finish_allAnswered_keepsTheResultForProcessDeath() {
+        val handle = SavedStateHandle()
+        val viewModel = playToPassage(handle)
+        viewModel.pickText("부채")
+        viewModel.continueStep()
+        viewModel.pickText("하나")
+        viewModel.continueStep()
+
+        assertThat(handle.get<Int>("result_minutes")).isEqualTo(1)
+        assertThat(handle.get<Boolean>("result_saved")).isEqualTo(true)
+    }
+
+    @Test
+    fun voiceTurnsOutMissing_onASoundPair_movesPastIt() {
+        speaker.status.value = SpeakerStatus.Connecting
+        runs.runs[lesson.id] = LessonRun.start(5).next().answer(AnswerGrade.CORRECT).next()
+        val viewModel = viewModel(SavedStateHandle(mapOf("started" to true)))
+        assertThat((viewModel.playing.step as StepUi.Choice).prompt).isEqualTo(ChoicePrompt.SoundPair)
+
+        speaker.status.value = SpeakerStatus.NoEngine
+
+        assertThat(viewModel.playing.step).isInstanceOf<StepUi.Typed>()
+        assertThat(viewModel.playing.showsNoVoiceNotice).isTrue()
+    }
+
+    @Test
+    fun restart_thenResumeAndRestartAgain_staysOnTheNewRun() {
+        runs.runs[lesson.id] = LessonRun.start(5).next().answer(AnswerGrade.CORRECT).next()
+        val viewModel = viewModel()
+
+        viewModel.onAction(LessonAction.OnRestartClick)
+        viewModel.onAction(LessonAction.OnResumeClick)
+        viewModel.onAction(LessonAction.OnRestartClick)
+
+        assertThat(viewModel.playing.stepNumber).isEqualTo(1)
+    }
+
+    @Test
+    fun save_failing_keepsTheLessonGoing() {
+        runs.error = DataError.Local.DISK_FULL
+        val viewModel = viewModel()
+
+        viewModel.continueStep()
+        viewModel.pickText("밴")
+
+        assertThat(viewModel.playing.feedback?.grade).isEqualTo(GradeUi.WRONG)
+        assertThat(progress.mistakes).containsExactly(fan)
+    }
+
+    @Test
     fun minutesOf_roundsUpAndNeverZero() {
         assertThat(minutesOf(0)).isEqualTo(1)
         assertThat(minutesOf(60_000)).isEqualTo(1)
@@ -495,8 +577,8 @@ class LessonViewModelTest {
     }
 
     /** Answers every step before the passage right. */
-    private fun playToPassage(): LessonViewModel {
-        val viewModel = viewModel()
+    private fun playToPassage(handle: SavedStateHandle = SavedStateHandle()): LessonViewModel {
+        val viewModel = viewModel(handle)
         viewModel.continueStep()
         viewModel.pickText("부채")
         viewModel.continueStep()

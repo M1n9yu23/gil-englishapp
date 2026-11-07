@@ -30,7 +30,3 @@ data class ResultUi(
     val isSaving: Boolean,
     val saveFailed: Boolean
 )
-
-/** An introduced item. [comesBackSoon] when the lesson rated it below good. */
-@Immutable
-data class ResultItemUi(val text: String, val ipa: String?, val meaningKo: String?, val comesBackSoon: Boolean)

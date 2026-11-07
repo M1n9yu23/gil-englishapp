@@ -16,7 +16,7 @@
 package com.gyugle.gil.feature.curriculum.api
 
 import com.gyugle.gil.core.domain.Outcome
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
+import com.gyugle.gil.feature.curriculum.api.Lesson
 
 /**
  * Reads lessons for other features. The content ships with the app and never changes while it

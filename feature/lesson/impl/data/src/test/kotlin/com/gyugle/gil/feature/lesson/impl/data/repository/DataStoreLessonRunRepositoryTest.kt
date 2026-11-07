@@ -111,6 +111,17 @@ class DataStoreLessonRunRepositoryTest {
     }
 
     @Test
+    fun get_entryWithAnUnknownGrade_isNull() = runTest {
+        store.edit {
+            it[stringPreferencesKey("run.${one.value}")] =
+                """{"stepCount":2,"firstPassSize":2,"queue":[0,1],"position":1,"outcomes":{"0":{"first":"EASY"}},""" +
+                """"studiedMillis":0}"""
+        }
+
+        assertThat(repository.get(one)).isNull()
+    }
+
+    @Test
     fun save_fileCannotBeWritten_unknownError() = runTest {
         val blocked = File(tempDir, "datastore").apply { writeText("a file where the directory should be") }
         val repository = DataStoreLessonRunRepository(

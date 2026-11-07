@@ -73,8 +73,8 @@ import com.gyugle.gil.core.presentation.permissions.Permission
 import com.gyugle.gil.core.presentation.permissions.rememberPermissionController
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.lesson.impl.presentation.R
-import com.gyugle.gil.feature.lesson.impl.presentation.component.FeedbackPanel
-import com.gyugle.gil.feature.lesson.impl.presentation.component.KoreanProse
+import com.gyugle.gil.feature.lesson.impl.presentation.player.FeedbackPanel
+import com.gyugle.gil.feature.lesson.impl.presentation.player.KoreanProse
 import kotlinx.coroutines.launch
 
 private object LessonScreenTokens {

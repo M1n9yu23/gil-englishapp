@@ -22,8 +22,8 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isNotEmpty
 import assertk.assertions.isNull
 import com.gyugle.gil.core.domain.Outcome
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
+import com.gyugle.gil.feature.curriculum.api.Lesson
+import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseHolder
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json

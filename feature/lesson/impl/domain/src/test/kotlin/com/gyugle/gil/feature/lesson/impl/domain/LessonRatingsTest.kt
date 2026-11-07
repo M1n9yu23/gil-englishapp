@@ -17,11 +17,11 @@ package com.gyugle.gil.feature.lesson.impl.domain
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.api.SenseId
+import com.gyugle.gil.feature.curriculum.api.Sentence
 import com.gyugle.gil.feature.curriculum.api.SoundId
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
-import com.gyugle.gil.feature.curriculum.api.model.Sentence
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
 import com.gyugle.gil.feature.progress.api.ReviewRating

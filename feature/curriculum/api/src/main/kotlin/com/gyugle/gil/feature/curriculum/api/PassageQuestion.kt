@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.curriculum.api.model
+package com.gyugle.gil.feature.curriculum.api
 
 /** A Korean question about a passage. */
 data class PassageQuestion(val ko: String, val options: List<Choice>)

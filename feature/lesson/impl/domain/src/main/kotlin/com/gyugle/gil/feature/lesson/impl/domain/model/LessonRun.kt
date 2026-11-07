@@ -15,8 +15,6 @@
  */
 package com.gyugle.gil.feature.lesson.impl.domain.model
 
-import kotlinx.serialization.Serializable
-
 /**
  * Where the learner is in one lesson and how the answers went, saved so that a lesson left halfway
  * opens at the same step.
@@ -30,7 +28,6 @@ import kotlinx.serialization.Serializable
  * @property firstPassSize how many steps the first pass plays; the queue past it holds the retries.
  * @property studiedMillis time spent on the lesson so far, for the result.
  */
-@Serializable
 data class LessonRun(
     val stepCount: Int,
     val firstPassSize: Int,
@@ -62,7 +59,9 @@ data class LessonRun(
         val step = currentStep ?: return this
         if (isAnswered) return this
         return if (isRetry) {
-            copy(outcomes = outcomes + (step to outcomes.getValue(step).copy(retry = grade)))
+            // A retry always follows a first answer; a run read from storage may still lack one.
+            val outcome = outcomes[step]?.copy(retry = grade) ?: StepOutcome(first = grade)
+            copy(outcomes = outcomes + (step to outcome))
         } else {
             copy(
                 queue = if (grade == AnswerGrade.WRONG) queue + step else queue,

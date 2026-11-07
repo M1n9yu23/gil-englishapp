@@ -15,10 +15,10 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.data.mapper
 
+import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LessonItem
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
-import com.gyugle.gil.feature.curriculum.api.model.LessonItem
 import com.gyugle.gil.feature.curriculum.impl.data.dao.LessonItemRow
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
 import com.gyugle.gil.feature.curriculum.impl.data.entity.LessonEntity

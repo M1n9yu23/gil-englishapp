@@ -21,9 +21,9 @@ import assertk.assertions.isNull
 import com.gyugle.gil.core.navigation.DeepLinkTarget
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
+import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
-import com.gyugle.gil.feature.curriculum.api.model.Lesson
 import com.gyugle.gil.feature.home.api.TODAY_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.lesson.api.LessonRoute

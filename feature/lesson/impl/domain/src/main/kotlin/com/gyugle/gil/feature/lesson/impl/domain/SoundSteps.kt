@@ -15,7 +15,7 @@
  */
 package com.gyugle.gil.feature.lesson.impl.domain
 
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
+import com.gyugle.gil.feature.curriculum.api.LessonStep
 
 /**
  * The steps that cannot be done without a voice, by index. Choosing between two sounds or writing

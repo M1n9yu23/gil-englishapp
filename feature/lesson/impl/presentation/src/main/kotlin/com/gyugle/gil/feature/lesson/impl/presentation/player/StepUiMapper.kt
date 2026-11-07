@@ -15,40 +15,15 @@
  */
 package com.gyugle.gil.feature.lesson.impl.presentation.player
 
-import com.gyugle.gil.feature.curriculum.api.model.Choice
-import com.gyugle.gil.feature.curriculum.api.model.LessonStep
-import com.gyugle.gil.feature.curriculum.api.model.Sentence
+import com.gyugle.gil.feature.curriculum.api.Choice
+import com.gyugle.gil.feature.curriculum.api.LessonStep
+import com.gyugle.gil.feature.curriculum.api.Sentence
 import com.gyugle.gil.feature.lesson.impl.domain.checkDictation
 import com.gyugle.gil.feature.lesson.impl.domain.gradeArrange
 import com.gyugle.gil.feature.lesson.impl.domain.gradeFillBlank
 import com.gyugle.gil.feature.lesson.impl.domain.gradeSpelling
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import kotlin.random.Random
-
-/**
- * Choices and tiles appear in an order fixed by [seed], so a rotation or a return to the lesson
- * shows the same order, while the content's own order (right answer first) never shows.
- */
-internal class StepLayout(private val step: LessonStep, seed: Int) {
-    private val random = Random(seed)
-
-    /** Display position to the content's option index. A sound pair keeps its own order. */
-    val optionOrder: List<Int> = when (step) {
-        is LessonStep.MinimalPair -> step.words.indices.toList()
-        else -> (0 until MAX_OPTIONS).toList().shuffled(random)
-    }
-
-    /** Every tile, answer and extra, in display order. */
-    val bank: List<String> = (step as? LessonStep.Arrange)?.let { (it.tiles + it.extra).shuffled(random) }.orEmpty()
-
-    fun options(choices: List<Choice>): List<Int> = optionOrder.filter { it < choices.size }
-
-    private companion object {
-        /** More than any step has; indices past a step's options are dropped. */
-        const val MAX_OPTIONS = 8
-    }
-}
-
 internal fun LessonStep.toStepUi(
     input: StepInput,
     layout: StepLayout,
@@ -98,12 +73,13 @@ internal fun LessonStep.toStepUi(
             ),
             question.options,
             layout,
-            input
+            input,
+            question = input.question
         )
     }
 
     is LessonStep.MinimalPair -> {
-        val order = layout.optionOrder
+        val order = layout.order(words.size)
         StepUi.Choice(
             prompt = ChoicePrompt.SoundPair,
             options = order.map { OptionUi(words[it].text, english = true, ipa = words[it].ipa) },
@@ -119,8 +95,14 @@ internal fun LessonStep.toStepUi(
     is LessonStep.Dictation -> StepUi.Typed(TypedPrompt.Dictation, input.text)
 }
 
-private fun choice(prompt: ChoicePrompt, choices: List<Choice>, layout: StepLayout, input: StepInput): StepUi.Choice {
-    val order = layout.options(choices)
+private fun choice(
+    prompt: ChoicePrompt,
+    choices: List<Choice>,
+    layout: StepLayout,
+    input: StepInput,
+    question: Int = 0
+): StepUi.Choice {
+    val order = layout.order(choices.size, question)
     return StepUi.Choice(
         prompt = prompt,
         options = order.map { OptionUi(choices[it].text, choices[it].english) },
@@ -134,7 +116,7 @@ internal fun LessonStep.canCheck(input: StepInput): Boolean = input.feedback == 
     when (this) {
         is LessonStep.Arrange -> input.chosen.isNotEmpty()
         is LessonStep.Spell, is LessonStep.Dictation -> input.text.isNotBlank()
-        is LessonStep.FillBlank -> options.isNotEmpty() || input.text.isNotBlank()
+        is LessonStep.FillBlank -> options.isEmpty() && input.text.isNotBlank()
         else -> false
     }
 
@@ -186,16 +168,17 @@ internal fun LessonStep.checkPick(
     layout: StepLayout,
     firstTry: Boolean
 ): Pair<AnswerGrade?, FeedbackUi>? {
-    fun pick(choices: List<Choice>): Choice? = layout.options(choices).getOrNull(displayIndex)?.let(choices::getOrNull)
+    fun pick(choices: List<Choice>, question: Int = 0): Choice? =
+        layout.order(choices.size, question).getOrNull(displayIndex)?.let(choices::getOrNull)
     return when (this) {
         is LessonStep.MinimalPair -> {
-            val index = layout.optionOrder.getOrNull(displayIndex) ?: return null
+            val index = layout.order(words.size).getOrNull(displayIndex) ?: return null
             val grade = if (index == answer) AnswerGrade.CORRECT else AnswerGrade.WRONG
             grade to feedback(grade, firstTry, why = why)
         }
 
         is LessonStep.ReadPassage -> {
-            val choice = pick(questions[input.question].options) ?: return null
+            val choice = pick(questions[input.question].options, input.question) ?: return null
             val missed = input.missedQuestion || !choice.correct
             val last = input.question == questions.lastIndex
             val stepGrade = if (missed) AnswerGrade.WRONG else AnswerGrade.CORRECT
