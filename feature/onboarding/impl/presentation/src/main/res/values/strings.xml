@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- How far along the first run is, next to the progress bar. -->
+    <string name="onboarding_progress"><xliff:g id="step" example="2">%1$d</xliff:g>/<xliff:g id="count" example="7">%2$d</xliff:g></string>
+    <!-- Screen reader text for the progress bar and count above. -->
+    <string name="onboarding_progress_description">Step <xliff:g id="step" example="2">%1$d</xliff:g> of <xliff:g id="count" example="7">%2$d</xliff:g></string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_continue">Continue</string>
+
+    <string name="onboarding_welcome_title">Welcome to Gil</string>
+    <string name="onboarding_welcome_body">You’ll learn English one step at a time, from sounds to sentences. First, a quick look at how studying works here, then your daily goal.</string>
+    <string name="onboarding_welcome_start">Get started</string>
+    <string name="onboarding_welcome_skip">Skip</string>
+
+    <string name="onboarding_method_daily_title">A little every day</string>
+    <string name="onboarding_method_daily_body">Ten minutes every day sticks better than an hour once a week. Lessons come in parts of a few minutes, so you can stop anytime and pick up where you left off.</string>
+    <string name="onboarding_method_review_title">The app plans your reviews</string>
+    <string name="onboarding_method_review_body">Words and sentences you’ve learned come back just as you start to forget them. The app decides what to review and when, and puts it on Today’s path.</string>
+    <string name="onboarding_method_sound_title">Sound first, out loud</string>
+    <string name="onboarding_method_sound_body">Every lesson starts with listening. Say what you hear out loud, so your ears and mouth learn together.</string>
+    <string name="onboarding_method_mistakes_title">Mistakes are fine</string>
+    <string name="onboarding_method_mistakes_body">Nothing is taken away when you get something wrong. The question comes back in a later review, and you try it again then.</string>
+
+    <string name="onboarding_goal_title">How long do you want to study each day?</string>
+    <string name="onboarding_goal_body">Pick a length you can keep up. Short is fine if it’s every day.</string>
+    <!-- A daily goal option, such as "20 min". -->
+    <string name="onboarding_goal_minutes"><xliff:g id="minutes" example="20">%d</xliff:g> min</string>
+    <string name="onboarding_goal_10_detail">Reviews and a short practice</string>
+    <string name="onboarding_goal_20_detail">One lesson and your reviews</string>
+    <string name="onboarding_goal_30_detail">One or two lessons and your reviews</string>
+    <string name="onboarding_goal_60_detail">Several lessons and your reviews</string>
+
+    <string name="onboarding_reminder_title">When should we remind you?</string>
+    <string name="onboarding_reminder_body">Pick up to two times a day. On days you’ve already met your goal, there’s no reminder.</string>
+    <!-- Screen reader action for a reminder time row. -->
+    <string name="onboarding_reminder_change_time">change time</string>
+    <!-- Screen reader label of the button that removes one reminder time, such as "Remove the 8:00 PM reminder". -->
+    <string name="onboarding_reminder_remove">Remove the <xliff:g id="time" example="8:00 PM">%s</xliff:g> reminder</string>
+    <string name="onboarding_reminder_add">Add a time</string>
+    <string name="onboarding_reminder_enable">Turn on reminders</string>
+    <string name="onboarding_reminder_skip">Continue without reminders</string>
+    <string name="onboarding_reminder_picker_title">Reminder time</string>
+    <string name="onboarding_reminder_picker_confirm">OK</string>
+    <string name="onboarding_reminder_picker_cancel">Cancel</string>
+    <string name="onboarding_reminder_rationale_title">Allow notifications</string>
+    <string name="onboarding_reminder_rationale_body">To remind you at the times you picked, Gil needs permission to send notifications. Tap Allow in the next window.</string>
+    <string name="onboarding_reminder_denied_title">Starting without reminders</string>
+    <string name="onboarding_reminder_denied_body">Without reminders, open the app to see what to study today.</string>
+    <string name="onboarding_reminder_blocked_title">Notifications are off</string>
+    <string name="onboarding_reminder_blocked_body">To get reminders, allow notifications for Gil in your phone’s settings.</string>
+    <string name="onboarding_reminder_open_settings">Open settings</string>
+
+    <string name="onboarding_sound_title">Can you hear this?</string>
+    <string name="onboarding_sound_body">Turn up the volume and listen.</string>
+    <string name="onboarding_sound_checking">Getting the voice ready</string>
+    <string name="onboarding_sound_play_again">Play again</string>
+    <string name="onboarding_sound_heard">Yes, I can hear it</string>
+    <string name="onboarding_sound_not_heard">No sound</string>
+    <string name="onboarding_sound_not_heard_title">No sound</string>
+    <string name="onboarding_sound_not_heard_body">Check your phone’s volume and silent mode. If it’s still quiet, you may need to install English voice data.</string>
+    <string name="onboarding_sound_no_voice_title">No English voice yet</string>
+    <string name="onboarding_sound_no_voice_body">Install English voice data on your phone to hear it. Without it, you can still study with text.</string>
+    <string name="onboarding_sound_no_engine_title">This phone can’t speak yet</string>
+    <string name="onboarding_sound_no_engine_body">There’s no speech engine on this phone, so listening questions show as text instead.</string>
+    <string name="onboarding_sound_install">Install voice data</string>
+    <string name="onboarding_sound_install_unavailable">Couldn’t open the voice settings. Look for text-to-speech in your phone’s settings.</string>
+    <string name="onboarding_sound_continue_without">Continue without sound</string>
+</resources>

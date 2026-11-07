@@ -12,8 +12,8 @@ local.properties
 .claude/
 CLAUDE.md
 CLAUDE.local.md
-handoffs/
-onboarding/
+/handoffs/
+/onboarding/
 .kotlin/
 
 keystore.properties

@@ -39,10 +39,11 @@ private object PathMarkTokens {
 
 /**
  * Gil's one motif, in place of illustrations: a single ink line that bends and moves forward, with
- * a seal-red dot where it ends. Decorative, so it has no semantics.
+ * a seal-red dot where it ends. Decorative, so it has no semantics. It opens the empty states and
+ * the first screen of the app, above the title.
  */
 @Composable
-internal fun PathMark(modifier: Modifier = Modifier) {
+fun PathMark(modifier: Modifier = Modifier) {
     val ink = MaterialTheme.colorScheme.onSurface
     val seal = MaterialTheme.colorScheme.tertiary
     Canvas(modifier = modifier.size(PathMarkTokens.Width, PathMarkTokens.Height)) {
