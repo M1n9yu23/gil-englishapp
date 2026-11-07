@@ -145,3 +145,4 @@ convention-android-application-compose = { id = "gil.android.application.compose
 convention-hilt = { id = "gil.hilt" }
 convention-room = { id = "gil.room" }
 convention-android-screenshot = { id = "gil.android.screenshot" }
+convention-content = { id = "gil.content" }

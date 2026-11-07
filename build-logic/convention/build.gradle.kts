@@ -80,6 +80,10 @@ gradlePlugin {
             id = libs.plugins.convention.room.get().pluginId
             implementationClass = "RoomConventionPlugin"
         }
+        register("content") {
+            id = libs.plugins.convention.content.get().pluginId
+            implementationClass = "ContentConventionPlugin"
+        }
         register("androidScreenshot") {
             id = libs.plugins.convention.android.screenshot.get().pluginId
             implementationClass = "AndroidScreenshotConventionPlugin"

@@ -1,0 +1,23 @@
+# The course in order. The format is described in docs/content.md.
+stages:
+  - id: stage.s0
+    title: { ko: 출발, en: Getting started }
+    units: []
+  - id: stage.s1
+    title: { ko: 소리와 글자, en: Sounds and letters }
+    units: []
+  - id: stage.a1
+    title: { ko: 첫걸음, en: First steps }
+    units: []
+  - id: stage.a2
+    title: { ko: 일상, en: Everyday life }
+    units: []
+  - id: stage.b1
+    title: { ko: 자립, en: On your own }
+    units: []
+  - id: stage.b2
+    title: { ko: 확장, en: Going further }
+    units: []
+  - id: stage.c1
+    title: { ko: 전문, en: Advanced }
+    units: []
