@@ -20,12 +20,14 @@ import android.media.AudioFormat
 import android.media.AudioTrack
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import timber.log.Timber
 
 /**
@@ -76,10 +78,14 @@ class AudioTrackVoicePlayer internal constructor(private val io: CoroutineDispat
             track.play()
             val frames = recording.pcm.size / VoiceRecording.BYTES_PER_SAMPLE
             // The head position stops at the last frame, so polling sees the end without a listener
-            // thread. Cancellation lands within one poll.
-            while (track.playbackHeadPosition < frames && track.playState == AudioTrack.PLAYSTATE_PLAYING) {
-                delay(POLL_MILLIS)
+            // thread. Cancellation lands within one poll. A device whose head never quite reaches
+            // the end, or whose output stalls, is let go a little after the recording's length.
+            val ended = withTimeoutOrNull(recording.duration + END_MARGIN) {
+                while (track.playbackHeadPosition < frames && track.playState == AudioTrack.PLAYSTATE_PLAYING) {
+                    delay(POLL_MILLIS)
+                }
             }
+            if (ended == null) Timber.w("A recording did not report its end")
             return true
         } catch (e: IllegalStateException) {
             Timber.w("Cannot play a recording: %s", e::class.simpleName)
@@ -91,5 +97,6 @@ class AudioTrackVoicePlayer internal constructor(private val io: CoroutineDispat
 
     private companion object {
         const val POLL_MILLIS = 50L
+        val END_MARGIN = 500.milliseconds
     }
 }
