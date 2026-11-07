@@ -7,6 +7,14 @@
 
 아직 개발 초기 단계이며 출시한 버전은 없습니다.
 
+## 빌드
+
+```
+./gradlew :app:installDebug
+```
+
+빌드 타입과 풀 리퀘스트 전에 돌릴 검사는 [빌드 문서](docs/build.ko.md)에 있습니다.
+
 ## 라이선스
 
 소스 코드와 학습 내용은 [Apache License 2.0](LICENSE)을 따릅니다.

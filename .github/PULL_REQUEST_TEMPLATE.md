@@ -14,7 +14,7 @@ Commands you ran and what you checked by hand. Add screenshots for screen change
 
 ## Checklist / 확인 목록
 
-- [ ] `./gradlew spotlessCheck lintDebug testDebugUnitTest` passes / 통과합니다
+- [ ] The checks in `docs/build.md` pass / `docs/build.md`의 검사를 통과합니다
 - [ ] Every new user-facing string is in `values/` and `values-ko/` / 새 사용자 문자열이 `values/`와 `values-ko/`에 모두 있습니다
 - [ ] Changed public documents are updated in both `name.md` and `name.ko.md` / 바꾼 공개 문서는 `name.md`와 `name.ko.md`를 함께 고쳤습니다
 - [ ] No new permission, network access or tracking SDK / 새 권한, 네트워크 접근, 추적 SDK가 없습니다

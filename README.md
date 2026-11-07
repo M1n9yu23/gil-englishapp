@@ -7,6 +7,14 @@ It runs entirely on the phone. There is no server or account, and the app does n
 
 The app is in early development and has no release yet.
 
+## Building
+
+```
+./gradlew :app:installDebug
+```
+
+Build types and the checks to run before a pull request: [docs/build.md](docs/build.md).
+
 ## License
 
 The source code and the learning content are licensed under the [Apache License 2.0](LICENSE).
