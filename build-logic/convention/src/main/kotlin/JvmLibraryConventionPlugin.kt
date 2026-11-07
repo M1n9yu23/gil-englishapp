@@ -41,6 +41,13 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
             configureKotlinJvmTarget()
             extensions.configure<Lint> { configureLint() }
             configureUnitTests()
+            // Android modules name their unit tests testDebugUnitTest; the same name here lets one
+            // command run the tests of every module.
+            tasks.register("testDebugUnitTest") {
+                group = "verification"
+                description = "Runs the unit tests (alias of test)."
+                dependsOn("test")
+            }
 
             dependencies {
                 "implementation"(libs.findLibrary("kotlinx-coroutines-core").get())
