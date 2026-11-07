@@ -4,4 +4,8 @@
     <string name="common_navigate_back">Back</string>
     <!-- Screen reader label of a screen whose content is still loading. -->
     <string name="common_loading">Loading</string>
+    <!-- Screen reader state and visible note on the answer the learner picked when it is wrong. -->
+    <string name="answer_option_picked">Your choice</string>
+    <!-- Screen reader state of the right answer once a question is answered. -->
+    <string name="answer_option_correct">Right answer</string>
 </resources>

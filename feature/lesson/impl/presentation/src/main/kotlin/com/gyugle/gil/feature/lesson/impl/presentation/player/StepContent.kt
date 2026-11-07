@@ -35,6 +35,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.intl.LocaleList
+import com.gyugle.gil.core.designsystem.component.AnswerMark
+import com.gyugle.gil.core.designsystem.component.AnswerOption
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
@@ -44,8 +46,6 @@ import com.gyugle.gil.core.designsystem.component.SoundButton
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
-import com.gyugle.gil.feature.lesson.impl.presentation.player.ChoiceOption
-import com.gyugle.gil.feature.lesson.impl.presentation.player.OptionMark
 import com.gyugle.gil.feature.lesson.impl.presentation.player.TileBoard
 
 /** The instruction above a step, or null for a step that explains itself. */
@@ -323,12 +323,18 @@ private fun ColumnScope.ChoiceContent(step: StepUi.Choice, hasVoice: Boolean, on
     Column(verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap)) {
         step.options.forEachIndexed { index, option ->
             val mark = when {
-                step.correct == null -> OptionMark.IDLE
-                index == step.correct -> OptionMark.CORRECT
-                index == step.picked -> OptionMark.PICKED_WRONG
-                else -> OptionMark.OTHER
+                step.correct == null -> AnswerMark.IDLE
+                index == step.correct -> AnswerMark.CORRECT
+                index == step.picked -> AnswerMark.PICKED_WRONG
+                else -> AnswerMark.OTHER
             }
-            ChoiceOption(option = option, mark = mark, onClick = { onAction(LessonAction.OnOptionClick(index)) })
+            AnswerOption(
+                text = option.text,
+                english = option.english,
+                ipa = option.ipa,
+                mark = mark,
+                onClick = { onAction(LessonAction.OnOptionClick(index)) }
+            )
         }
     }
 }

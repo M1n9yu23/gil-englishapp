@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.lesson.impl.presentation.player
+package com.gyugle.gil.core.designsystem.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -35,16 +35,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import com.gyugle.gil.core.designsystem.component.EnglishText
-import com.gyugle.gil.core.designsystem.component.IpaText
-import com.gyugle.gil.core.designsystem.component.KoreanProse
-import com.gyugle.gil.core.designsystem.component.PressableSurface
+import com.gyugle.gil.core.designsystem.R
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
-import com.gyugle.gil.feature.lesson.impl.presentation.R
-import com.gyugle.gil.feature.lesson.impl.presentation.player.OptionUi
 
-private object ChoiceOptionTokens {
+private object AnswerOptionTokens {
     val MinHeight = 56.dp
     val BorderWidth = 1.dp
     val HorizontalPadding = 16.dp
@@ -52,74 +47,82 @@ private object ChoiceOptionTokens {
     val MarkSize = 20.dp
 }
 
-/** How an option looks once the step is answered. Before that every option is [IDLE]. */
-internal enum class OptionMark { IDLE, CORRECT, PICKED_WRONG, OTHER }
+/** How an answer looks once the question is answered. Before that every answer is [IDLE]. */
+enum class AnswerMark { IDLE, CORRECT, PICKED_WRONG, OTHER }
 
 /**
- * One answer to pick. After the answer the right one gets the ink wash and a check, the wrong pick
+ * One answer to pick in a lesson step or a review. [english] draws [text] as English; [ipa], when
+ * set, goes under it. After the answer the right one gets the ink wash and a check, the wrong pick
  * an underline and a "your choice" note, so neither depends on colour alone.
  */
 @Composable
-internal fun ChoiceOption(option: OptionUi, mark: OptionMark, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun AnswerOption(
+    text: String,
+    english: Boolean,
+    mark: AnswerMark,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    ipa: String? = null
+) {
     val colors = MaterialTheme.colorScheme
     val shape = MaterialTheme.shapes.medium
-    val pickedLabel = stringResource(R.string.lesson_choice_picked)
-    val correctLabel = stringResource(R.string.lesson_choice_correct)
-    val background = if (mark == OptionMark.CORRECT) colors.primaryContainer else colors.surface
+    val pickedLabel = stringResource(R.string.answer_option_picked)
+    val correctLabel = stringResource(R.string.answer_option_correct)
+    val background = if (mark == AnswerMark.CORRECT) colors.primaryContainer else colors.surface
     val content = when (mark) {
-        OptionMark.CORRECT -> colors.onPrimaryContainer
-        OptionMark.OTHER -> colors.onSurfaceVariant
+        AnswerMark.CORRECT -> colors.onPrimaryContainer
+        AnswerMark.OTHER -> colors.onSurfaceVariant
         else -> colors.onSurface
     }
     PressableSurface(
         onClick = onClick,
-        enabled = mark == OptionMark.IDLE,
+        enabled = mark == AnswerMark.IDLE,
         shape = shape,
         modifier = modifier
             .fillMaxWidth()
             .semantics {
                 when (mark) {
-                    OptionMark.PICKED_WRONG -> stateDescription = pickedLabel
-                    OptionMark.CORRECT -> stateDescription = correctLabel
+                    AnswerMark.PICKED_WRONG -> stateDescription = pickedLabel
+                    AnswerMark.CORRECT -> stateDescription = correctLabel
                     else -> Unit
                 }
             }
     ) {
         Row(
             modifier = Modifier
-                .heightIn(min = ChoiceOptionTokens.MinHeight)
+                .heightIn(min = AnswerOptionTokens.MinHeight)
                 .background(background, shape)
-                .border(ChoiceOptionTokens.BorderWidth, colors.outlineVariant, shape)
+                .border(AnswerOptionTokens.BorderWidth, colors.outlineVariant, shape)
                 .padding(
-                    horizontal = ChoiceOptionTokens.HorizontalPadding,
-                    vertical = ChoiceOptionTokens.VerticalPadding
+                    horizontal = AnswerOptionTokens.HorizontalPadding,
+                    vertical = AnswerOptionTokens.VerticalPadding
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(GilTheme.spacing.itemGap)
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                val decoration = if (mark == OptionMark.PICKED_WRONG) TextDecoration.Underline else null
-                if (option.english) {
-                    EnglishText(text = option.text, color = content, textDecoration = decoration)
+                val decoration = if (mark == AnswerMark.PICKED_WRONG) TextDecoration.Underline else null
+                if (english) {
+                    EnglishText(text = text, color = content, textDecoration = decoration)
                 } else {
                     KoreanProse(
-                        text = option.text,
+                        text = text,
                         color = content,
                         style = MaterialTheme.typography.bodyLarge.copy(textDecoration = decoration)
                     )
                 }
                 // The word itself is read just above.
-                if (option.ipa != null) IpaText(ipa = option.ipa, spokenWord = null)
-                if (mark == OptionMark.PICKED_WRONG) {
+                if (ipa != null) IpaText(ipa = ipa, spokenWord = null)
+                if (mark == AnswerMark.PICKED_WRONG) {
                     Text(text = pickedLabel, style = MaterialTheme.typography.labelMedium, color = colors.error)
                 }
             }
-            if (mark == OptionMark.CORRECT) {
+            if (mark == AnswerMark.CORRECT) {
                 Icon(
                     painter = GilIcons.Check,
                     contentDescription = null,
                     tint = colors.onPrimaryContainer,
-                    modifier = Modifier.size(ChoiceOptionTokens.MarkSize)
+                    modifier = Modifier.size(AnswerOptionTokens.MarkSize)
                 )
             }
         }

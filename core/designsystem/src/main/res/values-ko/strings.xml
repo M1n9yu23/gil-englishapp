@@ -2,4 +2,6 @@
 <resources>
     <string name="common_navigate_back">뒤로 가기</string>
     <string name="common_loading">불러오는 중</string>
+    <string name="answer_option_picked">고른 답</string>
+    <string name="answer_option_correct">정답</string>
 </resources>
