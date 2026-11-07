@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.LineBreak
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.sp
@@ -65,10 +66,11 @@ fun EnglishText(
     text: String,
     modifier: Modifier = Modifier,
     size: EnglishTextSize = EnglishTextSize.Body,
-    color: Color = Color.Unspecified
+    color: Color = Color.Unspecified,
+    textDecoration: TextDecoration? = null
 ) {
     val annotated = remember(text) { buildAnnotatedString { appendEnglish(text) } }
-    Text(text = annotated, modifier = modifier, color = color, style = size.style())
+    Text(text = annotated, modifier = modifier, color = color, textDecoration = textDecoration, style = size.style())
 }
 
 /** English inside surrounding text: same size as its neighbours, Charis, read in English. */
