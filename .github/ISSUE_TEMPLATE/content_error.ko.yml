@@ -1,5 +1,5 @@
 name: 학습 내용 오류 신고
-description: 과의 영어 문장, 번역, 설명, 발음이 틀렸거나 헷갈립니다.
+description: 수업의 영어 문장, 번역, 설명, 발음이 틀렸거나 헷갈립니다.
 title: "[내용 오류] "
 labels: [content]
 body:
@@ -13,7 +13,7 @@ body:
     id: location
     attributes:
       label: 위치
-      description: 오류를 본 과나 사전 항목입니다.
+      description: 오류를 본 수업이나 사전 항목입니다.
       placeholder: lesson.a1-03.2
     validations:
       required: true
