@@ -167,7 +167,7 @@ class TodayPlansTest {
     }
 
     @Test
-    fun reviewedAndIntroduced_countTodaysCardsByTheirRatings() {
+    fun reviewedOnAndIntroducedOn_mixedCards_countTodaysByTheirRatings() {
         val today = StudyDay(100)
         fun card(name: String, last: StudyDay, reviews: Int) =
             CardState(SenseId("sense.$name.n.x"), 3.0, last + 3, last, reviews, 0)

@@ -16,7 +16,6 @@
 package com.gyugle.gil.feature.home.impl.presentation.today
 
 import com.gyugle.gil.feature.curriculum.api.LessonId
-import com.gyugle.gil.feature.home.impl.domain.model.NextStep
 import java.time.DayOfWeek
 
 /** States for previews and screenshot tests. */
@@ -31,13 +30,26 @@ internal object TodayPreviewData {
         enoughNewWords = false
     )
 
-    /** Monday to Sunday with today on Thursday, studied on Monday and Wednesday. */
+    private val firstLesson = lesson.copy(
+        id = LessonId("lesson.s0-01.1"),
+        title = LocalizedTextUi("영어 소리와 만나기", "Meet the sounds of English"),
+        unitTitle = LocalizedTextUi("길 위에 서기", "Getting started"),
+        minutes = 8
+    )
+
+    private val twelveReviews = BlockUi.Review(count = 12, minutes = 6, more = false)
+
+    private val tenReviews = BlockUi.Review(count = 10, minutes = 5, more = false)
+
+    private val nextLesson = lesson.copy(title = LocalizedTextUi("이것은 책이에요", "This is a book"))
+
+    /** Monday to Sunday with today on Thursday, studied Monday to Wednesday. */
     private fun week(studiedToday: Boolean = false) = DayOfWeek.entries.mapIndexed { index, day ->
         DayUi(
             dayOfWeek = day,
-            studied = index == 0 || index == 2 || (index == 3 && studiedToday),
+            studied = index < 3 || (index == 3 && studiedToday),
             isToday = index == 3,
-            isFuture = index > 3
+            muted = index > 3
         )
     }
 
@@ -46,19 +58,12 @@ internal object TodayPreviewData {
             message = TodayMessage.FIRST_DAY,
             studiedMinutes = 0,
             goalMinutes = 20,
-            blocks = listOf(
-                lesson.copy(
-                    id = LessonId("lesson.s0-01.1"),
-                    title = LocalizedTextUi("영어 소리와 만나기", "Meet the sounds of English"),
-                    unitTitle = LocalizedTextUi("길 위에 서기", "Getting started"),
-                    minutes = 8
-                )
-            ),
-            next = NextStep.Lesson(LessonId("lesson.s0-01.1")),
+            blocks = listOf(firstLesson),
+            next = firstLesson,
             firstLesson = true,
             streak = 0,
             week = DayOfWeek.entries.mapIndexed { index, day ->
-                DayUi(day, studied = false, isToday = index == 3, isFuture = index > 3)
+                DayUi(day, studied = false, isToday = index == 3, muted = index != 3)
             }
         )
     )
@@ -68,8 +73,8 @@ internal object TodayPreviewData {
             message = null,
             studiedMinutes = 4,
             goalMinutes = 20,
-            blocks = listOf(BlockUi.Review(count = 12, minutes = 6, more = false), lesson),
-            next = NextStep.Review(12),
+            blocks = listOf(twelveReviews, lesson),
+            next = twelveReviews,
             firstLesson = false,
             streak = 3,
             week = week()
@@ -82,13 +87,13 @@ internal object TodayPreviewData {
             studiedMinutes = 0,
             goalMinutes = 10,
             blocks = listOf(
-                BlockUi.Review(count = 10, minutes = 5, more = false),
-                lesson.copy(enoughNewWords = true),
+                tenReviews,
+                lesson,
                 BlockUi.Review(count = 23, minutes = 12, more = true)
             ),
-            next = NextStep.Review(10),
+            next = tenReviews,
             firstLesson = false,
-            streak = 0,
+            streak = 3,
             week = week()
         )
     )
@@ -98,8 +103,8 @@ internal object TodayPreviewData {
             message = TodayMessage.GOAL_MET,
             studiedMinutes = 23,
             goalMinutes = 20,
-            blocks = listOf(BlockUi.ReviewDone, lesson.copy(title = LocalizedTextUi("이것은 책이에요", "This is a book"))),
-            next = NextStep.Lesson(lessonId),
+            blocks = listOf(BlockUi.ReviewDone, nextLesson),
+            next = nextLesson,
             firstLesson = false,
             streak = 4,
             week = week(studiedToday = true)

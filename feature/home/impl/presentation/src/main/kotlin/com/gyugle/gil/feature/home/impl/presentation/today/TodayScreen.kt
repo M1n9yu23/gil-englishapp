@@ -49,7 +49,6 @@ import com.gyugle.gil.core.designsystem.component.LoadingState
 import com.gyugle.gil.core.designsystem.component.PrimaryActionButton
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
-import com.gyugle.gil.core.presentation.ObserveAsEvents
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.home.impl.presentation.R
 
@@ -60,18 +59,27 @@ fun TodayRoot(
     viewModel: TodayViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    ObserveAsEvents(viewModel.events) { event ->
-        when (event) {
-            is TodayEvent.OpenReview -> onOpenReview(event.limit)
-            is TodayEvent.OpenLesson -> onOpenLesson(event.id)
+    TodayScreen(
+        state = state,
+        onAction = viewModel::onAction,
+        onOpenBlock = { block ->
+            when (block) {
+                is BlockUi.Review -> onOpenReview(block.count)
+                is BlockUi.Lesson -> onOpenLesson(block.id)
+                BlockUi.ReviewDone, BlockUi.CourseDone -> Unit
+            }
         }
-    }
-    TodayScreen(state = state, onAction = viewModel::onAction)
+    )
 }
 
 /** The Today tab: how much of the goal is done, the plan in order, one button to go on, the week. */
 @Composable
-fun TodayScreen(state: TodayState, onAction: (TodayAction) -> Unit, modifier: Modifier = Modifier) {
+fun TodayScreen(
+    state: TodayState,
+    onAction: (TodayAction) -> Unit,
+    onOpenBlock: (BlockUi) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier.fillMaxSize()) {
         GilTopBar(title = stringResource(R.string.home_title))
         when (state) {
@@ -84,13 +92,13 @@ fun TodayScreen(state: TodayState, onAction: (TodayAction) -> Unit, modifier: Mo
                 onRetry = { onAction(TodayAction.OnRetryClick) }
             )
 
-            is TodayState.Ready -> TodayContent(state.today, onAction)
+            is TodayState.Ready -> TodayContent(state.today, onOpenBlock)
         }
     }
 }
 
 @Composable
-private fun TodayContent(today: TodayUi, onAction: (TodayAction) -> Unit) {
+private fun TodayContent(today: TodayUi, onOpenBlock: (BlockUi) -> Unit) {
     val spacing = GilTheme.spacing
     Column(modifier = Modifier.fillMaxSize()) {
         // The plan's rows pad themselves; everything else keeps to the screen margin.
@@ -111,19 +119,20 @@ private fun TodayContent(today: TodayUi, onAction: (TodayAction) -> Unit) {
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            Blocks(today, onAction)
+            Blocks(today, onOpenBlock)
             WeekStrip(today, margin)
         }
-        today.next?.let {
+        today.next?.let { next ->
             PrimaryActionButton(
                 text = stringResource(
                     if (today.firstLesson) R.string.home_start_first_lesson else R.string.home_continue
                 ),
-                onClick = { onAction(TodayAction.OnContinueClick) },
+                onClick = { onOpenBlock(next) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = spacing.screenMargin)
-                    .padding(bottom = spacing.screenMargin)
+                    // A gap above, so text scrolling under never touches the button.
+                    .padding(top = spacing.itemGap, bottom = spacing.screenMargin)
             )
         }
     }
@@ -140,6 +149,8 @@ private fun GoalProgress(studied: Int, goal: Int, modifier: Modifier = Modifier)
         ) {
             Text(
                 text = stringResource(R.string.home_studied_today, studied),
+                // Keeps the goal apart when both only just fit on one line.
+                modifier = Modifier.padding(end = GilTheme.spacing.itemGap),
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
@@ -159,7 +170,7 @@ private fun GoalProgress(studied: Int, goal: Int, modifier: Modifier = Modifier)
 }
 
 @Composable
-private fun Blocks(today: TodayUi, onAction: (TodayAction) -> Unit) {
+private fun Blocks(today: TodayUi, onOpenBlock: (BlockUi) -> Unit) {
     val colors = MaterialTheme.colorScheme
     Column {
         today.blocks.forEachIndexed { index, block ->
@@ -183,7 +194,7 @@ private fun Blocks(today: TodayUi, onAction: (TodayAction) -> Unit) {
                         block.count,
                         block.minutes
                     ),
-                    onClick = { onAction(TodayAction.OnBlockClick(block)) },
+                    onClick = { onOpenBlock(block) },
                     trailing = chevron
                 )
 
@@ -200,7 +211,7 @@ private fun Blocks(today: TodayUi, onAction: (TodayAction) -> Unit) {
                     ListRow(
                         headline = block.title.asString(),
                         supporting = if (block.enoughNewWords) "$detail\n$enough" else detail,
-                        onClick = { onAction(TodayAction.OnBlockClick(block)) },
+                        onClick = { onOpenBlock(block) },
                         trailing = chevron
                     )
                 }
@@ -223,11 +234,11 @@ private fun TodayMessage.text(): Int = when (this) {
 @PreviewLightDark
 @Composable
 private fun TodayScreenPreview() {
-    GilTheme { Surface { TodayScreen(state = TodayPreviewData.reviewsDue, onAction = {}) } }
+    GilTheme { Surface { TodayScreen(state = TodayPreviewData.reviewsDue, onAction = {}, onOpenBlock = {}) } }
 }
 
 @Preview
 @Composable
 private fun TodayScreenFirstDayPreview() {
-    GilTheme { Surface { TodayScreen(state = TodayPreviewData.firstDay, onAction = {}) } }
+    GilTheme { Surface { TodayScreen(state = TodayPreviewData.firstDay, onAction = {}, onOpenBlock = {}) } }
 }

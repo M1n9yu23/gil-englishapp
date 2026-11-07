@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
@@ -44,12 +45,15 @@ data object TestPageRoute : NavKey
 /**
  * The main host's placeholders, with the Today, Path and Words roots swapped for stand-ins that
  * need no DI graph. The Path root's button pushes [TestPageRoute] onto the Path stack. The Today
- * root starts at the screen margin, like the real one.
+ * root starts at the screen margin, like the real one, unless [today] draws it.
  */
-fun EntryProviderScope<NavKey>.testMainEntries(navigator: Navigator) {
-    entry<TodayRoute> {
+fun EntryProviderScope<NavKey>.testMainEntries(
+    navigator: Navigator,
+    today: @Composable () -> Unit = {
         Text(TEST_TODAY_ROOT, modifier = Modifier.fillMaxSize().padding(start = Spacing().screenMargin))
     }
+) {
+    entry<TodayRoute> { today() }
     entry<PathRoute> {
         Column(modifier = Modifier.fillMaxSize()) {
             Text(TEST_PATH_ROOT)

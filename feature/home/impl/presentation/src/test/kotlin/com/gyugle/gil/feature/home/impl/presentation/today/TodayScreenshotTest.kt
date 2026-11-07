@@ -36,7 +36,7 @@ class TodayScreenshotTest {
 
     private fun capture(state: TodayState) {
         composeRule.mainClock.autoAdvance = false
-        composeRule.setContent { GilTheme { Surface { TodayScreen(state = state, onAction = {}) } } }
+        composeRule.setContent { GilTheme { Surface { TodayScreen(state = state, onAction = {}, onOpenBlock = {}) } } }
         // Past the progress bar's animation, the same instant in every image.
         composeRule.mainClock.advanceTimeBy(SETTLED_MILLIS)
         composeRule.onRoot().captureRoboImage()

@@ -23,7 +23,6 @@ import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.goal.api.GoalObserver
 import com.gyugle.gil.feature.home.impl.domain.introducedOn
-import com.gyugle.gil.feature.home.impl.domain.model.NextStep
 import com.gyugle.gil.feature.home.impl.domain.planToday
 import com.gyugle.gil.feature.home.impl.domain.reviewedOn
 import com.gyugle.gil.feature.home.impl.domain.weekOf
@@ -40,7 +39,6 @@ import javax.inject.Inject
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -52,9 +50,9 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.mapLatest
-import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.update
 import timber.log.Timber
 
 /**
@@ -70,38 +68,16 @@ class TodayViewModel @Inject constructor(
     private val clock: StudyClock
 ) : ViewModel() {
 
-    private val eventChannel = Channel<TodayEvent>()
-    val events: Flow<TodayEvent> = eventChannel.receiveAsFlow()
-
     private val retries = MutableStateFlow(0)
 
     val state: StateFlow<TodayState> = combine(today(), retries) { day, _ -> day }
-        .flatMapLatest(::observeDay)
+        .flatMapLatest { day -> observeDay(day).onStart { emit(TodayState.Loading) } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), TodayState.Loading)
 
     fun onAction(action: TodayAction) {
         when (action) {
-            TodayAction.OnContinueClick -> (state.value as? TodayState.Ready)?.today?.next?.let(::open)
-
-            is TodayAction.OnBlockClick -> when (val block = action.block) {
-                is BlockUi.Review -> send(TodayEvent.OpenReview(block.count))
-                is BlockUi.Lesson -> send(TodayEvent.OpenLesson(block.id))
-                BlockUi.ReviewDone, BlockUi.CourseDone -> Unit
-            }
-
-            TodayAction.OnRetryClick -> retries.value += 1
+            TodayAction.OnRetryClick -> retries.update { it + 1 }
         }
-    }
-
-    private fun open(step: NextStep) = send(
-        when (step) {
-            is NextStep.Review -> TodayEvent.OpenReview(step.limit)
-            is NextStep.Lesson -> TodayEvent.OpenLesson(step.id)
-        }
-    )
-
-    private fun send(event: TodayEvent) {
-        viewModelScope.launch { eventChannel.send(event) }
     }
 
     /** The study day, again whenever it changes. */

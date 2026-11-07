@@ -15,9 +15,6 @@
  */
 package com.gyugle.gil.feature.home.impl.domain.model
 
-import com.gyugle.gil.feature.curriculum.api.LessonId
-import com.gyugle.gil.feature.curriculum.api.LessonOverview
-
 /**
  * What to study today, in order: [review] up to today's share of the goal, then [lesson], then
  * [moreReview] when more cards are due than that share. [next] is what "continue" opens.
@@ -40,19 +37,4 @@ data class TodayPlan(
 ) {
     /** Every lesson of the course is done. */
     val courseDone: Boolean get() = lesson == null
-}
-
-/** [count] cards due, about [minutes] long. */
-data class ReviewBlock(val count: Int, val minutes: Int)
-
-/**
- * The next lesson in course order. [recommended] is false when it would bring more new items than
- * today has room for; it still opens, the plan just does not lead with it.
- */
-data class LessonBlock(val lesson: LessonOverview, val recommended: Boolean)
-
-sealed interface NextStep {
-    data class Review(val limit: Int) : NextStep
-
-    data class Lesson(val id: LessonId) : NextStep
 }

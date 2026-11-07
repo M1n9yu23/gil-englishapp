@@ -52,7 +52,7 @@ private object WeekStripTokens {
 
 /**
  * The streak and the seven days of this week of [today]. A study day is filled with a check, today has a
- * stronger ring, and days to come are faint. Read as one sentence: how many days this week.
+ * stronger ring, and muted days are faint. Read as one sentence: how many days this week.
  */
 @Composable
 internal fun WeekStrip(today: TodayUi, modifier: Modifier = Modifier) {
@@ -124,7 +124,7 @@ private fun DayMark(day: DayUi) {
         else -> Box(
             modifier.border(
                 WeekStripTokens.DayBorder,
-                if (day.isFuture) colors.outlineVariant else colors.outline,
+                if (day.muted) colors.outlineVariant else colors.outline,
                 CircleShape
             )
         )

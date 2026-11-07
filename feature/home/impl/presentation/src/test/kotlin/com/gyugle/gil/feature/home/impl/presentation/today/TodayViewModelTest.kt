@@ -20,7 +20,6 @@ import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEqualTo
-import assertk.assertions.isInstanceOf
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
@@ -32,7 +31,6 @@ import com.gyugle.gil.feature.curriculum.api.SenseId
 import com.gyugle.gil.feature.curriculum.api.Sentence
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.goal.api.GoalObserver
-import com.gyugle.gil.feature.home.impl.domain.model.NextStep
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
 import com.gyugle.gil.feature.progress.api.FakeProgressObserver
@@ -112,7 +110,7 @@ class TodayViewModelTest {
 
             assertThat(today.message).isEqualTo(TodayMessage.FIRST_DAY)
             assertThat(today.firstLesson).isEqualTo(true)
-            assertThat(today.next).isEqualTo(NextStep.Lesson(first.id))
+            assertThat((today.next as BlockUi.Lesson).id).isEqualTo(first.id)
             assertThat(today.blocks).containsExactly(
                 BlockUi.Lesson(
                     id = first.id,
@@ -134,7 +132,7 @@ class TodayViewModelTest {
             val today = ready()
 
             assertThat(today.message).isEqualTo(null)
-            assertThat(today.next).isEqualTo(NextStep.Review(2))
+            assertThat(today.next).isEqualTo(today.blocks.first())
             assertThat(today.blocks.first()).isEqualTo(BlockUi.Review(count = 2, minutes = 1, more = false))
             assertThat((today.blocks[1] as BlockUi.Lesson).id).isEqualTo(second.id)
         }
@@ -146,12 +144,12 @@ class TodayViewModelTest {
         progress.cards.value = listOf(card("a", due = 0))
 
         viewModel().state.test {
-            assertThat(ready().next).isEqualTo(NextStep.Review(1))
+            assertThat(ready().next).isEqualTo(BlockUi.Review(count = 1, minutes = 1, more = false))
 
             progress.cards.value = listOf(card("a", due = 3, last = 0, reviews = 3))
 
             val today = readyWhen { it.blocks.first() == BlockUi.ReviewDone }
-            assertThat(today.next).isEqualTo(NextStep.Lesson(second.id))
+            assertThat((today.next as BlockUi.Lesson).id).isEqualTo(second.id)
         }
     }
 
@@ -180,12 +178,16 @@ class TodayViewModelTest {
         progress.cards.value = listOf(card("a", due = 1))
 
         viewModel().state.test {
-            assertThat(ready().next).isEqualTo(NextStep.Lesson(second.id))
+            assertThat((ready().next as BlockUi.Lesson).id).isEqualTo(second.id)
 
             clock.advanceBy(1.days)
             advanceTimeBy(1.minutes)
 
-            assertThat(readyWhen { it.next is NextStep.Review }.next).isEqualTo(NextStep.Review(1))
+            assertThat(
+                readyWhen {
+                    it.next is BlockUi.Review
+                }.next
+            ).isEqualTo(BlockUi.Review(count = 1, minutes = 1, more = false))
         }
     }
 
@@ -216,37 +218,7 @@ class TodayViewModelTest {
             course.error = null
             viewModel.onAction(TodayAction.OnRetryClick)
 
-            assertThat(ready().next).isEqualTo(NextStep.Lesson(first.id))
-        }
-    }
-
-    @Test
-    fun continue_opensWhatThePlanLeadsWith() = runTest(dispatcher) {
-        progress.completedLessons.value = setOf(first.id)
-        progress.cards.value = listOf(card("a", due = 0), card("b", due = 0))
-        val viewModel = viewModel()
-
-        viewModel.state.test {
-            ready()
-            viewModel.events.test {
-                viewModel.onAction(TodayAction.OnContinueClick)
-
-                assertThat(awaitItem()).isEqualTo(TodayEvent.OpenReview(2))
-            }
-        }
-    }
-
-    @Test
-    fun blockClick_opensThatBlock() = runTest(dispatcher) {
-        val viewModel = viewModel()
-
-        viewModel.state.test {
-            val lessonBlock = ready().blocks.single()
-            viewModel.events.test {
-                viewModel.onAction(TodayAction.OnBlockClick(lessonBlock))
-
-                assertThat(awaitItem()).isInstanceOf<TodayEvent.OpenLesson>()
-            }
+            assertThat((ready().next as BlockUi.Lesson).id).isEqualTo(first.id)
         }
     }
 }

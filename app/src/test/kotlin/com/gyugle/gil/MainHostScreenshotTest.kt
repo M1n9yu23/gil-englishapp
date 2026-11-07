@@ -25,6 +25,15 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.home.impl.presentation.today.BlockUi
+import com.gyugle.gil.feature.home.impl.presentation.today.DayUi
+import com.gyugle.gil.feature.home.impl.presentation.today.LocalizedTextUi
+import com.gyugle.gil.feature.home.impl.presentation.today.TodayMessage
+import com.gyugle.gil.feature.home.impl.presentation.today.TodayScreen
+import com.gyugle.gil.feature.home.impl.presentation.today.TodayState
+import com.gyugle.gil.feature.home.impl.presentation.today.TodayUi
+import java.time.DayOfWeek
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -35,6 +44,28 @@ import org.robolectric.annotation.GraphicsMode
 /** Past every fade, so the capture shows the settled screen. */
 private const val SETTLED_MILLIS = 1_000L
 
+private val firstLesson = BlockUi.Lesson(
+    id = LessonId("lesson.s0-01.1"),
+    title = LocalizedTextUi("영어 소리와 만나기", "Meet the sounds of English"),
+    unitTitle = LocalizedTextUi("길 위에 서기", "Getting started"),
+    minutes = 8,
+    enoughNewWords = false
+)
+
+/** A learner's first day, the Today tab as a new install shows it. */
+private val firstDay = TodayState.Ready(
+    TodayUi(
+        message = TodayMessage.FIRST_DAY,
+        studiedMinutes = 0,
+        goalMinutes = 20,
+        blocks = listOf(firstLesson),
+        next = firstLesson,
+        firstLesson = true,
+        streak = 0,
+        week = DayOfWeek.entries.map { DayUi(it, studied = false, isToday = it == DayOfWeek.MONDAY, muted = true) }
+    )
+)
+
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [35], qualifiers = "ko-w360dp-h760dp-xhdpi", application = Application::class)
@@ -43,7 +74,13 @@ class MainHostScreenshotTest {
 
     private fun capture(@StringRes tab: Int? = null) {
         composeRule.mainClock.autoAdvance = false
-        composeRule.setContent { GilTheme { MainHost(entries = { testMainEntries(it) }) } }
+        composeRule.setContent {
+            GilTheme {
+                MainHost(entries = {
+                    testMainEntries(it, today = { TodayScreen(firstDay, onAction = {}, onOpenBlock = {}) })
+                })
+            }
+        }
         if (tab != null) {
             val label = composeRule.activity.getString(tab)
             composeRule.onNode(hasText(label) and isSelectable()).performClick()

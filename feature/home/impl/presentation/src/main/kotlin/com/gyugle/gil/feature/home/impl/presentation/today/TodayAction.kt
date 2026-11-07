@@ -16,9 +16,5 @@
 package com.gyugle.gil.feature.home.impl.presentation.today
 
 sealed interface TodayAction {
-    data object OnContinueClick : TodayAction
-
-    data class OnBlockClick(val block: BlockUi) : TodayAction
-
     data object OnRetryClick : TodayAction
 }

@@ -15,10 +15,24 @@
  */
 package com.gyugle.gil.feature.home.impl.presentation.today
 
+import androidx.compose.runtime.Immutable
 import com.gyugle.gil.feature.curriculum.api.LessonId
 
-sealed interface TodayEvent {
-    data class OpenReview(val limit: Int) : TodayEvent
+@Immutable
+sealed interface BlockUi {
+    /** [count] cards due, about [minutes] long. [more] is the rest after the lesson. */
+    data class Review(val count: Int, val minutes: Int, val more: Boolean) : BlockUi
 
-    data class OpenLesson(val id: LessonId) : TodayEvent
+    data object ReviewDone : BlockUi
+
+    /** [enoughNewWords] when the lesson would bring more new words than today has room for. */
+    data class Lesson(
+        val id: LessonId,
+        val title: LocalizedTextUi,
+        val unitTitle: LocalizedTextUi,
+        val minutes: Int,
+        val enoughNewWords: Boolean
+    ) : BlockUi
+
+    data object CourseDone : BlockUi
 }

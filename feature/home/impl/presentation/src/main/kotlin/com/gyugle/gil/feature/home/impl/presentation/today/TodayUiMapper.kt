@@ -16,6 +16,7 @@
 package com.gyugle.gil.feature.home.impl.presentation.today
 
 import com.gyugle.gil.feature.home.impl.domain.dayOfWeek
+import com.gyugle.gil.feature.home.impl.domain.model.NextStep
 import com.gyugle.gil.feature.home.impl.domain.model.TodayPlan
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
 import com.gyugle.gil.feature.progress.api.StudyDay
@@ -32,6 +33,7 @@ internal fun TodayPlan.toTodayUi(
     streak: Int
 ): TodayUi {
     val byDay = studyTime.associateBy { it.day }
+    val blocks = blocks()
     return TodayUi(
         message = when {
             firstDay -> TodayMessage.FIRST_DAY
@@ -41,8 +43,12 @@ internal fun TodayPlan.toTodayUi(
         },
         studiedMinutes = byDay[today]?.duration?.inWholeMinutes?.toInt() ?: 0,
         goalMinutes = goalMinutes,
-        blocks = blocks(),
-        next = next,
+        blocks = blocks,
+        next = when (val step = next) {
+            is NextStep.Review -> blocks.firstOrNull { it is BlockUi.Review && it.count == step.limit }
+            is NextStep.Lesson -> blocks.firstOrNull { it is BlockUi.Lesson }
+            null -> null
+        },
         firstLesson = firstDay,
         streak = streak,
         week = week.map { day ->
@@ -50,7 +56,7 @@ internal fun TodayPlan.toTodayUi(
                 dayOfWeek = dayOfWeek(day),
                 studied = byDay[day]?.isStudyDay == true,
                 isToday = day == today,
-                isFuture = day > today
+                muted = day > today || (firstDay && day < today)
             )
         }
     )
@@ -73,7 +79,8 @@ private fun TodayPlan.blocks(): List<BlockUi> = buildList {
                 unitTitle = next.lesson.unitTitle.toLocalizedTextUi(),
                 // About a minute a step.
                 minutes = next.lesson.stepCount,
-                enoughNewWords = !next.recommended
+                // On a review-heavy day the message above already says new words wait.
+                enoughNewWords = !next.recommended && !reviewHeavy
             )
         )
     }
