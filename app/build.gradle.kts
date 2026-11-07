@@ -82,6 +82,9 @@ dependencies {
     implementation(projects.feature.curriculum.impl.presentation)
     implementation(projects.feature.curriculum.impl.data)
     implementation(projects.feature.progress.impl.data)
+    implementation(projects.feature.lesson.api)
+    implementation(projects.feature.lesson.impl.data)
+    implementation(projects.feature.lesson.impl.presentation)
     implementation(projects.feature.goal.impl.data)
     implementation(projects.feature.reminder.impl.data)
     implementation(projects.feature.onboarding.api)
@@ -96,4 +99,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.timber)
+
+    testImplementation(testFixtures(projects.feature.curriculum.api))
 }

@@ -17,9 +17,12 @@ package com.gyugle.gil
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gyugle.gil.core.domain.onSuccess
 import com.gyugle.gil.core.navigation.DeepLinkResolver
 import com.gyugle.gil.core.navigation.DeepLinkTarget
+import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.home.api.TodayRoute
+import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingObserver
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -34,12 +37,14 @@ import kotlinx.coroutines.launch
 
 /**
  * Picks the host, and holds an outside entry until the main host takes it. Onboarding has no tabs
- * to open, so a link that arrives during the first run is dropped.
+ * to open, so a link that arrives during the first run is dropped. Finishing the first run opens
+ * the course's first lesson over the Today tab.
  */
 @HiltViewModel
 class AppStartViewModel @Inject constructor(
     onboardingObserver: OnboardingObserver,
-    private val deepLinkResolver: DeepLinkResolver
+    private val deepLinkResolver: DeepLinkResolver,
+    private val courseObserver: CourseObserver
 ) : ViewModel() {
 
     // Eagerly, so the splash screen's condition sees the value without a collector.
@@ -55,6 +60,20 @@ class AppStartViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             if (host.first { it != AppHost.Loading } == AppHost.Onboarding) _deepLink.value = null
+        }
+        viewModelScope.launch {
+            var previous = AppHost.Loading
+            host.collect { current ->
+                if (previous == AppHost.Onboarding && current == AppHost.Main) openFirstLesson()
+                previous = current
+            }
+        }
+    }
+
+    /** Without the content the first lesson cannot open; the Today tab shows instead. */
+    private suspend fun openFirstLesson() {
+        courseObserver.getFirstLessonId().onSuccess { lessonId ->
+            _deepLink.value = DeepLinkTarget(TodayRoute, routes = listOf(LessonRoute(lessonId)))
         }
     }
 

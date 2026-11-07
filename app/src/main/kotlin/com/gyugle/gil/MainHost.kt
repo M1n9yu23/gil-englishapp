@@ -42,6 +42,7 @@ import com.gyugle.gil.core.navigation.NavigationState
 import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.core.navigation.rememberNavigationState
 import com.gyugle.gil.feature.curriculum.impl.presentation.curriculumEntries
+import com.gyugle.gil.feature.lesson.impl.presentation.lessonEntries
 
 private val destinations = TopLevelDestination.entries
 
@@ -101,6 +102,7 @@ fun MainHost(
 /** Every screen of the main host. Remove a tab's placeholder when its feature brings the root. */
 private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
     curriculumEntries(navigator)
+    lessonEntries(navigator)
     tabRootPlaceholderEntries(navigator)
 }
 

@@ -19,8 +19,14 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
 import com.gyugle.gil.core.navigation.DeepLinkTarget
+import com.gyugle.gil.feature.curriculum.api.ContentError
+import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
+import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.model.Lesson
 import com.gyugle.gil.feature.home.api.TODAY_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TodayRoute
+import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingObserver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -43,7 +49,48 @@ class AppStartViewModelTest {
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun viewModel() = AppStartViewModel(observer, GilDeepLinkResolver())
+    private val firstLesson = Lesson(
+        id = LessonId("lesson.s0-01.1"),
+        title = LocalizedText("매일 조금씩", "A little every day"),
+        goal = LocalizedText("", ""),
+        steps = emptyList(),
+        introduced = emptyList(),
+        next = null
+    )
+    private val course = FakeCourseObserver(firstLesson)
+
+    private fun viewModel() = AppStartViewModel(observer, GilDeepLinkResolver(), course)
+
+    @Test
+    fun onboardingFinished_opensTheFirstLessonOverToday() {
+        val viewModel = viewModel()
+        completed.tryEmit(false)
+
+        completed.tryEmit(true)
+
+        assertThat(viewModel.deepLink.value)
+            .isEqualTo(DeepLinkTarget(TodayRoute, routes = listOf(LessonRoute(firstLesson.id))))
+    }
+
+    @Test
+    fun onboardingFinished_contentUnavailable_opensNothing() {
+        course.error = ContentError.UNAVAILABLE
+        val viewModel = viewModel()
+        completed.tryEmit(false)
+
+        completed.tryEmit(true)
+
+        assertThat(viewModel.deepLink.value).isNull()
+    }
+
+    @Test
+    fun startAfterTheFirstRun_opensNoLesson() {
+        val viewModel = viewModel()
+
+        completed.tryEmit(true)
+
+        assertThat(viewModel.deepLink.value).isNull()
+    }
 
     @Test
     fun host_beforeTheFlagIsRead_isLoading() {
