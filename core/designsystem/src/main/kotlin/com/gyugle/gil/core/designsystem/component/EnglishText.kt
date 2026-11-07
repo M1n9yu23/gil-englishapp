@@ -73,6 +73,21 @@ fun EnglishText(
     Text(text = annotated, modifier = modifier, color = color, textDecoration = textDecoration, style = size.style())
 }
 
+/**
+ * [EnglishText] for a sentence that carries its own spans or links, such as words the learner can
+ * tap. The whole text is set and read as English.
+ */
+@Composable
+fun EnglishText(
+    text: AnnotatedString,
+    modifier: Modifier = Modifier,
+    size: EnglishTextSize = EnglishTextSize.Body,
+    color: Color = Color.Unspecified
+) {
+    val annotated = remember(text) { buildAnnotatedString { withStyle(EnglishSpan) { append(text) } } }
+    Text(text = annotated, modifier = modifier, color = color, style = size.style())
+}
+
 /** English inside surrounding text: same size as its neighbours, Charis, read in English. */
 fun AnnotatedString.Builder.appendEnglish(text: String) {
     withStyle(EnglishSpan) { append(text) }
