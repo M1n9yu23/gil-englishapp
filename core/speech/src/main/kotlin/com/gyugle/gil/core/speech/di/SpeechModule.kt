@@ -18,8 +18,10 @@ package com.gyugle.gil.core.speech.di
 import com.gyugle.gil.core.speech.AndroidOnDeviceRecognizer
 import com.gyugle.gil.core.speech.AndroidTextToSpeechSpeaker
 import com.gyugle.gil.core.speech.AudioRecordVoiceRecorder
+import com.gyugle.gil.core.speech.AudioTrackVoicePlayer
 import com.gyugle.gil.core.speech.OnDeviceRecognizer
 import com.gyugle.gil.core.speech.Speaker
+import com.gyugle.gil.core.speech.VoicePlayer
 import com.gyugle.gil.core.speech.VoiceRecorder
 import dagger.Binds
 import dagger.Module
@@ -34,6 +36,9 @@ internal interface SpeechModule {
 
     @Binds
     fun voiceRecorder(recorder: AudioRecordVoiceRecorder): VoiceRecorder
+
+    @Binds
+    fun voicePlayer(player: AudioTrackVoicePlayer): VoicePlayer
 
     @Binds
     fun onDeviceRecognizer(recognizer: AndroidOnDeviceRecognizer): OnDeviceRecognizer
