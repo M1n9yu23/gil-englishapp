@@ -16,9 +16,11 @@
 package com.gyugle.gil.feature.curriculum.impl.data.di
 
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
+import com.gyugle.gil.feature.curriculum.api.LexiconObserver
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseHolder
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.repository.RoomCourseRepository
+import com.gyugle.gil.feature.curriculum.impl.data.repository.RoomLexiconRepository
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.CourseRepository
 import dagger.Binds
 import dagger.Module
@@ -36,4 +38,7 @@ abstract class CurriculumDataModule {
 
     @Binds
     abstract fun courseObserver(repository: RoomCourseRepository): CourseObserver
+
+    @Binds
+    abstract fun lexiconObserver(repository: RoomLexiconRepository): LexiconObserver
 }

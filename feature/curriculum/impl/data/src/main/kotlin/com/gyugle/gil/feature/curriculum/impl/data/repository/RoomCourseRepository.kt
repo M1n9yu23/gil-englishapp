@@ -21,7 +21,6 @@ import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.UnitId
-import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabase
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadJson
@@ -33,15 +32,12 @@ import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.CourseRepository
 import javax.inject.Inject
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.ensureActive
-import timber.log.Timber
 
 class RoomCourseRepository @Inject constructor(private val databases: ContentDatabaseProvider) :
     CourseRepository,
     CourseObserver {
 
-    override suspend fun getStages(): Outcome<List<Stage>, ContentError> = read { database ->
+    override suspend fun getStages(): Outcome<List<Stage>, ContentError> = databases.read { database ->
         val dao = database.courseDao()
         val canDos = dao.canDos().groupBy { it.stageId }
         val lessonCounts = dao.lessonCounts()
@@ -56,7 +52,7 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         Outcome.Success(stages)
     }
 
-    override suspend fun getUnit(id: UnitId): Outcome<UnitDetail, ContentError> = read { database ->
+    override suspend fun getUnit(id: UnitId): Outcome<UnitDetail, ContentError> = databases.read { database ->
         val dao = database.courseDao()
         val unit = dao.unit(id.value) ?: return@read Outcome.Failure(ContentError.NOT_FOUND)
         // The compiler checks every unit's stage, so a missing one means a broken file.
@@ -64,7 +60,7 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         Outcome.Success(unit.toUnitDetail(stage, dao.lessons(unit.id)))
     }
 
-    override suspend fun getLesson(id: LessonId): Outcome<Lesson, ContentError> = read { database ->
+    override suspend fun getLesson(id: LessonId): Outcome<Lesson, ContentError> = databases.read { database ->
         val dao = database.lessonDao()
         val lesson = dao.lesson(id.value) ?: return@read Outcome.Failure(ContentError.NOT_FOUND)
         val items = dao.items(lesson.id)
@@ -79,23 +75,9 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         )
     }
 
-    override suspend fun getFirstLessonId(): Outcome<LessonId, ContentError> = read { database ->
+    override suspend fun getFirstLessonId(): Outcome<LessonId, ContentError> = databases.read { database ->
         // The compiler refuses a course without lessons.
         val id = checkNotNull(database.lessonDao().firstLessonId()) { "The course has no lessons" }
         Outcome.Success(LessonId(id))
-    }
-
-    /**
-     * Any failure to copy, open or read the database is reported as [ContentError.UNAVAILABLE]: the
-     * screen offers a retry either way, and the cause goes to the log.
-     */
-    private suspend fun <T> read(
-        block: suspend (ContentDatabase) -> Outcome<T, ContentError>
-    ): Outcome<T, ContentError> = try {
-        block(databases.get())
-    } catch (e: Exception) {
-        currentCoroutineContext().ensureActive()
-        Timber.e(e, "Could not read the content database")
-        Outcome.Failure(ContentError.UNAVAILABLE)
     }
 }

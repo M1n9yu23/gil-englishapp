@@ -53,7 +53,9 @@ value class SenseId(override val value: String) : StudyItemId {
 /** A phrase pattern, such as `pattern.how-are-you`. */
 @JvmInline
 @Serializable
-value class PatternId(override val value: String) : StudyItemId {
+value class PatternId(override val value: String) :
+    StudyItemId,
+    EntryId {
     init {
         require(value.hasName(PREFIX)) { "Not a pattern ID: $value" }
     }
@@ -66,7 +68,9 @@ value class PatternId(override val value: String) : StudyItemId {
 /** A letter name, sound or spelling pattern, such as `sound.letter-a`. */
 @JvmInline
 @Serializable
-value class SoundId(override val value: String) : StudyItemId {
+value class SoundId(override val value: String) :
+    StudyItemId,
+    EntryId {
     init {
         require(value.hasName(PREFIX)) { "Not a sound ID: $value" }
     }
