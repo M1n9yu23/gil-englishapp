@@ -36,7 +36,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.scene.SinglePaneSceneStrategy
 import androidx.navigation3.ui.NavDisplay
+import com.gyugle.gil.core.navigation.BottomSheetSceneStrategy
 import com.gyugle.gil.core.navigation.DeepLinkTarget
 import com.gyugle.gil.core.navigation.NavigationState
 import com.gyugle.gil.core.navigation.Navigator
@@ -83,8 +85,10 @@ fun MainHost(
         }
     ) { innerPadding ->
         val transitions = rememberStackTransitions()
+        val sceneStrategies = remember { listOf(BottomSheetSceneStrategy<NavKey>(), SinglePaneSceneStrategy()) }
         NavDisplay(
             entries = navigationState.toEntries(entryProvider { entries(navigator) }),
+            sceneStrategies = sceneStrategies,
             modifier = Modifier
                 .padding(innerPadding)
                 .consumeWindowInsets(innerPadding),

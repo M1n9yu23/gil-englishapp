@@ -21,4 +21,6 @@ dependencies {
     // Navigator and NavigationState expose NavBackStack and NavKey.
     api(libs.androidx.navigation3.ui)
     implementation(libs.androidx.savedstate.compose)
+    // BottomSheetSceneStrategy draws a Material 3 modal bottom sheet.
+    implementation(libs.androidx.compose.material3)
 }
