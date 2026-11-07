@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shadowing steps record the learner. The recording stays in memory and never leaves the device. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Package visibility for the system's speech engines. Nothing else is queried. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
+</manifest>
