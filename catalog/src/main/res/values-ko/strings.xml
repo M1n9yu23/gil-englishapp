@@ -13,7 +13,7 @@
     <string name="catalog_section_states">상태</string>
     <string name="catalog_section_icons">아이콘</string>
 
-    <string name="catalog_sample_type">길을 따라 한 걸음씩</string>
+    <string name="catalog_sample_type">영어는 주어 바로 뒤에 동사가 와요</string>
     <string name="catalog_sample_primary">이어서 하기</string>
     <string name="catalog_sample_secondary">다시 듣기</string>
     <string name="catalog_sample_text_action">오류 신고</string>
