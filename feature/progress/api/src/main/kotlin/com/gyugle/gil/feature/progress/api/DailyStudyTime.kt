@@ -16,5 +16,12 @@
 package com.gyugle.gil.feature.progress.api
 
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.minutes
 
-data class DailyStudyTime(val day: StudyDay, val duration: Duration)
+data class DailyStudyTime(val day: StudyDay, val duration: Duration) {
+    /** Whether this day counts as a study day, toward the streak and the week. */
+    val isStudyDay: Boolean get() = duration >= MIN_STUDY_TIME_PER_DAY
+}
+
+/** A day counts as a study day, toward the streak, with at least this much study. */
+val MIN_STUDY_TIME_PER_DAY: Duration = 5.minutes

@@ -20,6 +20,8 @@ plugins {
 dependencies {
     api(projects.feature.reminder.api)
     api(projects.feature.goal.api)
+    // A reminder says about how long the due reviews take, by the review's own estimate.
+    implementation(projects.feature.review.api)
     // Reminder times are local wall-clock times.
     api(libs.kotlinx.datetime)
 }

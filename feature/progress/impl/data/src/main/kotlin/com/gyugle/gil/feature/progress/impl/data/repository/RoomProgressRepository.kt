@@ -24,6 +24,7 @@ import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
+import com.gyugle.gil.feature.progress.api.MIN_STUDY_TIME_PER_DAY
 import com.gyugle.gil.feature.progress.api.Mistake
 import com.gyugle.gil.feature.progress.api.ProgressCommands
 import com.gyugle.gil.feature.progress.api.ProgressObserver
@@ -38,7 +39,6 @@ import com.gyugle.gil.feature.progress.impl.data.mapper.toEntity
 import com.gyugle.gil.feature.progress.impl.data.mapper.toLog
 import com.gyugle.gil.feature.progress.impl.data.mapper.toReviewCard
 import com.gyugle.gil.feature.progress.impl.domain.FsrsScheduler
-import com.gyugle.gil.feature.progress.impl.domain.MIN_STUDY_TIME_PER_DAY
 import com.gyugle.gil.feature.progress.impl.domain.rate
 import com.gyugle.gil.feature.progress.impl.domain.studyStreak
 import javax.inject.Inject

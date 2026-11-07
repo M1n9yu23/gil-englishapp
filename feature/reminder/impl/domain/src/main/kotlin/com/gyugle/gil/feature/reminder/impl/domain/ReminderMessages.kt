@@ -17,12 +17,8 @@ package com.gyugle.gil.feature.reminder.impl.domain
 
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.reminder.impl.domain.model.ReminderMessage
+import com.gyugle.gil.feature.review.api.reviewMinutes
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
-import kotlin.time.Duration.Companion.seconds
-
-/** About how long one review card takes, for the minutes a reminder mentions. */
-val REVIEW_TIME_ESTIMATE = 30.seconds
 
 /**
  * The reminder to show, or null when the learner has already met today's [goal]: a reminder then
@@ -34,12 +30,5 @@ val REVIEW_TIME_ESTIMATE = 30.seconds
 fun reminderMessageFor(goal: DailyGoal, studiedToday: Duration, dueReviews: Int): ReminderMessage? {
     if (goal.isMetBy(studiedToday)) return null
     if (dueReviews <= 0) return ReminderMessage.NextLesson
-    return ReminderMessage.Reviews(count = dueReviews, minutes = minutesFor(dueReviews))
-}
-
-/** Rounded up and at least one, so a few cards never read as "about 0 minutes". */
-private fun minutesFor(reviews: Int): Int {
-    val total = REVIEW_TIME_ESTIMATE * reviews
-    val whole = total.inWholeMinutes.toInt()
-    return if (total > whole.minutes) whole + 1 else whole.coerceAtLeast(1)
+    return ReminderMessage.Reviews(count = dueReviews, minutes = reviewMinutes(dueReviews))
 }

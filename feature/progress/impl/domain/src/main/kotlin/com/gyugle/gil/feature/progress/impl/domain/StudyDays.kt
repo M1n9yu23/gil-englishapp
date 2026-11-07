@@ -15,17 +15,14 @@
  */
 package com.gyugle.gil.feature.progress.impl.domain
 
+import com.gyugle.gil.feature.progress.api.MIN_STUDY_TIME_PER_DAY
 import com.gyugle.gil.feature.progress.api.StudyDay
-import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
-
-/** A day counts toward the streak with at least this much study. */
-val MIN_STUDY_TIME_PER_DAY = 5.minutes
 
 /** The local time a new study day begins. Late-night study belongs to the evening before. */
 private val DAY_START = LocalTime(hour = 4, minute = 0)
