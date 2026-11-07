@@ -13,7 +13,7 @@ R8을 거친 뒤 동작이 달라질 수 있는 변경은 `staging`으로 확인
 
 ```
 ./gradlew spotlessApply
-./gradlew spotlessCheck verifyDocTranslations lintDebug testDebugUnitTest verifyNoInternetPermission
+./gradlew spotlessCheck lintDebug testDebugUnitTest verifyNoInternetPermission
 ```
 
 CI는 모든 풀 리퀘스트에서 두 번째 줄을 실행합니다.
@@ -24,4 +24,3 @@ CI는 모든 풀 리퀘스트에서 두 번째 줄을 실행합니다.
 - 사용자에게 보이는 문자열은 영어(`values/`)와 한국어(`values-ko/`)가 모두 있어야 합니다.
 - Kotlin 파일에는 라이선스 헤더가 있어야 합니다. `spotlessApply`가 넣어 줍니다.
 - 앱은 INTERNET 권한을 요청하면 안 됩니다. 라이브러리가 넣은 권한도 마찬가지입니다.
-- 공개 Markdown 파일은 영어 `name.md`와 한국어 `name.ko.md` 짝으로 둡니다.

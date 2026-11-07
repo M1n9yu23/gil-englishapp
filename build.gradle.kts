@@ -24,7 +24,6 @@ plugins {
     alias(libs.plugins.room) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.spotless)
-    alias(libs.plugins.convention.root)
 }
 
 // One Spotless setup at the root covers every module and the included build-logic build.

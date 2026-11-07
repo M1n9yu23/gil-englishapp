@@ -36,9 +36,6 @@ jobs:
       - name: Formatting
         run: ./gradlew spotlessCheck
 
-      - name: Document translations
-        run: ./gradlew verifyDocTranslations
-
       - name: Lint
         run: ./gradlew lintDebug
 

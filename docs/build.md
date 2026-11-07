@@ -13,7 +13,7 @@ Use `staging` to check a change that might behave differently after R8.
 
 ```
 ./gradlew spotlessApply
-./gradlew spotlessCheck verifyDocTranslations lintDebug testDebugUnitTest verifyNoInternetPermission
+./gradlew spotlessCheck lintDebug testDebugUnitTest verifyNoInternetPermission
 ```
 
 CI runs the second line on every pull request.
@@ -24,4 +24,3 @@ CI runs the second line on every pull request.
 - Every user-facing string needs an English (`values/`) and a Korean (`values-ko/`) version.
 - Kotlin files need the license header; `spotlessApply` adds it.
 - The app must not request the INTERNET permission, from its own manifest or from a library.
-- Public Markdown files come in pairs: `name.md` in English and `name.ko.md` in Korean.
