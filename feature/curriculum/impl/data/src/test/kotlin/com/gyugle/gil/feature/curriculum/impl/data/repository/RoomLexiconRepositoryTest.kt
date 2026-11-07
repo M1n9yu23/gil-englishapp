@@ -306,6 +306,31 @@ class RoomLexiconRepositoryTest {
         assertThat(broken.search("run", 10)).isEqualTo(Outcome.Failure(ContentError.UNAVAILABLE))
     }
 
+    @Test
+    fun search_moreMatchesThanSqliteBindsAtOnce_readsTheirMeaningsInParts() = runTest {
+        database.openHelper.writableDatabase.apply {
+            repeat(1200) { index ->
+                word("word.z$index", "z$index", "zi", null, " z$index")
+                sense("sense.z$index.n.x", "word.z$index", 0, "noun", "제트", "NULL", "stage.one")
+            }
+        }
+
+        val hits = (repository.search("z", limit = 2000) as Outcome.Success).data
+
+        assertThat(hits.size).isEqualTo(1200)
+        assertThat(hits.all { it.meanings.size == 1 }).isEqualTo(true)
+    }
+
+    @Test
+    fun getSentence_wordRangeOutsideTheText_unavailable() = runTest {
+        database.openHelper.writableDatabase.execSQL(
+            "INSERT INTO sentence (id, text, translationKo, tokens, chunks, literalKo, grammarId) " +
+                """VALUES (9, 'Run.', NULL, '[{"start":0,"end":9,"word":"word.run"}]', NULL, NULL, NULL)"""
+        )
+
+        assertThat(repository.getSentence(9)).isEqualTo(Outcome.Failure(ContentError.UNAVAILABLE))
+    }
+
     private fun Outcome<List<SearchHit>, ContentError>.ids(): List<String> =
         (this as Outcome.Success).data.map { it.id.value }
 

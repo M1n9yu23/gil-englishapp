@@ -91,7 +91,10 @@ class RoomLexiconRepository @Inject constructor(private val databases: ContentDa
             val words = if (korean) dao.wordsMeaning(escaped) else dao.wordsStartingWith(escaped)
             val patterns = if (korean) dao.patternsMeaning(escaped) else dao.patternsStartingWith(escaped)
             val stages = dao.stages().associate { it.id to it.toStageTag() }
-            val senses = dao.sensesOfWords(words.map { it.id }).groupBy { it.wordId }
+            // A short query can match thousands of words; older SQLite takes 999 bound values.
+            val senses = words.map { it.id }.chunked(MAX_IDS_PER_QUERY)
+                .flatMap { dao.sensesOfWords(it) }
+                .groupBy { it.wordId }
             val hits = words.map { word ->
                 SearchHit(
                     id = WordId(word.id),
@@ -114,6 +117,11 @@ class RoomLexiconRepository @Inject constructor(private val databases: ContentDa
         val dao = database.lexiconDao()
         val sentence = dao.sentence(id) ?: return@read Outcome.Failure(ContentError.NOT_FOUND)
         val tokens = StepPayloadJson.decodeFromString<List<TokenDto>>(sentence.tokens).filter { it.word != null }
+        val chunks = sentence.chunks?.let { StepPayloadJson.decodeFromString<List<ChunkDto>>(it) }.orEmpty()
+        // The screen marks words and chunks by these offsets, so a broken range is broken content.
+        (tokens.map { it.start to it.end } + chunks.map { it.start to it.end }).forEach { (start, end) ->
+            check(start in 0 until end && end <= sentence.text.length) { "Sentence $id has a range $start..$end" }
+        }
         val headwords = dao.words(tokens.mapNotNull { it.word }.distinct()).associate { it.id to it.text }
         val stages = dao.stages().associate { it.id to it.toStageTag() }
         val meanings = dao.senses(tokens.mapNotNull { it.sense }.distinct())
@@ -131,10 +139,7 @@ class RoomLexiconRepository @Inject constructor(private val databases: ContentDa
                         sense = token.sense?.let { checkNotNull(meanings[it]) { "Sentence $id links a missing $it" } }
                     )
                 },
-                chunks = sentence.chunks
-                    ?.let { StepPayloadJson.decodeFromString<List<ChunkDto>>(it) }
-                    .orEmpty()
-                    .map { it.toSentenceChunk() },
+                chunks = chunks.map { it.toSentenceChunk() },
                 literalKo = sentence.literalKo,
                 grammar = sentence.grammarId?.let { grammarId ->
                     checkNotNull(dao.grammar(grammarId)) { "Sentence $id links a missing $grammarId" }.toGrammarNote()

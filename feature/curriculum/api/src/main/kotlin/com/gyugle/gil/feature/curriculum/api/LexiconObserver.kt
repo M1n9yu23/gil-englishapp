@@ -37,7 +37,8 @@ interface LexiconObserver {
 
     /**
      * Words and patterns matching [query]: English finds headwords and their forms by prefix,
-     * Korean finds meanings that contain it. Exact headwords come first, then course order.
+     * Korean finds meanings that contain it. The headword itself comes first, then headwords that
+     * start with the query, then the rest; within each, the earliest stage, then alphabetical.
      * A blank query finds nothing.
      */
     suspend fun search(query: String, limit: Int): Outcome<List<SearchHit>, ContentError>

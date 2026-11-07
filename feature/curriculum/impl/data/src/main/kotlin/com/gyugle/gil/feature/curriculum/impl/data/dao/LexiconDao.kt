@@ -104,9 +104,9 @@ interface LexiconDao {
 
     /**
      * Words with a headword or form starting with [prefix]: lowercase, with a straight apostrophe,
-     * LIKE-escaped.
+     * LIKE-escaped. The compiler stores the search key in the same form.
      */
-    @Query("""SELECT * FROM word WHERE replace(searchKey, '’', '''') LIKE '% ' || :prefix || '%' ESCAPE '\'""")
+    @Query("""SELECT * FROM word WHERE searchKey LIKE '% ' || :prefix || '%' ESCAPE '\'""")
     suspend fun wordsStartingWith(prefix: String): List<WordEntity>
 
     /** Words with a meaning that contains [text], LIKE-escaped. */
