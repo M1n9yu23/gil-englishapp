@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import com.android.build.api.dsl.Lint
 import com.gyugle.gil.convention.configureKotlinJvmTarget
+import com.gyugle.gil.convention.configureLint
 import com.gyugle.gil.convention.configureUnitTests
 import com.gyugle.gil.convention.libs
 import org.gradle.api.JavaVersion
@@ -29,12 +31,15 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply("org.jetbrains.kotlin.jvm")
             pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
+            // Android Lint for plain Kotlin modules, so the app's checkDependencies reaches them too.
+            pluginManager.apply("com.android.lint")
 
             extensions.configure<JavaPluginExtension> {
                 sourceCompatibility = JavaVersion.VERSION_17
                 targetCompatibility = JavaVersion.VERSION_17
             }
             configureKotlinJvmTarget()
+            extensions.configure<Lint> { configureLint() }
             configureUnitTests()
 
             dependencies {
