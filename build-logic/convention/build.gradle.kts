@@ -47,6 +47,10 @@ tasks.validatePlugins {
 
 gradlePlugin {
     plugins {
+        register("root") {
+            id = libs.plugins.convention.root.get().pluginId
+            implementationClass = "RootConventionPlugin"
+        }
         register("jvmLibrary") {
             id = libs.plugins.convention.jvm.library.get().pluginId
             implementationClass = "JvmLibraryConventionPlugin"

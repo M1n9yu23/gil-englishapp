@@ -120,11 +120,12 @@ roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin.android", version.ref = "aboutLibraries" }
 
-convention-jvm-library = { id = "gil.jvm.library", version = "unspecified" }
-convention-android-library = { id = "gil.android.library", version = "unspecified" }
-convention-android-library-compose = { id = "gil.android.library.compose", version = "unspecified" }
-convention-android-feature = { id = "gil.android.feature", version = "unspecified" }
-convention-android-application = { id = "gil.android.application", version = "unspecified" }
-convention-android-application-compose = { id = "gil.android.application.compose", version = "unspecified" }
-convention-hilt = { id = "gil.hilt", version = "unspecified" }
-convention-room = { id = "gil.room", version = "unspecified" }
+convention-root = { id = "gil.root" }
+convention-jvm-library = { id = "gil.jvm.library" }
+convention-android-library = { id = "gil.android.library" }
+convention-android-library-compose = { id = "gil.android.library.compose" }
+convention-android-feature = { id = "gil.android.feature" }
+convention-android-application = { id = "gil.android.application" }
+convention-android-application-compose = { id = "gil.android.application.compose" }
+convention-hilt = { id = "gil.hilt" }
+convention-room = { id = "gil.room" }
