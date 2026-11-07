@@ -1,0 +1,215 @@
+id: unit.s1-13
+title: { ko: 강세와 약한 모음, en: Stress and the weak vowel }
+lessons:
+  - id: lesson.s1-13.1
+    title: { ko: 강세, en: Stress }
+    goal: { ko: 단어에서 세게 말하는 음절을 찾을 수 있어요, en: Find the stressed syllable of a word }
+    introduces: [sound.stress]
+    steps:
+      - type: listen
+        en: Banana.
+        ko: 바나나
+        checkVocab: false
+      - type: listen
+        en: Hotel.
+        ko: 호텔
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          우리말 "바나나"는 세 음절을 거의 같은 세기로 말해요. 영어 `banana`는 가운데 `na`만 세고 길고 높게 말해요. 앞뒤 음절은 약하게 지나가요.
+
+          이렇게 세게 말하는 음절을 강세라고 해요. 발음기호에서는 강세 음절 앞에 위쪽에 짧은 세로줄 `ˈ`가 붙어요. `banana`는 `/bəˈnænə/`, `hotel`은 `/hoʊˈtɛl/`이에요.
+
+          `hotel`은 "호텔"처럼 앞을 세게 말하기 쉬운데 영어는 뒤가 세요. 강세 자리는 단어마다 달라서 외워야 하지만 단어 화면의 발음기호와 소리 버튼으로 언제든 확인할 수 있어요.
+        examples:
+          - en: Banana.
+            ko: 바나나
+          - en: Hotel.
+            ko: 호텔
+          - en: Apple.
+            ko: 사과
+      - type: listenChoose
+        en: Hotel.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { ko: 뒤 음절이 세요, correct: true }
+          - { ko: 앞 음절이 세요, why: '우리말 "호텔"처럼 앞을 세게 읽기 쉬워요. 영어 `hotel`은 뒤의 `tel`이 세고 길어요.' }
+      - type: listenChoose
+        en: Pencil.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { ko: 앞 음절이 세요, correct: true }
+          - { ko: 뒤 음절이 세요, why: '뒤 음절은 짧고 약하게 지나갔어요. `pen`이 더 길고 높게 들려요.' }
+      - type: listenChoose
+        en: Banana.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { ko: 첫째 음절이 세요, why: '첫 음절은 짧게 지나가요. 길고 높게 들리는 건 가운데 `na`예요.' }
+          - { ko: 둘째 음절이 세요, correct: true }
+          - { ko: 셋째 음절이 세요, why: '끝 음절은 힘을 빼고 약하게 끝나요. 센 음절은 가운데예요.' }
+      - type: listenChoose
+        en: Begin.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { en: bɪˈgɪn, correct: true }
+          - { en: ˈbɪgɪn, why: '이 표기는 앞 음절이 세다는 뜻이에요. 들은 소리는 뒤의 `gin`이 세요.' }
+      - type: shadow
+        en: Banana.
+        ko: 바나나
+        checkVocab: false
+      - type: shadow
+        en: Hotel.
+        ko: 호텔
+        checkVocab: false
+  - id: lesson.s1-13.2
+    title: { ko: 약한 모음, en: The weak vowel }
+    goal: { ko: 힘을 뺀 모음을 듣고 알아챌 수 있어요, en: Hear the weak vowel }
+    introduces: [sound.schwa]
+    steps:
+      - type: listen
+        en: Sofa.
+        ko: 소파
+        checkVocab: false
+      - type: listen
+        en: About.
+        ko: ~에 대해, 약
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          `sofa`를 들어 보면 끝의 `a`가 "아"보다 훨씬 약하고 짧아요. `banana`도 센 가운데 음절을 빼면 앞뒤의 `a`가 힘 빠진 "어"처럼 들려요.
+
+          이 약한 모음을 발음기호로 `ə`라고 써요. 강세가 없는 음절에서 자주 나요. 영어에서 가장 흔한 모음이에요. 철자는 `a`, `e`, `i`, `o`, `u` 무엇이든 될 수 있어요.
+
+          `cup`의 `ʌ`도 "어"와 비슷하지만 강세가 있는 소리예요. `ə`는 더 짧고 힘이 없어요. 철자대로 "레몬"처럼 또박또박 읽지 말고 약한 음절은 가볍게 넘어가요.
+        examples:
+          - en: Sofa.
+            ko: 소파
+          - en: About.
+            ko: ~에 대해, 약
+          - en: Lemon.
+            ko: 레몬
+          - en: Seven.
+            ko: 일곱
+      - type: listenChoose
+        en: Lemon.
+        item: sound.schwa
+        checkVocab: false
+        options:
+          - { en: ˈlɛmən, correct: true }
+          - { en: ˈlɛmoʊn, why: '"레몬"처럼 `o`를 "오"로 읽은 표기예요. 강세가 없는 `o`는 약한 `ə`로 나요.' }
+      - type: listenChoose
+        en: About.
+        item: sound.schwa
+        checkVocab: false
+        options:
+          - { en: əˈbaʊt, correct: true }
+          - { en: ˈæbaʊt, why: '첫 `a`를 "애"로 세게 읽은 표기예요. 강세는 뒤에 있고 첫 `a`는 약한 `ə`예요.' }
+      - type: listenChoose
+        en: Seven.
+        item: sound.schwa
+        checkVocab: false
+        options:
+          - { en: ˈsɛvən, correct: true }
+          - { en: ˈsɛvɛn, why: '끝의 `e`를 또렷한 "에"로 읽은 표기예요. 강세가 없는 둘째 음절은 약한 `ə`예요.' }
+      - type: listenChoose
+        en: Sofa.
+        item: sound.schwa
+        checkVocab: false
+        options:
+          - { ko: 끝의 a가 약하고 짧아요, correct: true }
+          - { ko: 끝의 a가 또렷한 "아"예요, why: '강세는 앞의 `so`에 있어요. 끝의 `a`는 힘을 뺀 `ə`예요.' }
+      - type: shadow
+        en: Lemon.
+        ko: 레몬
+        checkVocab: false
+      - type: shadow
+        en: About.
+        ko: ~에 대해, 약
+        checkVocab: false
+      - type: dictation
+        en: Sofa.
+        ko: 소파
+        item: sound.schwa
+        checkVocab: false
+  - id: lesson.s1-13.3
+    title: { ko: 강세 듣기, en: Hearing stress }
+    goal: { ko: 강세 위치가 다른 단어를 듣고 구별할 수 있어요, en: Hear where the stress falls }
+    introduces: []
+    steps:
+      - type: listen
+        en: Pizza.
+        ko: 피자
+        checkVocab: false
+      - type: listen
+        en: Guitar.
+        ko: 기타
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          우리말로 익숙한 단어도 영어로는 강세가 있어요. `pizza`는 앞이 세고 `guitar`는 뒤가 세요. 우리말 습관대로 고르게 말하지 말고 단어마다 소리로 확인해요.
+
+          강세를 찾을 때는 단어를 들으며 손뼉을 쳐 보세요. 가장 길고 높게 들리는 음절에서 세게 치면 돼요. 나머지 음절의 모음은 앞 과에서 배운 약한 `ə`일 때가 많아요.
+
+          `computer` 끝의 `ɚ`는 `er`의 약한 소리예요. 강세 없이 혀만 살짝 말고 짧게 끝내요.
+        examples:
+          - en: Pizza.
+            ko: 피자
+          - en: Guitar.
+            ko: 기타
+          - en: Computer.
+            ko: 컴퓨터
+      - type: listenChoose
+        en: Guitar.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { ko: 뒤 음절이 세요, correct: true }
+          - { ko: 앞 음절이 세요, why: '앞의 `gui`는 짧게 지나가요. 길고 높게 들리는 건 뒤의 `tar`예요.' }
+      - type: listenChoose
+        en: Pizza.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { ko: 앞 음절이 세요, correct: true }
+          - { ko: 뒤 음절이 세요, why: '끝의 `a`는 약한 `ə`로 짧게 끝나요. 센 음절은 앞의 `pi`예요.' }
+      - type: listenChoose
+        en: Computer.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { en: kəmˈpjuːtɚ, correct: true }
+          - { en: ˈkʌmpjutɚ, why: '"컴퓨터"처럼 앞을 세게 읽은 표기예요. 영어는 둘째 음절 `pu`가 세요.' }
+      - type: listenChoose
+        en: Animal.
+        item: sound.stress
+        checkVocab: false
+        options:
+          - { ko: 첫째 음절이 세요, correct: true }
+          - { ko: 둘째 음절이 세요, why: '가운데 음절은 약한 `ə`로 짧게 지나가요. 센 음절은 맨 앞의 `a`예요.' }
+          - { ko: 셋째 음절이 세요, why: '끝 음절도 약해요. 길고 높게 들리는 건 맨 앞이에요.' }
+      - type: listenChoose
+        en: Panda.
+        item: sound.schwa
+        checkVocab: false
+        options:
+          - { en: ˈpændə, correct: true }
+          - { en: ˈpændɑː, why: '끝의 `a`를 또렷한 "아"로 읽은 표기예요. 강세 없는 끝 음절은 약한 `ə`예요.' }
+      - type: shadow
+        en: Guitar.
+        ko: 기타
+        checkVocab: false
+      - type: shadow
+        en: Computer.
+        ko: 컴퓨터
+        checkVocab: false
+      - type: shadow
+        en: Animal.
+        ko: 동물
+        checkVocab: false

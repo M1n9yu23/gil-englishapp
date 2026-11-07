@@ -1,0 +1,82 @@
+# Chunks such as "I'd like ~". The format is described in docs/content.md.
+
+# Greetings (s1-19)
+- id: pattern.thank-you
+  text: Thank you.
+  ko: 고마워요
+  note: "`Thanks.`보다 조금 더 정중해요. 가게나 식당에서 누구에게나 써요."
+  examples:
+    - en: Thank you, @Mina.
+      ko: 고마워요, 미나 씨.
+- id: pattern.youre-welcome
+  text: You're welcome.
+  ko: 별말씀을요, 천만에요
+  note: "`Thank you.`에 대한 대답이에요. `welcome`이 들어 있지만 환영한다는 뜻이 아니에요."
+  examples:
+    - en: You're welcome.
+      ko: 별말씀을요.
+- id: pattern.how-are-you
+  text: How are you?
+  ko: 잘 지내요?
+  note: 정말 안부를 묻기보다 인사에 가까워요. 짧게 대답하고 되물으면 돼요.
+  examples:
+    - en: Hi, @Jun. How are you?
+      ko: 안녕하세요, 준 씨. 잘 지내요?
+
+# Inflections. course.yaml gates each kind of form on one of these.
+- id: pattern.plural-s
+  text: ~s
+  ko: 둘 이상을 말할 때(복수)
+  level: a1
+  examples:
+    - en: I have two cats.
+      ko: 저는 고양이가 두 마리 있어요.
+- id: pattern.possessive-s
+  text: ~'s
+  ko: ~의(소유)
+  level: a1
+  examples:
+    - en: This is Mina's book.
+      ko: 이건 미나의 책이에요.
+- id: pattern.third-person-s
+  text: He ~s
+  ko: 그 사람이 하는 일(3인칭 단수 현재)
+  level: a1
+  examples:
+    - en: She plays tennis.
+      ko: 그녀는 테니스를 쳐요.
+- id: pattern.present-continuous
+  text: be ~ing
+  ko: 지금 하고 있는 일
+  level: a1
+  examples:
+    - en: I'm reading a book.
+      ko: 저는 책을 읽고 있어요.
+- id: pattern.past-simple
+  text: ~ed
+  ko: 지난 일(과거)
+  level: a2
+  examples:
+    - en: I walked to school.
+      ko: 저는 학교에 걸어갔어요.
+- id: pattern.present-perfect
+  text: have ~ed
+  ko: 지금까지 해 본 일, 막 끝난 일(현재완료)
+  level: a2
+  examples:
+    - en: I have finished my homework.
+      ko: 숙제를 다 했어요.
+- id: pattern.comparative
+  text: ~er than
+  ko: ~보다 더 ~한(비교급)
+  level: a2
+  examples:
+    - en: The dog is bigger than the cat.
+      ko: 개가 고양이보다 커요.
+- id: pattern.superlative
+  text: the ~est
+  ko: 가장 ~한(최상급)
+  level: a2
+  examples:
+    - en: This is the biggest room.
+      ko: 여기가 가장 큰 방이에요.

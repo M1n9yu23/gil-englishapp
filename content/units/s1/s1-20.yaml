@@ -1,0 +1,227 @@
+id: unit.s1-20
+title: { ko: 1단계 정리, en: Stage 1 review }
+lessons:
+  - id: lesson.s1-20.1
+    title: { ko: 소리 정리, en: Sounds review }
+    goal: { ko: 1단계에서 배운 헷갈리는 소리를 구별할 수 있어요, en: Tell apart the tricky sounds of stage 1 }
+    introduces: []
+    steps:
+      - type: explain
+        checkVocab: false
+        text: |
+          1단계에서 연습한 헷갈리는 소리를 한 번씩 다시 들어요. 틀린 소리는 복습에 다시 나와요.
+
+          `f`와 `v`는 윗니를 아랫입술에 대요. `p`와 `b`는 두 입술을 붙였다 떼요.
+
+          `r`은 혀를 뒤로 말고 혀끝이 어디에도 닿지 않아요. `l`은 혀끝이 윗잇몸에 닿아요. `th`는 혀끝을 이 사이에 둬요.
+
+          긴 모음은 길게 내고 짧은 모음은 힘을 빼고 짧게 내요. 자음이 겹칠 때는 사이에 "으"를 넣지 않아요.
+        examples:
+          - en: Fan.
+            ko: 선풍기.
+          - en: Pan.
+            ko: 프라이팬.
+          - en: Right.
+            ko: 오른쪽.
+          - en: Light.
+            ko: 빛.
+      - type: minimalPair
+        words: [fan, pan]
+        answer: fan
+        item: sound.f
+        why: "들린 건 `fan`이에요. 윗니를 아랫입술에 대고 바람을 낸 소리였어요. `pan`은 두 입술을 붙였다 터뜨려요."
+      - type: minimalPair
+        words: [vest, best]
+        answer: best
+        item: sound.b
+        why: "들린 건 `best`예요. 두 입술을 붙였다 뗀 소리였어요. `vest`는 윗니를 아랫입술에 대고 목을 울려요."
+      - type: minimalPair
+        words: [right, light]
+        answer: right
+        item: sound.r
+        why: "들린 건 `right`예요. 혀를 뒤로 말고 혀끝이 어디에도 닿지 않았어요. `light`는 혀끝이 윗잇몸에 닿아요."
+      - type: minimalPair
+        words: [rock, lock]
+        answer: lock
+        item: sound.l
+        why: "들린 건 `lock`이에요. 혀끝이 윗잇몸에 닿는 소리였어요. `rock`은 혀를 뒤로 말아요."
+      - type: listenChoose
+        checkVocab: false
+        en: Three.
+        item: sound.th-voiceless
+        options:
+          - { en: three, correct: true }
+          - { en: tree, why: "`tree`는 혀끝이 윗잇몸에 닿는 `t`로 시작해요. 들린 건 혀끝을 이 사이에 둔 `th`예요." }
+          - { en: free, why: "`free`는 윗니를 아랫입술에 대는 `f`로 시작해요. 들린 건 혀끝을 이 사이에 둔 `th`예요." }
+      - type: minimalPair
+        words: [they, day]
+        answer: they
+        item: sound.th-voiced
+        why: "들린 건 `they`예요. 혀끝을 이 사이에 두고 목을 울린 소리였어요. `day`는 혀끝이 윗잇몸에 닿아요."
+      - type: minimalPair
+        words: [ship, sheep]
+        answer: sheep
+        item: sound.ee-ea
+        why: "들린 건 `sheep`이에요. 입꼬리를 당기고 길게 \"이이\"라고 했어요. `ship`은 힘을 빼고 짧게 내요."
+      - type: minimalPair
+        words: [cap, cape]
+        answer: cape
+        item: sound.a-e
+        why: "들린 건 `cape`예요. 끝에 `e`가 붙어서 `a`가 \"에이\"로 났어요. `cap`은 입을 크게 벌린 짧은 \"애\"예요."
+      - type: listenChoose
+        checkVocab: false
+        en: Grass.
+        item: sound.blend-r
+        options:
+          - { en: grass, correct: true }
+          - { en: glass, why: "`glass`는 `g` 뒤에 혀끝이 윗잇몸에 닿는 `l`이 붙어요. 들린 건 혀를 만 `r`이었어요." }
+      - type: minimalPair
+        words: [sport, support]
+        answer: sport
+        item: sound.blend-s
+        why: "들린 건 `sport`예요. `s`와 `p`가 모음 없이 한 박자로 붙었어요. `support`는 그 사이에 약한 \"어\"가 들어가요."
+      - type: shadow
+        en: "Three, four, five."
+        ko: "셋, 넷, 다섯."
+  - id: lesson.s1-20.2
+    title: { ko: 숫자와 단어 정리, en: Numbers and words review }
+    goal: { ko: 배운 숫자와 단어를 듣고 쓸 수 있어요, en: Hear and write the numbers and words you learned }
+    introduces: []
+    steps:
+      - type: listen
+        en: "Thirteen, thirty."
+        ko: "열셋, 서른."
+      - type: explain
+        text: |
+          `thirteen`처럼 `teen`으로 끝나는 숫자는 뒤를 세게 말해요. `thirty`처럼 `ty`로 끝나는 숫자는 앞을 세게 말해요. 14와 40, 15와 50도 마찬가지예요.
+
+          숫자 다음에는 1단계에서 배운 단어를 섞어서 듣고 써요. 틀린 단어는 복습에 다시 나와요.
+        examples:
+          - en: Fourteen.
+            ko: 열넷.
+          - en: Forty.
+            ko: 마흔.
+      - type: listenChoose
+        en: Fifty.
+        item: sense.fifty.num.count
+        options:
+          - { en: "50", correct: true }
+          - { en: "15", why: "`fifteen`은 뒤의 `teen`을 세게 말해요. 들린 건 앞을 세게 말한 `fifty`예요." }
+          - { en: "5", why: "`five`는 한 음절이에요. 들린 건 두 음절인 `fifty`예요." }
+      - type: dictation
+        item: sense.forty.num.count
+        en: "Forty, fourteen, four."
+        ko: "마흔, 열넷, 넷."
+      - type: chooseMeaning
+        en: The cup is red.
+        item: sense.red.adj.color
+        options:
+          - { ko: 그 컵은 빨간색이에요, correct: true }
+          - { ko: 그 가방은 빨간색이에요, why: "가방은 `bag`이에요. `cup`은 컵이에요." }
+          - { ko: 그 컵은 커요, why: "크다는 `big`이에요. `red`는 빨간색이에요." }
+      - type: listenChoose
+        en: The cat is in the box.
+        item: sense.box.n.container
+        options:
+          - { ko: 고양이가 상자 안에 있어요, correct: true }
+          - { ko: 개가 상자 안에 있어요, why: "`dog`가 아니라 `cat`이 들렸어요. 입을 크게 벌린 짧은 \"애\" 소리예요." }
+          - { ko: 고양이가 침대에 있어요, why: "`bed`가 아니라 `box`가 들렸어요. 끝에 `ks` 소리가 나요." }
+      - type: chooseEnglish
+        ko: 저는 학생이에요.
+        item: sense.am.v.be
+        options:
+          - { en: I am a student., correct: true }
+          - { en: You are a student., why: "`You are`는 상대에 대해 말할 때 써요. 나에 대해서는 `I am`이에요." }
+          - { en: I is a student., why: "`I`와 짝인 것은 `am`이에요. `is`는 그것이나 그 사람에 대해 말할 때 써요." }
+      - type: arrange
+        item: sense.room.n.space
+        ko: 그 개는 방 안에 있어요.
+        en: The dog is in the room.
+        extra: [a]
+      - type: fillBlank
+        item: sense.of.prep.part
+        en: This is a cup ___ tea.
+        ko: 이건 차 한 잔이에요.
+        options:
+          - { en: of, correct: true }
+          - { en: to, why: "`to`는 가는 곳을 말할 때 써요. 컵에 든 것은 `of`로 이어요." }
+          - { en: in, why: "`in`은 \"안에\"예요. \"차 한 잔\"은 `a cup of tea`라고 해요." }
+      - type: spell
+        sense: sense.teacher.n.job
+      - type: shadow
+        en: "Twenty, thirty, forty, fifty."
+        ko: "스물, 서른, 마흔, 쉰."
+  - id: lesson.s1-20.3
+    title: { ko: 첫 대화, en: A first conversation }
+    goal: { ko: 인사부터 헤어질 때까지 짧은 대화를 할 수 있어요, en: Hold a short conversation from hello to goodbye }
+    introduces: []
+    steps:
+      - type: explain
+        text: |
+          아나가 저녁에 준의 집에 놀러 왔어요. 만날 때 인사, 안부, 차 한 잔, 헤어질 때 인사 순서로 대화가 이어져요.
+
+          대화마다 아나나 준이 되어 다음 말을 골라요. 모두 1단계에서 배운 말이에요.
+      - type: dialogue
+        item: pattern.how-are-you
+        lines:
+          - { speaker: Ana, en: "Hi, @Jun.", ko: "안녕, 준아." }
+          - { speaker: Jun, en: "Hi, @Ana. How are you?", ko: "안녕, 아나야. 잘 지내?" }
+        question: 아나가 할 말을 골라요.
+        options:
+          - { en: "I'm fine, thanks. And you?", correct: true }
+          - { en: "Good night, @Jun.", why: "`Good night.`은 밤에 헤어질 때 하는 말이에요. 둘은 지금 막 만났어요." }
+          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+      - type: dialogue
+        item: sense.please.interj.polite
+        lines:
+          - { speaker: Ana, en: "I'm fine, thanks. And you?", ko: "잘 지내, 고마워. 너는?" }
+          - { speaker: Jun, en: Good. Tea?, ko: 잘 지내. 차 마실래? }
+        question: 아나는 차를 마시고 싶어요. 아나가 할 말을 골라요.
+        options:
+          - { en: "Yes, please.", correct: true }
+          - { en: "No, thanks.", why: "`No, thanks.`는 사양하는 말이에요. 마시고 싶으면 `Yes, please.`라고 해요." }
+          - { en: "Yes, I am.", why: "`Yes, I am.`은 `Are you`로 묻는 질문에 하는 대답이에요. 권할 때는 `Yes, please.`로 받아요." }
+      - type: dialogue
+        item: sense.thanks.interj.thank
+        lines:
+          - { speaker: Jun, en: It's hot., ko: 뜨거워. }
+        question: 준이 차를 건네요. 아나가 할 말을 골라요.
+        options:
+          - { en: "Thanks, @Jun.", correct: true }
+          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말을 들었을 때 하는 대답이에요. 차를 받았으면 `Thanks.`라고 해요." }
+          - { en: "Sorry, @Jun.", why: "미안할 일이 아니에요. 차를 받았으니 고맙다고 해요." }
+      - type: dialogue
+        item: sense.ok.adj.fine
+        lines:
+          - { speaker: Ana, en: "I'm sorry, @Jun.", ko: "미안해, 준아." }
+        question: 아나가 차를 조금 쏟았어요. 준이 할 말을 골라요.
+        options:
+          - { en: It's OK., correct: true }
+          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요. 사과에는 `It's OK.`라고 해요." }
+          - { en: "Good, thanks.", why: "`Good, thanks.`는 `How are you?`에 하는 대답이에요." }
+      - type: dialogue
+        item: sense.night.n.dark
+        lines:
+          - { speaker: Ana, en: "Thanks, @Jun. Bye.", ko: "고마워, 준아. 갈게." }
+        question: 밤이 늦었어요. 준이 할 말을 골라요.
+        options:
+          - { en: "Bye, @Ana. Good night.", correct: true }
+          - { en: "Good morning, @Ana.", why: "아침에 만날 때 하는 인사예요. 밤에 헤어질 때는 `Good night.`이에요." }
+          - { en: "Hello, @Ana.", why: "`hello`는 만날 때 하는 인사예요. 헤어질 때는 `bye`예요." }
+      - type: arrange
+        item: pattern.how-are-you
+        ko: "안녕, 준아. 잘 지내?"
+        en: "Hi, @Jun. How are you?"
+        extra: [is]
+      - type: dictation
+        item: pattern.thank-you
+        en: Thank you. Good night.
+        ko: 고마워요. 잘 자요.
+      - type: shadow
+        en: "I'm fine, thanks. And you?"
+        ko: "잘 지내, 고마워. 너는?"
+      - type: explain
+        text: |
+          1단계를 마쳤어요. 알파벳 이름과 소리, 0부터 100까지 숫자, 자주 보는 단어와 인사말을 배웠어요.
+
+          다음 단계인 "첫걸음"에서는 이름을 말하고 자기소개를 해요. 1단계에서 배운 인사말로 대화를 시작해요.

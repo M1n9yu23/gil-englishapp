@@ -1,0 +1,211 @@
+id: unit.s1-16
+title: { ko: "숫자 21부터 100까지, 전화번호", en: "Numbers 21 to 100, phone numbers" }
+lessons:
+  - id: lesson.s1-16.1
+    title: { ko: "30, 40, 50", en: "30, 40, 50" }
+    goal: { ko: 13과 30처럼 헷갈리는 숫자를 구별할 수 있어요, en: Tell 13 from 30 }
+    introduces: [sense.thirty.num.count, sense.forty.num.count, sense.fifty.num.count]
+    steps:
+      - type: listen
+        en: Thirteen, thirty.
+        ko: 열셋, 서른.
+      - type: explain
+        text: |
+          숫자 하나만 말할 때 `thirteen`은 뒤 `teen`을 길고 세게, `thirty`는 앞 `thir`를 세게 말해요. 앞에서 배운 강세가 바로 이 차이를 만들어요. 이어 셀 때는 `teen`도 앞이 세게 들리기도 해서 끝소리가 더 확실한 단서예요.
+
+          끝소리도 달라요. `teen`은 길게 끌다가 `n`으로 닫고, `ty`는 짧게 끝나요. 미국 영어에서는 `thirty`, `forty`의 `t`가 약해져서 "디"처럼 들릴 때가 많아요.
+
+          철자는 `teen`과 같은 자리가 바뀌어요. `thirty`는 `thir`, `fifty`는 `fif`로 시작해요. `forty`에는 `four`와 달리 `u`가 없어요.
+        examples:
+          - en: Thirteen, thirty.
+            ko: 열셋, 서른.
+          - en: Fourteen, forty.
+            ko: 열넷, 마흔.
+          - en: Fifteen, fifty.
+            ko: 열다섯, 쉰.
+      - type: minimalPair
+        words: [thirteen, thirty]
+        answer: thirty
+        why: "`thirty`는 앞을 세게 말하고 끝이 짧아요. `thirteen`은 뒤 `teen`이 길고 세요."
+        item: sound.stress
+      - type: minimalPair
+        words: [fourteen, forty]
+        answer: fourteen
+        why: "`fourteen`은 뒤 `teen`이 길고 세고 `n`으로 끝나요. `forty`는 앞이 세고 끝이 짧아요."
+        item: sound.stress
+      - type: listenChoose
+        en: Forty.
+        item: sense.forty.num.count
+        options:
+          - { en: "40", correct: true }
+          - { en: "14", why: "14는 뒤 `teen`을 세게 말해요. 지금은 앞이 세고 끝이 짧았어요." }
+          - { en: "4", why: "4는 `four`예요. 한 음절이에요. 지금은 뒤에 짧은 `ty`가 붙었어요." }
+      - type: chooseMeaning
+        en: fifty
+        item: sense.fifty.num.count
+        options:
+          - { ko: "50, 쉰", correct: true }
+          - { ko: "15, 열다섯", why: "15는 `fifteen`이에요. `teen`으로 끝나야 13부터 19 사이 숫자예요." }
+          - { ko: "5, 다섯", why: "5는 `five`예요. `ty`가 붙으면 20, 30처럼 십 단위가 돼요." }
+      - type: listenChoose
+        en: Thirty, thirteen.
+        item: sense.thirty.num.count
+        options:
+          - { en: "30 13", correct: true }
+          - { en: "13 30", why: "처음에 앞이 센 `thirty`, 다음에 뒤가 센 `thirteen`이 나왔어요." }
+          - { en: "30 30", why: "두 번째는 `n`으로 닫히는 `teen`이었어요. 13이에요." }
+      - type: fillBlank
+        en: Ten, twenty, ___, forty.
+        ko: 열, 스물, 서른, 마흔.
+        item: sense.thirty.num.count
+        options:
+          - { en: thirty, correct: true }
+          - { en: thirteen, why: "10씩 늘어나는 순서라 30이 와야 해요. `thirteen`은 13이에요." }
+      - type: spell
+        sense: sense.forty.num.count
+      - type: dictation
+        en: Fifteen, fifty.
+        ko: 열다섯, 쉰.
+        item: sense.fifty.num.count
+      - type: shadow
+        en: Thirteen, thirty, fourteen, forty.
+        ko: 열셋, 서른, 열넷, 마흔.
+
+  - id: lesson.s1-16.2
+    title: { ko: 60부터 100까지, en: 60 to 100 }
+    goal: { ko: 21부터 100까지 숫자를 듣고 말할 수 있어요, en: Hear and say numbers up to 100 }
+    introduces: [sense.sixty.num.count, sense.seventy.num.count, sense.eighty.num.count, sense.ninety.num.count, sense.hundred.num.count]
+    steps:
+      - type: listen
+        en: Sixty, seventy, eighty, ninety, one hundred.
+        ko: 예순, 일흔, 여든, 아흔, 백.
+      - type: explain
+        text: |
+          60부터 90까지도 끝에 `ty`를 붙이고 앞을 세게 말해요. `sixty`, `seventy`는 철자 그대로예요. `seventy`는 세 음절이에요.
+
+          철자 두 개만 조심해요. `eighty`는 `t`를 하나만 써요. `ninety`는 `nine`의 `e`를 그대로 둬요.
+
+          100은 `one hundred`예요. `hundred`만 쓰지 않고 앞에 `one`을 붙여요. 말할 때는 `a hundred`라고도 해요.
+        examples:
+          - en: Sixty, seventy.
+            ko: 예순, 일흔.
+          - en: Eighty, ninety, one hundred.
+            ko: 여든, 아흔, 백.
+      - type: listenChoose
+        en: Seventy.
+        item: sense.seventy.num.count
+        options:
+          - { en: "70", correct: true }
+          - { en: "17", why: "17은 `seventeen`이에요. 뒤 `teen`을 세게 말해요. 지금은 앞이 세고 끝이 짧았어요." }
+          - { en: "60", why: "60은 `sixty`예요. 두 음절이에요. `seventy`는 세 음절이에요." }
+      - type: chooseMeaning
+        en: eighty
+        item: sense.eighty.num.count
+        options:
+          - { ko: "80, 여든", correct: true }
+          - { ko: "18, 열여덟", why: "18은 `eighteen`이에요. `teen`으로 끝나야 13부터 19 사이 숫자예요." }
+          - { ko: "8, 여덟", why: "8은 `eight`예요. `ty`가 붙어서 80이 됐어요." }
+      - type: explain
+        checkVocab: false
+        text: |
+          21부터 99까지 중 30, 40처럼 딱 떨어지는 수를 빼고는 우리말처럼 십의 자리를 먼저, 일의 자리를 다음에 말해요. 스물하나는 `twenty-one`, 마흔다섯은 `forty-five`예요. 쓸 때는 두 단어 사이에 `-`를 넣어요.
+
+          두 단어를 끊지 말고 한 번에 이어서 말해요. 보통 뒤의 숫자에 힘이 조금 더 들어가요.
+        examples:
+          - en: Twenty-one.
+            ko: 스물하나.
+          - en: Forty-five.
+            ko: 마흔다섯.
+          - en: Ninety-nine.
+            ko: 아흔아홉.
+      - type: listenChoose
+        en: Sixty-eight.
+        checkVocab: false
+        item: sense.sixty.num.count
+        options:
+          - { en: "68", correct: true }
+          - { en: "86", why: "십의 자리가 먼저 나와요. 86이라면 `eighty-six`예요." }
+          - { en: "78", why: "78이라면 세 음절인 `seventy`로 시작해요. 지금은 두 음절 `sixty`였어요." }
+      - type: chooseEnglish
+        ko: "100, 백"
+        item: sense.hundred.num.count
+        options:
+          - { en: one hundred, correct: true }
+          - { en: hundred, why: "100을 말할 때는 앞에 `one`을 붙여서 `one hundred`라고 해요." }
+          - { en: ninety, why: "`ninety`는 90이에요. 100은 그다음 수예요." }
+      - type: spell
+        sense: sense.ninety.num.count
+      - type: fillBlank
+        en: Ninety-nine, one ___.
+        ko: 아흔아홉, 백.
+        checkVocab: false
+        answers: [hundred]
+        item: sense.hundred.num.count
+      - type: dictation
+        en: Sixty, seventy, eighty.
+        ko: 예순, 일흔, 여든.
+      - type: shadow
+        en: Twenty-one, forty-five, ninety-nine, one hundred.
+        ko: 스물하나, 마흔다섯, 아흔아홉, 백.
+        checkVocab: false
+
+  - id: lesson.s1-16.3
+    title: { ko: 전화번호 읽기, en: Reading phone numbers }
+    goal: { ko: 전화번호를 한 자리씩 듣고 받아 적을 수 있어요, en: Write down a phone number you hear }
+    introduces: []
+    steps:
+      - type: listen
+        en: Five five five, oh one four two.
+        ko: 555-0142.
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          전화번호는 숫자를 한 자리씩 읽어요. 555는 `five five five`라고 해요. 우리말로 "오오오"라고 읽는 것과 같아요.
+
+          0은 알파벳 `O`처럼 `oh`라고 읽을 때가 많아요. `zero`라고 해도 돼요. 우리말에서 0을 "공"이라고 읽는 것과 비슷해요.
+
+          번호 사이의 `-` 자리에서는 잠깐 쉬어요. 그래야 듣는 사람이 덩어리로 기억하기 쉬워요. 이 과의 번호는 미국 영화나 드라마에서 예시로 쓰는 555 번호예요.
+        examples:
+          - en: Five five five, oh one four two.
+            ko: 555-0142.
+          - en: Oh one oh.
+            ko: 010.
+      - type: listenChoose
+        en: Five five five, oh one six three.
+        checkVocab: false
+        options:
+          - { en: 555-0163, correct: true }
+          - { en: 555-0136, why: "순서를 다시 들어 보세요. `six` 다음에 `three`가 나왔어요." }
+          - { en: 555-0173, why: "`seven`은 두 음절이에요. 지금은 한 음절 `six`였어요." }
+      - type: listenChoose
+        en: Five five five, zero one eight nine.
+        item: sense.zero.num.count
+        options:
+          - { en: 555-0189, correct: true }
+          - { en: 555-189, why: "`zero`도 0이에요. 0을 빼면 뒤 번호가 네 자리가 안 돼요." }
+          - { en: 555-0198, why: "`eight`가 먼저, `nine`이 나중에 나왔어요." }
+      - type: chooseEnglish
+        ko: 010을 전화번호로 읽으면?
+        checkVocab: false
+        item: sense.zero.num.count
+        options:
+          - { en: oh one oh, correct: true }
+          - { en: ten, why: "`ten`은 10이에요. 전화번호는 한 자리씩 읽어요." }
+          - { en: zero ten, why: "1과 0도 따로 읽어요. 자리마다 숫자 하나씩이에요." }
+      - type: chooseEnglish
+        ko: 555-0147을 읽으면?
+        checkVocab: false
+        options:
+          - { en: "five five five, oh one four seven", correct: true }
+          - { en: "five fifty-five, oh one four seven", why: "555도 한 자리씩 `five five five`라고 읽어요." }
+          - { en: "five five five, oh fourteen seven", why: "14도 `one four`처럼 한 자리씩 읽어요." }
+      - type: shadow
+        en: Five five five, oh one nine six.
+        ko: 555-0196.
+        checkVocab: false
+      - type: fillBlank
+        en: Five five five, oh one ___ three.
+        ko: 555-0173.
+        checkVocab: false
+        answers: [seven]

@@ -1,0 +1,258 @@
+id: unit.s1-08
+title: { ko: 짧은 모음, en: Short vowels }
+lessons:
+  - id: lesson.s1-08.1
+    title: { ko: a와 e, en: a and e }
+    goal: { ko: bad와 bed를 듣고 구별할 수 있어요, en: Tell bad from bed }
+    introduces: [sound.short-a, sound.short-e]
+    steps:
+      - type: listen
+        en: Bad.
+        ko: 나쁜
+        checkVocab: false
+      - type: listen
+        en: Bed.
+        ko: 침대
+        checkVocab: false
+      - type: explain
+        text: |
+          `bad`와 `bed`는 가운데 모음 하나만 달라요. 요즘 우리말은 "애"와 "에"를 소리로 거의 구별하지 않아서 두 단어가 같게 들리기 쉬워요.
+
+          `a`는 `/æ/`예요. 턱을 아래로 크게 내리고 입꼬리를 옆으로 당긴 채 "애"라고 해요. "아"를 말할 때만큼 입이 벌어져요.
+
+          `e`는 `/ɛ/`예요. 입을 조금만 벌리고 우리말 "에"처럼 내요. 거울을 보며 두 단어를 말해 보면 턱 높이가 달라야 해요.
+        examples:
+          - { en: Man., ko: 남자 }
+          - { en: Men., ko: 남자들 }
+          - { en: Pan., ko: 프라이팬 }
+          - { en: Pen., ko: 펜 }
+        checkVocab: false
+      - type: minimalPair
+        words: [bad, bed]
+        answer: bed
+        item: sound.short-e
+        why: '`bed`는 입을 조금만 벌린 "에"예요. `bad`는 턱이 더 내려가요.'
+      - type: minimalPair
+        words: [man, men]
+        answer: man
+        item: sound.short-a
+        why: '`man`은 턱을 크게 내린 `/æ/`예요. `men`은 입을 조금만 벌려요.'
+      - type: minimalPair
+        words: [pan, pen]
+        answer: pen
+        item: sound.short-e
+        why: '`pen`은 입을 조금만 벌린 "에"예요. `pan`은 입이 크게 벌어져요.'
+      - type: listenChoose
+        en: bat
+        item: sound.short-a
+        checkVocab: false
+        options:
+          - { en: bat, correct: true }
+          - { en: bet, why: '`bet`은 입을 조금 벌린 "에"예요. 들은 단어는 턱이 크게 내려갔어요.' }
+          - { en: pat, why: '모음은 같지만 첫소리가 `p`예요. 들은 단어는 목이 울리는 `b`로 시작했어요.' }
+      - type: chooseEnglish
+        ko: 모음이 입을 크게 벌린 "애" 소리인 단어
+        item: sound.short-a
+        checkVocab: false
+        options:
+          - { en: map, correct: true }
+          - { en: met, why: '`e`는 입을 조금만 벌린 "에"예요.' }
+          - { en: net, why: '`e`는 입을 조금만 벌린 "에"예요. "애" 소리는 `a`로 써요.' }
+      - type: chooseEnglish
+        ko: 모음이 입을 조금만 벌린 "에" 소리인 단어
+        item: sound.short-e
+        checkVocab: false
+        options:
+          - { en: jet, correct: true }
+          - { en: jam, why: '`a`는 턱을 크게 내린 `/æ/`예요.' }
+          - { en: cab, why: '`a`는 턱을 크게 내린 `/æ/`예요. "에" 소리는 `e`로 써요.' }
+      - type: dictation
+        en: Bed.
+        ko: 침대
+        item: sound.short-e
+        checkVocab: false
+      - type: dictation
+        en: Hat.
+        ko: 모자
+        item: sound.short-a
+        checkVocab: false
+      - type: shadow
+        en: Man, men.
+        ko: 남자, 남자들.
+        checkVocab: false
+
+  - id: lesson.s1-08.2
+    title: { ko: "i, o, u", en: "i, o, u" }
+    goal: { ko: "hit, hot, hut을 듣고 구별할 수 있어요", en: "Tell hit, hot and hut apart" }
+    introduces: [sound.short-i, sound.short-o, sound.short-u]
+    steps:
+      - type: listen
+        en: Hit.
+        ko: 치다
+        checkVocab: false
+      - type: listen
+        en: Hot.
+        ko: 뜨거운
+        checkVocab: false
+      - type: listen
+        en: Hut.
+        ko: 오두막
+        checkVocab: false
+      - type: explain
+        text: |
+          세 단어는 `h`와 `t` 사이의 모음만 달라요.
+
+          `i`는 `/ɪ/`예요. 힘을 빼고 짧게 "이"라고 하면 "이"와 "에" 사이쯤으로 들려요. 입꼬리는 당기지 않아요.
+
+          `o`는 `/ɑː/`예요. 미국 영어에서는 입을 크게 벌린 "아"에 가까워서 `hot`이 "핫"처럼 들려요. 글자가 `o`라고 "오"로 읽지 않게 조심해요.
+
+          발음기호에 길다는 표시 `ː`가 붙지만, 철자를 배울 때는 이 소리를 짧은 `o`라고 불러요. `dog`, `long`처럼 "오"에 조금 더 가까운 단어도 있어요.
+
+          `u`는 대부분 `/ʌ/`예요. 입을 조금만 벌리고 짧게 "어"라고 해요. `hot`과 `hut`이 헷갈리면 턱에 손을 대고 말해 봐요. `hot`에서 턱이 더 내려가요.
+        examples:
+          - { en: Sit., ko: 앉다 }
+          - { en: Box., ko: 상자 }
+          - { en: Cup., ko: 컵 }
+        checkVocab: false
+      - type: minimalPair
+        words: [hit, hot]
+        answer: hot
+        item: sound.short-o
+        why: '`hot`은 입을 크게 벌린 "아"예요. `hit`은 힘을 뺀 짧은 "이"예요.'
+      - type: minimalPair
+        words: [hot, hut]
+        answer: hut
+        item: sound.short-u
+        why: '`hut`은 입을 조금만 벌린 짧은 "어"예요. `hot`은 턱을 더 내린 "아"예요.'
+      - type: listenChoose
+        en: hit
+        item: sound.short-i
+        checkVocab: false
+        options:
+          - { en: hit, correct: true }
+          - { en: hot, why: '`hot`은 입을 크게 벌린 "아"예요. 들은 단어는 짧고 힘을 뺀 "이"였어요.' }
+          - { en: hut, why: '`hut`은 짧은 "어"예요. 들은 단어는 "이"와 "에" 사이 소리였어요.' }
+      - type: listenChoose
+        en: cut
+        item: sound.short-u
+        checkVocab: false
+        options:
+          - { en: cut, correct: true }
+          - { en: cot, why: '`cot`은 턱을 크게 내린 "아"예요. 들은 단어는 입을 조금만 벌린 "어"였어요.' }
+          - { en: cat, why: '`cat`은 입꼬리를 당긴 `/æ/`예요. 들은 단어는 힘을 뺀 "어"였어요.' }
+      - type: chooseEnglish
+        ko: 모음이 "아"에 가까운 단어
+        item: sound.short-o
+        checkVocab: false
+        options:
+          - { en: mop, correct: true }
+          - { en: map, why: '`a`는 `/æ/`라서 "애"에 가까워요. 미국 영어에서 "아"에 가까운 건 `o`예요.' }
+          - { en: mud, why: '`u`는 짧은 "어"예요.' }
+      - type: chooseEnglish
+        ko: 모음이 짧은 "어" 소리인 단어
+        item: sound.short-u
+        checkVocab: false
+        options:
+          - { en: bus, correct: true }
+          - { en: box, why: '`o`는 미국 영어에서 "아"에 가까워요.' }
+          - { en: big, why: '`i`는 힘을 뺀 짧은 "이"예요.' }
+      - type: dictation
+        en: Hot.
+        ko: 뜨거운
+        item: sound.short-o
+        checkVocab: false
+      - type: dictation
+        en: Pig.
+        ko: 돼지
+        item: sound.short-i
+        checkVocab: false
+      - type: shadow
+        en: Hit, hot, hut.
+        ko: 치다, 뜨거운, 오두막.
+        checkVocab: false
+
+  - id: lesson.s1-08.3
+    title: { ko: 짧은 모음으로 읽기, en: Reading with short vowels }
+    goal: { ko: 세 글자 단어를 소리 내 읽을 수 있어요, en: Read three-letter words aloud }
+    introduces: []
+    steps:
+      - type: explain
+        text: |
+          자음 소리와 짧은 모음을 알면 처음 보는 세 글자 단어도 읽을 수 있어요. 왼쪽부터 소리를 이어서 읽으면 돼요. 대부분 글자 하나가 소리 하나예요. `x`는 `ks` 두 소리, `ck`는 `k` 소리 하나예요.
+
+          `s`, `u`, `n`은 `/s/`, `/ʌ/`, `/n/`이라서 `sun`이에요. `m`, `o`, `p`는 `/m/`, `/ɑː/`, `/p/`라서 `mop`이에요.
+
+          모음 글자가 하나이고 그 뒤에 자음이 오면 대부분 짧은 모음으로 읽어요. 예외도 있지만 지금은 이 규칙 하나면 충분해요.
+
+          예문은 소리 버튼을 누르기 전에 먼저 소리 내 읽어 보고, 버튼으로 확인해요.
+        examples:
+          - { en: Sun., ko: 해 }
+          - { en: Mop., ko: 대걸레 }
+          - { en: Web., ko: 거미줄 }
+        checkVocab: false
+      - type: chooseMeaning
+        en: pot
+        item: sound.short-o
+        checkVocab: false
+        options:
+          - { ko: '"아"에 가까운 짧은 소리', correct: true }
+          - { ko: '"오" 소리', why: '미국 영어에서 짧은 `o`는 "오"보다 "아"에 가까워요.' }
+          - { ko: '짧은 "어" 소리', why: '짧은 "어"는 `u`예요. `pot`의 모음은 `o`예요.' }
+      - type: listenChoose
+        en: bug
+        item: sound.short-u
+        checkVocab: false
+        options:
+          - { en: bug, correct: true }
+          - { en: bag, why: '`a`는 입을 크게 벌린 `/æ/`예요. 들은 단어는 짧은 "어"였어요.' }
+          - { en: big, why: '`i`는 짧은 "이"예요. 들은 단어는 짧은 "어"였어요.' }
+          - { en: beg, why: '`e`는 "에"예요. 들은 단어는 짧은 "어"였어요.' }
+      - type: listenChoose
+        en: pit
+        item: sound.short-i
+        checkVocab: false
+        options:
+          - { en: pit, correct: true }
+          - { en: pet, why: '`e`는 "에"예요. 들은 단어는 더 짧고 힘을 뺀 `/ɪ/`였어요.' }
+          - { en: pot, why: '`o`는 입을 크게 벌린 "아"예요.' }
+          - { en: pat, why: '`a`는 입꼬리를 당긴 `/æ/`예요.' }
+      - type: listenChoose
+        en: pen
+        item: sound.short-e
+        checkVocab: false
+        options:
+          - { en: pen, correct: true }
+          - { en: pan, why: '`pan`은 턱을 크게 내린 `/æ/`예요. 들은 단어는 입을 조금만 벌렸어요.' }
+          - { en: pin, why: '`pin`은 힘을 뺀 짧은 "이"예요.' }
+      - type: chooseEnglish
+        ko: 모음 소리가 나머지 셋과 다른 단어
+        item: sound.short-a
+        checkVocab: false
+        options:
+          - { en: cap, correct: true }
+          - { en: hot, why: '`hot`의 `o`는 미국 영어에서 "아"에 가까워요. `cap`의 `a`만 "애"예요.' }
+          - { en: mop, why: '`mop`의 `o`도 "아"에 가까워요. `a`를 "아"로 읽기 쉬운데 `a`는 "애"예요.' }
+          - { en: rock, why: '`rock`의 `o`도 "아"에 가까워요. 다른 하나는 `a`가 든 `cap`이에요.' }
+      - type: dictation
+        en: Fox.
+        ko: 여우
+        item: sound.short-o
+        checkVocab: false
+      - type: dictation
+        en: Hen.
+        ko: 암탉
+        item: sound.short-e
+        checkVocab: false
+      - type: dictation
+        en: Mud.
+        ko: 진흙
+        item: sound.short-u
+        checkVocab: false
+      - type: shadow
+        en: Cat, bed, sit, hot, cup.
+        ko: 고양이, 침대, 앉다, 뜨거운, 컵.
+        checkVocab: false
+      - type: shadow
+        en: Big red bus.
+        ko: 커다란 빨간 버스.
+        checkVocab: false

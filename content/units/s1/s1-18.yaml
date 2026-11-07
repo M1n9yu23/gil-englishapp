@@ -1,0 +1,348 @@
+id: unit.s1-18
+title: { ko: 자주 보는 단어 2, en: Common words 2 }
+lessons:
+  - id: lesson.s1-18.1
+    title: { ko: this와 it, en: this and it }
+    goal: { ko: 가까운 물건이 무엇인지 말할 수 있어요, en: Say what a thing near you is }
+    introduces: [sense.this.pron.near, sense.it.pron.thing, sense.book.n.read, sense.pen.n.write, sense.red.adj.color]
+    steps:
+      - type: minimalPair
+        words: [pen, pan]
+        answer: pen
+        item: sound.short-e
+        why: "`pen`은 입을 조금만 벌려 \"에\"라고 해요. `pan`은 입을 크게 벌려 \"애\"라고 해요."
+      - type: listen
+        en: This is a book.
+        ko: 이건 책이에요.
+      - type: listen
+        en: This is a red pen.
+        ko: 이건 빨간 펜이에요.
+      - type: explain
+        text: |
+          `this`는 가까이 있는 것을 가리키는 "이것"이에요. 물을 때는 `is`를 앞으로 옮겨 `Is this a book?`이라고 해요.
+
+          `this`도 `the`처럼 혀끝을 이 사이에 두고 시작해요. "디스"처럼 혀를 잇몸에 대지 않아요.
+
+          `red`는 빨간색이에요. `a red pen`처럼 색이 물건 앞에 오는 순서는 우리말 "빨간 펜"과 같아요.
+        examples:
+          - en: This is a book.
+            ko: 이건 책이에요.
+          - en: Is this a book?
+            ko: 이거 책이에요?
+          - en: This is a red pen.
+            ko: 이건 빨간 펜이에요.
+      - type: explain
+        text: |
+          앞에서 말한 물건을 다시 가리킬 때는 `it`을 써요. 우리말은 "빨간색이에요"처럼 빼고 말하지만 영어는 `It is red.`처럼 꼭 넣어요.
+
+          말할 때는 `It is`를 `It's`로 줄이기도 해요. 지금은 풀어서 연습해요.
+        examples:
+          - en: Is the pen red?
+            ko: 펜이 빨간색이에요?
+          - en: Yes, it is.
+            ko: 네, 빨간색이에요.
+      - type: chooseMeaning
+        en: Is the pen red?
+        item: sense.pen.n.write
+        options:
+          - ko: 펜이 빨간색이에요?
+            correct: true
+          - ko: 펜은 빨간색이에요.
+            why: "`Is`로 시작해서 묻는 말이에요."
+          - ko: 책이 빨간색이에요?
+            why: "책은 `book`이에요. `pen`은 펜이에요."
+      - type: listenChoose
+        en: This is a red book.
+        item: sense.book.n.read
+        options:
+          - ko: 이건 빨간 책이에요.
+            correct: true
+          - ko: 이건 빨간 펜이에요.
+            why: "들은 단어는 `book`, 책이에요."
+          - ko: 이건 책이에요.
+            why: "`red`가 들렸어요. 빨간 책이에요."
+      - type: fillBlank
+        en: This is a book. ___ is red.
+        ko: 이건 책이에요. 빨간색이에요.
+        item: sense.it.pron.thing
+        options:
+          - en: It
+            correct: true
+          - en: I
+            why: "`I`는 나예요. 앞에서 말한 책은 `it`으로 가리켜요."
+          - en: You
+            why: "`you`는 듣는 사람이에요. 물건에는 `it`을 써요."
+      - type: chooseEnglish
+        ko: 이건 빨간 펜이에요.
+        item: sense.red.adj.color
+        options:
+          - en: This is a red pen.
+            correct: true
+          - en: This is a pen red.
+            why: "색은 물건 앞에 와요. 우리말 \"빨간 펜\"과 순서가 같아요."
+          - en: This a red pen.
+            why: "`is`가 빠졌어요. 영어는 `is`를 빼지 않아요."
+      - type: arrange
+        ko: 이거 책이에요?
+        en: Is this a book?
+        extra: [it, are]
+        item: sense.this.pron.near
+      - type: spell
+        sense: sense.book.n.read
+      - type: dictation
+        en: It is red.
+        ko: 빨간색이에요.
+        item: sense.it.pron.thing
+      - type: shadow
+        en: Is this a red book?
+        ko: 이거 빨간 책이에요?
+  - id: lesson.s1-18.2
+    title: { ko: and, en: and }
+    goal: { ko: 두 가지를 and로 이어 말할 수 있어요, en: Join two things with and }
+    introduces: [sense.and.conj.also, sense.cup.n.drink, sense.bag.n.carry, sense.box.n.container]
+    steps:
+      - type: minimalPair
+        words: [cup, cap]
+        answer: cup
+        item: sound.short-u
+        why: "`cup`은 힘을 빼고 짧게 \"어\"라고 해요. `cap`은 입을 크게 벌려 \"애\"라고 해요."
+      - type: listen
+        en: The cup and the bag are red.
+        ko: 컵과 가방은 빨간색이에요.
+      - type: explain
+        text: |
+          `and`는 "그리고, ~와"예요. 두 가지를 하나로 묶어 말할 때 써요. `a cup and a box`는 "컵과 상자"예요.
+
+          `and`는 문장 안에서 힘을 빼고 짧게 말해요. 그래서 `cup and`가 이어져 한 단어처럼 들려요.
+
+          두 가지를 함께 말할 때는 `is` 대신 `are`를 써요. 컵 하나면 `The cup is red.`예요. 컵과 가방이면 `The cup and the bag are red.`예요.
+
+          우리말 "백"은 핸드백을 떠올리게 하지만 `bag`은 가방과 봉지를 두루 가리켜요. `box`의 `o`는 `hot`처럼 "아"에 가까워요.
+        examples:
+          - en: A cup and a box.
+            ko: 컵과 상자.
+          - en: The cup and the bag are red.
+            ko: 컵과 가방은 빨간색이에요.
+          - en: The cup is small and the box is big.
+            ko: 컵은 작고 상자는 커요.
+      - type: chooseMeaning
+        en: The bag and the box are small.
+        item: sense.box.n.container
+        options:
+          - ko: 가방과 상자는 작아요.
+            correct: true
+          - ko: 가방과 컵은 작아요.
+            why: "컵은 `cup`이에요. `box`는 상자예요."
+          - ko: 가방은 작고 상자는 커요.
+            why: "`are small`은 가방과 상자 둘 다에 걸려요. 둘 다 작아요."
+      - type: listenChoose
+        en: A cup and a bag.
+        item: sense.bag.n.carry
+        options:
+          - ko: 컵과 가방
+            correct: true
+          - ko: 컵과 상자
+            why: "상자는 `box`예요. 들은 단어는 `bag`, 가방이에요."
+          - ko: 컵 하나
+            why: "약하게 들린 `and` 뒤에 `a bag`이 더 있어요."
+      - type: fillBlank
+        en: The cup and the bag ___ red.
+        ko: 컵과 가방은 빨간색이에요.
+        item: sense.are.v.be
+        options:
+          - en: are
+            correct: true
+          - en: is
+            why: "컵과 가방, 두 가지라서 `are`를 써요."
+          - en: am
+            why: "`am`은 `I`하고만 써요."
+      - type: chooseEnglish
+        ko: 컵과 상자
+        item: sense.and.conj.also
+        options:
+          - en: a cup and a box
+            correct: true
+          - en: a cup a box
+            why: "두 가지를 이을 때는 `and`가 있어야 해요."
+          - en: a cup and a bag
+            why: "가방은 `bag`이에요. 상자는 `box`예요."
+      - type: arrange
+        ko: 컵은 작고 상자는 커요.
+        en: The cup is small and the box is big.
+        extra: [are]
+        item: sense.cup.n.drink
+      - type: spell
+        sense: sense.box.n.container
+      - type: dictation
+        en: The bag is big and the cup is red.
+        ko: 가방은 크고 컵은 빨간색이에요.
+        item: sense.and.conj.also
+      - type: shadow
+        en: The cup and the bag are red.
+        ko: 컵과 가방은 빨간색이에요.
+  - id: lesson.s1-18.3
+    title: { ko: in, en: in }
+    goal: { ko: 무엇이 어디 안에 있는지 말할 수 있어요, en: Say what is in something }
+    introduces: [sense.in.prep.inside, sense.room.n.space, sense.bed.n.sleep]
+    steps:
+      - type: minimalPair
+        words: [room, loom]
+        answer: room
+        item: sound.r
+        why: "`room`은 혀를 뒤로 살짝 말고 시작해요. 혀끝이 어디에도 닿지 않아요. `loom`은 혀끝을 윗잇몸에 붙이고 시작해요."
+      - type: listen
+        en: The cat is in the box.
+        ko: 고양이는 상자 안에 있어요.
+      - type: explain
+        text: |
+          우리말은 "상자 안에"처럼 "안에"가 뒤에 와요. 영어는 `in the box`처럼 `in`이 앞에 와요. `in the box`를 한 덩어리로 기억해요.
+
+          여기서 `is`는 "있다"예요. `am`, `are`, `is`는 "~이다, ~하다"에 더해 어디에 "있다"도 맡아요.
+
+          우리말은 "방에 있어요"처럼 "안"을 빼고 말할 때가 많아요. 영어는 이럴 때도 `in the room`이라고 해요.
+        examples:
+          - en: "[The cat]{who} [is]{do} [in the box]{where}."
+            ko: 고양이는 상자 안에 있어요.
+            literal: 그 고양이는 / 있다 / 상자 안에
+          - en: The dog is in the room.
+            ko: 개는 방에 있어요.
+          - en: Is the book in the bag?
+            ko: 책이 가방 안에 있어요?
+      - type: chooseMeaning
+        en: The book is in the bag.
+        item: sense.in.prep.inside
+        options:
+          - ko: 책은 가방 안에 있어요.
+            correct: true
+          - ko: 가방은 책 안에 있어요.
+            why: "`in` 뒤에 오는 `the bag`이 바깥이에요. 책이 가방 안에 있어요."
+          - ko: 책과 가방이 있어요.
+            why: "\"~와\"는 `and`예요. `in`은 \"안에\"예요."
+      - type: listenChoose
+        en: Is the bed big?
+        item: sense.bed.n.sleep
+        options:
+          - ko: 침대가 커요?
+            correct: true
+          - ko: 방이 커요?
+            why: "방은 `room`이에요. 들은 단어는 `bed`, 침대예요."
+          - ko: 침대가 커요.
+            why: "`Is`로 시작해서 묻는 말이에요."
+      - type: chooseEnglish
+        ko: 펜은 상자 안에 있어요.
+        item: sense.in.prep.inside
+        options:
+          - en: The pen is in the box.
+            correct: true
+          - en: The pen is the box in.
+            why: "`in`은 `the box` 앞에 와요. 우리말과 순서가 반대예요."
+          - en: The pen in the box.
+            why: "`is`가 빠졌어요. \"있어요\"를 `is`가 맡아요."
+      - type: arrange
+        ko: 개는 방에 있어요.
+        en: The dog is in the room.
+        extra: [are]
+        item: sense.room.n.space
+      - type: spell
+        sense: sense.room.n.space
+      - type: dictation
+        en: The cup is in the box.
+        ko: 컵은 상자 안에 있어요.
+        item: sense.in.prep.inside
+      - type: shadow
+        en: The cat and the dog are in the room.
+        ko: 고양이와 개는 방에 있어요.
+  - id: lesson.s1-18.4
+    title: { ko: of와 to, en: of and to }
+    goal: { ko: 차 한 잔을 권하고 자러 가라고 말할 수 있어요, en: Offer a cup of tea and tell someone to go to bed }
+    introduces: [sense.of.prep.part, sense.to.prep.direction, sense.tea.n.drink, sense.go.v.move]
+    steps:
+      - type: listen
+        en: This is a cup of tea.
+        ko: 이건 차 한 잔이에요.
+      - type: listen
+        en: Go to bed.
+        ko: 가서 자.
+      - type: explain
+        text: |
+          우리말은 "차 한 잔"처럼 차를 먼저 말해요. 영어는 `a cup`(한 잔)을 먼저 말하고 `of` 뒤에 `tea`를 말해요.
+
+          `tea`는 보통 `a`를 붙여 세지 않아요. 셀 때는 `a cup of tea`처럼 담는 그릇으로 세요.
+
+          `a cup of tea`의 `a`와 `of`는 힘을 빼고 약하게 말해요. 네 단어가 한 덩어리처럼 들려요.
+
+          끝을 올려 `A cup of tea?`라고 하면 "차 한 잔 할래요?" 하고 권하는 말이 돼요.
+        examples:
+          - en: This is a cup of tea.
+            ko: 이건 차 한 잔이에요.
+          - en: A cup of tea?
+            ko: 차 한 잔 할래요?
+      - type: explain
+        text: |
+          `Go to bed.`는 주어 없이 `go`로 시작해요. 영어는 주어를 빼지 않지만 "~해"라고 시킬 때는 동사로 바로 시작해요.
+
+          `to`는 가는 곳 앞에 와요. 우리말 "침대로"는 "로"가 뒤에 붙지만 영어는 `in`처럼 `to`가 앞에 와요.
+
+          `go to bed`는 "자러 가다"라는 굳은 말이라 `bed` 앞에 `the`를 붙이지 않아요. `to`는 숫자 `two`와 소리가 같지만 문장 안에서는 짧고 약하게 들려요.
+        examples:
+          - en: Go to bed.
+            ko: 가서 자.
+      - type: chooseMeaning
+        en: A cup of tea?
+        item: sense.of.prep.part
+        options:
+          - ko: 차 한 잔 할래요?
+            correct: true
+          - ko: 컵이랑 차요?
+            why: "\"~와, ~랑\"은 `and`예요. `of`는 `a cup`과 `tea`를 이어 \"차 한 잔\"이 돼요."
+          - ko: 이건 차 한 잔이에요.
+            why: "\"이건\"에 해당하는 `This is`가 없어요. 끝을 올려 권하는 말이에요."
+      - type: arrange
+        ko: 이건 차 한 잔이에요.
+        en: This is a cup of tea.
+        extra: [and]
+        item: sense.of.prep.part
+      - type: fillBlank
+        en: Go ___ bed.
+        ko: 가서 자.
+        item: sense.to.prep.direction
+        options:
+          - en: to
+            correct: true
+          - en: in
+            why: "`in`은 \"안에\"예요. 가는 곳 앞에는 `to`를 써요."
+          - en: of
+            why: "`of`는 `a cup of tea`처럼 \"~의\"예요."
+      - type: listenChoose
+        en: Go to bed.
+        item: sense.go.v.move
+        options:
+          - ko: 가서 자.
+            correct: true
+          - ko: 침대 두 개.
+            why: "`to`는 숫자 `two`와 소리가 비슷하지만 여기서는 `Go to`로 이어져 \"~로 가\"라는 말이에요."
+          - ko: 침대로 와.
+            why: "`go`는 \"가다\"예요. 이쪽으로 오라는 말이 아니에요."
+      - type: dialogue
+        lines:
+          - speaker: Leo
+            en: Is this tea?
+            ko: 이거 차예요?
+        question: 차가 맞다면 뭐라고 대답할까요?
+        item: sense.it.pron.thing
+        options:
+          - en: Yes, it is.
+            correct: true
+          - en: Yes, I am.
+            why: "`I am`은 나에 대한 대답이에요. `Is this`로 물으면 `it is`로 대답해요."
+          - en: Yes, it's.
+            why: "문장 끝에 오는 `it is`는 `it's`로 줄이지 않아요."
+      - type: spell
+        sense: sense.tea.n.drink
+      - type: dictation
+        en: The tea is hot.
+        ko: 차가 뜨거워요.
+        item: sense.tea.n.drink
+      - type: shadow
+        en: A cup of tea?
+        ko: 차 한 잔 할래요?

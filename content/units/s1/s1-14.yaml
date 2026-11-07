@@ -1,0 +1,209 @@
+id: unit.s1-14
+title: { ko: 리듬과 연음, en: Rhythm and linking }
+lessons:
+  - id: lesson.s1-14.1
+    title: { ko: 센 단어와 약한 단어, en: Strong and weak words }
+    goal: { ko: 문장에서 약하게 말하는 단어를 알아챌 수 있어요, en: Hear the weak words in a sentence }
+    introduces: [sound.weak-form]
+    steps:
+      - type: listen
+        en: A cup of tea.
+        ko: 차 한 잔
+        checkVocab: false
+      - type: listen
+        en: Fish and chips.
+        ko: 생선튀김과 감자튀김
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          `a cup of tea`에서 세게 들리는 단어는 `cup`과 `tea`예요. `a`와 `of`는 힘을 빼고 짧은 "어"처럼 지나가요. `of`는 철자가 `f`지만 소리는 `v`예요. 빠르게 말하면 `v`마저 거의 안 들리기도 해요.
+
+          물건, 행동, 모양처럼 뜻을 담은 단어는 세게 말해요. `a`, `the`처럼 앞에 붙는 짧은 단어나 `and`, `of`, `to`처럼 단어를 잇는 짧은 단어는 보통 약하게 말해요.
+
+          `fish and chips`의 `and`도 "앤드"가 아니라 짧은 "언"이나 `n`만 남을 때가 많아요. 들을 때 약한 단어가 잘 안 들리는 건 정상이에요. 세게 들리는 단어로 뜻을 잡으면 돼요.
+        examples:
+          - en: A cup of tea.
+            ko: 차 한 잔
+          - en: Fish and chips.
+            ko: 생선튀김과 감자튀김
+          - en: Go to bed.
+            ko: 자러 가요.
+      - type: listenChoose
+        en: A cup of tea.
+        item: sound.weak-form
+        checkVocab: false
+        options:
+          - { ko: cup과 tea가 세게 들려요, correct: true }
+          - { ko: a와 of가 세게 들려요, why: '`a`와 `of`는 짧은 "어"처럼 약하게 지나가요. 뜻을 담은 `cup`과 `tea`가 세요.' }
+          - { ko: 네 단어가 똑같이 세요, why: '영어는 단어마다 세기가 달라요. `cup`과 `tea`만 세고 나머지는 약해요.' }
+      - type: chooseEnglish
+        ko: 문장 안에서 보통 약하게 말하는 단어
+        item: sound.weak-form
+        checkVocab: false
+        options:
+          - { en: of, correct: true }
+          - { en: cup, why: '`cup`은 물건을 가리키는 단어라 세게 말해요.' }
+          - { en: fish, why: '`fish`는 뜻을 담은 단어라 세게 말해요. 약한 건 `of`처럼 단어를 잇는 짧은 단어예요.' }
+      - type: listenChoose
+        en: Salt and pepper.
+        item: sound.weak-form
+        checkVocab: false
+        options:
+          - { ko: 센 단어가 두 개예요, correct: true }
+          - { ko: 센 단어가 세 개예요, why: '`and`는 짧은 "언"처럼 지나가요. 센 단어는 `salt`와 `pepper` 두 개예요.' }
+      - type: dictation
+        en: A cup of tea.
+        ko: 차 한 잔
+        item: sound.weak-form
+        checkVocab: false
+      - type: dictation
+        en: Fish and chips.
+        ko: 생선튀김과 감자튀김
+        item: sound.weak-form
+        checkVocab: false
+      - type: shadow
+        en: A cup of tea.
+        ko: 차 한 잔
+        checkVocab: false
+      - type: shadow
+        en: Fish and chips.
+        ko: 생선튀김과 감자튀김
+        checkVocab: false
+  - id: lesson.s1-14.2
+    title: { ko: 이어 말하기, en: Linking words }
+    goal: { ko: stand up처럼 두 단어를 이어서 말할 수 있어요, en: Link two words such as stand up }
+    introduces: [sound.linking]
+    steps:
+      - type: listen
+        en: Stand up.
+        ko: 일어서요.
+        checkVocab: false
+      - type: listen
+        en: Pick it up.
+        ko: 그거 주워요.
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          `stand up`은 두 단어를 끊지 않고 한 덩어리로 말해요. 앞 단어 끝의 `d`가 뒤 단어의 첫 모음에 붙어서 `stan` `dup`처럼 들려요. 한글로 적으면 "스탠덥"에 가깝지만 `st`는 앞 과처럼 "으" 없이 붙여요.
+
+          우리말에도 같은 일이 있어요. "옷이"를 "오시"로 읽듯이 받침이 다음 모음으로 넘어가요. 영어도 자음으로 끝난 단어 뒤에 모음으로 시작하는 단어가 오면 이렇게 이어요.
+
+          `pick it up`은 세 단어가 이어져서 한 단어처럼 들려요. 미국 영어에서는 `it up`의 `t`가 부드러운 `d`처럼 들리기도 해요. 모르는 긴 단어가 들리면 짧은 단어 몇 개가 이어진 건 아닌지 떠올려 보세요.
+        examples:
+          - en: Stand up.
+            ko: 일어서요.
+          - en: Wake up.
+            ko: 일어나요.
+          - en: Pick it up.
+            ko: 그거 주워요.
+          - en: An apple.
+            ko: 사과 하나
+      - type: listenChoose
+        en: Pick it up.
+        item: sound.linking
+        checkVocab: false
+        options:
+          - { en: pick it up, correct: true }
+          - { en: pick up, why: '`pick`과 `up` 사이에 `it`이 짧게 이어져 있었어요.' }
+      - type: listenChoose
+        en: Come in.
+        item: sound.linking
+        checkVocab: false
+        options:
+          - { en: come in, correct: true }
+          - { en: coming, why: '`coming`은 `ng`로 끝나요. 여기서는 `m`이 `in`에 이어지고 끝이 `n`이었어요.' }
+      - type: dictation
+        en: Stand up.
+        ko: 일어서요.
+        item: sound.linking
+        checkVocab: false
+      - type: dictation
+        en: Wake up.
+        ko: 일어나요.
+        item: sound.linking
+        checkVocab: false
+      - type: shadow
+        en: Stand up.
+        ko: 일어서요.
+        checkVocab: false
+      - type: shadow
+        en: Pick it up.
+        ko: 그거 주워요.
+        checkVocab: false
+      - type: shadow
+        en: Come in.
+        ko: 들어와요.
+        checkVocab: false
+  - id: lesson.s1-14.3
+    title: { ko: 문장 리듬, en: Sentence rhythm }
+    goal: { ko: 짧은 문장을 영어 리듬으로 따라 말할 수 있어요, en: Repeat a short sentence with English rhythm }
+    introduces: []
+    steps:
+      - type: listen
+        en: Time to go.
+        ko: 갈 시간이에요.
+        checkVocab: false
+      - type: listen
+        en: Have a good day.
+        ko: 좋은 하루 보내요.
+        checkVocab: false
+      - type: explain
+        checkVocab: false
+        text: |
+          영어는 센 단어를 중심으로 리듬을 타요. 센 단어 사이에 낀 약한 단어는 짧게 몰아서 지나가요.
+
+          우리말처럼 글자마다 고르게 말하면 `go to bed`를 "고 투 베드"처럼 또박또박 읽게 돼요. 영어로는 `go`와 `bed`만 세게 치고 `to`는 "투"가 아니라 짧은 `/tə/`로 가볍게 끼워요.
+
+          따라 말할 때는 먼저 센 단어만 손뼉을 치며 말해 보세요. 그다음 약한 단어를 사이에 끼워 넣어요. 자음과 모음이 만나는 곳은 앞 과에서 배운 대로 이어서 말해요.
+        examples:
+          - en: Go to bed.
+            ko: 자러 가요.
+          - en: Time to go.
+            ko: 갈 시간이에요.
+          - en: Turn it off.
+            ko: 그거 꺼요.
+      - type: listenChoose
+        en: Go to bed.
+        item: sound.weak-form
+        checkVocab: false
+        options:
+          - { ko: 센 단어가 두 개예요, correct: true }
+          - { ko: 센 단어가 세 개예요, why: '`to`는 약하게 지나가요. 세게 들리는 건 `go`와 `bed`예요.' }
+      - type: listenChoose
+        en: Have a good day.
+        item: sound.weak-form
+        checkVocab: false
+        options:
+          - { ko: a가 짧고 약하게 들려요, correct: true }
+          - { ko: a가 "에이"로 또렷하게 들려요, why: '문장 안의 `a`는 보통 짧은 `ə`예요. 알파벳 이름처럼 "에이"라고 하지 않아요.' }
+      - type: listenChoose
+        en: Put it on.
+        item: sound.linking
+        checkVocab: false
+        options:
+          - { en: put it on, correct: true }
+          - { en: put on, why: '`put`과 `on` 사이에 `it`이 이어져 있었어요. 세 단어가 한 덩어리로 들려요.' }
+      - type: dictation
+        en: Time to go.
+        ko: 갈 시간이에요.
+        item: sound.weak-form
+        checkVocab: false
+      - type: dictation
+        en: Turn it off.
+        ko: 그거 꺼요.
+        item: sound.linking
+        checkVocab: false
+      - type: shadow
+        en: Go to bed.
+        ko: 자러 가요.
+        checkVocab: false
+      - type: shadow
+        en: Have a good day.
+        ko: 좋은 하루 보내요.
+        checkVocab: false
+      - type: shadow
+        en: Turn it off.
+        ko: 그거 꺼요.
+        checkVocab: false

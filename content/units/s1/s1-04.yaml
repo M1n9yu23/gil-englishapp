@@ -1,0 +1,217 @@
+id: unit.s1-04
+title: { ko: "자음 소리 1: b, p, m, f, v", en: "Consonants 1: b, p, m, f, v" }
+lessons:
+  - id: lesson.s1-04.1
+    title: { ko: "b, p, m", en: "b, p, m" }
+    goal: { ko: "b, p, m 소리를 듣고 구별할 수 있어요", en: "Hear the difference between b, p and m" }
+    introduces: [sound.b, sound.p, sound.m]
+    steps:
+      - type: listen
+        en: Bus.
+        ko: 버스.
+        checkVocab: false
+      - type: listen
+        en: Pen.
+        ko: 펜.
+        checkVocab: false
+      - type: explain
+        text: |
+          `bag`, `pen`, `map`을 들어 보세요. 첫소리가 각각 `b`, `p`, `m`이에요. 셋 다 두 입술을 붙였다가 떼면서 내요.
+
+          `p`는 입술을 뗄 때 바람이 세게 터져요. 입 앞에 손바닥을 대고 `pen`이라고 하면 바람이 닿아요. `b`는 바람이 거의 없어요. 이 바람 차이가 가장 큰 단서예요. 단어 가운데에서는 `b`를 낼 때 목도 울려요.
+
+          `m`은 입술을 닫은 채 코로 소리를 내요. 우리말 "마"의 첫소리와 거의 같아요.
+
+          모음 글자는 뒤에서 따로 배워요. 지금은 첫소리만 귀 기울여 들어요. 받아쓰기에는 그 과에서 글자로 본 단어만 나와요.
+        examples:
+          - { en: Bag., ko: 가방. }
+          - { en: Pen., ko: 펜. }
+          - { en: Map., ko: 지도. }
+        checkVocab: false
+      - type: minimalPair
+        words: [big, pig]
+        answer: pig
+        item: sound.p
+        why: "들린 단어는 `pig`(돼지)예요. 바람이 세게 터지면 `p`예요. `big`의 `b`는 바람이 약해요."
+      - type: minimalPair
+        words: [bin, pin]
+        answer: bin
+        item: sound.b
+        why: "들린 단어는 `bin`(쓰레기통)이에요. 바람 없이 부드럽게 시작하면 `b`예요. `pin`은 입술을 뗄 때 바람이 확 터져요."
+      - type: listenChoose
+        en: mat
+        item: sound.m
+        options:
+          - { en: mat, correct: true }
+          - { en: bat, why: "`bat`은 입술에서 한 번 터지면서 시작해요. 들은 소리는 입술을 닫은 채 코로 울리며 시작했어요." }
+          - { en: pat, why: "`pat`은 바람이 세게 터지는 `p`예요. 들은 소리는 코로 울리는 `m`이었어요." }
+        checkVocab: false
+      - type: listenChoose
+        en: box
+        item: sound.b
+        options:
+          - { en: b, correct: true }
+          - { en: p, why: "`p`였다면 입술을 뗄 때 바람이 세게 터져요. 들은 소리는 바람이 약했어요." }
+          - { en: m, why: "`m`이었다면 입술을 닫은 채 코로 울려요. 들은 소리는 입술에서 터졌어요." }
+        checkVocab: false
+      - type: dictation
+        en: Map.
+        ko: 지도.
+        checkVocab: false
+      - type: dictation
+        en: Pen.
+        ko: 펜.
+        checkVocab: false
+      - type: shadow
+        en: Bag.
+        ko: 가방.
+        checkVocab: false
+      - type: shadow
+        en: A big pig.
+        ko: 큰 돼지.
+        checkVocab: false
+  - id: lesson.s1-04.2
+    title: { ko: f와 v, en: f and v }
+    goal: { ko: f와 v 소리를 낼 수 있어요, en: Make the f and v sounds }
+    introduces: [sound.f, sound.v]
+    steps:
+      - type: listen
+        en: Fan.
+        ko: 선풍기.
+        checkVocab: false
+      - type: listen
+        en: Van.
+        ko: 승합차.
+        checkVocab: false
+      - type: explain
+        text: |
+          `fan`과 `van`의 첫소리는 우리말에 없어요. 둘 다 윗니를 아랫입술 안쪽에 살짝 대고 내요. 두 입술은 서로 닿지 않아요.
+
+          `f`는 윗니와 입술 사이로 바람만 내보내요. 목은 울리지 않아요. 우리말 "파"처럼 두 입술을 붙였다 떼면 `p`가 돼요.
+
+          `v`는 입 모양이 `f`와 같고 목을 울려요. 목에 손을 대면 떨림이 느껴져요. 우리말 "바"처럼 입술을 붙이면 `b`가 돼요.
+
+          처음에는 거울을 보면서 윗니가 아랫입술에 닿는지 확인해요. 두 소리 모두 길게 늘여서 연습해도 돼요.
+        examples:
+          - { en: Fan., ko: 선풍기. }
+          - { en: Fish., ko: 물고기. }
+          - { en: Van., ko: 승합차. }
+          - { en: Five., ko: 다섯. }
+        checkVocab: false
+      - type: minimalPair
+        words: [fan, van]
+        answer: van
+        item: sound.v
+        why: "들린 단어는 `van`(승합차)이에요. 같은 입 모양에서 목이 울리면 `v`예요. `fan`은 바람 소리만 나요."
+      - type: minimalPair
+        words: [fast, vast]
+        answer: fast
+        item: sound.f
+        why: "들린 단어는 `fast`(빠른)예요. 목이 울리지 않고 바람만 나면 `f`예요. `vast`(넓은)는 목이 울려요."
+      - type: listenChoose
+        en: fish
+        item: sound.f
+        options:
+          - { en: f, correct: true }
+          - { en: v, why: "`v`였다면 목이 울려요. 들은 소리는 바람만 났어요." }
+          - { en: p, why: "`p`였다면 두 입술이 붙었다가 한 번 터져요. 들은 소리는 바람이 조금 이어졌어요." }
+        checkVocab: false
+      - type: dictation
+        en: Fan.
+        ko: 선풍기.
+        checkVocab: false
+      - type: dictation
+        en: Van.
+        ko: 승합차.
+        checkVocab: false
+      - type: shadow
+        en: Five.
+        ko: 다섯.
+        checkVocab: false
+      - type: shadow
+        en: Five fish.
+        ko: 물고기 다섯 마리.
+        checkVocab: false
+  - id: lesson.s1-04.3
+    title: { ko: "f와 p, v와 b", en: "f or p, v or b" }
+    goal: { ko: "fan과 pan, van과 ban을 듣고 구별할 수 있어요", en: Tell fan from pan and van from ban }
+    introduces: []
+    steps:
+      - type: listen
+        en: "Fan, pan."
+        ko: "선풍기, 프라이팬."
+        checkVocab: false
+      - type: explain
+        text: |
+          `fan`과 `pan`은 우리말로 적으면 둘 다 "팬"이에요. 그래서 귀로도 같은 소리로 듣기 쉬워요. `van`과 `ban`도 둘 다 "밴"이에요.
+
+          구별 단서는 입술이에요. 두 입술이 붙었다 떨어지면 `p`, `b`예요. 윗니가 아랫입술에 닿고 그 틈으로 바람이 새면 `f`, `v`예요.
+
+          들을 때는 길이에 귀 기울여요. `f`, `v`는 소리가 조금 이어지고 `p`, `b`는 한 번 터지고 끝나요.
+        examples:
+          - { en: Fan., ko: 선풍기. }
+          - { en: Pan., ko: 프라이팬. }
+          - { en: Van., ko: 승합차. }
+          - { en: Ban., ko: 금지. }
+        checkVocab: false
+      - type: minimalPair
+        words: [fan, pan]
+        answer: pan
+        item: sound.p
+        why: "들린 단어는 `pan`(프라이팬)이에요. 한 번 터지고 끝나면 `p`예요. `fan`은 바람 소리가 조금 이어져요."
+      - type: minimalPair
+        words: [van, ban]
+        answer: van
+        item: sound.v
+        why: "들린 단어는 `van`(승합차)이에요. 떨리는 소리가 조금 이어지면 `v`예요. `ban`(금지)은 입술에서 한 번 터지면서 시작해요."
+      - type: minimalPair
+        words: [vest, best]
+        answer: best
+        item: sound.b
+        why: "들린 단어는 `best`(가장 좋은)예요. 입술이 붙었다 떨어지면 `b`예요. `vest`(조끼)는 윗니가 입술에 닿은 채 떨리는 소리로 시작해요."
+      - type: explain
+        text: |
+          외래어 "포크"는 영어로 `fork`예요. 영어에서는 첫소리를 `f`로 내요.
+
+          우리말처럼 입술을 붙여 "포크"라고 하면 `pork`(돼지고기)로 들릴 수 있어요. "파일", "파이팅"도 영어로는 `f`로 시작해요. 외래어 중에는 이런 단어가 꽤 있어요.
+        examples:
+          - { en: Fork., ko: 포크. }
+          - { en: Pork., ko: 돼지고기. }
+        checkVocab: false
+      - type: listenChoose
+        en: fork
+        item: sound.f
+        options:
+          - { ko: 포크, correct: true }
+          - { ko: 돼지고기, why: "`pork`(돼지고기)는 두 입술이 붙었다 터지는 `p`로 시작해요. 들은 소리는 바람이 새는 `f`였어요." }
+        checkVocab: false
+      - type: listenChoose
+        en: boat
+        item: sound.b
+        options:
+          - { en: boat, correct: true }
+          - { en: vote, why: "`vote`(투표하다)는 윗니가 아랫입술에 닿는 `v`로 시작해요. 들은 소리는 입술이 붙었다 떨어지는 `b`였어요." }
+        checkVocab: false
+      - type: listenChoose
+        en: very
+        item: sound.v
+        options:
+          - { en: very, correct: true }
+          - { en: berry, why: "`berry`(산딸기 같은 열매)는 입술에서 터지는 `b`예요. 들은 소리는 떨리며 이어지는 `v`였어요." }
+        checkVocab: false
+      - type: dictation
+        en: Pan.
+        ko: 프라이팬.
+        checkVocab: false
+      - type: dictation
+        en: Vest.
+        ko: 조끼.
+        checkVocab: false
+      - type: shadow
+        en: "Fan, pan, van, ban."
+        ko: "선풍기, 프라이팬, 승합차, 금지."
+        checkVocab: false
+      - type: shadow
+        en: A very big van.
+        ko: 아주 큰 승합차.
+        checkVocab: false

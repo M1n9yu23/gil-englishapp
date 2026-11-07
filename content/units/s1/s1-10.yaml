@@ -1,0 +1,230 @@
+id: unit.s1-10
+title: { ko: 모음 짝, en: Vowel teams }
+lessons:
+  - id: lesson.s1-10.1
+    title: { ko: "ee, ea와 ai, ay", en: "ee, ea and ai, ay" }
+    goal: { ko: ship과 sheep을 듣고 구별할 수 있어요, en: Tell ship from sheep }
+    introduces: [sound.ee-ea, sound.ai-ay]
+    steps:
+      - type: listen
+        en: Ship.
+        ko: 배
+        checkVocab: false
+      - type: listen
+        en: Sheep.
+        ko: 양
+        checkVocab: false
+      - type: explain
+        text: |
+          `sheep`의 `ee`는 입꼬리를 옆으로 당기고 길게 내는 `/iː/`예요. `ship`의 `i`는 힘을 뺀 짧은 `/ɪ/`라서 "이"와 "에" 사이로 들려요. 길이와 입 모양이 함께 달라요.
+
+          모음 글자 두 개가 소리 하나를 내는 것을 모음 짝이라고 해요. `ea`도 `eat`, `sea`처럼 대부분 `/iː/`예요. `head`, `bread`처럼 짧은 "에"로 읽는 단어도 꽤 있어요.
+
+          `ai`와 `ay`는 대부분 "에이"예요. 단어 가운데에서는 `rain`처럼 `ai`, 끝에서는 `day`처럼 `ay`로 써요.
+        examples:
+          - { en: Eat., ko: 먹다 }
+          - { en: Rain., ko: 비 }
+          - { en: Day., ko: 날 }
+        checkVocab: false
+      - type: minimalPair
+        words: [ship, sheep]
+        answer: sheep
+        item: sound.ee-ea
+        why: '`sheep`은 입꼬리를 당기고 길게 "이이"라고 해요. `ship`은 힘을 뺀 짧은 소리예요.'
+      - type: minimalPair
+        words: [sit, seat]
+        answer: sit
+        item: sound.short-i
+        why: '`sit`은 힘을 빼고 짧게 끝나요. `seat`은 입꼬리를 당기고 길게 내요.'
+      - type: minimalPair
+        words: [men, main]
+        answer: main
+        item: sound.ai-ay
+        why: '`main`은 "에"에서 "이"로 미끄러지는 "에이"예요. `men`은 "에" 하나로 끝나요.'
+      - type: listenChoose
+        en: feet
+        item: sound.ee-ea
+        checkVocab: false
+        options:
+          - { en: feet, correct: true }
+          - { en: fit, why: '`fit`은 힘을 뺀 짧은 "이"예요. 들은 단어는 입꼬리를 당긴 긴 소리였어요.' }
+          - { en: fat, why: '`fat`은 턱을 크게 내린 `/æ/`예요.' }
+      - type: chooseEnglish
+        ko: 모음이 "에이" 소리인 단어
+        item: sound.ai-ay
+        checkVocab: false
+        options:
+          - { en: pay, correct: true }
+          - { en: pea, why: '`ea`는 대부분 길게 "이이"로 읽어요. "에이"는 `ay`예요.' }
+          - { en: pet, why: '`e` 하나는 짧은 "에"예요.' }
+      - type: chooseEnglish
+        ko: 모음이 길게 "이이" 소리인 단어
+        item: sound.ee-ea
+        checkVocab: false
+        options:
+          - { en: meat, correct: true }
+          - { en: met, why: '`e` 하나만 있으면 짧은 "에"예요.' }
+          - { en: mail, why: '`ai`는 "에이"예요.' }
+      - type: dictation
+        en: Sheep.
+        ko: 양
+        checkVocab: false
+      - type: dictation
+        en: Day.
+        ko: 날
+        checkVocab: false
+      - type: shadow
+        en: Ship, sheep. Sit, seat.
+        ko: 배, 양. 앉다, 좌석.
+        checkVocab: false
+
+  - id: lesson.s1-10.2
+    title: { ko: "oa, ow와 oo", en: "oa, ow and oo" }
+    goal: { ko: "boat, moon, book의 모음을 구별할 수 있어요", en: "Tell the vowels of boat, moon and book apart" }
+    introduces: [sound.oa-ow, sound.oo-long, sound.oo-short]
+    steps:
+      - type: listen
+        en: Boat.
+        ko: 보트
+        checkVocab: false
+      - type: listen
+        en: Moon.
+        ko: 달
+        checkVocab: false
+      - type: listen
+        en: Book.
+        ko: 책
+        checkVocab: false
+      - type: explain
+        text: |
+          `oa`는 "오우"예요. `boat`를 "보트"처럼 "오"에서 끝내지 말고 입술을 오므리며 마무리해요. `ow`도 `snow`처럼 "오우"로 날 때가 많아요. `ow`의 다른 소리는 다음 과에서 배워요.
+
+          `oo`는 주로 두 가지로 읽어요. `moon`, `food`는 입술을 동그랗게 내밀고 길게 내는 `/uː/`예요. `book`, `look`은 힘을 빼고 짧게 내는 `/ʊ/`예요.
+
+          `oo` 뒤에 `k`가 오면 대부분 짧은 소리예요. 다른 단어는 들으면서 하나씩 익히고, 헷갈리면 단어 화면의 발음기호를 보면 돼요.
+
+          `pull`, `full`, `put`처럼 `u` 하나로 쓰는데 짧은 `/ʊ/`로 나는 단어도 몇 개 있어요.
+        examples:
+          - { en: Snow., ko: 눈 }
+          - { en: Food., ko: 음식 }
+          - { en: Look., ko: 보다 }
+        checkVocab: false
+      - type: minimalPair
+        words: [pull, pool]
+        answer: pool
+        item: sound.oo-long
+        why: '`pool`은 입술을 내밀고 길게 "우우"라고 해요. `pull`은 힘을 빼고 짧게 끝나요.'
+      - type: minimalPair
+        words: [full, fool]
+        answer: full
+        item: sound.oo-short
+        why: '`full`은 `book`과 같은 짧은 `/ʊ/`예요. `fool`은 입술을 내밀고 길게 내요.'
+      - type: listenChoose
+        en: foot
+        item: sound.oo-short
+        checkVocab: false
+        options:
+          - { ko: '힘을 뺀 짧은 "우"', correct: true }
+          - { ko: '입술을 내민 긴 "우우"', why: '길게 끌지 않았어요. `foot`은 `book`처럼 짧은 `/ʊ/`예요.' }
+          - { ko: '"오"에서 "우"로 가는 "오우"', why: '"오"로 시작하지 않았어요. `foot`의 `oo`는 짧은 "우"예요.' }
+      - type: chooseEnglish
+        ko: 모음이 "오우" 소리인 단어
+        item: sound.oa-ow
+        checkVocab: false
+        options:
+          - { en: road, correct: true }
+          - { en: rod, why: '`o` 하나는 짧은 "아"예요.' }
+          - { en: root, why: '`oo`는 "우" 소리예요.' }
+      - type: chooseEnglish
+        ko: 모음이 입술을 내민 긴 "우우" 소리인 단어
+        item: sound.oo-long
+        checkVocab: false
+        options:
+          - { en: soon, correct: true }
+          - { en: sun, why: '`u` 하나는 짧은 "어"예요.' }
+          - { en: soap, why: '`oa`는 "오우"예요.' }
+      - type: dictation
+        en: Hook.
+        ko: 갈고리
+        checkVocab: false
+      - type: dictation
+        en: Boat.
+        ko: 보트
+        checkVocab: false
+      - type: shadow
+        en: Look at the moon.
+        ko: 달을 봐요.
+        checkVocab: false
+
+  - id: lesson.s1-10.3
+    title: { ko: ou와 ow, en: ou and ow }
+    goal: { ko: ow의 두 가지 소리를 구별할 수 있어요, en: Tell the two sounds of ow apart }
+    introduces: [sound.ou-ow]
+    steps:
+      - type: listen
+        en: Cow.
+        ko: 소
+        checkVocab: false
+      - type: listen
+        en: Snow.
+        ko: 눈
+        checkVocab: false
+      - type: explain
+        text: |
+          `ou`와 `ow`는 대부분 "아"에서 "우"로 미끄러지는 `/aʊ/`예요. `out`, `house`, `cow`, `now`가 이 소리예요. `you`, `four`처럼 다르게 읽는 자주 쓰는 단어도 있는데, 그 단어를 배울 때 익히면 돼요.
+
+          그런데 `ow`는 앞 과의 `snow`처럼 "오우"로도 읽어요. 철자 하나가 소리 두 개를 내는 셈이라 글자만 보고는 어느 쪽인지 알 수 없어요.
+
+          목록을 외울 필요는 없어요. 처음 보는 `ow` 단어는 두 소리를 다 떠올려 보고, 소리 버튼이나 발음기호로 확인해요.
+        examples:
+          - { en: Out., ko: 밖으로 }
+          - { en: House., ko: 집 }
+          - { en: Now., ko: 지금 }
+        checkVocab: false
+      - type: minimalPair
+        words: [now, no]
+        answer: now
+        item: sound.ou-ow
+        why: '`now`는 입을 크게 벌린 "아"에서 시작해요. `no`는 "오"에서 시작해 "오우"로 끝나요.'
+      - type: minimalPair
+        words: [loud, load]
+        answer: load
+        item: sound.oa-ow
+        why: '`load`는 "오우"예요. `loud`는 "아"에서 "우"로 미끄러져요.'
+      - type: listenChoose
+        en: slow
+        item: sound.oa-ow
+        checkVocab: false
+        options:
+          - { ko: '"오우"', correct: true }
+          - { ko: '"아우"', why: '"아"로 시작하지 않았어요. `slow`의 `ow`는 `snow`와 같은 "오우"예요.' }
+      - type: listenChoose
+        en: down
+        item: sound.ou-ow
+        checkVocab: false
+        options:
+          - { ko: '"아우"', correct: true }
+          - { ko: '"오우"', why: '입을 크게 벌린 "아"로 시작했어요. `down`의 `ow`는 `cow`와 같은 "아우"예요.' }
+      - type: chooseEnglish
+        ko: 모음이 "아"에서 "우"로 미끄러지는 단어
+        item: sound.ou-ow
+        checkVocab: false
+        options:
+          - { en: mouse, correct: true }
+          - { en: moose, why: '`oo`는 길게 "우우"예요.' }
+          - { en: mode, why: '`o_e`는 "오우"예요.' }
+      - type: listenChoose
+        en: house
+        item: sound.ou-ow
+        checkVocab: false
+        options:
+          - { en: house, correct: true }
+          - { en: hose, why: '`hose`는 "오우"예요. 들은 단어는 입을 크게 벌린 "아"에서 시작했어요.' }
+      - type: dictation
+        en: Now.
+        ko: 지금
+        checkVocab: false
+      - type: shadow
+        en: Slow down.
+        ko: 천천히 가요.
+        checkVocab: false

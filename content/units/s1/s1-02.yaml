@@ -1,0 +1,288 @@
+id: unit.s1-02
+title: { ko: 알파벳 이름 N부터 Z까지, en: Letter names N to Z }
+lessons:
+  - id: lesson.s1-02.1
+    title: { ko: "N, O, P, Q", en: "N, O, P, Q" }
+    goal: { ko: N부터 Q까지 이름을 듣고 고를 수 있어요, en: Hear and pick the letters N to Q }
+    introduces: [sound.letter-n, sound.letter-o, sound.letter-p, sound.letter-q]
+    steps:
+      - type: listen
+        en: N, O, P, Q.
+        ko: 알파벳의 열넷째부터 열일곱째 글자예요.
+        checkVocab: false
+      - type: explain
+        text: |
+          `N`은 `M`처럼 짧은 "에"로 시작하고 코로 울리며 끝나요. `M`은 입술을 닫고 끝내요. `N`은 입술을 연 채 혀끝을 윗잇몸에 붙이고 끝내요.
+
+          끝소리라서 귀로만 구별하기가 어려워요. 원어민도 전화로 철자를 들을 때 `M`과 `N`을 자주 되물어요. 헷갈리면 입 모양을 떠올리며 따라 해 보세요.
+        examples:
+          - en: M.
+            ko: 글자 M
+          - en: N.
+            ko: 글자 N
+        checkVocab: false
+      - type: minimalPair
+        words: ["M", "N"]
+        answer: "N"
+        why: '입술이 열린 채 혀끝으로 끝나면 `N`, 입술을 닫으며 끝나면 `M`이에요.'
+        item: sound.letter-n
+      - type: explain
+        text: |
+          `O`는 "오"로 시작해서 입술을 살짝 오므리며 "우" 쪽으로 끝나요. "오" 하나로 짧게 끊으면 영어 이름과 조금 다르게 들려요.
+
+          `P`는 `B`처럼 "이"로 끝나는 무리예요. `P`는 입술을 뗄 때 바람이 훅 나오고, `B`는 바람이 거의 없어요.
+
+          `Q`는 "큐"에 가까워요. 단어에서는 거의 늘 뒤에 `u`가 붙어 `qu`로 나와요.
+        examples:
+          - en: O.
+            ko: 글자 O
+          - en: P.
+            ko: 글자 P
+          - en: B.
+            ko: 글자 B
+          - en: Q.
+            ko: 글자 Q
+        checkVocab: false
+      - type: listenChoose
+        en: "P"
+        item: sound.letter-p
+        options:
+          - en: "P"
+            correct: true
+          - en: "B"
+            why: '`B`는 입술을 뗄 때 바람이 거의 없어요. 바람이 훅 나오면 `P`예요.'
+          - en: "D"
+            why: '`D`는 혀끝으로 시작해요. 입술이 붙었다 떨어지면 `P`나 `B`예요.'
+        checkVocab: false
+      - type: listenChoose
+        en: "O"
+        item: sound.letter-o
+        options:
+          - en: "O"
+            correct: true
+          - en: "A"
+            why: '`A`는 "에이"예요. 입술을 오므리며 끝나면 `O`예요.'
+          - en: "I"
+            why: '`I`는 "아이"예요. 입술을 오므리며 끝나면 `O`예요.'
+        checkVocab: false
+      - type: listenChoose
+        en: "Q"
+        item: sound.letter-q
+        options:
+          - en: "Q"
+            correct: true
+          - en: "K"
+            why: '`K`는 "케이"예요. "큐"로 들리면 `Q`예요.'
+          - en: "C"
+            why: '`C`는 "씨"예요. "큐"로 들리면 `Q`예요.'
+        checkVocab: false
+      - type: fillBlank
+        en: M, ___, O, P.
+        ko: 빈칸에 들어갈 글자를 써 보세요.
+        answers: ["N", "n"]
+        item: sound.letter-n
+        checkVocab: false
+      - type: shadow
+        en: M, N, M, N.
+        ko: M과 N을 번갈아 말해요.
+        checkVocab: false
+      - type: dictation
+        en: D, O, G.
+        ko: 개라는 뜻의 dog를 한 글자씩 불렀어요.
+        item: sound.letter-o
+        checkVocab: false
+
+  - id: lesson.s1-02.2
+    title: { ko: "R, S, T, U", en: "R, S, T, U" }
+    goal: { ko: R부터 U까지 이름을 듣고 고를 수 있어요, en: Hear and pick the letters R to U }
+    introduces: [sound.letter-r, sound.letter-s, sound.letter-t, sound.letter-u]
+    steps:
+      - type: listen
+        en: R, S, T, U.
+        ko: 알파벳의 열여덟째부터 스물한째 글자예요.
+        checkVocab: false
+      - type: explain
+        text: |
+          `R`은 "아"로 시작해요. 그다음 혀를 뒤로 살짝 말아 올리는데, 혀끝은 입천장 어디에도 닿지 않아요.
+
+          `L`은 "에"로 시작해서 혀끝을 윗잇몸에 붙이며 끝나요. 첫소리가 "아"면 `R`, "에"면 `L`이에요. 이것만 잡아도 철자를 들을 때 덜 헷갈려요.
+        examples:
+          - en: R.
+            ko: 글자 R
+          - en: L.
+            ko: 글자 L
+        checkVocab: false
+      - type: minimalPair
+        words: ["L", "R"]
+        answer: "R"
+        why: '"아"로 시작해 혀를 말며 끝나면 `R`, "에"로 시작해 혀끝을 붙이면 `L`이에요.'
+        item: sound.letter-r
+      - type: explain
+        text: |
+          `S`는 짧은 "에" 다음에 "스" 하는 바람 소리로 끝나요. 여기서도 "으"는 붙이지 않아요. `F`도 바람 소리로 끝나지만 윗니와 아랫입술 사이로 바람이 나가요. `S`는 혀끝을 윗잇몸 가까이 두고 그 좁은 틈으로 바람을 내요.
+        examples:
+          - en: S.
+            ko: 글자 S
+          - en: F.
+            ko: 글자 F
+        checkVocab: false
+      - type: listenChoose
+        en: "S"
+        item: sound.letter-s
+        options:
+          - en: "S"
+            correct: true
+          - en: "F"
+            why: '`F`는 윗니를 아랫입술에 대고 바람을 내요. "스" 하는 소리로 끝나면 `S`예요.'
+          - en: "H"
+            why: '`H`는 "에이"로 시작해요. 짧은 "에"로 시작하면 `S`예요.'
+        checkVocab: false
+      - type: explain
+        text: |
+          `T`도 "이"로 끝나는 무리예요. `D`와 같은 자리에서 시작하지만 혀를 뗄 때 바람이 세게 나와요. `B`, `D`, `P`, `T`는 전화로 들으면 서로 비슷하니 첫소리에 귀를 기울여요.
+
+          `U`는 "유"예요. 영어 단어 `you`(너)와 소리가 같아요. `Q`는 그 앞에 "크" 소리가 하나 더 붙은 "큐"예요.
+        examples:
+          - en: T.
+            ko: 글자 T
+          - en: D.
+            ko: 글자 D
+          - en: U.
+            ko: 글자 U
+        checkVocab: false
+      - type: minimalPair
+        words: ["D", "T"]
+        answer: "T"
+        why: '`T`는 혀를 뗄 때 바람이 훅 나와요. `D`는 바람이 약해요.'
+        item: sound.letter-t
+      - type: listenChoose
+        en: "U"
+        item: sound.letter-u
+        options:
+          - en: "U"
+            correct: true
+          - en: "Q"
+            why: '`Q`는 "큐"처럼 앞에 소리가 하나 더 있어요. "유"만 들리면 `U`예요.'
+          - en: "E"
+            why: '`E`는 "이"예요. "유"로 들리면 `U`예요.'
+        checkVocab: false
+      - type: fillBlank
+        en: Q, R, ___, T.
+        ko: 빈칸에 들어갈 글자를 써 보세요.
+        answers: ["S", "s"]
+        item: sound.letter-s
+        checkVocab: false
+      - type: shadow
+        en: L, R, L, R.
+        ko: L과 R을 번갈아 말해요.
+        checkVocab: false
+      - type: dictation
+        en: R, E, D.
+        ko: 빨간색이라는 뜻의 red를 한 글자씩 불렀어요.
+        item: sound.letter-r
+        checkVocab: false
+
+  - id: lesson.s1-02.3
+    title: { ko: V부터 Z까지, en: V to Z }
+    goal: { ko: V부터 Z까지 이름을 듣고 고를 수 있어요, en: Hear and pick the letters V to Z }
+    introduces: [sound.letter-v, sound.letter-w, sound.letter-x, sound.letter-y, sound.letter-z]
+    steps:
+      - type: listen
+        en: V, W, X, Y, Z.
+        ko: 알파벳의 마지막 다섯 글자예요.
+        checkVocab: false
+      - type: explain
+        text: |
+          `V`도 "이"로 끝나는 무리예요. 첫소리를 낼 때 윗니를 아랫입술에 가볍게 대고 목을 울려요. 두 입술을 붙였다 떼면 `B`가 돼요.
+
+          `F`와 입 모양이 같아요. `F`는 바람만 나오고 `V`는 목이 울려요. 목에 손을 대고 말해 보면 `V`에서 떨림이 느껴져요.
+        examples:
+          - en: V.
+            ko: 글자 V
+          - en: B.
+            ko: 글자 B
+        checkVocab: false
+      - type: minimalPair
+        words: ["B", "V"]
+        answer: "V"
+        why: '윗니가 아랫입술에 닿은 채 시작하면 `V`, 두 입술이 붙었다 떨어지면 `B`예요.'
+        item: sound.letter-v
+      - type: explain
+        text: |
+          `W`는 이름이 길어요. `double u`, 곧 "`U` 두 개"라는 뜻이고 "더블유"에 가까워요.
+
+          `Y`는 "와이"예요. 영어 단어 `why`(왜)와 소리가 같아요. 첫소리가 "와"라서 `W`와 헷갈리기 쉬운데, `W`의 이름은 "더블"로 시작해요.
+        examples:
+          - en: W.
+            ko: 글자 W
+          - en: Y.
+            ko: 글자 Y
+        checkVocab: false
+      - type: listenChoose
+        en: "Y"
+        item: sound.letter-y
+        options:
+          - en: "Y"
+            correct: true
+          - en: "W"
+            why: '`W`는 "더블유"처럼 길어요. 짧게 "와이"로 들리면 `Y`예요.'
+          - en: "I"
+            why: '`I`는 "아이"예요. 앞에 "우" 같은 소리가 붙어 "와이"가 되면 `Y`예요.'
+        checkVocab: false
+      - type: listenChoose
+        en: "W"
+        item: sound.letter-w
+        options:
+          - en: "W"
+            correct: true
+          - en: "U"
+            why: '`U`는 "유" 한 마디예요. 앞에 "더블"이 붙으면 `W`예요.'
+          - en: "Y"
+            why: '`Y`는 "와이"예요. "더블"로 시작하면 `W`예요.'
+        checkVocab: false
+      - type: explain
+        text: |
+          `X`는 "에" 다음에 "크"와 "스"를 "으" 없이 붙여 내요. 우리말 "엑스"보다 끝이 짧아요.
+
+          `Z`는 미국에서 `zee`라고 불러요. 흔히 말하는 "제트"는 영국식 이름 `zed`에 가까워서 미국에서는 잘 통하지 않아요.
+
+          `Z`는 혀를 `S`처럼 두고 목을 울려서 벌이 윙윙대는 듯한 떨림을 내요. 우리말 "지"처럼 내면 `G`로 들리기 쉬워요.
+        examples:
+          - en: X.
+            ko: 글자 X
+          - en: Z.
+            ko: 글자 Z
+          - en: G.
+            ko: 글자 G
+        checkVocab: false
+      - type: minimalPair
+        words: ["G", "Z"]
+        answer: "Z"
+        why: '`Z`는 떨리는 소리가 끊기지 않고 이어져요. `G`는 혀가 입천장에 닿았다가 터지듯 떨어져요.'
+        item: sound.letter-z
+      - type: listenChoose
+        en: "X"
+        item: sound.letter-x
+        options:
+          - en: "X"
+            correct: true
+          - en: "S"
+            why: '`S`는 "에" 다음에 바로 "스"가 와요. 그 사이에 "크"가 들리면 `X`예요.'
+          - en: "F"
+            why: '`F`는 윗니와 아랫입술 사이로 바람이 나가요. "크스"로 끝나면 `X`예요.'
+        checkVocab: false
+      - type: fillBlank
+        en: W, X, ___, Z.
+        ko: 빈칸에 들어갈 글자를 써 보세요.
+        answers: ["Y", "y"]
+        item: sound.letter-y
+        checkVocab: false
+      - type: shadow
+        en: B, V, B, V.
+        ko: B와 V를 번갈아 말해요.
+        checkVocab: false
+      - type: dictation
+        en: Z, O, O.
+        ko: 동물원이라는 뜻의 zoo를 한 글자씩 불렀어요.
+        item: sound.letter-z
+        checkVocab: false

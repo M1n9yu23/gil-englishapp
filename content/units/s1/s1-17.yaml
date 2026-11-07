@@ -1,0 +1,274 @@
+id: unit.s1-17
+title: { ko: 자주 보는 단어 1, en: Common words 1 }
+lessons:
+  - id: lesson.s1-17.1
+    title: { ko: "I am, you are", en: "I am, you are" }
+    goal: { ko: "덥다, 춥다를 말하고 물어볼 수 있어요", en: Say and ask if someone is hot or cold }
+    introduces: [sense.i.pron.self, sense.am.v.be, sense.you.pron.listener, sense.are.v.be, sense.hot.adj.temperature, sense.cold.adj.temperature]
+    steps:
+      - type: listen
+        en: I am cold.
+        ko: 저는 추워요.
+      - type: listen
+        en: Are you cold?
+        ko: 추워요?
+      - type: explain
+        text: |
+          `I`는 "나, 저"예요. `am`은 우리말 "~이다"와 "~하다"를 함께 맡아요. 그래서 "저는 더워요"가 `I am hot`이 돼요.
+
+          우리말은 "더워요"만 말해도 되지만 영어는 `I`를 빼지 않아요. 누가 더운지 꼭 말해요. `I`는 문장 가운데에서도 늘 대문자로 써요.
+
+          `am`은 `I`하고만 써요. 말할 때는 `I am`을 보통 `I'm`으로 줄여요. 이 과에서는 두 단어가 잘 보이게 `I am`으로 연습해요.
+
+          `hot`의 `o`는 입을 크게 벌린 "아"에 가까워요. `cold`의 `o`는 "오우"예요. 같은 `o`라도 소리가 달라요.
+        examples:
+          - en: I am hot.
+            ko: 저는 더워요.
+          - en: I am cold.
+            ko: 저는 추워요.
+      - type: explain
+        text: |
+          상대를 말할 때는 `you`와 `are`를 써요. 상대가 한 명이든 여럿이든 모두 `you`예요. 윗사람에게도 똑같이 `you`를 써요.
+
+          물을 때는 `are`를 맨 앞으로 옮겨요. `You are cold.`가 `Are you cold?`가 돼요. 끝은 올려 말해요.
+        examples:
+          - en: You are cold.
+            ko: 몸이 차갑네요.
+          - en: Are you cold?
+            ko: 추워요?
+      - type: chooseMeaning
+        en: I am hot.
+        item: sense.hot.adj.temperature
+        options:
+          - ko: 저는 더워요.
+            correct: true
+          - ko: 저는 추워요.
+            why: "추운 건 `cold`예요. `hot`은 더운 거예요."
+          - ko: 더워요?
+            why: "`I am`으로 시작하면 내 이야기예요. 물을 때는 `Are you`로 시작해요."
+      - type: listenChoose
+        en: Are you cold?
+        item: sense.cold.adj.temperature
+        options:
+          - ko: 추워요?
+            correct: true
+          - ko: 더워요?
+            why: "들은 단어는 `cold`, 추운 거예요. 더운 건 `hot`이에요."
+          - ko: 저는 추워요.
+            why: "`Are you`로 시작해서 상대에게 묻는 말이에요."
+      - type: fillBlank
+        en: I ___ cold.
+        ko: 저는 추워요.
+        item: sense.am.v.be
+        options:
+          - en: am
+            correct: true
+          - en: are
+            why: "`are`는 `you`와 짝이에요. `I` 뒤에는 `am`이 와요."
+      - type: chooseEnglish
+        ko: 더워요?
+        item: sense.are.v.be
+        options:
+          - en: Are you hot?
+            correct: true
+          - en: Am you hot?
+            why: "`am`은 `I`하고만 써요. `you`와는 `are`를 써요."
+          - en: Are you cold?
+            why: "`cold`는 추운 거예요. 더운 건 `hot`이에요."
+      - type: arrange
+        ko: 저는 더워요.
+        en: I am hot.
+        extra: [are]
+        item: sense.i.pron.self
+      - type: dictation
+        en: Are you hot?
+        ko: 더워요?
+        item: sense.you.pron.listener
+      - type: spell
+        sense: sense.cold.adj.temperature
+      - type: shadow
+        en: I am cold.
+        ko: 저는 추워요.
+  - id: lesson.s1-17.2
+    title: { ko: a, en: a }
+    goal: { ko: 학생인지 선생님인지 말하고 대답할 수 있어요, en: Say whether you are a student or a teacher }
+    introduces: [sense.a.art.one, sense.student.n.learner, sense.teacher.n.job, sense.yes.interj.agree, sense.no.interj.disagree]
+    steps:
+      - type: listen
+        en: I am a student.
+        ko: 저는 학생이에요.
+      - type: listen
+        en: Are you a teacher?
+        ko: 선생님이에요?
+      - type: explain
+        text: |
+          `student`는 학생, `teacher`는 선생님이에요. 앞에 붙은 `a`는 "하나"라는 뜻인데 우리말로는 옮기지 않아요.
+
+          학생이나 선생님처럼 셀 수 있는 것 하나를 말할 때는 앞에 `a`를 붙여요. `I am student`처럼 빼면 틀린 문장이 돼요.
+
+          `a`는 문장 안에서 힘을 빼고 아주 짧게 말해요. `student`의 `st`는 앞에서 배운 대로 "으" 없이 붙여요.
+        examples:
+          - en: I am a student.
+            ko: 저는 학생이에요.
+          - en: I am a teacher.
+            ko: 저는 교사예요.
+      - type: explain
+        text: |
+          `Are you a student?`에는 먼저 `Yes`나 `No`로 대답해요. 맞으면 `Yes, I am.`이라고 해요.
+
+          말할 때는 `I am`을 보통 `I'm`으로 줄이지만 `Yes, I am.`처럼 대답 끝에서는 줄이지 않아요. 학생이 아니면 `No`라고 하고 뒤에 맞는 것을 말해요.
+        examples:
+          - en: Are you a student?
+            ko: 학생이에요?
+          - en: Yes, I am.
+            ko: 네, 맞아요.
+          - en: No, I am a teacher.
+            ko: 아니요, 저는 교사예요.
+      - type: chooseMeaning
+        en: I am a teacher.
+        item: sense.teacher.n.job
+        options:
+          - ko: 저는 교사예요.
+            correct: true
+          - ko: 저는 학생이에요.
+            why: "학생은 `student`예요. `teacher`는 선생님, 교사예요."
+          - ko: 선생님이에요?
+            why: "`I am`으로 시작하면 내 이야기예요. 물을 때는 `Are you`로 시작해요."
+      - type: listenChoose
+        en: Are you a student?
+        item: sense.student.n.learner
+        options:
+          - ko: 학생이에요?
+            correct: true
+          - ko: 선생님이에요?
+            why: "선생님은 `teacher`예요. 들은 단어는 `student`예요."
+          - ko: 저는 학생이에요.
+            why: "`Are you`로 시작해서 상대에게 묻는 말이에요."
+      - type: dialogue
+        lines:
+          - speaker: Mina
+            en: Are you a student?
+            ko: 학생이에요?
+        question: 학생이라면 뭐라고 대답할까요?
+        item: sense.yes.interj.agree
+        options:
+          - en: Yes, I am.
+            correct: true
+          - en: Yes, I'm.
+            why: "평소에는 `I'm`으로 줄여도 대답 끝에 오는 `I am`은 줄이지 않아요."
+          - en: Yes, you are.
+            why: "`you are`는 상대에 대한 말이에요. 내 이야기는 `I am`이에요."
+      - type: chooseEnglish
+        ko: 아니요, 저는 교사예요.
+        item: sense.no.interj.disagree
+        options:
+          - en: No, I am a teacher.
+            correct: true
+          - en: Yes, I am a teacher.
+            why: "\"아니요\"는 `No`예요. `Yes`는 \"네\"예요."
+          - en: No, I am teacher.
+            why: "`teacher` 앞에 `a`가 빠졌어요."
+      - type: fillBlank
+        en: I am ___ student.
+        ko: 저는 학생이에요.
+        item: sense.a.art.one
+        answers: [a]
+      - type: arrange
+        ko: 선생님이에요?
+        en: Are you a teacher?
+        extra: [am]
+        item: sense.a.art.one
+      - type: spell
+        sense: sense.student.n.learner
+      - type: shadow
+        en: No, I am a student.
+        ko: 아니요, 저는 학생이에요.
+  - id: lesson.s1-17.3
+    title: { ko: the와 is, en: the and is }
+    goal: { ko: 고양이와 개가 큰지 작은지 말할 수 있어요, en: Say whether the cat or the dog is big }
+    introduces: [sense.is.v.be, sense.the.art.known, sense.cat.n.animal, sense.dog.n.animal, sense.big.adj.size, sense.small.adj.size]
+    steps:
+      - type: minimalPair
+        words: [they, day]
+        answer: they
+        item: sound.th-voiced
+        why: "`they`는 혀끝을 이 사이에 두고 목을 울려요. `day`는 혀끝이 윗잇몸에 닿아요. 이번에 배울 `the`도 `they`와 같은 소리로 시작해요."
+      - type: listen
+        en: The cat is small.
+        ko: 고양이가 작아요.
+      - type: listen
+        en: The dog is big.
+        ko: 개가 커요.
+      - type: explain
+        text: |
+          `I`에는 `am`, `you`에는 `are`를 썼어요. 고양이 한 마리나 개 한 마리처럼 나도 상대도 아닌 하나에는 `is`를 써요.
+
+          `the`는 "그"예요. 서로 어떤 고양이인지 알 때 `the cat`이라고 해요. `a cat`은 처음 말하는 어떤 고양이예요. 우리말로는 "개가 커요"처럼 "그"를 빼고 말할 때가 많아요.
+
+          `the`는 `they`처럼 혀끝을 이 사이에 두고 시작해요. 문장 안에서는 힘을 빼고 짧게 말해요.
+        examples:
+          - en: The cat is small.
+            ko: 그 고양이는 작아요.
+          - en: The dog is big.
+            ko: 개가 커요.
+      - type: explain
+        text: |
+          `is`도 물을 때는 맨 앞으로 옮겨요. `The dog is big.`이 `Is the dog big?`이 돼요.
+        examples:
+          - en: Is the dog big?
+            ko: 개가 커요?
+          - en: Is the cat small?
+            ko: 고양이가 작아요?
+      - type: chooseMeaning
+        en: The dog is small.
+        item: sense.small.adj.size
+        options:
+          - ko: 개가 작아요.
+            correct: true
+          - ko: 개가 커요.
+            why: "큰 건 `big`이에요. `small`은 작은 거예요."
+          - ko: 고양이가 작아요.
+            why: "고양이는 `cat`이에요. `dog`는 개예요."
+      - type: listenChoose
+        en: Is the cat big?
+        item: sense.cat.n.animal
+        options:
+          - ko: 고양이가 커요?
+            correct: true
+          - ko: 개가 커요?
+            why: "개는 `dog`예요. 들은 단어는 `cat`, 고양이예요."
+          - ko: 고양이가 커요.
+            why: "`Is`로 시작해서 묻는 말이에요."
+      - type: fillBlank
+        en: The dog ___ big.
+        ko: 개가 커요.
+        item: sense.is.v.be
+        options:
+          - en: is
+            correct: true
+          - en: are
+            why: "`are`는 `you`와 짝이에요. 개 한 마리에는 `is`를 써요."
+          - en: am
+            why: "`am`은 `I`하고만 써요."
+      - type: chooseEnglish
+        ko: 그 개는 커요.
+        item: sense.the.art.known
+        options:
+          - en: The dog is big.
+            correct: true
+          - en: A dog is big.
+            why: "\"그 개\"처럼 서로 아는 개라서 `the`를 써요."
+          - en: The dog is small.
+            why: "작은 건 `small`이에요. 큰 건 `big`이에요."
+      - type: arrange
+        ko: 그 개는 작아요?
+        en: Is the dog small?
+        extra: [are, a]
+        item: sense.dog.n.animal
+      - type: dictation
+        en: The cat is big.
+        ko: 고양이가 커요.
+        item: sense.big.adj.size
+      - type: shadow
+        en: Is the dog big?
+        ko: 개가 커요?

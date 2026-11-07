@@ -1,0 +1,213 @@
+id: unit.s1-07
+title: { ko: "자음 소리 4: s, z, sh, ch, th", en: "Consonants 4: s, z, sh, ch, th" }
+lessons:
+  - id: lesson.s1-07.1
+    title: { ko: s와 z, en: s and z }
+    goal: { ko: s와 z 소리를 듣고 구별할 수 있어요, en: Tell s from z }
+    introduces: [sound.s, sound.z]
+    steps:
+      - type: listen
+        en: Sun.
+        ko: 해.
+        checkVocab: false
+      - type: listen
+        en: Zoo.
+        ko: 동물원.
+        checkVocab: false
+      - type: explain
+        text: |
+          `sun`과 `zoo`를 들어 보세요. 둘 다 혀끝을 윗잇몸 가까이 두고 닿지 않게 한 채로 좁은 틈으로 바람을 내보내요.
+
+          `s`는 바람 소리만 나요. `z`는 같은 자리에서 목을 울려서 벌이 윙윙거리는 것 같은 소리가 나요. 목에 손을 대고 `s`와 `z`를 길게 번갈아 내 보세요.
+
+          우리말 "주"처럼 혀 앞부분이 잇몸 뒤에 닿았다 떨어지면 `j` 소리가 돼요. `zoo`의 `z`는 혀가 닿지 않고 소리가 길게 이어져요.
+
+          단어 끝의 `s`는 `is`, `his`처럼 `z` 소리일 때도 많아요. 지금은 알아 두기만 하면 돼요.
+        examples:
+          - { en: Sun., ko: 해. }
+          - { en: Bus., ko: 버스. }
+          - { en: Zoo., ko: 동물원. }
+          - { en: Zero., ko: 영(0). }
+        checkVocab: false
+      - type: minimalPair
+        words: [sip, zip]
+        answer: zip
+        item: sound.z
+        why: "들린 단어는 `zip`(지퍼를 잠그다)이에요. 목이 울리며 윙윙 이어지면 `z`예요. `sip`(한 모금 마시다)은 바람 소리만 나요."
+      - type: minimalPair
+        words: [sue, zoo]
+        answer: sue
+        item: sound.s
+        why: "들린 단어는 `sue`(고소하다)예요. 목이 울리지 않고 바람 소리만 나면 `s`예요. `zoo`(동물원)는 목이 울려요."
+      - type: minimalPair
+        words: [bus, buzz]
+        answer: buzz
+        item: sound.z
+        why: "들린 단어는 `buzz`(윙윙거리다)예요. 앞 모음이 조금 더 길고 끝소리가 윙윙 이어지면 `z`예요. `bus`(버스)는 짧게 바람 소리로 끝나요."
+      - type: listenChoose
+        en: zero
+        item: sound.z
+        options:
+          - { en: z, correct: true }
+          - { en: j, why: "`j`였다면 혀끝이 잇몸에 닿았다 떨어져요. 들은 소리는 혀가 닿지 않고 윙윙 이어졌어요." }
+          - { en: s, why: "`s`였다면 목이 울리지 않아요. 들은 소리는 목이 울렸어요." }
+        checkVocab: false
+      - type: dictation
+        en: Bus.
+        ko: 버스.
+        checkVocab: false
+      - type: dictation
+        en: Zoo.
+        ko: 동물원.
+        checkVocab: false
+      - type: shadow
+        en: Zero.
+        ko: 영(0).
+        checkVocab: false
+      - type: shadow
+        en: See you soon.
+        ko: 곧 봐요.
+        checkVocab: false
+  - id: lesson.s1-07.2
+    title: { ko: sh와 ch, en: sh and ch }
+    goal: { ko: ship과 chip을 듣고 구별할 수 있어요, en: Tell ship from chip }
+    introduces: [sound.sh, sound.ch]
+    steps:
+      - type: listen
+        en: Ship.
+        ko: 배.
+        checkVocab: false
+      - type: listen
+        en: Chip.
+        ko: 칩.
+        checkVocab: false
+      - type: explain
+        text: |
+          `ship`과 `chip`을 들어 보세요. 두 소리 모두 입술을 둥글게 앞으로 내밀고 혀를 `s`보다 조금 뒤로 당겨서 내요.
+
+          `sh`는 바람이 끊기지 않고 이어져요. 조용히 하라고 할 때 내는 "쉬" 소리와 같아요. 글자는 두 개지만 소리는 하나예요.
+
+          `ch`는 혀가 잇몸 뒤에 잠깐 닿았다가 떨어지면서 한 번 터져요. 그래서 짧고 단단하게 들려요.
+
+          `s`와 `sh`도 헷갈리기 쉬워요. 우리말 "시"의 첫소리는 혀가 `sh` 쪽으로 가 있어서 `sea`(바다)를 "시"처럼 말하면 `she`(그녀)로 들리기 쉬워요. `s`는 입술을 내밀지 않고 혀끝을 앞쪽에 둬요.
+        examples:
+          - { en: Ship., ko: 배. }
+          - { en: Fish., ko: 물고기. }
+          - { en: Chip., ko: 칩. }
+          - { en: Chin., ko: 턱. }
+        checkVocab: false
+      - type: minimalPair
+        words: [ship, chip]
+        answer: chip
+        item: sound.ch
+        why: "들린 단어는 `chip`(칩)이에요. 한 번 터지며 단단하게 시작하면 `ch`예요. `ship`(배)은 바람이 끊기지 않고 이어져요."
+      - type: minimalPair
+        words: [shop, chop]
+        answer: shop
+        item: sound.sh
+        why: "들린 단어는 `shop`(가게)이에요. 바람이 부드럽게 이어지면 `sh`예요. `chop`(잘게 썰다)은 한 번 터지면서 시작해요."
+      - type: minimalPair
+        words: [sea, she]
+        answer: sea
+        item: sound.s
+        why: "들린 단어는 `sea`(바다)예요. 바람 소리가 높고 가늘면 `s`예요. `she`(그녀)는 입술을 내밀어서 더 낮고 넓게 들려요."
+      - type: minimalPair
+        words: [sip, ship]
+        answer: ship
+        item: sound.sh
+        why: "들린 단어는 `ship`(배)이에요. 바람 소리가 낮고 넓으면 `sh`예요. `sip`(한 모금 마시다)의 `s`는 더 높고 가늘어요."
+      - type: listenChoose
+        en: cheap
+        item: sound.ch
+        options:
+          - { en: cheap, correct: true }
+          - { en: sheep, why: "`sheep`(양)은 바람이 이어지는 `sh`로 시작해요. 들은 소리는 한 번 터지는 `ch`였어요." }
+        checkVocab: false
+      - type: dictation
+        en: Ship.
+        ko: 배.
+        checkVocab: false
+      - type: dictation
+        en: Chin.
+        ko: 턱.
+        checkVocab: false
+      - type: shadow
+        en: Fish and chips.
+        ko: 생선튀김과 감자튀김.
+        checkVocab: false
+      - type: shadow
+        en: Say cheese.
+        ko: 자, 웃으세요.
+        checkVocab: false
+  - id: lesson.s1-07.3
+    title: { ko: th 두 가지, en: The two th sounds }
+    goal: { ko: th 소리 두 가지를 낼 수 있어요, en: Make both th sounds }
+    introduces: [sound.th-voiceless, sound.th-voiced]
+    steps:
+      - type: listen
+        en: Think.
+        ko: 생각해요.
+        checkVocab: false
+      - type: listen
+        en: This.
+        ko: 이거.
+        checkVocab: false
+      - type: explain
+        text: |
+          `think`와 `this`의 `th`는 우리말에 없는 소리예요. 혀끝을 윗니와 아랫니 사이로 살짝 내밀고 윗니에 가볍게 댄 채 바람을 내보내요.
+
+          `think`, `three`처럼 바람만 내면 `/θ/` 소리예요. `this`, `mother`처럼 같은 자리에서 목을 울리면 `/ð/` 소리예요. 글자는 둘 다 `th`예요.
+
+          혀가 이 사이로 나오지 않으면 다른 소리로 들려요. `think`는 `sink`(싱크대)로, `three`는 `tree`(나무)로 들리기 쉬워요.
+
+          `the`, `this`, `that`, `they`, `there`, `then`처럼 아주 자주 쓰는 짧은 말의 `th`는 거의 다 목을 울리는 `/ð/`예요. `think`, `three`, `thank`처럼 뜻이 분명한 단어의 첫 `th`는 대부분 `/θ/`예요.
+        examples:
+          - { en: Think., ko: 생각해요. }
+          - { en: Three., ko: 셋. }
+          - { en: This., ko: 이거. }
+          - { en: Mother., ko: 어머니. }
+        checkVocab: false
+      - type: minimalPair
+        words: [think, sink]
+        answer: think
+        item: sound.th-voiceless
+        why: "들린 단어는 `think`(생각하다)예요. 혀가 이 사이에 있어 바람이 부드럽게 퍼지면 `th`예요. `sink`(싱크대)의 `s`는 날카로운 바람 소리예요."
+      - type: minimalPair
+        words: [three, tree]
+        answer: tree
+        item: sound.t
+        why: "들린 단어는 `tree`(나무)예요. 혀끝이 잇몸에 닿았다 터지면 `t`예요. `three`(셋)는 혀가 이 사이에 있고 바람이 이어져요."
+      - type: minimalPair
+        words: [then, den]
+        answer: then
+        item: sound.th-voiced
+        why: "들린 단어는 `then`(그때)이에요. 혀를 이 사이에 두고 목을 울리며 이어지면 `th`예요. `den`(굴)의 `d`는 혀끝이 잇몸에 닿았다 한 번 터져요."
+      - type: minimalPair
+        words: [they, day]
+        answer: day
+        item: sound.d
+        why: "들린 단어는 `day`(날)예요. 혀끝이 잇몸에 닿았다 터지면 `d`예요. `they`(그들)는 혀가 이 사이에 있고 소리가 이어져요."
+      - type: listenChoose
+        en: thank
+        item: sound.th-voiceless
+        options:
+          - { en: thank, correct: true }
+          - { en: sank, why: "`sank`(가라앉았다)의 `s`는 날카로운 바람 소리예요. 들은 소리는 혀가 이 사이에 있는 `th`였어요." }
+          - { en: tank, why: "`tank`(탱크)의 `t`는 한 번 터지고 끝나요. 들은 소리는 바람이 부드럽게 이어졌어요." }
+        checkVocab: false
+      - type: dictation
+        en: Three.
+        ko: 셋.
+        checkVocab: false
+      - type: dictation
+        en: Then.
+        ko: 그때.
+        checkVocab: false
+      - type: shadow
+        en: Thank you.
+        ko: 고마워요.
+        checkVocab: false
+      - type: shadow
+        en: This one.
+        ko: 이거요.
+        checkVocab: false

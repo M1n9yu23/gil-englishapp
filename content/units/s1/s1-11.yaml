@@ -1,0 +1,222 @@
+id: unit.s1-11
+title: { ko: r이 붙은 모음, en: Vowels with r }
+lessons:
+  - id: lesson.s1-11.1
+    title: { ko: ar와 or, en: ar and or }
+    goal: { ko: car와 core를 듣고 구별할 수 있어요, en: Tell car from core }
+    introduces: [sound.ar, sound.or]
+    steps:
+      - type: listen
+        en: Car.
+        ko: 자동차
+        checkVocab: false
+      - type: listen
+        en: Core.
+        ko: 중심
+        checkVocab: false
+      - type: explain
+        text: |
+          `ar`는 입을 크게 벌린 "아"에서 혀를 뒤로 말아요. `or`는 입술을 둥글게 한 "오"에서 혀를 말아요.
+
+          `r`을 "르"로 따로 소리 내지 않아요. 모음을 내는 동안 혀가 뒤로 말려 들어가서 한 소리처럼 이어져요. 끝의 `e`는 `core`에서도 소리 내지 않아요.
+
+          미국 영어는 `r`을 끝까지 소리 내요. 영국 영어에서는 `car`처럼 모음 앞이 아닌 `r`을 소리 내지 않아서 영국식 소리 버튼은 다르게 들려요.
+        examples:
+          - { en: Star., ko: 별 }
+          - { en: Fork., ko: 포크 }
+          - { en: Horse., ko: 말 }
+        checkVocab: false
+      - type: minimalPair
+        words: [car, core]
+        answer: core
+        item: sound.or
+        why: '`core`는 입술을 둥글게 한 "오"에서 혀를 말아요. `car`는 입을 크게 벌린 "아"예요.'
+      - type: minimalPair
+        words: [card, cord]
+        answer: card
+        item: sound.ar
+        why: '`card`는 입을 크게 벌린 "아"에서 혀를 말아요. `cord`는 입술이 둥글어요.'
+      - type: minimalPair
+        words: [farm, form]
+        answer: form
+        item: sound.or
+        why: '`form`은 입술을 둥글게 한 "오"로 시작해요. `farm`은 "아"로 시작해요.'
+      - type: listenChoose
+        en: park
+        item: sound.ar
+        checkVocab: false
+        options:
+          - { en: park, correct: true }
+          - { en: pork, why: '`pork`는 입술을 둥글게 한 "오"예요. 들은 단어는 입을 크게 벌린 "아"였어요.' }
+          - { en: pack, why: '`pack`에는 `r`이 없어서 혀를 말지 않아요. 들은 단어는 혀를 말았어요.' }
+      - type: chooseEnglish
+        ko: 입술을 둥글게 한 "오"에서 혀를 마는 단어
+        item: sound.or
+        checkVocab: false
+        options:
+          - { en: short, correct: true }
+          - { en: shark, why: '`ar`는 입을 크게 벌린 "아"로 시작해요.' }
+          - { en: shot, why: '`r`이 없고, `o` 하나는 짧은 "아"예요.' }
+      - type: dictation
+        en: Arm.
+        ko: 팔
+        item: sound.ar
+        checkVocab: false
+      - type: dictation
+        en: Fork.
+        ko: 포크
+        item: sound.or
+        checkVocab: false
+      - type: shadow
+        en: Park the car.
+        ko: 차를 세워요.
+        checkVocab: false
+
+  - id: lesson.s1-11.2
+    title: { ko: "er, ir, ur", en: "er, ir, ur" }
+    goal: { ko: "철자가 달라도 같은 소리인 er, ir, ur를 읽을 수 있어요", en: "Read er, ir and ur, which sound the same" }
+    introduces: [sound.er-ir-ur]
+    steps:
+      - type: listen
+        en: Bird.
+        ko: 새
+        checkVocab: false
+      - type: listen
+        en: Turn.
+        ko: 돌다
+        checkVocab: false
+      - type: explain
+        text: |
+          `her`, `bird`, `turn`은 철자가 `er`, `ir`, `ur`로 다르지만 모음 소리는 같아요. 발음기호로는 모두 `/ɝː/`예요.
+
+          입을 조금만 벌리고 혀를 뒤로 만 채 "어"를 길게 내요. 혀는 처음부터 말고 시작해요. "어"를 낸 뒤에 "르"를 붙이지 않아요.
+
+          소리가 하나라서 읽기는 쉬워요. 쓸 때는 셋 중 어느 철자인지 소리만으로 알 수 없으니 단어를 배울 때 철자도 같이 익혀요.
+        examples:
+          - { en: Her., ko: 그녀의 }
+          - { en: Girl., ko: 여자아이 }
+          - { en: Nurse., ko: 간호사 }
+        checkVocab: false
+      - type: minimalPair
+        words: [bird, bud]
+        answer: bird
+        item: sound.er-ir-ur
+        why: '`bird`는 혀를 만 채 길게 내요. `bud`는 혀를 말지 않은 짧은 "어"예요.'
+      - type: minimalPair
+        words: [hut, hurt]
+        answer: hurt
+        item: sound.er-ir-ur
+        why: '`hurt`는 혀를 말아요. `hut`은 혀를 말지 않고 짧게 끝나요.'
+      - type: minimalPair
+        words: [shirt, short]
+        answer: shirt
+        item: sound.er-ir-ur
+        why: '`shirt`는 입을 조금만 벌린 "어"에서 혀를 말아요. `short`는 입술을 둥글게 한 "오"예요.'
+      - type: chooseEnglish
+        ko: 모음 소리가 나머지 셋과 다른 단어
+        item: sound.er-ir-ur
+        checkVocab: false
+        options:
+          - { en: far, correct: true }
+          - { en: her, why: '`er`는 `/ɝː/`예요. `sir`, `fur`도 철자만 다르고 같은 소리예요.' }
+          - { en: sir, why: '`ir`도 `/ɝː/`예요. 다른 하나는 입을 크게 벌리는 `far`예요.' }
+          - { en: fur, why: '`ur`도 `/ɝː/`예요. `ar`만 "아"로 시작해요.' }
+      - type: listenChoose
+        en: turn
+        item: sound.er-ir-ur
+        checkVocab: false
+        options:
+          - { en: turn, correct: true }
+          - { en: torn, why: '`torn`은 입술을 둥글게 한 "오"예요. 들은 단어는 입을 조금만 벌린 "어"였어요.' }
+          - { en: ten, why: '`ten`은 짧은 "에"이고 혀를 말지 않아요.' }
+      - type: listenChoose
+        en: bird
+        item: sound.er-ir-ur
+        checkVocab: false
+        options:
+          - { en: bird, correct: true }
+          - { en: bud, why: '`bud`는 혀를 말지 않은 짧은 "어"예요. 들은 단어는 혀를 만 채 길게 냈어요.' }
+          - { en: board, why: '`board`는 입술을 둥글게 한 "오"예요. 들은 단어는 입을 조금만 벌렸어요.' }
+      - type: dictation
+        en: Turn.
+        ko: 돌다
+        checkVocab: false
+      - type: shadow
+        en: The bird is hurt.
+        ko: 새가 다쳤어요.
+        checkVocab: false
+
+  - id: lesson.s1-11.3
+    title: { ko: r 모음 구별, en: Telling r vowels apart }
+    goal: { ko: farm과 firm처럼 r 모음을 듣고 구별할 수 있어요, en: Tell farm from firm }
+    introduces: []
+    steps:
+      - type: listen
+        en: Farm.
+        ko: 농장
+        checkVocab: false
+      - type: listen
+        en: Firm.
+        ko: 단단한
+        checkVocab: false
+      - type: explain
+        text: |
+          `r`이 붙은 모음은 세 가지예요. `ar`는 입을 크게 벌린 "아", `or`는 입술을 둥글게 한 "오", `er`, `ir`, `ur`는 입을 조금만 벌린 "어"에서 시작해요. 셋 다 혀를 뒤로 말아요.
+
+          구별할 때는 입이 얼마나 벌어지는지 보면 돼요. `farm`은 턱이 크게 내려가고 `firm`은 거의 벌어지지 않아요. `form`은 입술이 앞으로 둥글게 나와요.
+
+          `heard`는 `ear`로 쓰지만 소리는 `her`와 같은 `/ɝː/`예요. `ear`는 보통 `hear`처럼 읽으니 이 단어는 따로 익혀요.
+        examples:
+          - { en: Hard., ko: 어려운 }
+          - { en: Heard., ko: 들었다 }
+          - { en: Form., ko: 형태 }
+        checkVocab: false
+      - type: minimalPair
+        words: [farm, firm]
+        answer: firm
+        item: sound.er-ir-ur
+        why: '`firm`은 입을 조금만 벌린 "어"에서 혀를 말아요. `farm`은 턱이 크게 내려가요.'
+      - type: minimalPair
+        words: [hard, heard]
+        answer: hard
+        item: sound.ar
+        why: '`hard`는 입을 크게 벌린 "아"에서 혀를 말아요. `heard`는 입이 거의 벌어지지 않아요.'
+      - type: minimalPair
+        words: [born, burn]
+        answer: born
+        item: sound.or
+        why: '`born`은 입술을 둥글게 한 "오"예요. `burn`은 입을 조금만 벌린 "어"에서 혀를 말아요.'
+      - type: listenChoose
+        en: fur
+        item: sound.er-ir-ur
+        checkVocab: false
+        options:
+          - { en: fur, correct: true }
+          - { en: far, why: '`far`는 입을 크게 벌린 "아"로 시작해요. 들은 단어는 입이 거의 벌어지지 않았어요.' }
+          - { en: for, why: '`for`는 입술을 둥글게 한 "오"로 시작해요.' }
+      - type: listenChoose
+        en: barn
+        item: sound.ar
+        checkVocab: false
+        options:
+          - { en: barn, correct: true }
+          - { en: born, why: '`born`은 입술을 둥글게 한 "오"예요. 들은 단어는 턱이 크게 내려간 "아"였어요.' }
+          - { en: burn, why: '`burn`은 입을 조금만 벌린 "어"예요.' }
+      - type: dictation
+        en: Dark.
+        ko: 어두운
+        item: sound.ar
+        checkVocab: false
+      - type: dictation
+        en: Horn.
+        ko: 뿔
+        item: sound.or
+        checkVocab: false
+      - type: shadow
+        en: Hard, heard. Farm, firm.
+        ko: 어려운, 들었다. 농장, 단단한.
+        checkVocab: false
+      - type: shadow
+        en: I heard a bird.
+        ko: 새소리를 들었어요.
+        checkVocab: false

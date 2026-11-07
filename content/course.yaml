@@ -9,7 +9,33 @@ stages:
     units: [unit.s0-01, unit.s0-02, unit.s0-03, unit.s0-04, unit.s0-05]
   - id: stage.s1
     title: { ko: 소리와 글자, en: Sounds and letters }
-    units: []
+    canDo:
+      - { ko: 알파벳 이름을 듣고 쓸 수 있어요, en: Hear and write the names of the letters }
+      - { ko: "f와 p, r과 l처럼 헷갈리는 소리를 구별할 수 있어요", en: Tell apart sounds such as f and p or r and l }
+      - { ko: 처음 보는 쉬운 단어를 소리 내 읽을 수 있어요, en: Read new short words aloud }
+      - { ko: 0부터 100까지 숫자를 듣고 말할 수 있어요, en: Hear and say numbers from 0 to 100 }
+      - { ko: 인사를 주고받을 수 있어요, en: Greet people and answer a greeting }
+    units:
+      - unit.s1-01
+      - unit.s1-02
+      - unit.s1-03
+      - unit.s1-04
+      - unit.s1-05
+      - unit.s1-06
+      - unit.s1-07
+      - unit.s1-08
+      - unit.s1-09
+      - unit.s1-10
+      - unit.s1-11
+      - unit.s1-12
+      - unit.s1-13
+      - unit.s1-14
+      - unit.s1-15
+      - unit.s1-16
+      - unit.s1-17
+      - unit.s1-18
+      - unit.s1-19
+      - unit.s1-20
   - id: stage.a1
     title: { ko: 첫걸음, en: First steps }
     units: []
@@ -25,3 +51,13 @@ stages:
   - id: stage.c1
     title: { ko: 전문, en: Advanced }
     units: []
+# Forms a sentence may use only after the item that teaches them.
+inflections:
+  plural: pattern.plural-s
+  possessive: pattern.possessive-s
+  third: pattern.third-person-s
+  ing: pattern.present-continuous
+  past: pattern.past-simple
+  pastParticiple: pattern.present-perfect
+  comparative: pattern.comparative
+  superlative: pattern.superlative

@@ -1,0 +1,217 @@
+id: unit.s1-09
+title: { ko: 긴 모음과 끝의 e, en: Long vowels and the final e }
+lessons:
+  - id: lesson.s1-09.1
+    title: { ko: a_e와 i_e, en: a_e and i_e }
+    goal: { ko: "cap과 cape, kit과 kite를 구별할 수 있어요", en: Tell cap from cape and kit from kite }
+    introduces: [sound.a-e, sound.i-e]
+    steps:
+      - type: listen
+        en: Cap.
+        ko: 모자
+        checkVocab: false
+      - type: listen
+        en: Cape.
+        ko: 망토
+        checkVocab: false
+      - type: explain
+        text: |
+          `cap`에 `e` 하나를 붙였을 뿐인데 `cape`는 소리가 달라져요. 끝의 `e`는 소리 내지 않고, 앞의 모음을 알파벳 이름대로 읽으라는 표시예요.
+
+          `a`의 이름은 "에이"라서 `cape`는 `/keɪp/`예요. `i`의 이름은 "아이"라서 `kite`는 `/kaɪt/`예요.
+
+          모음 하나, 자음 하나, 끝의 `e` 순서로 놓이면 대부분 이렇게 읽어요.
+        examples:
+          - { en: Kit., ko: 도구 세트 }
+          - { en: Kite., ko: 연 }
+          - { en: Make., ko: 만들다 }
+          - { en: Time., ko: 시간 }
+        checkVocab: false
+      - type: minimalPair
+        words: [cap, cape]
+        answer: cape
+        item: sound.a-e
+        why: '`cape`는 "에"에서 "이"로 미끄러지는 "에이"예요. `cap`은 짧은 `/æ/` 하나로 끝나요.'
+      - type: minimalPair
+        words: [kit, kite]
+        answer: kite
+        item: sound.i-e
+        why: '`kite`는 "아"에서 "이"로 미끄러지는 "아이"예요. `kit`은 힘을 뺀 짧은 `/ɪ/`예요.'
+      - type: minimalPair
+        words: [hat, hate]
+        answer: hat
+        item: sound.short-a
+        why: '`hat`은 끝에 `e`가 없어서 짧은 `/æ/`예요. `hate`는 "에이"로 미끄러져요.'
+      - type: chooseEnglish
+        ko: 모음을 알파벳 이름 "에이"로 읽는 단어
+        item: sound.a-e
+        checkVocab: false
+        options:
+          - { en: made, correct: true }
+          - { en: mad, why: '끝에 `e`가 없어서 짧은 `/æ/`예요.' }
+      - type: listenChoose
+        en: pine
+        item: sound.i-e
+        checkVocab: false
+        options:
+          - { en: pine, correct: true }
+          - { en: pin, why: '끝에 `e`가 없으면 짧은 "이"예요. 들은 단어는 "아이"로 미끄러졌어요.' }
+          - { en: pane, why: '`a_e`는 "에이"예요. 들은 단어는 "아이"였어요.' }
+      - type: dictation
+        en: Lake.
+        ko: 호수
+        item: sound.a-e
+        checkVocab: false
+      - type: dictation
+        en: Bike.
+        ko: 자전거
+        item: sound.i-e
+        checkVocab: false
+      - type: shadow
+        en: Cap, cape. Kit, kite.
+        ko: 모자, 망토. 도구 세트, 연.
+        checkVocab: false
+
+  - id: lesson.s1-09.2
+    title: { ko: o_e와 u_e, en: o_e and u_e }
+    goal: { ko: "hop과 hope, cub과 cube를 구별할 수 있어요", en: Tell hop from hope and cub from cube }
+    introduces: [sound.o-e, sound.u-e]
+    steps:
+      - type: listen
+        en: Hop.
+        ko: 깡충 뛰다
+        checkVocab: false
+      - type: listen
+        en: Hope.
+        ko: 희망
+        checkVocab: false
+      - type: explain
+        text: |
+          `o`와 `u`도 끝에 `e`가 붙으면 이름대로 읽어요. `hope`는 `o`의 이름처럼 "오우", `cube`는 `u`의 이름처럼 "유"예요.
+
+          `hop`은 입을 벌린 짧은 "아"이고, `hope`는 입술을 오므리며 "오우"로 끝나요. `cub`은 짧은 "어"이고, `cube`는 모음 앞에 `yes`의 첫소리 `/j/`가 붙어요.
+
+          `rule`처럼 `/j/` 없이 "우"로만 나는 `u_e` 단어도 있어요. 어느 쪽이든 길게 읽는 건 같아요.
+        examples:
+          - { en: Cub., ko: 새끼 곰 }
+          - { en: Cube., ko: 정육면체 }
+          - { en: Home., ko: 집 }
+          - { en: Cute., ko: 귀여운 }
+        checkVocab: false
+      - type: minimalPair
+        words: [hop, hope]
+        answer: hope
+        item: sound.o-e
+        why: '`hope`는 입술을 오므리며 "오우"로 끝나요. `hop`은 입을 벌린 짧은 "아"예요.'
+      - type: minimalPair
+        words: [cub, cube]
+        answer: cube
+        item: sound.u-e
+        why: '`cube`는 모음 앞에 `/j/`가 붙어 "유"처럼 길게 나요. `cub`은 짧은 "어"예요.'
+      - type: minimalPair
+        words: [not, note]
+        answer: not
+        item: sound.short-o
+        why: '`not`은 끝에 `e`가 없어서 짧은 "아"예요. `note`는 "오우"로 끝나요.'
+      - type: listenChoose
+        en: rope
+        item: sound.o-e
+        checkVocab: false
+        options:
+          - { en: rope, correct: true }
+          - { en: ripe, why: '`i_e`는 "아이"예요. 들은 단어는 입술을 오므리는 "오우"였어요.' }
+          - { en: rip, why: '`rip`은 짧은 "이"예요. 들은 단어는 길게 "오우"였어요.' }
+      - type: chooseEnglish
+        ko: 모음을 알파벳 이름 "오우"로 읽는 단어
+        item: sound.o-e
+        checkVocab: false
+        options:
+          - { en: robe, correct: true }
+          - { en: rob, why: '끝에 `e`가 없으면 `o`는 짧은 "아"예요.' }
+          - { en: rub, why: '`u`는 짧은 "어"예요.' }
+      - type: dictation
+        en: Bone.
+        ko: 뼈
+        item: sound.o-e
+        checkVocab: false
+      - type: dictation
+        en: Cube.
+        ko: 정육면체
+        item: sound.u-e
+        checkVocab: false
+      - type: shadow
+        en: Hop, hope. Cub, cube.
+        ko: 깡충 뛰다, 희망. 새끼 곰, 정육면체.
+        checkVocab: false
+
+  - id: lesson.s1-09.3
+    title: { ko: 끝의 e 읽기, en: Reading the final e }
+    goal: { ko: 끝에 e가 있는 단어를 소리 내 읽을 수 있어요, en: Read words with a final e aloud }
+    introduces: []
+    steps:
+      - type: explain
+        text: |
+          단어 끝에 `e`가 보이면 바로 앞을 봐요. 모음 하나와 자음 하나가 있으면 그 모음을 이름대로 읽어요. 끝에 `e`가 없고 모음 하나 뒤에 자음으로 끝나면 대부분 짧은 모음이에요.
+
+          `tap`과 `tape`, `rid`와 `ride`, `not`과 `note`처럼 `e` 하나로 다른 단어가 돼요.
+
+          `have`, `give`, `come`처럼 자주 쓰는 단어 몇 개는 이 규칙을 따르지 않아요. 미리 외울 필요는 없고, 그 단어를 배울 때 하나씩 익히면 돼요.
+
+          예문은 소리 버튼을 누르기 전에 먼저 소리 내 읽어 보고, 버튼으로 확인해요.
+        examples:
+          - { en: Tap., ko: 가볍게 두드리다 }
+          - { en: Tape., ko: 테이프 }
+          - { en: Ride., ko: 타다 }
+        checkVocab: false
+      - type: minimalPair
+        words: [mad, made]
+        answer: made
+        item: sound.a-e
+        why: '`made`는 끝의 `e` 때문에 "에이"예요. `mad`는 짧은 `/æ/`예요.'
+      - type: listenChoose
+        en: ride
+        item: sound.i-e
+        checkVocab: false
+        options:
+          - { en: ride, correct: true }
+          - { en: rid, why: '끝에 `e`가 없으면 짧은 "이"예요. 들은 단어는 "아이"로 미끄러졌어요.' }
+          - { en: rode, why: '`o_e`는 "오우"예요. 들은 단어는 "아이"였어요.' }
+      - type: chooseEnglish
+        ko: 모음을 "에이"로 읽는 단어
+        item: sound.a-e
+        checkVocab: false
+        options:
+          - { en: same, correct: true }
+          - { en: sat, why: '끝에 `e`가 없어서 짧은 `/æ/`예요.' }
+          - { en: set, why: '`e` 하나는 짧은 "에"예요. "에이"로 늘어나지 않아요.' }
+      - type: chooseMeaning
+        en: cone
+        item: sound.o-e
+        checkVocab: false
+        options:
+          - { ko: '"오우"로 끝나는 긴 소리', correct: true }
+          - { ko: '짧은 "아" 소리', why: '끝에 `e`가 있어서 `o`를 이름대로 "오우"라고 읽어요.' }
+          - { ko: '"아이" 소리', why: '"아이"는 `i_e`예요. 이 단어의 모음 글자는 `o`예요.' }
+      - type: dictation
+        en: Game.
+        ko: 경기
+        item: sound.a-e
+        checkVocab: false
+      - type: dictation
+        en: Five.
+        ko: 다섯
+        item: sound.i-e
+        checkVocab: false
+      - type: dictation
+        en: Joke.
+        ko: 농담
+        item: sound.o-e
+        checkVocab: false
+      - type: shadow
+        en: Ride a bike.
+        ko: 자전거를 타요.
+        checkVocab: false
+      - type: shadow
+        en: Make a cake.
+        ko: 케이크를 만들어요.
+        checkVocab: false

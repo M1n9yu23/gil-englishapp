@@ -1,0 +1,196 @@
+id: unit.s1-06
+title: { ko: "자음 소리 3: k, g, h, w, y, j", en: "Consonants 3: k, g, h, w, y, j" }
+lessons:
+  - id: lesson.s1-06.1
+    title: { ko: "k, g, h", en: "k, g, h" }
+    goal: { ko: "k, g, h 소리를 듣고 구별할 수 있어요", en: "Hear the difference between k, g and h" }
+    introduces: [sound.k, sound.g, sound.h]
+    steps:
+      - type: listen
+        en: Cat.
+        ko: 고양이.
+        checkVocab: false
+      - type: listen
+        en: Hat.
+        ko: 모자.
+        checkVocab: false
+      - type: explain
+        text: |
+          `cat`, `go`, `hat`을 들어 보세요. `k`와 `g`는 혀 뒤쪽을 입천장 안쪽에 댔다가 떼면서 내요.
+
+          `k`는 바람이 세게 터지고 `g`는 바람이 약하고 목이 울려요. `p`와 `b`, `t`와 `d`처럼 같은 자리에서 나는 짝이에요.
+
+          `k` 소리는 여러 글자로 적어요. `cat`, `kid`, `back`의 `c`, `k`, `ck`는 모두 같은 소리예요.
+
+          `h`는 입을 벌린 채 목에서 바람만 가볍게 내보내요. 입술과 이는 어디에도 닿지 않아요. 윗니가 아랫입술에 닿으면 `f`가 돼요.
+        examples:
+          - { en: Cat., ko: 고양이. }
+          - { en: Kid., ko: 아이. }
+          - { en: Go., ko: 가요. }
+          - { en: Hat., ko: 모자. }
+        checkVocab: false
+      - type: minimalPair
+        words: [coat, goat]
+        answer: goat
+        item: sound.g
+        why: "들린 단어는 `goat`(염소)예요. 바람이 약하고 목이 울리면 `g`예요. `coat`(외투)의 `k`는 바람이 세게 터져요."
+      - type: minimalPair
+        words: [cold, gold]
+        answer: cold
+        item: sound.k
+        why: "들린 단어는 `cold`(추운)예요. 바람이 세게 터지면 `k`예요. `gold`(금)의 `g`는 바람이 약해요."
+      - type: minimalPair
+        words: [hat, fat]
+        answer: hat
+        item: sound.h
+        why: "들린 단어는 `hat`(모자)이에요. 입술이 닿지 않고 목에서 바람만 나면 `h`예요. `fat`(지방)은 윗니가 아랫입술에 닿아요."
+      - type: listenChoose
+        en: back
+        item: sound.k
+        options:
+          - { en: back, correct: true }
+          - { en: bag, why: "`bag`(가방)은 끝의 `g`에서 목이 울리고 앞 모음이 조금 더 길어요. 들은 소리는 짧게 끊기는 `k`였어요." }
+        checkVocab: false
+      - type: dictation
+        en: Hat.
+        ko: 모자.
+        checkVocab: false
+      - type: dictation
+        en: Go.
+        ko: 가요.
+        checkVocab: false
+      - type: shadow
+        en: Good game.
+        ko: 좋은 경기였어요.
+        checkVocab: false
+      - type: shadow
+        en: Come here.
+        ko: 이리 와요.
+        checkVocab: false
+  - id: lesson.s1-06.2
+    title: { ko: "w, y, j", en: "w, y, j" }
+    goal: { ko: "w, y, j 소리를 듣고 구별할 수 있어요", en: "Hear the difference between w, y and j" }
+    introduces: [sound.w, sound.y, sound.j]
+    steps:
+      - type: listen
+        en: "Yes."
+        ko: 네.
+        checkVocab: false
+      - type: listen
+        en: Wet.
+        ko: 젖은.
+        checkVocab: false
+      - type: explain
+        text: |
+          `wet`, `yes`, `jam`을 들어 보세요. `w`는 입술을 "우" 모양으로 동그랗게 오므렸다가 빠르게 풀면서 다음 소리로 넘어가요.
+
+          `y`는 혀를 "이" 자리에 두었다가 바로 다음 모음으로 미끄러져요. 혀 가운데를 입천장 가까이 올리지만 막지는 않아요. 발음기호로는 `/j/`라고 적으니 헷갈리지 않게 조심해요.
+
+          `j`는 혀 앞부분이 잇몸 뒤쪽에 닿았다가 떨어지면서 짧게 부딪히는 소리가 나요. 입술은 조금 앞으로 내밀어요.
+
+          `w`와 `y`는 금방 지나가는 소리라 빠뜨리기 쉬워요. `yeast`(효모)에서 `y`를 빠뜨리면 `east`(동쪽)로 들려요. 첫소리를 또렷하게 내요.
+        examples:
+          - { en: Wet., ko: 젖은. }
+          - { en: "Yes.", ko: 네. }
+          - { en: Jam., ko: 잼. }
+        checkVocab: false
+      - type: minimalPair
+        words: [yeast, east]
+        answer: yeast
+        item: sound.y
+        why: "들린 단어는 `yeast`(효모)예요. 혀가 \"이\" 자리에서 한 번 미끄러지며 시작하면 `y`가 있는 거예요. `east`(동쪽)는 그 움직임 없이 바로 모음으로 시작해요."
+      - type: minimalPair
+        words: [wait, eight]
+        answer: wait
+        item: sound.w
+        why: "들린 단어는 `wait`(기다리다)예요. 입술을 오므렸다 풀며 시작하면 `w`가 있는 거예요. `eight`(8)은 입술 움직임 없이 바로 모음으로 시작해요."
+      - type: minimalPair
+        words: [wet, yet]
+        answer: yet
+        item: sound.y
+        why: "들린 단어는 `yet`(아직)이에요. 혀가 \"이\" 자리에서 미끄러지면 `y`예요. `wet`(젖은)은 입술을 오므렸다 풀면서 시작해요."
+      - type: listenChoose
+        en: jam
+        item: sound.j
+        options:
+          - { en: jam, correct: true }
+          - { en: yam, why: "`yam`(고구마 비슷한 뿌리채소)은 입천장을 막지 않고 미끄러지는 `y`로 시작해요. 들은 소리는 혀가 닿았다 떨어지는 `j`였어요." }
+        checkVocab: false
+      - type: dictation
+        en: Wet.
+        ko: 젖은.
+        checkVocab: false
+      - type: dictation
+        en: Jam.
+        ko: 잼.
+        checkVocab: false
+      - type: shadow
+        en: "Yes, I will."
+        ko: "네, 그럴게요."
+        checkVocab: false
+      - type: shadow
+        en: Just a minute.
+        ko: 잠깐만요.
+        checkVocab: false
+  - id: lesson.s1-06.3
+    title: { ko: y와 j 구별, en: y or j }
+    goal: { ko: yet과 jet처럼 y와 j를 듣고 구별할 수 있어요, en: Tell yet from jet }
+    introduces: []
+    steps:
+      - type: listen
+        en: "Yet, jet."
+        ko: "아직, 제트기."
+        checkVocab: false
+      - type: explain
+        text: |
+          `yet`과 `jet`은 첫소리만 달라요. `y`는 혀 가운데를 입천장 가까이 올리기만 하고 막지 않아서 부드럽게 시작해요. `j`는 혀가 잇몸 뒤에 닿았다 떨어져서 단단하게 시작해요.
+
+          글자와 발음기호를 헷갈리기 쉬워요. 발음기호 `/j/`는 `y` 소리예요. `j` 글자의 소리는 발음기호로 `/dʒ/`라고 적어요.
+
+          `J`(제이)와 `G`(지)의 이름 첫소리가 `/dʒ/`예요. `Y`의 이름 "와이"에는 `y` 소리가 없으니 이름으로 떠올리지 않아요.
+        examples:
+          - { en: Yet., ko: 아직. }
+          - { en: Jet., ko: 제트기. }
+          - { en: "Yes.", ko: 네. }
+          - { en: Joke., ko: 농담. }
+        checkVocab: false
+      - type: minimalPair
+        words: [yet, jet]
+        answer: jet
+        item: sound.j
+        why: "들린 단어는 `jet`(제트기)이에요. 혀가 닿았다 떨어지며 단단하게 시작하면 `j`예요. `yet`(아직)은 부드럽게 미끄러져요."
+      - type: minimalPair
+        words: [yell, gel]
+        answer: yell
+        item: sound.y
+        why: "들린 단어는 `yell`(소리치다)이에요. 부드럽게 미끄러지면 `y`예요. `gel`(젤)은 `g`로 적지만 `j` 소리로 시작해요."
+      - type: listenChoose
+        en: yolk
+        item: sound.y
+        options:
+          - { en: yolk, correct: true }
+          - { en: joke, why: "`joke`(농담)는 혀가 닿았다 떨어지는 `j`로 시작해요. 들은 소리는 부드럽게 미끄러지는 `y`였어요." }
+        checkVocab: false
+      - type: listenChoose
+        en: jog
+        item: sound.j
+        options:
+          - { en: j, correct: true }
+          - { en: "y", why: "`y`였다면 혀가 입천장을 막지 않아서 부드럽게 시작해요. 들은 소리는 혀가 닿았다 떨어졌어요." }
+        checkVocab: false
+      - type: dictation
+        en: Yet.
+        ko: 아직.
+        checkVocab: false
+      - type: dictation
+        en: Jet.
+        ko: 제트기.
+        checkVocab: false
+      - type: shadow
+        en: Not yet.
+        ko: 아직요.
+        checkVocab: false
+      - type: shadow
+        en: It's just a joke.
+        ko: 그냥 농담이에요.
+        checkVocab: false

@@ -1,0 +1,879 @@
+# Words first taught in stage 1 (s1-15 to s1-19), in course order.
+
+# s1-15 numbers 0 to 20
+- word: zero
+  id: word.zero
+  ipa: ˈzɪroʊ
+  hangul: 지로우
+  senses:
+    - id: sense.zero.num.count
+      pos: number
+      ko: 0, 영
+      examples:
+        - en: Zero, one, two.
+          ko: 영, 일, 이.
+  notes:
+    - kind: usage
+      ko: "전화번호에서는 `zero` 대신 알파벳 이름처럼 `oh`라고 읽을 때가 많아요."
+- word: one
+  id: word.one
+  hangul: 원
+  senses:
+    - id: sense.one.num.count
+      pos: number
+      ko: 1, 하나
+      examples:
+        - en: One, two, three.
+          ko: 하나, 둘, 셋.
+- word: two
+  id: word.two
+  hangul: 투
+  senses:
+    - id: sense.two.num.count
+      pos: number
+      ko: 2, 둘
+      examples:
+        - en: One, two, three.
+          ko: 하나, 둘, 셋.
+- word: three
+  id: word.three
+  hangul: 쓰리
+  senses:
+    - id: sense.three.num.count
+      pos: number
+      ko: 3, 셋
+      examples:
+        - en: Three, two, one, zero.
+          ko: 셋, 둘, 하나, 영.
+  notes:
+    - kind: mistake
+      ko: "한글 보조에는 \"쓰리\"로 적지만 `th`는 혀를 이 사이에 두는 소리예요. `tree`(나무)와 헷갈리지 않게 해요."
+- word: four
+  id: word.four
+  hangul: 포
+  senses:
+    - id: sense.four.num.count
+      pos: number
+      ko: 4, 넷
+      examples:
+        - en: Two, three, four.
+          ko: 둘, 셋, 넷.
+- word: five
+  id: word.five
+  hangul: 파이브
+  senses:
+    - id: sense.five.num.count
+      pos: number
+      ko: 5, 다섯
+      examples:
+        - en: Three, four, five.
+          ko: 셋, 넷, 다섯.
+
+- word: six
+  id: word.six
+  hangul: 식스
+  senses:
+    - id: sense.six.num.count
+      pos: number
+      ko: 6, 여섯
+      examples:
+        - en: Five, six, seven.
+          ko: 다섯, 여섯, 일곱.
+- word: seven
+  id: word.seven
+  hangul: 세븐
+  senses:
+    - id: sense.seven.num.count
+      pos: number
+      ko: 7, 일곱
+      examples:
+        - en: Six, seven, eight.
+          ko: 여섯, 일곱, 여덟.
+- word: eight
+  id: word.eight
+  hangul: 에잇
+  senses:
+    - id: sense.eight.num.count
+      pos: number
+      ko: 8, 여덟
+      examples:
+        - en: Seven, eight, nine.
+          ko: 일곱, 여덟, 아홉.
+- word: nine
+  id: word.nine
+  hangul: 나인
+  senses:
+    - id: sense.nine.num.count
+      pos: number
+      ko: 9, 아홉
+      examples:
+        - en: Eight, nine, ten.
+          ko: 여덟, 아홉, 열.
+- word: ten
+  id: word.ten
+  hangul: 텐
+  senses:
+    - id: sense.ten.num.count
+      pos: number
+      ko: 10, 열
+      examples:
+        - en: Ten, nine, eight, seven.
+          ko: 열, 아홉, 여덟, 일곱.
+
+- word: eleven
+  id: word.eleven
+  ipa: ɪˈlɛvən
+  hangul: 일레븐
+  senses:
+    - id: sense.eleven.num.count
+      pos: number
+      ko: 11, 열하나
+      examples:
+        - en: Ten, eleven, twelve.
+          ko: 열, 열하나, 열둘.
+- word: twelve
+  id: word.twelve
+  hangul: 트웰브
+  senses:
+    - id: sense.twelve.num.count
+      pos: number
+      ko: 12, 열둘
+      examples:
+        - en: Eleven, twelve, thirteen.
+          ko: 열하나, 열둘, 열셋.
+- word: thirteen
+  id: word.thirteen
+  hangul: 써틴
+  senses:
+    - id: sense.thirteen.num.count
+      pos: number
+      ko: 13, 열셋
+      examples:
+        - en: Twelve, thirteen, fourteen.
+          ko: 열둘, 열셋, 열넷.
+- word: fourteen
+  id: word.fourteen
+  ipa: ˌfɔːrˈtiːn
+  hangul: 포틴
+  senses:
+    - id: sense.fourteen.num.count
+      pos: number
+      ko: 14, 열넷
+      examples:
+        - en: Thirteen, fourteen, fifteen.
+          ko: 열셋, 열넷, 열다섯.
+- word: fifteen
+  id: word.fifteen
+  ipa: ˌfɪfˈtiːn
+  hangul: 피프틴
+  senses:
+    - id: sense.fifteen.num.count
+      pos: number
+      ko: 15, 열다섯
+      examples:
+        - en: Fourteen, fifteen.
+          ko: 열넷, 열다섯.
+
+- word: sixteen
+  id: word.sixteen
+  ipa: ˌsɪkˈstiːn
+  hangul: 식스틴
+  senses:
+    - id: sense.sixteen.num.count
+      pos: number
+      ko: 16, 열여섯
+      examples:
+        - en: Fifteen, sixteen, seventeen.
+          ko: 열다섯, 열여섯, 열일곱.
+- word: seventeen
+  id: word.seventeen
+  hangul: 세븐틴
+  senses:
+    - id: sense.seventeen.num.count
+      pos: number
+      ko: 17, 열일곱
+      examples:
+        - en: Sixteen, seventeen, eighteen.
+          ko: 열여섯, 열일곱, 열여덟.
+- word: eighteen
+  id: word.eighteen
+  ipa: ˌeɪˈtiːn
+  hangul: 에이틴
+  senses:
+    - id: sense.eighteen.num.count
+      pos: number
+      ko: 18, 열여덟
+      examples:
+        - en: Seventeen, eighteen, nineteen.
+          ko: 열일곱, 열여덟, 열아홉.
+- word: nineteen
+  id: word.nineteen
+  hangul: 나인틴
+  senses:
+    - id: sense.nineteen.num.count
+      pos: number
+      ko: 19, 열아홉
+      examples:
+        - en: Eighteen, nineteen, twenty.
+          ko: 열여덟, 열아홉, 스물.
+- word: twenty
+  id: word.twenty
+  ipa: ˈtwɛnti
+  hangul: 트웬티
+  senses:
+    - id: sense.twenty.num.count
+      pos: number
+      ko: 20, 스물
+      examples:
+        - en: Nineteen, twenty.
+          ko: 열아홉, 스물.
+  notes:
+    - kind: usage
+      ko: "미국 사람은 빨리 말할 때 `twenty`의 `t`를 약하게 해서 \"트웨니\"처럼 들리기도 해요."
+
+# s1-16 tens and a hundred
+- word: thirty
+  id: word.thirty
+  ipa: ˈθɝːti
+  hangul: 써티
+  senses:
+    - id: sense.thirty.num.count
+      pos: number
+      ko: 30, 서른
+      examples:
+        - en: Ten, twenty, thirty.
+          ko: 열, 스물, 서른.
+  notes:
+    - kind: mistake
+      ko: "`thirteen`(13)은 뒤를 세게, `thirty`(30)는 앞을 세게 말해요. 끝이 \"틴\"인지 \"티\"인지도 들어 보세요."
+- word: forty
+  id: word.forty
+  hangul: 포티
+  senses:
+    - id: sense.forty.num.count
+      pos: number
+      ko: 40, 마흔
+      examples:
+        - en: Twenty, thirty, forty.
+          ko: 스물, 서른, 마흔.
+  notes:
+    - kind: mistake
+      ko: "`four`(4)에는 `u`가 있지만 `forty`(40)에는 `u`가 없어요."
+- word: fifty
+  id: word.fifty
+  hangul: 피프티
+  senses:
+    - id: sense.fifty.num.count
+      pos: number
+      ko: 50, 쉰
+      examples:
+        - en: Thirty, forty, fifty.
+          ko: 서른, 마흔, 쉰.
+- word: sixty
+  id: word.sixty
+  hangul: 식스티
+  senses:
+    - id: sense.sixty.num.count
+      pos: number
+      ko: 60, 예순
+      examples:
+        - en: Fifty, sixty, seventy.
+          ko: 쉰, 예순, 일흔.
+- word: seventy
+  id: word.seventy
+  ipa: ˈsɛvənti
+  hangul: 세븐티
+  senses:
+    - id: sense.seventy.num.count
+      pos: number
+      ko: 70, 일흔
+      examples:
+        - en: Sixty, seventy, eighty.
+          ko: 예순, 일흔, 여든.
+- word: eighty
+  id: word.eighty
+  hangul: 에이티
+  senses:
+    - id: sense.eighty.num.count
+      pos: number
+      ko: 80, 여든
+      examples:
+        - en: Seventy, eighty, ninety.
+          ko: 일흔, 여든, 아흔.
+- word: ninety
+  id: word.ninety
+  hangul: 나인티
+  senses:
+    - id: sense.ninety.num.count
+      pos: number
+      ko: 90, 아흔
+      examples:
+        - en: Eighty, ninety, one hundred.
+          ko: 여든, 아흔, 백.
+- word: hundred
+  id: word.hundred
+  ipa: ˈhʌndrəd
+  hangul: 헌드레드
+  senses:
+    - id: sense.hundred.num.count
+      pos: number
+      ko: 100, 백
+      examples:
+        - en: Ninety, one hundred.
+          ko: 아흔, 백.
+  notes:
+    - kind: mistake
+      ko: "100은 `hundred`만 쓰지 않고 `one hundred`나 `a hundred`라고 해요."
+
+# s1-17 I, you, a, the, is, are
+- word: I
+  id: word.i
+  ipa: aɪ
+  hangul: 아이
+  senses:
+    - id: sense.i.pron.self
+      pos: pronoun
+      ko: 나, 저
+      examples:
+        - en: I am cold.
+          ko: 저는 추워요.
+  notes:
+    - kind: usage
+      ko: "`I`는 문장 가운데에서도 늘 대문자로 써요."
+- word: am
+  id: word.am
+  ipa: æm
+  hangul: 앰
+  senses:
+    - id: sense.am.v.be
+      pos: verb
+      ko: ~이다, (어떤 상태)이다, (어디에) 있다(나에 대해)
+      examples:
+        - en: I am hot.
+          ko: 저는 더워요.
+  notes:
+    - kind: usage
+      ko: "`am`은 `I`하고만 써요. 말할 때는 보통 줄여서 `I'm`이라고 해요."
+- word: you
+  id: word.you
+  ipa: juː
+  hangul: 유
+  senses:
+    - id: sense.you.pron.listener
+      pos: pronoun
+      ko: 너, 너희
+      examples:
+        - en: Are you cold?
+          ko: 추워요?
+  notes:
+    - kind: usage
+      ko: "한 사람에게도, 여러 사람에게도 `you`를 써요. 윗사람에게도 똑같이 `you`예요."
+- word: are
+  id: word.are
+  ipa: ɑːr
+  hangul: 아
+  senses:
+    - id: sense.are.v.be
+      pos: verb
+      ko: ~이다, (어떤 상태)이다, (어디에) 있다(너, 둘 이상에 대해)
+      examples:
+        - en: Are you hot?
+          ko: 더워요?
+  notes:
+    - kind: mistake
+      ko: "끝의 `r`은 혀를 뒤로 말고 혀끝이 어디에도 닿지 않아요. 한글 보조에는 받침 없이 적었어요."
+- word: hot
+  id: word.hot
+  hangul: 핫
+  senses:
+    - id: sense.hot.adj.temperature
+      pos: adjective
+      ko: 더운, 뜨거운
+      examples:
+        - en: I am hot.
+          ko: 저는 더워요.
+  notes:
+    - kind: mistake
+      ko: "사람에게 `You are hot.`이라고 하면 \"멋있다, 섹시하다\"로 들릴 수 있어요. 더운지 물을 때는 `Are you hot?`이라고 해요."
+- word: cold
+  id: word.cold
+  hangul: 코울드
+  senses:
+    - id: sense.cold.adj.temperature
+      pos: adjective
+      ko: 추운, 차가운
+      examples:
+        - en: Are you cold?
+          ko: 추워요?
+
+- word: a
+  id: word.a
+  ipa: ə
+  hangul: 어
+  senses:
+    - id: sense.a.art.one
+      pos: article
+      ko: (하나의) 어떤, 한
+      examples:
+        - en: I am a student.
+          ko: 저는 학생이에요.
+  notes:
+    - kind: usage
+      ko: "`a`는 \"하나\"라는 뜻이지만 우리말로 옮기지 않을 때가 많아요. 문장 안에서는 약하게 \"어\"라고 해요."
+- word: student
+  id: word.student
+  hangul: 스투던트
+  senses:
+    - id: sense.student.n.learner
+      pos: noun
+      ko: 학생
+      examples:
+        - en: Are you a student?
+          ko: 학생이에요?
+  notes:
+    - kind: usage
+      ko: 대학생뿐 아니라 초등학생, 중학생에게도 써요.
+- word: teacher
+  id: word.teacher
+  hangul: 티처
+  senses:
+    - id: sense.teacher.n.job
+      pos: noun
+      ko: 선생님, 교사
+      examples:
+        - en: I am a teacher.
+          ko: 저는 교사예요.
+  notes:
+    - kind: konglish
+      ko: "선생님을 부를 때 `Teacher!`라고 하지 않아요. 미국 학교에서는 보통 성 앞에 `Mr.`나 `Ms.`를 붙여 불러요. 어른 수업에서는 이름을 부르기도 해요."
+- word: yes
+  id: word.yes
+  hangul: 예스
+  senses:
+    - id: sense.yes.interj.agree
+      pos: interjection
+      ko: 네, 응
+      examples:
+        - en: Yes, I am.
+          ko: 네, 맞아요.
+- word: no
+  id: word.no
+  hangul: 노우
+  senses:
+    - id: sense.no.interj.disagree
+      pos: interjection
+      ko: 아니요, 아니
+      examples:
+        - en: No, I am a teacher.
+          ko: 아니요, 저는 교사예요.
+
+- word: is
+  id: word.is
+  ipa: ɪz
+  hangul: 이즈
+  senses:
+    - id: sense.is.v.be
+      pos: verb
+      ko: ~이다, (어떤 상태)이다, (어디에) 있다(그것, 그 사람에 대해)
+      examples:
+        - en: The cat is small.
+          ko: 그 고양이는 작아요.
+- word: the
+  id: word.the
+  ipa: ðə
+  hangul: 더
+  senses:
+    - id: sense.the.art.known
+      pos: article
+      ko: 그
+      examples:
+        - en: The dog is big.
+          ko: 그 개는 커요.
+  notes:
+    - kind: usage
+      ko: "서로 무엇을 말하는지 알 때 `the`를 써요. 우리말로 옮기지 않을 때가 많아요."
+- word: cat
+  id: word.cat
+  hangul: 캣
+  senses:
+    - id: sense.cat.n.animal
+      pos: noun
+      ko: 고양이
+      examples:
+        - en: The cat is small.
+          ko: 그 고양이는 작아요.
+- word: dog
+  id: word.dog
+  ipa: dɔːg
+  hangul: 도그
+  senses:
+    - id: sense.dog.n.animal
+      pos: noun
+      ko: 개
+      examples:
+        - en: Is the dog big?
+          ko: 그 개는 커요?
+- word: big
+  id: word.big
+  hangul: 빅
+  senses:
+    - id: sense.big.adj.size
+      pos: adjective
+      ko: 큰
+      examples:
+        - en: The dog is big.
+          ko: 그 개는 커요.
+- word: small
+  id: word.small
+  hangul: 스몰
+  senses:
+    - id: sense.small.adj.size
+      pos: adjective
+      ko: 작은
+      examples:
+        - en: The cat is small.
+          ko: 그 고양이는 작아요.
+
+# s1-18 this, it, and, in, of, to
+- word: this
+  id: word.this
+  ipa: ðɪs
+  hangul: 디스
+  senses:
+    - id: sense.this.pron.near
+      pos: pronoun
+      ko: 이것, 이 사람
+      examples:
+        - en: This is a book.
+          ko: 이건 책이에요.
+- word: it
+  id: word.it
+  ipa: ɪt
+  hangul: 잇
+  senses:
+    - id: sense.it.pron.thing
+      pos: pronoun
+      ko: 그것
+      examples:
+        - en: It is red.
+          ko: 그건 빨간색이에요.
+  notes:
+    - kind: usage
+      ko: "앞에서 말한 물건을 다시 가리킬 때 써요. 우리말로는 빼고 말할 때가 많아요. `It is OK.`처럼 가리키는 물건 없이 쓰기도 해요."
+- word: book
+  id: word.book
+  hangul: 북
+  senses:
+    - id: sense.book.n.read
+      pos: noun
+      ko: 책
+      examples:
+        - en: This is a book.
+          ko: 이건 책이에요.
+- word: pen
+  id: word.pen
+  hangul: 펜
+  senses:
+    - id: sense.pen.n.write
+      pos: noun
+      ko: 펜
+      examples:
+        - en: Is the pen red?
+          ko: 그 펜은 빨간색이에요?
+- word: red
+  id: word.red
+  hangul: 레드
+  senses:
+    - id: sense.red.adj.color
+      pos: adjective
+      ko: 빨간
+      examples:
+        - en: The pen is red.
+          ko: 그 펜은 빨간색이에요.
+
+- word: and
+  id: word.and
+  ipa: ənd
+  hangul: 앤드
+  senses:
+    - id: sense.and.conj.also
+      pos: conjunction
+      ko: 그리고, ~와
+      examples:
+        - en: The cup and the bag are red.
+          ko: 컵과 가방은 빨간색이에요.
+  notes:
+    - kind: usage
+      ko: "문장 안에서는 힘을 빼서 \"언\"처럼 짧게 들릴 때가 많아요. 끝의 `d`는 거의 들리지 않거나 \"으\" 없이 닫아요."
+- word: cup
+  id: word.cup
+  hangul: 컵
+  senses:
+    - id: sense.cup.n.drink
+      pos: noun
+      ko: 컵, 잔
+      examples:
+        - en: This is a cup.
+          ko: 이건 컵이에요.
+- word: bag
+  id: word.bag
+  hangul: 백
+  senses:
+    - id: sense.bag.n.carry
+      pos: noun
+      ko: 가방, 봉지
+      examples:
+        - en: Is this a bag?
+          ko: 이거 가방이에요?
+- word: box
+  id: word.box
+  hangul: 박스
+  senses:
+    - id: sense.box.n.container
+      pos: noun
+      ko: 상자
+      examples:
+        - en: The box is big.
+          ko: 그 상자는 커요.
+
+- word: in
+  id: word.in
+  ipa: ɪn
+  hangul: 인
+  senses:
+    - id: sense.in.prep.inside
+      pos: preposition
+      ko: ~안에
+      examples:
+        - en: The cat is in the box.
+          ko: 고양이는 상자 안에 있어요.
+  notes:
+    - kind: usage
+      ko: "우리말은 \"상자 안에\"처럼 \"안에\"가 뒤에 오지만 영어는 `in the box`처럼 `in`이 앞에 와요."
+- word: room
+  id: word.room
+  ipa: ruːm
+  hangul: 룸
+  senses:
+    - id: sense.room.n.space
+      pos: noun
+      ko: 방
+      examples:
+        - en: The room is small.
+          ko: 그 방은 작아요.
+- word: bed
+  id: word.bed
+  hangul: 베드
+  senses:
+    - id: sense.bed.n.sleep
+      pos: noun
+      ko: 침대
+      examples:
+        - en: The bed is big.
+          ko: 침대가 커요.
+
+- word: of
+  id: word.of
+  ipa: əv
+  hangul: 어브
+  senses:
+    - id: sense.of.prep.part
+      pos: preposition
+      ko: ~의, ~이 든
+      examples:
+        - en: This is a cup of tea.
+          ko: 이건 차 한 잔이에요.
+  notes:
+    - kind: usage
+      ko: "`a cup of tea`는 \"차 한 잔\"이에요. 영어는 담는 것을 먼저 말하고 `of` 뒤에 내용을 말해요. 끝의 `f`는 `v` 소리이고 \"으\" 없이 닫아요."
+- word: to
+  id: word.to
+  ipa: tə
+  hangul: 투
+  senses:
+    - id: sense.to.prep.direction
+      pos: preposition
+      ko: ~로, ~에(가는 곳)
+      examples:
+        - en: Go to bed.
+          ko: 가서 자.
+  notes:
+    - kind: mistake
+      ko: "숫자 `two`(2), `too`(너무)와 소리가 같아요. 문장 안에서는 약하게 \"터\"처럼 들려요."
+- word: tea
+  id: word.tea
+  hangul: 티
+  senses:
+    - id: sense.tea.n.drink
+      pos: noun
+      ko: 차(마시는 것)
+      examples:
+        - en: This is a cup of tea.
+          ko: 이건 차 한 잔이에요.
+- word: go
+  id: word.go
+  hangul: 고우
+  forms: { past: went, pastParticiple: gone }
+  senses:
+    - id: sense.go.v.move
+      pos: verb
+      ko: 가다
+      examples:
+        - en: Go to bed.
+          ko: 가서 자.
+
+# s1-19 greetings
+- word: hello
+  id: word.hello
+  ipa: həˈloʊ
+  hangul: 헬로우
+  senses:
+    - id: sense.hello.interj.greeting
+      pos: interjection
+      ko: 안녕하세요, 안녕
+      examples:
+        - en: Hello, I'm @Mina.
+          ko: 안녕하세요, 저는 미나예요.
+- word: hi
+  id: word.hi
+  hangul: 하이
+  senses:
+    - id: sense.hi.interj.greeting
+      pos: interjection
+      ko: 안녕, 안녕하세요
+      examples:
+        - en: Hi, I'm @Jun.
+          ko: 안녕하세요, 저는 준이에요.
+  notes:
+    - kind: usage
+      ko: "`hello`보다 편한 말이에요. 처음 보는 사람이나 가게 직원에게 써도 무례하지 않아요."
+- word: bye
+  id: word.bye
+  hangul: 바이
+  senses:
+    - id: sense.bye.interj.leaving
+      pos: interjection
+      ko: 잘 가요, 안녕히 가세요(편하게)
+      examples:
+        - en: Bye, @Mina.
+          ko: 잘 가, 미나야.
+- word: goodbye
+  id: word.goodbye
+  hangul: 굿바이
+  senses:
+    - id: sense.goodbye.interj.leaving
+      pos: interjection
+      ko: 안녕히 가세요, 안녕히 계세요
+      examples:
+        - en: Goodbye, @Sam.
+          ko: 안녕히 가세요, 샘 씨.
+  notes:
+    - kind: usage
+      ko: "`bye`보다 조금 격식 있는 말이에요. 떠나는 사람도, 남는 사람도 똑같이 써요."
+
+- word: good
+  id: word.good
+  ipa: gʊd
+  hangul: 굿
+  forms: { comparative: better, superlative: best }
+  senses:
+    - id: sense.good.adj.nice
+      pos: adjective
+      ko: 좋은, (안부 대답에서) 잘 지내는
+      examples:
+        - en: It's good.
+          ko: 좋아요.
+- word: morning
+  id: word.morning
+  hangul: 모닝
+  senses:
+    - id: sense.morning.n.early-day
+      pos: noun
+      ko: 아침, 오전
+      examples:
+        - en: Good morning, @Mina.
+          ko: 안녕하세요(아침 인사), 미나 씨.
+- word: afternoon
+  id: word.afternoon
+  hangul: 애프터눈
+  senses:
+    - id: sense.afternoon.n.after-noon
+      pos: noun
+      ko: 오후
+      examples:
+        - en: Good afternoon.
+          ko: 안녕하세요(오후 인사).
+- word: night
+  id: word.night
+  hangul: 나잇
+  senses:
+    - id: sense.night.n.dark
+      pos: noun
+      ko: 밤
+      examples:
+        - en: Good night.
+          ko: 잘 자요.
+  notes:
+    - kind: mistake
+      ko: "`Good night.`은 만날 때가 아니라 헤어지거나 잘 때 하는 인사예요."
+
+- word: thanks
+  id: word.thanks
+  hangul: 쌩스
+  senses:
+    - id: sense.thanks.interj.thank
+      pos: interjection
+      ko: 고마워요, 고마워
+      examples:
+        - en: Thanks, @Jun.
+          ko: 고마워, 준아.
+  notes:
+    - kind: mistake
+      ko: "한글 보조에는 \"쌩스\"로 적지만 `th`는 혀를 이 사이에 두는 소리예요."
+- word: sorry
+  id: word.sorry
+  ipa: ˈsɑːri
+  hangul: 쏘리
+  senses:
+    - id: sense.sorry.adj.apologize
+      pos: adjective
+      ko: 미안한
+      examples:
+        - en: I'm sorry.
+          ko: 미안해요.
+- word: please
+  id: word.please
+  hangul: 플리즈
+  senses:
+    - id: sense.please.interj.polite
+      pos: interjection
+      ko: (부탁할 때) ~주세요
+      examples:
+        - en: Tea, please.
+          ko: 차 주세요.
+  notes:
+    - kind: usage
+      ko: "원하는 것 뒤에 `please`만 붙여도 정중한 부탁이 돼요."
+
+- word: fine
+  id: word.fine
+  ipa: faɪn
+  hangul: 파인
+  senses:
+    - id: sense.fine.adj.well
+      pos: adjective
+      ko: 괜찮은, 잘 지내는
+      examples:
+        - en: I'm fine, thanks.
+          ko: 잘 지내요, 고마워요.
+- word: OK
+  id: word.ok
+  ipa: ˌoʊˈkeɪ
+  hangul: 오우케이
+  senses:
+    - id: sense.ok.adj.fine
+      pos: adjective
+      ko: 괜찮은
+      examples:
+        - en: I'm OK.
+          ko: 괜찮아요.
