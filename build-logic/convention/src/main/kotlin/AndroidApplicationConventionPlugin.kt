@@ -19,6 +19,7 @@ import com.gyugle.gil.convention.catalogVersion
 import com.gyugle.gil.convention.catalogVersionInt
 import com.gyugle.gil.convention.configureInstrumentedTests
 import com.gyugle.gil.convention.configureKotlinJvmTarget
+import com.gyugle.gil.convention.configureLint
 import com.gyugle.gil.convention.configureNoInternetPermissionCheck
 import com.gyugle.gil.convention.configureUnitTests
 import com.gyugle.gil.convention.libs
@@ -57,6 +58,11 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 }
                 packaging {
                     resources.excludes += setOf("/META-INF/{AL2.0,LGPL2.1}")
+                }
+                lint {
+                    configureLint()
+                    // Unused resources and missing translations are only visible from the app.
+                    checkDependencies = true
                 }
             }
             configureKotlinJvmTarget()

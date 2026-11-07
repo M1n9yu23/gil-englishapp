@@ -17,6 +17,7 @@ import com.android.build.api.dsl.LibraryExtension
 import com.gyugle.gil.convention.catalogVersionInt
 import com.gyugle.gil.convention.configureInstrumentedTests
 import com.gyugle.gil.convention.configureKotlinJvmTarget
+import com.gyugle.gil.convention.configureLint
 import com.gyugle.gil.convention.configureUnitTests
 import com.gyugle.gil.convention.libs
 import com.gyugle.gil.convention.pathToPackageName
@@ -45,6 +46,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17
                 }
+                lint { configureLint() }
             }
             configureKotlinJvmTarget()
             configureUnitTests()
