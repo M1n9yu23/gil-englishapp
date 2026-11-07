@@ -1,0 +1,53 @@
+name: 버그 신고
+description: 앱이 꺼지거나 멈추거나, 해서는 안 되는 동작을 합니다.
+title: "[버그] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        신고해 주셔서 고맙습니다. 이슈 하나에는 문제 하나만 적어 주세요.
+        과의 영어 문장이 틀렸거나 설명이 이상하다면 학습 내용 오류 신고 양식을 쓰세요.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 증상
+      description: 실제로 본 것과 원래 기대한 동작을 함께 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 방법
+      placeholder: |
+        1. 오늘 화면에서 과 하나를 엽니다
+        2. 스피커 버튼을 두 번 누릅니다
+        3. 앱이 꺼집니다
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: 앱 버전
+      description: Android 설정 > 애플리케이션 > Gil 화면 아래쪽에 나옵니다.
+      placeholder: 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: 기기와 Android 버전
+      placeholder: Pixel 6a, Android 16
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 로그나 스크린샷
+      description: 선택 항목입니다. 개인 정보는 지우고 올려 주세요.
+      render: text

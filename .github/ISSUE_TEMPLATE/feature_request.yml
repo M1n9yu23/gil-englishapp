@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest something the app could do better or differently.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gil works fully offline and has no accounts, ads or analytics.
+        Ideas that need a server or an internet connection are out of scope.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the situation where it gets in your way while studying. The solution goes in the next field.
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: What would help, and how would you use it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives
+      description: Optional. Other ways around the problem you have tried or considered.

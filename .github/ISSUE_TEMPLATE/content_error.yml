@@ -1,0 +1,47 @@
+name: Learning content error
+description: An English sentence, translation, explanation or pronunciation in a lesson is wrong or unclear.
+title: "[Content] "
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One error per issue, please.
+        Native speakers and teachers are especially welcome to point out sentences that sound unnatural.
+
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: The lesson or dictionary entry where you saw it.
+      placeholder: lesson.a1-03.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: shown
+    attributes:
+      label: What the app shows
+      description: Copy the sentence, translation or explanation as it appears.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What it should be
+      description: Your correction, if you have one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why
+      description: Optional. A grammar point, a dictionary entry or how people actually say it.
+
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      placeholder: 0.1.0

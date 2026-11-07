@@ -1,0 +1,47 @@
+name: 학습 내용 오류 신고
+description: 과의 영어 문장, 번역, 설명, 발음이 틀렸거나 헷갈립니다.
+title: "[내용 오류] "
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        이슈 하나에는 오류 하나만 적어 주세요.
+        원어민이나 선생님이라면 어색하게 들리는 문장도 꼭 알려 주세요.
+
+  - type: input
+    id: location
+    attributes:
+      label: 위치
+      description: 오류를 본 과나 사전 항목입니다.
+      placeholder: lesson.a1-03.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: shown
+    attributes:
+      label: 앱에 나온 내용
+      description: 문장, 번역, 설명을 화면에 나온 그대로 붙여 넣으세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 고친 내용
+      description: 바르게 고친 내용을 알고 있다면 적어 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 이유
+      description: 선택 항목입니다. 문법, 사전 항목, 실제로 쓰는 말 등 근거를 적어 주세요.
+
+  - type: input
+    id: app-version
+    attributes:
+      label: 앱 버전
+      placeholder: 0.1.0
