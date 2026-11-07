@@ -34,6 +34,22 @@ class Navigator(val state: NavigationState) {
     }
 
     /**
+     * Goes back to [route] when the current stack already has it, dropping what is above it, and
+     * pushes it otherwise. A page that links to pages, such as a word's related words, uses this so
+     * that following links in a circle never puts the same key in the stack twice.
+     */
+    fun goToOrBackTo(route: NavKey) {
+        require(route !in state.backStacks) { "$route is a tab; switch to it with goTo" }
+        val stack = state.currentStack
+        val index = stack.lastIndexOf(route)
+        if (index < 0) {
+            stack.add(route)
+        } else if (index < stack.lastIndex) {
+            stack.subList(index + 1, stack.size).clear()
+        }
+    }
+
+    /**
      * Pops the current stack. At the root of a tab other than the start one, returns to the start
      * tab. At the start tab's root it does nothing; `NavDisplay` leaves back handling to the system
      * there, which closes the app.

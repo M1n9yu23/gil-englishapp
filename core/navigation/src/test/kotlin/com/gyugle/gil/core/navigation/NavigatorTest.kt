@@ -179,6 +179,42 @@ class NavigatorTest {
     }
 
     @Test
+    fun goToOrBackTo_routeNotInStack_pushes() {
+        navigator.goTo(Path)
+        navigator.goTo(UnitDetail("u1"))
+
+        navigator.goToOrBackTo(UnitDetail("u2"))
+
+        assertThat(stack(Path)).containsExactly(Path, UnitDetail("u1"), UnitDetail("u2"))
+    }
+
+    @Test
+    fun goToOrBackTo_routeInStack_dropsWhatIsAboveIt() {
+        navigator.goTo(Path)
+        navigator.goTo(UnitDetail("u1"))
+        navigator.goTo(UnitDetail("u2"))
+        navigator.goTo(Lesson("a"))
+
+        navigator.goToOrBackTo(UnitDetail("u1"))
+
+        assertThat(stack(Path)).containsExactly(Path, UnitDetail("u1"))
+    }
+
+    @Test
+    fun goToOrBackTo_routeOnTop_changesNothing() {
+        navigator.goTo(Lesson("a"))
+
+        navigator.goToOrBackTo(Lesson("a"))
+
+        assertThat(stack(Today)).containsExactly(Today, Lesson("a"))
+    }
+
+    @Test
+    fun goToOrBackTo_tab_isRejected() {
+        assertFailure { navigator.goToOrBackTo(Path) }.isInstanceOf(IllegalArgumentException::class)
+    }
+
+    @Test
     fun resetToStart_withHistory_everyTabBackToRoot() {
         navigator.goTo(Lesson("a"))
         navigator.goTo(Path)
