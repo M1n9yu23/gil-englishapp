@@ -16,9 +16,7 @@ The app icon and other brand artwork are copyright MinGyu, all rights reserved. 
 licensed under the Apache License 2.0. These files are the launcher icon resources:
 
 - `app/src/main/res/mipmap-*/ic_launcher*`
-- `app/src/main/res/drawable/ic_launcher_background.xml`
-- `app/src/main/res/drawable/ic_launcher_foreground.xml`
-- `app/src/main/res/drawable/ic_launcher_monochrome.xml`
+- `app/src/main/res/drawable/ic_launcher_*.xml`
 
 ## Forks
 

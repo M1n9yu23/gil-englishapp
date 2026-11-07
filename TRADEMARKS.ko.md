@@ -16,9 +16,7 @@ Apache License 2.0 제6조에도 이 라이선스가 상호를 쓸 권리를 주
 이 파일들은 Apache License 2.0으로 배포하지 않습니다. 대상은 다음 런처 아이콘 리소스입니다.
 
 - `app/src/main/res/mipmap-*/ic_launcher*`
-- `app/src/main/res/drawable/ic_launcher_background.xml`
-- `app/src/main/res/drawable/ic_launcher_foreground.xml`
-- `app/src/main/res/drawable/ic_launcher_monochrome.xml`
+- `app/src/main/res/drawable/ic_launcher_*.xml`
 
 ## 포크
 
