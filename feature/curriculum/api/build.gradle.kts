@@ -15,6 +15,8 @@
  */
 plugins {
     alias(libs.plugins.convention.jvm.library)
+    // FakeCourseObserver, for the features that read lessons.
+    `java-test-fixtures`
 }
 
 dependencies {
