@@ -200,7 +200,7 @@ class LessonViewModelTest {
         viewModel.pickText("밴")
 
         assertThat(viewModel.playing.feedback).isEqualTo(
-            FeedbackUi(GradeUi.WRONG, why = "`van`이 밴이에요.", comesBack = true, translation = "부채")
+            FeedbackUi(GradeUi.WRONG, why = "`van`이 밴이에요.", comesBack = true)
         )
         assertThat(viewModel.playing.stepCount).isEqualTo(6)
         assertThat(progress.mistakes).containsExactly(fan)

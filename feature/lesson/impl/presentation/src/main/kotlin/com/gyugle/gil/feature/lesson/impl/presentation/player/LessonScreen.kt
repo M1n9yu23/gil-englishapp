@@ -33,6 +33,8 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
@@ -42,7 +44,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -256,11 +260,15 @@ private fun PlayingContent(phase: LessonPhase.Playing, onAction: (LessonAction) 
                     )
                 }
                 StepContent(phase.step, phase.hasVoice, answered, onAction)
+                // In the scrolling part, so a long reason at a large font never squeezes the step;
+                // it scrolls into view when it appears.
+                phase.feedback?.let { feedback ->
+                    val requester = remember { BringIntoViewRequester() }
+                    LaunchedEffect(feedback) { requester.bringIntoView() }
+                    FeedbackPanel(feedback, modifier = Modifier.bringIntoViewRequester(requester))
+                }
             },
             actions = {
-                phase.feedback?.let {
-                    FeedbackPanel(it, modifier = Modifier.padding(bottom = GilTheme.spacing.inlineGap))
-                }
                 when {
                     answered || phase.step.isUngraded() -> PrimaryActionButton(
                         text = stringResource(R.string.lesson_continue),

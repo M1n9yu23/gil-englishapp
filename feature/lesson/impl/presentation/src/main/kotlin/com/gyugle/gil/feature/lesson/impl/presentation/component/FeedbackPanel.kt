@@ -60,8 +60,8 @@ internal fun FeedbackPanel(feedback: FeedbackUi, modifier: Modifier = Modifier) 
             style = MaterialTheme.typography.titleMedium,
             color = if (feedback.grade == GradeUi.WRONG) colors.error else colors.primary
         )
-        if (feedback.typed != null) TypedWords(feedback)
         feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
+        if (feedback.typed != null) TypedWords(feedback)
         feedback.why?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
         feedback.translation?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
         if (feedback.comesBack) {

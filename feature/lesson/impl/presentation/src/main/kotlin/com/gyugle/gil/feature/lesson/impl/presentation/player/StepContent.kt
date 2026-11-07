@@ -288,13 +288,14 @@ private fun ColumnScope.ChoiceContent(step: StepUi.Choice, hasVoice: Boolean, on
                 SecondaryActionButton(text = stringResource(R.string.lesson_play_conversation), onClick = play)
             }
             prompt.lines.forEach { line ->
-                Row(horizontalArrangement = Arrangement.spacedBy(GilTheme.spacing.itemGap)) {
+                // The name above its line, so every line starts on the same edge.
+                Column {
                     Text(
                         text = line.speaker,
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    EnglishText(text = line.text, modifier = Modifier.weight(1f))
+                    EnglishText(text = line.text)
                 }
             }
             prompt.question?.let { KoreanProse(text = it, style = MaterialTheme.typography.titleMedium) }

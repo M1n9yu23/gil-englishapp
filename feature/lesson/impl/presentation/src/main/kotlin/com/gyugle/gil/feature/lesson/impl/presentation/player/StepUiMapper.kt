@@ -207,7 +207,8 @@ internal fun LessonStep.checkPick(
             ).copy(comesBack = firstTry && last && missed)
         }
 
-        is LessonStep.ChooseMeaning -> choiceOutcome(pick(options), firstTry, translation = prompt.ko)
+        // The right option is the meaning, so a translation would only repeat it.
+        is LessonStep.ChooseMeaning -> choiceOutcome(pick(options), firstTry)
 
         is LessonStep.ListenChoose -> choiceOutcome(pick(options), firstTry, translation = audio.ko)
 

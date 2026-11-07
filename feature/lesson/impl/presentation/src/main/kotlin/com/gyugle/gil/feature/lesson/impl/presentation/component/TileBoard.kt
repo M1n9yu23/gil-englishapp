@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,6 +40,7 @@ import com.gyugle.gil.feature.lesson.impl.presentation.player.StepUi
 
 private object TileBoardTokens {
     val BorderWidth = 1.dp
+    val MinWidth = 48.dp
     val TilePaddingHorizontal = 12.dp
     val TilePaddingVertical = 6.dp
 
@@ -130,6 +132,8 @@ private fun Tile(
     ) {
         Box(
             modifier = Modifier
+                // As wide as the touch target, so a short word's tile does not leave a wider gap.
+                .widthIn(min = TileBoardTokens.MinWidth)
                 .border(TileBoardTokens.BorderWidth, MaterialTheme.colorScheme.outline, shape)
                 .padding(
                     horizontal = TileBoardTokens.TilePaddingHorizontal,
