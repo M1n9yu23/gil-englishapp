@@ -38,6 +38,8 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("androidx-compose-ui").get())
                 "implementation"(libs.findLibrary("androidx-compose-material3").get())
                 "implementation"(libs.findLibrary("androidx-compose-ui-tooling-preview").get())
+                // Compose UI alone resolves lifecycle 2.9, whose bundled lint checks no longer load and fail lint.
+                "implementation"(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
                 "debugImplementation"(libs.findLibrary("androidx-compose-ui-tooling").get())
                 if (hasDeviceTests) "androidTestImplementation"(platform(bom))
             }
