@@ -23,6 +23,7 @@ androidxNavigation3 = "1.2.1"
 androidxWork = "2.12.0"
 composeBom = "2026.09.00"
 hilt = "2.60.1"
+javaxInject = "1"
 room = "2.8.5"
 
 timber = "5.0.1"
@@ -72,6 +73,7 @@ androidx-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-mani
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
