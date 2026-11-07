@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- "ko" when the app shows Korean. Picks the language of content text such as stage titles. -->
+    <string name="dictionary_content_language">en</string>
+
+    <string name="dictionary_words_title">Words</string>
+    <string name="dictionary_tab_saved">Word list</string>
+    <string name="dictionary_tab_search">Search</string>
+    <string name="dictionary_tab_mistakes">Mistakes</string>
+    <!-- The action of a word row, read by screen readers as "double-tap to open". -->
+    <string name="dictionary_open_entry">open</string>
+
+    <string name="dictionary_saved_empty_title">No saved words yet</string>
+    <string name="dictionary_saved_empty_body">On a word’s page, tap the bookmark to keep the word here.</string>
+    <string name="dictionary_saved_empty_action">Find a word</string>
+
+    <string name="dictionary_search_label">Search in English or Korean</string>
+    <string name="dictionary_search_clear">Clear the search</string>
+    <string name="dictionary_search_hint">Words you’ve learned come first.</string>
+    <string name="dictionary_search_empty_title">No words match “<xliff:g id="query" example="tabel">%1$s</xliff:g>”</string>
+    <string name="dictionary_search_empty_body">Check the spelling. Words the path hasn’t reached yet may not be in the dictionary.</string>
+    <string name="dictionary_search_not_learned">Not learned yet</string>
+    <!-- Under a meaning the learner has not met. The argument is a stage title, such as "First steps". -->
+    <string name="dictionary_taught_in">Taught in <xliff:g id="stage" example="First steps">%1$s</xliff:g></string>
+
+    <string name="dictionary_mistakes_empty_title">No mistakes to look back on</string>
+    <string name="dictionary_mistakes_empty_body">Words you get wrong in lessons collect here, so you can look at them again.</string>
+    <plurals name="dictionary_mistake_count">
+        <item quantity="one">Wrong once</item>
+        <item quantity="other">Wrong <xliff:g id="count" example="3">%d</xliff:g> times</item>
+    </plurals>
+
+    <string name="dictionary_entry_word">Word</string>
+    <string name="dictionary_entry_pattern">Phrase</string>
+    <string name="dictionary_entry_sound">Sound</string>
+    <string name="dictionary_more">More options</string>
+    <string name="dictionary_report">Report a content error</string>
+
+    <string name="dictionary_accent_american">US accent</string>
+    <string name="dictionary_accent_british">UK accent</string>
+    <string name="dictionary_play_text">Play “<xliff:g id="text" example="I run.">%1$s</xliff:g>”</string>
+    <string name="dictionary_play_sentence">Play the sentence</string>
+    <!-- The Hangul pronunciation aid, a rough guide to the sound. -->
+    <string name="dictionary_hangul_aid">Close to <xliff:g id="hangul" example="지로우">%1$s</xliff:g> in Hangul</string>
+
+    <string name="dictionary_senses_now">Meanings to know now</string>
+    <string name="dictionary_senses_first">Meanings you’ll learn first</string>
+    <plurals name="dictionary_senses_later">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> meaning to learn later</item>
+        <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> meanings to learn later</item>
+    </plurals>
+    <string name="dictionary_expanded">Expanded</string>
+    <string name="dictionary_collapsed">Collapsed</string>
+    <string name="dictionary_meaning">Meaning</string>
+    <string name="dictionary_save">Keep “<xliff:g id="item" example="달리다">%1$s</xliff:g>” in the word list</string>
+    <string name="dictionary_saved">Saved</string>
+    <string name="dictionary_not_saved">Not saved</string>
+    <!-- The action of an example sentence, read by screen readers as "double-tap to take apart". -->
+    <string name="dictionary_take_apart">take the sentence apart</string>
+    <string name="dictionary_collocations">Often used with</string>
+    <string name="dictionary_family">Word family</string>
+    <string name="dictionary_notes">Good to know</string>
+    <string name="dictionary_note_konglish">Konglish</string>
+    <string name="dictionary_note_mistake">Common mistake</string>
+    <string name="dictionary_note_usage">Usage</string>
+    <string name="dictionary_sound_examples">Example words</string>
+
+    <string name="dictionary_sentence_title">Sentence breakdown</string>
+    <string name="dictionary_sentence_tap_hint">Tap a word to see what it means in this sentence.</string>
+    <string name="dictionary_sentence_open_word">Open the word</string>
+    <string name="dictionary_sentence_no_sense">This word has more than one meaning. Open it to see them all.</string>
+    <string name="dictionary_sentence_chunks">How it’s built</string>
+    <string name="dictionary_sentence_literal">Word by word</string>
+    <string name="dictionary_sentence_grammar">Grammar: <xliff:g id="title" example="Word order">%1$s</xliff:g></string>
+
+    <string name="dictionary_role_who">Who</string>
+    <string name="dictionary_role_do">Does</string>
+    <string name="dictionary_role_what">What</string>
+    <string name="dictionary_role_where">Where</string>
+    <string name="dictionary_role_when">When</string>
+
+    <string name="dictionary_pos_noun">Noun</string>
+    <string name="dictionary_pos_verb">Verb</string>
+    <string name="dictionary_pos_adjective">Adjective</string>
+    <string name="dictionary_pos_adverb">Adverb</string>
+    <string name="dictionary_pos_preposition">Preposition</string>
+    <string name="dictionary_pos_pronoun">Pronoun</string>
+    <string name="dictionary_pos_conjunction">Conjunction</string>
+    <string name="dictionary_pos_interjection">Interjection</string>
+    <string name="dictionary_pos_modal">Modal verb</string>
+    <string name="dictionary_pos_article">Article</string>
+    <string name="dictionary_pos_determiner">Determiner</string>
+    <string name="dictionary_pos_number">Number</string>
+
+    <string name="dictionary_error_unavailable_title">Couldn’t open the dictionary</string>
+    <string name="dictionary_error_unavailable_body">This can happen when your phone is low on storage. Free up some space, then try again.</string>
+    <string name="dictionary_error_not_found_title">This entry isn’t in the dictionary anymore</string>
+    <string name="dictionary_error_not_found_body">An app update may have removed it. Go back and search for the word again.</string>
+    <string name="dictionary_error_retry">Try again</string>
+    <string name="dictionary_error_back">Go back</string>
+</resources>

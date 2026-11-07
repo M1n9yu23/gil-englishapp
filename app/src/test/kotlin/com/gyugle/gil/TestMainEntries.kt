@@ -24,20 +24,22 @@ import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.feature.curriculum.api.PathRoute
+import com.gyugle.gil.feature.dictionary.api.WordsRoute
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 const val TEST_PATH_ROOT = "Path root"
 const val TEST_OPEN_PAGE = "Open page"
 const val TEST_PAGE = "Pushed page"
+const val TEST_WORDS_ROOT = "Words root"
 
 @Serializable
 @SerialName("test.page")
 data object TestPageRoute : NavKey
 
 /**
- * The main host's placeholders, with the Path root swapped for a stand-in that needs no DI graph.
- * Its button pushes [TestPageRoute] onto the Path stack.
+ * The main host's placeholders, with the Path and Words roots swapped for stand-ins that need no
+ * DI graph. The Path root's button pushes [TestPageRoute] onto the Path stack.
  */
 fun EntryProviderScope<NavKey>.testMainEntries(navigator: Navigator) {
     entry<PathRoute> {
@@ -47,5 +49,6 @@ fun EntryProviderScope<NavKey>.testMainEntries(navigator: Navigator) {
         }
     }
     entry<TestPageRoute> { Text(TEST_PAGE, modifier = Modifier.fillMaxSize()) }
+    entry<WordsRoute> { Text(TEST_WORDS_ROOT, modifier = Modifier.fillMaxSize()) }
     tabRootPlaceholderEntries(navigator)
 }

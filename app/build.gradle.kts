@@ -91,6 +91,7 @@ dependencies {
     implementation(projects.feature.onboarding.impl.data)
     implementation(projects.feature.onboarding.impl.presentation)
     implementation(projects.feature.dictionary.api)
+    implementation(projects.feature.dictionary.impl.presentation)
     implementation(projects.feature.stats.api)
 
     implementation(libs.androidx.core.ktx)

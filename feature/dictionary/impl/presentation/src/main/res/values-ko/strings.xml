@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="dictionary_content_language">ko</string>
+
+    <string name="dictionary_words_title">단어</string>
+    <string name="dictionary_tab_saved">단어장</string>
+    <string name="dictionary_tab_search">찾기</string>
+    <string name="dictionary_tab_mistakes">틀린 문제</string>
+    <string name="dictionary_open_entry">열기</string>
+
+    <string name="dictionary_saved_empty_title">아직 저장한 단어가 없어요</string>
+    <string name="dictionary_saved_empty_body">단어 화면에서 북마크를 누르면 여기에 모여요.</string>
+    <string name="dictionary_saved_empty_action">단어 찾기</string>
+
+    <string name="dictionary_search_label">영어나 한국어로 찾기</string>
+    <string name="dictionary_search_clear">검색어 지우기</string>
+    <string name="dictionary_search_hint">배운 단어가 먼저 나와요.</string>
+    <string name="dictionary_search_empty_title">‘<xliff:g id="query" example="tabel">%1$s</xliff:g>’에 맞는 단어가 없어요</string>
+    <string name="dictionary_search_empty_body">철자를 확인해 보세요. 길에서 아직 나오지 않은 단어는 사전에 없을 수 있어요.</string>
+    <string name="dictionary_search_not_learned">아직 배우지 않은 단어</string>
+    <string name="dictionary_taught_in"><xliff:g id="stage" example="첫걸음">%1$s</xliff:g> 단계에서 배워요</string>
+
+    <string name="dictionary_mistakes_empty_title">다시 볼 틀린 문제가 없어요</string>
+    <string name="dictionary_mistakes_empty_body">수업에서 틀린 단어가 여기에 모여요. 언제든 다시 열어 볼 수 있어요.</string>
+    <plurals name="dictionary_mistake_count">
+        <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g>번 틀림</item>
+    </plurals>
+
+    <string name="dictionary_entry_word">단어</string>
+    <string name="dictionary_entry_pattern">표현</string>
+    <string name="dictionary_entry_sound">소리</string>
+    <string name="dictionary_more">더보기</string>
+    <string name="dictionary_report">내용 오류 신고</string>
+
+    <string name="dictionary_accent_american">미국 발음</string>
+    <string name="dictionary_accent_british">영국 발음</string>
+    <string name="dictionary_play_text">‘<xliff:g id="text" example="I run.">%1$s</xliff:g>’ 듣기</string>
+    <string name="dictionary_play_sentence">문장 듣기</string>
+    <string name="dictionary_hangul_aid">한글로 적으면 <xliff:g id="hangul" example="지로우">%1$s</xliff:g>에 가까워요</string>
+
+    <string name="dictionary_senses_now">지금 알아야 할 뜻</string>
+    <string name="dictionary_senses_first">처음 배울 뜻</string>
+    <plurals name="dictionary_senses_later">
+        <item quantity="other">나중에 배울 뜻 <xliff:g id="count" example="3">%d</xliff:g>개</item>
+    </plurals>
+    <string name="dictionary_expanded">펼쳐짐</string>
+    <string name="dictionary_collapsed">접힘</string>
+    <string name="dictionary_meaning">뜻</string>
+    <string name="dictionary_save">‘<xliff:g id="item" example="달리다">%1$s</xliff:g>’ 단어장에 저장</string>
+    <string name="dictionary_saved">저장됨</string>
+    <string name="dictionary_not_saved">저장 안 됨</string>
+    <string name="dictionary_take_apart">문장 뜯어보기</string>
+    <string name="dictionary_collocations">자주 같이 쓰는 말</string>
+    <string name="dictionary_family">단어 가족</string>
+    <string name="dictionary_notes">알아 둘 점</string>
+    <string name="dictionary_note_konglish">콩글리시</string>
+    <string name="dictionary_note_mistake">흔한 실수</string>
+    <string name="dictionary_note_usage">쓰임</string>
+    <string name="dictionary_sound_examples">예시 단어</string>
+
+    <string name="dictionary_sentence_title">문장 뜯어보기</string>
+    <string name="dictionary_sentence_tap_hint">단어를 누르면 이 문장에서 쓰인 뜻이 나와요.</string>
+    <string name="dictionary_sentence_open_word">단어 보기</string>
+    <string name="dictionary_sentence_no_sense">뜻이 여러 개인 단어예요. 단어 화면에서 모두 볼 수 있어요.</string>
+    <string name="dictionary_sentence_chunks">문장 짜임</string>
+    <string name="dictionary_sentence_literal">단어별 뜻</string>
+    <string name="dictionary_sentence_grammar">문법: <xliff:g id="title" example="말의 순서">%1$s</xliff:g></string>
+
+    <string name="dictionary_role_who">누가</string>
+    <string name="dictionary_role_do">한다</string>
+    <string name="dictionary_role_what">무엇을</string>
+    <string name="dictionary_role_where">어디서</string>
+    <string name="dictionary_role_when">언제</string>
+
+    <string name="dictionary_pos_noun">명사</string>
+    <string name="dictionary_pos_verb">동사</string>
+    <string name="dictionary_pos_adjective">형용사</string>
+    <string name="dictionary_pos_adverb">부사</string>
+    <string name="dictionary_pos_preposition">전치사</string>
+    <string name="dictionary_pos_pronoun">대명사</string>
+    <string name="dictionary_pos_conjunction">접속사</string>
+    <string name="dictionary_pos_interjection">감탄사</string>
+    <string name="dictionary_pos_modal">조동사</string>
+    <string name="dictionary_pos_article">관사</string>
+    <string name="dictionary_pos_determiner">한정사</string>
+    <string name="dictionary_pos_number">수사</string>
+
+    <string name="dictionary_error_unavailable_title">사전을 열지 못했어요</string>
+    <string name="dictionary_error_unavailable_body">휴대폰 저장 공간이 부족하면 이럴 수 있어요. 공간을 비운 뒤 다시 시도해 주세요.</string>
+    <string name="dictionary_error_not_found_title">이 항목은 이제 사전에 없어요</string>
+    <string name="dictionary_error_not_found_body">앱을 업데이트하면서 빠졌을 수 있어요. 돌아가서 단어를 다시 찾아 주세요.</string>
+    <string name="dictionary_error_retry">다시 열기</string>
+    <string name="dictionary_error_back">돌아가기</string>
+</resources>

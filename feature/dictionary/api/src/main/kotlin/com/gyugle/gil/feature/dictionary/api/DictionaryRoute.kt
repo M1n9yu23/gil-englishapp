@@ -26,3 +26,19 @@ sealed interface DictionaryRoute : NavKey
 @Serializable
 @SerialName("dictionary.home")
 data object WordsRoute : DictionaryRoute
+
+/**
+ * The dictionary page of [entryId]: a word, pattern or sound ID, or a sense ID, which opens the
+ * sense's word. An ID the content does not have shows a page that says so.
+ */
+@Serializable
+@SerialName("dictionary.entry")
+data class EntryRoute(val entryId: String) : DictionaryRoute
+
+/**
+ * The breakdown of one sentence, shown as a sheet over the screen it was opened from. [source] is
+ * the content ID of that screen, which a content report names as the place of the sentence.
+ */
+@Serializable
+@SerialName("dictionary.sentence")
+data class SentenceRoute(val sentenceId: Long, val source: String) : DictionaryRoute

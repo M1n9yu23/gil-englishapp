@@ -10,8 +10,6 @@
     <string name="home_today_empty_title">아직 오늘 할 공부가 없어요</string>
     <string name="home_today_empty_body">길에서 첫 단원을 골라 보세요. 공부할 수업과 복습이 여기에 모여요.</string>
     <string name="home_today_empty_action">길 보기</string>
-    <string name="dictionary_words_empty_title">아직 저장한 단어가 없어요</string>
-    <string name="dictionary_words_empty_body">수업 중에 단어를 눌러 단어장에 넣어 보세요.</string>
     <string name="stats_home_empty_title">첫 수업을 마치면 기록이 생겨요</string>
     <string name="stats_home_empty_body">공부한 시간과 연속 학습일이 여기에 쌓여요.</string>
 </resources>

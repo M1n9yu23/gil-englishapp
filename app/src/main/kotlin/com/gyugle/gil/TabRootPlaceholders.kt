@@ -30,7 +30,6 @@ import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.feature.curriculum.api.PathRoute
-import com.gyugle.gil.feature.dictionary.api.WordsRoute
 import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.stats.api.StatsHomeRoute
 
@@ -47,13 +46,6 @@ fun EntryProviderScope<NavKey>.tabRootPlaceholderEntries(navigator: Navigator) {
             emptyBody = R.string.home_today_empty_body,
             action = R.string.home_today_empty_action,
             onAction = { navigator.goTo(PathRoute) }
-        )
-    }
-    entry<WordsRoute> {
-        TabRootPlaceholder(
-            title = R.string.main_tab_words,
-            emptyTitle = R.string.dictionary_words_empty_title,
-            emptyBody = R.string.dictionary_words_empty_body
         )
     }
     entry<StatsHomeRoute> {

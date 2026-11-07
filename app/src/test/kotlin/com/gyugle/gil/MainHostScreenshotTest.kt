@@ -75,8 +75,6 @@ class MainHostScreenshotTest {
     @Config(qualifiers = "en-w320dp-h640dp-xhdpi", fontScale = 2f)
     fun today_narrowEnglishFontScale2_keepsBarLabelsWhole() = capture()
 
-    @Test fun words_light_showsNoSavedWords() = capture(R.string.main_tab_words)
-
     @Test fun progress_light_showsNoHistory() = capture(R.string.main_tab_progress)
 
     @Test

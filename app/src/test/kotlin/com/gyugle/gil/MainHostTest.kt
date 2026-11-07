@@ -115,7 +115,7 @@ class MainHostTest {
         tab(R.string.main_tab_words).performClick()
 
         tab(R.string.main_tab_words).assertIsSelected()
-        composeRule.onNodeWithText(text(R.string.dictionary_words_empty_title)).assertExists()
+        composeRule.onNodeWithText(TEST_WORDS_ROOT).assertExists()
     }
 
     @Test
@@ -225,6 +225,6 @@ class MainHostTest {
         restorationTester.emulateSavedInstanceStateRestore()
 
         tab(R.string.main_tab_words).assertIsSelected()
-        composeRule.onNodeWithText(text(R.string.dictionary_words_empty_title)).assertExists()
+        composeRule.onNodeWithText(TEST_WORDS_ROOT).assertExists()
     }
 }
