@@ -35,6 +35,7 @@ import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextAlign
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.IpaText
 import com.gyugle.gil.core.designsystem.component.PathMark
@@ -149,12 +150,14 @@ private fun ResultItemRow(item: ResultItemUi) {
             // The row is read as one, and the word is already in it.
             item.ipa?.let { IpaText(ipa = it, spokenWord = null) }
         }
+        // A meaning that wraps keeps the same right edge as the short ones.
+        val trailing = MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.End)
         Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.End) {
-            item.meaningKo?.let { KoreanProse(text = it, style = MaterialTheme.typography.bodyMedium) }
+            item.meaningKo?.let { KoreanProse(text = it, style = trailing) }
             if (item.comesBackSoon) {
                 Text(
                     text = stringResource(R.string.lesson_result_comes_back),
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = trailing,
                     color = colors.onSurfaceVariant
                 )
             }
