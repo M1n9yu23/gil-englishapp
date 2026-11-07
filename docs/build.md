@@ -16,12 +16,12 @@ Use `staging` to check a change that might behave differently after R8.
 ./gradlew spotlessCheck lintDebug testDebugUnitTest verifyNoInternetPermission
 ```
 
-CI runs the second line on every pull request.
+CI runs the same checks and a debug build on every pull request.
 
 ## Rules the build enforces
 
 - Lint warnings fail the build. To keep one on purpose, suppress it at the narrowest place and add a comment that says why.
 - Every user-facing string needs an English (`values/`) and a Korean (`values-ko/`) version.
-- Kotlin files need the license header; `spotlessApply` adds it.
+- `.kt` and `.kts` files need the license header; `spotlessApply` adds it.
 - The app must not request the INTERNET permission, from its own manifest or from a library.
 - Learning content in `content/` must pass its checks. See [content.md](content.md).
