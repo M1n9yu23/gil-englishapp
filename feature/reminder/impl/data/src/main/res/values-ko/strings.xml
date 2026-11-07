@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="reminder_channel_name">공부 알림</string>
+    <string name="reminder_channel_description">고른 시각에 알려 줘요. 오늘 목표를 채운 날에는 보내지 않아요.</string>
+
+    <string name="reminder_notification_title">오늘의 길</string>
+    <plurals name="reminder_notification_reviews">
+        <item quantity="other">복습 <xliff:g id="count" example="12">%1$d</xliff:g>개, 약 <xliff:g id="minutes" example="6">%2$d</xliff:g>분</item>
+    </plurals>
+    <string name="reminder_notification_next_lesson">다음 수업을 이어서 할 수 있어요.</string>
+</resources>

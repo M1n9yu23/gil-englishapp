@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The notification channel, as the system's notification settings list it. -->
+    <string name="reminder_channel_name">Study reminders</string>
+    <string name="reminder_channel_description">At the times you chose, unless you’ve already met today’s goal.</string>
+
+    <string name="reminder_notification_title">Today’s path</string>
+    <!-- Reviews due today, and about how long they take. -->
+    <plurals name="reminder_notification_reviews">
+        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> review, about <xliff:g id="minutes" example="1">%2$d</xliff:g> min</item>
+        <item quantity="other"><xliff:g id="count" example="12">%1$d</xliff:g> reviews, about <xliff:g id="minutes" example="6">%2$d</xliff:g> min</item>
+    </plurals>
+    <!-- No reviews are due today. -->
+    <string name="reminder_notification_next_lesson">Your next lesson is ready.</string>
+</resources>
