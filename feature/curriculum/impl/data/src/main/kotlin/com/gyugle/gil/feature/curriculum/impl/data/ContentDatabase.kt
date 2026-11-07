@@ -17,6 +17,7 @@ package com.gyugle.gil.feature.curriculum.impl.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.gyugle.gil.feature.curriculum.impl.data.dao.CourseDao
 import com.gyugle.gil.feature.curriculum.impl.data.entity.GrammarEntity
 import com.gyugle.gil.feature.curriculum.impl.data.entity.GrammarExampleEntity
 import com.gyugle.gil.feature.curriculum.impl.data.entity.LessonEntity
@@ -70,4 +71,6 @@ import com.gyugle.gil.feature.curriculum.impl.data.entity.WordNoteEntity
         GrammarExampleEntity::class
     ]
 )
-abstract class ContentDatabase : RoomDatabase()
+abstract class ContentDatabase : RoomDatabase() {
+    abstract fun courseDao(): CourseDao
+}

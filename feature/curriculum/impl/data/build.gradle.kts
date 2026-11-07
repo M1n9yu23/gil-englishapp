@@ -15,10 +15,22 @@
  */
 plugins {
     alias(libs.plugins.convention.android.library)
+    alias(libs.plugins.convention.hilt)
     alias(libs.plugins.convention.room)
     alias(libs.plugins.convention.content)
 }
 
+android {
+    // The database tests open the generated asset through Robolectric.
+    testOptions.unitTests.isIncludeAndroidResources = true
+}
+
 dependencies {
+    implementation(projects.feature.curriculum.impl.domain)
     implementation(projects.core.database)
+    implementation(libs.timber)
+
+    testImplementation(libs.robolectric)
+    testImplementation(libs.junit4)
+    testRuntimeOnly(libs.junit.vintage.engine)
 }
