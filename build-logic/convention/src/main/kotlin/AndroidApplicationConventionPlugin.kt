@@ -4,6 +4,7 @@ import com.gyugle.gil.convention.catalogVersion
 import com.gyugle.gil.convention.catalogVersionInt
 import com.gyugle.gil.convention.configureInstrumentedTests
 import com.gyugle.gil.convention.configureKotlinJvmTarget
+import com.gyugle.gil.convention.configureNoInternetPermissionCheck
 import com.gyugle.gil.convention.configureUnitTests
 import com.gyugle.gil.convention.libs
 import org.gradle.api.JavaVersion
@@ -12,7 +13,10 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
-/** Application modules: identity and SDK levels come from the catalog; build types stay in the module. */
+/**
+ * Application modules: identity and SDK levels come from the catalog, and every variant is checked
+ * for the INTERNET permission. Build types and signing stay in the module.
+ */
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
@@ -43,6 +47,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             configureKotlinJvmTarget()
             configureUnitTests()
             configureInstrumentedTests()
+            configureNoInternetPermissionCheck()
 
             dependencies {
                 "implementation"(libs.findLibrary("kotlinx-coroutines-core").get())
