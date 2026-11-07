@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
@@ -172,7 +173,8 @@ private fun SearchPane(
 ) {
     val spacing = GilTheme.spacing
     val focusManager = LocalFocusManager.current
-    Column(modifier = Modifier.fillMaxSize()) {
+    // The results end above the keyboard, so the last ones can still be scrolled into view.
+    Column(modifier = Modifier.fillMaxSize().imePadding()) {
         OutlinedTextField(
             value = query,
             onValueChange = { onAction(WordsAction.OnQueryChange(it)) },
