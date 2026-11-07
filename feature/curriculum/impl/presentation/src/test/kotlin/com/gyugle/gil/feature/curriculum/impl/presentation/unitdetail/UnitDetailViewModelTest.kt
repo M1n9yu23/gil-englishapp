@@ -20,11 +20,11 @@ import assertk.assertions.containsExactly
 import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isNull
+import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.UnitId
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
 import com.gyugle.gil.feature.curriculum.impl.domain.model.LessonSummary
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.FakeCourseRepository
 import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi

@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.data.di
 
+import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseHolder
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.repository.RoomCourseRepository
@@ -32,4 +33,7 @@ abstract class CurriculumDataModule {
 
     @Binds
     abstract fun courseRepository(repository: RoomCourseRepository): CourseRepository
+
+    @Binds
+    abstract fun courseObserver(repository: RoomCourseRepository): CourseObserver
 }

@@ -16,8 +16,8 @@
 package com.gyugle.gil.feature.curriculum.impl.domain.repository
 
 import com.gyugle.gil.core.domain.Outcome
+import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.UnitId
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 

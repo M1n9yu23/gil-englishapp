@@ -15,11 +15,11 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.data.mapper
 
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.data.entity.LessonEntity
 import com.gyugle.gil.feature.curriculum.impl.data.entity.StageEntity
 import com.gyugle.gil.feature.curriculum.impl.data.entity.UnitEntity
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitSummary
 

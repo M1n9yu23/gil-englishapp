@@ -18,7 +18,7 @@ package com.gyugle.gil.feature.curriculum.impl.presentation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.res.stringResource
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 
 /**
  * Content text in both app languages. The language is picked in composition, so a change of app

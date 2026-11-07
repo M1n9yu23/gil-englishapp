@@ -13,14 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.curriculum.impl.domain.error
+package com.gyugle.gil.feature.curriculum.api.model
 
-import com.gyugle.gil.core.domain.RootError
-
-enum class ContentError : RootError {
-    /** The content database could not be copied, opened or read. Trying again may work. */
-    UNAVAILABLE,
-
-    /** No row has the requested id, for example a unit an app update removed. */
-    NOT_FOUND
-}
+/** A word of a minimal pair, such as ship or sheep. [ipa] has no slashes. */
+data class PairWord(val text: String, val ipa: String)

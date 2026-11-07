@@ -16,7 +16,7 @@
 package com.gyugle.gil.feature.curriculum.impl.presentation
 
 import com.gyugle.gil.core.presentation.UiText
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
+import com.gyugle.gil.feature.curriculum.api.ContentError
 
 fun ContentError.toContentErrorUi(): ContentErrorUi = when (this) {
     ContentError.UNAVAILABLE -> ContentErrorUi(

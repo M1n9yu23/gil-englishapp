@@ -16,5 +16,6 @@
 package com.gyugle.gil.feature.curriculum.impl.domain.model
 
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 
 data class LessonSummary(val id: LessonId, val title: LocalizedText, val goal: LocalizedText)

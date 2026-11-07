@@ -16,12 +16,28 @@
 package com.gyugle.gil.feature.curriculum.impl.data.mapper
 
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.model.Lesson
+import com.gyugle.gil.feature.curriculum.api.model.LessonItem
+import com.gyugle.gil.feature.curriculum.impl.data.dao.LessonItemRow
+import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
 import com.gyugle.gil.feature.curriculum.impl.data.entity.LessonEntity
 import com.gyugle.gil.feature.curriculum.impl.domain.model.LessonSummary
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
 
 fun LessonEntity.toLessonSummary(): LessonSummary = LessonSummary(
     id = LessonId(id),
     title = LocalizedText(ko = titleKo, en = titleEn),
     goal = LocalizedText(ko = goalKo, en = goalEn)
 )
+
+fun LessonEntity.toLesson(steps: List<StepPayloadDto>, items: List<LessonItemRow>, next: String?): Lesson = Lesson(
+    id = LessonId(id),
+    title = LocalizedText(ko = titleKo, en = titleEn),
+    goal = LocalizedText(ko = goalKo, en = goalEn),
+    steps = steps.map { it.toLessonStep() },
+    introduced = items.map { it.toLessonItem() },
+    next = next?.let(::LessonId)
+)
+
+private fun LessonItemRow.toLessonItem() =
+    LessonItem(id = id.toStudyItemId(), text = text, ipa = ipa, meaningKo = meaningKo)

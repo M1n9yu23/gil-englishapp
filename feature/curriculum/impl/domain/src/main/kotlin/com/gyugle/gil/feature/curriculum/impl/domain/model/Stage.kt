@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.domain.model
 
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageId
 
 /** A stage of the course with its units in order. [canDo] lists what a learner can do after it. */

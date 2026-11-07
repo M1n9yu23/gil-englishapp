@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.curriculum.impl.domain.model
+package com.gyugle.gil.feature.curriculum.api.model
 
-/** Text the content gives in both app languages, such as a unit title. */
-data class LocalizedText(val ko: String, val en: String)
+/**
+ * An answer to pick. [english] means [text] is English and is drawn as English. [why] explains a
+ * wrong choice in Korean.
+ */
+data class Choice(val text: String, val english: Boolean, val correct: Boolean, val why: String?)

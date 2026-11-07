@@ -20,14 +20,23 @@ import androidx.room.Room
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
+import assertk.assertions.isNull
 import com.gyugle.gil.core.domain.Outcome
+import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.PatternId
+import com.gyugle.gil.feature.curriculum.api.SenseId
+import com.gyugle.gil.feature.curriculum.api.SoundId
 import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.api.UnitId
+import com.gyugle.gil.feature.curriculum.api.model.Choice
+import com.gyugle.gil.feature.curriculum.api.model.Lesson
+import com.gyugle.gil.feature.curriculum.api.model.LessonItem
+import com.gyugle.gil.feature.curriculum.api.model.LessonStep
+import com.gyugle.gil.feature.curriculum.api.model.Sentence
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabase
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
 import com.gyugle.gil.feature.curriculum.impl.domain.model.LessonSummary
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitSummary
 import kotlinx.coroutines.test.runTest
@@ -69,9 +78,46 @@ class RoomCourseRepositoryTest {
                 )
                 lesson(id = "lesson.a.2", position = 1, coursePosition = 2)
                 lesson(id = "lesson.a.1", position = 0, coursePosition = 1)
+                execSQL(
+                    "INSERT INTO word (id, text, ipa, hangul, searchKey) VALUES ('word.read', 'read', 'riːd', NULL, ' read')"
+                )
+                execSQL(
+                    "INSERT INTO sense (id, wordId, position, pos, meaningKo, definitionEn, ipa, stageId, lessonId) " +
+                        "VALUES ('sense.read.v.past', 'word.read', 1, 'verb', '읽었다', NULL, 'rɛd', 'stage.one', 'lesson.a.1')"
+                )
+                execSQL(
+                    "INSERT INTO sense (id, wordId, position, pos, meaningKo, definitionEn, ipa, stageId, lessonId) " +
+                        "VALUES ('sense.read.v.now', 'word.read', 0, 'verb', '읽다', NULL, NULL, 'stage.one', 'lesson.a.1')"
+                )
+                execSQL(
+                    "INSERT INTO pattern (id, text, meaningKo, noteKo, stageId, lessonId) " +
+                        "VALUES ('pattern.hi', 'Hi.', '안녕하세요', NULL, 'stage.one', 'lesson.a.1')"
+                )
+                execSQL(
+                    "INSERT INTO sound (id, symbol, spelling, descriptionKo, stageId, lessonId) " +
+                        "VALUES ('sound.f', 'f', 'f, ph', '설명', 'stage.one', 'lesson.a.1')"
+                )
+                // Out of order, and the sound first, to check the content's order comes back.
+                item(position = 3, itemId = "sense.read.v.past")
+                item(position = 0, itemId = "sound.f")
+                item(position = 2, itemId = "pattern.hi")
+                item(position = 1, itemId = "sense.read.v.now")
+                step(position = 1, payload = """{"type":"shadow","sentence":{"id":2,"text":"Hi."}}""")
+                step(
+                    position = 0,
+                    payload = """{"type":"listenChoose","audio":{"id":1,"text":"fan","ko":"부채"},""" +
+                        """"options":[{"text":"f","english":true,"correct":true},""" +
+                        """{"text":"p","english":true,"correct":false,"why":"입술이 붙어요."}],"item":"sound.f"}"""
+                )
             }
         }
     private val repository = RoomCourseRepository { database }
+
+    private fun androidx.sqlite.db.SupportSQLiteDatabase.item(position: Int, itemId: String) =
+        execSQL("INSERT INTO lesson_item (lessonId, position, itemId) VALUES ('lesson.a.1', $position, '$itemId')")
+
+    private fun androidx.sqlite.db.SupportSQLiteDatabase.step(position: Int, payload: String) =
+        execSQL("INSERT INTO lesson_step (lessonId, position, payload) VALUES ('lesson.a.1', $position, '$payload')")
 
     private fun androidx.sqlite.db.SupportSQLiteDatabase.lesson(id: String, position: Int, coursePosition: Int) =
         execSQL(
@@ -126,6 +172,63 @@ class RoomCourseRepositoryTest {
     @Test
     fun getUnit_unknownId_notFound() = runTest {
         assertThat(repository.getUnit(UnitId("unit.missing"))).isEqualTo(Outcome.Failure(ContentError.NOT_FOUND))
+    }
+
+    @Test
+    fun getLesson_knownId_returnsStepsItemsInContentOrderAndTheNextLesson() = runTest {
+        assertThat(repository.getLesson(LessonId("lesson.a.1"))).isEqualTo(
+            Outcome.Success(
+                Lesson(
+                    id = LessonId("lesson.a.1"),
+                    title = LocalizedText("lesson.a.1 ko", "lesson.a.1 en"),
+                    goal = LocalizedText("lesson.a.1 목표", "lesson.a.1 goal"),
+                    steps = listOf(
+                        LessonStep.ListenChoose(
+                            audio = Sentence(1, "fan", "부채"),
+                            options = listOf(
+                                Choice("f", english = true, correct = true, why = null),
+                                Choice("p", english = true, correct = false, why = "입술이 붙어요.")
+                            ),
+                            item = SoundId("sound.f")
+                        ),
+                        LessonStep.Shadow(Sentence(2, "Hi.", ko = null))
+                    ),
+                    introduced = listOf(
+                        LessonItem(SoundId("sound.f"), text = "f, ph", ipa = "f", meaningKo = null),
+                        LessonItem(SenseId("sense.read.v.now"), text = "read", ipa = "riːd", meaningKo = "읽다"),
+                        LessonItem(PatternId("pattern.hi"), text = "Hi.", ipa = null, meaningKo = "안녕하세요"),
+                        // A sense said differently from its word keeps its own IPA.
+                        LessonItem(SenseId("sense.read.v.past"), text = "read", ipa = "rɛd", meaningKo = "읽었다")
+                    ),
+                    next = LessonId("lesson.a.2")
+                )
+            )
+        )
+    }
+
+    @Test
+    fun getLesson_lastLessonOfTheCourse_hasNoNext() = runTest {
+        val lesson = (repository.getLesson(LessonId("lesson.a.2")) as Outcome.Success).data
+
+        assertThat(lesson.next).isNull()
+        assertThat(lesson.steps).isEqualTo(emptyList())
+    }
+
+    @Test
+    fun getLesson_unknownId_notFound() = runTest {
+        assertThat(repository.getLesson(LessonId("lesson.missing"))).isEqualTo(Outcome.Failure(ContentError.NOT_FOUND))
+    }
+
+    @Test
+    fun getLesson_itemMissingFromEveryTable_unavailable() = runTest {
+        database.openHelper.writableDatabase.item(position = 9, itemId = "sense.gone")
+
+        assertThat(repository.getLesson(LessonId("lesson.a.1"))).isEqualTo(Outcome.Failure(ContentError.UNAVAILABLE))
+    }
+
+    @Test
+    fun getFirstLessonId_returnsTheLowestCoursePosition() = runTest {
+        assertThat(repository.getFirstLessonId()).isEqualTo(Outcome.Success(LessonId("lesson.a.1")))
     }
 
     @Test

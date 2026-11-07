@@ -18,6 +18,8 @@ plugins {
 }
 
 dependencies {
+    // Content results are Outcome with ContentError.
+    api(projects.core.domain)
     // NavKey is the supertype of every route here.
     api(libs.androidx.navigation3.runtime)
 }

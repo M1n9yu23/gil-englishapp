@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.domain.model
 
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.UnitId
 
 /** A unit with the stage it belongs to and its lessons in order. */

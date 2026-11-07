@@ -22,10 +22,10 @@ import assertk.assertions.isFalse
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import com.gyugle.gil.core.domain.Outcome
+import com.gyugle.gil.feature.curriculum.api.ContentError
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.api.UnitId
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitSummary
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.FakeCourseRepository

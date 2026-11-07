@@ -16,7 +16,7 @@
 package com.gyugle.gil.feature.curriculum.impl.presentation.unitdetail
 
 import androidx.compose.ui.test.junit4.v2.createComposeRule
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
+import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.impl.presentation.captureScreen
 import com.gyugle.gil.feature.curriculum.impl.presentation.toContentErrorUi
 import org.junit.Rule

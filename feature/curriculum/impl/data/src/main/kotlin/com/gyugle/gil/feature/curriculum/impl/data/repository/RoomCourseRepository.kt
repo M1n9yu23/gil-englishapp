@@ -16,13 +16,19 @@
 package com.gyugle.gil.feature.curriculum.impl.data.repository
 
 import com.gyugle.gil.core.domain.Outcome
+import com.gyugle.gil.feature.curriculum.api.ContentError
+import com.gyugle.gil.feature.curriculum.api.CourseObserver
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.UnitId
+import com.gyugle.gil.feature.curriculum.api.model.Lesson
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabase
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
+import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
+import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadJson
+import com.gyugle.gil.feature.curriculum.impl.data.mapper.toLesson
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toStage
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toUnitDetail
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toUnitSummary
-import com.gyugle.gil.feature.curriculum.impl.domain.error.ContentError
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.CourseRepository
@@ -31,7 +37,9 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import timber.log.Timber
 
-class RoomCourseRepository @Inject constructor(private val databases: ContentDatabaseProvider) : CourseRepository {
+class RoomCourseRepository @Inject constructor(private val databases: ContentDatabaseProvider) :
+    CourseRepository,
+    CourseObserver {
 
     override suspend fun getStages(): Outcome<List<Stage>, ContentError> = read { database ->
         val dao = database.courseDao()
@@ -54,6 +62,27 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         // The compiler checks every unit's stage, so a missing one means a broken file.
         val stage = checkNotNull(dao.stage(unit.stageId)) { "Unit ${unit.id} has no stage ${unit.stageId}" }
         Outcome.Success(unit.toUnitDetail(stage, dao.lessons(unit.id)))
+    }
+
+    override suspend fun getLesson(id: LessonId): Outcome<Lesson, ContentError> = read { database ->
+        val dao = database.lessonDao()
+        val lesson = dao.lesson(id.value) ?: return@read Outcome.Failure(ContentError.NOT_FOUND)
+        val items = dao.items(lesson.id)
+        // The compiler checks that every introduced item exists, so a missing one means a broken file.
+        check(items.size == dao.itemCount(lesson.id)) { "Lesson ${lesson.id} introduces an item that is missing" }
+        Outcome.Success(
+            lesson.toLesson(
+                steps = dao.steps(lesson.id).map { StepPayloadJson.decodeFromString<StepPayloadDto>(it.payload) },
+                items = items,
+                next = dao.nextLessonId(lesson.coursePosition)
+            )
+        )
+    }
+
+    override suspend fun getFirstLessonId(): Outcome<LessonId, ContentError> = read { database ->
+        // The compiler refuses a course without lessons.
+        val id = checkNotNull(database.lessonDao().firstLessonId()) { "The course has no lessons" }
+        Outcome.Success(LessonId(id))
     }
 
     /**

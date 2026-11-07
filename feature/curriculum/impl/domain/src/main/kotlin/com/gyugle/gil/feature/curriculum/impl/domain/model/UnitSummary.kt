@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.domain.model
 
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.UnitId
 
 data class UnitSummary(val id: UnitId, val title: LocalizedText, val lessonCount: Int)

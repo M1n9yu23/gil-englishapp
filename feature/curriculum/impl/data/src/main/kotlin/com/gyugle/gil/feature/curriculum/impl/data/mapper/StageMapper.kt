@@ -15,10 +15,10 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.data.mapper
 
+import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.impl.data.entity.StageCanDoEntity
 import com.gyugle.gil.feature.curriculum.impl.data.entity.StageEntity
-import com.gyugle.gil.feature.curriculum.impl.domain.model.LocalizedText
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitSummary
 
