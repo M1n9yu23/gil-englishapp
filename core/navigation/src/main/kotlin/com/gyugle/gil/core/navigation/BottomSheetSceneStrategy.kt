@@ -54,7 +54,7 @@ class BottomSheetSceneStrategy<T : Any> : SceneStrategy<T> {
 private data object BottomSheetKey : NavMetadataKey<Boolean>
 
 @OptIn(ExperimentalMaterial3Api::class)
-private class BottomSheetScene<T : Any>(
+private data class BottomSheetScene<T : Any>(
     override val key: Any,
     override val previousEntries: List<NavEntry<T>>,
     override val overlaidEntries: List<NavEntry<T>>,
