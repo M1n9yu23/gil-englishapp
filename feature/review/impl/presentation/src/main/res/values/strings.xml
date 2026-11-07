@@ -27,6 +27,7 @@
     <string name="review_error_retry">Try again</string>
 
     <string name="review_empty_title">No more reviews today</string>
+    <string name="review_empty_no_cards_title">Nothing to review yet</string>
     <string name="review_empty_no_cards">Finish a lesson and what you learn comes back here to review.</string>
     <string name="review_empty_action">Go back</string>
     <string name="review_next_tomorrow">Your next review is tomorrow.</string>
@@ -36,8 +37,8 @@
     </plurals>
 
     <string name="review_result_title">Review done</string>
-    <string name="review_result_score">You got <xliff:g id="right" example="14">%1$d</xliff:g> of <xliff:g id="answered" example="20">%2$d</xliff:g> right.</string>
-    <string name="review_result_again">To look at again</string>
+    <string name="review_result_score">Right answers: <xliff:g id="right" example="14">%1$d</xliff:g> of <xliff:g id="answered" example="20">%2$d</xliff:g></string>
+    <string name="review_result_again">Look at these again</string>
     <plurals name="review_result_remaining">
         <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> more review is due today.</item>
         <item quantity="other"><xliff:g id="count" example="12">%d</xliff:g> more reviews are due today.</item>

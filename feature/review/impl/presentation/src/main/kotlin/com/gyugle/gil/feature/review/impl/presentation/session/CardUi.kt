@@ -34,34 +34,3 @@ sealed interface CardUi {
     /** An answer to type into [text]. */
     data class Typed(val prompt: TypedPromptUi, val text: String = "") : CardUi
 }
-
-/** An option. [ipa] shows under the text once the card is answered, for words picked by sound. */
-@Immutable
-data class AnswerUi(val text: String, val english: Boolean, val ipa: String? = null)
-
-@Immutable
-sealed interface ChoicePromptUi {
-    /** English to understand, heard by the play button when [speakable]. */
-    data class Meaning(val english: String, val ipa: String?, val speakable: Boolean) : ChoicePromptUi
-
-    /** A Korean meaning; backticks mark English inside it. */
-    data class English(val meaningKo: String) : ChoicePromptUi
-
-    /** English only heard. [revealed] shows it once the card is answered. */
-    data class Listen(val revealed: String?) : ChoicePromptUi
-
-    /** A letter's name, read as [nameIpa] when there is no voice or once the card is answered. */
-    data class Letter(val nameIpa: String, val showsIpa: Boolean) : ChoicePromptUi
-
-    /** A sound's symbol, as IPA. */
-    data class Sound(val symbol: String) : ChoicePromptUi
-}
-
-@Immutable
-sealed interface TypedPromptUi {
-    /** A word to spell from its meaning and IPA, also heard when [speakable]. */
-    data class Spell(val meaningKo: String, val ipa: String?, val speakable: Boolean) : TypedPromptUi
-
-    /** A sentence with `___` for the missing word, and its translation. */
-    data class Blank(val text: String, val translation: String?) : TypedPromptUi
-}

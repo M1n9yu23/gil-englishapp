@@ -16,11 +16,10 @@
 package com.gyugle.gil.feature.review.impl.presentation.session
 
 import androidx.compose.runtime.Immutable
-import com.gyugle.gil.feature.review.impl.domain.model.AnswerGrade
 
 /**
  * The verdict on an answer. [answer] is the right English when a typed answer was not exact;
  * [note] is Korean that teaches something more, such as the meaning of a word only heard.
  */
 @Immutable
-data class FeedbackUi(val grade: AnswerGrade, val answer: String? = null, val note: String? = null)
+data class FeedbackUi(val grade: GradeUi, val answer: String? = null, val note: String? = null)

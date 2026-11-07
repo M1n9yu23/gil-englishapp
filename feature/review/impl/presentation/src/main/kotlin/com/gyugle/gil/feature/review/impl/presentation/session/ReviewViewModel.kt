@@ -71,7 +71,8 @@ import timber.log.Timber
  * first.
  *
  * Each answer is rated and recorded at once, so leaving keeps what was done and the next session
- * starts with the rest. The list of cards, the place in it and the ratings so far survive process
+ * starts with the rest. The rating is saved for process death just before it is written; if the
+ * process dies between the two, the card is passed over this session and stays due. The list of cards, the place in it and the ratings so far survive process
  * death; an answer shown when the process died is not shown again.
  */
 @HiltViewModel(assistedFactory = ReviewViewModel.Factory::class)
@@ -81,6 +82,7 @@ class ReviewViewModel @AssistedInject constructor(
     private val progressObserver: ProgressObserver,
     private val progress: ProgressCommands,
     private val lexicon: LexiconObserver,
+    private val deck: ReviewDeck,
     private val speaker: Speaker,
     private val clock: StudyClock
 ) : ViewModel() {
@@ -95,8 +97,6 @@ class ReviewViewModel @AssistedInject constructor(
 
     private val eventChannel = Channel<ReviewEvent>()
     val events: Flow<ReviewEvent> = eventChannel.receiveAsFlow()
-
-    private val deck = ReviewDeck(lexicon)
 
     private var session: Session? = null
     private var card: ReviewCard? = null
@@ -114,6 +114,12 @@ class ReviewViewModel @AssistedInject constructor(
     private var isResumed = false
 
     private var soundJob: Job? = null
+
+    /** Loading the session or the next card. Taps that would start another wait for it. */
+    private var stepJob: Job? = null
+
+    /** Cards no kind of question can be made for; they stay due but do not count as left. */
+    private val skipped = mutableSetOf<StudyItemId>()
 
     private var position: Int
         get() = savedStateHandle[KEY_POSITION] ?: 0
@@ -158,26 +164,44 @@ class ReviewViewModel @AssistedInject constructor(
             }
 
             ReviewAction.OnContinueClick -> {
-                if (feedback == null) return
+                if (feedback == null || stepJob?.isActive == true) return
+                // Cleared at once, so a second tap while the next card loads does nothing.
+                feedback = null
+                card = null
                 position += 1
                 text = ""
                 savedStateHandle[KEY_TEXT] = ""
-                viewModelScope.launch { showNext() }
+                stepJob = viewModelScope.launch { showNext() }
             }
 
             ReviewAction.OnPlayClick -> card?.spoken(hasVoice)?.let(::speak)
 
-            ReviewAction.OnRetryClick -> if (session == null) load() else viewModelScope.launch { showNext() }
+            ReviewAction.OnRetryClick -> when {
+                stepJob?.isActive == true -> Unit
+                session == null -> load()
+                else -> stepJob = viewModelScope.launch { showNext() }
+            }
 
             ReviewAction.OnKeepReviewingClick -> {
+                if (stepJob?.isActive == true) return
                 session = null
+                skipped.clear()
                 savedStateHandle.remove<ArrayList<String>>(KEY_IDS)
                 savedStateHandle.remove<ArrayList<String>>(KEY_RATINGS)
                 position = 0
                 load()
             }
 
-            ReviewAction.OnCloseClick -> viewModelScope.launch { eventChannel.send(ReviewEvent.Close) }
+            ReviewAction.OnCloseClick -> {
+                soundJob?.cancel()
+                // Taken now: the screen may be gone before it pauses.
+                val millis = takeStudyTime()
+                activeSince = null
+                viewModelScope.launch {
+                    recordStudyTime(millis)
+                    eventChannel.send(ReviewEvent.Close)
+                }
+            }
 
             ReviewAction.OnResumed -> {
                 isResumed = true
@@ -195,7 +219,8 @@ class ReviewViewModel @AssistedInject constructor(
 
     private fun load() {
         _state.value = ReviewState(ReviewPhase.Loading)
-        viewModelScope.launch {
+        stepJob?.cancel()
+        stepJob = viewModelScope.launch {
             val today = clock.today()
             val read = readRecord(today)
             if (read == null) {
@@ -243,6 +268,7 @@ class ReviewViewModel @AssistedInject constructor(
         while (position < current.ids.size) {
             val id = current.ids[position]
             val state = current.cards[id]
+            if (id !in answered && state == null) skipped += id
             if (id !in answered && state != null) {
                 val random = Random(current.seed + position)
                 when (val made = deck.cardFor(state, current.pool, hasVoice, random)) {
@@ -251,14 +277,19 @@ class ReviewViewModel @AssistedInject constructor(
                         return
                     }
 
-                    is Outcome.Success -> made.data?.let {
-                        card = it
-                        picked = null
-                        feedback = null
-                        render()
-                        startCounting()
-                        it.spoken(hasVoice)?.let(::speak)
-                        return
+                    is Outcome.Success -> {
+                        val next = made.data
+                        if (next == null) {
+                            skipped += id
+                        } else {
+                            card = next
+                            picked = null
+                            feedback = null
+                            render()
+                            startCounting()
+                            next.spoken(hasVoice)?.let(::speak)
+                            return
+                        }
                     }
                 }
             }
@@ -273,6 +304,7 @@ class ReviewViewModel @AssistedInject constructor(
         feedback = answeredCard.feedback(grade)
         ratings = ratings + (itemId to grade.rating)
         render()
+        writes.removeAll { it.isCompleted }
         writes += viewModelScope.launch {
             // Leaving right after answering must not lose the rating.
             withContext(NonCancellable) {
@@ -305,8 +337,8 @@ class ReviewViewModel @AssistedInject constructor(
                 answered = done.size,
                 right = done.count { it.second != ReviewRating.AGAIN },
                 again = done.filter { it.second == ReviewRating.AGAIN }.mapNotNull { pool[it.first]?.toResultItem() },
-                remaining = due.size,
-                nextInDays = if (due.isEmpty()) nextInDays(cards, today) else null
+                remaining = due.count { it.itemId !in skipped },
+                nextInDays = if (due.none { it.itemId !in skipped }) nextInDays(cards, today) else null
             )
         } catch (e: Exception) {
             currentCoroutineContext().ensureActive()

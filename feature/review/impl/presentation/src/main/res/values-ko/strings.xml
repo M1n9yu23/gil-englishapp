@@ -27,6 +27,7 @@
     <string name="review_error_retry">다시 시도</string>
 
     <string name="review_empty_title">오늘 복습은 끝났어요</string>
+    <string name="review_empty_no_cards_title">아직 복습할 것이 없어요</string>
     <string name="review_empty_no_cards">수업을 마치면 배운 것을 여기서 복습해요.</string>
     <string name="review_empty_action">돌아가기</string>
     <string name="review_next_tomorrow">다음 복습은 내일이에요.</string>

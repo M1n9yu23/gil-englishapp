@@ -17,6 +17,8 @@ package com.gyugle.gil.feature.review.impl.presentation.session
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -24,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -42,7 +45,12 @@ import com.gyugle.gil.feature.review.impl.presentation.R
 
 /** The prompt of a card and its options or answer field. */
 @Composable
-internal fun CardContent(card: CardUi, hasVoice: Boolean, answered: Boolean, onAction: (ReviewAction) -> Unit) {
+internal fun ColumnScope.CardContent(
+    card: CardUi,
+    hasVoice: Boolean,
+    answered: Boolean,
+    onAction: (ReviewAction) -> Unit
+) {
     when (card) {
         is CardUi.Choice -> ChoiceContent(card, hasVoice, onAction)
         is CardUi.Typed -> TypedContent(card, hasVoice, answered, onAction)
@@ -50,15 +58,18 @@ internal fun CardContent(card: CardUi, hasVoice: Boolean, answered: Boolean, onA
 }
 
 @Composable
-private fun ChoiceContent(card: CardUi.Choice, hasVoice: Boolean, onAction: (ReviewAction) -> Unit) {
+private fun ColumnScope.ChoiceContent(card: CardUi.Choice, hasVoice: Boolean, onAction: (ReviewAction) -> Unit) {
     val play = { onAction(ReviewAction.OnPlayClick) }
     val playDescription = stringResource(R.string.review_play)
     when (val prompt = card.prompt) {
-        is ChoicePromptUi.Meaning -> {
-            if (prompt.speakable) SoundButton(onClick = play, description = playDescription, large = true)
-            EnglishText(text = prompt.english, size = EnglishTextSize.Focus)
-            // The word is read just above.
-            prompt.ipa?.let { IpaText(ipa = it, spokenWord = null) }
+        // The word and its IPA read as one; the speaker sits beside the word, as in a lesson.
+        is ChoicePromptUi.Meaning -> Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(modifier = Modifier.weight(1f)) {
+                EnglishText(text = prompt.english, size = EnglishTextSize.Focus)
+                // The word is read just above.
+                prompt.ipa?.let { IpaText(ipa = it, spokenWord = null) }
+            }
+            if (prompt.speakable) SoundButton(onClick = play, description = playDescription)
         }
 
         is ChoicePromptUi.English -> KoreanProse(text = prompt.meaningKo, style = MaterialTheme.typography.titleLarge)
@@ -96,7 +107,12 @@ private fun ChoiceContent(card: CardUi.Choice, hasVoice: Boolean, onAction: (Rev
 }
 
 @Composable
-private fun TypedContent(card: CardUi.Typed, hasVoice: Boolean, answered: Boolean, onAction: (ReviewAction) -> Unit) {
+private fun ColumnScope.TypedContent(
+    card: CardUi.Typed,
+    hasVoice: Boolean,
+    answered: Boolean,
+    onAction: (ReviewAction) -> Unit
+) {
     when (val prompt = card.prompt) {
         is TypedPromptUi.Spell -> {
             if (prompt.speakable && hasVoice) {
@@ -106,9 +122,11 @@ private fun TypedContent(card: CardUi.Typed, hasVoice: Boolean, answered: Boolea
                     large = true
                 )
             }
-            KoreanProse(text = prompt.meaningKo, style = MaterialTheme.typography.titleLarge)
-            // Read aloud, the word would give the spelling away.
-            prompt.ipa?.let { IpaText(ipa = it, spokenWord = null) }
+            Column {
+                KoreanProse(text = prompt.meaningKo, style = MaterialTheme.typography.titleLarge)
+                // Read aloud, the word would give the spelling away.
+                prompt.ipa?.let { IpaText(ipa = it, spokenWord = null) }
+            }
         }
 
         is TypedPromptUi.Blank -> {
@@ -120,7 +138,8 @@ private fun TypedContent(card: CardUi.Typed, hasVoice: Boolean, answered: Boolea
         value = card.text,
         onValueChange = { onAction(ReviewAction.OnTextChange(it)) },
         modifier = Modifier.fillMaxWidth(),
-        enabled = !answered,
+        // Read-only rather than disabled once checked, so the answer stays readable next to the right one.
+        readOnly = answered,
         label = { Text(stringResource(R.string.review_answer_label)) },
         // Typed English is read back in English by screen readers.
         textStyle = MaterialTheme.typography.bodyLarge.copy(localeList = EnglishLocale),

@@ -29,7 +29,6 @@ import androidx.compose.ui.semantics.semantics
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.theme.GilTheme
-import com.gyugle.gil.feature.review.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.review.impl.presentation.R
 
 /**
@@ -48,17 +47,17 @@ internal fun FeedbackPanel(feedback: FeedbackUi, modifier: Modifier = Modifier) 
         Text(
             text = stringResource(
                 when (feedback.grade) {
-                    AnswerGrade.CORRECT -> R.string.review_feedback_correct
-                    AnswerGrade.CLOSE -> R.string.review_feedback_close
-                    AnswerGrade.WRONG -> R.string.review_feedback_wrong
+                    GradeUi.CORRECT -> R.string.review_feedback_correct
+                    GradeUi.CLOSE -> R.string.review_feedback_close
+                    GradeUi.WRONG -> R.string.review_feedback_wrong
                 }
             ),
             style = MaterialTheme.typography.titleMedium,
-            color = if (feedback.grade == AnswerGrade.WRONG) colors.error else colors.primary
+            color = if (feedback.grade == GradeUi.WRONG) colors.error else colors.primary
         )
         feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
         feedback.note?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
-        if (feedback.grade == AnswerGrade.WRONG) {
+        if (feedback.grade == GradeUi.WRONG) {
             Text(
                 text = stringResource(R.string.review_feedback_comes_back),
                 style = MaterialTheme.typography.bodyMedium,

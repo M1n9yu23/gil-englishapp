@@ -30,7 +30,3 @@ data class ResultUi(
     val remaining: Int,
     val nextInDays: Int?
 )
-
-/** An item to look at again: its English, and its meaning or, for a sound, its symbol. */
-@Immutable
-data class ResultItemUi(val text: String, val detail: String?, val detailIsIpa: Boolean)

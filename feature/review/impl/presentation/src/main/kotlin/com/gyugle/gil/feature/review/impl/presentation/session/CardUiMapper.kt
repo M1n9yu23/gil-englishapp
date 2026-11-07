@@ -88,18 +88,20 @@ private fun ReviewCard.ChoiceCard.choice(prompt: ChoicePromptUi, options: List<A
  * The verdict, with the right English when a typed answer was not exact, and what the card did
  * not show before: the meaning of a word only heard, a sound's description.
  */
-internal fun ReviewCard.feedback(grade: AnswerGrade): FeedbackUi = when (this) {
-    is ReviewCard.ListenChoose -> FeedbackUi(grade, note = meaningKo)
+internal fun ReviewCard.feedback(grade: AnswerGrade): FeedbackUi {
+    val ui = grade.toGradeUi()
+    val exact = grade == AnswerGrade.CORRECT
+    return when (this) {
+        is ReviewCard.ListenChoose -> FeedbackUi(ui, note = meaningKo)
+        is ReviewCard.FindSound -> FeedbackUi(ui, note = descriptionKo)
+        is ReviewCard.Spell -> FeedbackUi(ui, answer = word.takeUnless { exact })
+        is ReviewCard.FillBlank -> FeedbackUi(ui, answer = answer.takeUnless { exact }, note = meaningKo)
+        is ReviewCard.ChooseMeaning, is ReviewCard.ChooseEnglish, is ReviewCard.ChooseLetter -> FeedbackUi(ui)
+    }
+}
 
-    is ReviewCard.FindSound -> FeedbackUi(grade, note = descriptionKo)
-
-    is ReviewCard.Spell -> FeedbackUi(grade, answer = word.takeIf { grade != AnswerGrade.CORRECT })
-
-    is ReviewCard.FillBlank -> FeedbackUi(
-        grade,
-        answer = answer.takeIf { grade != AnswerGrade.CORRECT },
-        note = meaningKo
-    )
-
-    is ReviewCard.ChooseMeaning, is ReviewCard.ChooseEnglish, is ReviewCard.ChooseLetter -> FeedbackUi(grade)
+private fun AnswerGrade.toGradeUi(): GradeUi = when (this) {
+    AnswerGrade.CORRECT -> GradeUi.CORRECT
+    AnswerGrade.CLOSE -> GradeUi.CLOSE
+    AnswerGrade.WRONG -> GradeUi.WRONG
 }

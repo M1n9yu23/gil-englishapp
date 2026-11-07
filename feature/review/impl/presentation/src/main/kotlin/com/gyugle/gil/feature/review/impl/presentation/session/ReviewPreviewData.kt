@@ -15,8 +15,6 @@
  */
 package com.gyugle.gil.feature.review.impl.presentation.session
 
-import com.gyugle.gil.feature.review.impl.domain.model.AnswerGrade
-
 /** States for previews and screenshot tests. */
 internal object ReviewPreviewData {
     private val meaning = ReviewPhase.Asking(
@@ -35,7 +33,7 @@ internal object ReviewPreviewData {
     val meaningAnswered = ReviewState(
         meaning.copy(
             card = (meaning.card as CardUi.Choice).copy(picked = 0, correct = 1),
-            feedback = FeedbackUi(AnswerGrade.WRONG)
+            feedback = FeedbackUi(GradeUi.WRONG)
         )
     )
 
@@ -64,7 +62,7 @@ internal object ReviewPreviewData {
                 correct = 1
             ),
             hasVoice = true,
-            feedback = FeedbackUi(AnswerGrade.CORRECT, note = "13, 열셋")
+            feedback = FeedbackUi(GradeUi.CORRECT, note = "13, 열셋")
         )
     )
 
@@ -98,7 +96,7 @@ internal object ReviewPreviewData {
             ),
             hasVoice = true,
             feedback = FeedbackUi(
-                AnswerGrade.WRONG,
+                GradeUi.WRONG,
                 note = "혀끝을 윗니와 아랫니 사이에 살짝 물고 바람만 내보내요."
             )
         )
@@ -121,7 +119,7 @@ internal object ReviewPreviewData {
             kind = CardKindUi.FILL_BLANK,
             card = CardUi.Typed(TypedPromptUi.Blank("Two, $BLANK, four.", "둘, 셋, 넷."), text = "thre"),
             hasVoice = true,
-            feedback = FeedbackUi(AnswerGrade.CLOSE, answer = "three", note = "3, 셋")
+            feedback = FeedbackUi(GradeUi.CLOSE, answer = "three", note = "3, 셋")
         )
     )
 

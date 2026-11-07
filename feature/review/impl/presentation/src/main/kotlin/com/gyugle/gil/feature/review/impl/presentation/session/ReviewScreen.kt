@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil.feature.review.impl.presentation.session
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -102,6 +103,8 @@ fun ReviewRoot(
  */
 @Composable
 fun ReviewScreen(state: ReviewState, onAction: (ReviewAction) -> Unit, modifier: Modifier = Modifier) {
+    // Back leaves like the close mark, which also counts the time spent.
+    BackHandler { onAction(ReviewAction.OnCloseClick) }
     Surface(modifier = modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -135,7 +138,15 @@ fun ReviewScreen(state: ReviewState, onAction: (ReviewAction) -> Unit, modifier:
                     is ReviewPhase.Empty -> Column {
                         CloseBar(onAction)
                         EmptyState(
-                            title = stringResource(R.string.review_empty_title),
+                            title = stringResource(
+                                if (phase.nextInDays ==
+                                    null
+                                ) {
+                                    R.string.review_empty_no_cards_title
+                                } else {
+                                    R.string.review_empty_title
+                                }
+                            ),
                             body = nextReviewText(phase.nextInDays)
                                 ?: stringResource(R.string.review_empty_no_cards),
                             actionLabel = stringResource(R.string.review_empty_action),
@@ -238,7 +249,8 @@ internal fun BottomActions(content: @Composable ColumnScope.() -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = spacing.screenMargin)
-            .padding(bottom = spacing.screenMargin),
+            // A gap above, so text scrolling under never touches the button.
+            .padding(top = spacing.itemGap, bottom = spacing.screenMargin),
         verticalArrangement = Arrangement.spacedBy(spacing.inlineGap),
         horizontalAlignment = Alignment.CenterHorizontally,
         content = content

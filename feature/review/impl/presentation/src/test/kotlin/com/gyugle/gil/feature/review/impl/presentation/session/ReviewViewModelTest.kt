@@ -47,7 +47,7 @@ import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.Mistake
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import com.gyugle.gil.feature.progress.api.StudyDay
-import com.gyugle.gil.feature.review.impl.domain.model.AnswerGrade
+import com.gyugle.gil.feature.review.impl.domain.ReviewDeck
 import kotlin.time.Duration.Companion.minutes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -109,7 +109,7 @@ class ReviewViewModelTest {
     }
 
     private fun viewModel(limit: Int = 20, handle: SavedStateHandle = SavedStateHandle()) =
-        ReviewViewModel(limit, handle, observer, commands, lexicon, speaker, clock)
+        ReviewViewModel(limit, handle, observer, commands, lexicon, ReviewDeck(lexicon), speaker, clock)
 
     private val ReviewViewModel.asking get() = state.value.phase as ReviewPhase.Asking
 
@@ -177,7 +177,7 @@ class ReviewViewModelTest {
 
         viewModel.pick("1, 하나")
 
-        assertThat(viewModel.asking.feedback).isEqualTo(FeedbackUi(AnswerGrade.CORRECT))
+        assertThat(viewModel.asking.feedback).isEqualTo(FeedbackUi(GradeUi.CORRECT))
         assertThat(viewModel.choice.correct).isEqualTo(viewModel.choice.picked)
         assertThat(commands.reviews).containsExactly(one to ReviewRating.GOOD)
         assertThat(commands.clearedMistakes).containsExactly(one)
@@ -191,7 +191,7 @@ class ReviewViewModelTest {
 
         viewModel.pickWrong(right = "1, 하나")
 
-        assertThat(viewModel.asking.feedback?.grade).isEqualTo(AnswerGrade.WRONG)
+        assertThat(viewModel.asking.feedback?.grade).isEqualTo(GradeUi.WRONG)
         assertThat(viewModel.choice.options[viewModel.choice.correct!!].text).isEqualTo("1, 하나")
         assertThat(commands.reviews).containsExactly(one to ReviewRating.AGAIN)
         assertThat(commands.mistakes).containsExactly(one)
@@ -219,7 +219,7 @@ class ReviewViewModelTest {
         viewModel.onAction(ReviewAction.OnTextChange("foru"))
         viewModel.onAction(ReviewAction.OnCheckClick)
 
-        assertThat(viewModel.asking.feedback).isEqualTo(FeedbackUi(AnswerGrade.CLOSE, answer = "four"))
+        assertThat(viewModel.asking.feedback).isEqualTo(FeedbackUi(GradeUi.CLOSE, answer = "four"))
         assertThat(commands.reviews).containsExactly(four to ReviewRating.HARD)
         assertThat(commands.mistakes).isEmpty()
         assertThat(commands.clearedMistakes).isEmpty()
@@ -291,7 +291,7 @@ class ReviewViewModelTest {
     }
 
     @Test
-    fun noVoice_letterIsPickedByItsNameAndNothingPlays() {
+    fun load_noVoice_asksTheLetterByItsNameAndPlaysNothing() {
         speaker.status.value = SpeakerStatus.Connected(emptyMap())
         observer.cards.value = listOf(CardState(letterA, 1.0, today - 1, today - 3, 1, 0))
 
@@ -313,6 +313,56 @@ class ReviewViewModelTest {
         viewModel.onAction(ReviewAction.OnPaused)
 
         assertThat(commands.studyTime).containsExactly(2.minutes)
+    }
+
+    @Test
+    fun continue_tappedTwice_movesOnByOneCard() {
+        due(one, two, three)
+        val viewModel = viewModel()
+        viewModel.pick("1, 하나")
+
+        viewModel.onAction(ReviewAction.OnContinueClick)
+        viewModel.onAction(ReviewAction.OnContinueClick)
+
+        assertThat(viewModel.asking.number).isEqualTo(2)
+        assertThat(viewModel.choice.prompt).isEqualTo(ChoicePromptUi.Meaning("two", "two", speakable = true))
+    }
+
+    @Test
+    fun close_midSession_recordsTheTimeBeforeLeaving() = runTest {
+        due(one, two)
+        val viewModel = viewModel()
+        viewModel.onAction(ReviewAction.OnResumed)
+        clock.advanceBy(3.minutes)
+
+        viewModel.events.test {
+            viewModel.onAction(ReviewAction.OnCloseClick)
+
+            assertThat(awaitItem()).isEqualTo(ReviewEvent.Close)
+        }
+        assertThat(commands.studyTime).containsExactly(3.minutes)
+    }
+
+    @Test
+    fun finish_cardThatCannotBeAsked_isPassedOverAndNotLeft() {
+        // A sound with nothing to tell it apart from: no other sound or letter learned.
+        lexicon.entries += SoundEntry(SoundId("sound.f"), "f", "f, ph", "윗니를 아랫입술에", stage, emptyList())
+        observer.cards.value = listOf(
+            CardState(SoundId("sound.f"), 1.0, today - 2, today - 5, 1, 0),
+            CardState(one, 1.0, today - 1, today - 5, 1, 0),
+            CardState(two, 1.0, today - 1, today - 5, 1, 0)
+        )
+        val viewModel = viewModel()
+        assertThat(viewModel.choice.prompt).isEqualTo(ChoicePromptUi.Meaning("one", "one", speakable = true))
+
+        viewModel.pick("1, 하나")
+        viewModel.onAction(ReviewAction.OnContinueClick)
+        viewModel.pick("2, 둘")
+        viewModel.onAction(ReviewAction.OnContinueClick)
+
+        val result = (viewModel.state.value.phase as ReviewPhase.Finished).result
+        assertThat(result.answered).isEqualTo(2)
+        assertThat(result.remaining).isEqualTo(0)
     }
 
     @Test
