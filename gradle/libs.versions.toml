@@ -120,6 +120,7 @@ roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin.android", version.ref = "aboutLibraries" }
 
+# No version: gil.root puts build-logic on every classpath, and Gradle rejects a versioned request for a plugin already there.
 convention-root = { id = "gil.root" }
 convention-jvm-library = { id = "gil.jvm.library" }
 convention-android-library = { id = "gil.android.library" }
