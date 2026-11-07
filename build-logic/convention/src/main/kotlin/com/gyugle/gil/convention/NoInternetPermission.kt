@@ -1,3 +1,18 @@
+/*
+ * Copyright 2026 MinGyu
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.gyugle.gil.convention
 
 import com.android.build.api.artifact.SingleArtifact
@@ -53,7 +68,7 @@ abstract class VerifyNoInternetPermissionTask : DefaultTask() {
             throw GradleException(
                 "The merged manifest of '$variant' requests $INTERNET. Find what adds it in " +
                     "build/outputs/logs/manifest-merger-$variant-report.txt and remove the dependency " +
-                    "or drop the permission with tools:node=\"remove\".",
+                    "or drop the permission with tools:node=\"remove\"."
             )
         }
         report.get().asFile.writeText("$variant: no $INTERNET\n")
@@ -72,7 +87,7 @@ internal fun Project.configureNoInternetPermissionCheck() {
         onVariants { variant ->
             val name = variant.name
             val verify = tasks.register<VerifyNoInternetPermissionTask>(
-                "verify${name.replaceFirstChar(Char::uppercaseChar)}NoInternetPermission",
+                "verify${name.replaceFirstChar(Char::uppercaseChar)}NoInternetPermission"
             ) {
                 group = "verification"
                 description = "Fails if the merged manifest of $name requests $INTERNET."

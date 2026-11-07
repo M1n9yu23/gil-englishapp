@@ -12,6 +12,13 @@ indent_size = 4
 ktlint_code_style = android_studio
 max_line_length = 120
 ktlint_function_naming_ignore_when_annotated_with = Composable
+# compose-rules: Material 3 only, stable collection parameters, previews named *Preview,
+# and CompositionLocals limited to the design system tokens.
+compose_disallow_material2 = true
+compose_disallow_unstable_collections = true
+compose_preview_naming_enabled = true
+compose_preview_naming_strategy = suffix
+compose_allowed_composition_locals = LocalSpacing,LocalMotion
 
 [*.{yml,yaml,json,toml}]
 indent_size = 2
