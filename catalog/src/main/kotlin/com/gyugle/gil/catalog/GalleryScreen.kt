@@ -273,10 +273,18 @@ private fun ColumnScope.Progress() {
 @Composable
 private fun ColumnScope.Icons() {
     val icons: List<Pair<String, Painter>> = listOf(
+        "Analytics" to GilIcons.Analytics,
+        "AnalyticsFilled" to GilIcons.AnalyticsFilled,
         "ArrowBack" to GilIcons.ArrowBack,
         "Check" to GilIcons.Check,
         "ChevronRight" to GilIcons.ChevronRight,
-        "Close" to GilIcons.Close
+        "Close" to GilIcons.Close,
+        "Dictionary" to GilIcons.Dictionary,
+        "DictionaryFilled" to GilIcons.DictionaryFilled,
+        "Route" to GilIcons.Route,
+        "RouteFilled" to GilIcons.RouteFilled,
+        "Today" to GilIcons.Today,
+        "TodayFilled" to GilIcons.TodayFilled
     )
     icons.forEach { (name, painter) ->
         Row(
