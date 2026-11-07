@@ -15,13 +15,23 @@
  */
 package com.gyugle.gil.feature.progress.api
 
-import com.gyugle.gil.feature.progress.api.StudyClock
-import com.gyugle.gil.feature.progress.api.StudyDay
+import kotlin.time.Duration
 import kotlin.time.Instant
 
-/** A clock that moves only when a test moves it. */
+/**
+ * A clock that moves only when a test moves it. Its days start at midnight UTC: the 04:00 boundary
+ * belongs to the real clock and is tested there.
+ */
 class FakeStudyClock(var now: Instant = Instant.parse("2026-11-07T10:00:00Z")) : StudyClock {
     override fun now(): Instant = now
 
-    override fun dayOf(instant: Instant): StudyDay = StudyDay(instant.epochSeconds / 86_400)
+    override fun dayOf(instant: Instant): StudyDay = StudyDay(instant.epochSeconds / SECONDS_PER_DAY)
+
+    fun advanceBy(duration: Duration) {
+        now += duration
+    }
+
+    private companion object {
+        const val SECONDS_PER_DAY = 86_400
+    }
 }
