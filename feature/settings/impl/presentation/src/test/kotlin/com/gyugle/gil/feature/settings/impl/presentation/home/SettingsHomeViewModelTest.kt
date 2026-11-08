@@ -29,6 +29,8 @@ import com.gyugle.gil.feature.reminder.api.FakeReminderCommands
 import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.settings.api.AppSettings
 import com.gyugle.gil.feature.settings.api.ThemeMode
+import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
+import com.gyugle.gil.feature.settings.impl.domain.repository.FakeAppLanguageRepository
 import com.gyugle.gil.feature.settings.impl.domain.repository.FakeSettingsRepository
 import com.gyugle.gil.feature.settings.impl.presentation.R
 import kotlinx.coroutines.Dispatchers
@@ -45,12 +47,13 @@ class SettingsHomeViewModelTest {
     private val reminders = FakeReminderCommands().apply { times.value = listOf(ReminderTime(20, 0)) }
     private val settings = FakeSettingsRepository()
     private val progress = FakeProgressBackup(record = RECORD)
+    private var language = FakeAppLanguageRepository()
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun viewModel() = SettingsHomeViewModel(goal, reminders, goal, settings, progress)
+    private fun viewModel() = SettingsHomeViewModel(goal, reminders, goal, settings, language, progress)
 
     @Test
     fun init_showsTheGoalRemindersAndSettings() {
@@ -136,6 +139,42 @@ class SettingsHomeViewModelTest {
         }
         assertThat(progress.record).isEqualTo(RECORD)
         assertThat(viewModel.state.value.isClearing).isEqualTo(false)
+    }
+
+    @Test
+    fun language_belowAndroid13_hasNoRow() {
+        language = FakeAppLanguageRepository(canChoose = false)
+
+        assertThat(viewModel().state.value.language).isNull()
+    }
+
+    @Test
+    fun language_nothingChosen_followsThePhone() {
+        assertThat(viewModel().state.value.language).isEqualTo(AppLanguage.SYSTEM)
+    }
+
+    @Test
+    fun language_pickedInTheDialog_isSetAndClosesIt() {
+        val viewModel = viewModel()
+        viewModel.onAction(SettingsHomeAction.OnLanguageClick)
+        assertThat(viewModel.state.value.dialog).isEqualTo(SettingsDialog.Language)
+
+        viewModel.onAction(SettingsHomeAction.OnLanguagePick(AppLanguage.ENGLISH))
+
+        assertThat(language.language).isEqualTo(AppLanguage.ENGLISH)
+        assertThat(viewModel.state.value.dialog).isNull()
+        assertThat(viewModel.state.value.language).isEqualTo(AppLanguage.ENGLISH)
+    }
+
+    @Test
+    fun language_changedInThePhoneSettings_isShownOnReturn() {
+        val viewModel = viewModel()
+        language.language = AppLanguage.KOREAN
+        assertThat(viewModel.state.value.language).isEqualTo(AppLanguage.SYSTEM)
+
+        viewModel.onAction(SettingsHomeAction.OnResumed)
+
+        assertThat(viewModel.state.value.language).isEqualTo(AppLanguage.KOREAN)
     }
 
     private companion object {

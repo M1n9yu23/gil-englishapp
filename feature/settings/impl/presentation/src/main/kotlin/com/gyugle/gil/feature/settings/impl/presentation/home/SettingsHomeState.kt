@@ -21,11 +21,16 @@ import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.settings.api.AppSettings
 import com.gyugle.gil.feature.settings.api.ThemeMode
+import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 
-/** @property values null until the goal, the reminder times and the settings have all been read. */
+/**
+ * @property values null until the goal, the reminder times and the settings have all been read.
+ * @property language null below Android 13, where the app follows the phone's language.
+ */
 @Immutable
 data class SettingsHomeState(
     val values: SettingsValues? = null,
+    val language: AppLanguage? = null,
     val dialog: SettingsDialog? = null,
     val isClearing: Boolean = false
 )
@@ -37,6 +42,8 @@ sealed interface SettingsDialog {
     data object Goal : SettingsDialog
 
     data object Theme : SettingsDialog
+
+    data object Language : SettingsDialog
 
     /** The first of the two questions before the record is erased. */
     data object Clear : SettingsDialog
@@ -53,6 +60,10 @@ sealed interface SettingsHomeAction {
 
     data class OnThemePick(val theme: ThemeMode) : SettingsHomeAction
 
+    data object OnLanguageClick : SettingsHomeAction
+
+    data class OnLanguagePick(val language: AppLanguage) : SettingsHomeAction
+
     data class OnHangulAidChange(val show: Boolean) : SettingsHomeAction
 
     data object OnClearClick : SettingsHomeAction
@@ -62,6 +73,9 @@ sealed interface SettingsHomeAction {
     data object OnClearConfirmClick : SettingsHomeAction
 
     data object OnDialogDismiss : SettingsHomeAction
+
+    /** The language may have been changed in the phone's settings while the app was away. */
+    data object OnResumed : SettingsHomeAction
 }
 
 sealed interface SettingsHomeEvent {

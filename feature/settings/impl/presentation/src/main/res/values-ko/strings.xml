@@ -22,6 +22,8 @@
     <string name="settings_theme_system">휴대폰 설정에 맞춤</string>
     <string name="settings_theme_light">밝게</string>
     <string name="settings_theme_dark">어둡게</string>
+    <string name="settings_language">앱 언어</string>
+    <string name="settings_language_system">휴대폰 설정에 맞춤</string>
 
     <string name="settings_section_record">학습 기록</string>
     <string name="settings_backup">백업</string>

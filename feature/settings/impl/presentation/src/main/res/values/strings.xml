@@ -23,6 +23,11 @@
     <string name="settings_theme_system">Same as the phone</string>
     <string name="settings_theme_light">Light</string>
     <string name="settings_theme_dark">Dark</string>
+    <string name="settings_language">App language</string>
+    <string name="settings_language_system">Same as the phone</string>
+    <!-- Each language is named in itself, whatever the screen's language. -->
+    <string name="settings_language_korean" translatable="false">한국어</string>
+    <string name="settings_language_english" translatable="false">English</string>
 
     <string name="settings_section_record">Learning record</string>
     <string name="settings_backup">Back up and restore</string>

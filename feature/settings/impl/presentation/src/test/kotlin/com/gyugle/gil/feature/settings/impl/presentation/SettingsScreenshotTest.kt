@@ -30,6 +30,7 @@ import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.settings.api.Accent
 import com.gyugle.gil.feature.settings.api.AppSettings
+import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 import com.gyugle.gil.feature.settings.impl.domain.model.BackupPreview
 import com.gyugle.gil.feature.settings.impl.presentation.backup.BackupScreen
 import com.gyugle.gil.feature.settings.impl.presentation.backup.BackupState
@@ -78,7 +79,7 @@ class SettingsScreenshotTest {
         composeRule.onRoot().captureRoboImage()
     }
 
-    private fun home(state: SettingsHomeState = SettingsHomeState(values)) = capture {
+    private fun home(state: SettingsHomeState = SettingsHomeState(values, language = AppLanguage.SYSTEM)) = capture {
         SettingsHomeScreen(state = state, onAction = {}, navigation = PreviewNavigation, versionName = "0.2.0")
     }
 
@@ -94,7 +95,8 @@ class SettingsScreenshotTest {
 
     @Test
     @Config(qualifiers = "en-w360dp-h1100dp-xhdpi")
-    fun home_wholePageEnglish() = home(SettingsHomeState(values.copy(reminders = emptyList())))
+    fun home_wholePageEnglish() =
+        home(SettingsHomeState(values.copy(reminders = emptyList()), language = AppLanguage.ENGLISH))
 
     @Test
     @Config(qualifiers = "ko-w360dp-h2200dp-xhdpi", fontScale = 2f)
@@ -104,13 +106,13 @@ class SettingsScreenshotTest {
     @Config(qualifiers = "en-w320dp-h2400dp-xhdpi", fontScale = 2f)
     fun home_narrowEnglishFontScale2() = home()
 
-    @Test
-    fun home_goalDialog() {
+    /** A dialog is a window of its own, so the capture takes the whole screen. */
+    private fun dialog(dialog: SettingsDialog, language: AppLanguage = AppLanguage.SYSTEM) {
         composeRule.setContent {
             GilTheme {
                 Surface {
                     SettingsHomeScreen(
-                        state = SettingsHomeState(values, dialog = SettingsDialog.Goal),
+                        state = SettingsHomeState(values, language = language, dialog = dialog),
                         onAction = {},
                         navigation = PreviewNavigation,
                         versionName = "0.2.0"
@@ -121,22 +123,15 @@ class SettingsScreenshotTest {
         captureScreenRoboImage()
     }
 
+    @Test fun home_goalDialog() = dialog(SettingsDialog.Goal)
+
+    @Test fun home_clearAgainDialog() = dialog(SettingsDialog.ClearAgain)
+
+    @Test fun home_languageDialog() = dialog(SettingsDialog.Language, AppLanguage.KOREAN)
+
     @Test
-    fun home_clearAgainDialog() {
-        composeRule.setContent {
-            GilTheme {
-                Surface {
-                    SettingsHomeScreen(
-                        state = SettingsHomeState(values, dialog = SettingsDialog.ClearAgain),
-                        onAction = {},
-                        navigation = PreviewNavigation,
-                        versionName = "0.2.0"
-                    )
-                }
-            }
-        }
-        captureScreenRoboImage()
-    }
+    @Config(qualifiers = "en-w360dp-h760dp-xhdpi")
+    fun home_languageDialogEnglish() = dialog(SettingsDialog.Language, AppLanguage.ENGLISH)
 
     @Test
     fun reminders_twoTimes() = capture {

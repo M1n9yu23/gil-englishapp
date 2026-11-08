@@ -38,6 +38,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.component.ListRow
@@ -49,6 +51,7 @@ import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.settings.api.AppSettings
 import com.gyugle.gil.feature.settings.api.ThemeMode
+import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 import com.gyugle.gil.feature.settings.impl.presentation.R
 import com.gyugle.gil.feature.settings.impl.presentation.component.ChoiceDialog
 import com.gyugle.gil.feature.settings.impl.presentation.component.ChoiceRow
@@ -76,6 +79,7 @@ fun SettingsHomeRoot(navigation: SettingsHomeNavigation, viewModel: SettingsHome
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { viewModel.onAction(SettingsHomeAction.OnResumed) }
     ObserveAsEvents(viewModel.events) { event ->
         when (event) {
             is SettingsHomeEvent.ShowMessage -> snackbarHostState.showSnackbar(event.message.resolve(context))
@@ -111,7 +115,7 @@ fun SettingsHomeScreen(
             ) {
                 LoadingState()
             } else {
-                SettingsList(values, state.isClearing, onAction, navigation, versionName)
+                SettingsList(values, state.language, state.isClearing, onAction, navigation, versionName)
             }
         }
         SnackbarHost(
@@ -127,6 +131,7 @@ fun SettingsHomeScreen(
 @Composable
 private fun SettingsList(
     values: SettingsValues,
+    language: AppLanguage?,
     isClearing: Boolean,
     onAction: (SettingsHomeAction) -> Unit,
     navigation: SettingsHomeNavigation,
@@ -173,6 +178,12 @@ private fun SettingsList(
             RowDivider()
             ValueRow(stringResource(R.string.settings_theme), settings.theme.label()) {
                 onAction(SettingsHomeAction.OnThemeClick)
+            }
+            if (language != null) {
+                RowDivider()
+                ValueRow(stringResource(R.string.settings_language), language.label()) {
+                    onAction(SettingsHomeAction.OnLanguageClick)
+                }
             }
         }
         SettingsSection(stringResource(R.string.settings_section_record)) {
@@ -221,6 +232,17 @@ private fun SettingsDialogs(dialog: SettingsDialog, state: SettingsHomeState, on
                     label = theme.label(),
                     selected = theme == state.values?.settings?.theme,
                     onSelect = { onAction(SettingsHomeAction.OnThemePick(theme)) },
+                    horizontalPadding = 0.dp
+                )
+            }
+        }
+
+        SettingsDialog.Language -> ChoiceDialog(stringResource(R.string.settings_language), cancel, dismiss) {
+            AppLanguage.entries.forEach { language ->
+                ChoiceRow(
+                    label = language.label(),
+                    selected = language == state.language,
+                    onSelect = { onAction(SettingsHomeAction.OnLanguagePick(language)) },
                     horizontalPadding = 0.dp
                 )
             }

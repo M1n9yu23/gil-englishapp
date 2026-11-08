@@ -27,6 +27,8 @@ import com.gyugle.gil.feature.goal.api.GoalCommands
 import com.gyugle.gil.feature.goal.api.GoalObserver
 import com.gyugle.gil.feature.progress.api.ProgressBackup
 import com.gyugle.gil.feature.reminder.api.ReminderObserver
+import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
+import com.gyugle.gil.feature.settings.impl.domain.repository.AppLanguageRepository
 import com.gyugle.gil.feature.settings.impl.domain.repository.SettingsRepository
 import com.gyugle.gil.feature.settings.impl.presentation.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -53,10 +55,11 @@ class SettingsHomeViewModel @Inject constructor(
     reminderObserver: ReminderObserver,
     private val goalCommands: GoalCommands,
     private val settingsRepository: SettingsRepository,
+    private val appLanguage: AppLanguageRepository,
     private val progressBackup: ProgressBackup
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(SettingsHomeState())
+    private val _state = MutableStateFlow(SettingsHomeState(language = readLanguage()))
     val state: StateFlow<SettingsHomeState> = _state.asStateFlow()
 
     private val eventChannel = Channel<SettingsHomeEvent>()
@@ -79,12 +82,23 @@ class SettingsHomeViewModel @Inject constructor(
             is SettingsHomeAction.OnGoalPick -> closeAndSave { goalCommands.setGoal(action.goal) }
             SettingsHomeAction.OnThemeClick -> showDialog(SettingsDialog.Theme)
             is SettingsHomeAction.OnThemePick -> closeAndSave { settingsRepository.setTheme(action.theme) }
+            SettingsHomeAction.OnLanguageClick -> showDialog(SettingsDialog.Language)
+            is SettingsHomeAction.OnLanguagePick -> setLanguage(action.language)
             is SettingsHomeAction.OnHangulAidChange -> closeAndSave { settingsRepository.setShowHangulAid(action.show) }
             SettingsHomeAction.OnClearClick -> showDialog(SettingsDialog.Clear)
             SettingsHomeAction.OnClearNextClick -> showDialog(SettingsDialog.ClearAgain)
             SettingsHomeAction.OnClearConfirmClick -> clearRecord()
             SettingsHomeAction.OnDialogDismiss -> showDialog(null)
+            SettingsHomeAction.OnResumed -> _state.update { it.copy(language = readLanguage()) }
         }
+    }
+
+    private fun readLanguage(): AppLanguage? = if (appLanguage.canChoose) appLanguage.current() else null
+
+    /** The screen is recreated in the new language; the dialog is already closed by then. */
+    private fun setLanguage(language: AppLanguage) {
+        _state.update { it.copy(dialog = null, language = language) }
+        appLanguage.set(language)
     }
 
     private fun showDialog(dialog: SettingsDialog?) = _state.update { it.copy(dialog = dialog) }

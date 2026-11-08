@@ -22,6 +22,8 @@ import com.gyugle.gil.feature.settings.impl.data.backup.ContentResolverBackupDoc
 import com.gyugle.gil.feature.settings.impl.data.backup.FileBackupSnapshots
 import com.gyugle.gil.feature.settings.impl.data.repository.DataStoreSettingsRepository
 import com.gyugle.gil.feature.settings.impl.data.repository.FileBackupRepository
+import com.gyugle.gil.feature.settings.impl.data.repository.SystemAppLanguageRepository
+import com.gyugle.gil.feature.settings.impl.domain.repository.AppLanguageRepository
 import com.gyugle.gil.feature.settings.impl.domain.repository.BackupRepository
 import com.gyugle.gil.feature.settings.impl.domain.repository.SettingsRepository
 import dagger.Binds
@@ -37,6 +39,9 @@ internal interface SettingsDataModule {
 
     @Binds
     fun settingsRepository(repository: DataStoreSettingsRepository): SettingsRepository
+
+    @Binds
+    fun appLanguageRepository(repository: SystemAppLanguageRepository): AppLanguageRepository
 
     @Binds
     fun backupRepository(repository: FileBackupRepository): BackupRepository

@@ -24,6 +24,7 @@ import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.settings.api.Accent
 import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import com.gyugle.gil.feature.settings.api.ThemeMode
+import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 import com.gyugle.gil.feature.settings.impl.presentation.R
 
 @Composable
@@ -35,6 +36,16 @@ internal fun ThemeMode.label(): String = stringResource(
         ThemeMode.SYSTEM -> R.string.settings_theme_system
         ThemeMode.LIGHT -> R.string.settings_theme_light
         ThemeMode.DARK -> R.string.settings_theme_dark
+    }
+)
+
+/** A language is named in itself, so it can be found whichever language the screen is in. */
+@Composable
+internal fun AppLanguage.label(): String = stringResource(
+    when (this) {
+        AppLanguage.SYSTEM -> R.string.settings_language_system
+        AppLanguage.KOREAN -> R.string.settings_language_korean
+        AppLanguage.ENGLISH -> R.string.settings_language_english
     }
 )
 
