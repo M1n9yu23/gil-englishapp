@@ -6,6 +6,4 @@
     <string name="main_tab_path">Path</string>
     <string name="main_tab_words">Words</string>
     <string name="main_tab_progress">Stats</string>
-    <string name="stats_home_empty_title">Your history starts with your first lesson</string>
-    <string name="stats_home_empty_body">Your study time and streak will show here.</string>
 </resources>

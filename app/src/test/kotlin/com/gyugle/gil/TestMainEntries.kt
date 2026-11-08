@@ -29,6 +29,7 @@ import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.feature.curriculum.api.PathRoute
 import com.gyugle.gil.feature.dictionary.api.WordsRoute
 import com.gyugle.gil.feature.home.api.TodayRoute
+import com.gyugle.gil.feature.stats.api.StatsHomeRoute
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -37,21 +38,23 @@ const val TEST_PATH_ROOT = "Path root"
 const val TEST_OPEN_PAGE = "Open page"
 const val TEST_PAGE = "Pushed page"
 const val TEST_WORDS_ROOT = "Words root"
+const val TEST_STATS_ROOT = "Stats root"
 
 @Serializable
 @SerialName("test.page")
 data object TestPageRoute : NavKey
 
 /**
- * The main host's placeholders, with the Today, Path and Words roots swapped for stand-ins that
- * need no DI graph. The Path root's button pushes [TestPageRoute] onto the Path stack. The Today
- * root starts at the screen margin, like the real one, unless [today] draws it.
+ * The main host's tab roots as stand-ins that need no DI graph. The Path root's button pushes
+ * [TestPageRoute] onto the Path stack. The Today root starts at the screen margin, like the real
+ * one, unless [today] draws it; [stats] draws the Stats root.
  */
 fun EntryProviderScope<NavKey>.testMainEntries(
     navigator: Navigator,
     today: @Composable () -> Unit = {
         Text(TEST_TODAY_ROOT, modifier = Modifier.fillMaxSize().padding(start = Spacing().screenMargin))
-    }
+    },
+    stats: @Composable () -> Unit = { Text(TEST_STATS_ROOT, modifier = Modifier.fillMaxSize()) }
 ) {
     entry<TodayRoute> { today() }
     entry<PathRoute> {
@@ -62,5 +65,5 @@ fun EntryProviderScope<NavKey>.testMainEntries(
     }
     entry<TestPageRoute> { Text(TEST_PAGE, modifier = Modifier.fillMaxSize()) }
     entry<WordsRoute> { Text(TEST_WORDS_ROOT, modifier = Modifier.fillMaxSize()) }
-    tabRootPlaceholderEntries()
+    entry<StatsHomeRoute> { stats() }
 }

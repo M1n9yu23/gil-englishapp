@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="stats_content_language">ko</string>
+
+    <string name="stats_title">기록</string>
+
+    <string name="stats_empty_title">첫 수업을 마치면 기록이 생겨요</string>
+    <string name="stats_empty_body">공부한 시간, 연속 학습일, 배운 단어가 여기에 쌓여요.</string>
+    <string name="stats_empty_start">첫 수업 시작하기</string>
+
+    <string name="stats_error_title">기록을 보여 주지 못했어요</string>
+    <string name="stats_error_body">수업이나 학습 기록을 읽지 못했어요.</string>
+    <string name="stats_error_retry">다시 시도</string>
+
+    <string name="stats_streak">연속 학습일</string>
+    <string name="stats_this_week">이번 주</string>
+    <string name="stats_this_month">이번 달</string>
+    <plurals name="stats_days">
+        <item quantity="other"><xliff:g id="days" example="3">%d</xliff:g>일</item>
+    </plurals>
+    <string name="stats_minutes"><xliff:g id="minutes" example="45">%1$d</xliff:g>분</string>
+    <string name="stats_hours"><xliff:g id="hours" example="2">%1$d</xliff:g>시간</string>
+    <string name="stats_hours_minutes"><xliff:g id="hours" example="2">%1$d</xliff:g>시간 <xliff:g id="minutes" example="15">%2$d</xliff:g>분</string>
+
+    <string name="stats_previous_month">지난달</string>
+    <string name="stats_next_month">다음 달</string>
+    <plurals name="stats_calendar_description">
+        <item quantity="other"><xliff:g id="month" example="2026년 11월">%1$s</xliff:g>에 <xliff:g id="days" example="12">%2$d</xliff:g>일 공부했어요</item>
+    </plurals>
+
+    <string name="stats_forecast_title">앞으로 7일 복습</string>
+    <string name="stats_forecast_today">오늘</string>
+    <string name="stats_forecast_day"><xliff:g id="day" example="월요일">%1$s</xliff:g> <xliff:g id="count" example="12">%2$d</xliff:g>개</string>
+
+    <string name="stats_items_title">배운 항목</string>
+    <plurals name="stats_items_total">
+        <item quantity="other">모두 <xliff:g id="count" example="120">%d</xliff:g>개</item>
+    </plurals>
+    <string name="stats_level_learning">배우는 중</string>
+    <string name="stats_level_learning_detail">며칠마다 다시 나와요</string>
+    <string name="stats_level_familiar">익숙함</string>
+    <string name="stats_level_familiar_detail">일주일이 지나도 떠올릴 수 있어요</string>
+    <string name="stats_level_lasting">오래 기억</string>
+    <string name="stats_level_lasting_detail">3주가 지나도 떠올릴 수 있어요</string>
+
+    <string name="stats_stages_title">단계</string>
+    <plurals name="stats_stage_lessons">
+        <item quantity="other">수업 <xliff:g id="total" example="10">%2$d</xliff:g>개 중 <xliff:g id="done" example="3">%1$d</xliff:g>개</item>
+    </plurals>
+</resources>

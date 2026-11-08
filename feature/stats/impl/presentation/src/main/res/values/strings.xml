@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- "ko" when the app shows Korean. Picks the language of content text such as stage titles. -->
+    <string name="stats_content_language">en</string>
+
+    <string name="stats_title">Stats</string>
+
+    <string name="stats_empty_title">Your history starts with your first lesson</string>
+    <string name="stats_empty_body">Your study time, streak and the words you’ve learned will show here.</string>
+    <string name="stats_empty_start">Start the first lesson</string>
+
+    <string name="stats_error_title">Couldn’t show your stats</string>
+    <string name="stats_error_body">The lessons or your study record couldn’t be read.</string>
+    <string name="stats_error_retry">Try again</string>
+
+    <string name="stats_streak">Streak</string>
+    <string name="stats_this_week">This week</string>
+    <string name="stats_this_month">This month</string>
+    <plurals name="stats_days">
+        <item quantity="one"><xliff:g id="days" example="1">%d</xliff:g> day</item>
+        <item quantity="other"><xliff:g id="days" example="3">%d</xliff:g> days</item>
+    </plurals>
+    <string name="stats_minutes"><xliff:g id="minutes" example="45">%1$d</xliff:g> min</string>
+    <string name="stats_hours"><xliff:g id="hours" example="2">%1$d</xliff:g> hr</string>
+    <string name="stats_hours_minutes"><xliff:g id="hours" example="2">%1$d</xliff:g> hr <xliff:g id="minutes" example="15">%2$d</xliff:g> min</string>
+
+    <string name="stats_previous_month">Previous month</string>
+    <string name="stats_next_month">Next month</string>
+    <plurals name="stats_calendar_description">
+        <item quantity="one">Studied <xliff:g id="days" example="1">%2$d</xliff:g> day in <xliff:g id="month" example="November 2026">%1$s</xliff:g></item>
+        <item quantity="other">Studied <xliff:g id="days" example="12">%2$d</xliff:g> days in <xliff:g id="month" example="November 2026">%1$s</xliff:g></item>
+    </plurals>
+
+    <string name="stats_forecast_title">Reviews in the next 7 days</string>
+    <string name="stats_forecast_today">Today</string>
+    <string name="stats_forecast_day"><xliff:g id="day" example="Monday">%1$s</xliff:g>: <xliff:g id="count" example="12">%2$d</xliff:g></string>
+
+    <string name="stats_items_title">What you’ve learned</string>
+    <plurals name="stats_items_total">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> item</item>
+        <item quantity="other"><xliff:g id="count" example="120">%d</xliff:g> items</item>
+    </plurals>
+    <string name="stats_level_learning">Learning</string>
+    <string name="stats_level_learning_detail">Comes back every few days</string>
+    <string name="stats_level_familiar">Familiar</string>
+    <string name="stats_level_familiar_detail">You’d still recall it after a week</string>
+    <string name="stats_level_lasting">Long-term</string>
+    <string name="stats_level_lasting_detail">You’d still recall it after three weeks</string>
+
+    <string name="stats_stages_title">Stages</string>
+    <plurals name="stats_stage_lessons">
+        <item quantity="one"><xliff:g id="done" example="1">%1$d</xliff:g> of <xliff:g id="total" example="1">%2$d</xliff:g> lesson</item>
+        <item quantity="other"><xliff:g id="done" example="3">%1$d</xliff:g> of <xliff:g id="total" example="10">%2$d</xliff:g> lessons</item>
+    </plurals>
+</resources>

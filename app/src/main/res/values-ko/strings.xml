@@ -6,6 +6,4 @@
     <string name="main_tab_path">길</string>
     <string name="main_tab_words">단어</string>
     <string name="main_tab_progress">기록</string>
-    <string name="stats_home_empty_title">첫 수업을 마치면 기록이 생겨요</string>
-    <string name="stats_home_empty_body">공부한 시간과 연속 학습일이 여기에 쌓여요.</string>
 </resources>

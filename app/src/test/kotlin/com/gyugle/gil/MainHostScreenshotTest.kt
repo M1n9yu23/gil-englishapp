@@ -33,6 +33,8 @@ import com.gyugle.gil.feature.home.impl.presentation.today.TodayMessage
 import com.gyugle.gil.feature.home.impl.presentation.today.TodayScreen
 import com.gyugle.gil.feature.home.impl.presentation.today.TodayState
 import com.gyugle.gil.feature.home.impl.presentation.today.TodayUi
+import com.gyugle.gil.feature.stats.impl.presentation.stats.StatsScreen
+import com.gyugle.gil.feature.stats.impl.presentation.stats.StatsState
 import java.time.DayOfWeek
 import org.junit.Rule
 import org.junit.Test
@@ -66,6 +68,9 @@ private val firstDay = TodayState.Ready(
     )
 )
 
+/** A new install on the Stats tab. */
+private val noHistory = StatsState.Empty(firstLesson = firstLesson.id)
+
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(sdk = [35], qualifiers = "ko-w360dp-h760dp-xhdpi", application = Application::class)
@@ -77,7 +82,11 @@ class MainHostScreenshotTest {
         composeRule.setContent {
             GilTheme {
                 MainHost(entries = {
-                    testMainEntries(it, today = { TodayScreen(firstDay, onAction = {}, onOpenBlock = {}) })
+                    testMainEntries(
+                        it,
+                        today = { TodayScreen(firstDay, onAction = {}, onOpenBlock = {}) },
+                        stats = { StatsScreen(noHistory, onAction = {}, onOpenLesson = {}) }
+                    )
                 })
             }
         }

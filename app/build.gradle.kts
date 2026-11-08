@@ -96,6 +96,7 @@ dependencies {
     implementation(projects.feature.review.api)
     implementation(projects.feature.review.impl.presentation)
     implementation(projects.feature.stats.api)
+    implementation(projects.feature.stats.impl.presentation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)

@@ -48,6 +48,7 @@ import com.gyugle.gil.feature.dictionary.impl.presentation.dictionaryEntries
 import com.gyugle.gil.feature.home.impl.presentation.homeEntries
 import com.gyugle.gil.feature.lesson.impl.presentation.lessonEntries
 import com.gyugle.gil.feature.review.impl.presentation.reviewEntries
+import com.gyugle.gil.feature.stats.impl.presentation.statsEntries
 
 private val destinations = TopLevelDestination.entries
 
@@ -106,14 +107,14 @@ fun MainHost(
     }
 }
 
-/** Every screen of the main host. Remove a tab's placeholder when its feature brings the root. */
+/** Every screen of the main host. */
 private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
     homeEntries(navigator)
     curriculumEntries(navigator)
     lessonEntries(navigator)
     reviewEntries(navigator)
     dictionaryEntries(navigator)
-    tabRootPlaceholderEntries()
+    statsEntries(navigator)
 }
 
 @Composable
