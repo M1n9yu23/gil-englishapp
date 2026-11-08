@@ -1,0 +1,12 @@
+<!-- ic_chevron_right mirrored across the vertical centre line (x -> 960 - x). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?android:attr/colorControlNormal"
+    android:autoMirrored="true">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M456,480L640,664L584,720L344,480L584,240L640,296L456,480Z"/>
+</vector>

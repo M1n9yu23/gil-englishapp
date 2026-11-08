@@ -58,6 +58,12 @@ private val BodyMedium = pretendard(14, 22, FontWeight.Normal)
 private val LabelLarge = pretendard(14, 20, FontWeight.Medium)
 private val LabelMedium = pretendard(12, 16, FontWeight.Medium)
 
+/**
+ * Figures in stats and times: the same size, at label weight, with digits of one width so numbers
+ * in a column line up and a changing count does not shift its neighbours.
+ */
+fun TextStyle.tabularFigures(): TextStyle = copy(fontWeight = FontWeight.Medium, fontFeatureSettings = "tnum")
+
 // Eight styles. The slots Gil does not design for reuse the nearest one, so a Material component
 // that reads them still gets Pretendard at a size from the scale.
 internal val GilTypography = Typography(

@@ -44,6 +44,9 @@ object GilIcons {
     val Check: Painter
         @Composable get() = painterResource(R.drawable.ic_check)
 
+    val ChevronLeft: Painter
+        @Composable get() = painterResource(R.drawable.ic_chevron_left)
+
     val ChevronRight: Painter
         @Composable get() = painterResource(R.drawable.ic_chevron_right)
 
