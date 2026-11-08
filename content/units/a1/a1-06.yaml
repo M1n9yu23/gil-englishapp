@@ -1,0 +1,336 @@
+id: unit.a1-06
+title: { ko: "this와 that", en: "This and that" }
+lessons:
+  - id: lesson.a1-06.1
+    title: { ko: 이건 뭐예요?, en: What's this? }
+    goal: { ko: 가까운 것과 먼 것이 무엇인지 묻고 대답할 수 있어요, en: Ask and say what things near and far are }
+    introduces: [sense.that.pron.far, sense.what.pron.question, sense.phone.n.device, sense.key.n.lock, sense.umbrella.n.rain]
+    steps:
+      - type: listen
+        en: "What's this? It's a key."
+        ko: 이건 뭐예요? 열쇠예요.
+      - type: listen
+        en: "What's that? It's an umbrella."
+        ko: 저건 뭐예요? 우산이에요.
+      - type: explain
+        text: |
+          `this`는 가까이 있는 "이것", `that`은 떨어져 있는 "저것"이에요. 우리말은 이것, 그것, 저것 셋으로 나누지만 영어는 둘뿐이라서 `that`은 "그것"도 돼요.
+
+          무엇인지 물을 때는 `What's this?`, `What's that?`이라고 해요. 대답은 보통 `It's a key.`처럼 `it`으로 해요. `That is`는 `That's`로 줄여 쓰지만 `This is`는 글로 쓸 때 줄이지 않아요.
+        examples:
+          - en: What's this?
+            ko: 이건 뭐예요?
+          - en: It's a phone.
+            ko: 휴대폰이에요.
+          - en: What's that?
+            ko: 저건 뭐예요?
+          - en: That's my key.
+            ko: 저건 제 열쇠예요.
+      - type: chooseMeaning
+        en: What's that?
+        item: sense.that.pron.far
+        options:
+          - { ko: 저건 뭐예요?, correct: true }
+          - { ko: 이건 뭐예요?, why: "가까이 있는 \"이것\"은 `this`예요. `that`은 떨어져 있는 것이에요." }
+          - { ko: 저건 열쇠예요., why: "`What`으로 시작해서 무엇인지 묻는 말이에요." }
+      - type: listenChoose
+        en: It's a phone.
+        item: sense.phone.n.device
+        options:
+          - { ko: 휴대폰이에요., correct: true }
+          - { ko: 열쇠예요., why: "열쇠는 `key`예요. 들린 단어는 `phone`이에요." }
+          - { ko: 펜이에요., why: "`pen`은 `p` 소리, `phone`은 `f` 소리로 시작해요. `ph`는 `f` 소리예요." }
+      - type: dialogue
+        item: sense.umbrella.n.rain
+        lines:
+          - { speaker: Mina, en: What's this?, ko: 이건 뭐예요? }
+        question: 미나가 접힌 우산을 들고 물어요. 레오가 할 말을 골라요.
+        options:
+          - { en: "It's an umbrella.", correct: true }
+          - { en: "It's a umbrella.", why: "`umbrella`는 모음 소리로 시작해서 `an`을 써요." }
+          - { en: "It's umbrella.", why: "우산 하나에는 `an`을 붙여요. `an umbrella`예요." }
+      - type: chooseEnglish
+        ko: 저건 뭐예요?
+        item: sense.what.pron.question
+        options:
+          - { en: What's that?, correct: true }
+          - { en: What's this?, why: "`this`는 가까이 있는 \"이것\"이에요. \"저것\"은 `that`이에요." }
+          - { en: What that?, why: "`is`가 빠졌어요. `What's`는 `What is`를 줄인 말이에요." }
+      - type: fillBlank
+        item: sense.that.pron.far
+        en: ___ is my phone.
+        ko: 저건 제 휴대폰이에요.
+        options:
+          - { en: That, correct: true }
+          - { en: This, why: "\"저건\"처럼 떨어져 있는 것은 `that`이에요. `this`는 \"이건\"이에요." }
+      - type: fillBlank
+        item: sense.key.n.lock
+        en: It's a ___.
+        ko: 열쇠예요.
+        answers: [key]
+      - type: arrange
+        item: sense.that.pron.far
+        ko: 저건 우산이에요?
+        en: Is that an umbrella?
+        extra: [a, this]
+      - type: dictation
+        item: sense.what.pron.question
+        en: "What's this? It's a phone."
+        ko: 이건 뭐예요? 휴대폰이에요.
+      - type: spell
+        sense: sense.umbrella.n.rain
+      - type: shadow
+        en: "What's that? It's my umbrella."
+        ko: 저건 뭐예요? 제 우산이에요.
+  - id: lesson.a1-06.2
+    title: { ko: "이 의자, 저 문", en: "This chair, that door" }
+    goal: { ko: 가까운 물건과 먼 물건이 어떤지 말할 수 있어요, en: Say what things near and far are like }
+    introduces: [sense.chair.n.seat, sense.table.n.furniture, sense.door.n.entrance, sense.window.n.glass, sense.computer.n.device]
+    steps:
+      - type: listen
+        en: This chair is small.
+        ko: 이 의자는 작아요.
+      - type: listen
+        en: That window is big.
+        ko: 저 창문은 커요.
+      - type: explain
+        text: |
+          `this`와 `that`은 명사 앞에 붙어서 "이 ~", "저 ~"도 돼요. `this chair`는 "이 의자", `that door`는 "저 문"이에요.
+
+          이때는 `a`나 `the`를 같이 쓰지 않아요. `This is a chair.`는 "이건 의자예요"이고 `This chair is new.`는 "이 의자는 새 거예요"예요.
+        examples:
+          - en: This is a chair.
+            ko: 이건 의자예요.
+          - en: This chair is new.
+            ko: 이 의자는 새 거예요.
+          - en: That door is old.
+            ko: 저 문은 오래됐어요.
+          - en: Is that table new?
+            ko: 저 탁자 새 거예요?
+          - en: This computer is old.
+            ko: 이 컴퓨터는 오래됐어요.
+      - type: chooseMeaning
+        en: That window is big.
+        item: sense.window.n.glass
+        options:
+          - { ko: 저 창문은 커요., correct: true }
+          - { ko: 저 문은 커요., why: "문은 `door`예요. `window`는 창문이에요." }
+          - { ko: 이 창문은 커요., why: "`that`이라서 떨어져 있는 \"저 창문\"이에요. \"이 창문\"은 `this window`예요." }
+      - type: listenChoose
+        en: This table is new.
+        item: sense.table.n.furniture
+        options:
+          - { ko: 이 탁자는 새 거예요., correct: true }
+          - { ko: 이 의자는 새 거예요., why: "의자는 `chair`예요. 들린 단어는 `table`이에요." }
+          - { ko: 저 탁자는 새 거예요., why: "`that`이 아니라 `this`가 들렸어요. 가까이 있는 탁자예요." }
+      - type: chooseEnglish
+        ko: 이 의자는 작아요.
+        item: sense.chair.n.seat
+        options:
+          - { en: This chair is small., correct: true }
+          - { en: This a chair is small., why: "\"이 의자\"는 `this chair`예요. `this`와 `a`는 같이 쓰지 않아요." }
+          - { en: This is chair small., why: "\"이 의자\"는 `this chair`예요. `is`는 `small` 앞에 와요." }
+      - type: fillBlank
+        item: sense.door.n.entrance
+        en: ___ door is red.
+        ko: 저 문은 빨간색이에요.
+        options:
+          - { en: That, correct: true }
+          - { en: This, why: "\"저 문\"은 떨어져 있는 문이라서 `that`이에요." }
+          - { en: "That's", why: "`That's`는 `That is`예요. 뒤에 `is`가 또 오면 안 돼요." }
+      - type: dialogue
+        item: sense.computer.n.device
+        lines:
+          - { speaker: Ana, en: Is this computer new?, ko: 이 컴퓨터 새 거예요? }
+        question: 컴퓨터는 오래됐어요. 준이 할 말을 골라요.
+        options:
+          - { en: "No, it's old.", correct: true }
+          - { en: "Yes, it's old.", why: "새 거냐는 질문이에요. 오래됐으면 `No`로 대답해요." }
+          - { en: "No, it's new.", why: "`new`는 새 거예요. 오래된 건 `old`예요." }
+      - type: fillBlank
+        item: sense.window.n.glass
+        en: That ___ is big.
+        ko: 저 창문은 커요.
+        answers: [window]
+      - type: arrange
+        item: sense.table.n.furniture
+        ko: 저 탁자 새 거예요?
+        en: Is that table new?
+        extra: [a, this]
+      - type: dictation
+        item: sense.door.n.entrance
+        en: That door is new.
+        ko: 저 문은 새 거예요.
+      - type: spell
+        sense: sense.computer.n.device
+      - type: shadow
+        en: "This chair is new, and that table is old."
+        ko: 이 의자는 새 거고 저 탁자는 오래됐어요.
+  - id: lesson.a1-06.3
+    title: { ko: 무슨 색이에요?, en: What color is it? }
+    goal: { ko: 물건의 색을 묻고 말할 수 있어요, en: Ask and say what color something is }
+    introduces: [sense.color.n.hue, sense.blue.adj.color, sense.black.adj.color, sense.white.adj.color, sense.green.adj.color]
+    steps:
+      - type: listen
+        en: What color is it?
+        ko: 무슨 색이에요?
+      - type: listen
+        en: It's blue.
+        ko: 파란색이에요.
+      - type: explain
+        text: |
+          색을 물을 때는 `What color is it?`이라고 해요. 대답은 `It's blue.`처럼 색 이름만 말해요. 우리말 "파란색이에요"를 따라 `It's blue color.`라고 하지 않아요.
+
+          색은 명사 앞에도 와서 `an umbrella`가 `a black umbrella`가 돼요. `a`와 `an`은 바로 뒤 단어의 첫소리로 정해요.
+        examples:
+          - en: What color is it?
+            ko: 무슨 색이에요?
+          - en: It's blue.
+            ko: 파란색이에요.
+          - en: The bag is green.
+            ko: 가방이 초록색이에요.
+          - en: It's a black umbrella.
+            ko: 검은 우산이에요.
+          - en: This cup is white.
+            ko: 이 컵은 흰색이에요.
+      - type: chooseMeaning
+        en: The door is green.
+        item: sense.green.adj.color
+        options:
+          - { ko: 문이 초록색이에요., correct: true }
+          - { ko: 문이 파란색이에요., why: "파란색은 `blue`예요. 신호등의 \"파란불\"도 영어로는 `green`이에요." }
+          - { ko: 창문이 초록색이에요., why: "창문은 `window`예요. `door`는 문이에요." }
+      - type: listenChoose
+        en: My phone is black.
+        item: sense.black.adj.color
+        options:
+          - { ko: 제 휴대폰은 검은색이에요., correct: true }
+          - { ko: 제 휴대폰은 파란색이에요., why: "`blue`가 아니라 `black`이 들렸어요. 끝에 `k` 소리가 나요." }
+          - { ko: 제 휴대폰은 흰색이에요., why: "흰색은 `white`예요. 들린 단어는 `black`이에요." }
+      - type: dialogue
+        item: sense.white.adj.color
+        lines:
+          - { speaker: Diego, en: What color is it?, ko: 무슨 색이에요? }
+        question: 아나의 우산은 흰색이에요. 아나가 할 말을 골라요.
+        options:
+          - { en: "It's white.", correct: true }
+          - { en: "It's white color.", why: "`color`를 붙이지 않아요. 색 이름만 말하면 돼요." }
+          - { en: "It's a white.", why: "색 이름만 말할 때는 `a`를 붙이지 않아요." }
+      - type: chooseEnglish
+        ko: 무슨 색이에요?
+        item: sense.color.n.hue
+        options:
+          - { en: What color is it?, correct: true }
+          - { en: What color it is?, why: "물을 때는 `is`가 `it` 앞으로 와요." }
+          - { en: What is color?, why: "\"무슨 색\"은 `What color`로 붙여 말해요." }
+      - type: fillBlank
+        item: sense.an.art.one
+        en: It's ___ black umbrella.
+        ko: 검은 우산이에요.
+        options:
+          - { en: a, correct: true }
+          - { en: an, why: "바로 뒤 단어 `black`이 자음 소리로 시작해서 `a`를 써요." }
+      - type: fillBlank
+        item: sense.blue.adj.color
+        en: The bag is ___.
+        ko: 가방이 파란색이에요.
+        answers: [blue]
+      - type: arrange
+        item: sense.green.adj.color
+        ko: 저건 초록색 가방이에요.
+        en: "That's a green bag."
+        extra: [color]
+      - type: dictation
+        item: sense.white.adj.color
+        en: This cup is white.
+        ko: 이 컵은 흰색이에요.
+      - type: spell
+        sense: sense.color.n.hue
+      - type: shadow
+        en: "What color is it? It's black."
+        ko: 무슨 색이에요? 검은색이에요.
+  - id: lesson.a1-06.4
+    title: { ko: "와, 멋지다", en: "Wow, that's cool" }
+    goal: { ko: 무엇을 가리키며 감탄하고 어디 있는지 말할 수 있어요, en: "Point things out, react, and say where they are" }
+    introduces: [sense.there.adv.place, pattern.over-there, sense.cool.adj.great, sense.wow.interj.surprise, sense.look.v.see, sense.beautiful.adj.pretty]
+    steps:
+      - type: listen
+        en: "Look, that's my school."
+        ko: 봐, 저기가 우리 학교야.
+      - type: listen
+        en: "Where's my key? It's over there."
+        ko: 내 열쇠 어디 있지? 저기 있네.
+      - type: explain
+        text: |
+          `Look,`은 "봐, 보세요"예요. `Go to bed.`처럼 동사로 바로 시작해요. `here`는 "여기", `there`는 "거기, 저기"예요. 손으로 가리키며 "저기"라고 할 때는 `over there`를 더 많이 써요.
+        examples:
+          - en: "Look, it's a cat."
+            ko: 봐, 고양이야.
+          - en: My key is there.
+            ko: 제 열쇠는 저기 있어요.
+          - en: "It's over there."
+            ko: 저기 있어요.
+      - type: chooseMeaning
+        en: My key is there.
+        item: sense.there.adv.place
+        options:
+          - { ko: 제 열쇠는 저기 있어요., correct: true }
+          - { ko: 제 열쇠는 여기 있어요., why: "\"여기\"는 `here`예요. `there`는 떨어져 있는 \"저기\"예요." }
+          - { ko: 저건 제 열쇠예요., why: "\"저건 제 열쇠예요\"는 `That's my key.`예요. `there`가 끝에 오면 \"저기 있어요\"라는 말이에요." }
+      - type: dialogue
+        item: pattern.over-there
+        lines:
+          - { speaker: Omar, en: "Where's my umbrella?", ko: 내 우산 어디 있어? }
+        question: 우산은 멀리 문 쪽에 있어요. 린이 가리키며 할 말을 골라요.
+        options:
+          - { en: "It's over there.", correct: true }
+          - { en: "It's here.", why: "`here`는 가까운 \"여기\"예요. 멀리 있으면 `over there`예요." }
+          - { en: "It's that.", why: "어디 있는지 물었으니 장소를 말해요. \"저기\"는 `over there`예요." }
+      - type: explain
+        text: |
+          놀랐을 때는 `Wow.`라고 해요. 좋은 것을 보면 `That's cool.`(멋지다)이나 `It's beautiful.`(아름답다)이라고 해요. `cool`은 친구끼리 편하게 쓰는 말이에요.
+        examples:
+          - en: "Wow, that's cool."
+            ko: 와, 멋지다.
+          - en: It's beautiful.
+            ko: 아름다워요.
+      - type: listenChoose
+        en: "Wow, that's cool."
+        item: sense.cool.adj.great
+        options:
+          - { ko: "와, 멋지다.", correct: true }
+          - { ko: "와, 춥다.", why: "추운 건 `cold`예요. 들린 건 `cool`이고 여기서는 \"멋지다\"예요." }
+          - { ko: "와, 크다.", why: "큰 건 `big`이에요. 들린 단어는 `cool`이에요." }
+      - type: dialogue
+        item: sense.wow.interj.surprise
+        lines:
+          - { speaker: Priya, en: "Look, this is my new phone.", ko: "봐, 이게 내 새 휴대폰이야." }
+        question: 준이 할 말을 골라요.
+        options:
+          - { en: "Wow, cool.", correct: true }
+          - { en: "Wow, I'm cool.", why: "`I'm cool.`은 내가 멋지다는 말이에요. 멋진 건 프리야의 휴대폰이에요." }
+          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+      - type: chooseMeaning
+        en: This city is beautiful.
+        item: sense.beautiful.adj.pretty
+        options:
+          - { ko: 이 도시는 아름다워요., correct: true }
+          - { ko: 이 도시는 커요., why: "큰 건 `big`이에요. `beautiful`은 아름다운 거예요." }
+          - { ko: 이 도시는 오래됐어요., why: "오래된 건 `old`예요." }
+      - type: fillBlank
+        item: sense.beautiful.adj.pretty
+        en: "Wow, it's ___."
+        ko: 와, 아름답다.
+        answers: [beautiful]
+      - type: arrange
+        item: sense.look.v.see
+        ko: 봐, 저게 내 새 컴퓨터야.
+        en: "Look, that's my new computer."
+        extra: [this]
+      - type: dictation
+        item: sense.cool.adj.great
+        en: "Wow, that's a cool bag."
+        ko: 와, 가방 멋지다.
+      - type: shadow
+        en: "Look, it's over there."
+        ko: 봐, 저기 있어.

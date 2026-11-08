@@ -38,7 +38,13 @@ stages:
       - unit.s1-20
   - id: stage.a1
     title: { ko: 첫걸음, en: First steps }
-    units: []
+    units:
+      - unit.a1-01
+      - unit.a1-02
+      - unit.a1-03
+      - unit.a1-04
+      - unit.a1-05
+      - unit.a1-06
   - id: stage.a2
     title: { ko: 일상, en: Everyday life }
     units: []

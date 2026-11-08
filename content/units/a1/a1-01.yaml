@@ -1,0 +1,283 @@
+id: unit.a1-01
+title: { ko: "인사와 이름", en: "Greetings and names" }
+lessons:
+  - id: lesson.a1-01.1
+    title: { ko: 이름 묻고 답하기, en: "What's your name?" }
+    goal: { ko: 이름을 묻고 내 이름을 말할 수 있어요, en: Ask someone's name and say yours }
+    introduces: [sense.name.n.called, sense.my.det.mine, pattern.whats-your-name, pattern.call-me, sense.again.adv.repeat]
+    steps:
+      - type: listen
+        en: "Hi. What's your name?"
+        ko: "안녕하세요. 이름이 뭐예요?"
+      - type: listen
+        en: "I'm @Mina."
+        ko: "미나예요."
+      - type: explain
+        text: |
+          이름을 물을 때는 `What's your name?`이라고 해요. 한 덩어리로 기억하면 돼요.
+
+          대답은 `I'm Mina.`나 `My name is Mina.`예요. `my`는 "제, 내"예요. 우리말은 "미나예요"처럼 이름 뒤에 "예요"를 붙이지만 영어는 이름 앞에 `I'm`이 와요.
+        examples:
+          - en: "What's your name?"
+            ko: 이름이 뭐예요?
+          - en: "I'm @Mina."
+            ko: 미나예요.
+          - en: "My name is @Mina."
+            ko: 제 이름은 미나예요.
+      - type: chooseMeaning
+        en: "My name is @Jun."
+        item: sense.name.n.called
+        options:
+          - { ko: 제 이름은 준이에요., correct: true }
+          - { ko: 그쪽 이름은 준이에요., why: "`my`는 \"제, 내\"예요. 상대 이름이 아니라 내 이름을 말하는 문장이에요." }
+          - { ko: "준 씨, 이름이 뭐예요?", why: "이름을 물을 때는 `What's your name?`이라고 해요. `My name is`는 내 이름을 알려 주는 말이에요." }
+      - type: listenChoose
+        en: "What's your name?"
+        item: pattern.whats-your-name
+        options:
+          - { ko: 이름이 뭐예요?, correct: true }
+          - { ko: 잘 지내요?, why: "\"잘 지내요?\"는 `How are you?`예요. 들린 말에는 `name`이 있었어요." }
+          - { ko: 학생이에요?, why: "\"학생이에요?\"는 `Are you a student?`예요. 들린 말은 이름을 묻는 말이에요." }
+      - type: explain
+        text: |
+          이름이 길거나 부르기 어려우면 `Call me Jun.`처럼 불렀으면 하는 이름을 알려 줘요. "준이라고 불러 주세요"라는 뜻이에요.
+
+          이름을 잘 못 들었으면 `Sorry, what's your name again?`이라고 물어요. `again`은 "다시, 한 번 더"예요.
+        examples:
+          - en: "I'm @Minjun. Call me @Jun."
+            ko: 민준이에요. 준이라고 불러 주세요.
+          - en: "Sorry, what's your name again?"
+            ko: 죄송한데 이름이 뭐라고 하셨죠?
+      - type: dialogue
+        item: pattern.whats-your-name
+        lines:
+          - { speaker: Leo, en: "Hi, I'm @Leo. What's your name?", ko: "안녕하세요, 레오예요. 이름이 뭐예요?" }
+        question: 미나가 할 말을 골라요.
+        options:
+          - { en: "Hi, @Leo. I'm @Mina.", correct: true }
+          - { en: "My name is @Leo.", why: "레오는 상대 이름이에요. 내 이름을 말해야 하니 `I'm Mina.`예요." }
+          - { en: "I'm fine, thanks.", why: "`How are you?`에 하는 대답이에요. 이름을 물었으니 이름을 말해요." }
+      - type: dialogue
+        item: pattern.call-me
+        lines:
+          - { speaker: Ana, en: "Hi. What's your name?", ko: "안녕하세요. 이름이 뭐예요?" }
+        question: 민준은 준이라고 불리고 싶어요. 민준이 할 말을 골라요.
+        options:
+          - { en: "I'm @Minjun. Call me @Jun.", correct: true }
+          - { en: "I'm @Jun. Call me @Minjun.", why: "`Call me` 뒤에는 불러 줬으면 하는 이름이 와요. 짧은 이름 준이 뒤에 와요." }
+          - { en: "I'm @Minjun. Call you @Jun.", why: "`Call me`는 \"저를 불러 주세요\"예요. `me` 자리에 `you`를 넣지 않아요." }
+      - type: dialogue
+        item: sense.again.adv.repeat
+        lines:
+          - { speaker: Priya, en: "Hi, I'm @Priya.", ko: "안녕하세요, 프리야예요." }
+        question: 이름을 잘 못 들었어요. 다시 물어볼 말을 골라요.
+        options:
+          - { en: "Sorry, what's your name again?", correct: true }
+          - { en: "Sorry, what's my name again?", why: "`my`는 \"제, 내\"예요. 상대 이름을 물을 때는 `your name`이에요." }
+          - { en: "I'm sorry.", why: "`I'm sorry.`는 사과하는 말로 들려요. 이름을 다시 물으려면 `what's your name again?`이라고 해요." }
+      - type: fillBlank
+        item: sense.my.det.mine
+        en: "___ name is @Ana."
+        ko: 제 이름은 아나예요.
+        answers: [My]
+      - type: arrange
+        item: pattern.call-me
+        ko: 제 이름은 민준이에요. 준이라고 불러 주세요.
+        en: "My name is @Minjun. Call me @Jun."
+        extra: [you]
+      - type: spell
+        sense: sense.name.n.called
+      - type: shadow
+        en: "Hi. What's your name?"
+        ko: "안녕하세요. 이름이 뭐예요?"
+  - id: lesson.a1-01.2
+    title: { ko: 만나서 반가워요, en: Nice to meet you }
+    goal: { ko: 처음 만난 사람과 인사를 주고받을 수 있어요, en: Greet someone you just met }
+    introduces: [pattern.nice-to-meet-you, sense.too.adv.also, sense.nice.adj.pleasant, sense.new.adj.recent, sense.here.adv.place, pattern.excuse-me]
+    steps:
+      - type: listen
+        en: "Nice to meet you, @Leo."
+        ko: "만나서 반가워요, 레오 씨."
+      - type: listen
+        en: "Nice to meet you, too."
+        ko: 저도 만나서 반가워요.
+      - type: explain
+        text: |
+          처음 만난 사람에게는 `Nice to meet you.`라고 해요. `nice`는 "좋은"이라서 "만나서 반가워요"라는 뜻이 돼요. 대답할 때는 끝에 `too`를 붙여요.
+
+          `too`는 "~도"라는 뜻이고 문장 끝에 와요. `Nice to meet you, too.`에서는 "저도"라는 뜻이에요. 소리는 `to`, `two`와 같아요.
+        examples:
+          - en: Nice to meet you.
+            ko: 만나서 반가워요.
+          - en: "Nice to meet you, too."
+            ko: 저도 만나서 반가워요.
+          - en: "I'm a student, too."
+            ko: 저도 학생이에요.
+      - type: dialogue
+        item: pattern.nice-to-meet-you
+        lines:
+          - { speaker: Ana, en: "Hi, I'm @Ana.", ko: "안녕하세요, 아나예요." }
+          - { speaker: Wei, en: "Hi, @Ana. I'm @Wei.", ko: "안녕하세요, 아나 씨. 웨이예요." }
+        question: 둘은 오늘 처음 만났어요. 아나가 할 말을 골라요.
+        options:
+          - { en: "Nice to meet you, @Wei.", correct: true }
+          - { en: "Nice to meet you, too.", why: "`too`는 상대가 먼저 `Nice to meet you.`라고 했을 때 붙여요. 먼저 말할 때는 빼요." }
+          - { en: "You're welcome, @Wei.", why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+      - type: dialogue
+        item: sense.too.adv.also
+        lines:
+          - { speaker: Wei, en: "Nice to meet you, @Ana.", ko: "만나서 반가워요, 아나 씨." }
+        question: 아나가 할 말을 골라요.
+        options:
+          - { en: "Nice to meet you, too.", correct: true }
+          - { en: "Nice to meet you, two.", why: "`two`는 숫자 2예요. 소리는 같지만 \"~도\"는 `too`로 써요." }
+          - { en: "Nice to meet you, to.", why: "`to`는 `Go to bed.`의 \"~로\"예요. \"~도\"는 `o`가 두 개인 `too`예요." }
+      - type: explain
+        text: |
+          `new`는 "새, 새로 온"이고 `here`는 "여기"예요. `I'm new here.`는 회사나 수업에 처음 간 날 자주 하는 말이에요.
+
+          모르는 사람에게 말을 걸 때는 `Excuse me.`로 시작해요. "저기요, 실례지만"에 가까워요. 잘못해서 미안할 때는 `Sorry.`예요.
+        examples:
+          - en: "I'm new here."
+            ko: 저는 여기 새로 왔어요.
+          - en: Are you new here?
+            ko: 여기 새로 오셨어요?
+          - en: "Excuse me. Are you @Sam?"
+            ko: 저기요, 샘 씨예요?
+      - type: listenChoose
+        en: Are you new here?
+        item: sense.new.adj.recent
+        options:
+          - { ko: 여기 새로 오셨어요?, correct: true }
+          - { ko: 여기 계세요?, why: "`here` 앞에 `new`가 들렸어요. 새로 왔는지 묻는 말이에요." }
+          - { ko: 저는 여기 새로 왔어요., why: "`Are you`로 시작해서 상대에게 묻는 말이에요." }
+      - type: chooseEnglish
+        ko: 저기요, 레오 씨예요?
+        item: pattern.excuse-me
+        options:
+          - { en: "Excuse me. Are you @Leo?", correct: true }
+          - { en: "Sorry. Are you @Leo?", why: "`Sorry.`는 미안할 때 하는 말이에요. 모르는 사람에게 말을 걸 때는 보통 `Excuse me.`예요." }
+          - { en: "Excuse me. I'm @Leo.", why: "\"레오 씨예요?\"는 묻는 말이라 `Are you`로 시작해요." }
+      - type: chooseMeaning
+        en: This is a nice room.
+        item: sense.nice.adj.pleasant
+        options:
+          - { ko: 방이 좋네요., correct: true }
+          - { ko: 새 방이에요., why: "새것은 `new`예요. `nice`는 좋다, 멋지다는 말이에요." }
+          - { ko: 방이 크네요., why: "큰 건 `big`이에요. `nice`는 좋다, 멋지다는 말이에요." }
+      - type: fillBlank
+        item: sense.here.adv.place
+        en: "I'm new ___."
+        ko: 저는 여기 새로 왔어요.
+        answers: [here]
+      - type: arrange
+        item: sense.new.adj.recent
+        ko: 저기요, 여기 새로 오셨어요?
+        en: "Excuse me. Are you new here?"
+        extra: [am]
+      - type: spell
+        sense: sense.nice.adj.pleasant
+      - type: shadow
+        en: "Nice to meet you, too."
+        ko: 저도 만나서 반가워요.
+  - id: lesson.a1-01.3
+    title: { ko: 또 봐요, en: See you }
+    goal: { ko: 다시 만날 때를 넣어 작별 인사를 할 수 있어요, en: Say when you'll see someone again }
+    introduces: [pattern.see-you, sense.later.adv.after, sense.tomorrow.adv.next-day, sense.soon.adv.near-future, sense.everyone.pron.all]
+    steps:
+      - type: listen
+        en: "Bye, @Mina. See you tomorrow."
+        ko: "잘 가요, 미나 씨. 내일 봐요."
+      - type: explain
+        text: |
+          헤어질 때는 `Bye.` 뒤에 `See you.`를 자주 붙여요. "또 봐요"라는 뜻이에요.
+
+          언제 볼지 뒤에 붙이기도 해요. `See you tomorrow.`는 "내일 봐요", `See you soon.`은 "곧 봐요"예요. `See you later.`는 "이따 봐요"인데 언제 볼지 모를 때도 써요.
+        examples:
+          - en: See you.
+            ko: 또 봐요.
+          - en: See you tomorrow.
+            ko: 내일 봐요.
+          - en: See you soon.
+            ko: 곧 봐요.
+          - en: See you later.
+            ko: 이따 봐요.
+      - type: chooseMeaning
+        en: See you tomorrow.
+        item: sense.tomorrow.adv.next-day
+        options:
+          - { ko: 내일 봐요., correct: true }
+          - { ko: 이따 봐요., why: "\"이따\"는 `later`예요. `tomorrow`는 내일이에요." }
+          - { ko: 아침에 봐요., why: "아침은 `morning`이에요. `tomorrow`에도 `mor`가 들어 있지만 \"내일\"이에요." }
+      - type: listenChoose
+        en: See you later.
+        item: sense.later.adv.after
+        options:
+          - { ko: 이따 봐요., correct: true }
+          - { ko: 내일 봐요., why: "내일은 `tomorrow`예요. 들린 말은 `later`, 이따가예요." }
+          - { ko: 만나서 반가워요., why: "\"만나서 반가워요\"는 `Nice to meet you.`예요. `See you`로 시작하면 헤어질 때 하는 말이에요." }
+      - type: explain
+        text: |
+          여러 사람에게 한꺼번에 인사할 때는 이름 대신 `everyone`을 써요. `Hi, everyone.`은 "다들 안녕하세요"예요. 헤어질 때는 `Bye, everyone.`이라고 해요.
+
+          마지막에는 처음 만나 이름을 묻고 헤어질 때까지 짧은 대화를 이어서 해 봐요.
+        examples:
+          - en: "Hi, everyone."
+            ko: 다들 안녕하세요.
+          - en: "Bye, everyone. See you tomorrow."
+            ko: 다들 잘 가요. 내일 봐요.
+      - type: chooseEnglish
+        ko: 다들 안녕하세요.
+        item: sense.everyone.pron.all
+        options:
+          - { en: "Hi, everyone.", correct: true }
+          - { en: "Bye, everyone.", why: "`bye`는 헤어질 때 하는 인사예요. 만날 때는 `hi`예요." }
+          - { en: "Hi, @Jun.", why: "한 사람에게 하는 인사예요. 여러 사람에게는 이름 대신 `everyone`을 써요." }
+      - type: fillBlank
+        item: sense.soon.adv.near-future
+        en: See you ___.
+        ko: 곧 봐요.
+        options:
+          - { en: soon, correct: true }
+          - { en: later, why: "`later`는 \"이따, 나중에\"예요. \"곧\"은 `soon`이에요." }
+          - { en: tomorrow, why: "`tomorrow`는 내일이에요. \"곧\"은 `soon`이에요." }
+      - type: arrange
+        item: sense.everyone.pron.all
+        ko: 다들 잘 가요. 내일 봐요.
+        en: "Bye, everyone. See you tomorrow."
+        extra: [later]
+      - type: spell
+        sense: sense.tomorrow.adv.next-day
+      - type: dialogue
+        item: pattern.nice-to-meet-you
+        lines:
+          - { speaker: Leo, en: "Hi. I'm @Leo. What's your name?", ko: "안녕하세요. 레오예요. 이름이 뭐예요?" }
+          - { speaker: Yuki, en: "I'm @Yuki.", ko: "유키예요." }
+          - { speaker: Leo, en: "Nice to meet you, @Yuki.", ko: "만나서 반가워요, 유키 씨." }
+        question: 유키가 할 말을 골라요.
+        options:
+          - { en: "Nice to meet you, too.", correct: true }
+          - { en: "See you, @Leo.", why: "`See you.`는 헤어질 때 하는 말이에요. 둘은 지금 막 만났어요." }
+          - { en: "You're welcome.", why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+      - type: dialogue
+        item: sense.too.adv.also
+        lines:
+          - { speaker: Yuki, en: "Nice to meet you, too. Are you new here?", ko: "저도 반가워요. 여기 새로 오셨어요?" }
+          - { speaker: Leo, en: "Yes, I am.", ko: "네, 맞아요." }
+        question: 유키도 새로 왔어요. 유키가 할 말을 골라요.
+        options:
+          - { en: "I'm new here, too.", correct: true }
+          - { en: "You're new here, too.", why: "`You're`는 상대 이야기예요. 내 이야기는 `I'm`으로 해요." }
+          - { en: "I'm here, too.", why: "`new`가 빠졌어요. 새로 왔다는 말은 `new here`예요." }
+      - type: dialogue
+        item: pattern.see-you
+        lines:
+          - { speaker: Leo, en: "Bye, @Yuki. See you tomorrow.", ko: "잘 가요, 유키 씨. 내일 봐요." }
+        question: 수업이 끝났어요. 유키가 할 말을 골라요.
+        options:
+          - { en: "Bye, @Leo. See you.", correct: true }
+          - { en: "Good morning, @Leo.", why: "`Good morning.`은 아침에 만날 때 하는 인사예요. 헤어질 때는 `Bye.`나 `See you.`라고 해요." }
+          - { en: "Hi, @Leo.", why: "`hi`는 만날 때 하는 인사예요. 헤어질 때는 `bye`예요." }
+      - type: shadow
+        en: "Bye, everyone. See you later."
+        ko: 다들 잘 가요. 이따 봐요.

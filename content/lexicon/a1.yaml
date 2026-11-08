@@ -1,0 +1,1207 @@
+# Words first taught in stage a1, in course order.
+
+# a1-01 greetings and names
+- word: name
+  id: word.name
+  senses:
+    - id: sense.name.n.called
+      pos: noun
+      ko: 이름
+      examples:
+        - en: My name is @Mina.
+          ko: 제 이름은 미나예요.
+  notes:
+    - kind: usage
+      ko: "`My name is Mina.`도 맞지만 말할 때는 `I'm Mina.`로 짧게 소개하는 일이 더 많아요."
+- word: my
+  id: word.my
+  senses:
+    - id: sense.my.det.mine
+      pos: determiner
+      ko: 나의, 내, 제
+      examples:
+        - en: This is my bag.
+          ko: 이건 제 가방이에요.
+  notes:
+    - kind: usage
+      ko: "`my`는 혼자 쓰지 않고 늘 다른 말 앞에 와요. `my name`, `my bag`처럼요."
+- word: again
+  id: word.again
+  ipa: əˈgɛn
+  senses:
+    - id: sense.again.adv.repeat
+      pos: adverb
+      ko: 다시, 한 번 더
+      examples:
+        - en: Sorry, what's your name again?
+          ko: 죄송한데 이름이 뭐라고 하셨죠?
+
+- word: too
+  id: word.too
+  senses:
+    - id: sense.too.adv.also
+      pos: adverb
+      ko: ~도, 또한
+      examples:
+        - en: Nice to meet you, too.
+          ko: 저도 만나서 반가워요.
+  notes:
+    - kind: usage
+      ko: "`too`는 문장 끝에 와요. 소리는 `two`, `to`와 같아요."
+- word: nice
+  id: word.nice
+  ipa: naɪs
+  senses:
+    - id: sense.nice.adj.pleasant
+      pos: adjective
+      ko: 좋은, 멋진
+      examples:
+        - en: This is a nice room.
+          ko: 방이 좋네요.
+- word: new
+  id: word.new
+  ipa: nuː
+  senses:
+    - id: sense.new.adj.recent
+      pos: adjective
+      ko: 새, 새로 온
+      examples:
+        - en: I'm new here.
+          ko: 저는 여기 새로 왔어요.
+- word: here
+  id: word.here
+  senses:
+    - id: sense.here.adv.place
+      pos: adverb
+      ko: 여기, 여기에
+      examples:
+        - en: I'm here.
+          ko: 저 여기 있어요.
+
+- word: later
+  id: word.later
+  senses:
+    - id: sense.later.adv.after
+      pos: adverb
+      ko: 나중에, 이따가
+      examples:
+        - en: See you later.
+          ko: 이따 봐요.
+- word: tomorrow
+  id: word.tomorrow
+  ipa: təˈmɑːroʊ
+  senses:
+    - id: sense.tomorrow.adv.next-day
+      pos: adverb
+      ko: 내일
+      examples:
+        - en: See you tomorrow.
+          ko: 내일 봐요.
+  notes:
+    - kind: usage
+      ko: "가운데 `mor`를 세게 말해요. 앞의 `to`는 약하고 짧게 들려요."
+- word: everyone
+  id: word.everyone
+  senses:
+    - id: sense.everyone.pron.all
+      pos: pronoun
+      ko: 모두, 다들
+      examples:
+        - en: Hi, everyone.
+          ko: 다들 안녕하세요.
+  notes:
+    - kind: usage
+      ko: "여러 사람에게 한꺼번에 인사할 때 이름 대신 써요. 한 단어로 붙여 써요."
+- word: soon
+  id: word.soon
+  senses:
+    - id: sense.soon.adv.near-future
+      pos: adverb
+      ko: 곧
+      examples:
+        - en: See you soon.
+          ko: 곧 봐요.
+
+# a1-02 I am, you are
+- word: tired
+  id: word.tired
+  senses:
+    - id: sense.tired.adj.sleepy
+      pos: adjective
+      ko: 피곤한
+      examples:
+        - en: I'm tired.
+          ko: 피곤해요.
+- word: hungry
+  id: word.hungry
+  senses:
+    - id: sense.hungry.adj.food
+      pos: adjective
+      ko: 배고픈
+      examples:
+        - en: Are you hungry?
+          ko: 배고파요?
+- word: happy
+  id: word.happy
+  senses:
+    - id: sense.happy.adj.glad
+      pos: adjective
+      ko: 기쁜, 행복한
+      examples:
+        - en: I'm happy.
+          ko: 기뻐요.
+  notes:
+    - kind: usage
+      ko: "\"행복한\"보다 가볍게 \"기쁜, 좋은\"이라는 뜻으로 더 자주 써요."
+- word: busy
+  id: word.busy
+  senses:
+    - id: sense.busy.adj.work
+      pos: adjective
+      ko: 바쁜
+      examples:
+        - en: Are you busy?
+          ko: 바빠요?
+  notes:
+    - kind: usage
+      ko: "철자와 소리가 달라요. `u`가 `big`의 `i`처럼 소리 나요."
+- word: thirsty
+  id: word.thirsty
+  senses:
+    - id: sense.thirsty.adj.drink
+      pos: adjective
+      ko: 목마른
+      examples:
+        - en: I'm thirsty.
+          ko: 목말라요.
+
+- word: not
+  id: word.not
+  senses:
+    - id: sense.not.adv.negative
+      pos: adverb
+      ko: 아니다, 않다
+      examples:
+        - en: I'm not tired.
+          ko: 저는 안 피곤해요.
+  notes:
+    - kind: usage
+      ko: "`I'm not`, `You're not`처럼 `am`, `are`, `is` 뒤에 와요. `Not bad.`처럼 짧은 말 앞에 오기도 해요."
+    - kind: mistake
+      ko: "`I amn't`라고는 하지 않아요. `I'm not`이라고 해요."
+- word: late
+  id: word.late
+  senses:
+    - id: sense.late.adj.not-on-time
+      pos: adjective
+      ko: 늦은
+      examples:
+        - en: Sorry, I'm late.
+          ko: 늦어서 미안해요.
+- word: ready
+  id: word.ready
+  senses:
+    - id: sense.ready.adj.prepared
+      pos: adjective
+      ko: 준비된
+      examples:
+        - en: Are you ready?
+          ko: 준비됐어요?
+- word: sure
+  id: word.sure
+  senses:
+    - id: sense.sure.adj.certain
+      pos: adjective
+      ko: 확실한, 확신하는
+      examples:
+        - en: I'm not sure.
+          ko: 잘 모르겠어요.
+- word: right
+  id: word.right
+  senses:
+    - id: sense.right.adj.correct
+      pos: adjective
+      ko: 맞는, 옳은
+      examples:
+        - en: You're right.
+          ko: 맞아요.
+  notes:
+    - kind: usage
+      ko: "`right`에는 \"오른쪽\"이라는 뜻도 있어요. `You're right.`의 `right`는 \"맞는\"이에요."
+
+- word: very
+  id: word.very
+  senses:
+    - id: sense.very.adv.much
+      pos: adverb
+      ko: 아주, 매우
+      examples:
+        - en: I'm very tired.
+          ko: 아주 피곤해요.
+- word: really
+  id: word.really
+  ipa: ˈriːli
+  senses:
+    - id: sense.really.adv.truly
+      pos: adverb
+      ko: 정말, 진짜
+      examples:
+        - en: I'm really hungry.
+          ko: 정말 배고파요.
+- word: free
+  id: word.free
+  senses:
+    - id: sense.free.adj.not-busy
+      pos: adjective
+      ko: 한가한, 시간이 있는
+      examples:
+        - en: Are you free?
+          ko: 시간 있어요?
+  notes:
+    - kind: usage
+      ko: "`free`에는 \"무료인\"이라는 뜻도 있어요. 사람에게 `Are you free?`라고 하면 시간이 있는지 묻는 말이에요."
+- word: home
+  id: word.home
+  senses:
+    - id: sense.home.adv.at-home
+      pos: adverb
+      ko: 집에, 집으로
+      examples:
+        - en: Are you home?
+          ko: 집이에요?
+  notes:
+    - kind: usage
+      ko: "`I'm home.`은 집에 들어오면서 하는 \"다녀왔어요\"라는 말로도 써요."
+    - kind: mistake
+      ko: "`home` 앞에는 `to`를 붙이지 않아요. \"집에 가\"는 `Go to home.`이 아니라 `Go home.`이에요."
+- word: sick
+  id: word.sick
+  senses:
+    - id: sense.sick.adj.ill
+      pos: adjective
+      ko: 아픈
+      examples:
+        - en: I'm sick.
+          ko: 아파요.
+
+- word: great
+  id: word.great
+  senses:
+    - id: sense.great.adj.very-good
+      pos: adjective
+      ko: 아주 좋은, 훌륭한
+      examples:
+        - en: I'm great, thanks.
+          ko: 아주 잘 지내요, 고마워요.
+- word: bad
+  id: word.bad
+  senses:
+    - id: sense.bad.adj.not-good
+      pos: adjective
+      ko: 나쁜, 안 좋은
+      examples:
+        - en: Not bad.
+          ko: 나쁘지 않아요.
+- word: angry
+  id: word.angry
+  senses:
+    - id: sense.angry.adj.mad
+      pos: adjective
+      ko: 화난
+      examples:
+        - en: Are you angry?
+          ko: 화났어요?
+  notes:
+    - kind: mistake
+      ko: "`hungry`(배고픈)와 헷갈리기 쉬워요. `angry`는 `a`로, `hungry`는 `h`로 시작해요."
+
+# a1-03 countries, nationalities and languages
+- word: where
+  id: word.where
+  ipa: wɛr
+  senses:
+    - id: sense.where.adv.question
+      pos: adverb
+      ko: 어디, 어디에
+      examples:
+        - en: Where are you?
+          ko: 어디예요?
+        - en: Where are you from?
+          ko: 어디에서 왔어요?
+- word: from
+  id: word.from
+  senses:
+    - id: sense.from.prep.origin
+      pos: preposition
+      ko: ~에서, ~에서 온
+      examples:
+        - en: I'm from Korea.
+          ko: 저는 한국에서 왔어요.
+- word: Korea
+  id: word.korea
+  ipa: kəˈriːə
+  senses:
+    - id: sense.korea.n.country
+      pos: noun
+      ko: 한국
+      examples:
+        - en: I'm from Korea.
+          ko: 저는 한국에서 왔어요.
+- word: Japan
+  id: word.japan
+  senses:
+    - id: sense.japan.n.country
+      pos: noun
+      ko: 일본
+      examples:
+        - en: Are you from Japan?
+          ko: 일본에서 왔어요?
+- word: China
+  id: word.china
+  senses:
+    - id: sense.china.n.country
+      pos: noun
+      ko: 중국
+      examples:
+        - en: I'm from China.
+          ko: 저는 중국에서 왔어요.
+- word: Canada
+  id: word.canada
+  senses:
+    - id: sense.canada.n.country
+      pos: noun
+      ko: 캐나다
+      examples:
+        - en: Are you from Canada?
+          ko: 캐나다에서 왔어요?
+
+- word: Korean
+  id: word.korean
+  ipa: kəˈriːən
+  senses:
+    - id: sense.korean.adj.nationality
+      pos: adjective
+      ko: 한국의, 한국 사람인
+      examples:
+        - en: I'm Korean.
+          ko: 저는 한국 사람이에요.
+    - id: sense.korean.n.language
+      pos: noun
+      ko: 한국어
+      examples:
+        - en: I speak {Korean|sense.korean.n.language}.
+          ko: 저는 한국어를 해요.
+  notes:
+    - kind: mistake
+      ko: "\"저는 한국 사람이에요\"는 `I'm Korea.`가 아니라 `I'm Korean.`이에요."
+- word: Japanese
+  id: word.japanese
+  senses:
+    - id: sense.japanese.adj.nationality
+      pos: adjective
+      ko: 일본의, 일본 사람인
+      examples:
+        - en: Are you Japanese?
+          ko: 일본 사람이에요?
+    - id: sense.japanese.n.language
+      pos: noun
+      ko: 일본어
+      examples:
+        - en: I speak {Japanese|sense.japanese.n.language}.
+          ko: 저는 일본어를 해요.
+  notes:
+    - kind: usage
+      ko: "끝의 `nese`를 세게 말해요."
+- word: Chinese
+  id: word.chinese
+  senses:
+    - id: sense.chinese.adj.nationality
+      pos: adjective
+      ko: 중국의, 중국 사람인
+      examples:
+        - en: I'm Chinese.
+          ko: 저는 중국 사람이에요.
+    - id: sense.chinese.n.language
+      pos: noun
+      ko: 중국어
+      examples:
+        - en: I speak a little {Chinese|sense.chinese.n.language}.
+          ko: 저는 중국어를 조금 해요.
+  notes:
+    - kind: usage
+      ko: "끝의 `nese`를 세게 말해요."
+- word: Canadian
+  id: word.canadian
+  senses:
+    - id: sense.canadian.adj.nationality
+      pos: adjective
+      ko: 캐나다의, 캐나다 사람인
+      examples:
+        - en: Are you Canadian?
+          ko: 캐나다 사람이에요?
+  notes:
+    - kind: usage
+      ko: "`Canada`는 앞을 세게 말하지만 `Canadian`은 가운데 `na`를 세게 말해요."
+- word: American
+  id: word.american
+  ipa: əˈmɛrɪkən
+  senses:
+    - id: sense.american.adj.nationality
+      pos: adjective
+      ko: 미국의, 미국 사람인
+      examples:
+        - en: I'm American.
+          ko: 저는 미국 사람이에요.
+
+- word: Brazil
+  id: word.brazil
+  senses:
+    - id: sense.brazil.n.country
+      pos: noun
+      ko: 브라질
+      examples:
+        - en: I'm from Brazil.
+          ko: 저는 브라질에서 왔어요.
+- word: Mexico
+  id: word.mexico
+  senses:
+    - id: sense.mexico.n.country
+      pos: noun
+      ko: 멕시코
+      examples:
+        - en: Are you from Mexico?
+          ko: 멕시코에서 왔어요?
+- word: Vietnam
+  id: word.vietnam
+  senses:
+    - id: sense.vietnam.n.country
+      pos: noun
+      ko: 베트남
+      examples:
+        - en: I'm from Vietnam.
+          ko: 저는 베트남에서 왔어요.
+- word: India
+  id: word.india
+  senses:
+    - id: sense.india.n.country
+      pos: noun
+      ko: 인도
+      examples:
+        - en: I'm from India.
+          ko: 저는 인도에서 왔어요.
+- word: city
+  id: word.city
+  senses:
+    - id: sense.city.n.town
+      pos: noun
+      ko: 도시
+      examples:
+        - en: "@Busan is a big city."
+          ko: 부산은 큰 도시예요.
+
+- word: English
+  id: word.english
+  ipa: ˈɪŋglɪʃ
+  senses:
+    - id: sense.english.n.language
+      pos: noun
+      ko: 영어
+      examples:
+        - en: I speak English.
+          ko: 저는 영어를 해요.
+  notes:
+    - kind: usage
+      ko: "언어 이름은 늘 대문자로 시작해요. 언어 이름만 쓸 때는 앞에 `the`를 붙이지 않아요. `the English`는 영국 사람들을 가리켜요."
+- word: speak
+  id: word.speak
+  senses:
+    - id: sense.speak.v.language
+      pos: verb
+      ko: (언어를) 하다, 말하다
+      examples:
+        - en: I speak English and {Korean|sense.korean.n.language}.
+          ko: 저는 영어와 한국어를 해요.
+  notes:
+    - kind: mistake
+      ko: "\"영어를 해요\"는 `do`가 아니라 `speak`로 말해요."
+
+# a1-04 he, she, we, they
+- word: he
+  id: word.he
+  senses:
+    - id: sense.he.pron.male
+      pos: pronoun
+      ko: 그 사람(남자), 그
+      examples:
+        - en: He's a teacher.
+          ko: 그 사람은 선생님이에요.
+  notes:
+    - kind: usage
+      ko: "우리말은 \"그 사람\"이라고 하면 되지만 영어는 남자면 `he`, 여자면 `she`로 나눠 말해요."
+- word: she
+  id: word.she
+  senses:
+    - id: sense.she.pron.female
+      pos: pronoun
+      ko: 그 사람(여자), 그녀
+      examples:
+        - en: She's from Canada.
+          ko: 그 사람은 캐나다에서 왔어요.
+- word: friend
+  id: word.friend
+  senses:
+    - id: sense.friend.n.person
+      pos: noun
+      ko: 친구
+      examples:
+        - en: "@Leo is my friend."
+          ko: 레오는 제 친구예요.
+  notes:
+    - kind: usage
+      ko: "`friend`는 나이와 상관없이 가까운 사람에게 써요. 우리말 \"친구\"처럼 동갑일 필요가 없어요."
+- word: coworker
+  id: word.coworker
+  senses:
+    - id: sense.coworker.n.work
+      pos: noun
+      ko: 직장 동료
+      examples:
+        - en: She's my coworker.
+          ko: 그 사람은 제 직장 동료예요.
+- word: classmate
+  id: word.classmate
+  senses:
+    - id: sense.classmate.n.school
+      pos: noun
+      ko: 반 친구, 같은 반 학생
+      examples:
+        - en: He's my classmate.
+          ko: 그 사람은 저와 같은 반이에요.
+
+- word: kind
+  id: word.kind
+  senses:
+    - id: sense.kind.adj.nice
+      pos: adjective
+      ko: 친절한, 다정한
+      examples:
+        - en: She's very kind.
+          ko: 그 사람은 아주 친절해요.
+- word: funny
+  id: word.funny
+  senses:
+    - id: sense.funny.adj.laugh
+      pos: adjective
+      ko: 웃긴, 재미있는
+      examples:
+        - en: He's funny.
+          ko: 그 사람은 웃겨요.
+  notes:
+    - kind: mistake
+      ko: "재미있는 일이나 시간은 `fun`이라고 해요. `funny`는 웃긴다는 느낌이 강해요."
+- word: tall
+  id: word.tall
+  senses:
+    - id: sense.tall.adj.height
+      pos: adjective
+      ko: 키가 큰
+      examples:
+        - en: He's tall.
+          ko: 그 사람은 키가 커요.
+  notes:
+    - kind: usage
+      ko: "사람 키를 말할 때는 `big`이 아니라 `tall`을 써요."
+- word: short
+  id: word.short
+  senses:
+    - id: sense.short.adj.height
+      pos: adjective
+      ko: 키가 작은
+      examples:
+        - en: She's short.
+          ko: 그 사람은 키가 작아요.
+- word: smart
+  id: word.smart
+  senses:
+    - id: sense.smart.adj.clever
+      pos: adjective
+      ko: 똑똑한
+      examples:
+        - en: She's smart.
+          ko: 그 사람은 똑똑해요.
+  notes:
+    - kind: usage
+      ko: "미국 영어에서 `smart`는 주로 머리가 좋다는 뜻이에요. 옷차림이 깔끔하다는 뜻으로는 영국에서 더 자주 써요."
+
+- word: who
+  id: word.who
+  senses:
+    - id: sense.who.pron.question
+      pos: pronoun
+      ko: 누구
+      examples:
+        - en: Who is he?
+          ko: 그 사람은 누구예요?
+- word: neighbor
+  id: word.neighbor
+  senses:
+    - id: sense.neighbor.n.next-door
+      pos: noun
+      ko: 이웃
+      examples:
+        - en: He's my neighbor.
+          ko: 그 사람은 제 이웃이에요.
+  notes:
+    - kind: usage
+      ko: "영국에서는 `neighbour`라고 써요."
+- word: boss
+  id: word.boss
+  ipa: bɔːs
+  senses:
+    - id: sense.boss.n.work
+      pos: noun
+      ko: 상사, 사장
+      examples:
+        - en: She's my boss.
+          ko: 그 사람은 제 상사예요.
+  notes:
+    - kind: konglish
+      ko: "우리말 \"보스\"는 무리의 우두머리 같은 느낌이 있지만 `boss`는 직장 상사를 가리키는 평범한 말이에요."
+- word: married
+  id: word.married
+  senses:
+    - id: sense.married.adj.spouse
+      pos: adjective
+      ko: 결혼한
+      examples:
+        - en: Is he married?
+          ko: 그 사람 결혼했어요?
+  notes:
+    - kind: mistake
+      ko: "\"결혼했어요\"는 `I'm married.`예요. 우리말은 지난 일처럼 말하지만 영어는 지금 결혼한 상태라고 말해요."
+- word: shy
+  id: word.shy
+  senses:
+    - id: sense.shy.adj.timid
+      pos: adjective
+      ko: 수줍은, 낯을 가리는
+      examples:
+        - en: He's shy.
+          ko: 그 사람은 낯을 가려요.
+
+- word: we
+  id: word.we
+  senses:
+    - id: sense.we.pron.us
+      pos: pronoun
+      ko: 우리, 저희
+      examples:
+        - en: We're from Korea.
+          ko: 저희는 한국에서 왔어요.
+- word: they
+  id: word.they
+  senses:
+    - id: sense.they.pron.them
+      pos: pronoun
+      ko: 그들, 그 사람들, 그것들
+      examples:
+        - en: They're in the room.
+          ko: 그 사람들은 방에 있어요.
+  notes:
+    - kind: usage
+      ko: "사람뿐 아니라 물건 여럿을 가리킬 때도 `they`를 써요."
+- word: same
+  id: word.same
+  senses:
+    - id: sense.same.adj.not-different
+      pos: adjective
+      ko: 같은
+      examples:
+        - en: We're in the same class.
+          ko: 우리는 같은 반이에요.
+  notes:
+    - kind: usage
+      ko: "보통 앞에 `the`를 붙여 `the same`이라고 해요."
+- word: class
+  id: word.class
+  senses:
+    - id: sense.class.n.group
+      pos: noun
+      ko: 반, 수업
+      examples:
+        - en: He's in my class.
+          ko: 그 사람은 저랑 같은 반이에요.
+- word: different
+  id: word.different
+  ipa: ˈdɪfrənt
+  senses:
+    - id: sense.different.adj.not-same
+      pos: adjective
+      ko: 다른
+      examples:
+        - en: She's in a different class.
+          ko: 그 사람은 다른 반이에요.
+
+# a1-05 jobs, a and an
+- word: doctor
+  id: word.doctor
+  ipa: ˈdɑːktɚ
+  senses:
+    - id: sense.doctor.n.medical
+      pos: noun
+      ko: 의사
+      examples:
+        - en: She's a doctor.
+          ko: 그 사람은 의사예요.
+  notes:
+    - kind: mistake
+      ko: "끝을 `er`로 쓰기 쉽지만 `doctor`는 `or`로 끝나요."
+- word: nurse
+  id: word.nurse
+  senses:
+    - id: sense.nurse.n.medical
+      pos: noun
+      ko: 간호사
+      examples:
+        - en: He's a nurse.
+          ko: 그 사람은 간호사예요.
+- word: chef
+  id: word.chef
+  senses:
+    - id: sense.chef.n.kitchen
+      pos: noun
+      ko: 요리사
+      examples:
+        - en: My friend is a chef.
+          ko: 제 친구는 요리사예요.
+  notes:
+    - kind: usage
+      ko: "`ch`를 `sh` 소리로 읽는 드문 단어예요. 한 음절로 짧게 말해요."
+- word: writer
+  id: word.writer
+  senses:
+    - id: sense.writer.n.books
+      pos: noun
+      ko: 작가
+      examples:
+        - en: She's a writer.
+          ko: 그 사람은 작가예요.
+  notes:
+    - kind: usage
+      ko: "첫 글자 `w`는 소리 내지 않아요. `r` 소리로 시작해요."
+- word: developer
+  id: word.developer
+  senses:
+    - id: sense.developer.n.software
+      pos: noun
+      ko: 개발자
+      examples:
+        - en: I'm a developer.
+          ko: 저는 개발자예요.
+  notes:
+    - kind: usage
+      ko: "둘째 음절 `vel`을 세게 말해요."
+
+- word: an
+  id: word.an
+  ipa: ən
+  senses:
+    - id: sense.an.art.one
+      pos: article
+      ko: (하나의) 어떤, 한
+      examples:
+        - en: I'm an engineer.
+          ko: 저는 엔지니어예요.
+  notes:
+    - kind: usage
+      ko: "모음 소리 앞에서는 `a` 대신 `an`을 써요. 글자가 아니라 바로 뒤 단어의 첫소리를 보고 정해요. `an idea`지만 `a good idea`예요."
+- word: engineer
+  id: word.engineer
+  senses:
+    - id: sense.engineer.n.job
+      pos: noun
+      ko: 엔지니어, 기술자
+      examples:
+        - en: She's an engineer.
+          ko: 그 사람은 엔지니어예요.
+  notes:
+    - kind: usage
+      ko: "끝의 `neer`를 세게 말해요."
+- word: artist
+  id: word.artist
+  ipa: ˈɑːrtɪst
+  senses:
+    - id: sense.artist.n.art
+      pos: noun
+      ko: 예술가, 화가
+      examples:
+        - en: He's an artist.
+          ko: 그 사람은 예술가예요.
+- word: actor
+  id: word.actor
+  senses:
+    - id: sense.actor.n.acting
+      pos: noun
+      ko: 배우
+      examples:
+        - en: She's an actor.
+          ko: 그 사람은 배우예요.
+  notes:
+    - kind: usage
+      ko: "남자 배우에게도 여자 배우에게도 써요."
+- word: idea
+  id: word.idea
+  senses:
+    - id: sense.idea.n.thought
+      pos: noun
+      ko: 생각, 아이디어
+      examples:
+        - en: Good idea.
+          ko: 좋은 생각이에요.
+  notes:
+    - kind: usage
+      ko: "세 음절이고 둘째 음절 `de`를 세게 말해요."
+
+- word: job
+  id: word.job
+  ipa: dʒɑːb
+  senses:
+    - id: sense.job.n.work
+      pos: noun
+      ko: 일, 직업
+      examples:
+        - en: I'm a nurse. It's a good job.
+          ko: 저는 간호사예요. 좋은 직업이에요.
+  notes:
+    - kind: mistake
+      ko: "직업 하나는 `a job`이에요. `a work`라고 하지 않아요."
+- word: work
+  id: word.work
+  senses:
+    - id: sense.work.v.job
+      pos: verb
+      ko: 일하다
+      examples:
+        - en: I work in a hospital.
+          ko: 저는 병원에서 일해요.
+  notes:
+    - kind: mistake
+      ko: "`I'm work`처럼 `am`과 같이 쓰지 않아요. `I work in a school.`처럼 `work`만 써요."
+- word: hospital
+  id: word.hospital
+  senses:
+    - id: sense.hospital.n.medical
+      pos: noun
+      ko: 병원
+      examples:
+        - en: I'm a doctor. I work in a hospital.
+          ko: 저는 의사예요. 병원에서 일해요.
+- word: school
+  id: word.school
+  senses:
+    - id: sense.school.n.education
+      pos: noun
+      ko: 학교
+      examples:
+        - en: I work in a school.
+          ko: 저는 학교에서 일해요.
+- word: restaurant
+  id: word.restaurant
+  ipa: ˈrɛstrɑːnt
+  senses:
+    - id: sense.restaurant.n.food
+      pos: noun
+      ko: 식당
+      examples:
+        - en: I'm a chef. I work in a restaurant.
+          ko: 저는 요리사예요. 식당에서 일해요.
+  notes:
+    - kind: konglish
+      ko: "우리말 \"레스토랑\"은 양식당을 떠올리게 하지만 `restaurant`는 식당이면 다 가리켜요. 첫음절을 세게 말해요."
+
+- word: easy
+  id: word.easy
+  senses:
+    - id: sense.easy.adj.not-hard
+      pos: adjective
+      ko: 쉬운
+      examples:
+        - en: It's an easy job.
+          ko: 쉬운 일이에요.
+- word: hard
+  id: word.hard
+  senses:
+    - id: sense.hard.adj.difficult
+      pos: adjective
+      ko: 어려운, 힘든
+      examples:
+        - en: It's a hard job.
+          ko: 힘든 일이에요.
+- word: interesting
+  id: word.interesting
+  ipa: ˈɪntrəstɪŋ
+  senses:
+    - id: sense.interesting.adj.not-boring
+      pos: adjective
+      ko: 흥미로운, 재미있는
+      examples:
+        - en: It's an interesting job.
+          ko: 재미있는 일이에요.
+  notes:
+    - kind: mistake
+      ko: "`I'm interesting.`은 \"저는 흥미로운 사람이에요\"라는 뜻이에요. 웃겨서 재미있는 건 `funny`예요."
+- word: boring
+  id: word.boring
+  senses:
+    - id: sense.boring.adj.not-interesting
+      pos: adjective
+      ko: 지루한, 재미없는
+      examples:
+        - en: It's a boring job.
+          ko: 지루한 일이에요.
+  notes:
+    - kind: mistake
+      ko: "`I'm boring.`은 \"저는 재미없는 사람이에요\"라는 뜻이에요. 지루하다는 느낌은 나중에 `bored`로 배워요."
+- word: old
+  id: word.old
+  senses:
+    - id: sense.old.adj.not-new
+      pos: adjective
+      ko: 오래된, 낡은
+      examples:
+        - en: It's an old book.
+          ko: 오래된 책이에요.
+  notes:
+    - kind: usage
+      ko: "사람에게 쓰면 \"나이 든\"이라는 뜻이 돼요. 그 뜻은 나중에 배워요."
+
+# a1-06 this and that, things around you
+- word: that
+  id: word.that
+  ipa: ðæt
+  senses:
+    - id: sense.that.pron.far
+      pos: pronoun
+      ko: 저것, 그것, 저 사람, 저
+      examples:
+        - en: What's that?
+          ko: 저건 뭐예요?
+  notes:
+    - kind: usage
+      ko: "우리말 \"그것\"과 \"저것\"을 모두 `that`으로 말해요. `that door`처럼 명사 앞에 붙으면 \"저 ~, 그 ~\"예요."
+- word: what
+  id: word.what
+  ipa: wʌt
+  senses:
+    - id: sense.what.pron.question
+      pos: pronoun
+      ko: 무엇, 뭐
+      examples:
+        - en: What's this?
+          ko: 이건 뭐예요?
+- word: phone
+  id: word.phone
+  senses:
+    - id: sense.phone.n.device
+      pos: noun
+      ko: 전화기, 휴대폰
+      examples:
+        - en: This is my phone.
+          ko: 이건 제 휴대폰이에요.
+  notes:
+    - kind: konglish
+      ko: "휴대폰은 `handphone`이라고 하지 않아요. 그냥 `phone`이나 `cell phone`이라고 해요."
+- word: key
+  id: word.key
+  senses:
+    - id: sense.key.n.lock
+      pos: noun
+      ko: 열쇠
+      examples:
+        - en: Is this a key?
+          ko: 이거 열쇠예요?
+- word: umbrella
+  id: word.umbrella
+  ipa: ʌmˈbrɛlə
+  senses:
+    - id: sense.umbrella.n.rain
+      pos: noun
+      ko: 우산
+      examples:
+        - en: This is my umbrella.
+          ko: 이건 제 우산이에요.
+  notes:
+    - kind: usage
+      ko: "모음 소리로 시작해서 `an umbrella`라고 해요. 가운데 `brel`을 세게 말해요."
+
+- word: chair
+  id: word.chair
+  senses:
+    - id: sense.chair.n.seat
+      pos: noun
+      ko: 의자
+      examples:
+        - en: That chair is small.
+          ko: 저 의자는 작아요.
+- word: table
+  id: word.table
+  senses:
+    - id: sense.table.n.furniture
+      pos: noun
+      ko: 탁자, 식탁
+      examples:
+        - en: The table is big.
+          ko: 식탁이 커요.
+- word: door
+  id: word.door
+  senses:
+    - id: sense.door.n.entrance
+      pos: noun
+      ko: 문
+      examples:
+        - en: The door is red.
+          ko: 문이 빨간색이에요.
+  notes:
+    - kind: usage
+      ko: "`door`는 한 음절이에요. 끝의 `r` 뒤에 모음을 붙이지 않아요."
+- word: window
+  id: word.window
+  senses:
+    - id: sense.window.n.glass
+      pos: noun
+      ko: 창문
+      examples:
+        - en: The window is big.
+          ko: 창문이 커요.
+  notes:
+    - kind: usage
+      ko: "앞의 `win`을 세게 말해요. 끝의 `ow`는 `go`의 `o`와 같은 소리예요."
+- word: computer
+  id: word.computer
+  senses:
+    - id: sense.computer.n.device
+      pos: noun
+      ko: 컴퓨터
+      examples:
+        - en: This is a new computer.
+          ko: 이건 새 컴퓨터예요.
+  notes:
+    - kind: usage
+      ko: "둘째 음절 `pu`를 세게 말해요."
+
+- word: color
+  id: word.color
+  ipa: ˈkʌlɚ
+  senses:
+    - id: sense.color.n.hue
+      pos: noun
+      ko: 색, 색깔
+      examples:
+        - en: What color is it?
+          ko: 그거 무슨 색이에요?
+  notes:
+    - kind: usage
+      ko: "영국에서는 `colour`라고 써요."
+    - kind: mistake
+      ko: "\"파란색이에요\"는 `It's blue.`예요. `It's blue color.`처럼 `color`를 붙이지 않아요."
+- word: blue
+  id: word.blue
+  senses:
+    - id: sense.blue.adj.color
+      pos: adjective
+      ko: 파란, 파란색의
+      examples:
+        - en: The bag is blue.
+          ko: 가방이 파란색이에요.
+- word: black
+  id: word.black
+  senses:
+    - id: sense.black.adj.color
+      pos: adjective
+      ko: 검은, 검은색의
+      examples:
+        - en: My phone is black.
+          ko: 제 휴대폰은 검은색이에요.
+- word: white
+  id: word.white
+  ipa: waɪt
+  senses:
+    - id: sense.white.adj.color
+      pos: adjective
+      ko: 흰, 흰색의
+      examples:
+        - en: The cup is white.
+          ko: 컵이 흰색이에요.
+  notes:
+    - kind: usage
+      ko: "`wh`는 `w` 소리예요. `h`는 소리 내지 않아요."
+- word: green
+  id: word.green
+  senses:
+    - id: sense.green.adj.color
+      pos: adjective
+      ko: 초록, 초록색의
+      examples:
+        - en: The door is green.
+          ko: 문이 초록색이에요.
+  notes:
+    - kind: konglish
+      ko: "신호등의 \"파란불\"은 영어로 `green`이에요. `blue`라고 하지 않아요."
+
+- word: there
+  id: word.there
+  senses:
+    - id: sense.there.adv.place
+      pos: adverb
+      ko: 거기, 저기
+      examples:
+        - en: My bag is there.
+          ko: 제 가방은 저기 있어요.
+  notes:
+    - kind: usage
+      ko: "가까운 곳은 `here`, 떨어진 곳은 `there`예요. `this`와 `that`처럼 짝을 이뤄요."
+- word: cool
+  id: word.cool
+  senses:
+    - id: sense.cool.adj.great
+      pos: adjective
+      ko: 멋진
+      examples:
+        - en: That's cool.
+          ko: 멋지네요.
+  notes:
+    - kind: usage
+      ko: "\"시원한\"이라는 뜻도 있어요. 그 뜻은 날씨 단원에서 배워요."
+- word: wow
+  id: word.wow
+  senses:
+    - id: sense.wow.interj.surprise
+      pos: interjection
+      ko: 와, 우와
+      examples:
+        - en: Wow, that's a big dog.
+          ko: 와, 개가 정말 크네요.
+- word: look
+  id: word.look
+  senses:
+    - id: sense.look.v.see
+      pos: verb
+      ko: 보다
+      examples:
+        - en: Look, it's a cat.
+          ko: 봐, 고양이야.
+  notes:
+    - kind: mistake
+      ko: "무엇을 보는지 말할 때는 `look at`이라고 해요. `Look the cat.`이 아니라 `Look at the cat.`이에요. 지금은 `Look,`으로 말을 꺼내는 것만 익혀요."
+- word: beautiful
+  id: word.beautiful
+  senses:
+    - id: sense.beautiful.adj.pretty
+      pos: adjective
+      ko: 아름다운, 예쁜
+      examples:
+        - en: This room is beautiful.
+          ko: 이 방은 예뻐요.
+  notes:
+    - kind: usage
+      ko: "첫음절 `beau`를 세게 말해요."

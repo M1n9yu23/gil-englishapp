@@ -23,6 +23,85 @@
     - en: Hi, @Jun. How are you?
       ko: 안녕하세요, 준 씨. 잘 지내요?
 
+# Names and first meetings (a1-01)
+- id: pattern.whats-your-name
+  text: What's your name?
+  ko: 이름이 뭐예요?
+  note: "`What's`는 `What is`를 줄인 말이에요. 처음 만난 사람에게 물을 때는 앞에 `Hi.`를 붙이면 부드러워요."
+  examples:
+    - en: Hi. What's your name?
+      ko: 안녕하세요. 이름이 뭐예요?
+- id: pattern.call-me
+  text: Call me ~.
+  ko: ~라고 불러 주세요
+  note: "이름이 길거나 발음하기 어려울 때 짧게 부를 이름을 알려 줘요."
+  examples:
+    - en: I'm @Minjun. Call me @Jun.
+      ko: 저는 민준이에요. 준이라고 불러 주세요.
+- id: pattern.nice-to-meet-you
+  text: Nice to meet you.
+  ko: 만나서 반가워요
+  note: "처음 만났을 때만 써요. 대답은 `Nice to meet you, too.`예요."
+  examples:
+    - en: Nice to meet you, @Leo.
+      ko: 만나서 반가워요, 레오 씨.
+- id: pattern.excuse-me
+  text: Excuse me.
+  ko: 저기요, 잠시만요
+  note: "모르는 사람에게 말을 걸 때나 지나가야 할 때 써요. 잘못을 사과할 때는 `Sorry.`예요."
+  examples:
+    - en: Excuse me. Are you @Sam?
+      ko: 저기요, 샘 씨예요?
+- id: pattern.see-you
+  text: See you.
+  ko: 또 봐요
+  note: "뒤에 때를 붙여 `See you later.`, `See you tomorrow.`처럼 말해요."
+  examples:
+    - en: Bye. See you.
+      ko: 잘 가요. 또 봐요.
+
+# Agreeing (a1-02)
+- id: pattern.me-too
+  text: Me too.
+  ko: 저도요
+  note: "상대가 `I'm hungry.`라고 하면 `Me too.`로 맞장구쳐요. 친한 사이에서도 윗사람에게도 써요."
+  examples:
+    - en: Me too.
+      ko: 저도요.
+- id: pattern.me-neither
+  text: Me neither.
+  ko: 저도요(not이 든 말에), 저도 안 그래요
+  note: "상대가 `I'm not hungry.`처럼 `not`이 든 말을 하면 `Me too.`가 아니라 `Me neither.`로 맞장구쳐요."
+  examples:
+    - en: Me neither.
+      ko: 저도요.
+
+# Languages (a1-03)
+- id: pattern.a-little
+  text: a little
+  ko: 조금, 약간
+  examples:
+    - en: I speak a little English.
+      ko: 저는 영어를 조금 해요.
+
+# Jobs (a1-05)
+- id: pattern.what-do-you-do
+  text: What do you do?
+  ko: 무슨 일 하세요?
+  note: "직업을 묻는 말이에요. 지금 무엇을 하고 있는지 묻는 말이 아니에요. 통째로 외워 두면 돼요."
+  examples:
+    - en: What do you do, @Mina?
+      ko: 미나 씨는 무슨 일 하세요?
+
+# Pointing (a1-06)
+- id: pattern.over-there
+  text: over there
+  ko: 저기, 저쪽에
+  note: "손으로 가리키며 \"저기\"라고 할 때는 `there`만 쓰기보다 `over there`라고 할 때가 많아요."
+  examples:
+    - en: It's over there.
+      ko: 저기 있어요.
+
 # Inflections. course.yaml gates each kind of form on one of these.
 - id: pattern.plural-s
   text: ~s
