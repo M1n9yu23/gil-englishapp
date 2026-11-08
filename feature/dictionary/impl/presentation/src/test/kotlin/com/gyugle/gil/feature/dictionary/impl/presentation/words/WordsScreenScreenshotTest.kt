@@ -81,6 +81,10 @@ class WordsScreenScreenshotTest {
     fun mistakes_english_showsCounts() = capture(mistakes)
 
     @Test
+    @Config(qualifiers = "en-w320dp-h760dp-xhdpi", fontScale = 2f)
+    fun mistakes_narrowEnglishFontScale2_wrapsTheNote() = capture(mistakes)
+
+    @Test
     fun mistakesEmpty_light_saysWhereMistakesComeFrom() =
         capture(WordsState(tab = WordsTab.MISTAKES, mistakes = WordListUi.Loaded(emptyList())))
 }

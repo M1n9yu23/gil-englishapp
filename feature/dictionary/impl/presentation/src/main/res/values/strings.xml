@@ -24,7 +24,8 @@
     <string name="dictionary_taught_in">Taught in <xliff:g id="stage" example="First steps">%1$s</xliff:g></string>
 
     <string name="dictionary_mistakes_empty_title">No mistakes to look back on</string>
-    <string name="dictionary_mistakes_empty_body">Words you get wrong in lessons collect here, so you can look at them again.</string>
+    <string name="dictionary_mistakes_empty_body">Words you get wrong in lessons and reviews collect here. Get one right the first time in a review, and it leaves the list.</string>
+    <string name="dictionary_mistakes_note">These words come back in your reviews. Get one right the first time, and it leaves this list.</string>
     <plurals name="dictionary_mistake_count">
         <item quantity="one">Wrong once</item>
         <item quantity="other">Wrong <xliff:g id="count" example="3">%d</xliff:g> times</item>

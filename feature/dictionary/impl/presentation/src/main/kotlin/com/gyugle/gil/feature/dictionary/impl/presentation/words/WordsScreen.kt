@@ -119,6 +119,7 @@ internal fun WordsScreen(
                     list = state.mistakes,
                     onOpenEntry = onOpenEntry,
                     onRetry = retry,
+                    note = stringResource(R.string.dictionary_mistakes_note),
                     empty = {
                         EmptyState(
                             title = stringResource(R.string.dictionary_mistakes_empty_title),
@@ -137,12 +138,14 @@ private fun WordsTab.label(): Int = when (this) {
     WordsTab.MISTAKES -> R.string.dictionary_tab_mistakes
 }
 
+/** [note], when given, opens the list with a line on how the list works. */
 @Composable
 private fun WordList(
     list: WordListUi,
     onOpenEntry: (String) -> Unit,
     onRetry: () -> Unit,
-    empty: @Composable () -> Unit
+    empty: @Composable () -> Unit,
+    note: String? = null
 ) {
     when (list) {
         WordListUi.Loading -> ListLoading()
@@ -152,7 +155,10 @@ private fun WordList(
         is WordListUi.Loaded -> if (list.rows.isEmpty()) {
             empty()
         } else {
-            LazyColumn(modifier = Modifier.fillMaxSize()) { rows(list.rows, onOpenEntry) }
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                if (note != null) item(key = "note") { ListNote(note) }
+                rows(list.rows, onOpenEntry)
+            }
         }
     }
 }
@@ -162,6 +168,17 @@ private fun LazyListScope.rows(rows: List<ItemRowUi>, onOpenEntry: (String) -> U
         if (index > 0) HorizontalDivider()
         ItemRow(item = row, onClick = { onOpenEntry(row.id) })
     }
+}
+
+@Composable
+private fun ListNote(text: String) {
+    val spacing = GilTheme.spacing
+    Text(
+        text = text,
+        modifier = Modifier.padding(horizontal = spacing.screenMargin, vertical = spacing.itemGap),
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
+    )
 }
 
 @Composable
@@ -202,12 +219,7 @@ private fun SearchPane(
             keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() })
         )
         when (search) {
-            SearchUi.Idle -> Text(
-                text = stringResource(R.string.dictionary_search_hint),
-                modifier = Modifier.padding(horizontal = spacing.screenMargin, vertical = spacing.itemGap),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            SearchUi.Idle -> ListNote(stringResource(R.string.dictionary_search_hint))
 
             is SearchUi.NoResults -> EmptyState(
                 title = stringResource(R.string.dictionary_search_empty_title, search.query),

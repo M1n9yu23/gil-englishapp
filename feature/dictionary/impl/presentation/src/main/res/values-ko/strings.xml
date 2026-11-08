@@ -21,7 +21,8 @@
     <string name="dictionary_taught_in"><xliff:g id="stage" example="첫걸음">%1$s</xliff:g> 단계에서 배워요</string>
 
     <string name="dictionary_mistakes_empty_title">다시 볼 틀린 문제가 없어요</string>
-    <string name="dictionary_mistakes_empty_body">수업에서 틀린 단어가 여기에 모여요. 언제든 다시 열어 볼 수 있어요.</string>
+    <string name="dictionary_mistakes_empty_body">수업이나 복습에서 틀린 단어가 여기에 모여요. 복습에서 한 번에 맞히면 목록에서 빠져요.</string>
+    <string name="dictionary_mistakes_note">틀린 단어는 복습에 다시 나와요. 한 번에 맞히면 이 목록에서 빠져요.</string>
     <plurals name="dictionary_mistake_count">
         <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g>번 틀림</item>
     </plurals>
