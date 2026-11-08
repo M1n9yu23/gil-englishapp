@@ -136,6 +136,16 @@ class RoomProgressBackupTest {
     }
 
     @Test
+    fun clear_emptiesEveryTable() = runTest {
+        backup.restore(versionOne)
+
+        backup.clear()
+
+        val exported = (backup.export() as Outcome.Success).data
+        assertThat(Json.parseToJsonElement(exported)).isEqualTo(Json.parseToJsonElement(EMPTY_RECORD))
+    }
+
+    @Test
     fun export_emptyRecord_writesVersionAndEmptyLists() = runTest {
         val exported = (backup.export() as Outcome.Success).data
 

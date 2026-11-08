@@ -33,4 +33,7 @@ interface ProgressBackup {
 
     /** Replaces the whole learning record with [section]. On any failure the record stays as it was. */
     suspend fun restore(section: String): EmptyOutcome<BackupError>
+
+    /** Empties the whole learning record at once, as on the first run. */
+    suspend fun clear(): EmptyOutcome<DataError.Local>
 }

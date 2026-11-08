@@ -70,6 +70,9 @@ class RoomProgressBackup internal constructor(
             databaseCall { database.withTransaction { replaceTables(tables) } }.mapError(BackupError::Storage)
         }
 
+    override suspend fun clear(): EmptyOutcome<DataError.Local> =
+        databaseCall { database.withTransaction { replaceTables(EMPTY) } }
+
     /** Reads the version first so a newer file is reported as newer rather than as broken. */
     private fun parse(section: String): Outcome<ProgressTables, BackupError> {
         // SerializationException and the date and time parse errors are IllegalArgumentExceptions.
@@ -130,5 +133,14 @@ class RoomProgressBackup internal constructor(
     private companion object {
         /** Strict: an unknown field means the file is not what this version wrote. */
         val json = Json
+
+        val EMPTY = ProgressTables(
+            cards = emptyList(),
+            reviews = emptyList(),
+            lessons = emptyList(),
+            studyTime = emptyList(),
+            saved = emptyList(),
+            mistakes = emptyList()
+        )
     }
 }
