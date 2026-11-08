@@ -25,6 +25,7 @@ import com.gyugle.gil.core.speech.SpeakerStatus
 import com.gyugle.gil.core.speech.SpeechLanguage
 import com.gyugle.gil.core.speech.SpeechRate
 import com.gyugle.gil.core.speech.VoiceState
+import com.gyugle.gil.core.speech.englishVoice
 import com.gyugle.gil.feature.curriculum.api.LessonItem
 import com.gyugle.gil.feature.curriculum.api.LexiconObserver
 import com.gyugle.gil.feature.curriculum.api.SoundId
@@ -39,6 +40,10 @@ import com.gyugle.gil.feature.review.impl.domain.ReviewDeck
 import com.gyugle.gil.feature.review.impl.domain.gradeTyped
 import com.gyugle.gil.feature.review.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.review.impl.domain.model.ReviewCard
+import com.gyugle.gil.feature.settings.api.Accent
+import com.gyugle.gil.feature.settings.api.AppSettings
+import com.gyugle.gil.feature.settings.api.AppSettingsObserver
+import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -57,6 +62,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
@@ -84,7 +91,8 @@ class ReviewViewModel @AssistedInject constructor(
     private val lexicon: LexiconObserver,
     private val deck: ReviewDeck,
     private val speaker: Speaker,
-    private val clock: StudyClock
+    private val clock: StudyClock,
+    private val appSettings: AppSettingsObserver
 ) : ViewModel() {
 
     @AssistedFactory
@@ -134,7 +142,11 @@ class ReviewViewModel @AssistedInject constructor(
                 ArrayList(value.map { (id, rating) -> "${rating.name}$SEPARATOR${id.value}" })
         }
 
+    /** The defaults until the settings are read, which takes a moment at most. */
+    private var settings = AppSettings()
+
     init {
+        appSettings.observeSettings().onEach { settings = it }.launchIn(viewModelScope)
         load()
     }
 
@@ -367,7 +379,8 @@ class ReviewViewModel @AssistedInject constructor(
     private fun speak(text: String) {
         if (!hasVoice) return
         soundJob?.cancel()
-        soundJob = viewModelScope.launch { speaker.speak(text, SpeechLanguage.AMERICAN_ENGLISH, SpeechRate.NORMAL) }
+        val language = speaker.status.value.englishVoice(preferBritish = settings.accent == Accent.BRITISH)
+        soundJob = viewModelScope.launch { speaker.speak(text, language, settings.firstPlayRate) }
     }
 
     /** While the engine is still connecting, waits a little: cards made without a voice never play. */
@@ -430,3 +443,7 @@ private fun LessonItem.toResultItem(): ResultItemUi = if (id is SoundId) {
 } else {
     ResultItemUi(text = text, detail = meaningKo, detailIsIpa = false)
 }
+
+/** The first play follows the learner's speed; "play slowly" stays slow either way. */
+private val AppSettings.firstPlayRate: SpeechRate
+    get() = if (speed == SpeechSpeed.SLOW) SpeechRate.SLOW else SpeechRate.NORMAL

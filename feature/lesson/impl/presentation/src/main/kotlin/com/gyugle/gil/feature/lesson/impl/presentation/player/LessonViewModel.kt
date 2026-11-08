@@ -30,6 +30,7 @@ import com.gyugle.gil.core.speech.VoicePlayer
 import com.gyugle.gil.core.speech.VoiceRecorder
 import com.gyugle.gil.core.speech.VoiceRecording
 import com.gyugle.gil.core.speech.VoiceState
+import com.gyugle.gil.core.speech.englishVoice
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
@@ -45,6 +46,10 @@ import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.progress.api.ProgressCommands
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import com.gyugle.gil.feature.progress.api.StudyClock
+import com.gyugle.gil.feature.settings.api.Accent
+import com.gyugle.gil.feature.settings.api.AppSettings
+import com.gyugle.gil.feature.settings.api.AppSettingsObserver
+import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -60,6 +65,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -88,7 +95,8 @@ class LessonViewModel @AssistedInject constructor(
     private val speaker: Speaker,
     private val recorder: VoiceRecorder,
     private val voicePlayer: VoicePlayer,
-    private val clock: StudyClock
+    private val clock: StudyClock,
+    private val appSettings: AppSettingsObserver
 ) : ViewModel() {
 
     @AssistedFactory
@@ -129,7 +137,11 @@ class LessonViewModel @AssistedInject constructor(
     private var soundJob: Job? = null
     private var recordJob: Job? = null
 
+    /** The defaults until the settings are read, which takes a moment at most. */
+    private var settings = AppSettings()
+
     init {
+        appSettings.observeSettings().onEach { settings = it }.launchIn(viewModelScope)
         load()
         viewModelScope.launch {
             speaker.status.collect { status ->
@@ -153,7 +165,7 @@ class LessonViewModel @AssistedInject constructor(
 
             LessonAction.OnExitDismiss -> _state.update { it.copy(isExitConfirmShown = false) }
 
-            LessonAction.OnPlayClick -> playStep(SpeechRate.NORMAL)
+            LessonAction.OnPlayClick -> playStep(settings.firstPlayRate)
 
             LessonAction.OnPlaySlowlyClick -> playStep(SpeechRate.SLOW)
 
@@ -347,7 +359,7 @@ class LessonViewModel @AssistedInject constructor(
         input = input.copy(feedback = feedback, grade = grade)
         answer(grade)
         render()
-        if (step is LessonStep.Dictation || step is LessonStep.Spell) playStep(SpeechRate.NORMAL)
+        if (step is LessonStep.Dictation || step is LessonStep.Spell) playStep(settings.firstPlayRate)
     }
 
     private fun answer(grade: AnswerGrade) {
@@ -497,7 +509,7 @@ class LessonViewModel @AssistedInject constructor(
         when (step) {
             is LessonStep.Listen, is LessonStep.Shadow, is LessonStep.ListenChoose, is LessonStep.ChooseMeaning,
             is LessonStep.Dictation, is LessonStep.MinimalPair, is LessonStep.Spell, is LessonStep.Dialogue
-            -> playStep(SpeechRate.NORMAL)
+            -> playStep(settings.firstPlayRate)
 
             else -> Unit
         }
@@ -521,13 +533,14 @@ class LessonViewModel @AssistedInject constructor(
         speak(texts, rate)
     }
 
-    private fun speak(text: String) = speak(listOf(text), SpeechRate.NORMAL)
+    private fun speak(text: String) = speak(listOf(text), settings.firstPlayRate)
 
     private fun speak(texts: List<String>, rate: SpeechRate) {
         if (texts.isEmpty() || !hasVoice()) return
         soundJob?.cancel()
         soundJob = viewModelScope.launch {
-            for (text in texts) speaker.speak(text, SpeechLanguage.AMERICAN_ENGLISH, rate)
+            val language = speaker.status.value.englishVoice(preferBritish = settings.accent == Accent.BRITISH)
+            for (text in texts) speaker.speak(text, language, rate)
         }
     }
 
@@ -644,3 +657,7 @@ private fun PermissionState.toMicrophoneUi(): MicrophoneUi = when (this) {
     PermissionState.PERMANENTLY_DENIED -> MicrophoneUi.PERMANENTLY_DENIED
     PermissionState.NOT_DETERMINED -> MicrophoneUi.NOT_ASKED
 }
+
+/** The first play follows the learner's speed; "play slowly" stays slow either way. */
+private val AppSettings.firstPlayRate: SpeechRate
+    get() = if (speed == SpeechSpeed.SLOW) SpeechRate.SLOW else SpeechRate.NORMAL

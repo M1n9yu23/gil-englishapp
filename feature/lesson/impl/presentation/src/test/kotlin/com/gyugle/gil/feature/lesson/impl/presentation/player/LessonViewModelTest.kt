@@ -34,6 +34,7 @@ import com.gyugle.gil.core.speech.FakeVoiceRecorder
 import com.gyugle.gil.core.speech.SpeakerStatus
 import com.gyugle.gil.core.speech.SpeechLanguage
 import com.gyugle.gil.core.speech.SpeechRate
+import com.gyugle.gil.core.speech.VoiceState
 import com.gyugle.gil.feature.curriculum.api.Choice
 import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
@@ -54,6 +55,10 @@ import com.gyugle.gil.feature.lesson.impl.domain.repository.FakeLessonRunReposit
 import com.gyugle.gil.feature.progress.api.FakeProgressCommands
 import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.ReviewRating
+import com.gyugle.gil.feature.settings.api.Accent
+import com.gyugle.gil.feature.settings.api.AppSettings
+import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
+import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.Dispatchers
@@ -117,6 +122,7 @@ class LessonViewModelTest {
     private val runs = FakeLessonRunRepository()
     private val progress = FakeProgressCommands()
     private val speaker = FakeSpeaker()
+    private val appSettings = FakeAppSettingsObserver()
     private val recorder = FakeVoiceRecorder()
     private val player = FakeVoicePlayer()
     private val clock = FakeStudyClock()
@@ -126,7 +132,7 @@ class LessonViewModelTest {
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
     private fun viewModel(handle: SavedStateHandle = SavedStateHandle()) =
-        LessonViewModel(lesson.id.value, handle, course, runs, progress, speaker, recorder, player, clock)
+        LessonViewModel(lesson.id.value, handle, course, runs, progress, speaker, recorder, player, clock, appSettings)
 
     private val LessonViewModel.playing get() = state.value.phase as LessonPhase.Playing
 
@@ -148,6 +154,36 @@ class LessonViewModelTest {
             FakeSpeaker.Utterance("Fan.", SpeechLanguage.AMERICAN_ENGLISH, SpeechRate.NORMAL)
         )
         assertThat(viewModel.state.value.title).isEqualTo(LocalizedTextUi("f와 v", "f and v"))
+    }
+
+    @Test
+    fun play_britishAndSlowChosen_speaksThemAndSlowButtonStaysSlow() {
+        appSettings.settings.value = AppSettings(accent = Accent.BRITISH, speed = SpeechSpeed.SLOW)
+        val viewModel = viewModel()
+        speaker.spoken.clear()
+
+        viewModel.onAction(LessonAction.OnPlayClick)
+        viewModel.onAction(LessonAction.OnPlaySlowlyClick)
+
+        assertThat(speaker.spoken).containsExactly(
+            FakeSpeaker.Utterance("Fan.", SpeechLanguage.BRITISH_ENGLISH, SpeechRate.SLOW),
+            FakeSpeaker.Utterance("Fan.", SpeechLanguage.BRITISH_ENGLISH, SpeechRate.SLOW)
+        )
+    }
+
+    @Test
+    fun play_britishChosenButNotInstalled_speaksAmerican() {
+        appSettings.settings.value = AppSettings(accent = Accent.BRITISH)
+        speaker.status.value = SpeakerStatus.Connected(
+            mapOf(
+                SpeechLanguage.AMERICAN_ENGLISH to VoiceState.INSTALLED,
+                SpeechLanguage.BRITISH_ENGLISH to VoiceState.NOT_INSTALLED
+            )
+        )
+
+        viewModel()
+
+        assertThat(speaker.spoken.single().language).isEqualTo(SpeechLanguage.AMERICAN_ENGLISH)
     }
 
     @Test

@@ -31,12 +31,14 @@ import com.gyugle.gil.feature.dictionary.impl.presentation.component.toLocalized
 
 /**
  * Builds the page from the entry and the learner's record: [learned] items have cards, [saved]
- * ones are in the word list. [focus] is the sense a list opened the page for.
+ * ones are in the word list. [focus] is the sense a list opened the page for. The Hangul aid shows
+ * only with [showHangulAid], the learner's setting.
  */
 internal fun LexiconEntry.toEntryUi(
     learned: Set<StudyItemId>,
     saved: Set<StudyItemId>,
-    focus: SenseId? = null
+    focus: SenseId? = null,
+    showHangulAid: Boolean = true
 ): EntryUi = when (this) {
     is WordEntry -> {
         val groups = groupSenses(senses, learned, focus)
@@ -44,7 +46,7 @@ internal fun LexiconEntry.toEntryUi(
             id = id.value,
             text = text,
             ipa = ipa,
-            hangul = hangul,
+            hangul = hangul?.takeIf { showHangulAid },
             learnedAny = groups.learnedAny,
             now = groups.now.map { it.toSenseUi(saved = it.id in saved) },
             later = groups.later.map {

@@ -36,6 +36,7 @@ import com.gyugle.gil.feature.curriculum.api.SentenceWord
 import com.gyugle.gil.feature.curriculum.api.WordId
 import com.gyugle.gil.feature.dictionary.impl.presentation.R
 import com.gyugle.gil.feature.dictionary.impl.presentation.TestEntries
+import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -48,6 +49,7 @@ import org.junit.jupiter.api.Test
 class SentenceViewModelTest {
     private val lexicon = FakeLexiconObserver()
     private val speaker = FakeSpeaker()
+    private val appSettings = FakeAppSettingsObserver()
 
     private val breakdown = SentenceBreakdown(
         sentence = Sentence(7, "We run every day.", "우리는 매일 달려요."),
@@ -70,7 +72,7 @@ class SentenceViewModelTest {
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun viewModel(id: Long = 7) = SentenceViewModel(id, lexicon, speaker)
+    private fun viewModel(id: Long = 7) = SentenceViewModel(id, lexicon, speaker, appSettings)
 
     @Test
     fun init_knownSentence_mapsWordsChunksGlossAndGrammar() = runTest {

@@ -21,9 +21,14 @@ import com.gyugle.gil.core.domain.onFailure
 import com.gyugle.gil.core.domain.onSuccess
 import com.gyugle.gil.core.speech.Speaker
 import com.gyugle.gil.core.speech.SpeechLanguage
+import com.gyugle.gil.core.speech.SpeechRate
+import com.gyugle.gil.core.speech.englishVoice
 import com.gyugle.gil.feature.curriculum.api.LexiconObserver
 import com.gyugle.gil.feature.dictionary.impl.presentation.entry.toVoicesUi
 import com.gyugle.gil.feature.dictionary.impl.presentation.toContentErrorUi
+import com.gyugle.gil.feature.settings.api.Accent
+import com.gyugle.gil.feature.settings.api.AppSettingsObserver
+import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -32,6 +37,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -40,7 +46,8 @@ import timber.log.Timber
 class SentenceViewModel @AssistedInject constructor(
     @Assisted private val sentenceId: Long,
     private val lexicon: LexiconObserver,
-    private val speaker: Speaker
+    private val speaker: Speaker,
+    private val appSettings: AppSettingsObserver
 ) : ViewModel() {
 
     @AssistedFactory
@@ -88,7 +95,19 @@ class SentenceViewModel @AssistedInject constructor(
         val text = _state.value.sentence?.text ?: return
         playing?.cancel()
         playing = viewModelScope.launch {
-            speaker.speak(text, SpeechLanguage.AMERICAN_ENGLISH)
+            val settings = appSettings.observeSettings().first()
+            val language = speaker.status.value.englishVoice(preferBritish = settings.accent == Accent.BRITISH)
+            speaker.speak(
+                text,
+                language,
+                if (settings.speed ==
+                    SpeechSpeed.SLOW
+                ) {
+                    SpeechRate.SLOW
+                } else {
+                    SpeechRate.NORMAL
+                }
+            )
                 .onFailure { Timber.w("Could not speak a sentence: %s", it) }
         }
     }

@@ -25,9 +25,12 @@ dependencies {
     implementation(projects.feature.curriculum.api)
     implementation(projects.feature.progress.api)
     implementation(projects.core.speech)
+    // Speaks with the accent and speed chosen in the settings.
+    implementation(projects.feature.settings.api)
     implementation(libs.timber)
 
     testImplementation(testFixtures(projects.core.speech))
+    testImplementation(testFixtures(projects.feature.settings.api))
     testImplementation(testFixtures(projects.feature.curriculum.api))
     testImplementation(testFixtures(projects.feature.progress.api))
 }

@@ -31,6 +31,8 @@ import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.dictionary.impl.presentation.toContentErrorUi
 import com.gyugle.gil.feature.progress.api.ProgressCommands
 import com.gyugle.gil.feature.progress.api.ProgressObserver
+import com.gyugle.gil.feature.settings.api.AppSettings
+import com.gyugle.gil.feature.settings.api.AppSettingsObserver
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -43,6 +45,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
@@ -57,7 +60,8 @@ class EntryViewModel @AssistedInject constructor(
     private val lexicon: LexiconObserver,
     private val progressObserver: ProgressObserver,
     private val progressCommands: ProgressCommands,
-    private val speaker: Speaker
+    private val speaker: Speaker,
+    private val appSettings: AppSettingsObserver
 ) : ViewModel() {
 
     @AssistedFactory
@@ -84,6 +88,7 @@ class EntryViewModel @AssistedInject constructor(
      */
     private var saved: Set<StudyItemId> = emptySet()
     private val saving = Mutex()
+    private var showHangulAid = AppSettings().showHangulAid
 
     init {
         viewModelScope.launch {
@@ -116,6 +121,12 @@ class EntryViewModel @AssistedInject constructor(
         viewModelScope.launch {
             speaker.status.collect { status -> _state.update { it.copy(voices = status.toVoicesUi()) } }
         }
+        viewModelScope.launch {
+            appSettings.observeSettings().map { it.showHangulAid }.distinctUntilChanged().collect { show ->
+                showHangulAid = show
+                render()
+            }
+        }
     }
 
     fun onAction(action: EntryAction) {
@@ -128,7 +139,7 @@ class EntryViewModel @AssistedInject constructor(
 
     private fun render() {
         val (entry, focus) = loaded ?: return
-        _state.update { it.copy(isLoading = false, entry = entry.toEntryUi(learned, saved, focus)) }
+        _state.update { it.copy(isLoading = false, entry = entry.toEntryUi(learned, saved, focus, showHangulAid)) }
     }
 
     /** The entry and, when the route named a sense, that sense. */

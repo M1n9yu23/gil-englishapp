@@ -39,6 +39,8 @@ import com.gyugle.gil.feature.progress.api.FakeProgressCommands
 import com.gyugle.gil.feature.progress.api.FakeProgressObserver
 import com.gyugle.gil.feature.progress.api.ProgressCommands
 import com.gyugle.gil.feature.progress.api.ProgressObserver
+import com.gyugle.gil.feature.settings.api.AppSettings
+import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import java.io.IOException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
@@ -57,12 +59,13 @@ class EntryViewModelTest {
     private val progress = FakeProgressObserver()
     private val commands = FakeProgressCommands(progress)
     private val speaker = FakeSpeaker()
+    private val appSettings = FakeAppSettingsObserver()
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun viewModel(id: String) = EntryViewModel(id, lexicon, progress, commands, speaker)
+    private fun viewModel(id: String) = EntryViewModel(id, lexicon, progress, commands, speaker, appSettings)
 
     private fun EntryViewModel.word() = state.value.entry as EntryUi.Word
 
@@ -74,6 +77,17 @@ class EntryViewModelTest {
         assertThat(word.now.map { it.id }).containsExactly("sense.run.v.move-fast")
         assertThat(word.later.map { it.id }).containsExactly("sense.run.v.manage")
         assertThat(word.later.single().stage).isEqualTo(LocalizedTextUi("자립", "On your own"))
+    }
+
+    @Test
+    fun hangulAid_followsTheSetting() = runTest {
+        val withAid = FakeLexiconObserver(TestEntries.run.copy(hangul = "런"))
+        val viewModel = EntryViewModel("word.run", withAid, progress, commands, speaker, appSettings)
+        assertThat(viewModel.word().hangul).isEqualTo("런")
+
+        appSettings.settings.value = AppSettings(showHangulAid = false)
+
+        assertThat(viewModel.word().hangul).isEqualTo(null)
     }
 
     @Test
@@ -113,7 +127,7 @@ class EntryViewModelTest {
             override fun observeSavedItems(): Flow<List<StudyItemId>> = flow { throw IOException("disk") }
         }
 
-        val state = EntryViewModel("word.run", lexicon, broken, commands, speaker).state.value
+        val state = EntryViewModel("word.run", lexicon, broken, commands, speaker, appSettings).state.value
 
         assertThat(state.error?.canRetry).isEqualTo(true)
     }
@@ -121,7 +135,7 @@ class EntryViewModelTest {
     @Test
     fun onSaveToggle_tappedTwiceBeforeTheRecordAnswers_endsNotSaved() = runTest {
         val slow = SlowCommands(commands)
-        val viewModel = EntryViewModel("word.run", lexicon, progress, slow, speaker)
+        val viewModel = EntryViewModel("word.run", lexicon, progress, slow, speaker, appSettings)
 
         viewModel.onAction(EntryAction.OnSaveToggle("sense.run.v.move-fast"))
         viewModel.onAction(EntryAction.OnSaveToggle("sense.run.v.move-fast"))

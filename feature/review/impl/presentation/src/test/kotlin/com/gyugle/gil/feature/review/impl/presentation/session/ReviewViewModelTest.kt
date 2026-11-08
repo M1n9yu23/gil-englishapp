@@ -48,6 +48,7 @@ import com.gyugle.gil.feature.progress.api.Mistake
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.review.impl.domain.ReviewDeck
+import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import kotlin.time.Duration.Companion.minutes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -78,6 +79,7 @@ class ReviewViewModelTest {
     private val observer = FakeProgressObserver()
     private val commands = FakeProgressCommands(observer).apply { nextDueDay = today + 2 }
     private val speaker = FakeSpeaker()
+    private val appSettings = FakeAppSettingsObserver()
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
 
@@ -109,7 +111,7 @@ class ReviewViewModelTest {
     }
 
     private fun viewModel(limit: Int = 20, handle: SavedStateHandle = SavedStateHandle()) =
-        ReviewViewModel(limit, handle, observer, commands, lexicon, ReviewDeck(lexicon), speaker, clock)
+        ReviewViewModel(limit, handle, observer, commands, lexicon, ReviewDeck(lexicon), speaker, clock, appSettings)
 
     private val ReviewViewModel.asking get() = state.value.phase as ReviewPhase.Asking
 
