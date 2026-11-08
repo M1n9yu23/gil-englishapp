@@ -44,10 +44,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.component.ErrorState
 import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.component.LoadingState
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.settings.impl.presentation.R
 import com.gyugle.gil.feature.settings.impl.presentation.component.LinkRow
-import com.gyugle.gil.feature.settings.impl.presentation.component.RowDivider
 
 @Composable
 fun LicensesRoot(onBack: () -> Unit, onOpenLibrary: (String) -> Unit, viewModel: LicensesViewModel = hiltViewModel()) {

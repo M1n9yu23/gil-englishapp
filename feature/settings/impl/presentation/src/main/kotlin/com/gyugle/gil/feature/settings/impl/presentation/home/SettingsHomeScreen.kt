@@ -41,9 +41,13 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.gyugle.gil.core.designsystem.component.ChoiceDialog
+import com.gyugle.gil.core.designsystem.component.ChoiceRow
 import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.component.ListRow
 import com.gyugle.gil.core.designsystem.component.LoadingState
+import com.gyugle.gil.core.designsystem.component.RowDivider
+import com.gyugle.gil.core.designsystem.component.SwitchRow
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.presentation.ObserveAsEvents
@@ -53,12 +57,8 @@ import com.gyugle.gil.feature.settings.api.AppSettings
 import com.gyugle.gil.feature.settings.api.ThemeMode
 import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 import com.gyugle.gil.feature.settings.impl.presentation.R
-import com.gyugle.gil.feature.settings.impl.presentation.component.ChoiceDialog
-import com.gyugle.gil.feature.settings.impl.presentation.component.ChoiceRow
 import com.gyugle.gil.feature.settings.impl.presentation.component.LinkRow
-import com.gyugle.gil.feature.settings.impl.presentation.component.RowDivider
 import com.gyugle.gil.feature.settings.impl.presentation.component.SettingsSection
-import com.gyugle.gil.feature.settings.impl.presentation.component.SwitchRow
 import com.gyugle.gil.feature.settings.impl.presentation.component.ValueRow
 import com.gyugle.gil.feature.settings.impl.presentation.component.label
 import com.gyugle.gil.feature.settings.impl.presentation.component.summary

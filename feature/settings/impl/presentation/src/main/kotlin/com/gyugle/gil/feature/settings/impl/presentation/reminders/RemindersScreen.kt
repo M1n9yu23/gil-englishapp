@@ -46,6 +46,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.component.ListRow
 import com.gyugle.gil.core.designsystem.component.LoadingState
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.component.SecondaryActionButton
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.component.TimePickerDialog
@@ -57,7 +58,6 @@ import com.gyugle.gil.core.presentation.permissions.PermissionState
 import com.gyugle.gil.core.presentation.permissions.rememberPermissionController
 import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.settings.impl.presentation.R
-import com.gyugle.gil.feature.settings.impl.presentation.component.RowDivider
 import com.gyugle.gil.feature.settings.impl.presentation.component.label
 
 private object RemindersTokens {
