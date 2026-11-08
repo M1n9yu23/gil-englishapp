@@ -25,12 +25,12 @@ import com.gyugle.gil.feature.goal.api.GoalObserver
 import com.gyugle.gil.feature.home.impl.domain.introducedOn
 import com.gyugle.gil.feature.home.impl.domain.planToday
 import com.gyugle.gil.feature.home.impl.domain.reviewedOn
-import com.gyugle.gil.feature.home.impl.domain.weekOf
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
 import com.gyugle.gil.feature.progress.api.ProgressObserver
 import com.gyugle.gil.feature.progress.api.StudyClock
 import com.gyugle.gil.feature.progress.api.StudyDay
+import com.gyugle.gil.feature.progress.api.weekOf
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.DayOfWeek
 import java.time.temporal.WeekFields

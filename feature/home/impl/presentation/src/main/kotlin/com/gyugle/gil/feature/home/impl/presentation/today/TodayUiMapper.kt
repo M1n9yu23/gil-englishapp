@@ -15,11 +15,11 @@
  */
 package com.gyugle.gil.feature.home.impl.presentation.today
 
-import com.gyugle.gil.feature.home.impl.domain.dayOfWeek
 import com.gyugle.gil.feature.home.impl.domain.model.NextStep
 import com.gyugle.gil.feature.home.impl.domain.model.TodayPlan
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
 import com.gyugle.gil.feature.progress.api.StudyDay
+import com.gyugle.gil.feature.progress.api.dayOfWeek
 
 /**
  * The plan for [today] as the screen shows it, with the study time of [week], whose days are in

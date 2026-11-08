@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.home.impl.domain
+package com.gyugle.gil.feature.progress.api
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import com.gyugle.gil.feature.progress.api.StudyDay
 import java.time.DayOfWeek
 import java.time.LocalDate
 import org.junit.jupiter.api.Test
