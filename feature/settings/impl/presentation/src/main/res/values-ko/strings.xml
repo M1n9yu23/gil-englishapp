@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="settings_title">설정</string>
+    <string name="settings_cancel">취소</string>
+    <string name="settings_ok">확인</string>
+
+    <string name="settings_section_study">공부</string>
+    <string name="settings_goal">하루 목표</string>
+    <plurals name="settings_goal_minutes">
+        <item quantity="other"><xliff:g id="minutes" example="20">%d</xliff:g>분</item>
+    </plurals>
+    <string name="settings_reminders">알림</string>
+    <string name="settings_reminders_off">꺼져 있어요</string>
+    <string name="settings_reminders_two"><xliff:g id="first" example="오전 8:00">%1$s</xliff:g>, <xliff:g id="second" example="오후 8:00">%2$s</xliff:g></string>
+
+    <string name="settings_section_sound_display">소리와 화면</string>
+    <string name="settings_sound">소리</string>
+    <string name="settings_sound_summary"><xliff:g id="accent" example="미국 발음">%1$s</xliff:g>, <xliff:g id="speed" example="보통 속도">%2$s</xliff:g></string>
+    <string name="settings_hangul_aid">한글 발음 표시</string>
+    <string name="settings_hangul_aid_detail">1단계 단어의 소리를 한글로 함께 보여 줘요.</string>
+    <string name="settings_theme">테마</string>
+    <string name="settings_theme_system">휴대폰 설정에 맞춤</string>
+    <string name="settings_theme_light">밝게</string>
+    <string name="settings_theme_dark">어둡게</string>
+
+    <string name="settings_section_record">학습 기록</string>
+    <string name="settings_backup">백업</string>
+    <string name="settings_backup_summary">기록을 파일로 저장하고 다시 가져와요</string>
+    <string name="settings_clear">학습 기록 지우기</string>
+    <string name="settings_clear_title">학습 기록을 지울까요?</string>
+    <string name="settings_clear_body">끝낸 수업, 복습 일정, 저장한 단어, 틀린 문제, 공부한 시간이 지워져요. 목표, 알림, 설정은 그대로예요.</string>
+    <string name="settings_clear_next">지우기</string>
+    <string name="settings_clear_again_title">되돌릴 수 없어요</string>
+    <string name="settings_clear_again_body">백업 파일이 없으면 지운 기록은 다시 찾을 수 없어요. 그래도 지울까요?</string>
+    <string name="settings_clear_confirm">모두 지우기</string>
+    <string name="settings_cleared">학습 기록을 지웠어요</string>
+
+    <string name="settings_section_about">앱 정보</string>
+    <string name="settings_method">공부하는 법 다시 보기</string>
+    <string name="settings_licenses">오픈소스 라이선스</string>
+    <string name="settings_privacy">개인정보 처리방침</string>
+    <string name="settings_version">버전</string>
+
+    <string name="settings_reminders_body">하루에 두 번까지 정할 수 있어요. 오늘 목표를 이미 채운 날에는 알리지 않아요.</string>
+    <string name="settings_reminders_none">알림을 받지 않아요.</string>
+    <string name="settings_reminders_add">시각 추가</string>
+    <string name="settings_reminders_change">시각 바꾸기</string>
+    <string name="settings_reminders_remove"><xliff:g id="time" example="오후 8:00">%s</xliff:g> 알림 지우기</string>
+    <string name="settings_reminders_picker_title">알림 시각</string>
+    <string name="settings_reminders_blocked_title">알림이 꺼져 있어요</string>
+    <string name="settings_reminders_blocked_body">알림을 받으려면 알림을 허용해 주세요.</string>
+    <string name="settings_reminders_blocked_settings_body">알림을 받으려면 휴대폰 설정에서 이 앱의 알림을 허용해 주세요.</string>
+    <string name="settings_reminders_allow">알림 허용</string>
+    <string name="settings_reminders_open_settings">설정 열기</string>
+
+    <string name="settings_sound_accent">발음</string>
+    <string name="settings_accent_american">미국 발음</string>
+    <string name="settings_accent_british">영국 발음</string>
+    <string name="settings_accent_british_missing">이 휴대폰에는 아직 영국 영어 음성이 없어요.</string>
+    <string name="settings_accent_british_fallback">영국 영어 음성을 설치하기 전까지는 미국 발음으로 들려요.</string>
+    <string name="settings_sound_speed">속도</string>
+    <string name="settings_sound_speed_detail">영어를 처음 들려줄 때의 속도예요. ‘천천히 듣기’는 늘 느리게 들려줘요.</string>
+    <string name="settings_speed_normal">보통 속도</string>
+    <string name="settings_speed_slow">천천히</string>
+    <string name="settings_sound_try">들어 보기</string>
+    <string name="settings_sound_voices">음성 데이터</string>
+    <string name="settings_voice_american">미국 영어 음성</string>
+    <string name="settings_voice_british">영국 영어 음성</string>
+    <string name="settings_voice_installed">설치됨</string>
+    <string name="settings_voice_not_installed">설치 안 됨</string>
+    <string name="settings_voice_unsupported">이 음성 엔진에는 없어요</string>
+    <string name="settings_voice_checking">음성을 확인하고 있어요</string>
+    <string name="settings_voice_no_engine">음성 엔진이 없어서 듣기 문제는 글로 바뀌어 나와요.</string>
+    <string name="settings_sound_install">음성 데이터 설치</string>
+    <string name="settings_sound_install_unavailable">음성 설정을 열지 못했어요. 휴대폰 설정에서 텍스트 음성 변환을 찾아 보세요.</string>
+    <string name="settings_sound_play_failed">소리를 들려주지 못했어요.</string>
+
+    <string name="settings_backup_body">백업 파일을 만들어 두면 휴대폰을 바꾸거나 앱을 다시 설치해도 같은 기록으로 이어서 공부할 수 있어요.</string>
+    <string name="settings_export_title">파일로 내보내기</string>
+    <string name="settings_export_body">학습 기록, 하루 목표, 알림 시각, 설정을 파일 하나에 담아 고른 곳에 저장해요. 앱이 이 파일을 어디로 보내지는 않아요.</string>
+    <string name="settings_export_button">파일로 내보내기</string>
+    <string name="settings_exporting">파일을 저장하고 있어요</string>
+    <string name="settings_exported">파일로 내보냈어요</string>
+    <string name="settings_import_title">파일에서 가져오기</string>
+    <string name="settings_import_body">지금 휴대폰에 있는 기록은 파일 내용으로 바뀌어요.</string>
+    <string name="settings_import_button">파일 고르기</string>
+    <string name="settings_reading">파일을 읽고 있어요</string>
+    <string name="settings_preview_title">이 파일을 가져올까요?</string>
+    <string name="settings_preview_created">저장한 날</string>
+    <string name="settings_preview_items">배운 항목</string>
+    <string name="settings_preview_lessons">끝낸 수업</string>
+    <string name="settings_preview_last_day">마지막으로 공부한 날</string>
+    <string name="settings_preview_never">아직 없음</string>
+    <string name="settings_preview_warning">이 휴대폰에 있는 기록은 이 파일 내용으로 바뀌어요.</string>
+    <string name="settings_restore_button">가져오기</string>
+    <string name="settings_restoring">파일을 가져오고 있어요</string>
+    <string name="settings_restored_title">가져왔어요</string>
+    <string name="settings_restored_body">파일에 있던 기록으로 이어서 공부하면 돼요.</string>
+    <string name="settings_export_failed_title">파일로 내보내지 못했어요</string>
+    <string name="settings_read_failed_title">파일을 읽지 못했어요</string>
+    <string name="settings_restore_failed_title">파일을 가져오지 못했어요</string>
+    <string name="settings_error_malformed">길 백업 파일이 아니거나 파일이 손상됐어요.</string>
+    <string name="settings_error_newer">더 새로운 버전의 길에서 만든 파일이에요. 앱을 업데이트한 뒤 다시 해 보세요.</string>
+    <string name="settings_error_file">파일을 열지 못했어요. 다시 고르거나 다른 위치를 골라 보세요.</string>
+    <string name="settings_error_disk_full">휴대폰 저장공간이 부족해요.</string>
+    <string name="settings_error_storage">기록을 읽거나 저장하지 못했어요. 다시 해 보세요.</string>
+    <string name="settings_error_unchanged">기록은 가져오기 전 그대로예요.</string>
+
+    <string name="settings_licenses_body">길은 아래 라이브러리, 글꼴, 데이터로 만들었어요.</string>
+    <string name="settings_license_version">버전 <xliff:g id="version" example="1.2.0">%s</xliff:g></string>
+    <string name="settings_licenses_error_title">라이선스를 보여 주지 못했어요</string>
+    <string name="settings_licenses_error_body">앱에 들어 있는 목록을 읽지 못했어요.</string>
+    <string name="settings_licenses_retry">다시 시도</string>
+
+    <string name="settings_privacy_updated">최종 수정일: 2026년 11월 8일</string>
+    <string name="settings_privacy_intro">길은 개인정보를 수집하거나 공유하거나 판매하지 않아요. 계정과 서버가 없고, 앱은 인터넷 권한을 요청하지 않아요.</string>
+    <string name="settings_privacy_stored_title">휴대폰에 저장하는 정보</string>
+    <string name="settings_privacy_stored_body">학습 기록: 끝낸 수업, 복습 일정과 결과, 틀린 문제, 저장한 단어, 하루 공부 시간
+
+설정: 하루 목표, 알림 시각, 테마, 발음과 속도, 한글 발음 표시, 처음 안내를 마쳤는지 여부
+
+중간에 나간 수업. 나중에 이어서 할 수 있게 저장해요.
+
+학습 기록은 설정의 ‘학습 기록 지우기’로 지워요. 휴대폰 설정에서 앱 저장공간을 지우거나 앱을 삭제하면 모두 지워져요.</string>
+    <string name="settings_privacy_mic_title">마이크</string>
+    <string name="settings_privacy_mic_body">말하기 단계에서 내 목소리를 녹음해 다시 들을 수 있게 마이크 권한을 요청해요. 녹음은 최대 10초이고 메모리에만 있으며 저장공간에 기록하지 않아요. 다음 단계로 넘어가거나 수업을 나가면 지워요. 권한을 허용하지 않아도 나머지 기능은 그대로 써요.</string>
+    <string name="settings_privacy_speech_title">음성과 알림</string>
+    <string name="settings_privacy_speech_body">영어 문장은 휴대폰에 설치된 텍스트 음성 변환(TTS) 엔진으로 읽어요. 엔진에는 수업 문장만 전달해요. 알림은 휴대폰 안에서 예약하고 알림으로 표시해요.</string>
+    <string name="settings_privacy_backup_title">백업</string>
+    <string name="settings_privacy_backup_body">Google 계정에 Android 백업을 켜 두었다면 Android가 학습 기록과 설정을 백업에 넣고, 새 휴대폰에서 복원해요. 이 백업은 Google이 자체 약관에 따라 운영하고 개발자는 백업에 접근할 수 없어요. 휴대폰 설정에서 끌 수 있어요.
+
+설정의 백업 메뉴는 학습 기록, 하루 목표, 알림 시각, 설정을 직접 고른 곳에 파일로 저장하고, 나중에 그 파일에서 다시 가져와요. 앱은 직접 고른 파일만 읽고 쓰며 어디로도 보내지 않아요.</string>
+    <string name="settings_privacy_report_title">내용 오류 신고</string>
+    <string name="settings_privacy_report_body">‘내용 오류 신고’를 누르면 브라우저에서 GitHub 양식이 열려요. 양식에는 오류를 본 위치, 앱 버전, 화면에 보인 문장이 채워져 있어요. 직접 제출하기 전에는 아무것도 보내지 않아요. 제출한 내용은 GitHub에 공개되고 GitHub 개인정보 처리방침을 따라요.</string>
+    <string name="settings_privacy_changes_title">변경과 문의</string>
+    <string name="settings_privacy_changes_body">이 방침이 바뀌면 날짜를 새로 적어 다시 올려요. 문의는 Google Play 앱 페이지에 있는 개발자 이메일로 보내 주세요.</string>
+</resources>

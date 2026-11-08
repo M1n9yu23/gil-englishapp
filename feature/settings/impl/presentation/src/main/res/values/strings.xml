@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="settings_title">Settings</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="settings_ok">OK</string>
+
+    <string name="settings_section_study">Study</string>
+    <string name="settings_goal">Daily goal</string>
+    <plurals name="settings_goal_minutes">
+        <item quantity="one"><xliff:g id="minutes" example="1">%d</xliff:g> minute</item>
+        <item quantity="other"><xliff:g id="minutes" example="20">%d</xliff:g> minutes</item>
+    </plurals>
+    <string name="settings_reminders">Reminders</string>
+    <string name="settings_reminders_off">Off</string>
+    <string name="settings_reminders_two"><xliff:g id="first" example="8:00 AM">%1$s</xliff:g> and <xliff:g id="second" example="8:00 PM">%2$s</xliff:g></string>
+
+    <string name="settings_section_sound_display">Sound and display</string>
+    <string name="settings_sound">Sound</string>
+    <string name="settings_sound_summary"><xliff:g id="accent" example="American English">%1$s</xliff:g>, <xliff:g id="speed" example="normal speed">%2$s</xliff:g></string>
+    <string name="settings_hangul_aid">Hangul sound guide</string>
+    <string name="settings_hangul_aid_detail">Shows how first-stage words sound, written in Hangul.</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">Same as the phone</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+
+    <string name="settings_section_record">Learning record</string>
+    <string name="settings_backup">Back up and restore</string>
+    <string name="settings_backup_summary">Save your record to a file and bring it back</string>
+    <string name="settings_clear">Erase learning record</string>
+    <string name="settings_clear_title">Erase your learning record?</string>
+    <string name="settings_clear_body">Finished lessons, review schedules, saved words, mistakes and study time will be erased. Your goal, reminders and settings stay.</string>
+    <string name="settings_clear_next">Erase</string>
+    <string name="settings_clear_again_title">This can’t be undone</string>
+    <string name="settings_clear_again_body">Without a backup file, an erased record can’t be brought back. Erase it anyway?</string>
+    <string name="settings_clear_confirm">Erase everything</string>
+    <string name="settings_cleared">Learning record erased</string>
+
+    <string name="settings_section_about">About</string>
+    <string name="settings_method">How to study</string>
+    <string name="settings_licenses">Open source licenses</string>
+    <string name="settings_privacy">Privacy policy</string>
+    <string name="settings_version">Version</string>
+
+    <string name="settings_reminders_body">Up to two times a day. There’s no reminder on a day you’ve already met your goal.</string>
+    <string name="settings_reminders_none">No reminders.</string>
+    <string name="settings_reminders_add">Add a time</string>
+    <string name="settings_reminders_change">Change time</string>
+    <string name="settings_reminders_remove">Remove the <xliff:g id="time" example="8:00 PM">%s</xliff:g> reminder</string>
+    <string name="settings_reminders_picker_title">Reminder time</string>
+    <string name="settings_reminders_blocked_title">Notifications are off</string>
+    <string name="settings_reminders_blocked_body">Allow notifications to get these reminders.</string>
+    <string name="settings_reminders_blocked_settings_body">Allow notifications for Gil in your phone’s settings to get these reminders.</string>
+    <string name="settings_reminders_allow">Allow notifications</string>
+    <string name="settings_reminders_open_settings">Open settings</string>
+
+    <string name="settings_sound_accent">Accent</string>
+    <string name="settings_accent_american">American English</string>
+    <string name="settings_accent_british">British English</string>
+    <string name="settings_accent_british_missing">This phone has no British English voice yet.</string>
+    <string name="settings_accent_british_fallback">Plays in American English until a British English voice is installed.</string>
+    <string name="settings_sound_speed">Speed</string>
+    <string name="settings_sound_speed_detail">How fast English plays the first time. “Play slowly” always plays slowly.</string>
+    <string name="settings_speed_normal">Normal speed</string>
+    <string name="settings_speed_slow">Slow</string>
+    <string name="settings_sound_try">Play a sample</string>
+    <string name="settings_sound_voices">Voice data</string>
+    <string name="settings_voice_american">American English voice</string>
+    <string name="settings_voice_british">British English voice</string>
+    <string name="settings_voice_installed">Installed</string>
+    <string name="settings_voice_not_installed">Not installed</string>
+    <string name="settings_voice_unsupported">Not available in this speech engine</string>
+    <string name="settings_voice_checking">Checking the voices</string>
+    <string name="settings_voice_no_engine">This phone has no speech engine, so listening questions show as text.</string>
+    <string name="settings_sound_install">Install voice data</string>
+    <string name="settings_sound_install_unavailable">Couldn’t open the voice settings. Look for text-to-speech in your phone’s settings.</string>
+    <string name="settings_sound_play_failed">Couldn’t play the sample.</string>
+
+    <string name="settings_backup_body">Keep a backup file to carry on with the same record on a new phone or after reinstalling the app.</string>
+    <string name="settings_export_title">Save to a file</string>
+    <string name="settings_export_body">Puts your learning record, daily goal, reminder times and settings in one file, saved where you choose. The app doesn’t send it anywhere.</string>
+    <string name="settings_export_button">Save to a file</string>
+    <string name="settings_exporting">Saving the file</string>
+    <string name="settings_exported">Saved to the file</string>
+    <string name="settings_import_title">Restore from a file</string>
+    <string name="settings_import_body">What’s on this phone now is replaced by the file.</string>
+    <string name="settings_import_button">Choose a file</string>
+    <string name="settings_reading">Reading the file</string>
+    <string name="settings_preview_title">Restore this file?</string>
+    <string name="settings_preview_created">Saved on</string>
+    <string name="settings_preview_items">Items learned</string>
+    <string name="settings_preview_lessons">Lessons finished</string>
+    <string name="settings_preview_last_day">Last studied</string>
+    <string name="settings_preview_never">Not yet</string>
+    <string name="settings_preview_warning">Your record on this phone will be replaced by this file.</string>
+    <string name="settings_restore_button">Restore</string>
+    <string name="settings_restoring">Restoring the file</string>
+    <string name="settings_restored_title">Restored</string>
+    <string name="settings_restored_body">You can carry on from the record in the file.</string>
+    <string name="settings_export_failed_title">Couldn’t save the file</string>
+    <string name="settings_read_failed_title">Couldn’t read the file</string>
+    <string name="settings_restore_failed_title">Couldn’t restore the file</string>
+    <string name="settings_error_malformed">This isn’t a Gil backup file, or it’s damaged.</string>
+    <string name="settings_error_newer">A newer version of Gil made this file. Update the app, then try again.</string>
+    <string name="settings_error_file">The file couldn’t be opened. Choose it again, or try another place.</string>
+    <string name="settings_error_disk_full">There isn’t enough storage on this phone.</string>
+    <string name="settings_error_storage">Your record couldn’t be read or saved. Try again.</string>
+    <string name="settings_error_unchanged">Your record is as it was before.</string>
+
+    <string name="settings_licenses_body">Gil is built with these libraries, typefaces and data.</string>
+    <string name="settings_license_version">Version <xliff:g id="version" example="1.2.0">%s</xliff:g></string>
+    <string name="settings_licenses_error_title">Couldn’t show the licenses</string>
+    <string name="settings_licenses_error_body">The list that comes with the app couldn’t be read.</string>
+    <string name="settings_licenses_retry">Try again</string>
+
+    <string name="settings_privacy_updated">Last updated: November 8, 2026</string>
+    <string name="settings_privacy_intro">Gil doesn’t collect, share or sell personal data. There’s no account and no server, and the app doesn’t ask for the internet permission.</string>
+    <string name="settings_privacy_stored_title">What the app keeps on your phone</string>
+    <string name="settings_privacy_stored_body">Your learning record: finished lessons, review schedules and results, mistakes, saved words and daily study time.\n\nSettings: daily goal, reminder times, theme, accent and speed, the Hangul sound guide and whether you finished the introduction.\n\nA lesson you left halfway, so that you can continue it later.\n\nYou can erase your learning record in Settings. Clearing the app’s storage in your phone’s settings, or uninstalling the app, deletes all of it.</string>
+    <string name="settings_privacy_mic_title">Microphone</string>
+    <string name="settings_privacy_mic_body">Speaking steps ask for the microphone so that you can record yourself and listen back. A recording is at most 10 seconds long, stays in memory and is never written to storage. It’s gone when you move to the next step or leave the lesson. Without the permission, the rest of the app works as usual.</string>
+    <string name="settings_privacy_speech_title">Speech and reminders</string>
+    <string name="settings_privacy_speech_body">The app reads English aloud with the text-to-speech engine on your phone and gives it only the lesson’s text. Reminders are scheduled on the phone and shown as notifications.</string>
+    <string name="settings_privacy_backup_title">Backup</string>
+    <string name="settings_privacy_backup_body">If Android backup is on for your Google account, Android may include your record and settings in that backup and restore them on a new phone. Google runs this backup under its own terms, and the developer has no access to it. You can turn it off in your phone’s settings.\n\nIn Back up and restore you can also save your record, daily goal, reminder times and settings to a file in a place you choose, and restore them from that file later. The app reads and writes only the file you pick and doesn’t send it anywhere.</string>
+    <string name="settings_privacy_report_title">Reporting a content error</string>
+    <string name="settings_privacy_report_body">“Report a content error” opens a GitHub form in your browser, filled in with where you saw the error, the app version and the text on the screen. Nothing is sent unless you submit the form yourself. What you submit is public on GitHub and covered by GitHub’s privacy statement.</string>
+    <string name="settings_privacy_changes_title">Changes and contact</string>
+    <string name="settings_privacy_changes_body">When this policy changes, the new version is published with a new date. For questions, use the developer email on Gil’s Google Play page.</string>
+</resources>
