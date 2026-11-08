@@ -23,7 +23,7 @@ import com.gyugle.gil.core.designsystem.R
 /**
  * Material Symbols Outlined, weight 400, 24dp. Path data is copied unchanged; only the tint points
  * at the framework attribute, because this module has no AppCompat theme. A `Filled` icon is the
- * same symbol with fill 1, for the selected state.
+ * same symbol with fill 1, for the selected state, and for media controls, which read better solid.
  */
 object GilIcons {
     val Analytics: Painter
@@ -65,6 +65,12 @@ object GilIcons {
     val MoreVert: Painter
         @Composable get() = painterResource(R.drawable.ic_more_vert)
 
+    val PauseFilled: Painter
+        @Composable get() = painterResource(R.drawable.ic_pause_filled)
+
+    val PlayFilled: Painter
+        @Composable get() = painterResource(R.drawable.ic_play_filled)
+
     val Route: Painter
         @Composable get() = painterResource(R.drawable.ic_route)
 
@@ -76,6 +82,12 @@ object GilIcons {
 
     val Settings: Painter
         @Composable get() = painterResource(R.drawable.ic_settings)
+
+    val SkipNextFilled: Painter
+        @Composable get() = painterResource(R.drawable.ic_skip_next_filled)
+
+    val SkipPreviousFilled: Painter
+        @Composable get() = painterResource(R.drawable.ic_skip_previous_filled)
 
     val Today: Painter
         @Composable get() = painterResource(R.drawable.ic_today)
