@@ -37,4 +37,10 @@ interface CourseObserver {
 
     /** Every stage in course order with its lessons. [ContentError.UNAVAILABLE] when reading fails. */
     suspend fun getStageLessons(): Outcome<List<StageLessons>, ContentError>
+
+    /**
+     * Every unit that has lessons, in course order, with its lessons. [ContentError.UNAVAILABLE]
+     * when reading fails.
+     */
+    suspend fun getUnitLessons(): Outcome<List<UnitLessons>, ContentError>
 }

@@ -38,6 +38,7 @@ import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.api.StageLessons
 import com.gyugle.gil.feature.curriculum.api.StageTag
 import com.gyugle.gil.feature.curriculum.api.UnitId
+import com.gyugle.gil.feature.curriculum.api.UnitLessons
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabase
 import com.gyugle.gil.feature.curriculum.impl.domain.model.LessonSummary
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
@@ -159,6 +160,21 @@ class RoomCourseRepositoryTest {
                     StageLessons(
                         StageTag(StageId("stage.two"), position = 1, title = LocalizedText("둘", "Two")),
                         emptyList()
+                    )
+                )
+            )
+        )
+    }
+
+    @Test
+    fun getUnitLessons_rowsOutOfOrder_returnsUnitsWithLessonsInCourseOrder() = runTest {
+        assertThat(repository.getUnitLessons()).isEqualTo(
+            Outcome.Success(
+                listOf(
+                    UnitLessons(
+                        UnitId("unit.a"),
+                        LocalizedText("가", "A"),
+                        listOf(LessonId("lesson.a.1"), LessonId("lesson.a.2"))
                     )
                 )
             )

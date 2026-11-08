@@ -24,6 +24,7 @@ import com.gyugle.gil.feature.curriculum.api.LessonOverview
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageLessons
 import com.gyugle.gil.feature.curriculum.api.UnitId
+import com.gyugle.gil.feature.curriculum.api.UnitLessons
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadJson
@@ -108,5 +109,19 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         val dao = database.courseDao()
         val lessons = dao.lessonStages().groupBy({ it.stageId }, { LessonId(it.lessonId) })
         Outcome.Success(dao.stages().map { StageLessons(it.toStageTag(), lessons[it.id].orEmpty()) })
+    }
+
+    override suspend fun getUnitLessons(): Outcome<List<UnitLessons>, ContentError> = databases.read { database ->
+        val dao = database.courseDao()
+        val units = dao.units().associateBy { it.id }
+        // Grouping keeps the first appearance of each unit, so units come in course order too.
+        val lessons = dao.lessonUnits().groupBy({ it.unitId }, { LessonId(it.lessonId) })
+        Outcome.Success(
+            lessons.map { (unitId, ids) ->
+                // The compiler checks every lesson's unit, so a missing one means a broken file.
+                val unit = checkNotNull(units[unitId]) { "Lessons of a missing unit $unitId" }
+                UnitLessons(UnitId(unit.id), LocalizedText(unit.titleKo, unit.titleEn), ids)
+            }
+        )
     }
 }
