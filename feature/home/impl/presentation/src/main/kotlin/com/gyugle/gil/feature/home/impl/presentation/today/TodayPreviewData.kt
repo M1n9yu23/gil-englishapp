@@ -73,7 +73,7 @@ internal object TodayPreviewData {
             message = null,
             studiedMinutes = 4,
             goalMinutes = 20,
-            blocks = listOf(twelveReviews, lesson),
+            blocks = listOf(twelveReviews, lesson, BlockUi.Listening),
             next = twelveReviews,
             firstLesson = false,
             streak = 3,
@@ -89,7 +89,8 @@ internal object TodayPreviewData {
             blocks = listOf(
                 tenReviews,
                 lesson,
-                BlockUi.Review(count = 23, minutes = 12, more = true)
+                BlockUi.Review(count = 23, minutes = 12, more = true),
+                BlockUi.Listening
             ),
             next = tenReviews,
             firstLesson = false,
@@ -103,7 +104,7 @@ internal object TodayPreviewData {
             message = TodayMessage.GOAL_MET,
             studiedMinutes = 23,
             goalMinutes = 20,
-            blocks = listOf(BlockUi.ReviewDone, nextLesson),
+            blocks = listOf(BlockUi.ReviewDone, nextLesson, BlockUi.Listening),
             next = nextLesson,
             firstLesson = false,
             streak = 4,
@@ -116,7 +117,7 @@ internal object TodayPreviewData {
             message = null,
             studiedMinutes = 2,
             goalMinutes = 30,
-            blocks = listOf(BlockUi.ReviewDone, BlockUi.CourseDone),
+            blocks = listOf(BlockUi.ReviewDone, BlockUi.CourseDone, BlockUi.Listening),
             next = null,
             firstLesson = false,
             streak = 12,

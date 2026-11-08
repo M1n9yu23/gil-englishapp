@@ -35,4 +35,7 @@ sealed interface BlockUi {
     ) : BlockUi
 
     data object CourseDone : BlockUi
+
+    /** Practice: listening mode, for what the learner has met. */
+    data object Listening : BlockUi
 }

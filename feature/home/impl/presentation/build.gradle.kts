@@ -21,12 +21,13 @@ plugins {
 dependencies {
     implementation(projects.feature.home.api)
     implementation(projects.feature.home.impl.domain)
-    // The plan reads the goal, the record and the course, and opens reviews and lessons.
+    // The plan reads the goal, the record and the course, and opens reviews, lessons and listening.
     implementation(projects.feature.goal.api)
     implementation(projects.feature.progress.api)
     implementation(projects.feature.curriculum.api)
     implementation(projects.feature.review.api)
     implementation(projects.feature.lesson.api)
+    implementation(projects.feature.listening.api)
     implementation(projects.feature.settings.api)
     implementation(libs.timber)
 

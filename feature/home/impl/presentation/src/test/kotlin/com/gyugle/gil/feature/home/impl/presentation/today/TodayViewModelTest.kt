@@ -192,7 +192,7 @@ class TodayViewModelTest {
     }
 
     @Test
-    fun state_everyLessonDone_saysSoAndOffersNothingNew() = runTest(dispatcher) {
+    fun state_everyLessonDone_saysSoAndOffersOnlyPractice() = runTest(dispatcher) {
         progress.completedLessons.value = setOf(first.id, second.id)
         progress.cards.value = listOf(card("a", due = 2))
 
@@ -201,7 +201,8 @@ class TodayViewModelTest {
 
             assertThat(today.message).isEqualTo(null)
             assertThat(today.next).isEqualTo(null)
-            assertThat(today.blocks).containsExactly(BlockUi.CourseDone)
+            // Listening practice stays, for what was learned.
+            assertThat(today.blocks).containsExactly(BlockUi.CourseDone, BlockUi.Listening)
         }
     }
 

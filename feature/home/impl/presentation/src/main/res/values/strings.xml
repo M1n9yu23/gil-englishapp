@@ -23,6 +23,8 @@
     <string name="home_block_lesson_enough">That’s plenty of new words for today, but you can still take it.</string>
     <string name="home_block_course_done">You’ve finished every lesson so far</string>
     <string name="home_block_course_done_detail">More are on the way</string>
+    <string name="home_block_listening">Listening practice</string>
+    <string name="home_block_listening_detail">Hear the words and dialogues you’ve learned</string>
 
     <string name="home_continue">Continue</string>
     <string name="home_start_first_lesson">Start the first lesson</string>

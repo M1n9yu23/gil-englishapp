@@ -58,6 +58,7 @@ fun TodayRoot(
     onOpenReview: (limit: Int) -> Unit,
     onOpenLesson: (LessonId) -> Unit,
     onOpenSettings: () -> Unit,
+    onOpenListening: () -> Unit,
     viewModel: TodayViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -69,6 +70,7 @@ fun TodayRoot(
             when (block) {
                 is BlockUi.Review -> onOpenReview(block.count)
                 is BlockUi.Lesson -> onOpenLesson(block.id)
+                BlockUi.Listening -> onOpenListening()
                 BlockUi.ReviewDone, BlockUi.CourseDone -> Unit
             }
         }
@@ -230,6 +232,13 @@ private fun Blocks(today: TodayUi, onOpenBlock: (BlockUi) -> Unit) {
                 BlockUi.CourseDone -> ListRow(
                     headline = stringResource(R.string.home_block_course_done),
                     supporting = stringResource(R.string.home_block_course_done_detail)
+                )
+
+                BlockUi.Listening -> ListRow(
+                    headline = stringResource(R.string.home_block_listening),
+                    supporting = stringResource(R.string.home_block_listening_detail),
+                    onClick = { onOpenBlock(block) },
+                    trailing = chevron
                 )
             }
         }

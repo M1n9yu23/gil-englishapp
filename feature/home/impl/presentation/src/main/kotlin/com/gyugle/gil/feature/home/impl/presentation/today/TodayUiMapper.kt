@@ -85,4 +85,6 @@ private fun TodayPlan.blocks(): List<BlockUi> = buildList {
         )
     }
     moreReview?.let { add(BlockUi.Review(it.count, it.minutes, more = true)) }
+    // Practice comes last, once there is something learned to hear.
+    if (!firstDay) add(BlockUi.Listening)
 }
