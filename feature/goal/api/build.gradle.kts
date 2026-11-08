@@ -15,6 +15,8 @@
  */
 plugins {
     alias(libs.plugins.convention.jvm.library)
+    // FakeGoalRepository, for the features that read or set the goal.
+    `java-test-fixtures`
 }
 
 dependencies {

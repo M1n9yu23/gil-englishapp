@@ -29,4 +29,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
 
     testImplementation(testFixtures(projects.core.speech))
+    testImplementation(testFixtures(projects.feature.goal.api))
+    testImplementation(testFixtures(projects.feature.reminder.api))
 }

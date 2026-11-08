@@ -15,6 +15,8 @@
  */
 plugins {
     alias(libs.plugins.convention.jvm.library)
+    // FakeReminderCommands, for the features that read or set the reminder times.
+    `java-test-fixtures`
 }
 
 dependencies {
