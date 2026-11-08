@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Which language of the content's titles to show: the app language. -->
+    <string name="listening_content_language">en</string>
+
+    <string name="listening_title">Listening mode</string>
+    <string name="listening_intro">Hear the English, recall its meaning in the pause, then hear the Korean and an example. It keeps playing with the screen off.</string>
+
+    <string name="listening_resume">Continue listening</string>
+    <string name="listening_section_sources">Listen to</string>
+    <string name="listening_source_due">Due for review today</string>
+    <string name="listening_source_recent">Recently learned</string>
+    <string name="listening_source_dialogues">Dialogues</string>
+    <string name="listening_section_units">By unit</string>
+    <plurals name="listening_item_count">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> item</item>
+        <item quantity="other"><xliff:g id="count" example="12">%d</xliff:g> items</item>
+    </plurals>
+    <plurals name="listening_dialogue_count">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> dialogue</item>
+        <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> dialogues</item>
+    </plurals>
+
+    <string name="listening_section_pace">How it plays</string>
+    <string name="listening_speed">Speed of the English</string>
+    <string name="listening_speed_normal">Normal</string>
+    <string name="listening_speed_slow">Slow</string>
+    <string name="listening_pause">Time to recall</string>
+    <plurals name="listening_pause_seconds">
+        <item quantity="one"><xliff:g id="seconds" example="1">%d</xliff:g> second</item>
+        <item quantity="other"><xliff:g id="seconds" example="3">%d</xliff:g> seconds</item>
+    </plurals>
+    <string name="listening_dialog_close">Close</string>
+
+    <string name="listening_no_korean">There’s no Korean voice on this phone, so you’ll hear the English and examples without the Korean meanings.</string>
+    <string name="listening_install">Install voice data</string>
+    <string name="listening_install_unavailable">Couldn’t open the voice data settings.</string>
+
+    <string name="listening_preparing_title">Getting the audio ready</string>
+    <string name="listening_preparing_body">It takes a moment only the first time you hear something.</string>
+    <string name="listening_preparing_progress"><xliff:g id="done" example="12">%1$d</xliff:g> of <xliff:g id="total" example="40">%2$d</xliff:g></string>
+    <string name="listening_preparing_cancel">Cancel</string>
+
+    <string name="listening_position"><xliff:g id="current" example="3">%1$d</xliff:g> of <xliff:g id="count" example="25">%2$d</xliff:g></string>
+    <string name="listening_paused">Paused</string>
+    <string name="listening_play">Play</string>
+    <string name="listening_pause_playback">Pause</string>
+    <string name="listening_previous">Previous</string>
+    <string name="listening_next">Next</string>
+    <string name="listening_stop">Stop listening</string>
+
+    <string name="listening_ended_title">That’s all</string>
+    <plurals name="listening_ended_body">
+        <item quantity="one">You reached the end of the list of <xliff:g id="count" example="1">%d</xliff:g> item. Listening time counts toward today’s goal.</item>
+        <item quantity="other">You reached the end of the list of <xliff:g id="count" example="25">%d</xliff:g> items. Listening time counts toward today’s goal.</item>
+    </plurals>
+    <string name="listening_play_again">Play again</string>
+    <string name="listening_choose_another">Listen to something else</string>
+
+    <string name="listening_empty_title">Nothing to listen to yet</string>
+    <string name="listening_empty_body">Finish a lesson, and you can listen to its words and dialogues here.</string>
+
+    <string name="listening_no_voice_title">No English voice</string>
+    <string name="listening_no_voice_body">Listening mode reads with your phone’s English voice. Install English voice data to use it.</string>
+    <string name="listening_no_engine_title">This phone can’t speak yet</string>
+    <string name="listening_no_engine_body">Listening mode needs a speech engine, and there’s none on this phone.</string>
+
+    <string name="listening_error_title">Couldn’t load what to listen to</string>
+    <string name="listening_error_body">Your lessons or study record couldn’t be read.</string>
+    <string name="listening_error_retry">Try again</string>
+
+    <string name="listening_message_load_failed">Couldn’t load what to listen to.</string>
+    <string name="listening_message_render_failed">Couldn’t make the audio. Try again.</string>
+    <string name="listening_message_voice_missing">A voice this needs isn’t installed.</string>
+    <string name="listening_message_play_failed">Couldn’t start playing.</string>
+    <string name="listening_message_playback_failed">Playback stopped. Pick it again to make the audio anew.</string>
+</resources>

@@ -19,12 +19,18 @@ import com.gyugle.gil.core.navigation.DeepLinkResolver
 import com.gyugle.gil.core.navigation.DeepLinkTarget
 import com.gyugle.gil.feature.home.api.TODAY_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TodayRoute
+import com.gyugle.gil.feature.listening.api.LISTENING_DEEP_LINK
+import com.gyugle.gil.feature.listening.api.ListeningPlayerRoute
 import javax.inject.Inject
 
 /** Every outside entry that opens a screen, matched as a whole string: no part of it is parsed yet. */
 class GilDeepLinkResolver @Inject constructor() : DeepLinkResolver {
     override fun resolve(uri: String): DeepLinkTarget? = when (uri) {
         TODAY_DEEP_LINK -> DeepLinkTarget(TodayRoute)
+
+        // The player is opened from the Today tab, so back goes there.
+        LISTENING_DEEP_LINK -> DeepLinkTarget(TodayRoute, listOf(ListeningPlayerRoute))
+
         else -> null
     }
 }

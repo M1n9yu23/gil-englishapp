@@ -27,6 +27,8 @@ import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.home.api.TODAY_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.lesson.api.LessonRoute
+import com.gyugle.gil.feature.listening.api.LISTENING_DEEP_LINK
+import com.gyugle.gil.feature.listening.api.ListeningPlayerRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingObserver
 import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import kotlinx.coroutines.Dispatchers
@@ -124,6 +126,16 @@ class AppStartViewModelTest {
         viewModel.onIntentData(TODAY_DEEP_LINK)
 
         assertThat(viewModel.deepLink.value).isEqualTo(DeepLinkTarget(TodayRoute))
+    }
+
+    @Test
+    fun listeningLink_inMain_opensThePlayerAboveToday() {
+        val viewModel = viewModel()
+        completed.tryEmit(true)
+
+        viewModel.onIntentData(LISTENING_DEEP_LINK)
+
+        assertThat(viewModel.deepLink.value).isEqualTo(DeepLinkTarget(TodayRoute, listOf(ListeningPlayerRoute)))
     }
 
     @Test

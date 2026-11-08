@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="listening_content_language">ko</string>
+
+    <string name="listening_title">듣기 모드</string>
+    <string name="listening_intro">영어를 듣고 잠깐 뜻을 떠올린 다음, 한국어 뜻과 예문을 들어요. 화면을 꺼도 계속 들려요.</string>
+
+    <string name="listening_resume">이어 듣기</string>
+    <string name="listening_section_sources">들을 것</string>
+    <string name="listening_source_due">오늘 복습할 것</string>
+    <string name="listening_source_recent">최근 배운 것</string>
+    <string name="listening_source_dialogues">대화문</string>
+    <string name="listening_section_units">단원별</string>
+    <plurals name="listening_item_count">
+        <item quantity="other"><xliff:g id="count" example="12">%d</xliff:g>개</item>
+    </plurals>
+    <plurals name="listening_dialogue_count">
+        <item quantity="other">대화 <xliff:g id="count" example="3">%d</xliff:g>개</item>
+    </plurals>
+
+    <string name="listening_section_pace">듣는 방식</string>
+    <string name="listening_speed">영어 속도</string>
+    <string name="listening_speed_normal">보통</string>
+    <string name="listening_speed_slow">천천히</string>
+    <string name="listening_pause">떠올릴 시간</string>
+    <plurals name="listening_pause_seconds">
+        <item quantity="other"><xliff:g id="seconds" example="3">%d</xliff:g>초</item>
+    </plurals>
+    <string name="listening_dialog_close">닫기</string>
+
+    <string name="listening_no_korean">휴대폰에 한국어 음성이 없어서 한국어 뜻은 빼고 영어와 예문만 들려줘요.</string>
+    <string name="listening_install">음성 데이터 설치</string>
+    <string name="listening_install_unavailable">음성 데이터 설정을 열지 못했어요.</string>
+
+    <string name="listening_preparing_title">소리를 준비하고 있어요</string>
+    <string name="listening_preparing_body">처음 듣는 것만 시간이 조금 걸려요.</string>
+    <string name="listening_preparing_progress"><xliff:g id="total" example="40">%2$d</xliff:g>개 중 <xliff:g id="done" example="12">%1$d</xliff:g>개</string>
+    <string name="listening_preparing_cancel">그만두기</string>
+
+    <string name="listening_position"><xliff:g id="count" example="25">%2$d</xliff:g>개 중 <xliff:g id="current" example="3">%1$d</xliff:g>번째</string>
+    <string name="listening_paused">멈췄어요</string>
+    <string name="listening_play">재생</string>
+    <string name="listening_pause_playback">일시정지</string>
+    <string name="listening_previous">이전</string>
+    <string name="listening_next">다음</string>
+    <string name="listening_stop">그만 듣기</string>
+
+    <string name="listening_ended_title">다 들었어요</string>
+    <plurals name="listening_ended_body">
+        <item quantity="other"><xliff:g id="count" example="25">%d</xliff:g>개짜리 목록을 끝까지 들었어요. 들은 시간은 오늘 공부 시간에 들어가요.</item>
+    </plurals>
+    <string name="listening_play_again">처음부터 다시 듣기</string>
+    <string name="listening_choose_another">다른 것 듣기</string>
+
+    <string name="listening_empty_title">아직 들을 것이 없어요</string>
+    <string name="listening_empty_body">수업을 하나 마치면 거기서 배운 단어와 대화를 여기서 들을 수 있어요.</string>
+
+    <string name="listening_no_voice_title">영어 음성이 없어요</string>
+    <string name="listening_no_voice_body">듣기 모드는 휴대폰의 영어 음성으로 읽어 줘요. 영어 음성 데이터를 설치하면 쓸 수 있어요.</string>
+    <string name="listening_no_engine_title">아직 소리를 낼 수 없어요</string>
+    <string name="listening_no_engine_body">듣기 모드에는 음성 엔진이 필요한데 이 휴대폰에는 없어요.</string>
+
+    <string name="listening_error_title">들을 것을 불러오지 못했어요</string>
+    <string name="listening_error_body">수업이나 학습 기록을 읽지 못했어요.</string>
+    <string name="listening_error_retry">다시 시도</string>
+
+    <string name="listening_message_load_failed">들을 것을 불러오지 못했어요.</string>
+    <string name="listening_message_render_failed">소리를 만들지 못했어요. 다시 시도해 주세요.</string>
+    <string name="listening_message_voice_missing">필요한 음성 데이터가 없어서 소리를 만들지 못했어요.</string>
+    <string name="listening_message_play_failed">재생을 시작하지 못했어요.</string>
+    <string name="listening_message_playback_failed">재생이 멈췄어요. 다시 고르면 소리를 새로 만들어요.</string>
+</resources>
