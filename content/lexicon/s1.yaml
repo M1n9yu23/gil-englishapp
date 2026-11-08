@@ -542,7 +542,7 @@
   senses:
     - id: sense.this.pron.near
       pos: pronoun
-      ko: 이것, 이 사람
+      ko: 이것, 이 사람, 이
       examples:
         - en: This is a book.
           ko: 이건 책이에요.
