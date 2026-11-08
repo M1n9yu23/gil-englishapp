@@ -30,6 +30,9 @@ sealed interface BackupError : RootError {
         NEWER_VERSION
     }
 
-    /** The section was valid but could not be written. */
+    /** The section was valid but could not be written, or the record could not be read. */
     data class Storage(val error: DataError.Local) : BackupError
+
+    /** The file the learner picked could not be opened, read or written, or is too large to be a backup. */
+    data object FileUnavailable : BackupError
 }

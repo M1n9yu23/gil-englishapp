@@ -1,0 +1,52 @@
+{
+  "format": "gil-backup",
+  "formatVersion": 1,
+  "appVersionCode": 2,
+  "createdAt": "2026-11-08T09:30:00Z",
+  "sections": {
+    "progress": {
+      "version": 1,
+      "cards": [
+        {
+          "item": "sense.hello.interj.greeting",
+          "stability": 3.17,
+          "difficulty": 2.118,
+          "dueDay": "2026-11-08",
+          "lastReviewDay": "2026-11-05",
+          "lastReviewAt": "2026-11-05T11:20:00Z",
+          "reviewCount": 1,
+          "lapseCount": 0,
+          "introducedAt": "2026-11-05T11:20:00Z"
+        }
+      ],
+      "reviews": [
+        {
+          "item": "sense.hello.interj.greeting",
+          "rating": "good",
+          "reviewedAt": "2026-11-05T11:20:00Z",
+          "day": "2026-11-05",
+          "stability": 3.17,
+          "difficulty": 2.118,
+          "dueDay": "2026-11-08"
+        }
+      ],
+      "lessons": [
+        { "lesson": "lesson.s1-15.1", "completedAt": "2026-11-05T11:20:00Z", "day": "2026-11-05" }
+      ],
+      "studyTime": [
+        { "day": "2026-11-05", "millis": 720000 }
+      ],
+      "saved": [],
+      "mistakes": []
+    },
+    "goal": { "version": 1, "minutes": 30 },
+    "reminders": { "version": 1, "times": ["07:45", "21:00"] },
+    "settings": {
+      "version": 1,
+      "theme": "dark",
+      "accent": "british",
+      "speed": "slow",
+      "showHangulAid": false
+    }
+  }
+}
