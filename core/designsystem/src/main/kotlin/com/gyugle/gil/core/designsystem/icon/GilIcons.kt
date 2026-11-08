@@ -74,6 +74,9 @@ object GilIcons {
     val Search: Painter
         @Composable get() = painterResource(R.drawable.ic_search)
 
+    val Settings: Painter
+        @Composable get() = painterResource(R.drawable.ic_settings)
+
     val Today: Painter
         @Composable get() = painterResource(R.drawable.ic_today)
 

@@ -15,39 +15,17 @@
  */
 package com.gyugle.gil.feature.onboarding.impl.presentation.reminder
 
-import android.text.format.DateFormat
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.TimePicker
-import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import com.gyugle.gil.core.designsystem.component.TextActionButton
+import com.gyugle.gil.core.designsystem.component.TimePickerDialog
+import com.gyugle.gil.core.designsystem.component.timeOfDayText
 import com.gyugle.gil.feature.onboarding.impl.presentation.R
 import com.gyugle.gil.feature.reminder.api.ReminderTime
-import java.util.Calendar
 
-/** The time as the phone shows times: "오후 8:00", "8:00 PM" or "20:00", following its 24-hour setting. */
 @Composable
-internal fun ReminderTime.displayText(): String {
-    val context = LocalContext.current
-    val locale = LocalConfiguration.current.locales[0]
-    return remember(this, locale) {
-        val calendar = Calendar.getInstance(locale).apply {
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
-        }
-        DateFormat.getTimeFormat(context).format(calendar.time)
-    }
-}
+internal fun ReminderTime.displayText(): String = timeOfDayText(hour, minute)
 
-/** The Material clock picker in a dialog, starting at [initial]. */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ReminderTimePickerDialog(
     initial: ReminderTime,
@@ -55,25 +33,14 @@ internal fun ReminderTimePickerDialog(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-    val state = rememberTimePickerState(
+    TimePickerDialog(
         initialHour = initial.hour,
         initialMinute = initial.minute,
-        is24Hour = DateFormat.is24HourFormat(context)
-    )
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        modifier = modifier,
-        title = { Text(stringResource(R.string.onboarding_reminder_picker_title)) },
-        text = { TimePicker(state = state) },
-        confirmButton = {
-            TextActionButton(
-                text = stringResource(R.string.onboarding_reminder_picker_confirm),
-                onClick = { onPick(ReminderTime(state.hour, state.minute)) }
-            )
-        },
-        dismissButton = {
-            TextActionButton(text = stringResource(R.string.onboarding_reminder_picker_cancel), onClick = onDismiss)
-        }
+        title = stringResource(R.string.onboarding_reminder_picker_title),
+        confirmLabel = stringResource(R.string.onboarding_reminder_picker_confirm),
+        dismissLabel = stringResource(R.string.onboarding_reminder_picker_cancel),
+        onPick = { hour, minute -> onPick(ReminderTime(hour, minute)) },
+        onDismiss = onDismiss,
+        modifier = modifier
     )
 }
