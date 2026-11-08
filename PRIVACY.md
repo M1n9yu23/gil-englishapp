@@ -16,6 +16,8 @@ does not request the internet permission.
 - Settings: daily goal, reminder times, theme, accent and speed, the Hangul sound guide and
   whether you finished the introduction.
 - A lesson you left halfway, so that you can continue it later.
+- For listening mode: its speed and pause, where you stopped, and the speech it plays, saved as
+  audio files in the app's cache, which the system may clear when storage runs low.
 
 You can erase your learning progress in the app's settings. Clearing the app's storage in the
 system settings, or uninstalling the app, deletes all of it.
@@ -30,7 +32,9 @@ app works as usual.
 ## Speech and reminders
 
 The app reads English aloud with the text-to-speech engine installed on your phone and passes it
-only the text of the lesson. Reminders are scheduled on the phone and shown as notifications.
+only the text of the lesson. Listening mode has the same engine read the course's words, meanings
+and sentences into audio files, and shows a media notification while it plays. Reminders are
+scheduled on the phone and shown as notifications.
 
 ## Backup
 
