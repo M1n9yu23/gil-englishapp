@@ -13,10 +13,12 @@ does not request the internet permission.
 
 - Learning progress: finished lessons, review schedule and results, mistakes, saved words and
   daily study time.
-- Settings: daily goal, reminder times and whether you finished the introduction.
+- Settings: daily goal, reminder times, theme, accent and speed, the Hangul sound guide and
+  whether you finished the introduction.
 - A lesson you left halfway, so that you can continue it later.
 
-Clearing the app's storage in the system settings, or uninstalling the app, deletes all of it.
+You can erase your learning progress in the app's settings. Clearing the app's storage in the
+system settings, or uninstalling the app, deletes all of it.
 
 ## Microphone
 
@@ -35,6 +37,10 @@ only the text of the lesson. Reminders are scheduled on the phone and shown as n
 If Android backup is turned on for your Google account, Android may include your progress and
 settings in that backup and restore them on a new phone. Google runs this backup under its own
 terms, and the developer has no access to it. You can turn it off in the system settings.
+
+In the app's settings you can also save your progress, daily goal, reminder times and settings to
+a file in a place you choose, and restore them from such a file later. The app reads and writes
+only the file you pick and does not send it anywhere.
 
 ## Reporting a content error
 
