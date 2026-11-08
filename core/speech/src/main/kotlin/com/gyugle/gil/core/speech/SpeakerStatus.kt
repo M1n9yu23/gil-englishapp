@@ -27,3 +27,16 @@ sealed interface SpeakerStatus {
         fun voice(language: SpeechLanguage): VoiceState = voices[language] ?: VoiceState.UNSUPPORTED
     }
 }
+
+/**
+ * The English voice to speak with: British when the learner prefers it and the phone has it,
+ * American otherwise, so a missing British voice never silences a lesson.
+ */
+fun SpeakerStatus.englishVoice(preferBritish: Boolean): SpeechLanguage =
+    if (preferBritish && this is SpeakerStatus.Connected &&
+        voice(SpeechLanguage.BRITISH_ENGLISH) == VoiceState.INSTALLED
+    ) {
+        SpeechLanguage.BRITISH_ENGLISH
+    } else {
+        SpeechLanguage.AMERICAN_ENGLISH
+    }
