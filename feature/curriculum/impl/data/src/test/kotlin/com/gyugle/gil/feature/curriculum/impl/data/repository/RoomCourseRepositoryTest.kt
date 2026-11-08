@@ -123,11 +123,15 @@ class RoomCourseRepositoryTest {
     private fun androidx.sqlite.db.SupportSQLiteDatabase.step(position: Int, payload: String) =
         execSQL("INSERT INTO lesson_step (lessonId, position, payload) VALUES ('lesson.a.1', $position, '$payload')")
 
-    private fun androidx.sqlite.db.SupportSQLiteDatabase.lesson(id: String, position: Int, coursePosition: Int) =
-        execSQL(
-            "INSERT INTO lesson (id, unitId, position, coursePosition, titleKo, titleEn, goalKo, goalEn) " +
-                "VALUES ('$id', 'unit.a', $position, $coursePosition, '$id ko', '$id en', '$id 목표', '$id goal')"
-        )
+    private fun androidx.sqlite.db.SupportSQLiteDatabase.lesson(
+        id: String,
+        position: Int,
+        coursePosition: Int,
+        unitId: String = "unit.a"
+    ) = execSQL(
+        "INSERT INTO lesson (id, unitId, position, coursePosition, titleKo, titleEn, goalKo, goalEn) " +
+            "VALUES ('$id', '$unitId', $position, $coursePosition, '$id ko', '$id en', '$id 목표', '$id goal')"
+    )
 
     @After
     fun close() = database.close()
@@ -171,6 +175,31 @@ class RoomCourseRepositoryTest {
         assertThat(repository.getUnitLessons()).isEqualTo(
             Outcome.Success(
                 listOf(
+                    UnitLessons(
+                        UnitId("unit.a"),
+                        LocalizedText("가", "A"),
+                        listOf(LessonId("lesson.a.1"), LessonId("lesson.a.2"))
+                    )
+                )
+            )
+        )
+    }
+
+    @Test
+    fun getUnitLessons_unitStartingEarlier_comesFirstWithAllItsLessons() = runTest {
+        database.openHelper.writableDatabase.apply {
+            lesson(id = "lesson.b.2", position = 1, coursePosition = 3, unitId = "unit.b")
+            lesson(id = "lesson.b.1", position = 0, coursePosition = 0, unitId = "unit.b")
+        }
+
+        assertThat(repository.getUnitLessons()).isEqualTo(
+            Outcome.Success(
+                listOf(
+                    UnitLessons(
+                        UnitId("unit.b"),
+                        LocalizedText("나", "B"),
+                        listOf(LessonId("lesson.b.1"), LessonId("lesson.b.2"))
+                    ),
                     UnitLessons(
                         UnitId("unit.a"),
                         LocalizedText("가", "A"),
