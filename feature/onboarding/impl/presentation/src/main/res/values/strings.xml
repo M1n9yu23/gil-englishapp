@@ -5,6 +5,7 @@
     <!-- Screen reader text for the progress bar and count above. -->
     <string name="onboarding_progress_description">Step <xliff:g id="step" example="2">%1$d</xliff:g> of <xliff:g id="count" example="7">%2$d</xliff:g></string>
     <string name="onboarding_next">Next</string>
+    <string name="onboarding_method_done">Done</string>
     <string name="onboarding_continue">Continue</string>
 
     <string name="onboarding_welcome_title">Welcome to Gil</string>

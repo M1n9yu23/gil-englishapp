@@ -53,3 +53,11 @@ data object OnboardingReminderRoute : OnboardingRoute
 @Serializable
 @SerialName("onboarding.sound")
 data object OnboardingSoundRoute : OnboardingRoute
+
+/**
+ * The pages on how to study, opened again from the settings after the first run. One entry for
+ * all pages, so leaving goes straight back to where it was opened.
+ */
+@Serializable
+@SerialName("onboarding.method-again")
+data object StudyMethodRoute : NavKey

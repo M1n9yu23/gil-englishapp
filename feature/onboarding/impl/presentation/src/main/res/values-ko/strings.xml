@@ -3,6 +3,7 @@
     <string name="onboarding_progress"><xliff:g id="step" example="2">%1$d</xliff:g>/<xliff:g id="count" example="7">%2$d</xliff:g></string>
     <string name="onboarding_progress_description"><xliff:g id="count" example="7">%2$d</xliff:g>단계 중 <xliff:g id="step" example="2">%1$d</xliff:g>단계</string>
     <string name="onboarding_next">다음</string>
+    <string name="onboarding_method_done">확인</string>
     <string name="onboarding_continue">계속</string>
 
     <string name="onboarding_welcome_title">길에 오신 걸 환영해요</string>

@@ -23,8 +23,10 @@ import com.gyugle.gil.feature.onboarding.api.OnboardingMethodRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingReminderRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingSoundRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingWelcomeRoute
+import com.gyugle.gil.feature.onboarding.api.StudyMethodRoute
 import com.gyugle.gil.feature.onboarding.impl.presentation.goal.GoalStepRoot
 import com.gyugle.gil.feature.onboarding.impl.presentation.method.MethodScreen
+import com.gyugle.gil.feature.onboarding.impl.presentation.method.StudyMethodScreen
 import com.gyugle.gil.feature.onboarding.impl.presentation.reminder.ReminderStepRoot
 import com.gyugle.gil.feature.onboarding.impl.presentation.sound.SoundCheckRoot
 import com.gyugle.gil.feature.onboarding.impl.presentation.welcome.WelcomeRoot
@@ -57,5 +59,12 @@ fun EntryProviderScope<NavKey>.onboardingEntries(navigator: Navigator) {
     }
     entry<OnboardingSoundRoute> {
         SoundCheckRoot(onBack = navigator::goBack)
+    }
+}
+
+/** The method pages for the main screens, opened again after the first run. */
+fun EntryProviderScope<NavKey>.studyMethodEntries(navigator: Navigator) {
+    entry<StudyMethodRoute> {
+        StudyMethodScreen(onClose = navigator::goBack)
     }
 }
