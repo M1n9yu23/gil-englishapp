@@ -22,12 +22,14 @@ import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LessonOverview
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.StageLessons
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadJson
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toLesson
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toStage
+import com.gyugle.gil.feature.curriculum.impl.data.mapper.toStageTag
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toUnitDetail
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toUnitSummary
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
@@ -101,4 +103,10 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
                 )
             )
         }
+
+    override suspend fun getStageLessons(): Outcome<List<StageLessons>, ContentError> = databases.read { database ->
+        val dao = database.courseDao()
+        val lessons = dao.lessonStages().groupBy({ it.stageId }, { LessonId(it.lessonId) })
+        Outcome.Success(dao.stages().map { StageLessons(it.toStageTag(), lessons[it.id].orEmpty()) })
+    }
 }

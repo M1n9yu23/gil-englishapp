@@ -21,12 +21,15 @@ import com.gyugle.gil.feature.curriculum.api.Lesson
 /**
  * A [CourseObserver] over [lessons]. A missing lesson is [ContentError.NOT_FOUND]; [error], when
  * set, is what every call fails with. The first lesson is the first in [lessons], and course order
- * is their order. Every lesson is in a unit titled [unitTitle].
+ * is their order. Every lesson is in a unit titled [unitTitle], and in [stage] unless [stages]
+ * sets the course's stages.
  */
 class FakeCourseObserver(vararg lessons: Lesson) : CourseObserver {
     val lessons: MutableList<Lesson> = lessons.toMutableList()
     var error: ContentError? = null
     var unitTitle = LocalizedText("단원", "Unit")
+    var stage = StageTag(StageId("stage.s1"), position = 0, title = LocalizedText("단계", "Stage"))
+    var stages: List<StageLessons>? = null
 
     override suspend fun getLesson(id: LessonId): Outcome<Lesson, ContentError> {
         error?.let { return Outcome.Failure(it) }
@@ -45,5 +48,10 @@ class FakeCourseObserver(vararg lessons: Lesson) : CourseObserver {
         return Outcome.Success(
             next?.let { LessonOverview(it.id, it.title, unitTitle, it.steps.size, it.introduced.size) }
         )
+    }
+
+    override suspend fun getStageLessons(): Outcome<List<StageLessons>, ContentError> {
+        error?.let { return Outcome.Failure(it) }
+        return Outcome.Success(stages ?: listOf(StageLessons(stage, lessons.map { it.id })))
     }
 }

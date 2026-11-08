@@ -54,4 +54,10 @@ interface CourseDao {
 
     @Query("SELECT * FROM lesson WHERE unitId = :unitId ORDER BY position")
     suspend fun lessons(unitId: String): List<LessonEntity>
+
+    @Query(
+        "SELECT lesson.id AS lessonId, unit.stageId AS stageId FROM lesson " +
+            "JOIN unit ON unit.id = lesson.unitId ORDER BY lesson.coursePosition"
+    )
+    suspend fun lessonStages(): List<LessonStageRow>
 }

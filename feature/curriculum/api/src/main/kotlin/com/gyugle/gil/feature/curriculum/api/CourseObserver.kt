@@ -34,4 +34,7 @@ interface CourseObserver {
      * [ContentError.UNAVAILABLE] when reading fails.
      */
     suspend fun getNextLesson(completed: Set<LessonId>): Outcome<LessonOverview?, ContentError>
+
+    /** Every stage in course order with its lessons. [ContentError.UNAVAILABLE] when reading fails. */
+    suspend fun getStageLessons(): Outcome<List<StageLessons>, ContentError>
 }

@@ -35,6 +35,8 @@ import com.gyugle.gil.feature.curriculum.api.SenseId
 import com.gyugle.gil.feature.curriculum.api.Sentence
 import com.gyugle.gil.feature.curriculum.api.SoundId
 import com.gyugle.gil.feature.curriculum.api.StageId
+import com.gyugle.gil.feature.curriculum.api.StageLessons
+import com.gyugle.gil.feature.curriculum.api.StageTag
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabase
 import com.gyugle.gil.feature.curriculum.impl.domain.model.LessonSummary
@@ -143,6 +145,24 @@ class RoomCourseRepositoryTest {
         )
         assertThat(stages[1].canDo).isEqualTo(emptyList())
         assertThat(stages[1].units).isEqualTo(emptyList())
+    }
+
+    @Test
+    fun getStageLessons_rowsOutOfOrder_returnsEveryStageWithItsLessonsInCourseOrder() = runTest {
+        assertThat(repository.getStageLessons()).isEqualTo(
+            Outcome.Success(
+                listOf(
+                    StageLessons(
+                        StageTag(StageId("stage.one"), position = 0, title = LocalizedText("하나", "One")),
+                        listOf(LessonId("lesson.a.1"), LessonId("lesson.a.2"))
+                    ),
+                    StageLessons(
+                        StageTag(StageId("stage.two"), position = 1, title = LocalizedText("둘", "Two")),
+                        emptyList()
+                    )
+                )
+            )
+        )
     }
 
     @Test
