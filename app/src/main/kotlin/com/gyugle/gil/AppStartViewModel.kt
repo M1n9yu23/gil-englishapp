@@ -24,6 +24,8 @@ import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingObserver
+import com.gyugle.gil.feature.settings.api.AppSettingsObserver
+import com.gyugle.gil.feature.settings.api.ThemeMode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -43,6 +45,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class AppStartViewModel @Inject constructor(
     onboardingObserver: OnboardingObserver,
+    appSettings: AppSettingsObserver,
     private val deepLinkResolver: DeepLinkResolver,
     private val courseObserver: CourseObserver
 ) : ViewModel() {
@@ -51,6 +54,11 @@ class AppStartViewModel @Inject constructor(
     val host: StateFlow<AppHost> = onboardingObserver.observeCompleted()
         .map { completed -> if (completed) AppHost.Main else AppHost.Onboarding }
         .stateIn(viewModelScope, SharingStarted.Eagerly, AppHost.Loading)
+
+    /** Null until read, so the splash screen stays until the first frame has the right colours. */
+    val theme: StateFlow<ThemeMode?> = appSettings.observeSettings()
+        .map { it.theme }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     private val _deepLink = MutableStateFlow<DeepLinkTarget?>(null)
 

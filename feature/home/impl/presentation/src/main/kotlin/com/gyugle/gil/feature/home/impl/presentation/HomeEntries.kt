@@ -22,12 +22,14 @@ import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.home.impl.presentation.today.TodayRoot
 import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.review.api.ReviewSessionRoute
+import com.gyugle.gil.feature.settings.api.SettingsHomeRoute
 
 fun EntryProviderScope<NavKey>.homeEntries(navigator: Navigator) {
     entry<TodayRoute> {
         TodayRoot(
             onOpenReview = { limit -> navigator.goTo(ReviewSessionRoute(limit)) },
-            onOpenLesson = { id -> navigator.goTo(LessonRoute(id)) }
+            onOpenLesson = { id -> navigator.goTo(LessonRoute(id)) },
+            onOpenSettings = { navigator.goTo(SettingsHomeRoute) }
         )
     }
 }

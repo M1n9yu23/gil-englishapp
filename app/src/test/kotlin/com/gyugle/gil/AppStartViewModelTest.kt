@@ -28,6 +28,7 @@ import com.gyugle.gil.feature.home.api.TODAY_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingObserver
+import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -59,7 +60,7 @@ class AppStartViewModelTest {
     )
     private val course = FakeCourseObserver(firstLesson)
 
-    private fun viewModel() = AppStartViewModel(observer, GilDeepLinkResolver(), course)
+    private fun viewModel() = AppStartViewModel(observer, FakeAppSettingsObserver(), GilDeepLinkResolver(), course)
 
     @Test
     fun onboardingFinished_opensTheFirstLessonOverToday() {

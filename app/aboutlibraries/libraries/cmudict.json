@@ -1,0 +1,14 @@
+{
+  "uniqueId": "org.cmusphinx:cmudict",
+  "name": "The CMU Pronouncing Dictionary",
+  "description": "The source of the IPA in the course content.",
+  "website": "https://github.com/cmusphinx/cmudict",
+  "developers": [
+    {
+      "name": "Carnegie Mellon University"
+    }
+  ],
+  "licenses": [
+    "CMUdict"
+  ]
+}

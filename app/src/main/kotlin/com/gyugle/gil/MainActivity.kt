@@ -16,8 +16,10 @@
 package com.gyugle.gil
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -28,10 +30,13 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.feature.settings.api.ThemeMode
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,15 +47,30 @@ class MainActivity : ComponentActivity() {
         // Before super.onCreate, so the splash theme is swapped for the app theme in time.
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        // Until the first read of the onboarding flag, so neither host flashes before the other.
-        splashScreen.setKeepOnScreenCondition { viewModel.host.value == AppHost.Loading }
-        enableEdgeToEdge()
+        // Until the onboarding flag and the theme are read, so neither host nor colour flashes.
+        splashScreen.setKeepOnScreenCondition {
+            viewModel.host.value == AppHost.Loading || viewModel.theme.value == null
+        }
         // A recreated activity already opened its link; its back stacks were restored instead. From
         // Recents the old intent comes back with its link, which was opened back then.
         val fromRecents = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
         if (savedInstanceState == null && !fromRecents) viewModel.onIntentData(intent.dataString)
         setContent {
-            GilTheme {
+            val theme by viewModel.theme.collectAsStateWithLifecycle()
+            val darkTheme = when (theme) {
+                ThemeMode.LIGHT -> false
+                ThemeMode.DARK -> true
+                ThemeMode.SYSTEM, null -> isSystemInDarkTheme()
+            }
+            // The bar icons follow the app's theme, which can differ from the phone's.
+            DisposableEffect(darkTheme) {
+                enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT) { darkTheme },
+                    navigationBarStyle = SystemBarStyle.auto(LIGHT_SCRIM, DARK_SCRIM) { darkTheme }
+                )
+                onDispose {}
+            }
+            GilTheme(darkTheme = darkTheme) {
                 val host by viewModel.host.collectAsStateWithLifecycle()
                 val deepLink by viewModel.deepLink.collectAsStateWithLifecycle()
                 val fade = tween<Float>(GilTheme.motion.fade)
@@ -77,6 +97,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private companion object {
+        // The scrims enableEdgeToEdge() uses by default, for three-button navigation.
+        val LIGHT_SCRIM = Color.argb(0xe6, 0xFF, 0xFF, 0xFF)
+        val DARK_SCRIM = Color.argb(0x80, 0x1b, 0x1b, 0x1b)
     }
 
     /** A reminder tapped while the app is open arrives here, not through [getIntent]. */

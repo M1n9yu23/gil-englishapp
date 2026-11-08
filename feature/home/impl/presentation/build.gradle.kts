@@ -27,6 +27,7 @@ dependencies {
     implementation(projects.feature.curriculum.api)
     implementation(projects.feature.review.api)
     implementation(projects.feature.lesson.api)
+    implementation(projects.feature.settings.api)
     implementation(libs.timber)
 
     testImplementation(testFixtures(projects.feature.curriculum.api))

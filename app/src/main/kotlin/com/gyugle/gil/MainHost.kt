@@ -47,7 +47,9 @@ import com.gyugle.gil.feature.curriculum.impl.presentation.curriculumEntries
 import com.gyugle.gil.feature.dictionary.impl.presentation.dictionaryEntries
 import com.gyugle.gil.feature.home.impl.presentation.homeEntries
 import com.gyugle.gil.feature.lesson.impl.presentation.lessonEntries
+import com.gyugle.gil.feature.onboarding.impl.presentation.studyMethodEntries
 import com.gyugle.gil.feature.review.impl.presentation.reviewEntries
+import com.gyugle.gil.feature.settings.impl.presentation.settingsEntries
 import com.gyugle.gil.feature.stats.impl.presentation.statsEntries
 
 private val destinations = TopLevelDestination.entries
@@ -115,6 +117,8 @@ private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
     reviewEntries(navigator)
     dictionaryEntries(navigator)
     statsEntries(navigator)
+    settingsEntries(navigator)
+    studyMethodEntries(navigator)
 }
 
 @Composable

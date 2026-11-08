@@ -19,6 +19,7 @@ plugins {
     alias(libs.plugins.convention.android.application.compose)
     alias(libs.plugins.convention.hilt)
     alias(libs.plugins.convention.android.screenshot)
+    alias(libs.plugins.aboutlibraries)
 }
 
 // Upload key settings stay out of git. Without the file, release builds come out unsigned.
@@ -72,6 +73,15 @@ android {
     }
 }
 
+// The license screen lists every library in the app. The build stays offline: license texts that
+// Maven metadata lacks, and the fonts and icons that are not Maven artifacts, are in aboutlibraries/.
+aboutLibraries {
+    offlineMode = true
+    collect {
+        configPath = file("aboutlibraries")
+    }
+}
+
 dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.domain)
@@ -97,6 +107,9 @@ dependencies {
     implementation(projects.feature.review.impl.presentation)
     implementation(projects.feature.stats.api)
     implementation(projects.feature.stats.impl.presentation)
+    implementation(projects.feature.settings.api)
+    implementation(projects.feature.settings.impl.data)
+    implementation(projects.feature.settings.impl.presentation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
@@ -106,4 +119,5 @@ dependencies {
     implementation(libs.timber)
 
     testImplementation(testFixtures(projects.feature.curriculum.api))
+    testImplementation(testFixtures(projects.feature.settings.api))
 }

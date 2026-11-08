@@ -4,6 +4,7 @@
     <string name="home_content_language">en</string>
 
     <string name="home_title">Today</string>
+    <string name="home_settings">Settings</string>
     <string name="home_studied_today"><xliff:g id="minutes" example="12">%1$d</xliff:g> min studied</string>
     <string name="home_goal">Goal: <xliff:g id="minutes" example="20">%1$d</xliff:g> min</string>
 

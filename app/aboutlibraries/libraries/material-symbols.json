@@ -1,0 +1,14 @@
+{
+  "uniqueId": "com.google:material-symbols",
+  "name": "Material Symbols",
+  "description": "The icons.",
+  "website": "https://github.com/google/material-design-icons",
+  "developers": [
+    {
+      "name": "Google LLC"
+    }
+  ],
+  "licenses": [
+    "Apache-2.0"
+  ]
+}

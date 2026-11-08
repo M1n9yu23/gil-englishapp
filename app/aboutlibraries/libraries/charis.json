@@ -1,0 +1,15 @@
+{
+  "uniqueId": "org.sil:charis",
+  "artifactVersion": "7.000",
+  "name": "Charis",
+  "description": "The typeface of English sentences and IPA.",
+  "website": "https://software.sil.org/charis/",
+  "developers": [
+    {
+      "name": "SIL Global"
+    }
+  ],
+  "licenses": [
+    "OFL-1.1-Charis"
+  ]
+}

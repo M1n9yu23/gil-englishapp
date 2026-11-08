@@ -3,6 +3,7 @@
     <string name="home_content_language">ko</string>
 
     <string name="home_title">오늘</string>
+    <string name="home_settings">설정</string>
     <string name="home_studied_today"><xliff:g id="minutes" example="12">%1$d</xliff:g>분 공부했어요</string>
     <string name="home_goal">목표 <xliff:g id="minutes" example="20">%1$d</xliff:g>분</string>
 

@@ -25,6 +25,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -56,12 +57,14 @@ import com.gyugle.gil.feature.home.impl.presentation.R
 fun TodayRoot(
     onOpenReview: (limit: Int) -> Unit,
     onOpenLesson: (LessonId) -> Unit,
+    onOpenSettings: () -> Unit,
     viewModel: TodayViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     TodayScreen(
         state = state,
         onAction = viewModel::onAction,
+        onOpenSettings = onOpenSettings,
         onOpenBlock = { block ->
             when (block) {
                 is BlockUi.Review -> onOpenReview(block.count)
@@ -78,10 +81,18 @@ fun TodayScreen(
     state: TodayState,
     onAction: (TodayAction) -> Unit,
     onOpenBlock: (BlockUi) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onOpenSettings: () -> Unit = {}
 ) {
     Column(modifier = modifier.fillMaxSize()) {
-        GilTopBar(title = stringResource(R.string.home_title))
+        GilTopBar(
+            title = stringResource(R.string.home_title),
+            actions = {
+                IconButton(onClick = onOpenSettings) {
+                    Icon(painter = GilIcons.Settings, contentDescription = stringResource(R.string.home_settings))
+                }
+            }
+        )
         when (state) {
             TodayState.Loading -> LoadingState()
 
