@@ -2,7 +2,7 @@
 
 [한국어](PRIVACY.ko.md)
 
-Last updated: November 8, 2026
+Last updated: November 10, 2026
 
 This policy covers the Gil app for Android (application ID `com.gyugle.gil`).
 
@@ -26,8 +26,10 @@ system settings, or uninstalling the app, deletes all of it.
 
 Speaking steps ask for the microphone permission so that you can record yourself and listen back.
 A recording is at most 10 seconds long, stays in memory, and is never written to storage. It is
-gone when you move to the next step or leave the lesson. Without the permission, the rest of the
-app works as usual.
+gone when you move to the next step or leave the lesson. On Android 13 or later, if the phone has
+offline English speech recognition installed, the recording is also passed to that recognizer on
+the phone to show which words it heard. The app asks only for on-device recognition. Without the
+permission, the rest of the app works as usual.
 
 ## Speech and reminders
 
