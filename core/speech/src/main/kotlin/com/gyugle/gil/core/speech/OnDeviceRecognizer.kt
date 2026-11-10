@@ -15,6 +15,8 @@
  */
 package com.gyugle.gil.core.speech
 
+import com.gyugle.gil.core.domain.Outcome
+
 /**
  * The device's own speech recognizer, used to score shadowing.
  *
@@ -22,4 +24,10 @@ package com.gyugle.gil.core.speech
  */
 interface OnDeviceRecognizer {
     suspend fun availability(language: SpeechLanguage): RecognizerAvailability
+
+    /**
+     * What the recognizer heard in [recording], as one line of text. The audio is handed over
+     * from memory and is not written to storage.
+     */
+    suspend fun recognize(recording: VoiceRecording, language: SpeechLanguage): Outcome<String, RecognitionError>
 }

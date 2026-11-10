@@ -15,7 +15,32 @@
  */
 package com.gyugle.gil.core.speech
 
+import com.gyugle.gil.core.domain.Outcome
+import kotlinx.coroutines.CompletableDeferred
+
+/**
+ * An [OnDeviceRecognizer] that answers [recognize] with [heard]. Set [pending] to hold the answer
+ * until the test completes it.
+ */
 class FakeOnDeviceRecognizer(var availability: RecognizerAvailability = RecognizerAvailability.READY) :
     OnDeviceRecognizer {
-    override suspend fun availability(language: SpeechLanguage): RecognizerAvailability = availability
+    var heard: Outcome<String, RecognitionError> = Outcome.Success("")
+    var pending: CompletableDeferred<Unit>? = null
+    val recognized = mutableListOf<VoiceRecording>()
+    var availabilityChecks = 0
+        private set
+
+    override suspend fun availability(language: SpeechLanguage): RecognizerAvailability {
+        availabilityChecks++
+        return availability
+    }
+
+    override suspend fun recognize(
+        recording: VoiceRecording,
+        language: SpeechLanguage
+    ): Outcome<String, RecognitionError> {
+        recognized += recording
+        pending?.await()
+        return heard
+    }
 }
