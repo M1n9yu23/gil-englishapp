@@ -1,7 +1,7 @@
 [versions]
 projectApplicationId = "com.gyugle.gil"
-projectVersionName = "0.2.0"
-projectVersionCode = "2"
+projectVersionName = "0.3.0"
+projectVersionCode = "3"
 projectMinSdkVersion = "26"
 projectTargetSdkVersion = "37"
 projectCompileSdkVersion = "37"
