@@ -55,6 +55,12 @@ class LessonScreenshotTest {
 
     @Test fun shadow_recorded_offersPlayback() = capture(Data.playing(Data.shadowRecorded))
 
+    @Test fun shadow_scored_underlinesMissedWords() = capture(Data.playing(Data.shadowScored))
+
+    @Test fun shadow_nothingHeard_asksToTryLouder() = capture(Data.playing(Data.shadowNothingHeard))
+
+    @Test fun shadow_noModel_saysHowToGetScoring() = capture(Data.playing(Data.shadowScoringNotice))
+
     @Test fun chooseMeaning_beforeAnswering() = capture(Data.playing(Data.chooseMeaning))
 
     @Test fun chooseMeaning_wrong_explainsAndComesBack() = capture(
@@ -112,6 +118,10 @@ class LessonScreenshotTest {
     @Test
     @Config(qualifiers = "+night")
     fun result_night() = capture(Data.result)
+
+    @Test
+    @Config(qualifiers = "+night")
+    fun shadow_scored_night() = capture(Data.playing(Data.shadowScored))
 
     @Test
     @Config(qualifiers = "en-w360dp-h760dp-xhdpi", fontScale = 2f)

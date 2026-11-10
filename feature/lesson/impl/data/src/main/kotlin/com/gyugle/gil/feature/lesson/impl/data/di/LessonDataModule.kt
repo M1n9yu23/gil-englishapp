@@ -16,7 +16,9 @@
 package com.gyugle.gil.feature.lesson.impl.data.di
 
 import com.gyugle.gil.feature.lesson.impl.data.repository.DataStoreLessonRunRepository
+import com.gyugle.gil.feature.lesson.impl.data.repository.DataStoreScoringNoticeRepository
 import com.gyugle.gil.feature.lesson.impl.domain.repository.LessonRunRepository
+import com.gyugle.gil.feature.lesson.impl.domain.repository.ScoringNoticeRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,4 +29,7 @@ import dagger.hilt.components.SingletonComponent
 internal interface LessonDataModule {
     @Binds
     fun lessonRunRepository(repository: DataStoreLessonRunRepository): LessonRunRepository
+
+    @Binds
+    fun scoringNoticeRepository(repository: DataStoreScoringNoticeRepository): ScoringNoticeRepository
 }

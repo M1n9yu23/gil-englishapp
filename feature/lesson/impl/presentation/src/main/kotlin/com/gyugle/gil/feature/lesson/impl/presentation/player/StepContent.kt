@@ -186,7 +186,7 @@ private fun ColumnScope.ShadowContent(step: StepUi.Shadow, hasVoice: Boolean, on
     RecorderPanel(step.recorder, onAction)
 }
 
-/** Record and compare, or the reason and the way to allow the microphone. */
+/** Record, compare and see what the phone heard, or the reason and the way to allow the microphone. */
 @Composable
 private fun RecorderPanel(recorder: RecorderUi, onAction: (LessonAction) -> Unit) {
     val colors = MaterialTheme.colorScheme
@@ -230,6 +230,8 @@ private fun RecorderPanel(recorder: RecorderUi, onAction: (LessonAction) -> Unit
                         color = colors.error
                     )
                 }
+                recorder.score?.let { ScoreView(it) }
+                recorder.notice?.let { ScoringNotice(it) }
             }
 
             MicrophoneUi.NOT_ASKED, MicrophoneUi.DENIED -> {

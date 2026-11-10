@@ -22,6 +22,9 @@ import com.gyugle.gil.core.domain.onFailure
 import com.gyugle.gil.core.domain.onSuccess
 import com.gyugle.gil.core.presentation.UiText
 import com.gyugle.gil.core.presentation.permissions.PermissionState
+import com.gyugle.gil.core.speech.OnDeviceRecognizer
+import com.gyugle.gil.core.speech.RecognitionError
+import com.gyugle.gil.core.speech.RecognizerAvailability
 import com.gyugle.gil.core.speech.Speaker
 import com.gyugle.gil.core.speech.SpeakerStatus
 import com.gyugle.gil.core.speech.SpeechLanguage
@@ -37,10 +40,12 @@ import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.api.StudyItemId
+import com.gyugle.gil.feature.lesson.impl.domain.SpeechMatcher
 import com.gyugle.gil.feature.lesson.impl.domain.introducedRatings
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
 import com.gyugle.gil.feature.lesson.impl.domain.repository.LessonRunRepository
+import com.gyugle.gil.feature.lesson.impl.domain.repository.ScoringNoticeRepository
 import com.gyugle.gil.feature.lesson.impl.domain.stepsThatNeedSound
 import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.progress.api.ProgressCommands
@@ -83,6 +88,9 @@ import timber.log.Timber
  * The run is saved after every answer and step, and when the screen leaves the front, so leaving
  * the lesson or losing the process keeps the place. A return after process death goes straight
  * back to the step, or to the result; opening the lesson again later asks first.
+ *
+ * A shadowing recording is checked word by word when the phone's on-device recognizer has an
+ * English model; otherwise the learner compares by ear and is told why, once.
  */
 @HiltViewModel(assistedFactory = LessonViewModel.Factory::class)
 class LessonViewModel @AssistedInject constructor(
@@ -96,7 +104,9 @@ class LessonViewModel @AssistedInject constructor(
     private val recorder: VoiceRecorder,
     private val voicePlayer: VoicePlayer,
     private val clock: StudyClock,
-    private val appSettings: AppSettingsObserver
+    private val appSettings: AppSettingsObserver,
+    private val recognizer: OnDeviceRecognizer,
+    private val scoringNotices: ScoringNoticeRepository
 ) : ViewModel() {
 
     @AssistedFactory
@@ -122,6 +132,14 @@ class LessonViewModel @AssistedInject constructor(
     private var recordingFailed = false
     private var microphone = MicrophoneUi.NOT_ASKED
     private var showsNoVoiceNotice = false
+    private var score: ScoreUi? = null
+
+    /** What the recognizer said about English; null until a speaking step asks. */
+    private var scoring: RecognizerAvailability? = null
+
+    /** A notice waiting for a speaking step with the microphone allowed. */
+    private var pendingNotice: ScoringNoticeUi? = null
+    private var notice: ScoringNoticeUi? = null
     private var result: ResultUi? = null
 
     /** The ratings of a finished lesson, kept until [ProgressCommands.completeLesson] succeeds. */
@@ -136,6 +154,7 @@ class LessonViewModel @AssistedInject constructor(
 
     private var soundJob: Job? = null
     private var recordJob: Job? = null
+    private var scoreJob: Job? = null
 
     /** The defaults until the settings are read, which takes a moment at most. */
     private var settings = AppSettings()
@@ -218,6 +237,7 @@ class LessonViewModel @AssistedInject constructor(
 
             is LessonAction.OnMicrophoneState -> {
                 microphone = action.state.toMicrophoneUi()
+                showNoticeIfDue()
                 render()
             }
 
@@ -312,9 +332,12 @@ class LessonViewModel @AssistedInject constructor(
         val loaded = lesson ?: return
         soundJob?.cancel()
         recordJob?.cancel()
+        scoreJob?.cancel()
         recording = null
         isRecording = false
         recordingFailed = false
+        score = null
+        notice = null
         if (current.isFinished) {
             finish()
             return
@@ -332,6 +355,7 @@ class LessonViewModel @AssistedInject constructor(
         layout = StepLayout(step, seed = seedFor(index, current.isRetry))
         render()
         autoPlay(step)
+        if (step is LessonStep.Shadow) checkScoring()
     }
 
     private fun pick(displayIndex: Int) {
@@ -486,15 +510,84 @@ class LessonViewModel @AssistedInject constructor(
     private fun record() {
         if (isRecording || microphone != MicrophoneUi.GRANTED) return
         soundJob?.cancel()
+        scoreJob?.cancel()
         recordJob = viewModelScope.launch {
             isRecording = true
             recordingFailed = false
+            score = null
             render()
             recorder.record(MAX_RECORDING)
-                .onSuccess { recording = it }
+                .onSuccess { mine ->
+                    recording = mine
+                    if (scoring == RecognizerAvailability.READY) score(mine)
+                }
                 .onFailure { recordingFailed = true }
             isRecording = false
             render()
+        }
+    }
+
+    /** Asks the recognizer what it heard and marks each word of the sentence by it. */
+    private fun score(mine: VoiceRecording) {
+        val sentence = (currentStep() as? LessonStep.Shadow)?.sentence?.text ?: return
+        score = ScoreUi.Checking
+        scoreJob = viewModelScope.launch {
+            recognizer.recognize(mine, SpeechLanguage.AMERICAN_ENGLISH)
+                .onSuccess { heard ->
+                    score =
+                        ScoreUi.Heard(SpeechMatcher.match(sentence, heard).map { MarkedWordUi(it.text, it.matched) })
+                }
+                .onFailure { error ->
+                    score = when (error) {
+                        RecognitionError.NO_SPEECH -> ScoreUi.NothingHeard
+
+                        RecognitionError.UNAVAILABLE -> {
+                            // The model went away since the check; compare by ear from now on.
+                            scoring = RecognizerAvailability.UNAVAILABLE
+                            null
+                        }
+
+                        RecognitionError.FAILED -> {
+                            Timber.w("Could not check a recording")
+                            null
+                        }
+                    }
+                }
+            render()
+        }
+    }
+
+    /**
+     * Finds out whether recordings can be checked. Asked again on each speaking step until the
+     * answer is yes, so a model installed during the lesson is picked up.
+     */
+    private fun checkScoring() {
+        if (scoring == RecognizerAvailability.READY) return
+        viewModelScope.launch {
+            val availability = recognizer.availability(SpeechLanguage.AMERICAN_ENGLISH)
+            scoring = availability
+            if (availability != RecognizerAvailability.READY && pendingNotice == null && notice == null &&
+                !scoringNotices.wasShown()
+            ) {
+                pendingNotice = if (availability == RecognizerAvailability.NOT_DOWNLOADED) {
+                    ScoringNoticeUi.MODEL_NOT_INSTALLED
+                } else {
+                    ScoringNoticeUi.UNSUPPORTED
+                }
+            }
+            showNoticeIfDue()
+            render()
+        }
+    }
+
+    /** The notice means nothing without the microphone, so it waits until the learner can record. */
+    private fun showNoticeIfDue() {
+        val due = pendingNotice ?: return
+        if (microphone != MicrophoneUi.GRANTED || currentStep() !is LessonStep.Shadow) return
+        pendingNotice = null
+        notice = due
+        viewModelScope.launch {
+            scoringNotices.markShown().onFailure { Timber.w("Could not remember the scoring notice: %s", it) }
         }
     }
 
@@ -613,7 +706,9 @@ class LessonViewModel @AssistedInject constructor(
             microphone = microphone,
             isRecording = isRecording,
             hasRecording = recording != null,
-            failed = recordingFailed
+            failed = recordingFailed,
+            score = score,
+            notice = notice
         )
         _state.update {
             it.copy(

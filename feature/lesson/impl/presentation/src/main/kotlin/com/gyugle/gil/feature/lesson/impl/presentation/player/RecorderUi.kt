@@ -17,11 +17,18 @@ package com.gyugle.gil.feature.lesson.impl.presentation.player
 
 import androidx.compose.runtime.Immutable
 
-/** Whether the learner may record, and what happened to the last recording. */
+/**
+ * Whether the learner may record, and what happened to the last recording.
+ *
+ * @property score what the phone's recognizer made of the last recording; null when it does not check
+ * @property notice why recordings are not checked, shown once ever
+ */
 @Immutable
 data class RecorderUi(
     val microphone: MicrophoneUi,
     val isRecording: Boolean = false,
     val hasRecording: Boolean = false,
-    val failed: Boolean = false
+    val failed: Boolean = false,
+    val score: ScoreUi? = null,
+    val notice: ScoringNoticeUi? = null
 )

@@ -27,10 +27,14 @@ import assertk.assertions.isNotNull
 import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import com.gyugle.gil.core.domain.DataError
+import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.core.presentation.permissions.PermissionState
+import com.gyugle.gil.core.speech.FakeOnDeviceRecognizer
 import com.gyugle.gil.core.speech.FakeSpeaker
 import com.gyugle.gil.core.speech.FakeVoicePlayer
 import com.gyugle.gil.core.speech.FakeVoiceRecorder
+import com.gyugle.gil.core.speech.RecognitionError
+import com.gyugle.gil.core.speech.RecognizerAvailability
 import com.gyugle.gil.core.speech.SpeakerStatus
 import com.gyugle.gil.core.speech.SpeechLanguage
 import com.gyugle.gil.core.speech.SpeechRate
@@ -52,6 +56,7 @@ import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
 import com.gyugle.gil.feature.lesson.impl.domain.repository.FakeLessonRunRepository
+import com.gyugle.gil.feature.lesson.impl.domain.repository.FakeScoringNoticeRepository
 import com.gyugle.gil.feature.progress.api.FakeProgressCommands
 import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.ReviewRating
@@ -61,6 +66,7 @@ import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -126,13 +132,27 @@ class LessonViewModelTest {
     private val recorder = FakeVoiceRecorder()
     private val player = FakeVoicePlayer()
     private val clock = FakeStudyClock()
+    private val recognizer = FakeOnDeviceRecognizer()
+    private val scoringNotices = FakeScoringNoticeRepository()
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun viewModel(handle: SavedStateHandle = SavedStateHandle()) =
-        LessonViewModel(lesson.id.value, handle, course, runs, progress, speaker, recorder, player, clock, appSettings)
+    private fun viewModel(handle: SavedStateHandle = SavedStateHandle()) = LessonViewModel(
+        lesson.id.value,
+        handle,
+        course,
+        runs,
+        progress,
+        speaker,
+        recorder,
+        player,
+        clock,
+        appSettings,
+        recognizer,
+        scoringNotices
+    )
 
     private val LessonViewModel.playing get() = state.value.phase as LessonPhase.Playing
 
@@ -508,6 +528,106 @@ class LessonViewModelTest {
             assertThat(awaitItem()).isEqualTo(LessonEvent.RequestMicrophone)
         }
         assertThat(recorder.recording).isNull()
+    }
+
+    private fun shadowViewModel(sentence: String = "Nice to meet you."): LessonViewModel {
+        course.lessons[0] = lesson.copy(steps = listOf(LessonStep.Shadow(Sentence(1, sentence, null))))
+        return viewModel().apply { onAction(LessonAction.OnMicrophoneState(PermissionState.GRANTED)) }
+    }
+
+    private fun LessonViewModel.recordOnce() {
+        onAction(LessonAction.OnRecordClick)
+        onAction(LessonAction.OnStopRecordingClick)
+    }
+
+    private val LessonViewModel.recorderUi get() = (playing.step as StepUi.Shadow).recorder
+
+    @Test
+    fun shadow_recognizerReady_marksEachWordByWhatItHeard() {
+        recognizer.heard = Outcome.Success("nice to you")
+        val viewModel = shadowViewModel()
+
+        viewModel.recordOnce()
+
+        assertThat(recognizer.recognized.size).isEqualTo(1)
+        assertThat(viewModel.recorderUi.score).isEqualTo(
+            ScoreUi.Heard(
+                listOf(
+                    MarkedWordUi("Nice", true),
+                    MarkedWordUi("to", true),
+                    MarkedWordUi("meet", false),
+                    MarkedWordUi("you", true)
+                )
+            )
+        )
+        assertThat(viewModel.recorderUi.notice).isNull()
+    }
+
+    @Test
+    fun shadow_recognizerHeardNothing_saysSo() {
+        recognizer.heard = Outcome.Failure(RecognitionError.NO_SPEECH)
+        val viewModel = shadowViewModel()
+
+        viewModel.recordOnce()
+
+        assertThat(viewModel.recorderUi.score).isEqualTo(ScoreUi.NothingHeard)
+    }
+
+    @Test
+    fun shadow_recognizerFailed_showsNoScore() {
+        recognizer.heard = Outcome.Failure(RecognitionError.FAILED)
+        val viewModel = shadowViewModel()
+
+        viewModel.recordOnce()
+
+        assertThat(viewModel.recorderUi.score).isNull()
+        assertThat(viewModel.recorderUi.hasRecording).isTrue()
+    }
+
+    @Test
+    fun shadow_recordAgainWhileChecking_dropsTheOldScore() {
+        val pending = CompletableDeferred<Unit>()
+        recognizer.pending = pending
+        recognizer.heard = Outcome.Success("nice to meet you")
+        val viewModel = shadowViewModel()
+
+        viewModel.recordOnce()
+        assertThat(viewModel.recorderUi.score).isEqualTo(ScoreUi.Checking)
+        viewModel.onAction(LessonAction.OnRecordClick)
+        pending.complete(Unit)
+
+        assertThat(viewModel.recorderUi.isRecording).isTrue()
+        assertThat(viewModel.recorderUi.score).isNull()
+    }
+
+    @Test
+    fun shadow_modelNotInstalled_toldOnceAndRecordingIsNotChecked() {
+        recognizer.availability = RecognizerAvailability.NOT_DOWNLOADED
+        val first = shadowViewModel()
+
+        first.recordOnce()
+
+        assertThat(first.recorderUi.notice).isEqualTo(ScoringNoticeUi.MODEL_NOT_INSTALLED)
+        assertThat(first.recorderUi.score).isNull()
+        assertThat(recognizer.recognized).isEmpty()
+        assertThat(scoringNotices.shown).isTrue()
+        assertThat(shadowViewModel().recorderUi.notice).isNull()
+    }
+
+    @Test
+    fun shadow_unsupported_noticeWaitsForTheMicrophone() {
+        recognizer.availability = RecognizerAvailability.UNAVAILABLE
+        course.lessons[0] = lesson.copy(steps = listOf(LessonStep.Shadow(Sentence(1, "Five.", null))))
+        val viewModel = viewModel()
+        viewModel.onAction(LessonAction.OnMicrophoneState(PermissionState.DENIED))
+
+        assertThat(viewModel.recorderUi.notice).isNull()
+        assertThat(scoringNotices.shown).isFalse()
+
+        viewModel.onAction(LessonAction.OnMicrophoneState(PermissionState.GRANTED))
+
+        assertThat(viewModel.recorderUi.notice).isEqualTo(ScoringNoticeUi.UNSUPPORTED)
+        assertThat(scoringNotices.shown).isTrue()
     }
 
     @Test

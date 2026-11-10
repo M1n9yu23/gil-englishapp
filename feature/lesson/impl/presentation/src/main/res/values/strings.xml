@@ -49,6 +49,14 @@
     <string name="lesson_mic_denied">Without the microphone, just listen and say it aloud.</string>
     <string name="lesson_mic_open_settings">Open settings</string>
     <string name="lesson_recording_failed">Couldn’t record. Try again.</string>
+    <string name="lesson_score_checking">Checking what your phone heard</string>
+    <string name="lesson_score_heard">What your phone heard</string>
+    <string name="lesson_score_word_missed">Not heard</string>
+    <string name="lesson_score_all_heard">Your phone heard every word.</string>
+    <string name="lesson_score_some_missed">Your phone missed the underlined words. Listen again and record once more.</string>
+    <string name="lesson_score_nothing_heard">Your phone didn’t hear any words. Try again a little louder.</string>
+    <string name="lesson_scoring_model_missing">Install offline English speech recognition in your phone’s settings, and you’ll see which words your phone heard.</string>
+    <string name="lesson_scoring_unsupported">This phone can’t check each word. Play the sentence and your voice one after the other and compare them by ear.</string>
 
     <string name="lesson_resume_title">Pick up where you left off?</string>
     <string name="lesson_resume_body">Last time you stopped at step <xliff:g id="step" example="4">%1$d</xliff:g> of <xliff:g id="count" example="9">%2$d</xliff:g>.</string>

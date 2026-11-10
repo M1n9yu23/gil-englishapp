@@ -63,6 +63,30 @@ internal object LessonPreviewData {
 
     val shadowRecorded = shadow.copy(recorder = RecorderUi(MicrophoneUi.GRANTED, hasRecording = true))
 
+    val shadowScored = StepUi.Shadow(
+        SentenceUi("Nice to meet you.", "만나서 반가워요."),
+        RecorderUi(
+            MicrophoneUi.GRANTED,
+            hasRecording = true,
+            score = ScoreUi.Heard(
+                listOf(
+                    MarkedWordUi("Nice", true),
+                    MarkedWordUi("to", true),
+                    MarkedWordUi("meet", false),
+                    MarkedWordUi("you", true)
+                )
+            )
+        )
+    )
+
+    val shadowNothingHeard =
+        shadowRecorded.copy(
+            recorder = RecorderUi(MicrophoneUi.GRANTED, hasRecording = true, score = ScoreUi.NothingHeard)
+        )
+
+    val shadowScoringNotice =
+        shadow.copy(recorder = RecorderUi(MicrophoneUi.GRANTED, notice = ScoringNoticeUi.MODEL_NOT_INSTALLED))
+
     private val meaningOptions =
         listOf(OptionUi("승합차", english = false), OptionUi("부채", english = false), OptionUi("다섯", english = false))
 
