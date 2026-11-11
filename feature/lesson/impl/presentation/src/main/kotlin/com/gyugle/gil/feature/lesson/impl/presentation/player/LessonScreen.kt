@@ -130,13 +130,8 @@ fun LessonScreen(state: LessonState, onAction: (LessonAction) -> Unit, modifier:
             val fade = GilTheme.motion.fade
             AnimatedContent(
                 targetState = state.phase,
-                // A new step or the result fades in; answering within a step only changes the content.
-                contentKey = { phase ->
-                    when (phase) {
-                        is LessonPhase.Playing -> "step-${phase.stepNumber}"
-                        else -> phase::class
-                    }
-                },
+                // The result fades in; moving between steps fades only the step, below the bar.
+                contentKey = { phase -> phase::class },
                 transitionSpec = { fadeIn(tween(fade)) togetherWith fadeOut(tween(fade)) },
                 label = "lesson phase"
             ) { phase ->
@@ -226,6 +221,7 @@ private fun StepFrame(
 private fun PlayingContent(phase: LessonPhase.Playing, onAction: (LessonAction) -> Unit) {
     val description = stringResource(R.string.lesson_progress_description, phase.stepNumber, phase.stepCount)
     Column {
+        // Outside the step's fade, so the line moves on to the next step instead of being redrawn.
         CloseBar(onAction) {
             GilProgressBar(
                 progress = (phase.stepNumber - 1).toFloat() / phase.stepCount,
@@ -234,58 +230,72 @@ private fun PlayingContent(phase: LessonPhase.Playing, onAction: (LessonAction) 
                     .clearAndSetSemantics { contentDescription = description }
             )
         }
-        val answered = phase.feedback != null
-        StepFrame(
-            body = {
-                if (phase.showsNoVoiceNotice) {
-                    KoreanProse(
-                        text = stringResource(R.string.lesson_no_voice),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-                if (phase.isAgain) {
-                    Text(
-                        text = stringResource(R.string.lesson_again_label),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
-                phase.step.instruction()?.let {
-                    Text(
-                        text = it,
-                        modifier = Modifier.semantics { heading() },
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-                StepContent(phase.step, phase.hasVoice, answered, onAction)
-                // In the scrolling part, so a long reason at a large font never squeezes the step;
-                // it scrolls into view when it appears.
-                phase.feedback?.let { feedback ->
-                    val requester = remember { BringIntoViewRequester() }
-                    LaunchedEffect(feedback) { requester.bringIntoView() }
-                    FeedbackPanel(feedback, modifier = Modifier.bringIntoViewRequester(requester))
-                }
-            },
-            actions = {
-                when {
-                    answered || phase.step.isUngraded() -> PrimaryActionButton(
-                        text = stringResource(R.string.lesson_continue),
-                        onClick = { onAction(LessonAction.OnContinueClick) },
-                        modifier = Modifier.fillMaxWidth()
-                    )
-
-                    phase.step.needsCheck() -> PrimaryActionButton(
-                        text = stringResource(R.string.lesson_check),
-                        onClick = { onAction(LessonAction.OnCheckClick) },
-                        modifier = Modifier.fillMaxWidth(),
-                        enabled = phase.canCheck
-                    )
-                }
-            }
-        )
+        val fade = GilTheme.motion.fade
+        AnimatedContent(
+            targetState = phase,
+            // Answering within a step only changes its content.
+            contentKey = { it.stepNumber },
+            transitionSpec = { fadeIn(tween(fade)) togetherWith fadeOut(tween(fade)) },
+            label = "lesson step"
+        ) { shown ->
+            StepBody(shown, onAction)
+        }
     }
+}
+
+@Composable
+private fun StepBody(phase: LessonPhase.Playing, onAction: (LessonAction) -> Unit) {
+    val answered = phase.feedback != null
+    StepFrame(
+        body = {
+            if (phase.showsNoVoiceNotice) {
+                KoreanProse(
+                    text = stringResource(R.string.lesson_no_voice),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            if (phase.isAgain) {
+                Text(
+                    text = stringResource(R.string.lesson_again_label),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            phase.step.instruction()?.let {
+                Text(
+                    text = it,
+                    modifier = Modifier.semantics { heading() },
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            StepContent(phase.step, phase.hasVoice, answered, onAction)
+            // In the scrolling part, so a long reason at a large font never squeezes the step;
+            // it scrolls into view when it appears.
+            phase.feedback?.let { feedback ->
+                val requester = remember { BringIntoViewRequester() }
+                LaunchedEffect(feedback) { requester.bringIntoView() }
+                FeedbackPanel(feedback, modifier = Modifier.bringIntoViewRequester(requester))
+            }
+        },
+        actions = {
+            when {
+                answered || phase.step.isUngraded() -> PrimaryActionButton(
+                    text = stringResource(R.string.lesson_continue),
+                    onClick = { onAction(LessonAction.OnContinueClick) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                phase.step.needsCheck() -> PrimaryActionButton(
+                    text = stringResource(R.string.lesson_check),
+                    onClick = { onAction(LessonAction.OnCheckClick) },
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = phase.canCheck
+                )
+            }
+        }
+    )
 }
 
 private fun StepUi.isUngraded() = this is StepUi.Explain || this is StepUi.Listen || this is StepUi.Shadow
