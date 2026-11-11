@@ -24,6 +24,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextDecoration
@@ -39,9 +41,13 @@ import com.gyugle.gil.feature.lesson.impl.presentation.R
 @Composable
 internal fun ScoreView(score: ScoreUi) {
     val colors = MaterialTheme.colorScheme
+    // Each state is read out as it arrives: the result comes after the recording stops, away from
+    // where a screen reader's focus is.
+    val announced = Modifier.semantics { liveRegion = LiveRegionMode.Polite }
     when (score) {
         ScoreUi.Checking -> Text(
             text = stringResource(R.string.lesson_score_checking),
+            modifier = announced,
             style = MaterialTheme.typography.bodyMedium,
             color = colors.onSurfaceVariant
         )
@@ -49,7 +55,7 @@ internal fun ScoreView(score: ScoreUi) {
         // A little apart from the buttons: this block is a result, not another control.
         is ScoreUi.Heard -> Column(
             verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap / 2),
-            modifier = Modifier.padding(top = GilTheme.spacing.inlineGap)
+            modifier = announced.padding(top = GilTheme.spacing.inlineGap)
         ) {
             Text(
                 text = stringResource(R.string.lesson_score_heard),
@@ -78,6 +84,7 @@ internal fun ScoreView(score: ScoreUi) {
 
         ScoreUi.NothingHeard -> KoreanProse(
             text = stringResource(R.string.lesson_score_nothing_heard),
+            modifier = announced,
             style = MaterialTheme.typography.bodyMedium,
             color = colors.onSurfaceVariant
         )
