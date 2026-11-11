@@ -28,41 +28,44 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.KoreanProse
+import com.gyugle.gil.core.designsystem.component.Reveal
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.review.impl.presentation.R
 
 /**
  * The verdict, the right answer when a typed one was not exact, what the card did not show before,
- * and a note that a missed card comes back. Announced as it appears.
+ * and a note that a missed card comes back. Announced as it appears, and fades in with the answers.
  */
 @Composable
 internal fun FeedbackPanel(feedback: FeedbackUi, modifier: Modifier = Modifier) {
     val colors = MaterialTheme.colorScheme
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .semantics { liveRegion = LiveRegionMode.Polite },
-        verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap)
-    ) {
-        Text(
-            text = stringResource(
-                when (feedback.grade) {
-                    GradeUi.CORRECT -> R.string.review_feedback_correct
-                    GradeUi.CLOSE -> R.string.review_feedback_close
-                    GradeUi.WRONG -> R.string.review_feedback_wrong
-                }
-            ),
-            style = MaterialTheme.typography.titleMedium,
-            color = if (feedback.grade == GradeUi.WRONG) colors.error else colors.primary
-        )
-        feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
-        feedback.note?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
-        if (feedback.grade == GradeUi.WRONG) {
+    Reveal(modifier = modifier) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics { liveRegion = LiveRegionMode.Polite },
+            verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap)
+        ) {
             Text(
-                text = stringResource(R.string.review_feedback_comes_back),
-                style = MaterialTheme.typography.bodyMedium,
-                color = colors.onSurfaceVariant
+                text = stringResource(
+                    when (feedback.grade) {
+                        GradeUi.CORRECT -> R.string.review_feedback_correct
+                        GradeUi.CLOSE -> R.string.review_feedback_close
+                        GradeUi.WRONG -> R.string.review_feedback_wrong
+                    }
+                ),
+                style = MaterialTheme.typography.titleMedium,
+                color = if (feedback.grade == GradeUi.WRONG) colors.error else colors.primary
             )
+            feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
+            feedback.note?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
+            if (feedback.grade == GradeUi.WRONG) {
+                Text(
+                    text = stringResource(R.string.review_feedback_comes_back),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colors.onSurfaceVariant
+                )
+            }
         }
     }
 }
