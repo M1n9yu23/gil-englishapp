@@ -20,22 +20,36 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.scene.Scene
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.core.navigation.isTaskScreen
 
 private object StackTransitionTokens {
     /** A short shift is enough to show direction; a full-width slide would read as travel. */
     val SlideDistance = 30.dp
 }
 
-/** The transitions of a host: a fade between tabs, a short slide within one stack. */
-internal class StackTransitions(val fade: ContentTransform, val push: ContentTransform, val pop: ContentTransform)
+/**
+ * The transitions of a host: a fade between tabs, a short slide within one stack, and a short rise
+ * for a task screen such as a lesson, which sinks back when it closes.
+ */
+internal class StackTransitions(
+    val fade: ContentTransform,
+    val push: ContentTransform,
+    val pop: ContentTransform,
+    val rise: ContentTransform,
+    val sink: ContentTransform
+)
 
 @Composable
 internal fun rememberStackTransitions(): StackTransitions {
@@ -51,7 +65,26 @@ internal fun rememberStackTransitions(): StackTransitions {
             push = (slideInHorizontally(enterOffset) { distance } + fadeIn(enter)) togetherWith
                 (slideOutHorizontally(exitOffset) { -distance } + fadeOut(exit)),
             pop = (slideInHorizontally(enterOffset) { -distance } + fadeIn(enter)) togetherWith
-                (slideOutHorizontally(exitOffset) { distance } + fadeOut(exit))
+                (slideOutHorizontally(exitOffset) { distance } + fadeOut(exit)),
+            // The screen underneath stays where it is; only the task moves.
+            rise = (slideInVertically(enterOffset) { distance } + fadeIn(enter)) togetherWith fadeOut(exit),
+            sink = fadeIn(enter) togetherWith (slideOutVertically(exitOffset) { distance } + fadeOut(exit))
         )
+    }
+}
+
+/**
+ * The transition from [initial] to [target] in the main host. A tab switch is neither forward nor
+ * back, so it fades, and so does one task giving way to the next, such as a lesson to the one after.
+ */
+internal fun StackTransitions.between(initial: Scene<NavKey>, target: Scene<NavKey>, back: Boolean): ContentTransform {
+    val fromTask = initial.isTaskScreen()
+    val toTask = target.isTaskScreen()
+    return when {
+        initial.tab() != target.tab() || (fromTask && toTask) -> fade
+        toTask -> rise
+        fromTask -> sink
+        back -> pop
+        else -> push
     }
 }

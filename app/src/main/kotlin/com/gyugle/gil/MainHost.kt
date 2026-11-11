@@ -146,28 +146,9 @@ fun MainHost(
                             Modifier
                         }
                     ),
-                // A tab switch is neither forward nor back, so it fades; moving within a tab slides.
-                transitionSpec = {
-                    if (initialState.tab() ==
-                        targetState.tab()
-                    ) {
-                        transitions.push
-                    } else {
-                        transitions.fade
-                    }
-                },
-                popTransitionSpec = {
-                    if (initialState.tab() ==
-                        targetState.tab()
-                    ) {
-                        transitions.pop
-                    } else {
-                        transitions.fade
-                    }
-                },
-                predictivePopTransitionSpec = { _ ->
-                    if (initialState.tab() == targetState.tab()) transitions.pop else transitions.fade
-                },
+                transitionSpec = { transitions.between(initialState, targetState, back = false) },
+                popTransitionSpec = { transitions.between(initialState, targetState, back = true) },
+                predictivePopTransitionSpec = { _ -> transitions.between(initialState, targetState, back = true) },
                 onBack = navigator::goBack
             )
         }

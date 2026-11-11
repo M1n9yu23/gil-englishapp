@@ -18,11 +18,12 @@ package com.gyugle.gil.feature.lesson.impl.presentation
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.gyugle.gil.core.navigation.Navigator
+import com.gyugle.gil.core.navigation.taskScreen
 import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.lesson.impl.presentation.player.LessonRoot
 
 fun EntryProviderScope<NavKey>.lessonEntries(navigator: Navigator) {
-    entry<LessonRoute> { route ->
+    entry<LessonRoute>(metadata = taskScreen()) { route ->
         LessonRoot(
             lessonId = route.lessonId,
             onClose = navigator::goBack,

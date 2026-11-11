@@ -18,11 +18,12 @@ package com.gyugle.gil.feature.review.impl.presentation
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.gyugle.gil.core.navigation.Navigator
+import com.gyugle.gil.core.navigation.taskScreen
 import com.gyugle.gil.feature.review.api.ReviewSessionRoute
 import com.gyugle.gil.feature.review.impl.presentation.session.ReviewRoot
 
 fun EntryProviderScope<NavKey>.reviewEntries(navigator: Navigator) {
-    entry<ReviewSessionRoute> { route ->
+    entry<ReviewSessionRoute>(metadata = taskScreen()) { route ->
         ReviewRoot(limit = route.limit, onClose = navigator::goBack)
     }
 }
