@@ -44,7 +44,32 @@ class AnswerOptionScreenshotTest {
         }
     }
 
+    private val options = listOf("만나서 반가워요", "이름이 뭐예요?", "~라고 불러 주세요", "어디에서 왔어요?", "고마워요")
+
+    private fun list() = composeRule.captureOnPaper {
+        AnswerOptionList(count = options.size, modifier = Modifier.padding(16.dp)) { index, modifier ->
+            AnswerOption(
+                text = options[index],
+                english = false,
+                mark = if (index == 2) AnswerMark.CORRECT else AnswerMark.IDLE,
+                onClick = {},
+                modifier = modifier
+            )
+        }
+    }
+
     @Test fun answerOption_light_matchesDesign() = answered()
+
+    @Test fun answerOptionList_phone_stacksOptions() = list()
+
+    // Too short to stack five options, so two to a row; the odd one keeps the others' width.
+    @Test
+    @Config(qualifiers = "ko-w760dp-h360dp-xhdpi")
+    fun answerOptionList_phoneLandscape_pairsOptions() = list()
+
+    @Test
+    @Config(qualifiers = "ko-w760dp-h360dp-xhdpi", fontScale = 2f)
+    fun answerOptionList_phoneLandscapeFontScale2_keepsPairsEvenHeight() = list()
 
     @Test
     @Config(qualifiers = "+night")

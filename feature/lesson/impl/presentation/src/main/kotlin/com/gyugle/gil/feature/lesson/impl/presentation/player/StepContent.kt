@@ -37,6 +37,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.intl.LocaleList
 import com.gyugle.gil.core.designsystem.component.AnswerMark
 import com.gyugle.gil.core.designsystem.component.AnswerOption
+import com.gyugle.gil.core.designsystem.component.AnswerOptionList
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
@@ -322,22 +323,22 @@ private fun ColumnScope.ChoiceContent(step: StepUi.Choice, hasVoice: Boolean, on
             KoreanProse(text = prompt.question, style = MaterialTheme.typography.titleMedium)
         }
     }
-    Column(verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap)) {
-        step.options.forEachIndexed { index, option ->
-            val mark = when {
-                step.correct == null -> AnswerMark.IDLE
-                index == step.correct -> AnswerMark.CORRECT
-                index == step.picked -> AnswerMark.PICKED_WRONG
-                else -> AnswerMark.OTHER
-            }
-            AnswerOption(
-                text = option.text,
-                english = option.english,
-                ipa = option.ipa,
-                mark = mark,
-                onClick = { onAction(LessonAction.OnOptionClick(index)) }
-            )
+    AnswerOptionList(count = step.options.size) { index, modifier ->
+        val option = step.options[index]
+        val mark = when {
+            step.correct == null -> AnswerMark.IDLE
+            index == step.correct -> AnswerMark.CORRECT
+            index == step.picked -> AnswerMark.PICKED_WRONG
+            else -> AnswerMark.OTHER
         }
+        AnswerOption(
+            text = option.text,
+            english = option.english,
+            ipa = option.ipa,
+            mark = mark,
+            onClick = { onAction(LessonAction.OnOptionClick(index)) },
+            modifier = modifier
+        )
     }
 }
 

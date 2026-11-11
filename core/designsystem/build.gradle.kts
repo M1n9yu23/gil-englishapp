@@ -17,3 +17,7 @@ plugins {
     alias(libs.plugins.convention.android.library.compose)
     alias(libs.plugins.convention.android.screenshot)
 }
+
+dependencies {
+    implementation(projects.core.presentation)
+}

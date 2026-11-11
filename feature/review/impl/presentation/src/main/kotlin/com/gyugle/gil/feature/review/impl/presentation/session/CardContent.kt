@@ -35,6 +35,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.intl.LocaleList
 import com.gyugle.gil.core.designsystem.component.AnswerMark
 import com.gyugle.gil.core.designsystem.component.AnswerOption
+import com.gyugle.gil.core.designsystem.component.AnswerOptionList
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
@@ -87,22 +88,22 @@ private fun ColumnScope.ChoiceContent(card: CardUi.Choice, hasVoice: Boolean, on
 
         is ChoicePromptUi.Sound -> IpaText(ipa = prompt.symbol, spokenWord = null, prominent = true)
     }
-    Column(verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap)) {
-        card.options.forEachIndexed { index, option ->
-            val mark = when {
-                card.correct == null -> AnswerMark.IDLE
-                index == card.correct -> AnswerMark.CORRECT
-                index == card.picked -> AnswerMark.PICKED_WRONG
-                else -> AnswerMark.OTHER
-            }
-            AnswerOption(
-                text = option.text,
-                english = option.english,
-                ipa = option.ipa,
-                mark = mark,
-                onClick = { onAction(ReviewAction.OnOptionClick(index)) }
-            )
+    AnswerOptionList(count = card.options.size) { index, modifier ->
+        val option = card.options[index]
+        val mark = when {
+            card.correct == null -> AnswerMark.IDLE
+            index == card.correct -> AnswerMark.CORRECT
+            index == card.picked -> AnswerMark.PICKED_WRONG
+            else -> AnswerMark.OTHER
         }
+        AnswerOption(
+            text = option.text,
+            english = option.english,
+            ipa = option.ipa,
+            mark = mark,
+            onClick = { onAction(ReviewAction.OnOptionClick(index)) },
+            modifier = modifier
+        )
     }
 }
 

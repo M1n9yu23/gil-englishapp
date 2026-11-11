@@ -19,8 +19,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -38,6 +42,8 @@ import androidx.compose.ui.unit.dp
 import com.gyugle.gil.core.designsystem.R
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.core.presentation.DeviceConfiguration
+import com.gyugle.gil.core.presentation.currentDeviceConfiguration
 
 private object AnswerOptionTokens {
     val MinHeight = 56.dp
@@ -49,6 +55,37 @@ private object AnswerOptionTokens {
 
 /** How an answer looks once the question is answered. Before that every answer is [IDLE]. */
 enum class AnswerMark { IDLE, CORRECT, PICKED_WRONG, OTHER }
+
+/**
+ * [count] options one under another; in a window too short to show them all that way, two to a
+ * row with each pair the same height. [option] puts the given modifier on its [AnswerOption].
+ */
+@Composable
+fun AnswerOptionList(
+    count: Int,
+    modifier: Modifier = Modifier,
+    configuration: DeviceConfiguration = currentDeviceConfiguration(),
+    option: @Composable (index: Int, modifier: Modifier) -> Unit
+) {
+    val gap = GilTheme.spacing.inlineGap
+    val perRow = when (configuration) {
+        DeviceConfiguration.MOBILE_LANDSCAPE -> 2
+
+        DeviceConfiguration.MOBILE_PORTRAIT,
+        DeviceConfiguration.TABLET_PORTRAIT,
+        DeviceConfiguration.TABLET_LANDSCAPE,
+        DeviceConfiguration.DESKTOP -> 1
+    }
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(gap)) {
+        (0 until count).chunked(perRow).forEach { row ->
+            Row(modifier = Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(gap)) {
+                row.forEach { index -> option(index, Modifier.weight(1f).fillMaxHeight()) }
+                // An odd last option keeps the width of the others.
+                repeat(perRow - row.size) { Spacer(modifier = Modifier.weight(1f)) }
+            }
+        }
+    }
+}
 
 /**
  * One answer to pick in a lesson step or a review. [english] draws [text] as English; [ipa], when
