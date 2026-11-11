@@ -114,8 +114,8 @@ fun ReviewScreen(state: ReviewState, onAction: (ReviewAction) -> Unit, modifier:
             val fade = GilTheme.motion.fade
             AnimatedContent(
                 targetState = state.phase,
-                // A new card or the result fades in; answering a card only changes its content.
-                contentKey = { phase -> if (phase is ReviewPhase.Asking) "card-${phase.number}" else phase::class },
+                // The result fades in; moving between cards fades only the card, below the bar.
+                contentKey = { phase -> phase::class },
                 transitionSpec = { fadeIn(tween(fade)) togetherWith fadeOut(tween(fade)) },
                 label = "review phase"
             ) { phase ->
@@ -190,9 +190,9 @@ private fun CloseBar(onAction: (ReviewAction) -> Unit, content: @Composable () -
 
 @Composable
 private fun AskingContent(phase: ReviewPhase.Asking, onAction: (ReviewAction) -> Unit) {
-    val spacing = GilTheme.spacing
     val description = stringResource(R.string.review_progress_description, phase.number, phase.count)
     Column(modifier = Modifier.fillMaxSize().imePadding()) {
+        // Outside the card's fade, so the line moves on to the next card instead of being redrawn.
         CloseBar(onAction) {
             GilProgressBar(
                 progress = (phase.number - 1).toFloat() / phase.count,
@@ -201,6 +201,23 @@ private fun AskingContent(phase: ReviewPhase.Asking, onAction: (ReviewAction) ->
                     .clearAndSetSemantics { contentDescription = description }
             )
         }
+        val fade = GilTheme.motion.fade
+        AnimatedContent(
+            targetState = phase,
+            // Answering a card only changes its content.
+            contentKey = { it.number },
+            transitionSpec = { fadeIn(tween(fade)) togetherWith fadeOut(tween(fade)) },
+            label = "review card"
+        ) { shown ->
+            CardBody(shown, onAction)
+        }
+    }
+}
+
+@Composable
+private fun CardBody(phase: ReviewPhase.Asking, onAction: (ReviewAction) -> Unit) {
+    val spacing = GilTheme.spacing
+    Column(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .weight(1f)
