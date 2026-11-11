@@ -235,7 +235,8 @@ private fun ColumnScope.SenseBlock(
 @Composable
 private fun MeaningLine(label: String?, meaningKo: String, saved: Boolean, onToggle: () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Column(modifier = Modifier.weight(1f)) {
+        // Read as one, before the toggle that sits beside both lines.
+        Column(modifier = Modifier.weight(1f).semantics(mergeDescendants = true) {}) {
             label?.let {
                 Text(
                     text = it,
