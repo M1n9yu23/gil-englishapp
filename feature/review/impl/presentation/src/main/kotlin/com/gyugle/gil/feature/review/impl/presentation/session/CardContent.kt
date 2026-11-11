@@ -36,6 +36,7 @@ import androidx.compose.ui.text.intl.LocaleList
 import com.gyugle.gil.core.designsystem.component.AnswerMark
 import com.gyugle.gil.core.designsystem.component.AnswerOption
 import com.gyugle.gil.core.designsystem.component.AnswerOptionList
+import com.gyugle.gil.core.designsystem.component.BlankSentenceText
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
@@ -131,7 +132,7 @@ private fun ColumnScope.TypedContent(
         }
 
         is TypedPromptUi.Blank -> {
-            EnglishText(text = prompt.text, size = EnglishTextSize.Focus)
+            BlankSentenceText(text = prompt.text)
             prompt.translation?.let { KoreanProse(text = it, color = MaterialTheme.colorScheme.onSurfaceVariant) }
         }
     }

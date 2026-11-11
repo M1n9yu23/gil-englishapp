@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
@@ -39,6 +40,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.sp
+import com.gyugle.gil.core.designsystem.R
 import com.gyugle.gil.core.designsystem.theme.Charis
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 
@@ -87,6 +89,28 @@ fun EnglishText(
     val annotated = remember(text) { buildAnnotatedString { withStyle(EnglishSpan) { append(text) } } }
     Text(text = annotated, modifier = modifier, color = color, style = size.style())
 }
+
+/**
+ * [EnglishText] for a sentence with [BLANK] where a word is missing. Screen readers skip
+ * underscores, so they read the gap as the word "blank" in the app's language instead.
+ */
+@Composable
+fun BlankSentenceText(text: String, modifier: Modifier = Modifier, size: EnglishTextSize = EnglishTextSize.Focus) {
+    val blank = stringResource(R.string.blank_spoken)
+    val spoken = remember(text, blank) { spokenBlanks(text, blank, LocaleList.current) }
+    EnglishText(text = text, modifier = modifier.clearAndSetSemantics { this.text = spoken }, size = size)
+}
+
+/** The gap in a fill-in-the-blank sentence. */
+const val BLANK = "___"
+
+internal fun spokenBlanks(text: String, blank: String, blankLocale: LocaleList): AnnotatedString =
+    buildAnnotatedString {
+        text.split(BLANK).forEachIndexed { index, part ->
+            if (index > 0) withStyle(SpanStyle(localeList = blankLocale)) { append(blank) }
+            appendEnglish(part)
+        }
+    }
 
 /** English inside surrounding text: same size as its neighbours, Charis, read in English. */
 fun AnnotatedString.Builder.appendEnglish(text: String) {

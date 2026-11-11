@@ -95,6 +95,22 @@ class EnglishTextAccessibilityTest {
         assertThat(text.toString()).isEqualTo(IPA_WORD)
     }
 
+    @Test
+    fun blankSentenceText_accessibilityText_readsTheGapAsAWordBetweenEnglishParts() {
+        composeRule.setContent { GilTheme { BlankSentenceText(text = BLANK_SENTENCE) } }
+
+        val text = accessibilityText(BLANK_SENTENCE_SPOKEN)
+
+        // The gap takes the app's locale, which is English under Robolectric too.
+        val parts = text.getSpans(0, text.length, LocaleSpan::class.java)
+            .sortedBy { text.getSpanStart(it) }
+            .map {
+                text.subSequence(text.getSpanStart(it), text.getSpanEnd(it)).toString() to
+                    it.locales.toLanguageTags()
+            }
+        assertThat(parts).containsExactly("I'm new " to "en-US", "blank" to "en-US", "." to "en-US")
+    }
+
     private fun accessibilityText(semanticsText: String): Spanned {
         val node = composeRule.onNodeWithText(semanticsText).fetchSemanticsNode()
         val content = composeRule.activity.findViewById<ViewGroup>(android.R.id.content)
@@ -119,5 +135,7 @@ class EnglishTextAccessibilityTest {
         const val KOREAN_AFTER = "으로 시작해요."
         const val IPA = "ˈwɔːtər"
         const val IPA_WORD = "water"
+        const val BLANK_SENTENCE = "I'm new ___."
+        const val BLANK_SENTENCE_SPOKEN = "I'm new blank."
     }
 }

@@ -15,6 +15,8 @@
  */
 package com.gyugle.gil.feature.review.impl.presentation.session
 
+import com.gyugle.gil.core.designsystem.component.BLANK
+
 /** States for previews and screenshot tests. */
 internal object ReviewPreviewData {
     private val meaning = ReviewPhase.Asking(

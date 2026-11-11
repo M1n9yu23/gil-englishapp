@@ -15,11 +15,9 @@
  */
 package com.gyugle.gil.feature.review.impl.presentation.session
 
+import com.gyugle.gil.core.designsystem.component.BLANK
 import com.gyugle.gil.feature.review.impl.domain.model.AnswerGrade
 import com.gyugle.gil.feature.review.impl.domain.model.ReviewCard
-
-/** Marks the missing word in a sentence, as the lessons do. */
-internal const val BLANK = "___"
 
 internal fun ReviewCard.kindUi(hasVoice: Boolean): CardKindUi = when (this) {
     is ReviewCard.ChooseMeaning -> CardKindUi.CHOOSE_MEANING

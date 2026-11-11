@@ -38,6 +38,7 @@ import androidx.compose.ui.text.intl.LocaleList
 import com.gyugle.gil.core.designsystem.component.AnswerMark
 import com.gyugle.gil.core.designsystem.component.AnswerOption
 import com.gyugle.gil.core.designsystem.component.AnswerOptionList
+import com.gyugle.gil.core.designsystem.component.BlankSentenceText
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
@@ -282,7 +283,7 @@ private fun ColumnScope.ChoiceContent(step: StepUi.Choice, hasVoice: Boolean, on
         ChoicePrompt.SoundPair -> if (hasVoice) SoundButton(onClick = play, description = playDescription, large = true)
 
         is ChoicePrompt.Blank -> {
-            EnglishText(text = prompt.text, size = EnglishTextSize.Focus)
+            BlankSentenceText(text = prompt.text)
             KoreanProse(text = prompt.ko, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
 
@@ -376,7 +377,7 @@ private fun ColumnScope.TypedContent(
         }
 
         is TypedPrompt.Blank -> {
-            EnglishText(text = prompt.text, size = EnglishTextSize.Focus)
+            BlankSentenceText(text = prompt.text)
             KoreanProse(text = prompt.ko, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
