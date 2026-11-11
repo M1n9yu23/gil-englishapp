@@ -249,10 +249,10 @@ private fun StageHeader(stage: StageUi, onTitleLayout: (TextLayoutResult) -> Uni
         modifier = Modifier.padding(start = PathTokens.ContentStart, end = spacing.screenMargin),
         verticalArrangement = Arrangement.spacedBy(spacing.inlineGap)
     ) {
-        Column {
+        // The title and its status are one heading for screen readers.
+        Column(modifier = Modifier.semantics(mergeDescendants = true) { heading() }) {
             Text(
                 text = stage.title.asString(),
-                modifier = Modifier.semantics { heading() },
                 onTextLayout = onTitleLayout,
                 style = MaterialTheme.typography.titleMedium,
                 color = colors.onSurface
@@ -273,7 +273,7 @@ private fun StageHeader(stage: StageUi, onTitleLayout: (TextLayoutResult) -> Uni
             }
         }
         if (stage.canDo.isNotEmpty()) {
-            Column {
+            Column(modifier = Modifier.semantics(mergeDescendants = true) {}) {
                 Text(
                     text = stringResource(R.string.curriculum_path_can_do_heading),
                     style = MaterialTheme.typography.labelMedium,
@@ -284,7 +284,8 @@ private fun StageHeader(stage: StageUi, onTitleLayout: (TextLayoutResult) -> Uni
                     Row {
                         Text(
                             text = "·",
-                            modifier = Modifier.width(PathTokens.BulletWidth),
+                            // Screen readers would say "middle dot" before every line.
+                            modifier = Modifier.width(PathTokens.BulletWidth).clearAndSetSemantics {},
                             style = MaterialTheme.typography.bodyMedium,
                             color = colors.onSurface
                         )
