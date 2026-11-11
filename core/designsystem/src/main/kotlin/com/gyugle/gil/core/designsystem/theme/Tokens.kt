@@ -49,6 +49,8 @@ data class Motion(
     val enter: Int = 250,
     /** A screen going out, with [exitEasing]. */
     val exit: Int = 200,
+    /** An answer shown after checking: slower than [fade], like ink soaking into paper. */
+    val reveal: Int = 300,
     /** Material's emphasized decelerate: a quick start that settles gently. */
     val enterEasing: Easing = CubicBezierEasing(0.05f, 0.7f, 0.1f, 1f),
     /** Material's emphasized accelerate: a gentle start that leaves quickly. */

@@ -15,6 +15,8 @@
  */
 package com.gyugle.gil.core.designsystem.component
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -32,8 +34,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
@@ -106,12 +110,22 @@ fun AnswerOption(
     val shape = MaterialTheme.shapes.medium
     val pickedLabel = stringResource(R.string.answer_option_picked)
     val correctLabel = stringResource(R.string.answer_option_correct)
-    val background = if (mark == AnswerMark.CORRECT) colors.primaryContainer else colors.surface
-    val content = when (mark) {
-        AnswerMark.CORRECT -> colors.onPrimaryContainer
-        AnswerMark.OTHER -> colors.onSurfaceVariant
-        else -> colors.onSurface
-    }
+    // The wash spreads in rather than switching, so the eye follows it to the right answer.
+    val reveal = tween<Color>(GilTheme.motion.reveal)
+    val background by animateColorAsState(
+        targetValue = if (mark == AnswerMark.CORRECT) colors.primaryContainer else colors.surface,
+        animationSpec = reveal,
+        label = "answer background"
+    )
+    val content by animateColorAsState(
+        targetValue = when (mark) {
+            AnswerMark.CORRECT -> colors.onPrimaryContainer
+            AnswerMark.OTHER -> colors.onSurfaceVariant
+            else -> colors.onSurface
+        },
+        animationSpec = reveal,
+        label = "answer content"
+    )
     PressableSurface(
         onClick = onClick,
         enabled = mark == AnswerMark.IDLE,
@@ -152,22 +166,26 @@ fun AnswerOption(
                 // The word itself is read just above.
                 if (ipa != null) IpaText(ipa = ipa, spokenWord = null)
                 if (mark == AnswerMark.PICKED_WRONG) {
-                    // Screen readers hear it once, as the state set above.
-                    Text(
-                        text = pickedLabel,
-                        modifier = Modifier.clearAndSetSemantics {},
-                        style = MaterialTheme.typography.labelMedium,
-                        color = colors.error
-                    )
+                    Reveal {
+                        // Screen readers hear it once, as the state set above.
+                        Text(
+                            text = pickedLabel,
+                            modifier = Modifier.clearAndSetSemantics {},
+                            style = MaterialTheme.typography.labelMedium,
+                            color = colors.error
+                        )
+                    }
                 }
             }
             if (mark == AnswerMark.CORRECT) {
-                Icon(
-                    painter = GilIcons.Check,
-                    contentDescription = null,
-                    tint = colors.onPrimaryContainer,
-                    modifier = Modifier.size(AnswerOptionTokens.MarkSize)
-                )
+                Reveal {
+                    Icon(
+                        painter = GilIcons.Check,
+                        contentDescription = null,
+                        tint = colors.onPrimaryContainer,
+                        modifier = Modifier.size(AnswerOptionTokens.MarkSize)
+                    )
+                }
             }
         }
     }
