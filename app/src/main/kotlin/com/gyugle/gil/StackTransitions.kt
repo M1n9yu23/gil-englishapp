@@ -16,6 +16,8 @@
 package com.gyugle.gil
 
 import androidx.compose.animation.ContentTransform
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -37,6 +39,12 @@ import com.gyugle.gil.core.navigation.isTaskScreen
 private object StackTransitionTokens {
     /** A short shift is enough to show direction; a full-width slide would read as travel. */
     val SlideDistance = 30.dp
+
+    /**
+     * How long the screen going out takes to fade. The one coming in starts to show only then, so
+     * the two never read through each other halfway.
+     */
+    const val HAND_OFF = 90
 }
 
 /**
@@ -44,6 +52,10 @@ private object StackTransitionTokens {
  * for a task screen such as a lesson, which sinks back when it closes.
  */
 internal class StackTransitions(
+    /** A screen fading in once the one before it has gone, for anything that comes with a screen. */
+    val arrive: EnterTransition,
+    /** A screen fading out before the next one shows. */
+    val leave: ExitTransition,
     val fade: ContentTransform,
     val push: ContentTransform,
     val pop: ContentTransform,
@@ -56,19 +68,22 @@ internal fun rememberStackTransitions(): StackTransitions {
     val motion = GilTheme.motion
     val distance = with(LocalDensity.current) { StackTransitionTokens.SlideDistance.roundToPx() }
     return remember(motion, distance) {
-        val enter = tween<Float>(motion.enter, easing = motion.enterEasing)
-        val exit = tween<Float>(motion.exit, easing = motion.exitEasing)
+        val handOff = StackTransitionTokens.HAND_OFF
+        val leave = fadeOut(tween(handOff, easing = motion.exitEasing))
+        val arrive = fadeIn(tween(motion.enter - handOff, delayMillis = handOff, easing = motion.enterEasing))
         val enterOffset = tween<IntOffset>(motion.enter, easing = motion.enterEasing)
         val exitOffset = tween<IntOffset>(motion.exit, easing = motion.exitEasing)
         StackTransitions(
+            arrive = arrive,
+            leave = leave,
             fade = fadeIn(tween(motion.fade)) togetherWith fadeOut(tween(motion.fade)),
-            push = (slideInHorizontally(enterOffset) { distance } + fadeIn(enter)) togetherWith
-                (slideOutHorizontally(exitOffset) { -distance } + fadeOut(exit)),
-            pop = (slideInHorizontally(enterOffset) { -distance } + fadeIn(enter)) togetherWith
-                (slideOutHorizontally(exitOffset) { distance } + fadeOut(exit)),
+            push = (slideInHorizontally(enterOffset) { distance } + arrive) togetherWith
+                (slideOutHorizontally(exitOffset) { -distance } + leave),
+            pop = (slideInHorizontally(enterOffset) { -distance } + arrive) togetherWith
+                (slideOutHorizontally(exitOffset) { distance } + leave),
             // The screen underneath stays where it is; only the task moves.
-            rise = (slideInVertically(enterOffset) { distance } + fadeIn(enter)) togetherWith fadeOut(exit),
-            sink = fadeIn(enter) togetherWith (slideOutVertically(exitOffset) { distance } + fadeOut(exit))
+            rise = (slideInVertically(enterOffset) { distance } + arrive) togetherWith leave,
+            sink = arrive togetherWith (slideOutVertically(exitOffset) { distance } + leave)
         )
     }
 }

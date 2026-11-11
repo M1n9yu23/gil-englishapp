@@ -15,18 +15,21 @@
  */
 package com.gyugle.gil
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
@@ -37,16 +40,23 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.NavigationRailItemDefaults
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.EntryProviderScope
+import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
@@ -110,47 +120,79 @@ fun MainHost(
     }
     val onSelect: (TopLevelDestination) -> Unit = { navigator.goTo(it.route) }
 
-    Scaffold(
-        modifier = modifier.fillMaxSize(),
-        // Screens pad themselves for the status bar. On a tab root the bar below pads for the
-        // navigation bar; a pushed screen has no bar and pads for it itself.
-        contentWindowInsets = WindowInsets(0),
-        bottomBar = {
-            if (showsTabs && !tabsBeside) MainNavigationBar(navigationState, onSelect)
-        }
-    ) { innerPadding ->
-        Row(
-            modifier = Modifier
-                .padding(innerPadding)
-                .consumeWindowInsets(innerPadding)
-        ) {
-            if (showsTabs && tabsBeside) MainNavigationRail(navigationState, onSelect)
-            val transitions = rememberStackTransitions()
-            val contentMaxWidth = GilTheme.spacing.contentMaxWidth
-            val sceneStrategies = remember(contentMaxWidth) {
-                listOf(BottomSheetSceneStrategy<NavKey>(), CenteredPaneSceneStrategy(contentMaxWidth))
+    val transitions = rememberStackTransitions()
+    val contentMaxWidth = GilTheme.spacing.contentMaxWidth
+    val sceneStrategies = remember(contentMaxWidth) {
+        listOf(BottomSheetSceneStrategy<NavKey>(), CenteredPaneSceneStrategy(contentMaxWidth))
+    }
+    // Measured rather than assumed, so a tab root clears the bar at any font size.
+    var barHeight by remember { mutableStateOf(0.dp) }
+    val density = LocalDensity.current
+    // A tab root keeps clear of the bar, or of the navigation bar when the tabs are beside it.
+    // Screens pushed over it pad for the system bars themselves.
+    val navigationBarPadding = WindowInsets.navigationBars.only(WindowInsetsSides.Bottom).asPaddingValues()
+    val tabRootPadding by rememberUpdatedState(
+        if (tabsBeside) navigationBarPadding else PaddingValues(bottom = barHeight)
+    )
+    val provider = entryProvider { entries(navigator) }
+    val tabRoutes = remember { destinations.map { it.route }.toSet() }
+
+    // The surface also sets the text colour that screens without their own surface draw in.
+    Surface(modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Row(modifier = Modifier.fillMaxSize()) {
+                if (showsTabs && tabsBeside) MainNavigationRail(navigationState, onSelect)
+                NavDisplay(
+                    entries = navigationState.toEntries { key ->
+                        val entry = provider(key)
+                        if (key in tabRoutes) entry.paddedBy(key) { tabRootPadding } else entry
+                    },
+                    sceneStrategies = sceneStrategies,
+                    modifier = Modifier
+                        .weight(1f)
+                        // Beside the rail, the screen is clear of the start edge.
+                        .then(
+                            if (showsTabs && tabsBeside) {
+                                Modifier.consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
+                            } else {
+                                Modifier
+                            }
+                        ),
+                    transitionSpec = { transitions.between(initialState, targetState, back = false) },
+                    popTransitionSpec = { transitions.between(initialState, targetState, back = true) },
+                    predictivePopTransitionSpec = { _ -> transitions.between(initialState, targetState, back = true) },
+                    onBack = navigator::goBack
+                )
             }
-            NavDisplay(
-                entries = navigationState.toEntries(entryProvider { entries(navigator) }),
-                sceneStrategies = sceneStrategies,
-                modifier = Modifier
-                    .weight(1f)
-                    // Beside the rail, the screen is clear of the start edge, and nothing below
-                    // it pads for the navigation bar.
-                    .then(
-                        if (showsTabs && tabsBeside) {
-                            Modifier
-                                .consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
-                                .windowInsetsPadding(WindowInsets.navigationBars.only(WindowInsetsSides.Bottom))
-                        } else {
-                            Modifier
-                        }
-                    ),
-                transitionSpec = { transitions.between(initialState, targetState, back = false) },
-                popTransitionSpec = { transitions.between(initialState, targetState, back = true) },
-                predictivePopTransitionSpec = { _ -> transitions.between(initialState, targetState, back = true) },
-                onBack = navigator::goBack
-            )
+            // Over the screens instead of beside them, so the screens never change size as it comes
+            // and goes. It leaves and arrives with the tab root, before the next screen shows.
+            AnimatedVisibility(
+                visible = showsTabs && !tabsBeside,
+                modifier = Modifier.align(Alignment.BottomCenter),
+                enter = transitions.arrive,
+                exit = transitions.leave
+            ) {
+                MainNavigationBar(
+                    state = navigationState,
+                    onSelect = onSelect,
+                    modifier = Modifier.onSizeChanged { barHeight = with(density) { it.height.toDp() } }
+                )
+            }
+        }
+    }
+}
+
+/** The entry with [padding] around its content, consumed so the screen does not pad for it again. */
+private fun NavEntry<NavKey>.paddedBy(key: NavKey, padding: () -> PaddingValues): NavEntry<NavKey> {
+    val entry = this
+    return NavEntry(key = key, contentKey = entry.contentKey, metadata = entry.metadata) {
+        val values = padding()
+        Box(
+            modifier = Modifier
+                .padding(values)
+                .consumeWindowInsets(values)
+        ) {
+            entry.Content()
         }
     }
 }
@@ -168,7 +210,11 @@ private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
 }
 
 @Composable
-private fun MainNavigationBar(state: NavigationState, onSelect: (TopLevelDestination) -> Unit) {
+private fun MainNavigationBar(
+    state: NavigationState,
+    onSelect: (TopLevelDestination) -> Unit,
+    modifier: Modifier = Modifier
+) {
     val colorScheme = MaterialTheme.colorScheme
     // The default indicator (secondaryContainer) almost vanishes on the bar's paper tone.
     val itemColors = NavigationBarItemDefaults.colors(
@@ -178,7 +224,7 @@ private fun MainNavigationBar(state: NavigationState, onSelect: (TopLevelDestina
         unselectedIconColor = colorScheme.onSurfaceVariant,
         unselectedTextColor = colorScheme.onSurfaceVariant
     )
-    NavigationBar(containerColor = colorScheme.surfaceContainer) {
+    NavigationBar(modifier = modifier, containerColor = colorScheme.surfaceContainer) {
         destinations.forEach { destination ->
             val selected = destination.route == state.topLevelRoute
             NavigationBarItem(
