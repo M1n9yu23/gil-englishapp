@@ -86,6 +86,7 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.domain)
     implementation(projects.core.navigation)
+    implementation(projects.core.presentation)
     implementation(projects.core.speech)
     implementation(projects.feature.home.api)
     implementation(projects.feature.home.impl.presentation)

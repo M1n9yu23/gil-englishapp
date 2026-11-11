@@ -126,4 +126,20 @@ class MainHostScreenshotTest {
     @Test
     @Config(qualifiers = "+night")
     fun progress_night_showsNoHistory() = capture(R.string.main_tab_progress)
+
+    @Test
+    @Config(qualifiers = "ko-w760dp-h360dp-xhdpi")
+    fun today_phoneLandscape_showsRail() = capture()
+
+    @Test
+    @Config(qualifiers = "ko-w673dp-h841dp-xhdpi")
+    fun today_foldable_showsRail() = capture()
+
+    @Test
+    @Config(qualifiers = "ko-w1280dp-h800dp-mdpi")
+    fun today_tabletLandscape_centersContent() = capture()
+
+    @Test
+    @Config(qualifiers = "ko-w1280dp-h800dp-mdpi")
+    fun progress_tabletLandscape_centersContent() = capture(R.string.main_tab_progress)
 }

@@ -15,15 +15,28 @@
  */
 package com.gyugle.gil
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.NavigationRailItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,13 +49,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.scene.SinglePaneSceneStrategy
 import androidx.navigation3.ui.NavDisplay
+import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.navigation.BottomSheetSceneStrategy
+import com.gyugle.gil.core.navigation.CenteredPaneSceneStrategy
 import com.gyugle.gil.core.navigation.DeepLinkTarget
 import com.gyugle.gil.core.navigation.NavigationState
 import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.core.navigation.rememberNavigationState
+import com.gyugle.gil.core.presentation.DeviceConfiguration
+import com.gyugle.gil.core.presentation.currentDeviceConfiguration
 import com.gyugle.gil.feature.curriculum.impl.presentation.curriculumEntries
 import com.gyugle.gil.feature.dictionary.impl.presentation.dictionaryEntries
 import com.gyugle.gil.feature.home.impl.presentation.homeEntries
@@ -80,37 +96,84 @@ fun MainHost(
         }
     }
 
+    val configuration = currentDeviceConfiguration()
+    // Only a phone held upright has the height to spare for a bar; anything wider puts the tabs
+    // beside the screen. Either way they show on tab roots only, so a lesson gets the whole window.
+    val showsTabs = navigationState.currentStack.size == 1
+    val tabsBeside = when (configuration) {
+        DeviceConfiguration.MOBILE_PORTRAIT -> false
+
+        DeviceConfiguration.MOBILE_LANDSCAPE,
+        DeviceConfiguration.TABLET_PORTRAIT,
+        DeviceConfiguration.TABLET_LANDSCAPE,
+        DeviceConfiguration.DESKTOP -> true
+    }
+    val onSelect: (TopLevelDestination) -> Unit = { navigator.goTo(it.route) }
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         // Screens pad themselves for the status bar. On a tab root the bar below pads for the
         // navigation bar; a pushed screen has no bar and pads for it itself.
         contentWindowInsets = WindowInsets(0),
         bottomBar = {
-            if (navigationState.currentStack.size == 1) {
-                MainNavigationBar(navigationState, onSelect = { navigator.goTo(it.route) })
-            }
+            if (showsTabs && !tabsBeside) MainNavigationBar(navigationState, onSelect)
         }
     ) { innerPadding ->
-        val transitions = rememberStackTransitions()
-        val sceneStrategies = remember { listOf(BottomSheetSceneStrategy<NavKey>(), SinglePaneSceneStrategy()) }
-        NavDisplay(
-            entries = navigationState.toEntries(entryProvider { entries(navigator) }),
-            sceneStrategies = sceneStrategies,
+        Row(
             modifier = Modifier
                 .padding(innerPadding)
-                .consumeWindowInsets(innerPadding),
-            // A tab switch is neither forward nor back, so it fades; moving within a tab slides.
-            transitionSpec = { if (initialState.tab() == targetState.tab()) transitions.push else transitions.fade },
-            popTransitionSpec = { if (initialState.tab() == targetState.tab()) transitions.pop else transitions.fade },
-            predictivePopTransitionSpec = { _ ->
-                if (initialState.tab() == targetState.tab()) transitions.pop else transitions.fade
-            },
-            onBack = navigator::goBack
-        )
+                .consumeWindowInsets(innerPadding)
+        ) {
+            if (showsTabs && tabsBeside) MainNavigationRail(navigationState, onSelect)
+            val transitions = rememberStackTransitions()
+            val contentMaxWidth = GilTheme.spacing.contentMaxWidth
+            val sceneStrategies = remember(contentMaxWidth) {
+                listOf(BottomSheetSceneStrategy<NavKey>(), CenteredPaneSceneStrategy(contentMaxWidth))
+            }
+            NavDisplay(
+                entries = navigationState.toEntries(entryProvider { entries(navigator) }),
+                sceneStrategies = sceneStrategies,
+                modifier = Modifier
+                    .weight(1f)
+                    // Beside the rail, the screen is clear of the start edge, and nothing below
+                    // it pads for the navigation bar.
+                    .then(
+                        if (showsTabs && tabsBeside) {
+                            Modifier
+                                .consumeWindowInsets(WindowInsets.safeDrawing.only(WindowInsetsSides.Start))
+                                .windowInsetsPadding(WindowInsets.navigationBars.only(WindowInsetsSides.Bottom))
+                        } else {
+                            Modifier
+                        }
+                    ),
+                // A tab switch is neither forward nor back, so it fades; moving within a tab slides.
+                transitionSpec = {
+                    if (initialState.tab() ==
+                        targetState.tab()
+                    ) {
+                        transitions.push
+                    } else {
+                        transitions.fade
+                    }
+                },
+                popTransitionSpec = {
+                    if (initialState.tab() ==
+                        targetState.tab()
+                    ) {
+                        transitions.pop
+                    } else {
+                        transitions.fade
+                    }
+                },
+                predictivePopTransitionSpec = { _ ->
+                    if (initialState.tab() == targetState.tab()) transitions.pop else transitions.fade
+                },
+                onBack = navigator::goBack
+            )
+        }
     }
 }
 
-/** Every screen of the main host. */
 private fun EntryProviderScope<NavKey>.mainEntries(navigator: Navigator) {
     homeEntries(navigator)
     curriculumEntries(navigator)
@@ -145,6 +208,37 @@ private fun MainNavigationBar(state: NavigationState, onSelect: (TopLevelDestina
                 icon = { Icon(painter = destination.icon(selected), contentDescription = null) },
                 label = { Text(stringResource(destination.label)) }
             )
+        }
+    }
+}
+
+@Composable
+private fun MainNavigationRail(state: NavigationState, onSelect: (TopLevelDestination) -> Unit) {
+    val colorScheme = MaterialTheme.colorScheme
+    // The same colours as the bar, for the same reason.
+    val itemColors = NavigationRailItemDefaults.colors(
+        selectedIconColor = colorScheme.onPrimaryContainer,
+        selectedTextColor = colorScheme.onSurface,
+        indicatorColor = colorScheme.primaryContainer,
+        unselectedIconColor = colorScheme.onSurfaceVariant,
+        unselectedTextColor = colorScheme.onSurfaceVariant
+    )
+    // Scrolls when a large font makes the four tabs taller than a phone held sideways.
+    NavigationRail(containerColor = colorScheme.surfaceContainer) {
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(GilTheme.spacing.inlineGap)
+        ) {
+            destinations.forEach { destination ->
+                val selected = destination.route == state.topLevelRoute
+                NavigationRailItem(
+                    selected = selected,
+                    onClick = { onSelect(destination) },
+                    colors = itemColors,
+                    icon = { Icon(painter = destination.icon(selected), contentDescription = null) },
+                    label = { Text(stringResource(destination.label)) }
+                )
+            }
         }
     }
 }

@@ -24,6 +24,8 @@ import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
+import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.core.navigation.CenteredPaneSceneStrategy
 import com.gyugle.gil.core.navigation.Navigator
 import com.gyugle.gil.core.navigation.rememberNavigationState
 import com.gyugle.gil.feature.onboarding.api.OnboardingWelcomeRoute
@@ -41,10 +43,13 @@ fun OnboardingHost(
     val navigationState = rememberNavigationState(OnboardingWelcomeRoute)
     val navigator = remember(navigationState) { Navigator(navigationState) }
     val transitions = rememberStackTransitions()
+    val contentMaxWidth = GilTheme.spacing.contentMaxWidth
+    val sceneStrategies = remember(contentMaxWidth) { listOf(CenteredPaneSceneStrategy<NavKey>(contentMaxWidth)) }
     // The steps pad themselves for the system bars, like a pushed screen in the main host.
     Surface(modifier = modifier.fillMaxSize()) {
         NavDisplay(
             entries = navigationState.toEntries(entryProvider { entries(navigator) }),
+            sceneStrategies = sceneStrategies,
             transitionSpec = { transitions.push },
             popTransitionSpec = { transitions.pop },
             predictivePopTransitionSpec = { _ -> transitions.pop },

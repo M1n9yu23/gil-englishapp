@@ -30,7 +30,12 @@ data class Spacing(
     /** Between rows, and between blocks inside one group. */
     val itemGap: Dp = 12.dp,
     /** Between an icon and its label, or a title and the line under it. */
-    val inlineGap: Dp = 8.dp
+    val inlineGap: Dp = 8.dp,
+    /**
+     * The widest a screen gets. A wider window keeps the screen centred, so lines stay short
+     * enough to read and a row's end stays near its start. A phone held upright never reaches it.
+     */
+    val contentMaxWidth: Dp = 600.dp
 )
 
 /** Durations in milliseconds. Compose scales them by the system animation setting. */
