@@ -202,27 +202,33 @@ private fun RecorderPanel(recorder: RecorderUi, onAction: (LessonAction) -> Unit
                         style = MaterialTheme.typography.labelLarge,
                         color = colors.primary
                     )
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(spacing.inlineGap)) {
+                    // One button that turns into Stop and back, so a screen reader keeps its place on it.
                     SecondaryActionButton(
-                        text = stringResource(R.string.lesson_record_stop),
-                        onClick = { onAction(LessonAction.OnStopRecordingClick) },
-                        modifier = Modifier.fillMaxWidth()
+                        text = stringResource(
+                            when {
+                                recorder.isRecording -> R.string.lesson_record_stop
+                                recorder.hasRecording -> R.string.lesson_record_again
+                                else -> R.string.lesson_record
+                            }
+                        ),
+                        onClick = {
+                            val action = if (recorder.isRecording) {
+                                LessonAction.OnStopRecordingClick
+                            } else {
+                                LessonAction.OnRecordClick
+                            }
+                            onAction(action)
+                        },
+                        modifier = Modifier.weight(1f)
                     )
-                } else {
-                    Row(horizontalArrangement = Arrangement.spacedBy(spacing.inlineGap)) {
+                    if (recorder.hasRecording && !recorder.isRecording) {
                         SecondaryActionButton(
-                            text = stringResource(
-                                if (recorder.hasRecording) R.string.lesson_record_again else R.string.lesson_record
-                            ),
-                            onClick = { onAction(LessonAction.OnRecordClick) },
+                            text = stringResource(R.string.lesson_play_mine),
+                            onClick = { onAction(LessonAction.OnPlayMineClick) },
                             modifier = Modifier.weight(1f)
                         )
-                        if (recorder.hasRecording) {
-                            SecondaryActionButton(
-                                text = stringResource(R.string.lesson_play_mine),
-                                onClick = { onAction(LessonAction.OnPlayMineClick) },
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
                     }
                 }
                 if (recorder.failed) {
