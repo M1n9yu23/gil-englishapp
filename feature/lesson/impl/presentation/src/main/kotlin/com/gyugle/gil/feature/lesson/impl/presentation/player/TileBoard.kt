@@ -31,6 +31,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.PressableSurface
@@ -68,6 +70,7 @@ internal fun TileBoard(
     val colors = MaterialTheme.colorScheme
     val bank = step.bank
     val chosen = step.chosen
+    val placed = stringResource(R.string.lesson_tile_placed)
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(spacing.sectionGap)) {
         Box(
             modifier = Modifier
@@ -92,7 +95,8 @@ internal fun TileBoard(
                         text = tile.text,
                         enabled = enabled,
                         clickLabel = stringResource(R.string.lesson_tile_remove, tile.text),
-                        onClick = { onChosenTileClick(position) }
+                        onClick = { onChosenTileClick(position) },
+                        state = placed
                     )
                 }
             }
@@ -107,7 +111,8 @@ internal fun TileBoard(
                     text = tile.text,
                     enabled = enabled && !used,
                     onClick = { onTileClick(index) },
-                    modifier = if (used) Modifier.alpha(TileBoardTokens.USED_ALPHA) else Modifier
+                    modifier = if (used) Modifier.alpha(TileBoardTokens.USED_ALPHA) else Modifier,
+                    state = if (used) placed else null
                 )
             }
         }
@@ -120,7 +125,8 @@ private fun Tile(
     enabled: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    clickLabel: String? = null
+    clickLabel: String? = null,
+    state: String? = null
 ) {
     val shape = MaterialTheme.shapes.small
     PressableSurface(
@@ -128,7 +134,8 @@ private fun Tile(
         enabled = enabled,
         shape = shape,
         clickLabel = clickLabel,
-        modifier = modifier
+        // Placed tiles and the faint gaps they leave in the bank would otherwise read like the rest.
+        modifier = modifier.semantics { state?.let { stateDescription = it } }
     ) {
         Box(
             modifier = Modifier

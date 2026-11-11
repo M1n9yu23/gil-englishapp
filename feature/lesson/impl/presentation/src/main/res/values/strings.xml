@@ -31,6 +31,8 @@
     <string name="lesson_answer_label">Your answer</string>
     <string name="lesson_tile_remove">Remove <xliff:g id="word" example="name">%1$s</xliff:g></string>
     <string name="lesson_tiles_empty">Your sentence appears here.</string>
+    <!-- Screen reader state of a word tile that is already in the sentence being built. -->
+    <string name="lesson_tile_placed">In your sentence</string>
 
     <string name="lesson_feedback_correct">That’s right.</string>
     <string name="lesson_feedback_close">Almost. Check the spelling.</string>

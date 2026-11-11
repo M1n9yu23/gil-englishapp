@@ -30,6 +30,7 @@
     <string name="lesson_answer_label">답</string>
     <string name="lesson_tile_remove"><xliff:g id="word" example="name">%1$s</xliff:g> 빼기</string>
     <string name="lesson_tiles_empty">고른 단어가 여기에 놓여요.</string>
+    <string name="lesson_tile_placed">문장에 넣음</string>
 
     <string name="lesson_feedback_correct">맞아요.</string>
     <string name="lesson_feedback_close">거의 맞았어요. 철자를 확인해 보세요.</string>
