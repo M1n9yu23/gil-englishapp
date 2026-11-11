@@ -31,6 +31,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextDecoration
 import com.gyugle.gil.core.designsystem.component.EnglishText
 import com.gyugle.gil.core.designsystem.component.KoreanProse
+import com.gyugle.gil.core.designsystem.component.Reveal
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.lesson.impl.presentation.player.FeedbackUi
@@ -38,39 +39,42 @@ import com.gyugle.gil.feature.lesson.impl.presentation.player.GradeUi
 
 /**
  * The result of checking: a short verdict, the right answer when it was not exact, the reason, the
- * translation, and a note when the step comes back. Announced as it appears.
+ * translation, and a note when the step comes back. Announced as it appears, and fades in with
+ * the answers.
  */
 @Composable
 internal fun FeedbackPanel(feedback: FeedbackUi, modifier: Modifier = Modifier) {
     val spacing = GilTheme.spacing
     val colors = MaterialTheme.colorScheme
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .semantics { liveRegion = LiveRegionMode.Polite },
-        verticalArrangement = Arrangement.spacedBy(spacing.inlineGap)
-    ) {
-        Text(
-            text = stringResource(
-                when (feedback.grade) {
-                    GradeUi.CORRECT -> R.string.lesson_feedback_correct
-                    GradeUi.CLOSE -> R.string.lesson_feedback_close
-                    GradeUi.WRONG -> R.string.lesson_feedback_wrong
-                }
-            ),
-            style = MaterialTheme.typography.titleMedium,
-            color = if (feedback.grade == GradeUi.WRONG) colors.error else colors.primary
-        )
-        feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
-        if (feedback.typed != null) TypedWords(feedback)
-        feedback.why?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
-        feedback.translation?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
-        if (feedback.comesBack) {
+    Reveal(modifier = modifier) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics { liveRegion = LiveRegionMode.Polite },
+            verticalArrangement = Arrangement.spacedBy(spacing.inlineGap)
+        ) {
             Text(
-                text = stringResource(R.string.lesson_feedback_comes_back),
-                style = MaterialTheme.typography.bodyMedium,
-                color = colors.onSurfaceVariant
+                text = stringResource(
+                    when (feedback.grade) {
+                        GradeUi.CORRECT -> R.string.lesson_feedback_correct
+                        GradeUi.CLOSE -> R.string.lesson_feedback_close
+                        GradeUi.WRONG -> R.string.lesson_feedback_wrong
+                    }
+                ),
+                style = MaterialTheme.typography.titleMedium,
+                color = if (feedback.grade == GradeUi.WRONG) colors.error else colors.primary
             )
+            feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
+            if (feedback.typed != null) TypedWords(feedback)
+            feedback.why?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
+            feedback.translation?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
+            if (feedback.comesBack) {
+                Text(
+                    text = stringResource(R.string.lesson_feedback_comes_back),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colors.onSurfaceVariant
+                )
+            }
         }
     }
 }
