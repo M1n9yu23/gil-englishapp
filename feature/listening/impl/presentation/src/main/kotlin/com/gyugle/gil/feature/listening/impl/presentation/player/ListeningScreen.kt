@@ -47,9 +47,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.clearAndSetSemantics
-import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -370,9 +368,10 @@ private fun PlayingContent(state: ListeningState.Playing, onAction: (ListeningAc
                     .clearAndSetSemantics {}
             )
             Spacer(Modifier.size(spacing.itemGap))
-            // Read out as each track starts, for a learner listening with TalkBack.
+            // Not a live region: read out as each track starts, it would talk over the audio and say
+            // the meaning before the pause meant for recalling it.
             Column(
-                modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite },
+                modifier = Modifier.semantics(mergeDescendants = true) {},
                 verticalArrangement = Arrangement.spacedBy(spacing.inlineGap)
             ) {
                 EnglishText(text = state.track.title, size = EnglishTextSize.Focus)
