@@ -31,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -298,8 +299,8 @@ private fun ColumnScope.ChoiceContent(step: StepUi.Choice, hasVoice: Boolean, on
                 SecondaryActionButton(text = stringResource(R.string.lesson_play_conversation), onClick = play)
             }
             prompt.lines.forEach { line ->
-                // The name above its line, so every line starts on the same edge.
-                Column {
+                // The name above its line, so every line starts on the same edge. Read as one.
+                Column(modifier = Modifier.semantics(mergeDescendants = true) {}) {
                     Text(
                         text = line.speaker,
                         style = MaterialTheme.typography.labelLarge,
@@ -313,7 +314,7 @@ private fun ColumnScope.ChoiceContent(step: StepUi.Choice, hasVoice: Boolean, on
 
         is ChoicePrompt.Passage -> {
             prompt.sentences.forEach { sentence ->
-                Column {
+                Column(modifier = Modifier.semantics(mergeDescendants = true) {}) {
                     EnglishText(text = sentence.text)
                     if (prompt.showsTranslations) {
                         sentence.ko?.let {
