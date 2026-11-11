@@ -35,6 +35,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextDecoration
@@ -151,7 +152,13 @@ fun AnswerOption(
                 // The word itself is read just above.
                 if (ipa != null) IpaText(ipa = ipa, spokenWord = null)
                 if (mark == AnswerMark.PICKED_WRONG) {
-                    Text(text = pickedLabel, style = MaterialTheme.typography.labelMedium, color = colors.error)
+                    // Screen readers hear it once, as the state set above.
+                    Text(
+                        text = pickedLabel,
+                        modifier = Modifier.clearAndSetSemantics {},
+                        style = MaterialTheme.typography.labelMedium,
+                        color = colors.error
+                    )
                 }
             }
             if (mark == AnswerMark.CORRECT) {
