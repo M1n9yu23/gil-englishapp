@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material Symbols Outlined "arrow_forward" (Apache License 2.0), centred on the adaptive icon canvas. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- The 960-unit glyph drawn 36 units wide, from y = -960 up to 0, so it sits at 36..72. -->
+    <group
+        android:scaleX="0.0375"
+        android:scaleY="0.0375"
+        android:translateX="36"
+        android:translateY="72">
+        <path
+            android:fillColor="#FF2F4A86"
+            android:pathData="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+    </group>
+</vector>

@@ -6,4 +6,11 @@
     <string name="main_tab_path">길</string>
     <string name="main_tab_words">단어</string>
     <string name="main_tab_progress">기록</string>
+
+    <string name="shortcut_continue">이어서 하기</string>
+    <string name="shortcut_continue_long">오늘 공부 이어서 하기</string>
+    <string name="shortcut_review">복습</string>
+    <string name="shortcut_review_long">오늘 카드 복습하기</string>
+    <string name="shortcut_listening">듣기</string>
+    <string name="shortcut_listening_long">듣기 모드</string>
 </resources>

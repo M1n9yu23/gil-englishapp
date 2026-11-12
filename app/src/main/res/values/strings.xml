@@ -6,4 +6,12 @@
     <string name="main_tab_path">Path</string>
     <string name="main_tab_words">Words</string>
     <string name="main_tab_progress">Stats</string>
+
+    <!-- Launcher shortcuts. The short label shows on a pinned shortcut; keep it to about 10 characters. -->
+    <string name="shortcut_continue">Continue</string>
+    <string name="shortcut_continue_long">Continue studying</string>
+    <string name="shortcut_review">Review</string>
+    <string name="shortcut_review_long">Review today’s cards</string>
+    <string name="shortcut_listening">Listen</string>
+    <string name="shortcut_listening_long">Listening mode</string>
 </resources>

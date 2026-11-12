@@ -20,7 +20,8 @@ Full text: core/designsystem/licenses/Charis-OFL.txt
 Material Symbols (https://github.com/google/material-design-icons)
 Copyright Google LLC.
 Licensed under the Apache License, Version 2.0.
-Files: core/designsystem/src/main/res/drawable/ic_*.xml
+Files: core/designsystem/src/main/res/drawable/ic_*.xml,
+app/src/main/res/drawable/ic_shortcut_*_foreground.xml
 
 The CMU Pronouncing Dictionary (https://github.com/cmusphinx/cmudict)
 Copyright (C) 1993-2015 Carnegie Mellon University. All rights reserved.

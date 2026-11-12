@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Launcher shortcuts, nearest the icon first. Each opens MainActivity with a gil:// link, which
+  GilDeepLinkResolver reads. A shortcut needs its package written out, and debug and staging builds
+  add a suffix to it, so the build writes res/xml/shortcuts.xml from this file for each variant.
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:icon="@drawable/ic_shortcut_continue"
+        android:shortcutId="continue"
+        android:shortcutLongLabel="@string/shortcut_continue_long"
+        android:shortcutShortLabel="@string/shortcut_continue">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="gil://continue"
+            android:targetClass="com.gyugle.gil.MainActivity"
+            android:targetPackage="${applicationId}" />
+    </shortcut>
+    <shortcut
+        android:icon="@drawable/ic_shortcut_review"
+        android:shortcutId="review"
+        android:shortcutLongLabel="@string/shortcut_review_long"
+        android:shortcutShortLabel="@string/shortcut_review">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="gil://review"
+            android:targetClass="com.gyugle.gil.MainActivity"
+            android:targetPackage="${applicationId}" />
+    </shortcut>
+    <shortcut
+        android:icon="@drawable/ic_shortcut_listening"
+        android:shortcutId="listening"
+        android:shortcutLongLabel="@string/shortcut_listening_long"
+        android:shortcutShortLabel="@string/shortcut_listening">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="gil://listening"
+            android:targetClass="com.gyugle.gil.MainActivity"
+            android:targetPackage="${applicationId}" />
+    </shortcut>
+</shortcuts>

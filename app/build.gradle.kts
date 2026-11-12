@@ -73,6 +73,38 @@ android {
     }
 }
 
+// Launcher shortcuts name the package they open, which differs by build type, and a resource file
+// cannot read the application id. Each variant gets shortcuts.xml written from one template.
+abstract class WriteShortcutsTask : DefaultTask() {
+    @get:InputFile
+    @get:PathSensitive(PathSensitivity.NONE)
+    abstract val template: RegularFileProperty
+
+    @get:Input
+    abstract val applicationId: Property<String>
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun write() {
+        val file = outputDir.file("xml/shortcuts.xml").get().asFile
+        file.parentFile.mkdirs()
+        file.writeText(template.get().asFile.readText().replace("\${applicationId}", applicationId.get()))
+    }
+}
+
+androidComponents {
+    onVariants { variant ->
+        val name = "write${variant.name.replaceFirstChar(Char::uppercase)}Shortcuts"
+        val writeShortcuts = tasks.register<WriteShortcutsTask>(name) {
+            template.set(layout.projectDirectory.file("shortcuts/shortcuts.xml"))
+            applicationId.set(variant.applicationId)
+        }
+        variant.sources.res?.addGeneratedSourceDirectory(writeShortcuts, WriteShortcutsTask::outputDir)
+    }
+}
+
 // The license screen lists every library in the app. The build stays offline: license texts that
 // Maven metadata lacks, and the fonts and icons that are not Maven artifacts, are in aboutlibraries/.
 aboutLibraries {
