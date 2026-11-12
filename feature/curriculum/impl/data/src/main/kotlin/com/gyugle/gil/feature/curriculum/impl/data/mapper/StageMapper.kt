@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.data.mapper
 
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.impl.data.entity.StageCanDoEntity
@@ -22,11 +23,18 @@ import com.gyugle.gil.feature.curriculum.impl.data.entity.StageEntity
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitSummary
 
-fun StageEntity.toStage(canDo: List<StageCanDoEntity>, units: List<UnitSummary>): Stage = Stage(
+fun StageEntity.toStage(
+    canDo: List<StageCanDoEntity>,
+    units: List<UnitSummary>,
+    lessons: List<LessonId>,
+    itemCount: Int
+): Stage = Stage(
     id = StageId(id),
     title = localizedTitle(),
     canDo = canDo.map { LocalizedText(ko = it.textKo, en = it.textEn) },
-    units = units
+    units = units,
+    lessons = lessons,
+    itemCount = itemCount
 )
 
 fun StageEntity.localizedTitle(): LocalizedText = LocalizedText(ko = titleKo, en = titleEn)

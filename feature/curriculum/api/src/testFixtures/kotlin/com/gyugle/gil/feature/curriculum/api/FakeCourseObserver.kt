@@ -22,7 +22,8 @@ import com.gyugle.gil.feature.curriculum.api.Lesson
  * A [CourseObserver] over [lessons]. A missing lesson is [ContentError.NOT_FOUND]; [error], when
  * set, is what every call fails with. The first lesson is the first in [lessons], and course order
  * is their order. Every lesson is in one unit titled [unitTitle] unless [units] sets the units,
- * and in [stage] unless [stages] sets the course's stages.
+ * and in [stage] unless [stages] sets the course's stages. A stage's items are those its lessons
+ * in [lessons] introduce.
  */
 class FakeCourseObserver(vararg lessons: Lesson) : CourseObserver {
     val lessons: MutableList<Lesson> = lessons.toMutableList()
@@ -54,6 +55,16 @@ class FakeCourseObserver(vararg lessons: Lesson) : CourseObserver {
     override suspend fun getStageLessons(): Outcome<List<StageLessons>, ContentError> {
         error?.let { return Outcome.Failure(it) }
         return Outcome.Success(stages ?: listOf(StageLessons(stage, lessons.map { it.id })))
+    }
+
+    override suspend fun getStageItems(id: StageId): Outcome<List<LessonItem>, ContentError> {
+        val stageLessons = when (val read = getStageLessons()) {
+            is Outcome.Failure -> return read
+            is Outcome.Success -> read.data.firstOrNull { it.stage.id == id }?.lessons.orEmpty()
+        }
+        return Outcome.Success(
+            stageLessons.flatMap { lessonId -> lessons.firstOrNull { it.id == lessonId }?.introduced.orEmpty() }
+        )
     }
 
     override suspend fun getUnitLessons(): Outcome<List<UnitLessons>, ContentError> {

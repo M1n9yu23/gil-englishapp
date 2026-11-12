@@ -15,13 +15,19 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.domain.model
 
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageId
 
-/** A stage of the course with its units in order. [canDo] lists what a learner can do after it. */
+/**
+ * A stage of the course with its units in order. [canDo] lists what a learner can do after it.
+ * [lessons] are all its lessons in course order, and [itemCount] counts the items they introduce.
+ */
 data class Stage(
     val id: StageId,
     val title: LocalizedText,
     val canDo: List<LocalizedText>,
-    val units: List<UnitSummary>
+    val units: List<UnitSummary>,
+    val lessons: List<LessonId>,
+    val itemCount: Int
 )

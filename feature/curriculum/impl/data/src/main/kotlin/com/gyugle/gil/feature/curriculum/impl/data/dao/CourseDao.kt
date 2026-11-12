@@ -52,6 +52,19 @@ interface CourseDao {
         Int
         >
 
+    /** How many items each stage's lessons introduce. A stage whose lessons introduce none is missing. */
+    @Query(
+        "SELECT unit.stageId AS stageId, COUNT(*) AS itemCount FROM lesson_item " +
+            "JOIN lesson ON lesson.id = lesson_item.lessonId JOIN unit ON unit.id = lesson.unitId " +
+            "GROUP BY unit.stageId"
+    )
+    suspend fun itemCounts(): Map<
+        @MapColumn("stageId")
+        String,
+        @MapColumn("itemCount")
+        Int
+        >
+
     @Query("SELECT * FROM lesson WHERE unitId = :unitId ORDER BY position")
     suspend fun lessons(unitId: String): List<LessonEntity>
 

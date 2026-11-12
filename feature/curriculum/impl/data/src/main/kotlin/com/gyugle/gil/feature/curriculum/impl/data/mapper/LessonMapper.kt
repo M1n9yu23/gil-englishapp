@@ -39,5 +39,5 @@ fun LessonEntity.toLesson(steps: List<StepPayloadDto>, items: List<LessonItemRow
     next = next?.let(::LessonId)
 )
 
-private fun LessonItemRow.toLessonItem() =
+fun LessonItemRow.toLessonItem(): LessonItem =
     LessonItem(id = id.toStudyItemId(), text = text, ipa = ipa, meaningKo = meaningKo)

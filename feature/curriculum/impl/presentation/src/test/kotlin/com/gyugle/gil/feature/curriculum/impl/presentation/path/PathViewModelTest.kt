@@ -23,6 +23,7 @@ import assertk.assertions.isNull
 import assertk.assertions.isTrue
 import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.feature.curriculum.api.ContentError
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.api.UnitId
@@ -52,7 +53,9 @@ class PathViewModelTest {
         id = StageId(id),
         title = LocalizedText(ko = "$id ko", en = "$id en"),
         canDo = listOf(LocalizedText(ko = "할 수 있어요", en = "You can")),
-        units = units.map { UnitSummary(UnitId(it), LocalizedText(ko = "$it ko", en = "$it en"), lessonCount = 3) }
+        units = units.map { UnitSummary(UnitId(it), LocalizedText(ko = "$it ko", en = "$it en"), lessonCount = 3) },
+        lessons = units.map { LessonId(it.replace("unit.", "lesson.") + ".1") },
+        itemCount = 0
     )
 
     @Test

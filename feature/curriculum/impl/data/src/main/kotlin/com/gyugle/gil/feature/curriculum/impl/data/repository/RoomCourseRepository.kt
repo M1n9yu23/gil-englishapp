@@ -20,8 +20,10 @@ import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.LessonItem
 import com.gyugle.gil.feature.curriculum.api.LessonOverview
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.api.StageLessons
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.api.UnitLessons
@@ -29,6 +31,7 @@ import com.gyugle.gil.feature.curriculum.impl.data.ContentDatabaseProvider
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadDto
 import com.gyugle.gil.feature.curriculum.impl.data.dto.StepPayloadJson
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toLesson
+import com.gyugle.gil.feature.curriculum.impl.data.mapper.toLessonItem
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toStage
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toStageTag
 import com.gyugle.gil.feature.curriculum.impl.data.mapper.toUnitDetail
@@ -47,11 +50,15 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         val canDos = dao.canDos().groupBy { it.stageId }
         val lessonCounts = dao.lessonCounts()
         val units = dao.units().groupBy { it.stageId }
+        val lessons = dao.lessonStages().groupBy({ it.stageId }, { LessonId(it.lessonId) })
+        val itemCounts = dao.itemCounts()
         val stages = dao.stages().map { stage ->
             stage.toStage(
                 canDo = canDos[stage.id].orEmpty(),
                 units = units[stage.id].orEmpty()
-                    .map { it.toUnitSummary(lessonCount = lessonCounts[it.id] ?: 0) }
+                    .map { it.toUnitSummary(lessonCount = lessonCounts[it.id] ?: 0) },
+                lessons = lessons[stage.id].orEmpty(),
+                itemCount = itemCounts[stage.id] ?: 0
             )
         }
         Outcome.Success(stages)
@@ -110,6 +117,11 @@ class RoomCourseRepository @Inject constructor(private val databases: ContentDat
         val lessons = dao.lessonStages().groupBy({ it.stageId }, { LessonId(it.lessonId) })
         Outcome.Success(dao.stages().map { StageLessons(it.toStageTag(), lessons[it.id].orEmpty()) })
     }
+
+    override suspend fun getStageItems(id: StageId): Outcome<List<LessonItem>, ContentError> =
+        databases.read { database ->
+            Outcome.Success(database.lessonDao().stageItems(id.value).map { it.toLessonItem() })
+        }
 
     override suspend fun getUnitLessons(): Outcome<List<UnitLessons>, ContentError> = databases.read { database ->
         val dao = database.courseDao()

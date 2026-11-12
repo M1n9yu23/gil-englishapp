@@ -39,6 +39,13 @@ interface CourseObserver {
     suspend fun getStageLessons(): Outcome<List<StageLessons>, ContentError>
 
     /**
+     * The items the lessons of stage [id] introduce, in course order. Empty for a stage whose
+     * lessons introduce none, or that has no lessons yet or no such stage.
+     * [ContentError.UNAVAILABLE] when reading fails.
+     */
+    suspend fun getStageItems(id: StageId): Outcome<List<LessonItem>, ContentError>
+
+    /**
      * Every unit that has lessons, in course order, with its lessons. [ContentError.UNAVAILABLE]
      * when reading fails.
      */

@@ -137,7 +137,7 @@ class RoomCourseRepositoryTest {
     fun close() = database.close()
 
     @Test
-    fun getStages_rowsOutOfOrder_returnsCourseOrderWithLessonCounts() = runTest {
+    fun getStages_rowsOutOfOrder_returnsCourseOrderWithLessonsAndItemCounts() = runTest {
         val stages = (repository.getStages() as Outcome.Success).data
 
         assertThat(stages.map { it.id }).isEqualTo(listOf(StageId("stage.one"), StageId("stage.two")))
@@ -148,8 +148,31 @@ class RoomCourseRepositoryTest {
                 UnitSummary(UnitId("unit.b"), LocalizedText("나", "B"), lessonCount = 0)
             )
         )
+        assertThat(stages[0].lessons).isEqualTo(listOf(LessonId("lesson.a.1"), LessonId("lesson.a.2")))
+        assertThat(stages[0].itemCount).isEqualTo(4)
         assertThat(stages[1].canDo).isEqualTo(emptyList())
         assertThat(stages[1].units).isEqualTo(emptyList())
+        assertThat(stages[1].lessons).isEqualTo(emptyList())
+        assertThat(stages[1].itemCount).isEqualTo(0)
+    }
+
+    @Test
+    fun getStageItems_itemsOfEveryKind_returnsThemInContentOrder() = runTest {
+        assertThat(repository.getStageItems(StageId("stage.one"))).isEqualTo(
+            Outcome.Success(
+                listOf(
+                    LessonItem(SoundId("sound.f"), text = "f, ph", ipa = "f", meaningKo = null),
+                    LessonItem(SenseId("sense.read.v.now"), text = "read", ipa = "riːd", meaningKo = "읽다"),
+                    LessonItem(PatternId("pattern.hi"), text = "Hi.", ipa = null, meaningKo = "안녕하세요"),
+                    LessonItem(SenseId("sense.read.v.past"), text = "read", ipa = "rɛd", meaningKo = "읽었다")
+                )
+            )
+        )
+    }
+
+    @Test
+    fun getStageItems_stageWithoutLessons_empty() = runTest {
+        assertThat(repository.getStageItems(StageId("stage.two"))).isEqualTo(Outcome.Success(emptyList()))
     }
 
     @Test

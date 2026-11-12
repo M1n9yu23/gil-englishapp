@@ -49,6 +49,31 @@ interface LessonDao {
     )
     suspend fun items(lessonId: String): List<LessonItemRow>
 
+    /** The items the lessons of [stageId] introduce, in course order, as [items] gives them. */
+    @Query(
+        """
+        SELECT id, text, ipa, meaningKo, position FROM (
+            SELECT li.itemId AS id, w.text AS text, COALESCE(s.ipa, w.ipa) AS ipa, s.meaningKo AS meaningKo,
+                li.position AS position, l.coursePosition AS coursePosition
+            FROM lesson_item li JOIN sense s ON s.id = li.itemId JOIN word w ON w.id = s.wordId
+                JOIN lesson l ON l.id = li.lessonId JOIN unit u ON u.id = l.unitId
+            WHERE u.stageId = :stageId
+            UNION ALL
+            SELECT li.itemId, p.text, NULL, p.meaningKo, li.position, l.coursePosition
+            FROM lesson_item li JOIN pattern p ON p.id = li.itemId
+                JOIN lesson l ON l.id = li.lessonId JOIN unit u ON u.id = l.unitId
+            WHERE u.stageId = :stageId
+            UNION ALL
+            SELECT li.itemId, so.spelling, so.symbol, NULL, li.position, l.coursePosition
+            FROM lesson_item li JOIN sound so ON so.id = li.itemId
+                JOIN lesson l ON l.id = li.lessonId JOIN unit u ON u.id = l.unitId
+            WHERE u.stageId = :stageId
+        )
+        ORDER BY coursePosition, position
+        """
+    )
+    suspend fun stageItems(stageId: String): List<LessonItemRow>
+
     @Query("SELECT COUNT(*) FROM lesson_item WHERE lessonId = :lessonId")
     suspend fun itemCount(lessonId: String): Int
 
