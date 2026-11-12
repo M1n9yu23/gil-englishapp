@@ -23,7 +23,8 @@ import androidx.compose.ui.graphics.Color
 // Paper and ink. Every slot is set so no Material baseline colour can leak in.
 // outlineVariant (about 1.4:1 on paper) is for decorative dividers only; borders of controls use outline.
 
-internal val LightColorScheme: ColorScheme = lightColorScheme(
+/** The light scheme [GilTheme] uses. Public for surfaces Compose UI does not draw, such as the home screen widget. */
+val LightColorScheme: ColorScheme = lightColorScheme(
     primary = Color(0xFF2F4A86),
     onPrimary = Color(0xFFFCFAF5),
     primaryContainer = Color(0xFFDCE3F4),
@@ -74,7 +75,8 @@ internal val LightColorScheme: ColorScheme = lightColorScheme(
     onTertiaryFixedVariant = Color(0xFF5E1A10)
 )
 
-internal val DarkColorScheme: ColorScheme = darkColorScheme(
+/** The dark scheme [GilTheme] uses. Public for surfaces Compose UI does not draw, such as the home screen widget. */
+val DarkColorScheme: ColorScheme = darkColorScheme(
     primary = Color(0xFFA9BCF0),
     onPrimary = Color(0xFF13244D),
     primaryContainer = Color(0xFF2A3F72),

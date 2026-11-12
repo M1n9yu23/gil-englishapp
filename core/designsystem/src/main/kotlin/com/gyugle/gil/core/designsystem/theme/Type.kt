@@ -66,7 +66,12 @@ fun TextStyle.tabularFigures(): TextStyle = copy(fontWeight = FontWeight.Medium,
 
 // Eight styles. The slots Gil does not design for reuse the nearest one, so a Material component
 // that reads them still gets Pretendard at a size from the scale.
-internal val GilTypography = Typography(
+
+/**
+ * The app's type scale. Inside [GilTheme], read it through `MaterialTheme.typography`; it is public
+ * for surfaces Compose UI does not draw, such as the home screen widget, which take its sizes.
+ */
+val GilTypography = Typography(
     displayLarge = DisplaySmall,
     displayMedium = DisplaySmall,
     displaySmall = DisplaySmall,

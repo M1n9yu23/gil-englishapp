@@ -39,6 +39,7 @@ import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.gyugle.gil.core.designsystem.R
 import com.gyugle.gil.core.designsystem.theme.Charis
@@ -133,6 +134,9 @@ fun IpaText(ipa: String, spokenWord: String?, modifier: Modifier = Modifier, pro
         style = if (prominent) FocusStyle else IpaStyle
     )
 }
+
+/** The font size of this size of English text, for surfaces that cannot use [EnglishText], such as the widget. */
+val EnglishTextSize.fontSize: TextUnit get() = style().fontSize
 
 private fun EnglishTextSize.style(): TextStyle = when (this) {
     EnglishTextSize.Focus -> FocusStyle
