@@ -15,6 +15,7 @@
  */
 package com.gyugle.gil
 
+import androidx.navigation3.runtime.NavKey
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNull
@@ -24,12 +25,20 @@ import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
+import com.gyugle.gil.feature.dictionary.api.EntryRoute
+import com.gyugle.gil.feature.dictionary.api.SentenceLink
+import com.gyugle.gil.feature.dictionary.api.SentenceRoute
+import com.gyugle.gil.feature.dictionary.api.WordsRoute
+import com.gyugle.gil.feature.home.api.CONTINUE_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TODAY_DEEP_LINK
 import com.gyugle.gil.feature.home.api.TodayRoute
 import com.gyugle.gil.feature.lesson.api.LessonRoute
 import com.gyugle.gil.feature.listening.api.LISTENING_DEEP_LINK
 import com.gyugle.gil.feature.listening.api.ListeningPlayerRoute
 import com.gyugle.gil.feature.onboarding.api.OnboardingObserver
+import com.gyugle.gil.feature.review.api.ALL_DUE_CARDS
+import com.gyugle.gil.feature.review.api.REVIEW_DEEP_LINK
+import com.gyugle.gil.feature.review.api.ReviewSessionRoute
 import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -62,7 +71,15 @@ class AppStartViewModelTest {
     )
     private val course = FakeCourseObserver(firstLesson)
 
-    private fun viewModel() = AppStartViewModel(observer, FakeAppSettingsObserver(), GilDeepLinkResolver(), course)
+    /** What "Continue" on the Today tab would open. */
+    private var continueRoute: NavKey? = null
+
+    private fun viewModel() = AppStartViewModel(
+        observer,
+        FakeAppSettingsObserver(),
+        GilDeepLinkResolver(continueFinder = { continueRoute }),
+        course
+    )
 
     @Test
     fun onboardingFinished_opensTheFirstLessonOverToday() {
@@ -136,6 +153,65 @@ class AppStartViewModelTest {
         viewModel.onIntentData(LISTENING_DEEP_LINK)
 
         assertThat(viewModel.deepLink.value).isEqualTo(DeepLinkTarget(TodayRoute, listOf(ListeningPlayerRoute)))
+    }
+
+    @Test
+    fun continueLink_inMain_opensWhatContinueOpensAboveToday() {
+        continueRoute = LessonRoute(firstLesson.id)
+        val viewModel = viewModel()
+        completed.tryEmit(true)
+
+        viewModel.onIntentData(CONTINUE_DEEP_LINK)
+
+        assertThat(viewModel.deepLink.value)
+            .isEqualTo(DeepLinkTarget(TodayRoute, listOf(LessonRoute(firstLesson.id))))
+    }
+
+    @Test
+    fun continueLink_nothingToContinue_opensTheTodayTab() {
+        val viewModel = viewModel()
+        completed.tryEmit(true)
+
+        viewModel.onIntentData(CONTINUE_DEEP_LINK)
+
+        assertThat(viewModel.deepLink.value).isEqualTo(DeepLinkTarget(TodayRoute))
+    }
+
+    @Test
+    fun reviewLink_inMain_opensEveryDueCardAboveToday() {
+        val viewModel = viewModel()
+        completed.tryEmit(true)
+
+        viewModel.onIntentData(REVIEW_DEEP_LINK)
+
+        assertThat(viewModel.deepLink.value)
+            .isEqualTo(DeepLinkTarget(TodayRoute, listOf(ReviewSessionRoute(ALL_DUE_CARDS))))
+    }
+
+    @Test
+    fun sentenceLink_inMain_opensTheSentenceOverItsEntryInTheWordsTab() {
+        val viewModel = viewModel()
+        completed.tryEmit(true)
+
+        viewModel.onIntentData(SentenceLink(sentenceId = 7, entryId = "pattern.how-are-you").uri)
+
+        assertThat(viewModel.deepLink.value).isEqualTo(
+            DeepLinkTarget(
+                WordsRoute,
+                listOf(EntryRoute("pattern.how-are-you"), SentenceRoute(7, source = "pattern.how-are-you"))
+            )
+        )
+    }
+
+    // A sense has no page of its own, so the link has nothing to open the sentence over.
+    @Test
+    fun sentenceLink_withASenseId_opensTheTodayTabInstead() {
+        val viewModel = viewModel()
+        completed.tryEmit(true)
+
+        viewModel.onIntentData(SentenceLink(sentenceId = 7, entryId = "sense.run.v.move-fast").uri)
+
+        assertThat(viewModel.deepLink.value).isEqualTo(DeepLinkTarget(TodayRoute))
     }
 
     @Test

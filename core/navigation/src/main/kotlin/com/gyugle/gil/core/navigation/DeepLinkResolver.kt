@@ -22,7 +22,9 @@ package com.gyugle.gil.core.navigation
  * The URI is untrusted input: any app can start the activity with any data. Check its shape and
  * every id in it here, and return null for anything unexpected; the caller then opens the start
  * tab. Never read more than ids from it.
+ *
+ * It may read the learner's record, as "continue" does to find the next step, so it suspends.
  */
 fun interface DeepLinkResolver {
-    fun resolve(uri: String): DeepLinkTarget?
+    suspend fun resolve(uri: String): DeepLinkTarget?
 }

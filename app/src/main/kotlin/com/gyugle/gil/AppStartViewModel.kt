@@ -28,6 +28,7 @@ import com.gyugle.gil.feature.settings.api.AppSettingsObserver
 import com.gyugle.gil.feature.settings.api.ThemeMode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -65,10 +66,10 @@ class AppStartViewModel @Inject constructor(
     /** The entry to open in the main host; call [onDeepLinkHandled] once it is open. */
     val deepLink: StateFlow<DeepLinkTarget?> = _deepLink.asStateFlow()
 
+    /** The link being looked up; a newer one replaces it. */
+    private var resolving: Job? = null
+
     init {
-        viewModelScope.launch {
-            if (host.first { it != AppHost.Loading } == AppHost.Onboarding) _deepLink.value = null
-        }
         viewModelScope.launch {
             var previous = AppHost.Loading
             host.collect { current ->
@@ -91,7 +92,12 @@ class AppStartViewModel @Inject constructor(
      */
     fun onIntentData(uri: String?) {
         if (uri == null || host.value == AppHost.Onboarding) return
-        _deepLink.value = deepLinkResolver.resolve(uri) ?: DeepLinkTarget(TodayRoute)
+        resolving?.cancel()
+        resolving = viewModelScope.launch {
+            val target = deepLinkResolver.resolve(uri) ?: DeepLinkTarget(TodayRoute)
+            // A link can arrive before the flag is read; the first run then drops it.
+            if (host.first { it != AppHost.Loading } == AppHost.Main) _deepLink.value = target
+        }
     }
 
     fun onDeepLinkHandled() {

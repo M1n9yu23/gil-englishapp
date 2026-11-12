@@ -29,3 +29,12 @@ sealed interface ReviewRoute : NavKey
 @Serializable
 @SerialName("review.session")
 data class ReviewSessionRoute(val limit: Int) : ReviewRoute
+
+/** A [ReviewSessionRoute.limit] that takes every card due today. */
+const val ALL_DUE_CARDS: Int = Int.MAX_VALUE
+
+/**
+ * The data URI that opens a review of every card due today, such as from a launcher shortcut or the
+ * widget. Put it on an explicit intent to the app's launch activity.
+ */
+const val REVIEW_DEEP_LINK = "gil://review"
