@@ -48,6 +48,7 @@ rootProject.name = "Gil"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":app")
+include(":baselineprofile")
 include(":catalog")
 include(":core:domain")
 include(":core:presentation")
