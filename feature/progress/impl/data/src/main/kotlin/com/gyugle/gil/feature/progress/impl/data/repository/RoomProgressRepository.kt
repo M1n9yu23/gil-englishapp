@@ -112,13 +112,41 @@ class RoomProgressRepository @Inject constructor(
                         studyDay = today.epochDay
                     )
                 )
-                for ((itemId, rating) in introduced) {
-                    if (cards.get(itemId.value) != null) continue
-                    val card = scheduler.rate(card = null, itemId = itemId, rating = rating, today = today)
-                    cards.upsert(card.toEntity(lastReviewAt = now, introducedAt = now))
-                    reviewLogs.insert(card.toLog(rating, now))
+                startCards(introduced, now, today)
+            }
+        }
+    }
+
+    override suspend fun skipLessons(
+        lessonIds: List<LessonId>,
+        tested: Map<StudyItemId, ReviewRating>
+    ): EmptyOutcome<DataError.Local> {
+        val now = clock.now()
+        val today = clock.dayOf(now)
+        return databaseCall {
+            database.withTransaction {
+                lessons.insertAll(
+                    lessonIds.map {
+                        LessonCompletionEntity(lessonId = it.value, completedAt = now.millis, studyDay = today.epochDay)
+                    }
+                )
+                startCards(tested, now, today)
+                for ((itemId, rating) in tested) {
+                    if (rating != ReviewRating.AGAIN) continue
+                    mistakes.insertIfMissing(itemId.value, now.millis, today.epochDay)
+                    mistakes.addMistake(itemId.value, now.millis, today.epochDay)
                 }
             }
+        }
+    }
+
+    /** A first card for each item that has none. An item that has one keeps its schedule. */
+    private suspend fun startCards(ratings: Map<StudyItemId, ReviewRating>, now: Instant, today: StudyDay) {
+        for ((itemId, rating) in ratings) {
+            if (cards.get(itemId.value) != null) continue
+            val card = scheduler.rate(card = null, itemId = itemId, rating = rating, today = today)
+            cards.upsert(card.toEntity(lastReviewAt = now, introducedAt = now))
+            reviewLogs.insert(card.toLog(rating, now))
         }
     }
 

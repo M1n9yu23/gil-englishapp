@@ -24,12 +24,13 @@ import kotlin.time.Duration
 
 /**
  * Records the calls made to it. [completeError], [saveError] and [reviewError], when set, fail
- * [completeLesson], [setSaved] and [recordReview]. With an [observer], [setSaved] also changes its
+ * [completeLesson] and [skipLessons], [setSaved], and [recordReview]. With an [observer], [setSaved] also changes its
  * word list, newest first, [recordReview] moves the item's card to [nextDueDay], and
  * [clearMistake] takes the item off its mistakes.
  */
 class FakeProgressCommands(private val observer: FakeProgressObserver? = null) : ProgressCommands {
     val completed = mutableListOf<Pair<LessonId, Map<StudyItemId, ReviewRating>>>()
+    val skipped = mutableListOf<Pair<List<LessonId>, Map<StudyItemId, ReviewRating>>>()
     val mistakes = mutableListOf<StudyItemId>()
     val studyTime = mutableListOf<Duration>()
     val saved = mutableListOf<Pair<StudyItemId, Boolean>>()
@@ -46,6 +47,15 @@ class FakeProgressCommands(private val observer: FakeProgressObserver? = null) :
     ): EmptyOutcome<DataError.Local> {
         completeError?.let { return Outcome.Failure(it) }
         completed += lessonId to introduced
+        return Outcome.Success(Unit)
+    }
+
+    override suspend fun skipLessons(
+        lessonIds: List<LessonId>,
+        tested: Map<StudyItemId, ReviewRating>
+    ): EmptyOutcome<DataError.Local> {
+        completeError?.let { return Outcome.Failure(it) }
+        skipped += lessonIds to tested
         return Outcome.Success(Unit)
     }
 

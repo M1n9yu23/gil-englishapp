@@ -111,6 +111,35 @@ class RoomProgressRepositoryTest {
     }
 
     @Test
+    fun skipLessons_testedItems_completesLessonsStartsCardsAndListsWrongOnesAsMistakes() = runTest {
+        val today = clock.today()
+
+        repository.skipLessons(
+            listOf(LessonId("lesson.s1-15.1"), LessonId("lesson.s1-15.2")),
+            mapOf(hello to ReviewRating.GOOD, letterA to ReviewRating.AGAIN)
+        )
+
+        assertThat(repository.observeCompletedLessons().first())
+            .isEqualTo(setOf(LessonId("lesson.s1-15.1"), LessonId("lesson.s1-15.2")))
+        assertThat(repository.observeCards().first()).containsExactly(
+            scheduler.rate(null, hello, ReviewRating.GOOD, today).toCardState(),
+            scheduler.rate(null, letterA, ReviewRating.AGAIN, today).toCardState()
+        )
+        assertThat(repository.observeMistakes().first()).containsExactly(Mistake(letterA, count = 1, lastDay = today))
+    }
+
+    @Test
+    fun skipLessons_itemWithCard_keepsItsSchedule() = runTest {
+        repository.completeLesson(LessonId("lesson.s1-15.1"), mapOf(hello to ReviewRating.GOOD))
+        val before = repository.observeCard(hello).first()
+        clock.advanceBy(1.days)
+
+        repository.skipLessons(listOf(LessonId("lesson.s1-15.2")), mapOf(hello to ReviewRating.AGAIN))
+
+        assertThat(repository.observeCard(hello).first()).isEqualTo(before)
+    }
+
+    @Test
     fun recordReview_existingCard_reschedulesFromStudyDaysSinceLastReview() = runTest {
         val firstDay = clock.today()
         repository.completeLesson(LessonId("lesson.s1-15.1"), mapOf(hello to ReviewRating.GOOD))

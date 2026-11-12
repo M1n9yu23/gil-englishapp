@@ -35,6 +35,17 @@ interface ProgressCommands {
     ): EmptyOutcome<DataError.Local>
 
     /**
+     * Records [lessonIds] as finished without playing them, once the learner has passed a test of
+     * what they teach. Each item in [tested] starts a card from its rating in the test, as the items
+     * of a finished lesson do, and one answered wrong also goes on the list of mistakes. Items the
+     * test did not ask about get no card. Either everything is recorded or nothing is.
+     */
+    suspend fun skipLessons(
+        lessonIds: List<LessonId>,
+        tested: Map<StudyItemId, ReviewRating>
+    ): EmptyOutcome<DataError.Local>
+
+    /**
      * Reschedules the item and returns its new state. An item without a card gets one.
      *
      * Only for a scheduled review of a card due on or before today. Practice outside the schedule,
