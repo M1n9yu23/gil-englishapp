@@ -54,7 +54,21 @@ class ReviewDeck @Inject constructor(private val lexicon: LexiconObserver) {
         random: Random
     ): Outcome<ReviewCard?, ContentError> {
         val item = pool.firstOrNull { it.id == card.itemId } ?: return Outcome.Success(null)
-        for (kind in cardKinds(card, hasVoice)) {
+        return cardFor(item, cardKinds(card, hasVoice), pool, hasVoice, random)
+    }
+
+    /**
+     * A card for [item], of the first of [kinds] the content can make. Otherwise as the other
+     * [cardFor], for an item that may have no card yet, such as in a stage test.
+     */
+    suspend fun cardFor(
+        item: LessonItem,
+        kinds: List<CardKind>,
+        pool: List<LessonItem>,
+        hasVoice: Boolean,
+        random: Random
+    ): Outcome<ReviewCard?, ContentError> {
+        for (kind in kinds) {
             when (val made = make(kind, item, pool, hasVoice, random)) {
                 is Outcome.Failure -> return made
                 is Outcome.Success -> made.data?.let { return Outcome.Success(it) }

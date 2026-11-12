@@ -17,5 +17,6 @@ package com.gyugle.gil.feature.review.impl.presentation.session
 
 import androidx.compose.runtime.Immutable
 
+/** A session of cards: a review, or the test of a stage when [isStageTest]. */
 @Immutable
-data class ReviewState(val phase: ReviewPhase = ReviewPhase.Loading)
+data class ReviewState(val phase: ReviewPhase = ReviewPhase.Loading, val isStageTest: Boolean = false)

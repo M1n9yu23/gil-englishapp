@@ -34,7 +34,7 @@ import com.gyugle.gil.feature.review.impl.presentation.R
 
 /**
  * The verdict, the right answer when a typed one was not exact, what the card did not show before,
- * and a note that a missed card comes back. Announced as it appears, and fades in with the answers.
+ * and, in a review, a note that a missed card comes back. Announced as it appears, and fades in with the answers.
  */
 @Composable
 internal fun FeedbackPanel(feedback: FeedbackUi, modifier: Modifier = Modifier) {
@@ -59,7 +59,7 @@ internal fun FeedbackPanel(feedback: FeedbackUi, modifier: Modifier = Modifier) 
             )
             feedback.answer?.let { EnglishText(text = it, color = colors.onSurface) }
             feedback.note?.let { KoreanProse(text = it, color = colors.onSurfaceVariant) }
-            if (feedback.grade == GradeUi.WRONG) {
+            if (feedback.grade == GradeUi.WRONG && feedback.comesBack) {
                 Text(
                     text = stringResource(R.string.review_feedback_comes_back),
                     style = MaterialTheme.typography.bodyMedium,

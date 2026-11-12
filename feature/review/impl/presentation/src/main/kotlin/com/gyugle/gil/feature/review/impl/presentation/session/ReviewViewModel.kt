@@ -21,10 +21,6 @@ import androidx.lifecycle.viewModelScope
 import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.core.domain.onFailure
 import com.gyugle.gil.core.speech.Speaker
-import com.gyugle.gil.core.speech.SpeakerStatus
-import com.gyugle.gil.core.speech.SpeechLanguage
-import com.gyugle.gil.core.speech.SpeechRate
-import com.gyugle.gil.core.speech.VoiceState
 import com.gyugle.gil.core.speech.englishVoice
 import com.gyugle.gil.feature.curriculum.api.LessonItem
 import com.gyugle.gil.feature.curriculum.api.LexiconObserver
@@ -43,14 +39,12 @@ import com.gyugle.gil.feature.review.impl.domain.model.ReviewCard
 import com.gyugle.gil.feature.settings.api.Accent
 import com.gyugle.gil.feature.settings.api.AppSettings
 import com.gyugle.gil.feature.settings.api.AppSettingsObserver
-import com.gyugle.gil.feature.settings.api.SpeechSpeed
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlin.random.Random
 import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
@@ -70,7 +64,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeoutOrNull
 import timber.log.Timber
 
 /**
@@ -136,10 +129,9 @@ class ReviewViewModel @AssistedInject constructor(
         }
 
     private var ratings: List<Pair<StudyItemId, ReviewRating>>
-        get() = savedStateHandle.get<ArrayList<String>>(KEY_RATINGS).orEmpty().mapNotNull(::decodeRating)
+        get() = savedStateHandle.get<ArrayList<String>>(KEY_RATINGS).orEmpty().toRatings()
         set(value) {
-            savedStateHandle[KEY_RATINGS] =
-                ArrayList(value.map { (id, rating) -> "${rating.name}$SEPARATOR${id.value}" })
+            savedStateHandle[KEY_RATINGS] = value.toSavedRatings()
         }
 
     /** The defaults until the settings are read, which takes a moment at most. */
@@ -215,6 +207,9 @@ class ReviewViewModel @AssistedInject constructor(
                 }
             }
 
+            // A review has no intro to start from.
+            ReviewAction.OnStartTestClick -> Unit
+
             ReviewAction.OnResumed -> {
                 isResumed = true
                 startCounting()
@@ -252,7 +247,7 @@ class ReviewViewModel @AssistedInject constructor(
                     return@launch
                 }
             }
-            hasVoice = waitForVoice()
+            hasVoice = speaker.waitForEnglishVoice()
             session = Session(ids, cards.associateBy { it.itemId }, pool, seed = seed())
             showNext()
         }
@@ -383,13 +378,6 @@ class ReviewViewModel @AssistedInject constructor(
         soundJob = viewModelScope.launch { speaker.speak(text, language, settings.firstPlayRate) }
     }
 
-    /** While the engine is still connecting, waits a little: cards made without a voice never play. */
-    private suspend fun waitForVoice(): Boolean {
-        val status = withTimeoutOrNull(VOICE_WAIT) { speaker.status.first { it !is SpeakerStatus.Connecting } }
-        return status is SpeakerStatus.Connected &&
-            status.voice(SpeechLanguage.AMERICAN_ENGLISH) == VoiceState.INSTALLED
-    }
-
     private fun startCounting() {
         if (isResumed && card != null && activeSince == null) activeSince = clock.now()
     }
@@ -422,15 +410,6 @@ class ReviewViewModel @AssistedInject constructor(
         const val KEY_POSITION = "position"
         const val KEY_RATINGS = "ratings"
         const val KEY_TEXT = "text"
-        const val SEPARATOR = '|'
-        val VOICE_WAIT = 3.seconds
-
-        fun decodeRating(stored: String): Pair<StudyItemId, ReviewRating>? {
-            val rating =
-                ReviewRating.entries.firstOrNull { it.name == stored.substringBefore(SEPARATOR) } ?: return null
-            val id = StudyItemId.parse(stored.substringAfter(SEPARATOR)) ?: return null
-            return id to rating
-        }
     }
 }
 
@@ -438,12 +417,8 @@ class ReviewViewModel @AssistedInject constructor(
 internal fun nextInDays(cards: List<CardState>, today: StudyDay): Int? =
     cards.minOfOrNull { it.dueDay }?.let { today.daysUntil(it).toInt().coerceAtLeast(1) }
 
-private fun LessonItem.toResultItem(): ResultItemUi = if (id is SoundId) {
+internal fun LessonItem.toResultItem(): ResultItemUi = if (id is SoundId) {
     ResultItemUi(text = text, detail = ipa, detailIsIpa = true)
 } else {
     ResultItemUi(text = text, detail = meaningKo, detailIsIpa = false)
 }
-
-/** The first play follows the learner's speed; "play slowly" stays slow either way. */
-private val AppSettings.firstPlayRate: SpeechRate
-    get() = if (speed == SpeechSpeed.SLOW) SpeechRate.SLOW else SpeechRate.NORMAL

@@ -22,6 +22,8 @@ dependencies {
     api(projects.feature.curriculum.api)
     api(projects.feature.progress.api)
     api(projects.core.domain)
+    // The size of a stage test is shared with the screen that offers it.
+    implementation(projects.feature.review.api)
 
     testImplementation(testFixtures(projects.feature.curriculum.api))
 }

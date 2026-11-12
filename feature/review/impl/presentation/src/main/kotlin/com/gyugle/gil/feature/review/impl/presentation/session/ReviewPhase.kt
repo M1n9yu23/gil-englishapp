@@ -43,4 +43,9 @@ sealed interface ReviewPhase {
     }
 
     data class Finished(val result: ResultUi) : ReviewPhase
+
+    /** A stage test before its first question: what it asks and what passing does. */
+    data class TestIntro(val intro: TestIntroUi) : ReviewPhase
+
+    data class TestFinished(val result: TestResultUi) : ReviewPhase
 }

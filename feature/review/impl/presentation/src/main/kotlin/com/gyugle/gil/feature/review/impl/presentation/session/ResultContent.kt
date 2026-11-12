@@ -112,8 +112,9 @@ internal fun ResultContent(result: ResultUi, onAction: (ReviewAction) -> Unit) {
     }
 }
 
+/** An item to look at again: its English, and its meaning or symbol at the end. */
 @Composable
-private fun ResultItemRow(item: ResultItemUi) {
+internal fun ResultItemRow(item: ResultItemUi) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

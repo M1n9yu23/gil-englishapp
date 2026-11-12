@@ -43,4 +43,28 @@
     </plurals>
     <string name="review_result_keep_going">이어서 복습하기</string>
     <string name="review_result_done">끝내기</string>
+
+    <string name="review_content_language">ko</string>
+
+    <string name="review_test_close">시험 닫기</string>
+    <string name="review_test_error_title">시험을 열지 못했어요</string>
+    <string name="review_test_error_body">학습 기록을 읽거나 저장하지 못했어요. 다시 시도해 주세요.</string>
+    <string name="review_test_intro_title">이미 아는 단계인가요?</string>
+    <plurals name="review_test_intro_questions">
+        <item quantity="other">‘<xliff:g id="stage" example="소리와 글자">%1$s</xliff:g>’에서 배우는 것을 문제 <xliff:g id="questions" example="20">%2$d</xliff:g>개로 확인해요.</item>
+    </plurals>
+    <plurals name="review_test_intro_pass">
+        <item quantity="other"><xliff:g id="pass_mark" example="17">%1$d</xliff:g>개 이상 맞히면 이 단계까지 남은 수업 <xliff:g id="lessons" example="63">%2$d</xliff:g>개를 끝낸 것으로 하고 다음 단계로 넘어가요.</item>
+    </plurals>
+    <string name="review_test_intro_after">통과하면 틀린 문제는 복습에 넣어요. 통과하지 못하면 기록은 그대로예요.</string>
+    <string name="review_test_start">시험 시작</string>
+    <string name="review_test_passed_title">‘<xliff:g id="stage" example="소리와 글자">%1$s</xliff:g>’ 단계를 건너뛰었어요</string>
+    <plurals name="review_test_passed_lessons">
+        <item quantity="other">수업 <xliff:g id="lessons" example="63">%d</xliff:g>개를 끝낸 것으로 기록했어요.</item>
+    </plurals>
+    <string name="review_test_failed_title">이번에는 통과하지 못했어요</string>
+    <string name="review_test_failed_early">틀린 문제가 많아서 시험을 여기서 마쳤어요.</string>
+    <string name="review_test_failed_advice">이 단계 수업부터 차근차근 해 봐요. 기록은 바뀌지 않았어요.</string>
+    <string name="review_test_missed">틀린 것</string>
+    <string name="review_test_missed_comes_back">곧 복습에 나와요.</string>
 </resources>

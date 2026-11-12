@@ -69,6 +69,7 @@ import com.gyugle.gil.core.designsystem.component.PrimaryActionButton
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.presentation.ObserveAsEvents
+import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.review.impl.presentation.R
 
 private object ReviewScreenTokens {
@@ -98,13 +99,34 @@ fun ReviewRoot(
     ReviewScreen(state = state, onAction = viewModel::onAction)
 }
 
+@Composable
+fun StageTestRoot(
+    stageId: StageId,
+    onClose: () -> Unit,
+    viewModel: StageTestViewModel = hiltViewModel<StageTestViewModel, StageTestViewModel.Factory>(
+        creationCallback = { factory -> factory.create(stageId.value) }
+    )
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { viewModel.onAction(ReviewAction.OnResumed) }
+    LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { viewModel.onAction(ReviewAction.OnPaused) }
+    ObserveAsEvents(viewModel.events) { event ->
+        when (event) {
+            ReviewEvent.Close -> onClose()
+        }
+    }
+    ReviewScreen(state = state, onAction = viewModel::onAction)
+}
+
 /**
- * A review session. Every answer is saved as it is given, so closing and back leave without asking.
+ * A review session, or a stage test. Every review answer is saved as it is given, and a test is
+ * quick to take again, so closing and back leave without asking.
  */
 @Composable
 fun ReviewScreen(state: ReviewState, onAction: (ReviewAction) -> Unit, modifier: Modifier = Modifier) {
     // Back leaves like the close mark, which also counts the time spent.
     BackHandler { onAction(ReviewAction.OnCloseClick) }
+    val closeLabel = stringResource(if (state.isStageTest) R.string.review_test_close else R.string.review_close)
     Surface(modifier = modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -121,22 +143,26 @@ fun ReviewScreen(state: ReviewState, onAction: (ReviewAction) -> Unit, modifier:
             ) { phase ->
                 when (phase) {
                     ReviewPhase.Loading -> Column {
-                        CloseBar(onAction)
+                        CloseBar(closeLabel, onAction)
                         LoadingState()
                     }
 
                     ReviewPhase.Failed -> Column {
-                        CloseBar(onAction)
+                        CloseBar(closeLabel, onAction)
                         ErrorState(
-                            title = stringResource(R.string.review_error_title),
-                            body = stringResource(R.string.review_error_body),
+                            title = stringResource(
+                                if (state.isStageTest) R.string.review_test_error_title else R.string.review_error_title
+                            ),
+                            body = stringResource(
+                                if (state.isStageTest) R.string.review_test_error_body else R.string.review_error_body
+                            ),
                             retryLabel = stringResource(R.string.review_error_retry),
                             onRetry = { onAction(ReviewAction.OnRetryClick) }
                         )
                     }
 
                     is ReviewPhase.Empty -> Column {
-                        CloseBar(onAction)
+                        CloseBar(closeLabel, onAction)
                         EmptyState(
                             title = stringResource(
                                 if (phase.nextInDays ==
@@ -154,9 +180,16 @@ fun ReviewScreen(state: ReviewState, onAction: (ReviewAction) -> Unit, modifier:
                         )
                     }
 
-                    is ReviewPhase.Asking -> AskingContent(phase, onAction)
+                    is ReviewPhase.Asking -> AskingContent(phase, closeLabel, onAction)
 
                     is ReviewPhase.Finished -> ResultContent(phase.result, onAction)
+
+                    is ReviewPhase.TestIntro -> Column {
+                        CloseBar(closeLabel, onAction)
+                        TestIntroContent(phase.intro, onAction)
+                    }
+
+                    is ReviewPhase.TestFinished -> TestResultContent(phase.result, onAction)
                 }
             }
         }
@@ -172,7 +205,7 @@ internal fun nextReviewText(nextInDays: Int?): String? = when (nextInDays) {
 }
 
 @Composable
-private fun CloseBar(onAction: (ReviewAction) -> Unit, content: @Composable () -> Unit = {}) {
+private fun CloseBar(label: String, onAction: (ReviewAction) -> Unit, content: @Composable () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -182,18 +215,18 @@ private fun CloseBar(onAction: (ReviewAction) -> Unit, content: @Composable () -
         horizontalArrangement = Arrangement.spacedBy(GilTheme.spacing.itemGap)
     ) {
         IconButton(onClick = { onAction(ReviewAction.OnCloseClick) }) {
-            Icon(painter = GilIcons.Close, contentDescription = stringResource(R.string.review_close))
+            Icon(painter = GilIcons.Close, contentDescription = label)
         }
         content()
     }
 }
 
 @Composable
-private fun AskingContent(phase: ReviewPhase.Asking, onAction: (ReviewAction) -> Unit) {
+private fun AskingContent(phase: ReviewPhase.Asking, closeLabel: String, onAction: (ReviewAction) -> Unit) {
     val description = stringResource(R.string.review_progress_description, phase.number, phase.count)
     Column(modifier = Modifier.fillMaxSize().imePadding()) {
         // Outside the card's fade, so the line moves on to the next card instead of being redrawn.
-        CloseBar(onAction) {
+        CloseBar(closeLabel, onAction) {
             GilProgressBar(
                 progress = (phase.number - 1).toFloat() / phase.count,
                 modifier = Modifier

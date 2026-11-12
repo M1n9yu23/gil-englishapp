@@ -151,4 +151,50 @@ internal object ReviewPreviewData {
     val emptyNoCards = ReviewState(ReviewPhase.Empty(nextInDays = null))
 
     val failed = ReviewState(ReviewPhase.Failed)
+
+    private val firstSteps = LocalizedTextUi(ko = "첫걸음", en = "First steps")
+
+    val testIntro = ReviewState(
+        ReviewPhase.TestIntro(TestIntroUi(firstSteps, questions = 20, passMark = 17, lessons = 63)),
+        isStageTest = true
+    )
+
+    val testWrong = ReviewState(
+        meaning.copy(
+            number = 4,
+            count = 20,
+            card = (meaning.card as CardUi.Choice).copy(picked = 0, correct = 1),
+            feedback = FeedbackUi(GradeUi.WRONG, comesBack = false)
+        ),
+        isStageTest = true
+    )
+
+    private val missed = listOf(
+        ResultItemUi("teacher", "선생님", detailIsIpa = false),
+        ResultItemUi("Nice to meet you.", "만나서 반가워요", detailIsIpa = false)
+    )
+
+    val testPassed = ReviewState(
+        ReviewPhase.TestFinished(
+            TestResultUi(firstSteps, passed = true, right = 18, answered = 20, questions = 20, lessons = 63, missed)
+        ),
+        isStageTest = true
+    )
+
+    val testFailedEarly = ReviewState(
+        ReviewPhase.TestFinished(
+            TestResultUi(
+                firstSteps,
+                passed = false,
+                right = 5,
+                answered = 9,
+                questions = 20,
+                lessons = 63,
+                missed = missed + ResultItemUi("th", "θ", detailIsIpa = true)
+            )
+        ),
+        isStageTest = true
+    )
+
+    val testFailed = ReviewState(ReviewPhase.Failed, isStageTest = true)
 }

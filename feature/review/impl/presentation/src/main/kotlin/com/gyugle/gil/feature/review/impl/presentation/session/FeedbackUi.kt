@@ -20,6 +20,12 @@ import androidx.compose.runtime.Immutable
 /**
  * The verdict on an answer. [answer] is the right English when a typed answer was not exact;
  * [note] is Korean that teaches something more, such as the meaning of a word only heard.
+ * [comesBack] says a missed item comes back soon, which is true in a review but not in a test.
  */
 @Immutable
-data class FeedbackUi(val grade: GradeUi, val answer: String? = null, val note: String? = null)
+data class FeedbackUi(
+    val grade: GradeUi,
+    val answer: String? = null,
+    val note: String? = null,
+    val comesBack: Boolean = true
+)

@@ -16,6 +16,7 @@
 package com.gyugle.gil.feature.review.api
 
 import androidx.navigation3.runtime.NavKey
+import com.gyugle.gil.feature.curriculum.api.StageId
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -29,6 +30,14 @@ sealed interface ReviewRoute : NavKey
 @Serializable
 @SerialName("review.session")
 data class ReviewSessionRoute(val limit: Int) : ReviewRoute
+
+/**
+ * A test of stage [stageId] for a learner who already knows it. Passing it records the lessons of
+ * that stage and of every stage before it as finished. Offer it only when [hasStageTest] is true.
+ */
+@Serializable
+@SerialName("review.stage_test")
+data class StageTestRoute(val stageId: StageId) : ReviewRoute
 
 /** A [ReviewSessionRoute.limit] that takes every card due today. */
 const val ALL_DUE_CARDS: Int = Int.MAX_VALUE

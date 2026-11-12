@@ -17,6 +17,7 @@ package com.gyugle.gil.feature.review.impl.domain
 
 import com.gyugle.gil.feature.curriculum.api.SenseId
 import com.gyugle.gil.feature.curriculum.api.SoundId
+import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.review.impl.domain.model.CardKind
 
@@ -57,6 +58,19 @@ fun cardKinds(card: CardState, hasVoice: Boolean): List<CardKind> {
     // A word or pattern can always be asked by its meaning, or else spelled.
     val fallbacks = listOf(CardKind.CHOOSE_ENGLISH, CardKind.CHOOSE_MEANING, CardKind.SPELL)
     return (preferred + fallbacks).distinct()
+}
+
+/**
+ * The kinds of card to ask about [itemId] as question [number] of a stage test, the preferred
+ * first. A test checks that the learner can recall a word or pattern, not only recognise it: from
+ * its meaning, and by ear on every other question when there is a voice. Letters and sounds are
+ * asked as in a review.
+ */
+fun testCardKinds(itemId: StudyItemId, number: Int, hasVoice: Boolean): List<CardKind> {
+    if (itemId is SoundId) return listOf(if (itemId.isLetter) CardKind.CHOOSE_LETTER else CardKind.FIND_SOUND)
+    val byEar = hasVoice && number % 2 == 0
+    val preferred = if (byEar) CardKind.LISTEN_CHOOSE else CardKind.CHOOSE_ENGLISH
+    return listOf(preferred, CardKind.CHOOSE_ENGLISH, CardKind.CHOOSE_MEANING, CardKind.SPELL).distinct()
 }
 
 internal val SoundId.isLetter: Boolean get() = value.startsWith(LETTER_PREFIX)

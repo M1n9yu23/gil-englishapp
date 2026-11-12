@@ -31,6 +31,9 @@ sealed interface ReviewAction {
     /** Starts a new session with the cards still due, from the result. */
     data object OnKeepReviewingClick : ReviewAction
 
+    /** Starts a stage test from its intro. */
+    data object OnStartTestClick : ReviewAction
+
     data object OnCloseClick : ReviewAction
 
     data object OnResumed : ReviewAction

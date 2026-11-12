@@ -18,6 +18,7 @@ plugins {
 }
 
 dependencies {
-    // NavKey is the supertype of every route here.
+    // NavKey is the supertype of every route here; the stage test route carries a stage id.
     api(libs.androidx.navigation3.runtime)
+    api(projects.feature.curriculum.api)
 }

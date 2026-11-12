@@ -45,4 +45,32 @@
     </plurals>
     <string name="review_result_keep_going">Keep reviewing</string>
     <string name="review_result_done">Done</string>
+
+    <!-- Not shown. Each language folder sets its own code, which picks the content language: keep "en" here and "ko" in values-ko. -->
+    <string name="review_content_language">en</string>
+
+    <string name="review_test_close">Close the test</string>
+    <string name="review_test_error_title">Couldn’t open the test</string>
+    <string name="review_test_error_body">Reading or saving your study record failed. Try again.</string>
+    <string name="review_test_intro_title">Already know this stage?</string>
+    <plurals name="review_test_intro_questions">
+        <item quantity="one"><xliff:g id="questions" example="1">%2$d</xliff:g> question checks what <xliff:g id="stage" example="Sounds and letters">%1$s</xliff:g> teaches.</item>
+        <item quantity="other"><xliff:g id="questions" example="20">%2$d</xliff:g> questions check what <xliff:g id="stage" example="Sounds and letters">%1$s</xliff:g> teaches.</item>
+    </plurals>
+    <plurals name="review_test_intro_pass">
+        <item quantity="one">Get <xliff:g id="pass_mark" example="17">%1$d</xliff:g> or more right to skip ahead: the <xliff:g id="lessons" example="1">%2$d</xliff:g> lesson left up to the end of this stage counts as done.</item>
+        <item quantity="other">Get <xliff:g id="pass_mark" example="17">%1$d</xliff:g> or more right to skip ahead: the <xliff:g id="lessons" example="63">%2$d</xliff:g> lessons left up to the end of this stage count as done.</item>
+    </plurals>
+    <string name="review_test_intro_after">If you pass, what you miss goes into your reviews. If you don’t, your record stays as it is.</string>
+    <string name="review_test_start">Start the test</string>
+    <string name="review_test_passed_title">You’ve tested out of <xliff:g id="stage" example="Sounds and letters">%1$s</xliff:g></string>
+    <plurals name="review_test_passed_lessons">
+        <item quantity="one"><xliff:g id="lessons" example="1">%d</xliff:g> lesson now counts as done.</item>
+        <item quantity="other"><xliff:g id="lessons" example="63">%d</xliff:g> lessons now count as done.</item>
+    </plurals>
+    <string name="review_test_failed_title">Not this time</string>
+    <string name="review_test_failed_early">Too many answers were wrong, so the test stopped here.</string>
+    <string name="review_test_failed_advice">Start with this stage’s lessons. Your record hasn’t changed.</string>
+    <string name="review_test_missed">What you missed</string>
+    <string name="review_test_missed_comes_back">These come up in your reviews soon.</string>
 </resources>

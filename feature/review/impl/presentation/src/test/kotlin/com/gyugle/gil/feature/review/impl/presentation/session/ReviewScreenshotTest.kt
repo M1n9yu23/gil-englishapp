@@ -93,6 +93,28 @@ class ReviewScreenshotTest {
     @Config(qualifiers = "en-w360dp-h760dp-xhdpi", fontScale = 2f)
     fun empty_englishFontScale2() = capture(Data.empty)
 
+    @Test fun test_intro_saysWhatPassingDoes() = capture(Data.testIntro)
+
+    @Test fun test_wrong_doesNotSayItComesBack() = capture(Data.testWrong)
+
+    @Test fun test_passed_saysWhatWasRecorded() = capture(Data.testPassed)
+
+    @Test fun test_failedEarly_saysWhyItStopped() = capture(Data.testFailedEarly)
+
+    @Test fun test_failed_namesTheTest() = capture(Data.testFailed)
+
+    @Test
+    @Config(qualifiers = "+night")
+    fun test_intro_night() = capture(Data.testIntro)
+
+    @Test
+    @Config(qualifiers = "en-w360dp-h760dp-xhdpi", fontScale = 2f)
+    fun test_intro_englishFontScale2() = capture(Data.testIntro)
+
+    @Test
+    @Config(qualifiers = "en-w360dp-h760dp-xhdpi", fontScale = 2f)
+    fun test_passed_englishFontScale2() = capture(Data.testPassed)
+
     private companion object {
         const val SETTLED_MILLIS = 400L
     }

@@ -86,4 +86,30 @@ class CardKindsTest {
         assertThat(cardKinds(card(SoundId("sound.f"), 1.0), hasVoice = true))
             .containsExactly(CardKind.FIND_SOUND)
     }
+
+    @Test
+    fun testCardKinds_word_alternatesEarAndMeaningThenFallsBack() {
+        assertThat(testCardKinds(three, number = 0, hasVoice = true)).containsExactly(
+            CardKind.LISTEN_CHOOSE,
+            CardKind.CHOOSE_ENGLISH,
+            CardKind.CHOOSE_MEANING,
+            CardKind.SPELL
+        )
+        assertThat(testCardKinds(thanks, number = 1, hasVoice = true))
+            .containsExactly(CardKind.CHOOSE_ENGLISH, CardKind.CHOOSE_MEANING, CardKind.SPELL)
+    }
+
+    @Test
+    fun testCardKinds_noVoice_neverListens() {
+        assertThat(testCardKinds(three, number = 0, hasVoice = false))
+            .containsExactly(CardKind.CHOOSE_ENGLISH, CardKind.CHOOSE_MEANING, CardKind.SPELL)
+    }
+
+    @Test
+    fun testCardKinds_letterAndSound_askedAsInAReview() {
+        assertThat(testCardKinds(SoundId("sound.letter-b"), number = 0, hasVoice = true))
+            .containsExactly(CardKind.CHOOSE_LETTER)
+        assertThat(testCardKinds(SoundId("sound.th-voiceless"), number = 1, hasVoice = true))
+            .containsExactly(CardKind.FIND_SOUND)
+    }
 }
