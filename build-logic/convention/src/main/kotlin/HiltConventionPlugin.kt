@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import com.gyugle.gil.convention.applyKsp
 import com.gyugle.gil.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -26,7 +27,7 @@ import org.gradle.kotlin.dsl.dependencies
 class HiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("com.google.devtools.ksp")
+            applyKsp()
             dependencies { "ksp"(libs.findLibrary("hilt-compiler").get()) }
 
             pluginManager.withPlugin("org.jetbrains.kotlin.jvm") {

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import androidx.room.gradle.RoomExtension
+import com.gyugle.gil.convention.applyKsp
 import com.gyugle.gil.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -25,7 +26,7 @@ class RoomConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply("androidx.room")
-            pluginManager.apply("com.google.devtools.ksp")
+            applyKsp()
 
             extensions.configure<RoomExtension> {
                 // Committed: migration tests and auto-migrations need every previous schema.
