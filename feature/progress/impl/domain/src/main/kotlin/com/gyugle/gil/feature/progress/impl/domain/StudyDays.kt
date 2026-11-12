@@ -19,9 +19,12 @@ import com.gyugle.gil.feature.progress.api.MIN_STUDY_TIME_PER_DAY
 import com.gyugle.gil.feature.progress.api.StudyDay
 import kotlin.time.Instant
 import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
 import kotlinx.datetime.minus
+import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 
 /** The local time a new study day begins. Late-night study belongs to the evening before. */
@@ -36,6 +39,13 @@ fun studyDayOf(instant: Instant, zone: TimeZone): StudyDay {
     val date = if (local.time < DAY_START) local.date.minus(1, DateTimeUnit.DAY) else local.date
     return StudyDay(date.toEpochDays())
 }
+
+/**
+ * The moment [day] begins in [zone]. When 04:00 falls in a daylight saving gap, the day begins as
+ * soon after it as the clock allows.
+ */
+fun studyDayStart(day: StudyDay, zone: TimeZone): Instant =
+    LocalDate.fromEpochDays(day.epochDay).atTime(DAY_START).toInstant(zone)
 
 /**
  * Counts the study days in the streak that reaches [today].

@@ -25,4 +25,7 @@ interface StudyClock {
     fun dayOf(instant: Instant): StudyDay
 
     fun today(): StudyDay = dayOf(now())
+
+    /** The moment [day] begins in the device's current time zone, which is also when the day before ends. */
+    fun startOf(day: StudyDay): Instant
 }

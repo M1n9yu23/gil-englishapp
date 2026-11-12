@@ -18,6 +18,7 @@ package com.gyugle.gil.feature.progress.impl.domain
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import com.gyugle.gil.feature.progress.api.StudyDay
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -60,6 +61,32 @@ class StudyDaysTest {
             assertThat(studyDayOf(Instant.parse("2026-11-01T01:30:00-04:00"), newYork)).isEqualTo(day("2026-10-31"))
             assertThat(studyDayOf(Instant.parse("2026-11-01T01:30:00-05:00"), newYork)).isEqualTo(day("2026-10-31"))
             assertThat(studyDayOf(Instant.parse("2026-11-01T04:00:00-05:00"), newYork)).isEqualTo(day("2026-11-01"))
+        }
+    }
+
+    @Nested
+    inner class StudyDayStart {
+        private val seoul = TimeZone.of("Asia/Seoul")
+
+        @Test
+        fun isFourInTheMorningOfThatDate() {
+            assertThat(studyDayStart(day("2026-11-07"), seoul)).isEqualTo(Instant.parse("2026-11-07T04:00:00+09:00"))
+        }
+
+        @Test
+        fun belongsToThatDay_andTheSecondBeforeToTheDayBefore() {
+            val start = studyDayStart(day("2026-11-07"), seoul)
+
+            assertThat(studyDayOf(start, seoul)).isEqualTo(day("2026-11-07"))
+            assertThat(studyDayOf(start - 1.seconds, seoul)).isEqualTo(day("2026-11-06"))
+        }
+
+        @Test
+        fun dayClocksGoForward_followsTheNewOffset() {
+            // Daylight saving starts in New York at 02:00 on 2026-03-08, two hours before the day does.
+            val newYork = TimeZone.of("America/New_York")
+
+            assertThat(studyDayStart(day("2026-03-08"), newYork)).isEqualTo(Instant.parse("2026-03-08T04:00:00-04:00"))
         }
     }
 

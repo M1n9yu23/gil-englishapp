@@ -170,6 +170,8 @@ class RemindersTest {
         override fun now(): Instant = Instant.parse("2026-11-07T11:00:00Z")
 
         override fun dayOf(instant: Instant): StudyDay = day
+
+        override fun startOf(day: StudyDay): Instant = error("Reminders do not ask when a day starts")
     }
 
     /** Only what a reminder reads; the rest is not part of these tests. */

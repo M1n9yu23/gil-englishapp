@@ -18,6 +18,7 @@ package com.gyugle.gil.feature.progress.impl.data
 import com.gyugle.gil.feature.progress.api.StudyClock
 import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.progress.impl.domain.studyDayOf
+import com.gyugle.gil.feature.progress.impl.domain.studyDayStart
 import javax.inject.Inject
 import kotlin.time.Clock
 import kotlin.time.Instant
@@ -36,4 +37,6 @@ class SystemStudyClock internal constructor(private val clock: Clock, private va
     override fun now(): Instant = clock.now()
 
     override fun dayOf(instant: Instant): StudyDay = studyDayOf(instant, zone())
+
+    override fun startOf(day: StudyDay): Instant = studyDayStart(day, zone())
 }

@@ -27,11 +27,13 @@ class FakeStudyClock(var now: Instant = Instant.parse("2026-11-07T10:00:00Z")) :
 
     override fun dayOf(instant: Instant): StudyDay = StudyDay(instant.epochSeconds / SECONDS_PER_DAY)
 
+    override fun startOf(day: StudyDay): Instant = Instant.fromEpochSeconds(day.epochDay * SECONDS_PER_DAY)
+
     fun advanceBy(duration: Duration) {
         now += duration
     }
 
     private companion object {
-        const val SECONDS_PER_DAY = 86_400
+        const val SECONDS_PER_DAY = 86_400L
     }
 }
