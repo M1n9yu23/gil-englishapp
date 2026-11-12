@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="widget_preview_paper">#FF16191F</color>
+    <color name="widget_preview_ink">#FFECE6D9</color>
+    <color name="widget_preview_ink_soft">#FFB5B0A4</color>
+    <color name="widget_preview_ink_blue">#FFA9BCF0</color>
+    <color name="widget_preview_rule">#FF3A3F4A</color>
+</resources>

@@ -146,6 +146,7 @@ dependencies {
     implementation(projects.feature.listening.api)
     implementation(projects.feature.listening.impl.data)
     implementation(projects.feature.listening.impl.presentation)
+    implementation(projects.feature.widget.impl.presentation)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)

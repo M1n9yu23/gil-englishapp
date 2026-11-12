@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The widget's name and description in the launcher's widget list. -->
+    <string name="widget_today_name">Today</string>
+    <string name="widget_today_description">Cards to review today and a sentence from what you’ve learned</string>
+
+    <string name="widget_review_title">Today’s review</string>
+    <plurals name="widget_review_count">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> card</item>
+        <item quantity="other"><xliff:g id="count" example="12">%d</xliff:g> cards</item>
+    </plurals>
+    <string name="widget_review_none">Nothing to review today</string>
+    <string name="widget_sentence_empty">From the day after your first lesson, a sentence you’ve learned shows up here.</string>
+    <string name="widget_unavailable">Couldn’t read your study record. Open the app to check.</string>
+
+    <!-- The widget picker's picture: a made-up day. The sentence and its Korean translation are the same in every app language. -->
+    <string name="widget_preview_count">12 cards</string>
+    <string name="widget_preview_sentence" translatable="false">How are you?</string>
+    <string name="widget_preview_sentence_ko" translatable="false">어떻게 지내요?</string>
+</resources>

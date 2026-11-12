@@ -18,6 +18,7 @@ package com.gyugle.gil
 import android.app.Application
 import android.os.StrictMode
 import com.gyugle.gil.feature.reminder.impl.data.ReminderStartup
+import com.gyugle.gil.feature.widget.impl.presentation.WidgetStartup
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import timber.log.Timber
@@ -25,6 +26,8 @@ import timber.log.Timber
 @HiltAndroidApp
 class GilApplication : Application() {
     @Inject lateinit var reminderStartup: ReminderStartup
+
+    @Inject lateinit var widgetStartup: WidgetStartup
 
     override fun onCreate() {
         super.onCreate()
@@ -34,6 +37,7 @@ class GilApplication : Application() {
             enableStrictMode()
         }
         reminderStartup.start()
+        widgetStartup.start()
     }
 
     // Violations are logged, not fatal, so a debug run keeps going; read them in logcat.

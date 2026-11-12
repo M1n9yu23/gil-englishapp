@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="widget_today_name">오늘</string>
+    <string name="widget_today_description">오늘 복습할 카드 수와 배운 것에서 고른 문장</string>
+
+    <string name="widget_review_title">오늘 복습</string>
+    <plurals name="widget_review_count">
+        <item quantity="other"><xliff:g id="count" example="12">%d</xliff:g>개</item>
+    </plurals>
+    <string name="widget_review_none">오늘 복습할 것이 없어요</string>
+    <string name="widget_sentence_empty">첫 수업 다음 날부터 배운 문장이 여기에 나와요.</string>
+    <string name="widget_unavailable">학습 기록을 읽지 못했어요. 앱을 열어 확인해 주세요.</string>
+
+    <string name="widget_preview_count">12개</string>
+</resources>

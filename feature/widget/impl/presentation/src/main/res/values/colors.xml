@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The picker preview is a plain layout, outside Compose: GilTheme's surface, onSurface,
+         onSurfaceVariant, primary and outlineVariant. -->
+    <color name="widget_preview_paper">#FFF4F3EF</color>
+    <color name="widget_preview_ink">#FF1F2A44</color>
+    <color name="widget_preview_ink_soft">#FF4E566B</color>
+    <color name="widget_preview_ink_blue">#FF2F4A86</color>
+    <color name="widget_preview_rule">#FFD4D2CC</color>
+</resources>
