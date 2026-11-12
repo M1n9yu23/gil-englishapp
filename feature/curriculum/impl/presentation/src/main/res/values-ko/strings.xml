@@ -9,6 +9,11 @@
         <item quantity="other">수업 <xliff:g id="count" example="4">%d</xliff:g>개</item>
     </plurals>
     <string name="curriculum_path_open_unit">단원 열기</string>
+    <string name="curriculum_path_test">시험 보고 건너뛰기</string>
+    <plurals name="curriculum_path_test_detail">
+        <item quantity="other">이미 아는 단계라면 · 문제 <xliff:g id="count" example="20">%d</xliff:g>개</item>
+    </plurals>
+    <string name="curriculum_path_start_test">시험 보기</string>
 
     <string name="curriculum_error_unavailable_title">학습 내용을 열지 못했어요</string>
     <string name="curriculum_error_unavailable_body">휴대폰 저장 공간이 부족하면 이럴 수 있어요. 공간을 비운 뒤 다시 시도해 주세요.</string>

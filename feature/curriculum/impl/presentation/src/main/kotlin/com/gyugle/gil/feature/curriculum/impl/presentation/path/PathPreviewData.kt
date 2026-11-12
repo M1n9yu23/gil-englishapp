@@ -18,7 +18,10 @@ package com.gyugle.gil.feature.curriculum.impl.presentation.path
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
 
-/** Sample stages for previews and screenshot tests: one passed, the current one, and two ahead. */
+/**
+ * Sample stages for previews and screenshot tests: one passed, the current one, and two ahead. The
+ * current stage and the next one offer a test.
+ */
 internal object PathPreviewData {
     private fun unit(id: String, ko: String, en: String, lessons: Int) =
         UnitRowUi(id = UnitId(id), title = LocalizedTextUi(ko = ko, en = en), lessonCount = lessons)
@@ -44,14 +47,16 @@ internal object PathPreviewData {
                 unit("unit.s1-01", "알파벳 읽기", "Reading the alphabet", 5),
                 unit("unit.s1-02", "짧은 모음", "Short vowels", 1)
             ),
-            place = StagePlace.CURRENT
+            place = StagePlace.CURRENT,
+            testQuestions = 20
         ),
         StageUi(
             id = "stage.a1",
             title = LocalizedTextUi(ko = "첫걸음", en = "First steps"),
             canDo = emptyList(),
             units = listOf(unit("unit.a1-01", "나와 가족", "Me and my family", 6)),
-            place = StagePlace.AHEAD
+            place = StagePlace.AHEAD,
+            testQuestions = 20
         ),
         StageUi(
             id = "stage.a2",

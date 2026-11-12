@@ -32,6 +32,7 @@ import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitSummary
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.FakeCourseRepository
 import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
 import com.gyugle.gil.feature.curriculum.impl.presentation.toContentErrorUi
+import com.gyugle.gil.feature.progress.api.FakeProgressObserver
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -44,27 +45,33 @@ import org.junit.jupiter.api.Test
 
 class PathViewModelTest {
     private val repository = FakeCourseRepository()
+    private val progress = FakeProgressObserver()
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun stage(id: String, vararg units: String) = Stage(
+    /** A stage with one lesson in each of [units], introducing [items] items in all. */
+    private fun stage(id: String, vararg units: String, items: Int = 0) = Stage(
         id = StageId(id),
         title = LocalizedText(ko = "$id ko", en = "$id en"),
         canDo = listOf(LocalizedText(ko = "할 수 있어요", en = "You can")),
         units = units.map { UnitSummary(UnitId(it), LocalizedText(ko = "$it ko", en = "$it en"), lessonCount = 3) },
-        lessons = units.map { LessonId(it.replace("unit.", "lesson.") + ".1") },
-        itemCount = 0
+        lessons = units.map { lessonOf(it) },
+        itemCount = items
     )
 
+    private fun lessonOf(unit: String) = LessonId(unit.replace("unit.", "lesson.") + ".1")
+
+    private fun viewModel() = PathViewModel(repository, progress)
+
     @Test
-    fun init_stagesLoaded_showsThemWithFirstStageWithUnitsAsCurrent() = runTest {
+    fun init_nothingFinished_firstStageWithLessonsIsCurrent() = runTest {
         repository.stages = Outcome.Success(
             listOf(stage("stage.s0"), stage("stage.s1", "unit.s1-01"), stage("stage.a1", "unit.a1-01"))
         )
 
-        val state = PathViewModel(repository).state.value
+        val state = viewModel().state.value
 
         assertThat(state.isLoading).isFalse()
         assertThat(state.error).isNull()
@@ -84,10 +91,10 @@ class PathViewModelTest {
     }
 
     @Test
-    fun init_noStageHasUnits_firstStageIsCurrent() = runTest {
+    fun init_noStageHasLessons_firstStageIsCurrent() = runTest {
         repository.stages = Outcome.Success(listOf(stage("stage.s0"), stage("stage.s1")))
 
-        val state = PathViewModel(repository).state.value
+        val state = viewModel().state.value
 
         assertThat(state.stages.map { it.place }).containsExactly(StagePlace.CURRENT, StagePlace.AHEAD)
     }
@@ -97,7 +104,7 @@ class PathViewModelTest {
         val gate = CompletableDeferred<Unit>()
         repository.gate = gate
 
-        val viewModel = PathViewModel(repository)
+        val viewModel = viewModel()
 
         assertThat(viewModel.state.value.isLoading).isTrue()
         gate.complete(Unit)
@@ -108,7 +115,7 @@ class PathViewModelTest {
     fun init_contentUnavailable_showsRetryableError() = runTest {
         repository.stages = Outcome.Failure(ContentError.UNAVAILABLE)
 
-        val state = PathViewModel(repository).state.value
+        val state = viewModel().state.value
 
         assertThat(state.isLoading).isFalse()
         assertThat(state.error).isEqualTo(ContentError.UNAVAILABLE.toContentErrorUi())
@@ -118,12 +125,64 @@ class PathViewModelTest {
     @Test
     fun onRetryClick_afterFailure_clearsErrorAndShowsStages() = runTest {
         repository.stages = Outcome.Failure(ContentError.UNAVAILABLE)
-        val viewModel = PathViewModel(repository)
+        val viewModel = viewModel()
         repository.stages = Outcome.Success(listOf(stage("stage.s0", "unit.s0-01")))
 
         viewModel.onAction(PathAction.OnRetryClick)
 
         assertThat(viewModel.state.value.error).isNull()
         assertThat(viewModel.state.value.stages.single().id).isEqualTo("stage.s0")
+    }
+
+    @Test
+    fun init_firstStagesFinished_currentIsTheFirstWithLessonsLeft() = runTest {
+        repository.stages = Outcome.Success(
+            listOf(stage("stage.s0", "unit.s0-01"), stage("stage.s1", "unit.s1-01"), stage("stage.a1", "unit.a1-01"))
+        )
+        progress.completedLessons.value = setOf(lessonOf("unit.s0-01"), lessonOf("unit.s1-01"))
+
+        val state = viewModel().state.value
+
+        assertThat(state.stages.map { it.place })
+            .containsExactly(StagePlace.PASSED, StagePlace.PASSED, StagePlace.CURRENT)
+    }
+
+    @Test
+    fun lessonFinished_whileOpen_movesTheCurrentStage() = runTest {
+        repository.stages = Outcome.Success(listOf(stage("stage.s1", "unit.s1-01"), stage("stage.a1", "unit.a1-01")))
+        val viewModel = viewModel()
+
+        progress.completedLessons.value = setOf(lessonOf("unit.s1-01"))
+
+        assertThat(viewModel.state.value.stages.map { it.place })
+            .containsExactly(StagePlace.PASSED, StagePlace.CURRENT)
+    }
+
+    @Test
+    fun init_everyLessonFinished_nextStageToComeIsCurrent() = runTest {
+        repository.stages = Outcome.Success(listOf(stage("stage.s1", "unit.s1-01"), stage("stage.a1")))
+        progress.completedLessons.value = setOf(lessonOf("unit.s1-01"))
+
+        val state = viewModel().state.value
+
+        assertThat(state.stages.map { it.place }).containsExactly(StagePlace.PASSED, StagePlace.CURRENT)
+    }
+
+    @Test
+    fun init_stagesWithLessonsLeft_offerATestWhenTheyHaveEnoughItems() = runTest {
+        repository.stages = Outcome.Success(
+            listOf(
+                stage("stage.s0", "unit.s0-01"),
+                stage("stage.s1", "unit.s1-01", items = 45),
+                stage("stage.a1", "unit.a1-01", items = 12),
+                stage("stage.a2", "unit.a2-01", items = 30)
+            )
+        )
+        progress.completedLessons.value = setOf(lessonOf("unit.a2-01"))
+
+        val state = viewModel().state.value
+
+        // No items in s0, and nothing left to skip in a2.
+        assertThat(state.stages.map { it.testQuestions }).containsExactly(null, 20, 12, null)
     }
 }

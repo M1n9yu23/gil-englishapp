@@ -33,7 +33,7 @@ class PathScreenScreenshotTest {
     @get:Rule val composeRule = createComposeRule()
 
     private fun capture(state: PathState) = composeRule.captureScreen {
-        PathScreen(state = state, onAction = {}, onUnitClick = {})
+        PathScreen(state = state, onAction = {}, onUnitClick = {}, onTestClick = {})
     }
 
     private val stages = PathState(isLoading = false, stages = PathPreviewData.stages)
@@ -61,6 +61,7 @@ class PathScreenScreenshotTest {
                 stage.copy(
                     units = emptyList(),
                     canDo = emptyList(),
+                    testQuestions = null,
                     place = if (index == 0) StagePlace.CURRENT else StagePlace.AHEAD
                 )
             }

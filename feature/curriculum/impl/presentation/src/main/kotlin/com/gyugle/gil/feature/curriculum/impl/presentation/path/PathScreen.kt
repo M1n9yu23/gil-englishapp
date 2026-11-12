@@ -66,6 +66,7 @@ import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.component.PressableSurface
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.feature.curriculum.api.StageId
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.presentation.ContentErrorUi
 import com.gyugle.gil.feature.curriculum.impl.presentation.R
@@ -84,9 +85,13 @@ private object PathTokens {
 }
 
 @Composable
-fun PathRoot(onUnitClick: (UnitId) -> Unit, viewModel: PathViewModel = hiltViewModel()) {
+fun PathRoot(
+    onUnitClick: (UnitId) -> Unit,
+    onTestClick: (StageId) -> Unit,
+    viewModel: PathViewModel = hiltViewModel()
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    PathScreen(state = state, onAction = viewModel::onAction, onUnitClick = onUnitClick)
+    PathScreen(state = state, onAction = viewModel::onAction, onUnitClick = onUnitClick, onTestClick = onTestClick)
 }
 
 @Composable
@@ -94,6 +99,7 @@ fun PathScreen(
     state: PathState,
     onAction: (PathAction) -> Unit,
     onUnitClick: (UnitId) -> Unit,
+    onTestClick: (StageId) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxSize()) {
@@ -113,7 +119,7 @@ fun PathScreen(
                     onRetry = { onAction(PathAction.OnRetryClick) }
                 )
 
-                is PathContent.Stages -> StageList(content, onUnitClick)
+                is PathContent.Stages -> StageList(content, onUnitClick, onTestClick)
             }
         }
     }
@@ -135,7 +141,7 @@ private fun PathState.content(): PathContent = when {
 }
 
 @Composable
-private fun StageList(content: PathContent.Stages, onUnitClick: (UnitId) -> Unit) {
+private fun StageList(content: PathContent.Stages, onUnitClick: (UnitId) -> Unit, onTestClick: (StageId) -> Unit) {
     val stages = content.stages
     val spacing = GilTheme.spacing
     LazyColumn(
@@ -147,7 +153,8 @@ private fun StageList(content: PathContent.Stages, onUnitClick: (UnitId) -> Unit
                 stage = stage,
                 isFirst = index == 0,
                 isLast = index == stages.lastIndex,
-                onUnitClick = onUnitClick
+                onUnitClick = onUnitClick,
+                onTestClick = { onTestClick(StageId(stage.id)) }
             )
         }
     }
@@ -195,11 +202,17 @@ private fun PathLoading() {
 }
 
 /**
- * A stage with its units, and the stretch of the path line beside it. The line is drawn over the
- * content so a pressed unit row does not cover it.
+ * A stage with its units, then its test when it offers one, and the stretch of the path line
+ * beside it. The line is drawn over the content so a pressed row does not cover it.
  */
 @Composable
-private fun StageItem(stage: StageUi, isFirst: Boolean, isLast: Boolean, onUnitClick: (UnitId) -> Unit) {
+private fun StageItem(
+    stage: StageUi,
+    isFirst: Boolean,
+    isLast: Boolean,
+    onUnitClick: (UnitId) -> Unit,
+    onTestClick: () -> Unit
+) {
     val spacing = GilTheme.spacing
     val colors = MaterialTheme.colorScheme
     // Before the first layout, half a title line; then the middle of the title's first line as laid out.
@@ -234,6 +247,10 @@ private fun StageItem(stage: StageUi, isFirst: Boolean, isLast: Boolean, onUnitC
                 stage.units.forEachIndexed { index, unit ->
                     if (index > 0) HorizontalDivider(modifier = Modifier.padding(start = PathTokens.ContentStart))
                     UnitRow(unit, onClick = { onUnitClick(unit.id) })
+                }
+                stage.testQuestions?.let { questions ->
+                    HorizontalDivider(modifier = Modifier.padding(start = PathTokens.ContentStart))
+                    TestRow(questions, onClick = onTestClick)
                 }
             }
         }
@@ -343,6 +360,42 @@ private fun UnitRow(unit: UnitRowUi, onClick: () -> Unit) {
     }
 }
 
+/** The way to skip a stage the learner already knows, after its units and set apart by ink colour. */
+@Composable
+private fun TestRow(questions: Int, onClick: () -> Unit) {
+    val spacing = GilTheme.spacing
+    val colors = MaterialTheme.colorScheme
+    PressableSurface(onClick = onClick, clickLabel = stringResource(R.string.curriculum_path_start_test)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = PathTokens.UnitRowMinHeight)
+                .padding(
+                    start = PathTokens.ContentStart,
+                    end = spacing.screenMargin,
+                    top = spacing.itemGap,
+                    bottom = spacing.itemGap
+                ),
+            horizontalArrangement = Arrangement.spacedBy(spacing.itemGap),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.curriculum_path_test),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = colors.primary
+                )
+                Text(
+                    text = pluralStringResource(R.plurals.curriculum_path_test_detail, questions, questions),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colors.onSurfaceVariant
+                )
+            }
+            Icon(painter = GilIcons.ChevronRight, contentDescription = null, tint = colors.onSurfaceVariant)
+        }
+    }
+}
+
 private fun DrawScope.lineX(): Float {
     val x = PathTokens.LineCenter.toPx()
     return if (layoutDirection == LayoutDirection.Rtl) size.width - x else x
@@ -379,8 +432,12 @@ private fun DrawScope.drawStageMark(y: Float, place: StagePlace, travelled: Colo
 private fun PathScreenPreview() {
     GilTheme {
         Surface {
-            PathScreen(state = PathState(isLoading = false, stages = PathPreviewData.stages), onAction = {
-            }, onUnitClick = {})
+            PathScreen(
+                state = PathState(isLoading = false, stages = PathPreviewData.stages),
+                onAction = {},
+                onUnitClick = {},
+                onTestClick = {}
+            )
         }
     }
 }

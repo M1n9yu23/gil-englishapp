@@ -23,10 +23,14 @@ import com.gyugle.gil.feature.curriculum.api.UnitRoute
 import com.gyugle.gil.feature.curriculum.impl.presentation.path.PathRoot
 import com.gyugle.gil.feature.curriculum.impl.presentation.unitdetail.UnitDetailRoot
 import com.gyugle.gil.feature.lesson.api.LessonRoute
+import com.gyugle.gil.feature.review.api.StageTestRoute
 
 fun EntryProviderScope<NavKey>.curriculumEntries(navigator: Navigator) {
     entry<PathRoute> {
-        PathRoot(onUnitClick = { unitId -> navigator.goTo(UnitRoute(unitId)) })
+        PathRoot(
+            onUnitClick = { unitId -> navigator.goTo(UnitRoute(unitId)) },
+            onTestClick = { stageId -> navigator.goTo(StageTestRoute(stageId)) }
+        )
     }
     entry<UnitRoute> { route ->
         UnitDetailRoot(

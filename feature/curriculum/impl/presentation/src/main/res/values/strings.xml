@@ -14,6 +14,14 @@
     </plurals>
     <!-- Screen reader action for a unit row. -->
     <string name="curriculum_path_open_unit">open unit</string>
+    <!-- After a stage's units: a test that skips the stage for a learner who already knows it. -->
+    <string name="curriculum_path_test">Test out of this stage</string>
+    <plurals name="curriculum_path_test_detail">
+        <item quantity="one">Already know it? <xliff:g id="count" example="1">%d</xliff:g> question</item>
+        <item quantity="other">Already know it? <xliff:g id="count" example="20">%d</xliff:g> questions</item>
+    </plurals>
+    <!-- Screen reader action for the test row. -->
+    <string name="curriculum_path_start_test">take the test</string>
 
     <string name="curriculum_error_unavailable_title">Couldn’t open the lessons</string>
     <string name="curriculum_error_unavailable_body">This can happen when your phone is low on storage. Free up some space, then try again.</string>

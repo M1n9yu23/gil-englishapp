@@ -18,11 +18,13 @@ package com.gyugle.gil.feature.curriculum.impl.presentation.path
 import androidx.compose.runtime.Immutable
 import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
 
+/** A stage on the path. [testQuestions] is the length of its test, null when it offers none. */
 @Immutable
 data class StageUi(
     val id: String,
     val title: LocalizedTextUi,
     val canDo: List<LocalizedTextUi>,
     val units: List<UnitRowUi>,
-    val place: StagePlace
+    val place: StagePlace,
+    val testQuestions: Int? = null
 )

@@ -23,4 +23,9 @@ dependencies {
     implementation(projects.feature.curriculum.impl.domain)
     // A lesson row opens the lesson player.
     implementation(projects.feature.lesson.api)
+    // Where the learner is on the path comes from their finished lessons; a stage they know can be tested out of.
+    implementation(projects.feature.progress.api)
+    implementation(projects.feature.review.api)
+    implementation(libs.timber)
+    testImplementation(testFixtures(projects.feature.progress.api))
 }

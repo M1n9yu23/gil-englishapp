@@ -15,15 +15,24 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.presentation.path
 
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.impl.domain.model.Stage
 import com.gyugle.gil.feature.curriculum.impl.presentation.toLocalizedTextUi
+import com.gyugle.gil.feature.review.api.hasStageTest
+import com.gyugle.gil.feature.review.api.stageTestQuestions
 
 /**
- * Maps the stages and marks where the learner is. Until learning progress exists (M3), every
- * learner is at the start: the first stage that has units, or the first stage when none has.
+ * Maps the stages and marks where the learner is: at the first stage with a lesson not in
+ * [completed]. With every lesson finished, that is the stage after the last one with lessons, the
+ * next to come. A stage with lessons left can be tested out of when it has enough items.
  */
-fun List<Stage>.toStageUis(): List<StageUi> {
-    val current = indexOfFirst { it.units.isNotEmpty() }.coerceAtLeast(0)
+fun List<Stage>.toStageUis(completed: Set<LessonId>): List<StageUi> {
+    val unfinished = indexOfFirst { stage -> stage.lessons.any { it !in completed } }
+    val current = if (unfinished >= 0) {
+        unfinished
+    } else {
+        (indexOfLast { it.lessons.isNotEmpty() } + 1).coerceAtMost(lastIndex)
+    }
     return mapIndexed { index, stage ->
         StageUi(
             id = stage.id.value,
@@ -36,6 +45,9 @@ fun List<Stage>.toStageUis(): List<StageUi> {
                 index < current -> StagePlace.PASSED
                 index == current -> StagePlace.CURRENT
                 else -> StagePlace.AHEAD
+            },
+            testQuestions = stageTestQuestions(stage.itemCount).takeIf {
+                hasStageTest(stage.itemCount) && stage.lessons.any { it !in completed }
             }
         )
     }
