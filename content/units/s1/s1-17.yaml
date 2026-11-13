@@ -30,7 +30,7 @@ lessons:
         text: |
           상대를 말할 때는 `you`와 `are`를 써요. 상대가 한 명이든 여럿이든 모두 `you`예요. 윗사람에게도 똑같이 `you`를 써요.
 
-          물을 때는 `are`를 맨 앞으로 옮겨요. `You are cold.`가 `Are you cold?`가 돼요. 끝은 올려 말해요.
+          물을 때는 `are`를 맨 앞으로 옮겨요. `You are cold`가 `Are you cold?`가 돼요. 끝은 올려 말해요.
         examples:
           - en: You are cold.
             ko: 몸이 차갑네요.
@@ -114,9 +114,9 @@ lessons:
             ko: 저는 교사예요.
       - type: explain
         text: |
-          `Are you a student?`에는 먼저 `Yes`나 `No`로 대답해요. 맞으면 `Yes, I am.`이라고 해요.
+          `Are you a student?`에는 먼저 `Yes`나 `No`로 대답해요. 맞으면 `Yes, I am`이라고 해요.
 
-          말할 때는 `I am`을 보통 `I'm`으로 줄이지만 `Yes, I am.`처럼 대답 끝에서는 줄이지 않아요. 학생이 아니면 `No`라고 하고 뒤에 맞는 것을 말해요.
+          말할 때는 `I am`을 보통 `I'm`으로 줄이지만 `Yes, I am`처럼 대답 끝에서는 줄이지 않아요. 학생이 아니면 `No`라고 하고 뒤에 맞는 것을 말해요.
         examples:
           - en: Are you a student?
             ko: 학생이에요?
@@ -213,7 +213,7 @@ lessons:
             ko: 개가 커요.
       - type: explain
         text: |
-          `is`도 물을 때는 맨 앞으로 옮겨요. `The dog is big.`이 `Is the dog big?`이 돼요.
+          `is`도 물을 때는 맨 앞으로 옮겨요. `The dog is big`이 `Is the dog big?`이 돼요.
         examples:
           - en: Is the dog big?
             ko: 개가 커요?

@@ -14,9 +14,9 @@ lessons:
         ko: "잘 가요, 샘 씨."
       - type: explain
         text: |
-          만날 때는 `Hello.`나 `Hi.`라고 해요. `hello`는 누구에게나 써요. `hi`가 조금 더 편한 말이지만 처음 보는 사람에게도 많이 써요.
+          만날 때는 `Hello`나 `Hi`라고 해요. `hello`는 누구에게나 써요. `hi`가 조금 더 편한 말이지만 처음 보는 사람에게도 많이 써요.
 
-          헤어질 때는 `Bye.`나 `Goodbye.`라고 해요. 평소에는 `bye`를 훨씬 자주 써요. `goodbye`는 조금 더 격식 있는 말이에요.
+          헤어질 때는 `Bye`나 `Goodbye`라고 해요. 평소에는 `bye`를 훨씬 자주 써요. `goodbye`는 조금 더 격식 있는 말이에요.
 
           우리말 "안녕"은 만날 때도 헤어질 때도 쓰지만 영어는 두 말이 달라요. 이름은 인사 뒤에 붙여요.
         examples:
@@ -49,7 +49,7 @@ lessons:
         options:
           - { en: "Hi, @Leo.", correct: true }
           - { en: "Bye, @Leo.", why: "`bye`는 헤어질 때 하는 말이에요. 만났을 때는 `hi`나 `hello`로 받아요." }
-          - { en: "Yes, I am.", why: "`Yes, I am.`은 질문에 하는 대답이에요. 인사에는 인사로 받아요." }
+          - { en: "Yes, I am.", why: "`Yes, I am`은 질문에 하는 대답이에요. 인사에는 인사로 받아요." }
       - type: dialogue
         item: sense.bye.interj.leaving
         lines:
@@ -83,11 +83,11 @@ lessons:
         text: |
           `good`은 "좋은"이에요. 뒤에 때를 나타내는 말을 붙이면 인사가 돼요.
 
-          `Good morning.`은 아침부터 낮 12시 전까지 만날 때 써요. `Good afternoon.`은 낮 12시부터 저녁 전까지 써요. `afternoon`은 끝의 `noon`을 세게 말해요.
+          `Good morning`은 아침부터 낮 12시 전까지 만날 때 써요. `Good afternoon`은 낮 12시부터 저녁 전까지 써요. `afternoon`은 끝의 `noon`을 세게 말해요.
 
-          `Good night.`은 만날 때 쓰지 않아요. 밤에 헤어질 때나 자러 갈 때 "잘 자요"라는 뜻으로 써요. 밤에 만나면 `Hi.`나 `Hello.`면 돼요.
+          `Good night`은 만날 때 쓰지 않아요. 밤에 헤어질 때나 자러 갈 때 "잘 자요"라는 뜻으로 써요. 밤에 만나면 `Hi`나 `Hello`면 돼요.
 
-          `Good afternoon.`은 조금 격식 있는 말이라서 친구끼리는 `Hi.`를 더 자주 써요.
+          `Good afternoon`은 조금 격식 있는 말이라서 친구끼리는 `Hi`를 더 자주 써요.
         examples:
           - en: Good morning.
             ko: 안녕하세요(아침 인사).
@@ -100,8 +100,8 @@ lessons:
         item: sense.night.n.dark
         options:
           - { ko: 잘 자요, correct: true }
-          - { ko: 안녕하세요(밤에 만날 때), why: "`Good night.`은 만날 때 쓰지 않아요. 밤에 헤어지거나 잘 때 하는 말이에요." }
-          - { ko: 안녕하세요(아침 인사), why: "아침 인사는 `Good morning.`이에요." }
+          - { ko: 안녕하세요(밤에 만날 때), why: "`Good night`은 만날 때 쓰지 않아요. 밤에 헤어지거나 잘 때 하는 말이에요." }
+          - { ko: 안녕하세요(아침 인사), why: "아침 인사는 `Good morning`이에요." }
       - type: chooseEnglish
         ko: 오후
         item: sense.afternoon.n.after-noon
@@ -116,7 +116,7 @@ lessons:
         question: 아침 8시에 만났어요. 샘이 할 말을 골라요.
         options:
           - { en: "Good morning, @Mina.", correct: true }
-          - { en: "Good night, @Mina.", why: "`Good night.`은 밤에 헤어질 때 하는 말이에요." }
+          - { en: "Good night, @Mina.", why: "`Good night`은 밤에 헤어질 때 하는 말이에요." }
           - { en: "Good afternoon, @Mina.", why: "아침 8시는 오후가 아니에요. 낮 12시 전에는 `morning`이에요." }
       - type: listenChoose
         en: Good afternoon.
@@ -124,7 +124,7 @@ lessons:
         options:
           - { ko: 오후에 만날 때, correct: true }
           - { ko: 아침에 만날 때, why: "`morning`이 아니라 `afternoon`이 들렸어요. 끝의 `noon`이 세게 들려요." }
-          - { ko: 밤에 헤어질 때, why: "밤에 헤어질 때는 `Good night.`이라고 해요." }
+          - { ko: 밤에 헤어질 때, why: "밤에 헤어질 때는 `Good night`이라고 해요." }
       - type: dialogue
         item: sense.night.n.dark
         lines:
@@ -132,7 +132,7 @@ lessons:
         question: 밤 11시예요. 레오가 할 말을 골라요.
         options:
           - { en: "Good night, @Ana.", correct: true }
-          - { en: "Good morning, @Ana.", why: "아침에 만날 때 하는 인사예요. 자러 갈 때는 `Good night.`이에요." }
+          - { en: "Good morning, @Ana.", why: "아침에 만날 때 하는 인사예요. 자러 갈 때는 `Good night`이에요." }
           - { en: "Hello, @Ana.", why: "`hello`는 만날 때 하는 인사예요." }
       - type: fillBlank
         item: sense.good.adj.nice
@@ -162,11 +162,11 @@ lessons:
         ko: 별말씀을요.
       - type: explain
         text: |
-          고마울 때는 `Thank you.`라고 해요. 가게에서도 식당에서도 누구에게나 써요. `Thanks.`는 조금 더 편한 말이에요.
+          고마울 때는 `Thank you`라고 해요. 가게에서도 식당에서도 누구에게나 써요. `Thanks`는 조금 더 편한 말이에요.
 
           `thank`의 `th`는 혀끝을 이 사이에 두고 바람만 내요. 우리말 "땡"이나 "쌩"처럼 내지 않아요.
 
-          고맙다는 말에는 `You're welcome.`이라고 대답해요. "별말씀을요"라는 뜻이고 `welcome`이 들어 있지만 환영한다는 뜻은 아니에요. `You're`는 `You are`를 줄인 말이에요.
+          고맙다는 말에는 `You're welcome`이라고 대답해요. "별말씀을요"라는 뜻이고 `welcome`이 들어 있지만 환영한다는 뜻은 아니에요. `You're`는 `You are`를 줄인 말이에요.
         examples:
           - en: Thank you.
             ko: 고마워요.
@@ -181,22 +181,22 @@ lessons:
         question: 유키가 할 말을 골라요.
         options:
           - { en: You're welcome., correct: true }
-          - { en: "Hello, @Omar.", why: "`hello`는 만날 때 하는 인사예요. 고맙다는 말에는 `You're welcome.`으로 대답해요." }
-          - { en: Good night., why: "`Good night.`은 밤에 헤어질 때 하는 말이에요." }
+          - { en: "Hello, @Omar.", why: "`hello`는 만날 때 하는 인사예요. 고맙다는 말에는 `You're welcome`으로 대답해요." }
+          - { en: Good night., why: "`Good night`은 밤에 헤어질 때 하는 말이에요." }
       - type: chooseMeaning
         en: Thanks.
         item: sense.thanks.interj.thank
         options:
           - { ko: 고마워요, correct: true }
-          - { ko: 별말씀을요, why: "\"별말씀을요\"는 고맙다는 말에 하는 대답 `You're welcome.`이에요." }
+          - { ko: 별말씀을요, why: "\"별말씀을요\"는 고맙다는 말에 하는 대답 `You're welcome`이에요." }
           - { ko: 잘 가요, why: "헤어질 때는 `bye`라고 해요." }
       - type: explain
         text: |
-          미안할 때는 `Sorry.`나 `I'm sorry.`라고 해요. `I'm`은 `I am`을 줄인 말이에요. 사과에 대답하는 말은 다음 수업에서 배워요.
+          미안할 때는 `Sorry`나 `I'm sorry`라고 해요. `I'm`은 `I am`을 줄인 말이에요. 사과에 대답하는 말은 다음 수업에서 배워요.
 
-          부탁할 때는 원하는 것 뒤에 `please`를 붙여요. `Tea, please.`는 "차 주세요"예요.
+          부탁할 때는 원하는 것 뒤에 `please`를 붙여요. `Tea, please`는 "차 주세요"예요.
 
-          누가 무엇을 권하면 `Yes, please.`로 받아요. 사양할 때는 `No, thanks.`라고 해요.
+          누가 무엇을 권하면 `Yes, please`로 받아요. 사양할 때는 `No, thanks`라고 해요.
         examples:
           - en: I'm sorry.
             ko: 미안해요.
@@ -211,8 +211,8 @@ lessons:
         item: sense.sorry.adj.apologize
         options:
           - { ko: 미안해요, correct: true }
-          - { ko: 고마워요, why: "고마울 때는 `Thank you.`예요. 들린 말은 `sorry`예요." }
-          - { ko: 별말씀을요, why: "\"별말씀을요\"는 `You're welcome.`이에요." }
+          - { ko: 고마워요, why: "고마울 때는 `Thank you`예요. 들린 말은 `sorry`예요." }
+          - { ko: 별말씀을요, why: "\"별말씀을요\"는 `You're welcome`이에요." }
       - type: dialogue
         item: sense.please.interj.polite
         lines:
@@ -220,8 +220,8 @@ lessons:
         question: 프리야는 차를 마시고 싶어요. 프리야가 할 말을 골라요.
         options:
           - { en: "Yes, please.", correct: true }
-          - { en: "No, thanks.", why: "`No, thanks.`는 사양하는 말이에요. 마시고 싶으면 `Yes, please.`예요." }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: "No, thanks.", why: "`No, thanks`는 사양하는 말이에요. 마시고 싶으면 `Yes, please`예요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: arrange
         item: sense.please.interj.polite
         ko: 차 한 잔 주세요.
@@ -252,7 +252,7 @@ lessons:
         text: |
           `How are you?`는 "잘 지내요?"라는 뜻이에요. 정말 안부가 궁금해서 묻기보다는 인사처럼 써요. `Hi.` 바로 뒤에 붙여 말할 때가 많아요.
 
-          대답은 짧게 해요. `Fine, thanks.`도 `Good, thanks.`도 `I'm OK.`도 괜찮아요. 그다음 `And you?`로 상대에게 되물어요.
+          대답은 짧게 해요. `Fine, thanks`도 `Good, thanks`도 `I'm OK`도 괜찮아요. 그다음 `And you?`로 상대에게 되물어요.
 
           `I'm fine, thank you, and you?` 한 문장만 외울 필요는 없어요. 틀린 말은 아니지만 실제로는 더 짧게 말할 때가 많아요.
         examples:
@@ -272,7 +272,7 @@ lessons:
         options:
           - { en: "Good, thanks. And you?", correct: true }
           - { en: I'm a student., why: "`How are you?`는 무슨 일을 하는지 묻는 말이 아니에요. 잘 지내는지 묻는 인사예요." }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: dialogue
         item: sense.fine.adj.well
         lines:
@@ -282,10 +282,10 @@ lessons:
         options:
           - { en: "Fine, thanks.", correct: true }
           - { en: "Yes, I am.", why: "`And you?`는 예, 아니요로 대답하는 질문이 아니에요. 어떻게 지내는지 말해요." }
-          - { en: Good night., why: "`Good night.`은 밤에 헤어질 때 하는 말이에요." }
+          - { en: Good night., why: "`Good night`은 밤에 헤어질 때 하는 말이에요." }
       - type: explain
         text: |
-          누가 `Sorry.`라고 사과하면 `It's OK.`라고 대답해요. "괜찮아요"라는 뜻이에요. `It's`는 `It is`를 줄인 말이에요.
+          누가 `Sorry`라고 사과하면 `It's OK`라고 대답해요. "괜찮아요"라는 뜻이에요. `It's`는 `It is`를 줄인 말이에요.
 
           `OK`는 `okay`라고 쓰기도 해요. 뒤를 세게 말해요.
         examples:
@@ -298,8 +298,8 @@ lessons:
         item: sense.ok.adj.fine
         options:
           - { ko: 괜찮아요, correct: true }
-          - { ko: 미안해요, why: "미안할 때는 `I'm sorry.`라고 해요." }
-          - { ko: 잘 지내요?, why: "`How are you?`가 묻는 말이에요. `I'm OK.`는 대답이에요." }
+          - { ko: 미안해요, why: "미안할 때는 `I'm sorry`라고 해요." }
+          - { ko: 잘 지내요?, why: "`How are you?`가 묻는 말이에요. `I'm OK`는 대답이에요." }
       - type: dialogue
         item: sense.ok.adj.fine
         lines:
@@ -307,7 +307,7 @@ lessons:
         question: 프리야가 괜찮다고 대답해요. 알맞은 말을 골라요.
         options:
           - { en: It's OK., correct: true }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요. 사과에는 `It's OK.`라고 해요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말에 하는 대답이에요. 사과에는 `It's OK`라고 해요." }
           - { en: I'm sorry., why: "사과를 받는 쪽은 미안하다고 하지 않아도 돼요. 괜찮다고 말해요." }
       - type: fillBlank
         item: pattern.how-are-you

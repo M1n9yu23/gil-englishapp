@@ -14,7 +14,7 @@ lessons:
         ko: 배고파요?
       - type: explain
         text: |
-          `I'm tired.`는 "피곤해요"예요. `I am`을 줄여 `I'm`이라고 하고 평소에는 거의 늘 줄여요. 상대 이야기는 `You are`를 줄인 `You're`로 해요.
+          `I'm tired`는 "피곤해요"예요. `I am`을 줄여 `I'm`이라고 하고 평소에는 거의 늘 줄여요. 상대 이야기는 `You are`를 줄인 `You're`로 해요.
 
           물을 때는 `Are you tired?`처럼 `Are`를 앞으로 옮겨요. 영어 문장에는 보통 누구 이야기인지 `I'm`이나 `You're`가 들어가요. 짧게 대답할 때는 빼기도 해요.
         examples:
@@ -104,9 +104,9 @@ lessons:
         ko: 아니요, 아직요.
       - type: explain
         text: |
-          아니라고 할 때는 `am`, `are` 바로 뒤에 `not`을 넣어요. `I'm not ready.`처럼 `not`이 `ready` 앞에 와요.
+          아니라고 할 때는 `am`, `are` 바로 뒤에 `not`을 넣어요. `I'm not ready`처럼 `not`이 `ready` 앞에 와요.
 
-          상대 이야기는 `You're not`이라고 하고 `You aren't`도 같은 말이에요. `I am not`은 `I'm not`으로만 줄여요. `Are you ready?`에 아니라고 할 때는 `No, I'm not.`이라고 해요.
+          상대 이야기는 `You're not`이라고 하고 `You aren't`도 같은 말이에요. `I am not`은 `I'm not`으로만 줄여요. `Are you ready?`에 아니라고 할 때는 `No, I'm not`이라고 해요.
         examples:
           - en: "I'm not ready."
             ko: 저는 준비 안 됐어요.
@@ -137,9 +137,9 @@ lessons:
           - { en: not, why: "`are`가 빠졌어요. `aren't`나 `You're not`이라고 해요." }
       - type: explain
         text: |
-          약속에 늦었을 때는 `Sorry, I'm late.`라고 먼저 말해요. 확실히 모를 때는 `I'm not sure.`라고 해요. `sure`가 "확실한"이라서 "잘 모르겠어요"라는 뜻이 돼요. `Are you sure?`는 "정말이에요?"예요.
+          약속에 늦었을 때는 `Sorry, I'm late`라고 먼저 말해요. 확실히 모를 때는 `I'm not sure`라고 해요. `sure`가 "확실한"이라서 "잘 모르겠어요"라는 뜻이 돼요. `Are you sure?`는 "정말이에요?"예요.
 
-          상대 말이 맞으면 `You're right.`라고 해요. `right`는 "맞는"이에요.
+          상대 말이 맞으면 `You're right`라고 해요. `right`는 "맞는"이에요.
         examples:
           - en: "Sorry, I'm late."
             ko: 늦어서 미안해요.
@@ -170,8 +170,8 @@ lessons:
         question: 차가 정말 식었어요. 린의 말에 맞장구칠 말을 골라요.
         options:
           - { en: "You're right.", correct: true }
-          - { en: "I'm right.", why: "내가 맞다는 말이에요. 상대 말이 맞으면 `You're right.`예요." }
-          - { en: "You're welcome.", why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: "I'm right.", why: "내가 맞다는 말이에요. 상대 말이 맞으면 `You're right`예요." }
+          - { en: "You're welcome.", why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: chooseEnglish
         ko: 늦어서 미안해요.
         item: sense.late.adj.not-on-time
@@ -203,9 +203,9 @@ lessons:
         ko: 미안해요, 정말 바빠요.
       - type: explain
         text: |
-          `I'm very tired.`는 "아주 피곤해요"예요. `very`와 `really`는 우리말 "아주, 정말"처럼 뜻을 세게 해요. 말할 때는 `really`를 더 자주 쓰지만 뜻은 거의 같아요.
+          `I'm very tired`는 "아주 피곤해요"예요. `very`와 `really`는 우리말 "아주, 정말"처럼 뜻을 세게 해요. 말할 때는 `really`를 더 자주 쓰지만 뜻은 거의 같아요.
 
-          `not very`는 "별로 안"이에요. `I'm not very hungry.`는 "별로 안 배고파요"예요.
+          `not very`는 "별로 안"이에요. `I'm not very hungry`는 "별로 안 배고파요"예요.
         examples:
           - en: "I'm very tired."
             ko: 아주 피곤해요.
@@ -224,7 +224,7 @@ lessons:
         text: |
           `Are you free?`는 "시간 있어요?"예요. `free`는 `busy`의 반대예요.
 
-          `I'm home.`은 "집이에요"예요. 이 뜻일 때 `home` 앞에는 `in`이나 `to`를 붙이지 않아요. `sick`은 "아픈"이에요.
+          `I'm home`은 "집이에요"예요. 이 뜻일 때 `home` 앞에는 `in`이나 `to`를 붙이지 않아요. `sick`은 "아픈"이에요.
         examples:
           - en: Are you free?
             ko: 시간 있어요?
@@ -246,8 +246,8 @@ lessons:
         item: sense.home.adv.at-home
         options:
           - { en: Go home., correct: true }
-          - { en: Go to home., why: "`home` 앞에는 `to`를 붙이지 않아요. `Go home.`이라고 해요." }
-          - { en: Go in home., why: "`home` 앞에는 `in`을 붙이지 않아요. `Go home.`이라고 해요." }
+          - { en: Go to home., why: "`home` 앞에는 `to`를 붙이지 않아요. `Go home`이라고 해요." }
+          - { en: Go in home., why: "`home` 앞에는 `in`을 붙이지 않아요. `Go home`이라고 해요." }
       - type: dialogue
         item: sense.free.adj.not-busy
         lines:
@@ -294,9 +294,9 @@ lessons:
         ko: 저도요.
       - type: explain
         text: |
-          상대 말이 나에게도 맞으면 `Me too.`라고 해요. `I'm hungry.`에 `Me too.`라고 하면 "저도 배고파요"예요.
+          상대 말이 나에게도 맞으면 `Me too`라고 해요. `I'm hungry`에 `Me too`라고 하면 "저도 배고파요"예요.
 
-          상대가 `not`이 든 말을 했을 때는 보통 `Me neither.`라고 해요. `I'm not hungry.`에 `Me neither.`라고 하면 "저도 배 안 고파요"예요. 우리말로는 둘 다 "저도요"라서 헷갈리기 쉬워요.
+          상대가 `not`이 든 말을 했을 때는 보통 `Me neither`라고 해요. `I'm not hungry`에 `Me neither`라고 하면 "저도 배 안 고파요"예요. 우리말로는 둘 다 "저도요"라서 헷갈리기 쉬워요.
         examples:
           - en: "I'm hungry."
             ko: 배고파요.
@@ -313,8 +313,8 @@ lessons:
         question: 오마르도 피곤해요. 오마르가 할 말을 골라요.
         options:
           - { en: Me too., correct: true }
-          - { en: Me neither., why: "`Me neither.`는 `not`이 든 말에 맞장구칠 때 써요. 프리야의 말에는 `not`이 없어요." }
-          - { en: "I'm too.", why: "`I'm`은 뒤에 아무 말 없이 끝내지 않아요. `Me too.`나 `I'm tired, too.`라고 해요." }
+          - { en: Me neither., why: "`Me neither`는 `not`이 든 말에 맞장구칠 때 써요. 프리야의 말에는 `not`이 없어요." }
+          - { en: "I'm too.", why: "`I'm`은 뒤에 아무 말 없이 끝내지 않아요. `Me too`나 `I'm tired, too`라고 해요." }
       - type: dialogue
         item: pattern.me-neither
         lines:
@@ -322,11 +322,11 @@ lessons:
         question: 유키도 아직 준비가 안 됐어요. 유키가 할 말을 골라요.
         options:
           - { en: Me neither., correct: true }
-          - { en: Me too., why: "`not`이 든 말에는 보통 `Me neither.`로 맞장구쳐요." }
-          - { en: Me not., why: "이런 말은 쓰지 않아요. `not`이 든 말에는 `Me neither.`라고 해요." }
+          - { en: Me too., why: "`not`이 든 말에는 보통 `Me neither`로 맞장구쳐요." }
+          - { en: Me not., why: "이런 말은 쓰지 않아요. `not`이 든 말에는 `Me neither`라고 해요." }
       - type: explain
         text: |
-          `How are you?`에 아주 잘 지내면 `Great, thanks.`라고 해요. 그럭저럭 괜찮으면 `Not bad.`라고 해요. `bad`는 "나쁜"이라서 "나쁘지 않아요"라는 말이에요.
+          `How are you?`에 아주 잘 지내면 `Great, thanks`라고 해요. 그럭저럭 괜찮으면 `Not bad`라고 해요. `bad`는 "나쁜"이라서 "나쁘지 않아요"라는 말이에요.
 
           `angry`는 "화난"이에요. `hungry`와 헷갈리기 쉬운데 `angry`는 `a`로, `hungry`는 `h`로 시작해요.
         examples:
@@ -344,7 +344,7 @@ lessons:
         options:
           - { ko: 나쁘지 않아요., correct: true }
           - { ko: 안 좋아요., why: "`not`이 있어서 반대예요. 나쁘지 않다, 괜찮다는 말이에요." }
-          - { ko: 아주 좋아요., why: "아주 좋은 건 `great`예요. `Not bad.`는 그럭저럭 괜찮다는 말이에요." }
+          - { ko: 아주 좋아요., why: "아주 좋은 건 `great`예요. `Not bad`는 그럭저럭 괜찮다는 말이에요." }
       - type: listenChoose
         en: Are you angry?
         item: sense.angry.adj.mad
@@ -357,7 +357,7 @@ lessons:
         item: sense.great.adj.very-good
         options:
           - { en: "Great, thanks.", correct: true }
-          - { en: "Not bad, thanks.", why: "`Not bad.`는 그럭저럭 괜찮다는 말이에요. 아주 좋을 때는 `great`예요." }
+          - { en: "Not bad, thanks.", why: "`Not bad`는 그럭저럭 괜찮다는 말이에요. 아주 좋을 때는 `great`예요." }
           - { en: "Bad, thanks.", why: "`bad`는 나쁜 거예요. 아주 좋을 때는 `great`예요." }
       - type: fillBlank
         item: pattern.me-neither
@@ -365,7 +365,7 @@ lessons:
         ko: "(오마르: `I'm not angry.`) 저도 화 안 났어요."
         options:
           - { en: neither, correct: true }
-          - { en: too, why: "앞의 말에 `not`이 있어서 `Me neither.`로 맞장구쳐요." }
+          - { en: too, why: "앞의 말에 `not`이 있어서 `Me neither`로 맞장구쳐요." }
       - type: arrange
         item: sense.angry.adj.mad
         ko: 화난 거 아니에요. 배고픈 거예요.

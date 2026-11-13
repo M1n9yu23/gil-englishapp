@@ -17,7 +17,7 @@ lessons:
       - type: explain
         checkVocab: false
         text: |
-          방금 들은 `Hello.`는 만났을 때 하는 인사예요. `Hi.`도 만났을 때 하는 인사인데 조금 더 가벼워요. 지금 외우지 않아도 돼요. 1단계에서 다시 나와요.
+          방금 들은 `Hello`는 만났을 때 하는 인사예요. `Hi`도 만났을 때 하는 인사인데 조금 더 가벼워요. 지금 외우지 않아도 돼요. 1단계에서 다시 나와요.
 
           0단계에서는 영어를 외우기보다 이 앱으로 공부하는 법과 영어 문장의 모양을 먼저 봐요. 0단계의 수업은 짧아서 금방 끝나요.
 
@@ -40,8 +40,8 @@ lessons:
           - ko: 두 말은 언제 하나요?
             options:
               - { ko: 사람을 만났을 때, correct: true }
-              - { ko: 고마울 때, why: "고마울 때는 `Thank you.`라고 해요. `Hello.`와 `Hi.`는 만났을 때 하는 인사예요." }
-              - { ko: 잠자리에 들 때, why: "잘 때 하는 인사는 따로 있어요. `Hello.`와 `Hi.`는 만났을 때 써요." }
+              - { ko: 고마울 때, why: "고마울 때는 `Thank you`라고 해요. `Hello`와 `Hi`는 만났을 때 하는 인사예요." }
+              - { ko: 잠자리에 들 때, why: "잘 때 하는 인사는 따로 있어요. `Hello`와 `Hi`는 만났을 때 써요." }
           - ko: 오늘의 길에서 맨 먼저 하는 것은 무엇인가요?
             options:
               - { ko: 복습, correct: true }
@@ -76,8 +76,8 @@ lessons:
         checkVocab: false
         options:
           - { ko: 좋은 아침이에요, correct: true }
-          - { ko: 잘 자요, why: "잘 자라는 인사는 `Good night.`이에요. 방금 들은 건 아침 인사예요." }
-          - { ko: 안녕히 가세요, why: "헤어질 때는 `Bye.`라고 해요. 방금 들은 건 아침에 만났을 때 하는 인사예요." }
+          - { ko: 잘 자요, why: "잘 자라는 인사는 `Good night`이에요. 방금 들은 건 아침 인사예요." }
+          - { ko: 안녕히 가세요, why: "헤어질 때는 `Bye`라고 해요. 방금 들은 건 아침에 만났을 때 하는 인사예요." }
       - type: explain
         text: |
           방금 문제를 틀렸어도 괜찮아요. 처음 듣는 말이라 모르는 게 당연해요. 틀려도 점수는 깎이지 않아요.
@@ -94,8 +94,8 @@ lessons:
           - ko: 첫 문장은 언제 하는 말인가요?
             options:
               - { ko: 아침에 만났을 때, correct: true }
-              - { ko: 밤에 잠자리에 들 때, why: "그때는 `Good night.`이라고 해요. `morning`은 아침이에요." }
-              - { ko: 고마울 때, why: "고마울 때는 두 번째 문장 `Thank you.`를 써요." }
+              - { ko: 밤에 잠자리에 들 때, why: "그때는 `Good night`이라고 해요. `morning`은 아침이에요." }
+              - { ko: 고마울 때, why: "고마울 때는 두 번째 문장 `Thank you`를 써요." }
           - ko: 문제를 틀리면 어떻게 되나요?
             options:
               - { ko: 정답과 이유를 보여 줘요, correct: true }

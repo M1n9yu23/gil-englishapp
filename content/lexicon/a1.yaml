@@ -12,7 +12,7 @@
           ko: 제 이름은 미나예요.
   notes:
     - kind: usage
-      ko: "`My name is Mina.`도 맞지만 말할 때는 `I'm Mina.`로 짧게 소개하는 일이 더 많아요."
+      ko: "`My name is Mina`도 맞지만 말할 때는 `I'm Mina`로 짧게 소개하는 일이 더 많아요."
 - word: my
   id: word.my
   senses:
@@ -186,7 +186,7 @@
           ko: 저는 안 피곤해요.
   notes:
     - kind: usage
-      ko: "`I'm not`, `You're not`처럼 `am`, `are`, `is` 뒤에 와요. `Not bad.`처럼 짧은 말 앞에 오기도 해요."
+      ko: "`I'm not`, `You're not`처럼 `am`, `are`, `is` 뒤에 와요. `Not bad`처럼 짧은 말 앞에 오기도 해요."
     - kind: mistake
       ko: "`I amn't`라고는 하지 않아요. `I'm not`이라고 해요."
 - word: late
@@ -227,7 +227,7 @@
           ko: 맞아요.
   notes:
     - kind: usage
-      ko: "`right`에는 \"오른쪽\"이라는 뜻도 있어요. `You're right.`의 `right`는 \"맞는\"이에요."
+      ko: "`right`에는 \"오른쪽\"이라는 뜻도 있어요. `You're right`의 `right`는 \"맞는\"이에요."
 
 - word: very
   id: word.very
@@ -271,9 +271,9 @@
           ko: 집이에요?
   notes:
     - kind: usage
-      ko: "`I'm home.`은 집에 들어오면서 하는 \"다녀왔어요\"라는 말로도 써요."
+      ko: "`I'm home`은 집에 들어오면서 하는 \"다녀왔어요\"라는 말로도 써요."
     - kind: mistake
-      ko: "`home` 앞에는 `to`를 붙이지 않아요. \"집에 가\"는 `Go to home.`이 아니라 `Go home.`이에요."
+      ko: "`home` 앞에는 `to`를 붙이지 않아요. \"집에 가\"는 `Go to home`이 아니라 `Go home`이에요."
 - word: sick
   id: word.sick
   senses:
@@ -393,7 +393,7 @@
           ko: 저는 한국어를 해요.
   notes:
     - kind: mistake
-      ko: "\"저는 한국 사람이에요\"는 `I'm Korea.`가 아니라 `I'm Korean.`이에요."
+      ko: "\"저는 한국 사람이에요\"는 `I'm Korea`가 아니라 `I'm Korean`이에요."
 - word: Japanese
   id: word.japanese
   senses:
@@ -678,7 +678,7 @@
           ko: 그 사람 결혼했어요?
   notes:
     - kind: mistake
-      ko: "\"결혼했어요\"는 `I'm married.`예요. 우리말은 지난 일처럼 말하지만 영어는 지금 결혼한 상태라고 말해요."
+      ko: "\"결혼했어요\"는 `I'm married`예요. 우리말은 지난 일처럼 말하지만 영어는 지금 결혼한 상태라고 말해요."
 - word: shy
   id: word.shy
   senses:
@@ -886,7 +886,7 @@
           ko: 저는 병원에서 일해요.
   notes:
     - kind: mistake
-      ko: "`I'm work`처럼 `am`과 같이 쓰지 않아요. `I work in a school.`처럼 `work`만 써요."
+      ko: "`I'm work`처럼 `am`과 같이 쓰지 않아요. `I work in a school`처럼 `work`만 써요."
 - word: hospital
   id: word.hospital
   senses:
@@ -949,7 +949,7 @@
           ko: 재미있는 일이에요.
   notes:
     - kind: mistake
-      ko: "`I'm interesting.`은 \"저는 흥미로운 사람이에요\"라는 뜻이에요. 웃겨서 재미있는 건 `funny`예요."
+      ko: "`I'm interesting`은 \"저는 흥미로운 사람이에요\"라는 뜻이에요. 웃겨서 재미있는 건 `funny`예요."
 - word: boring
   id: word.boring
   senses:
@@ -961,7 +961,7 @@
           ko: 지루한 일이에요.
   notes:
     - kind: mistake
-      ko: "`I'm boring.`은 \"저는 재미없는 사람이에요\"라는 뜻이에요. 지루하다는 느낌은 나중에 `bored`로 배워요."
+      ko: "`I'm boring`은 \"저는 재미없는 사람이에요\"라는 뜻이에요. 지루하다는 느낌은 나중에 `bored`로 배워요."
 - word: old
   id: word.old
   senses:
@@ -1103,7 +1103,7 @@
     - kind: usage
       ko: "영국에서는 `colour`라고 써요."
     - kind: mistake
-      ko: "\"파란색이에요\"는 `It's blue.`예요. `It's blue color.`처럼 `color`를 붙이지 않아요."
+      ko: "\"파란색이에요\"는 `It's blue`예요. `It's blue color`처럼 `color`를 붙이지 않아요."
 - word: blue
   id: word.blue
   senses:
@@ -1192,7 +1192,7 @@
           ko: 봐, 고양이야.
   notes:
     - kind: mistake
-      ko: "무엇을 보는지 말할 때는 `look at`이라고 해요. `Look the cat.`이 아니라 `Look at the cat.`이에요. 지금은 `Look,`으로 말을 꺼내는 것만 익혀요."
+      ko: "무엇을 보는지 말할 때는 `look at`이라고 해요. `Look the cat`이 아니라 `Look at the cat`이에요. 지금은 `Look,`으로 말을 꺼내는 것만 익혀요."
 - word: beautiful
   id: word.beautiful
   senses:

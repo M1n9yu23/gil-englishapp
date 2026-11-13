@@ -16,7 +16,7 @@ lessons:
         text: |
           `this`는 가까이 있는 "이것", `that`은 떨어져 있는 "저것"이에요. 우리말은 이것, 그것, 저것 셋으로 나누지만 영어는 둘뿐이라서 `that`은 "그것"도 돼요.
 
-          무엇인지 물을 때는 `What's this?`, `What's that?`이라고 해요. 대답은 보통 `It's a key.`처럼 `it`으로 해요. `That is`는 `That's`로 줄여 쓰지만 `This is`는 글로 쓸 때 줄이지 않아요.
+          무엇인지 물을 때는 `What's this?`, `What's that?`이라고 해요. 대답은 보통 `It's a key`처럼 `it`으로 해요. `That is`는 `That's`로 줄여 쓰지만 `This is`는 글로 쓸 때 줄이지 않아요.
         examples:
           - en: What's this?
             ko: 이건 뭐예요?
@@ -97,7 +97,7 @@ lessons:
         text: |
           `this`와 `that`은 명사 앞에 붙어서 "이 ~", "저 ~"도 돼요. `this chair`는 "이 의자", `that door`는 "저 문"이에요.
 
-          이때는 `a`나 `the`를 같이 쓰지 않아요. `This is a chair.`는 "이건 의자예요"이고 `This chair is new.`는 "이 의자는 새 거예요"예요.
+          이때는 `a`나 `the`를 같이 쓰지 않아요. `This is a chair`는 "이건 의자예요"이고 `This chair is new`는 "이 의자는 새 거예요"예요.
         examples:
           - en: This is a chair.
             ko: 이건 의자예요.
@@ -179,7 +179,7 @@ lessons:
         ko: 파란색이에요.
       - type: explain
         text: |
-          색을 물을 때는 `What color is it?`이라고 해요. 대답은 `It's blue.`처럼 색 이름만 말해요. 우리말 "파란색이에요"를 따라 `It's blue color.`라고 하지 않아요.
+          색을 물을 때는 `What color is it?`이라고 해요. 대답은 `It's blue`처럼 색 이름만 말해요. 우리말 "파란색이에요"를 따라 `It's blue color`라고 하지 않아요.
 
           색은 명사 앞에도 와서 `an umbrella`가 `a black umbrella`가 돼요. `a`와 `an`은 바로 뒤 단어의 첫소리로 정해요.
         examples:
@@ -262,7 +262,7 @@ lessons:
         ko: 내 열쇠 어디 있지? 저기 있네.
       - type: explain
         text: |
-          `Look,`은 "봐, 보세요"예요. `Go to bed.`처럼 동사로 바로 시작해요. `here`는 "여기", `there`는 "거기, 저기"예요. 손으로 가리키며 "저기"라고 할 때는 `over there`를 더 많이 써요.
+          `Look,`은 "봐, 보세요"예요. `Go to bed`처럼 동사로 바로 시작해요. `here`는 "여기", `there`는 "거기, 저기"예요. 손으로 가리키며 "저기"라고 할 때는 `over there`를 더 많이 써요.
         examples:
           - en: "Look, it's a cat."
             ko: 봐, 고양이야.
@@ -276,7 +276,7 @@ lessons:
         options:
           - { ko: 제 열쇠는 저기 있어요., correct: true }
           - { ko: 제 열쇠는 여기 있어요., why: "\"여기\"는 `here`예요. `there`는 떨어져 있는 \"저기\"예요." }
-          - { ko: 저건 제 열쇠예요., why: "\"저건 제 열쇠예요\"는 `That's my key.`예요. `there`가 끝에 오면 \"저기 있어요\"라는 말이에요." }
+          - { ko: 저건 제 열쇠예요., why: "\"저건 제 열쇠예요\"는 `That's my key`예요. `there`가 끝에 오면 \"저기 있어요\"라는 말이에요." }
       - type: dialogue
         item: pattern.over-there
         lines:
@@ -288,7 +288,7 @@ lessons:
           - { en: "It's that.", why: "어디 있는지 물었으니 장소를 말해요. \"저기\"는 `over there`예요." }
       - type: explain
         text: |
-          놀랐을 때는 `Wow.`라고 해요. 좋은 것을 보면 `That's cool.`(멋지다)이나 `It's beautiful.`(아름답다)이라고 해요. `cool`은 친구끼리 편하게 쓰는 말이에요.
+          놀랐을 때는 `Wow`라고 해요. 좋은 것을 보면 `That's cool.`(멋지다)이나 `It's beautiful.`(아름답다)이라고 해요. `cool`은 친구끼리 편하게 쓰는 말이에요.
         examples:
           - en: "Wow, that's cool."
             ko: 와, 멋지다.
@@ -308,8 +308,8 @@ lessons:
         question: 준이 할 말을 골라요.
         options:
           - { en: "Wow, cool.", correct: true }
-          - { en: "Wow, I'm cool.", why: "`I'm cool.`은 내가 멋지다는 말이에요. 멋진 건 프리야의 휴대폰이에요." }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: "Wow, I'm cool.", why: "`I'm cool`은 내가 멋지다는 말이에요. 멋진 건 프리야의 휴대폰이에요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: chooseMeaning
         en: This city is beautiful.
         item: sense.beautiful.adj.pretty

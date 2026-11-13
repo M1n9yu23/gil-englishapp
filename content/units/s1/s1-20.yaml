@@ -169,8 +169,8 @@ lessons:
         question: 아나가 할 말을 골라요.
         options:
           - { en: "I'm fine, thanks. And you?", correct: true }
-          - { en: "Good night, @Jun.", why: "`Good night.`은 밤에 헤어질 때 하는 말이에요. 둘은 지금 막 만났어요." }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: "Good night, @Jun.", why: "`Good night`은 밤에 헤어질 때 하는 말이에요. 둘은 지금 막 만났어요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: dialogue
         item: sense.please.interj.polite
         lines:
@@ -179,8 +179,8 @@ lessons:
         question: 아나는 차를 마시고 싶어요. 아나가 할 말을 골라요.
         options:
           - { en: "Yes, please.", correct: true }
-          - { en: "No, thanks.", why: "`No, thanks.`는 사양하는 말이에요. 마시고 싶으면 `Yes, please.`라고 해요." }
-          - { en: "Yes, I am.", why: "`Yes, I am.`은 `Are you`로 묻는 질문에 하는 대답이에요. 권할 때는 `Yes, please.`로 받아요." }
+          - { en: "No, thanks.", why: "`No, thanks`는 사양하는 말이에요. 마시고 싶으면 `Yes, please`라고 해요." }
+          - { en: "Yes, I am.", why: "`Yes, I am`은 `Are you`로 묻는 질문에 하는 대답이에요. 권할 때는 `Yes, please`로 받아요." }
       - type: dialogue
         item: sense.thanks.interj.thank
         lines:
@@ -188,7 +188,7 @@ lessons:
         question: 준이 차를 건네요. 아나가 할 말을 골라요.
         options:
           - { en: "Thanks, @Jun.", correct: true }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말을 들었을 때 하는 대답이에요. 차를 받았으면 `Thanks.`라고 해요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말을 들었을 때 하는 대답이에요. 차를 받았으면 `Thanks`라고 해요." }
           - { en: "Sorry, @Jun.", why: "미안할 일이 아니에요. 차를 받았으니 고맙다고 해요." }
       - type: dialogue
         item: sense.ok.adj.fine
@@ -197,8 +197,8 @@ lessons:
         question: 아나가 차를 조금 쏟았어요. 준이 할 말을 골라요.
         options:
           - { en: It's OK., correct: true }
-          - { en: You're welcome., why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요. 사과에는 `It's OK.`라고 해요." }
-          - { en: "Good, thanks.", why: "`Good, thanks.`는 `How are you?`에 하는 대답이에요." }
+          - { en: You're welcome., why: "`You're welcome`은 고맙다는 말에 하는 대답이에요. 사과에는 `It's OK`라고 해요." }
+          - { en: "Good, thanks.", why: "`Good, thanks`는 `How are you?`에 하는 대답이에요." }
       - type: dialogue
         item: sense.night.n.dark
         lines:
@@ -206,7 +206,7 @@ lessons:
         question: 밤이 늦었어요. 준이 할 말을 골라요.
         options:
           - { en: "Bye, @Ana. Good night.", correct: true }
-          - { en: "Good morning, @Ana.", why: "아침에 만날 때 하는 인사예요. 밤에 헤어질 때는 `Good night.`이에요." }
+          - { en: "Good morning, @Ana.", why: "아침에 만날 때 하는 인사예요. 밤에 헤어질 때는 `Good night`이에요." }
           - { en: "Hello, @Ana.", why: "`hello`는 만날 때 하는 인사예요. 헤어질 때는 `bye`예요." }
       - type: arrange
         item: pattern.how-are-you

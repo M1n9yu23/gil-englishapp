@@ -16,7 +16,7 @@ lessons:
         text: |
           이름을 물을 때는 `What's your name?`이라고 해요. 한 덩어리로 기억하면 돼요.
 
-          대답은 `I'm Mina.`나 `My name is Mina.`예요. `my`는 "제, 내"예요. 우리말은 "미나예요"처럼 이름 뒤에 "예요"를 붙이지만 영어는 이름 앞에 `I'm`이 와요.
+          대답은 `I'm Mina`나 `My name is Mina`예요. `my`는 "제, 내"예요. 우리말은 "미나예요"처럼 이름 뒤에 "예요"를 붙이지만 영어는 이름 앞에 `I'm`이 와요.
         examples:
           - en: "What's your name?"
             ko: 이름이 뭐예요?
@@ -40,7 +40,7 @@ lessons:
           - { ko: 학생이에요?, why: "\"학생이에요?\"는 `Are you a student?`예요. 들린 말은 이름을 묻는 말이에요." }
       - type: explain
         text: |
-          이름이 길거나 부르기 어려우면 `Call me Jun.`처럼 불렀으면 하는 이름을 알려 줘요. "준이라고 불러 주세요"라는 뜻이에요.
+          이름이 길거나 부르기 어려우면 `Call me Jun`처럼 불렀으면 하는 이름을 알려 줘요. "준이라고 불러 주세요"라는 뜻이에요.
 
           이름을 잘 못 들었으면 `Sorry, what's your name again?`이라고 물어요. `again`은 "다시, 한 번 더"예요.
         examples:
@@ -55,7 +55,7 @@ lessons:
         question: 미나가 할 말을 골라요.
         options:
           - { en: "Hi, @Leo. I'm @Mina.", correct: true }
-          - { en: "My name is @Leo.", why: "레오는 상대 이름이에요. 내 이름을 말해야 하니 `I'm Mina.`예요." }
+          - { en: "My name is @Leo.", why: "레오는 상대 이름이에요. 내 이름을 말해야 하니 `I'm Mina`예요." }
           - { en: "I'm fine, thanks.", why: "`How are you?`에 하는 대답이에요. 이름을 물었으니 이름을 말해요." }
       - type: dialogue
         item: pattern.call-me
@@ -74,7 +74,7 @@ lessons:
         options:
           - { en: "Sorry, what's your name again?", correct: true }
           - { en: "Sorry, what's my name again?", why: "`my`는 \"제, 내\"예요. 상대 이름을 물을 때는 `your name`이에요." }
-          - { en: "I'm sorry.", why: "`I'm sorry.`는 사과하는 말로 들려요. 이름을 다시 물으려면 `what's your name again?`이라고 해요." }
+          - { en: "I'm sorry.", why: "`I'm sorry`는 사과하는 말로 들려요. 이름을 다시 물으려면 `what's your name again?`이라고 해요." }
       - type: fillBlank
         item: sense.my.det.mine
         en: "___ name is @Ana."
@@ -103,9 +103,9 @@ lessons:
         ko: 저도 만나서 반가워요.
       - type: explain
         text: |
-          처음 만난 사람에게는 `Nice to meet you.`라고 해요. `nice`는 "좋은"이라서 "만나서 반가워요"라는 뜻이 돼요. 대답할 때는 끝에 `too`를 붙여요.
+          처음 만난 사람에게는 `Nice to meet you`라고 해요. `nice`는 "좋은"이라서 "만나서 반가워요"라는 뜻이 돼요. 대답할 때는 끝에 `too`를 붙여요.
 
-          `too`는 "~도"라는 뜻이고 문장 끝에 와요. `Nice to meet you, too.`에서는 "저도"라는 뜻이에요. 소리는 `to`, `two`와 같아요.
+          `too`는 "~도"라는 뜻이고 문장 끝에 와요. `Nice to meet you, too`에서는 "저도"라는 뜻이에요. 소리는 `to`, `two`와 같아요.
         examples:
           - en: Nice to meet you.
             ko: 만나서 반가워요.
@@ -121,8 +121,8 @@ lessons:
         question: 둘은 오늘 처음 만났어요. 아나가 할 말을 골라요.
         options:
           - { en: "Nice to meet you, @Wei.", correct: true }
-          - { en: "Nice to meet you, too.", why: "`too`는 상대가 먼저 `Nice to meet you.`라고 했을 때 붙여요. 먼저 말할 때는 빼요." }
-          - { en: "You're welcome, @Wei.", why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: "Nice to meet you, too.", why: "`too`는 상대가 먼저 `Nice to meet you`라고 했을 때 붙여요. 먼저 말할 때는 빼요." }
+          - { en: "You're welcome, @Wei.", why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: dialogue
         item: sense.too.adv.also
         lines:
@@ -131,12 +131,12 @@ lessons:
         options:
           - { en: "Nice to meet you, too.", correct: true }
           - { en: "Nice to meet you, two.", why: "`two`는 숫자 2예요. 소리는 같지만 \"~도\"는 `too`로 써요." }
-          - { en: "Nice to meet you, to.", why: "`to`는 `Go to bed.`의 \"~로\"예요. \"~도\"는 `o`가 두 개인 `too`예요." }
+          - { en: "Nice to meet you, to.", why: "`to`는 `Go to bed`의 \"~로\"예요. \"~도\"는 `o`가 두 개인 `too`예요." }
       - type: explain
         text: |
-          `new`는 "새, 새로 온"이고 `here`는 "여기"예요. `I'm new here.`는 회사나 수업에 처음 간 날 자주 하는 말이에요.
+          `new`는 "새, 새로 온"이고 `here`는 "여기"예요. `I'm new here`는 회사나 수업에 처음 간 날 자주 하는 말이에요.
 
-          모르는 사람에게 말을 걸 때는 `Excuse me.`로 시작해요. "저기요, 실례지만"에 가까워요. 잘못해서 미안할 때는 `Sorry.`예요.
+          모르는 사람에게 말을 걸 때는 `Excuse me`로 시작해요. "저기요, 실례지만"에 가까워요. 잘못해서 미안할 때는 `Sorry`예요.
         examples:
           - en: "I'm new here."
             ko: 저는 여기 새로 왔어요.
@@ -156,7 +156,7 @@ lessons:
         item: pattern.excuse-me
         options:
           - { en: "Excuse me. Are you @Leo?", correct: true }
-          - { en: "Sorry. Are you @Leo?", why: "`Sorry.`는 미안할 때 하는 말이에요. 모르는 사람에게 말을 걸 때는 보통 `Excuse me.`예요." }
+          - { en: "Sorry. Are you @Leo?", why: "`Sorry`는 미안할 때 하는 말이에요. 모르는 사람에게 말을 걸 때는 보통 `Excuse me`예요." }
           - { en: "Excuse me. I'm @Leo.", why: "\"레오 씨예요?\"는 묻는 말이라 `Are you`로 시작해요." }
       - type: chooseMeaning
         en: This is a nice room.
@@ -190,9 +190,9 @@ lessons:
         ko: "잘 가요, 미나 씨. 내일 봐요."
       - type: explain
         text: |
-          헤어질 때는 `Bye.` 뒤에 `See you.`를 자주 붙여요. "또 봐요"라는 뜻이에요.
+          헤어질 때는 `Bye.` 뒤에 `See you`를 자주 붙여요. "또 봐요"라는 뜻이에요.
 
-          언제 볼지 뒤에 붙이기도 해요. `See you tomorrow.`는 "내일 봐요", `See you soon.`은 "곧 봐요"예요. `See you later.`는 "이따 봐요"인데 언제 볼지 모를 때도 써요.
+          언제 볼지 뒤에 붙이기도 해요. `See you tomorrow`는 "내일 봐요", `See you soon`은 "곧 봐요"예요. `See you later`는 "이따 봐요"인데 언제 볼지 모를 때도 써요.
         examples:
           - en: See you.
             ko: 또 봐요.
@@ -215,10 +215,10 @@ lessons:
         options:
           - { ko: 이따 봐요., correct: true }
           - { ko: 내일 봐요., why: "내일은 `tomorrow`예요. 들린 말은 `later`, 이따가예요." }
-          - { ko: 만나서 반가워요., why: "\"만나서 반가워요\"는 `Nice to meet you.`예요. `See you`로 시작하면 헤어질 때 하는 말이에요." }
+          - { ko: 만나서 반가워요., why: "\"만나서 반가워요\"는 `Nice to meet you`예요. `See you`로 시작하면 헤어질 때 하는 말이에요." }
       - type: explain
         text: |
-          여러 사람에게 한꺼번에 인사할 때는 이름 대신 `everyone`을 써요. `Hi, everyone.`은 "다들 안녕하세요"예요. 헤어질 때는 `Bye, everyone.`이라고 해요.
+          여러 사람에게 한꺼번에 인사할 때는 이름 대신 `everyone`을 써요. `Hi, everyone`은 "다들 안녕하세요"예요. 헤어질 때는 `Bye, everyone`이라고 해요.
 
           마지막에는 처음 만나 이름을 묻고 헤어질 때까지 짧은 대화를 이어서 해 봐요.
         examples:
@@ -257,8 +257,8 @@ lessons:
         question: 유키가 할 말을 골라요.
         options:
           - { en: "Nice to meet you, too.", correct: true }
-          - { en: "See you, @Leo.", why: "`See you.`는 헤어질 때 하는 말이에요. 둘은 지금 막 만났어요." }
-          - { en: "You're welcome.", why: "`You're welcome.`은 고맙다는 말에 하는 대답이에요." }
+          - { en: "See you, @Leo.", why: "`See you`는 헤어질 때 하는 말이에요. 둘은 지금 막 만났어요." }
+          - { en: "You're welcome.", why: "`You're welcome`은 고맙다는 말에 하는 대답이에요." }
       - type: dialogue
         item: sense.too.adv.also
         lines:
@@ -276,7 +276,7 @@ lessons:
         question: 수업이 끝났어요. 유키가 할 말을 골라요.
         options:
           - { en: "Bye, @Leo. See you.", correct: true }
-          - { en: "Good morning, @Leo.", why: "`Good morning.`은 아침에 만날 때 하는 인사예요. 헤어질 때는 `Bye.`나 `See you.`라고 해요." }
+          - { en: "Good morning, @Leo.", why: "`Good morning`은 아침에 만날 때 하는 인사예요. 헤어질 때는 `Bye`나 `See you`라고 해요." }
           - { en: "Hi, @Leo.", why: "`hi`는 만날 때 하는 인사예요. 헤어질 때는 `bye`예요." }
       - type: shadow
         en: "Bye, everyone. See you later."

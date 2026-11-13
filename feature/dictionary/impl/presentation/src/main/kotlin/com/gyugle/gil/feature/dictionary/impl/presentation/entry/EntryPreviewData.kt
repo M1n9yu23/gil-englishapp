@@ -69,7 +69,7 @@ internal object EntryPreviewData {
         id = "pattern.thank-you",
         text = "Thank you.",
         meaningKo = "고마워요",
-        noteKo = "`Thanks.`보다 조금 더 정중해요.",
+        noteKo = "`Thanks`보다 조금 더 정중해요.",
         examples = listOf(ExampleUi(3, "Thank you, Sam.", "고마워요, 샘.")),
         saved = false
     )

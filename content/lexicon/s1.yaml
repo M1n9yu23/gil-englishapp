@@ -394,7 +394,7 @@
           ko: 저는 더워요.
   notes:
     - kind: mistake
-      ko: "사람에게 `You are hot.`이라고 하면 \"멋있다, 섹시하다\"로 들릴 수 있어요. 더운지 물을 때는 `Are you hot?`이라고 해요."
+      ko: "사람에게 `You are hot`이라고 하면 \"멋있다, 섹시하다\"로 들릴 수 있어요. 더운지 물을 때는 `Are you hot?`이라고 해요."
 - word: cold
   id: word.cold
   hangul: 코울드
@@ -559,7 +559,7 @@
           ko: 그건 빨간색이에요.
   notes:
     - kind: usage
-      ko: "앞에서 말한 물건을 다시 가리킬 때 써요. 우리말로는 빼고 말할 때가 많아요. `It is OK.`처럼 가리키는 물건 없이 쓰기도 해요."
+      ko: "앞에서 말한 물건을 다시 가리킬 때 써요. 우리말로는 빼고 말할 때가 많아요. `It is OK`처럼 가리키는 물건 없이 쓰기도 해요."
 - word: book
   id: word.book
   hangul: 북
@@ -815,7 +815,7 @@
           ko: 잘 자요.
   notes:
     - kind: mistake
-      ko: "`Good night.`은 만날 때가 아니라 헤어지거나 잘 때 하는 인사예요."
+      ko: "`Good night`은 만날 때가 아니라 헤어지거나 잘 때 하는 인사예요."
 
 - word: thanks
   id: word.thanks
