@@ -15,8 +15,12 @@
  */
 package com.gyugle.gil.feature.onboarding.impl.presentation
 
+import androidx.compose.material3.Surface
 import androidx.compose.ui.test.junit4.v2.createComposeRule
+import com.github.takahirom.roborazzi.captureScreenRoboImage
+import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.domain.DataError
+import com.gyugle.gil.core.presentation.UiText
 import com.gyugle.gil.core.presentation.toUiText
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.onboarding.impl.presentation.goal.GoalStepScreen
@@ -76,6 +80,8 @@ class OnboardingScreenshotTest {
 
     @Test fun method_firstPage_showsStepOneOfSeven() = method(page = 0)
 
+    @Test fun method_thirdPage_soundFirst() = method(page = 2)
+
     @Test fun method_lastPage_mistakesAreFine() = method(page = 3)
 
     @Test
@@ -104,6 +110,15 @@ class OnboardingScreenshotTest {
     @Config(qualifiers = "en-w360dp-h760dp-xhdpi", fontScale = 2f)
     fun reminder_englishFontScale2_keepsRowsWhole() = reminder(twoTimes)
 
+    /** The picker is a dialog, a window of its own, so the capture takes the whole screen. */
+    @Test
+    fun reminder_timePicker_opensOnTheTime() {
+        composeRule.setContent {
+            GilTheme { Surface { ReminderStepScreen(state = twoTimes.copy(editing = 1), onAction = {}, onBack = {}) } }
+        }
+        captureScreenRoboImage()
+    }
+
     @Test fun reminder_noTimes_cannotTurnOn() = reminder(ReminderStepState(times = emptyList()))
 
     @Test fun reminder_rationale_explainsThePermission() = reminder(twoTimes.copy(stage = ReminderStage.Rationale))
@@ -129,6 +144,18 @@ class OnboardingScreenshotTest {
     @Test fun sound_notHeard_offersHelp() = sound(SoundCheckPhase.NotHeard)
 
     @Test fun sound_noVoice_offersTheInstall() = sound(SoundCheckPhase.NoVoice)
+
+    @Test
+    fun sound_installUnavailable_saysSo() = composeRule.captureScreen {
+        SoundCheckScreen(
+            state = SoundCheckState(
+                phase = SoundCheckPhase.NoVoice,
+                error = UiText.StringResource(R.string.onboarding_sound_install_unavailable)
+            ),
+            onAction = {},
+            onBack = {}
+        )
+    }
 
     @Test fun sound_noEngine_goesOnWithText() = sound(SoundCheckPhase.NoEngine)
 }
