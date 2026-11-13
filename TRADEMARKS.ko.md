@@ -13,10 +13,12 @@ Apache License 2.0 제6조에도 이 라이선스가 상호를 쓸 권리를 주
 ## 브랜드 자산
 
 앱 아이콘을 비롯한 브랜드 그림은 MinGyu가 저작권을 가지며, 모든 권리를 보유합니다.
-이 파일들은 Apache License 2.0으로 배포하지 않습니다. 대상은 다음 런처 아이콘 리소스입니다.
+이 파일들은 Apache License 2.0으로 배포하지 않습니다. 대상은 런처 아이콘 리소스와,
+같은 무늬로 만든 알림 아이콘입니다.
 
 - `app/src/main/res/mipmap-*/ic_launcher*`
 - `app/src/main/res/drawable/ic_launcher_*.xml`
+- `feature/*/impl/data/src/main/res/drawable/ic_notification_*.xml`
 
 ## 포크
 

@@ -13,10 +13,12 @@ Section 6 of the Apache License 2.0 already says that the license grants no perm
 ## Brand assets
 
 The app icon and other brand artwork are copyright MinGyu, all rights reserved. They are not
-licensed under the Apache License 2.0. These files are the launcher icon resources:
+licensed under the Apache License 2.0. These files are the launcher icon resources and the
+notification icons drawn from the same mark:
 
 - `app/src/main/res/mipmap-*/ic_launcher*`
 - `app/src/main/res/drawable/ic_launcher_*.xml`
+- `feature/*/impl/data/src/main/res/drawable/ic_notification_*.xml`
 
 ## Forks
 
