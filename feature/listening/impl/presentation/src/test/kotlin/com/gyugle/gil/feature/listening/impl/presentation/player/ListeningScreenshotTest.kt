@@ -19,6 +19,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.captureRoboImage
+import com.github.takahirom.roborazzi.captureScreenRoboImage
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.listening.impl.presentation.player.ListeningPreviewData as Data
 import org.junit.Rule
@@ -48,7 +49,17 @@ class ListeningScreenshotTest {
 
     @Test fun choosing_noKoreanVoice_saysSo() = capture(Data.choosingNoKorean)
 
-    @Test fun choosing_pauseDialog() = capture(Data.choosing.copy(dialog = PaceDialog.PAUSE))
+    /** A dialog is a window of its own, so the capture takes the whole screen. */
+    private fun captureDialog(state: ListeningState) {
+        composeRule.setContent {
+            GilTheme { Surface { ListeningScreen(state = state, onAction = {}, onClose = {}) } }
+        }
+        captureScreenRoboImage()
+    }
+
+    @Test fun choosing_pauseDialog() = captureDialog(Data.choosing.copy(dialog = PaceDialog.PAUSE))
+
+    @Test fun choosing_speedDialog() = captureDialog(Data.choosing.copy(dialog = PaceDialog.SPEED))
 
     @Test fun preparing_showsProgress() = capture(Data.preparing)
 
@@ -61,6 +72,8 @@ class ListeningScreenshotTest {
     @Test fun ended_offersToPlayAgain() = capture(Data.ended)
 
     @Test fun nothingYet_pointsToLessons() = capture(ListeningState.NothingYet)
+
+    @Test fun noEngine_saysSpeechIsMissing() = capture(ListeningState.NoEngine)
 
     @Test fun noEnglishVoice_offersToInstall() = capture(ListeningState.NoEnglishVoice)
 
