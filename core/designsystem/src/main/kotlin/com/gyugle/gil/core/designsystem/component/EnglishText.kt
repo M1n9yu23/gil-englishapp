@@ -97,7 +97,7 @@ fun EnglishText(
  */
 @Composable
 fun BlankSentenceText(text: String, modifier: Modifier = Modifier, size: EnglishTextSize = EnglishTextSize.Focus) {
-    val blank = stringResource(R.string.blank_spoken)
+    val blank = stringResource(R.string.blank_sentence_text_blank)
     val spoken = remember(text, blank) { spokenBlanks(text, blank, LocaleList.current) }
     EnglishText(text = text, modifier = modifier.clearAndSetSemantics { this.text = spoken }, size = size)
 }

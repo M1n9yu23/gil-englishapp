@@ -9,5 +9,5 @@
     <!-- Screen reader state of the right answer once a question is answered. -->
     <string name="answer_option_correct">Right answer</string>
     <!-- Read by screen readers in place of the ___ gap in a fill-in-the-blank sentence. -->
-    <string name="blank_spoken">blank</string>
+    <string name="blank_sentence_text_blank">blank</string>
 </resources>
