@@ -20,6 +20,7 @@ import android.app.Application
 import android.media.AudioRecord
 import assertk.assertFailure
 import assertk.assertThat
+import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import assertk.assertions.isInstanceOf
 import assertk.assertions.isTrue
@@ -42,6 +43,7 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.shadows.ShadowAudioRecord
+import timber.log.Timber
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
@@ -136,7 +138,14 @@ class AudioRecordVoiceRecorderTest {
     }
 
     @Test
-    fun record_cancelledWhileRecording_stopsReading() = runTest {
+    fun record_cancelledWhileRecording_stopsReadingWithoutAWarning() = runTest {
+        val warnings = mutableListOf<String>()
+        val tree = object : Timber.Tree() {
+            override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+                warnings += message
+            }
+        }
+        Timber.plant(tree)
         var job: Job? = null
         val source = CountingSource { size ->
             job?.cancel()
@@ -150,8 +159,10 @@ class AudioRecordVoiceRecorderTest {
         result.start()
         runCurrent()
 
+        Timber.uproot(tree)
         assertThat(result.isCancelled).isTrue()
         assertThat(source.reads).isEqualTo(1)
+        assertThat(warnings).isEmpty()
     }
 
     @Test

@@ -106,6 +106,8 @@ class AudioRecordVoiceRecorder internal constructor(private val context: Context
             }
             return Outcome.Success(VoiceRecording(if (size == maxBytes) pcm else pcm.copyOf(size), SAMPLE_RATE_HZ))
         } catch (_: IllegalStateException) {
+            // CancellationException is an IllegalStateException: leaving the step is not a failure.
+            currentCoroutineContext().ensureActive()
             return unavailable("start failed")
         } finally {
             activeStop.compareAndSet(stopRequested, null)
