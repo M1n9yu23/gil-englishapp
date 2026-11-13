@@ -17,6 +17,7 @@ R8을 거친 뒤 동작이 달라질 수 있는 변경은 `staging`으로 확인
 ```
 
 CI는 풀 리퀘스트마다 같은 검사와 debug 빌드를 실행합니다.
+화면 모양을 바꿨다면 `./gradlew recordRoborazziDebug`도 실행하고, `src/test/screenshots/`에서 바뀐 이미지를 함께 커밋하세요.
 
 ## 빌드가 막는 것
 

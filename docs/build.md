@@ -17,6 +17,7 @@ Use `staging` to check a change that might behave differently after R8.
 ```
 
 CI runs the same checks and a debug build on every pull request.
+If you changed how a screen looks, also run `./gradlew recordRoborazziDebug` and commit the changed images in `src/test/screenshots/`.
 
 ## Rules the build enforces
 
