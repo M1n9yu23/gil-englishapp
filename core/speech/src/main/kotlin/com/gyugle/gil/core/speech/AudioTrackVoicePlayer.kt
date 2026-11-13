@@ -23,7 +23,9 @@ import javax.inject.Singleton
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -88,6 +90,8 @@ class AudioTrackVoicePlayer internal constructor(private val io: CoroutineDispat
             if (ended == null) Timber.w("A recording did not report its end")
             return true
         } catch (e: IllegalStateException) {
+            // CancellationException is an IllegalStateException: stopping playback is not a failure.
+            currentCoroutineContext().ensureActive()
             Timber.w("Cannot play a recording: %s", e::class.simpleName)
             return false
         } finally {
