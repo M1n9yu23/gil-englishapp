@@ -15,7 +15,7 @@
     <string name="dictionary_search_label">영어나 한국어로 찾기</string>
     <string name="dictionary_search_clear">검색어 지우기</string>
     <string name="dictionary_search_hint">배운 단어가 먼저 나와요.</string>
-    <string name="dictionary_search_empty_title">‘<xliff:g id="query" example="tabel">%1$s</xliff:g>’에 맞는 단어가 없어요</string>
+    <string name="dictionary_search_empty_title">\"<xliff:g id="query" example="tabel">%1$s</xliff:g>\"에 맞는 단어가 없어요</string>
     <string name="dictionary_search_empty_body">철자를 확인해 보세요. 길에서 아직 나오지 않은 단어는 사전에 없을 수 있어요.</string>
     <string name="dictionary_search_not_learned">아직 배우지 않은 단어</string>
     <string name="dictionary_taught_in"><xliff:g id="stage" example="첫걸음">%1$s</xliff:g> 단계에서 배워요</string>
@@ -35,7 +35,7 @@
 
     <string name="dictionary_accent_american">미국 발음</string>
     <string name="dictionary_accent_british">영국 발음</string>
-    <string name="dictionary_play_text">‘<xliff:g id="text" example="I run.">%1$s</xliff:g>’ 듣기</string>
+    <string name="dictionary_play_text">\"<xliff:g id="text" example="I run.">%1$s</xliff:g>\" 듣기</string>
     <string name="dictionary_play_sentence">문장 듣기</string>
     <string name="dictionary_hangul_aid">한글로 적으면 <xliff:g id="hangul" example="지로우">%1$s</xliff:g>에 가까워요</string>
 
@@ -47,7 +47,7 @@
     <string name="dictionary_expanded">펼쳐짐</string>
     <string name="dictionary_collapsed">접힘</string>
     <string name="dictionary_meaning">뜻</string>
-    <string name="dictionary_save">‘<xliff:g id="item" example="달리다">%1$s</xliff:g>’ 단어장에 저장</string>
+    <string name="dictionary_save">\"<xliff:g id="item" example="달리다">%1$s</xliff:g>\" 단어장에 저장</string>
     <string name="dictionary_saved">저장됨</string>
     <string name="dictionary_not_saved">저장 안 됨</string>
     <string name="dictionary_take_apart">문장 뜯어보기</string>
