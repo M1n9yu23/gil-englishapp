@@ -23,20 +23,17 @@ import android.app.NotificationManager
 import android.content.Context
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import assertk.assertThat
-import assertk.assertions.containsExactly
+import assertk.assertions.hasSize
 import assertk.assertions.isEmpty
 import assertk.assertions.isEqualTo
 import assertk.assertions.single
-import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.SenseId
-import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import com.gyugle.gil.feature.goal.api.DailyGoal
-import com.gyugle.gil.feature.goal.api.GoalObserver
+import com.gyugle.gil.feature.goal.api.FakeGoalRepository
 import com.gyugle.gil.feature.progress.api.CardState
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
-import com.gyugle.gil.feature.progress.api.Mistake
-import com.gyugle.gil.feature.progress.api.ProgressObserver
-import com.gyugle.gil.feature.progress.api.StudyClock
+import com.gyugle.gil.feature.progress.api.FakeProgressObserver
+import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.reminder.api.ReminderTime
 import com.gyugle.gil.feature.reminder.impl.data.repository.DataStoreReminderRepository
@@ -44,10 +41,6 @@ import java.io.File
 import java.nio.file.Files
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
-import kotlin.time.Instant
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -70,14 +63,15 @@ class RemindersTest {
         ReminderAlarms(context)
     )
     private val notifier = ReminderNotifier(context)
-    private val today = StudyDay(20_399)
-    private val progress = FakeProgressObserver(today)
+    private val clock = FakeStudyClock()
+    private val today = clock.dayOf(clock.now())
+    private val progress = FakeProgressObserver()
     private val reminders = Reminders(
         repository = repository,
         notifier = notifier,
-        goalObserver = FakeGoalObserver(DailyGoal.TWENTY),
+        goalObserver = FakeGoalRepository(DailyGoal.TWENTY),
         progressObserver = progress,
-        clock = FixedStudyClock(today)
+        clock = clock
     )
 
     @Before
@@ -95,11 +89,21 @@ class RemindersTest {
 
     private fun alarmCount() = shadowOf(alarmManager).scheduledAlarms.size
 
+    private fun studied(day: StudyDay, time: Duration) {
+        progress.studyTime.value += DailyStudyTime(day, time)
+    }
+
+    private fun due(count: Int) {
+        progress.cards.value = List(count) { index ->
+            CardState(SenseId("sense.word$index.n.thing"), 1.0, today, today - 1, 1, 0)
+        }
+    }
+
     @Test
     fun remind_goalNotMetWithReviewsDue_showsTheReviews() = runTest {
         repository.setTimes(listOf(ReminderTime(20, 0)))
-        progress.studied = 5.minutes
-        progress.dueCount = 12
+        studied(today, 5.minutes)
+        due(12)
 
         reminders.remind()
 
@@ -111,8 +115,8 @@ class RemindersTest {
     fun remind_goalMet_showsNothingButKeepsTheNextAlarm() = runTest {
         repository.setTimes(listOf(ReminderTime(20, 0)))
         alarmManager.cancelAll()
-        progress.studied = 20.minutes
-        progress.dueCount = 12
+        studied(today, 20.minutes)
+        due(12)
 
         reminders.remind()
 
@@ -121,12 +125,13 @@ class RemindersTest {
     }
 
     @Test
-    fun remind_readsOnlyTodaysStudyTime() = runTest {
+    fun remind_goalMetOnlyYesterday_stillReminds() = runTest {
         repository.setTimes(listOf(ReminderTime(20, 0)))
+        studied(today - 1, 30.minutes)
 
         reminders.remind()
 
-        assertThat(progress.studyTimeRequests).containsExactly(today to today)
+        assertThat(posted()).hasSize(1)
     }
 
     @Test
@@ -160,49 +165,5 @@ class RemindersTest {
         reminders.restoreAlarms()
 
         assertThat(alarmCount()).isEqualTo(2)
-    }
-
-    private class FakeGoalObserver(private val goal: DailyGoal) : GoalObserver {
-        override fun observeGoal(): Flow<DailyGoal> = flowOf(goal)
-    }
-
-    private class FixedStudyClock(private val day: StudyDay) : StudyClock {
-        override fun now(): Instant = Instant.parse("2026-11-07T11:00:00Z")
-
-        override fun dayOf(instant: Instant): StudyDay = day
-
-        override fun startOf(day: StudyDay): Instant = error("Reminders do not ask when a day starts")
-    }
-
-    /** Only what a reminder reads; the rest is not part of these tests. */
-    private class FakeProgressObserver(private val today: StudyDay) : ProgressObserver {
-        var studied: Duration = Duration.ZERO
-        var dueCount = 0
-        var failure: Exception? = null
-        val studyTimeRequests = mutableListOf<Pair<StudyDay, StudyDay>>()
-
-        override fun observeStudyTime(from: StudyDay, to: StudyDay): Flow<List<DailyStudyTime>> = flow {
-            failure?.let { throw it }
-            studyTimeRequests += from to to
-            emit(if (studied > Duration.ZERO) listOf(DailyStudyTime(today, studied)) else emptyList())
-        }
-
-        override fun observeDueCards(day: StudyDay): Flow<List<CardState>> = flowOf(
-            List(dueCount) { index ->
-                CardState(SenseId("sense.word$index.noun.thing"), 1.0, day, day - 1, 1, 0)
-            }
-        )
-
-        override fun observeCard(itemId: StudyItemId): Flow<CardState?> = error("Not used by reminders")
-
-        override fun observeCards(): Flow<List<CardState>> = error("Not used by reminders")
-
-        override fun observeCompletedLessons(): Flow<Set<LessonId>> = error("Not used by reminders")
-
-        override fun observeStreak(today: StudyDay): Flow<Int> = error("Not used by reminders")
-
-        override fun observeSavedItems(): Flow<List<StudyItemId>> = error("Not used by reminders")
-
-        override fun observeMistakes(): Flow<List<Mistake>> = error("Not used by reminders")
     }
 }

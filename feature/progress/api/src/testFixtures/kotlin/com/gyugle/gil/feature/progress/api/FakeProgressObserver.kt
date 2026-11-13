@@ -20,9 +20,14 @@ import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 
-/** A [ProgressObserver] over state flows that a test sets. Everything starts empty. */
+/**
+ * A [ProgressObserver] over state flows that a test sets. Everything starts empty. Setting
+ * [failure] makes every flow throw it when collected, as when the record cannot be read.
+ */
 class FakeProgressObserver : ProgressObserver {
+    var failure: Throwable? = null
     val cards = MutableStateFlow<List<CardState>>(emptyList())
     val completedLessons = MutableStateFlow<Set<LessonId>>(emptySet())
     val studyTime = MutableStateFlow<List<DailyStudyTime>>(emptyList())
@@ -45,21 +50,23 @@ class FakeProgressObserver : ProgressObserver {
     }
 
     override fun observeCard(itemId: StudyItemId): Flow<CardState?> =
-        cards.map { all -> all.firstOrNull { it.itemId == itemId } }
+        cards.map { all -> all.firstOrNull { it.itemId == itemId } }.orFailure()
 
-    override fun observeCards(): Flow<List<CardState>> = cards
+    override fun observeCards(): Flow<List<CardState>> = cards.orFailure()
 
     override fun observeDueCards(day: StudyDay): Flow<List<CardState>> =
-        cards.map { all -> all.filter { it.dueDay <= day }.sortedBy { it.dueDay } }
+        cards.map { all -> all.filter { it.dueDay <= day }.sortedBy { it.dueDay } }.orFailure()
 
-    override fun observeCompletedLessons(): Flow<Set<LessonId>> = completedLessons
+    override fun observeCompletedLessons(): Flow<Set<LessonId>> = completedLessons.orFailure()
 
     override fun observeStudyTime(from: StudyDay, to: StudyDay): Flow<List<DailyStudyTime>> =
-        studyTime.map { days -> days.filter { it.day in from..to } }
+        studyTime.map { days -> days.filter { it.day in from..to } }.orFailure()
 
-    override fun observeStreak(today: StudyDay): Flow<Int> = streak
+    override fun observeStreak(today: StudyDay): Flow<Int> = streak.orFailure()
 
-    override fun observeSavedItems(): Flow<List<StudyItemId>> = savedItems
+    override fun observeSavedItems(): Flow<List<StudyItemId>> = savedItems.orFailure()
 
-    override fun observeMistakes(): Flow<List<Mistake>> = mistakes
+    override fun observeMistakes(): Flow<List<Mistake>> = mistakes.orFailure()
+
+    private fun <T> Flow<T>.orFailure(): Flow<T> = onStart { failure?.let { throw it } }
 }

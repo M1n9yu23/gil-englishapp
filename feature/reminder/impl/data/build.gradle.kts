@@ -35,6 +35,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.timber)
 
+    testImplementation(testFixtures(projects.feature.goal.api))
+    testImplementation(testFixtures(projects.feature.progress.api))
     testImplementation(libs.robolectric)
     testImplementation(libs.junit4)
     testRuntimeOnly(libs.junit.vintage.engine)
