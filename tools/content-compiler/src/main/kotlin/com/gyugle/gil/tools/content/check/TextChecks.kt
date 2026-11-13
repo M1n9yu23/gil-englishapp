@@ -119,10 +119,8 @@ class TextChecks(
 
     private fun glyphs(text: String, where: String, font: FontCoverage?) {
         if (font == null) return
-        // The UI font has no Hangul. Android draws precomposed syllables with its Korean system
-        // font, which has all of them; jamo, hanja and emoji would still look out of place.
         val missing = text.codePoints().toArray().distinct()
-            .filter { !Character.isWhitespace(it) && !font.covers(it) && !(font === uiFont && it in HANGUL_SYLLABLES) }
+            .filter { !Character.isWhitespace(it) && !font.covers(it) }
         if (missing.isNotEmpty()) {
             val shown = missing.joinToString(" ") { "'${String(Character.toChars(it))}' U+%04X".format(it) }
             issues.add(Rule.FONT_GLYPH, where, "the bundled font cannot draw $shown")
@@ -130,7 +128,6 @@ class TextChecks(
     }
 
     private companion object {
-        val HANGUL_SYLLABLES = 0xAC00..0xD7A3
         val LATIN = Regex("[A-Za-z]+")
         val SENTENCE_END = setOf('.', '?', '!')
         val TTS_SYMBOLS = listOf("&", "%", "/", "#", "+", "=", "*")

@@ -25,10 +25,10 @@ import androidx.compose.ui.unit.sp
 import com.gyugle.gil.core.designsystem.R
 
 internal val Pretendard = FontFamily(
-    Font(R.font.pretendard_std_regular, FontWeight.Normal),
-    Font(R.font.pretendard_std_medium, FontWeight.Medium),
-    Font(R.font.pretendard_std_semibold, FontWeight.SemiBold),
-    Font(R.font.pretendard_std_bold, FontWeight.Bold)
+    Font(R.font.pretendard_regular, FontWeight.Normal),
+    Font(R.font.pretendard_medium, FontWeight.Medium),
+    Font(R.font.pretendard_semibold, FontWeight.SemiBold),
+    Font(R.font.pretendard_bold, FontWeight.Bold)
 )
 
 /** English sentences and IPA only. Everything else, including headings, is set in Pretendard. */

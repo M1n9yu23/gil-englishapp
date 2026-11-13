@@ -63,10 +63,11 @@ class PronunciationTest {
     }
 
     @Test
-    fun of_uiFont_drawsLatinButNotEmoji() {
+    fun of_uiFont_drawsLatinAndHangulButNotEmoji() {
         val ui = FontCoverage.of(SampleContent.fontFiles("pretendard"))
 
         assertThat(ui.covers('A'.code)).isTrue()
+        assertThat((0xAC00..0xD7A3).all(ui::covers)).isTrue()
         assertThat(ui.covers(0x1F600)).isFalse()
     }
 }

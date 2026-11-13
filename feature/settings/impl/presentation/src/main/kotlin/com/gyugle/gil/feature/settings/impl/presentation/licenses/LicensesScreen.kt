@@ -182,8 +182,8 @@ private fun LoadFailed(onRetry: () -> Unit) {
 
 internal val PreviewLibraries = listOf(
     LibraryUi(
-        id = "com.github.orioncactus:pretendard-std",
-        name = "Pretendard Std",
+        id = "com.github.orioncactus:pretendard",
+        name = "Pretendard",
         version = "1.3.9",
         developers = "Kil Hyung-jin",
         licenses = listOf(LicenseUi("SIL Open Font License 1.1", "Copyright (c) 2021, Kil Hyung-jin"))
