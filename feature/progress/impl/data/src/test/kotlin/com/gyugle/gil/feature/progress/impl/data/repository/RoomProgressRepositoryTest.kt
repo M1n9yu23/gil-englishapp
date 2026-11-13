@@ -29,10 +29,10 @@ import com.gyugle.gil.feature.curriculum.api.PatternId
 import com.gyugle.gil.feature.curriculum.api.SenseId
 import com.gyugle.gil.feature.curriculum.api.SoundId
 import com.gyugle.gil.feature.progress.api.DailyStudyTime
-import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.Mistake
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import com.gyugle.gil.feature.progress.impl.data.ProgressDatabase
+import com.gyugle.gil.feature.progress.impl.data.ZonedStudyClock
 import com.gyugle.gil.feature.progress.impl.data.mapper.toCardState
 import com.gyugle.gil.feature.progress.impl.domain.FsrsScheduler
 import com.gyugle.gil.feature.progress.impl.domain.rate
@@ -60,7 +60,7 @@ class RoomProgressRepositoryTest {
     ).build()
 
     // 12:00 in Seoul.
-    private val clock = FakeStudyClock(now = Instant.parse("2026-11-07T03:00:00Z"), zone = TimeZone.of("Asia/Seoul"))
+    private val clock = ZonedStudyClock(now = Instant.parse("2026-11-07T03:00:00Z"), zone = TimeZone.of("Asia/Seoul"))
     private val scheduler = FsrsScheduler()
     private val repository = RoomProgressRepository(database, clock, scheduler)
 

@@ -26,11 +26,11 @@ import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.SenseId
 import com.gyugle.gil.feature.curriculum.api.SoundId
-import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.ProgressBackupPreview
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.progress.impl.data.ProgressDatabase
+import com.gyugle.gil.feature.progress.impl.data.ZonedStudyClock
 import com.gyugle.gil.feature.progress.impl.domain.FsrsScheduler
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
@@ -58,7 +58,7 @@ class RoomProgressBackupTest {
     ).build()
     private val backup = RoomProgressBackup(database)
     private val repository =
-        RoomProgressRepository(database, FakeStudyClock(Instant.parse("2026-11-07T03:00:00Z")), FsrsScheduler())
+        RoomProgressRepository(database, ZonedStudyClock(Instant.parse("2026-11-07T03:00:00Z")), FsrsScheduler())
     private val hello = SenseId("sense.hello.interj.greeting")
     private val letterA = SoundId("sound.letter-a")
     private val versionOne = readResource("backup/progress-v1.json")

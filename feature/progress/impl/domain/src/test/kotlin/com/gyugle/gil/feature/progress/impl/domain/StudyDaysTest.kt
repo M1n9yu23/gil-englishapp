@@ -69,7 +69,7 @@ class StudyDaysTest {
         private val seoul = TimeZone.of("Asia/Seoul")
 
         @Test
-        fun isFourInTheMorningOfThatDate() {
+        fun anyDate_isFourInTheMorningOfThatDate() {
             assertThat(studyDayStart(day("2026-11-07"), seoul)).isEqualTo(Instant.parse("2026-11-07T04:00:00+09:00"))
         }
 

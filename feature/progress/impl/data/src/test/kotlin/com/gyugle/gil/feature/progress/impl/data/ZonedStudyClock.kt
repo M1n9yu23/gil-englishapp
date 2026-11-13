@@ -13,16 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.gyugle.gil.feature.progress.api
+package com.gyugle.gil.feature.progress.impl.data
 
+import com.gyugle.gil.feature.progress.api.StudyClock
+import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.progress.impl.domain.studyDayOf
 import com.gyugle.gil.feature.progress.impl.domain.studyDayStart
 import kotlin.time.Duration
 import kotlin.time.Instant
 import kotlinx.datetime.TimeZone
 
-/** A clock the test moves by hand, with the real 04:00 day boundary. */
-class FakeStudyClock(var now: Instant, var zone: TimeZone = TimeZone.UTC) : StudyClock {
+/**
+ * A clock the test moves by hand, with the real 04:00 day boundary in [zone]. The shared
+ * `FakeStudyClock` starts days at midnight UTC, which cannot test the boundary.
+ */
+class ZonedStudyClock(var now: Instant, var zone: TimeZone = TimeZone.UTC) : StudyClock {
     override fun now(): Instant = now
 
     override fun dayOf(instant: Instant): StudyDay = studyDayOf(instant, zone)
