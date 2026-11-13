@@ -18,6 +18,7 @@ package com.gyugle.gil.feature.settings.impl.presentation.component
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.LocaleList
 import com.gyugle.gil.core.designsystem.component.timeOfDayText
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.reminder.api.ReminderTime
@@ -48,6 +49,13 @@ internal fun AppLanguage.label(): String = stringResource(
         AppLanguage.ENGLISH -> R.string.settings_language_english
     }
 )
+
+/** The language a language's own name is written in, so a screen reader reads it with that voice. */
+internal fun AppLanguage.nameLocale(): LocaleList? = when (this) {
+    AppLanguage.SYSTEM -> null
+    AppLanguage.KOREAN -> LocaleList("ko-KR")
+    AppLanguage.ENGLISH -> LocaleList("en-US")
+}
 
 @Composable
 internal fun Accent.label(): String = stringResource(

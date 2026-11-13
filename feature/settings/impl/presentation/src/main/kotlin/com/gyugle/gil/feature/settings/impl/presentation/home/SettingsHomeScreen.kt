@@ -61,6 +61,7 @@ import com.gyugle.gil.feature.settings.impl.presentation.component.LinkRow
 import com.gyugle.gil.feature.settings.impl.presentation.component.SettingsSection
 import com.gyugle.gil.feature.settings.impl.presentation.component.ValueRow
 import com.gyugle.gil.feature.settings.impl.presentation.component.label
+import com.gyugle.gil.feature.settings.impl.presentation.component.nameLocale
 import com.gyugle.gil.feature.settings.impl.presentation.component.summary
 
 /** Where the rows of the list lead. */
@@ -243,7 +244,8 @@ private fun SettingsDialogs(dialog: SettingsDialog, state: SettingsHomeState, on
                     label = language.label(),
                     selected = language == state.language,
                     onSelect = { onAction(SettingsHomeAction.OnLanguagePick(language)) },
-                    horizontalPadding = 0.dp
+                    horizontalPadding = 0.dp,
+                    labelLocale = language.nameLocale()
                 )
             }
         }
