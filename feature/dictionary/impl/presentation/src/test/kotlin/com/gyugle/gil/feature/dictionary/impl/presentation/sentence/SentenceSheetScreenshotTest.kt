@@ -61,4 +61,8 @@ class SentenceSheetScreenshotTest {
     @Test
     fun notFound_light_offersTheWayBack() =
         capture(SentenceState(isLoading = false, error = ContentError.NOT_FOUND.toContentErrorUi()))
+
+    @Test
+    fun unavailable_light_offersToTryAgain() =
+        capture(SentenceState(isLoading = false, error = ContentError.UNAVAILABLE.toContentErrorUi()))
 }
