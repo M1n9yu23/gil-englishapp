@@ -22,8 +22,9 @@ import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.progress.api.dayOfWeek
 
 /**
- * The plan for [today] as the screen shows it, with the study time of [week], whose days are in
- * order, and the [streak].
+ * The plan for [today] as the screen shows it, with the [week], whose days are in order, the
+ * [studyTime] on record up to its end, and the [streak]. Days of the week before the first day on
+ * record are muted like days to come: the learner had not started yet.
  */
 internal fun TodayPlan.toTodayUi(
     today: StudyDay,
@@ -33,6 +34,7 @@ internal fun TodayPlan.toTodayUi(
     streak: Int
 ): TodayUi {
     val byDay = studyTime.associateBy { it.day }
+    val start = studyTime.minOfOrNull { it.day } ?: today.takeIf { firstDay }
     val blocks = blocks()
     return TodayUi(
         message = when {
@@ -56,7 +58,7 @@ internal fun TodayPlan.toTodayUi(
                 dayOfWeek = dayOfWeek(day),
                 studied = byDay[day]?.isStudyDay == true,
                 isToday = day == today,
-                muted = day > today || (firstDay && day < today)
+                muted = day > today || (start != null && day < start)
             )
         }
     )

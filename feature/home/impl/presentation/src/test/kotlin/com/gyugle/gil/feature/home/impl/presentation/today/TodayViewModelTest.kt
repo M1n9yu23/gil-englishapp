@@ -173,6 +173,21 @@ class TodayViewModelTest {
     }
 
     @Test
+    fun state_startedThisWeek_mutesTheDaysBeforeTheFirstDay() = runTest(dispatcher) {
+        progress.completedLessons.value = setOf(first.id)
+        progress.cards.value = listOf(card("a", due = 5))
+        progress.studyTime.value = listOf(DailyStudyTime(today - 1, 12.minutes))
+
+        viewModel().state.test {
+            val week = ready().week
+            val start = week.indexOfFirst { it.isToday } - 1
+
+            assertThat(week.take(start).all { it.muted }).isEqualTo(true)
+            assertThat(week.subList(start, start + 2).none { it.muted }).isEqualTo(true)
+        }
+    }
+
+    @Test
     fun state_newStudyDay_movesThePlanOn() = runTest(dispatcher) {
         progress.completedLessons.value = setOf(first.id)
         progress.cards.value = listOf(card("a", due = 1))

@@ -94,7 +94,8 @@ class TodayViewModel @Inject constructor(
             progress.observeDueCards(day),
             progress.observeCards(),
             progress.observeCompletedLessons(),
-            progress.observeStudyTime(week.first(), week.last()),
+            // From the first day on record, so the week can mute the days before the learner began.
+            progress.observeStudyTime(StudyDay(0), week.last()),
             progress.observeStreak(day)
         ) { due, cards, completed, studyTime, streak -> Record(due.size, cards, completed, studyTime, streak) }
         return combine(goals.observeGoal(), record, ::Pair)
