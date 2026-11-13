@@ -71,6 +71,8 @@ class ReviewDeckTest {
     private val linking = SoundId("sound.linking")
     private val thVoiced = SoundId("sound.th-voiced")
     private val thVoiceless = SoundId("sound.th-voiceless")
+    private val nk = SoundId("sound.nk")
+    private val schwa = SoundId("sound.schwa")
 
     private val lexicon = FakeLexiconObserver(
         word(
@@ -108,7 +110,9 @@ class ReviewDeckTest {
             listOf(SoundExample("stand up", "stænd ʌp"), SoundExample("wake up", "weɪk ʌp"))
         ),
         SoundEntry(thVoiced, "ð", "th", "목을 울려요", stage, listOf(SoundExample("this", "ðɪs"))),
-        SoundEntry(thVoiceless, "θ", "th", "바람만", stage, listOf(SoundExample("think", "θɪŋk")))
+        SoundEntry(thVoiceless, "θ", "th", "바람만", stage, listOf(SoundExample("think", "θɪŋk"))),
+        SoundEntry(nk, "ŋk", "nk", "코로", stage, listOf(SoundExample("pink", "pɪŋk"), SoundExample("think", "θɪŋk"))),
+        SoundEntry(schwa, "ə", "a, e, i, o, u", "힘을 빼고", stage, listOf(SoundExample("about", "əˈbaʊt")))
     ).apply {
         sentences += SentenceBreakdown(
             sentence = Sentence(1, "Two, three, four.", "둘, 셋, 넷."),
@@ -297,6 +301,27 @@ class ReviewDeckTest {
                 // Read as "th", think would answer the card as well as this.
                 assertThat(it.options.map { option -> option.text }).containsExactlyInAnyOrder("this", "pen")
             }
+        }
+    }
+
+    @Test
+    fun cardFor_soundWhoseSpellingAWordOfAnotherSoundHas_leavesThatWordOut() = runTest {
+        for (seed in 1..10) {
+            val made = cardFor(card(thVoiced), pool(thVoiced, nk, p), seed = seed)
+
+            assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+                // think comes with nk, but read as "th" it would answer the card too.
+                assertThat(it.options.map { option -> option.text }).containsExactlyInAnyOrder("this", "pink", "pen")
+            }
+        }
+    }
+
+    @Test
+    fun cardFor_soundSpelledByLettersEveryWordHas_judgesWrongWordsByIpaAlone() = runTest {
+        val made = cardFor(card(schwa), pool(schwa, f, p))
+
+        assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+            assertThat(it.options.map { option -> option.text }).containsExactlyInAnyOrder("about", "fan", "pen")
         }
     }
 

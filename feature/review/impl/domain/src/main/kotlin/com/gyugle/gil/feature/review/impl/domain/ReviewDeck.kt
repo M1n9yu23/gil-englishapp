@@ -192,25 +192,37 @@ class ReviewDeck @Inject constructor(private val lexicon: LexiconObserver) {
         val others = pool.mapNotNull { other -> (other.id as? SoundId)?.takeIf { it != id } }
             .shuffled(random)
             .sortedBy { if (it.isLetter) 1 else 0 }
+        // A screen reader names the sound by its spelling, so a word with that spelling, such as
+        // think for the th in this, would be a second right answer to it. A spelling nearly every
+        // word has, such as the vowels of the schwa, would leave no options, so those cards fall
+        // back to words judged by their IPA alone.
+        val spellings = entry.spelling.split(", ").filter { it.isNotBlank() && '_' !in it }
         val wrong = mutableListOf<SoundExample>()
+        val byIpaOnly = mutableListOf<SoundExample>()
         for (other in others) {
             if (wrong.size == MAX_DISTRACTORS) break
             val otherEntry = when (val read = soundEntry(other)) {
                 is Outcome.Failure -> return read
                 is Outcome.Success -> read.data ?: continue
             }
-            // A screen reader names the sound by its spelling, so a sound spelled the same way,
-            // such as th in think for the th in this, would be a second right answer to it.
             if (otherEntry.spelling == entry.spelling) continue
-            otherEntry.examples
+            val candidates = otherEntry.examples.filter { example ->
+                example.text !in ownWords && !example.ipa.contains(entry.symbol)
+            }
+            candidates
                 .filter { example ->
-                    example.text !in ownWords &&
-                        !example.ipa.contains(entry.symbol) &&
+                    spellings.none { example.text.contains(it, ignoreCase = true) } &&
                         wrong.none { it.text == example.text }
                 }
                 .randomOrNull(random)
                 ?.let { wrong += it }
+            if (byIpaOnly.size < MAX_DISTRACTORS) {
+                candidates.filter { example -> byIpaOnly.none { it.text == example.text } }
+                    .randomOrNull(random)
+                    ?.let { byIpaOnly += it }
+            }
         }
+        if (wrong.isEmpty()) wrong += byIpaOnly
         if (wrong.isEmpty()) return Outcome.Success(null)
         val options = (wrong + right).shuffled(random)
         return Outcome.Success(
