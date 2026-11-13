@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The window before Compose draws: GilTheme's background, as in the app. -->
+    <color name="paper">#FFF4F3EF</color>
+</resources>
