@@ -22,7 +22,7 @@ body:
     attributes:
       label: 재현 방법
       placeholder: |
-        1. 오늘 화면에서 과 하나를 엽니다
+        1. 오늘 탭에서 수업 하나를 엽니다
         2. 스피커 버튼을 두 번 누릅니다
         3. 앱이 꺼집니다
     validations:
