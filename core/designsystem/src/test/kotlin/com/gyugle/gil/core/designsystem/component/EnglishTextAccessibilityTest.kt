@@ -26,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.intl.LocaleList
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEqualTo
@@ -111,8 +112,26 @@ class EnglishTextAccessibilityTest {
         assertThat(parts).containsExactly("I'm new " to "en-US", "blank" to "en-US", "." to "en-US")
     }
 
-    private fun accessibilityText(semanticsText: String): Spanned {
-        val node = composeRule.onNodeWithText(semanticsText).fetchSemanticsNode()
+    @Test
+    fun choiceRow_labelLocale_spansTheLabel() {
+        composeRule.setContent {
+            GilTheme {
+                ChoiceRow(label = LANGUAGE_NAME, selected = false, onSelect = {}, labelLocale = LocaleList("ko-KR"))
+            }
+        }
+
+        val text = accessibilityText(LANGUAGE_NAME, insideRow = true)
+
+        val span = text.getSpans(0, text.length, LocaleSpan::class.java).single()
+        assertThat(span.locales.toLanguageTags()).isEqualTo("ko-KR")
+    }
+
+    /**
+     * The text TalkBack gets for the node showing [semanticsText]. Compose reports the unmerged
+     * tree and the screen reader merges a row's texts itself, so a text inside a row is its own node.
+     */
+    private fun accessibilityText(semanticsText: String, insideRow: Boolean = false): Spanned {
+        val node = composeRule.onNodeWithText(semanticsText, useUnmergedTree = insideRow).fetchSemanticsNode()
         val content = composeRule.activity.findViewById<ViewGroup>(android.R.id.content)
         val host =
             checkNotNull(content.findAccessibilityHost()) { "No accessibility node provider under the content view" }
@@ -137,5 +156,6 @@ class EnglishTextAccessibilityTest {
         const val IPA_WORD = "water"
         const val BLANK_SENTENCE = "I'm new ___."
         const val BLANK_SENTENCE_SPOKEN = "I'm new blank."
+        const val LANGUAGE_NAME = "한국어"
     }
 }

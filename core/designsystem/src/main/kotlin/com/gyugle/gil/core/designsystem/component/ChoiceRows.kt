@@ -36,6 +36,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -43,6 +44,10 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 
@@ -69,7 +74,10 @@ fun RowDivider(modifier: Modifier = Modifier) {
     )
 }
 
-/** One choice of several. The row is the touch target and carries the state; the button only draws it. */
+/**
+ * One choice of several. The row is the touch target and carries the state; the button only draws it.
+ * [labelLocale] is the language of [label] when it differs from the screen's, such as a language name.
+ */
 @Composable
 fun ChoiceRow(
     label: String,
@@ -78,7 +86,8 @@ fun ChoiceRow(
     modifier: Modifier = Modifier,
     supporting: String? = null,
     enabled: Boolean = true,
-    horizontalPadding: Dp = GilTheme.spacing.screenMargin
+    horizontalPadding: Dp = GilTheme.spacing.screenMargin,
+    labelLocale: LocaleList? = null
 ) {
     val spacing = GilTheme.spacing
     Row(
@@ -90,7 +99,7 @@ fun ChoiceRow(
         horizontalArrangement = Arrangement.spacedBy(spacing.itemGap),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        RowTexts(label, supporting, enabled, Modifier.weight(1f))
+        RowTexts(label, supporting, enabled, Modifier.weight(1f), labelLocale)
         RadioButton(
             selected = selected,
             onClick = null,
@@ -133,11 +142,21 @@ fun SwitchRow(
 }
 
 @Composable
-private fun RowTexts(headline: String, supporting: String?, enabled: Boolean, modifier: Modifier = Modifier) {
+private fun RowTexts(
+    headline: String,
+    supporting: String?,
+    enabled: Boolean,
+    modifier: Modifier = Modifier,
+    headlineLocale: LocaleList? = null
+) {
     val colors = MaterialTheme.colorScheme
+    // A locale span, so a screen reader reads a headline in another language with that voice.
+    val text = remember(headline, headlineLocale) {
+        buildAnnotatedString { withStyle(SpanStyle(localeList = headlineLocale)) { append(headline) } }
+    }
     Column(modifier = modifier) {
         Text(
-            text = headline,
+            text = text,
             style = MaterialTheme.typography.bodyLarge,
             color = if (enabled) colors.onSurface else colors.onSurfaceVariant
         )
