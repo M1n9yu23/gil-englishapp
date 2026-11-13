@@ -11,7 +11,7 @@
     <string name="curriculum_path_open_unit">단원 열기</string>
     <string name="curriculum_path_test">시험 보고 건너뛰기</string>
     <plurals name="curriculum_path_test_detail">
-        <item quantity="other">이미 아는 단계라면 · 문제 <xliff:g id="count" example="20">%d</xliff:g>개</item>
+        <item quantity="other">이미 아는 단계라면 문제 <xliff:g id="count" example="20">%d</xliff:g>개로 확인해요</item>
     </plurals>
     <string name="curriculum_path_start_test">시험 보기</string>
 
@@ -24,7 +24,7 @@
     <string name="curriculum_lesson_open">수업 열기</string>
     <string name="curriculum_lesson_done">완료</string>
     <string name="curriculum_skip_ahead_title">앞 수업을 먼저 하길 권해요</string>
-    <string name="curriculum_skip_ahead_body">\"%1$s\" 수업을 아직 하지 않았어요. 수업마다 앞에서 배운 말을 이어서 써요.</string>
+    <string name="curriculum_skip_ahead_body">\"<xliff:g id="lesson" example="H부터 N까지">%1$s</xliff:g>\" 수업을 아직 하지 않았어요. 수업마다 앞에서 배운 말을 이어서 써요.</string>
     <string name="curriculum_skip_ahead_earlier">앞 수업 할게요</string>
     <string name="curriculum_skip_ahead_confirm">이 수업 할게요</string>
 </resources>
