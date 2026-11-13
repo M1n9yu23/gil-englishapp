@@ -12,7 +12,7 @@ Tests that run on Robolectric, such as screenshot and Room tests, use JUnit 4, b
 
 ## Names
 
-Test methods are named `subject_condition_expectedResult`, or `subject_expectedResult` when there is no condition:
+Name a test method `subject_condition_expectedResult`, or `subject_expectedResult` when there is no condition:
 
 ```kotlin
 @Test
@@ -23,9 +23,10 @@ A test class is named after the class it tests: `LessonViewModelTest`, `RoomProg
 
 ## Fakes
 
-Replace a dependency with a fake, a small working implementation of its interface, named `Fake` plus the interface name.
+Replace a dependency with a fake, a small working implementation of its interface, named `Fake` plus what it replaces. One fake can implement a feature's observer and commands together, as `FakeGoalRepository` does for `GoalObserver` and `GoalCommands`.
+A fake sits in the same package as the interface it implements.
 
-- A fake of an `api` contract lives in that module's `testFixtures`, such as `FakeProgressObserver` in `feature:progress:api`. Other modules use it with `testImplementation(testFixtures(projects.feature.progress.api))`.
+- Put a fake that other modules' tests need in the `testFixtures` of the module that declares the interface, such as `FakeProgressObserver` in `feature:progress:api`. Other modules use it with `testImplementation(testFixtures(projects.feature.progress.api))`.
 - A fake that only one module's tests use lives in that module's `src/test`, such as `FakeLessonRunRepository` in `feature:lesson:impl:presentation`.
 
 ## ViewModels
@@ -42,13 +43,13 @@ Build the ViewModel by hand with fakes, without Hilt. Read `state.value` for sta
 
 ## Storage
 
-Repositories are tested against the real storage, not fakes.
-DataStore tests write to a JUnit `@TempDir`. Room tests run on Robolectric with an in-memory database.
+A repository over Room or DataStore is tested against the real storage, not a fake of it.
+DataStore tests write to a temporary directory. Room tests run on Robolectric, with an in-memory database or, for the shipped course and for migrations, a database file.
 A change to the progress database schema needs a test in `ProgressMigrationTest`.
 
 ## Screenshots
 
-Screens and design system components have Roborazzi tests that render on the JVM through Robolectric, so they need no device.
+Screens and most design system components have Roborazzi tests that render on the JVM through Robolectric, so they need no device.
 The reference images are committed in each module's `src/test/screenshots/`.
 
 ```
@@ -57,12 +58,13 @@ The reference images are committed in each module's `src/test/screenshots/`.
 ```
 
 A screenshot test renders the stateless `Screen` composable inside `GilTheme` with a prepared state, as `LessonScreenshotTest` does. Use Robolectric qualifiers for the language, the window size and dark mode (`+night`).
+Stop the Compose clock with `mainClock.autoAdvance = false` and move it past the animations before capturing, so every run gives the same image.
 CI does not compare screenshots, so run `verifyRoborazziDebug` yourself when you change a screen, and look at every image that changed before you commit it.
 
 ## Device tests
 
 Only code that needs a real device has instrumented tests: speech recognition, text-to-speech and recording in `core:speech`.
-They are named `...DeviceTest` and run on a connected device or emulator:
+They are named `...DeviceTest` and run on a connected device or emulator. (`:baselineprofile` also runs on a device, but it builds the startup profile and is not a test suite.)
 
 ```
 ./gradlew :core:speech:connectedDebugAndroidTest

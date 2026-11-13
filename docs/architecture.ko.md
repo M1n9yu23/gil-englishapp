@@ -22,8 +22,8 @@ graph LR
 
 - `api`: 다른 기능이 써도 되는 것. 라우트, 공개 모델, `ProgressObserver`·`ProgressCommands` 같은 계약.
 - `impl:domain`: 그 기능만의 규칙과, 화면이 쓰는 저장소 인터페이스.
-- `impl:data`: 저장소 구현, `api` 계약의 구현, 이 둘을 연결하는 Hilt 모듈.
-- `impl:presentation`: 화면, ViewModel, 그 기능 라우트의 내비게이션 항목.
+- `impl:data`: 저장소 구현, 대부분의 `api` 계약 구현, 이 둘을 연결하는 Hilt 모듈.
+- `impl:presentation`: 화면, ViewModel, 그 기능 라우트의 내비게이션 항목. 다른 기능의 데이터를 읽기만 하는 계약은 여기서 구현하기도 합니다. `ContinueFinder`를 구현한 `TodayContinueFinder`가 그렇습니다.
 
 core 모듈에는 어느 한 기능의 것이 아닌 것을 둡니다. 디자인 시스템(`core:designsystem`), 내비게이터(`core:navigation`), `Outcome`과 공용 오류(`core:domain`), 음성 합성과 녹음(`core:speech`) 같은 것입니다.
 `:catalog`는 디자인 시스템 컴포넌트를 모아 보여 주는 개발용 앱이고, `:tools:content-compiler`는 코스 데이터베이스를 만듭니다.
@@ -33,7 +33,7 @@ core 모듈에는 어느 한 기능의 것이 아닌 것을 둡니다. 디자인
 - 다른 기능은 그 기능의 `api` 모듈로만 씁니다. 다른 기능의 `impl` 모듈에 의존하는 모듈은 없습니다.
 - `core` 모듈은 기능에 의존하지 않습니다.
 - `api`와 `impl:domain`은 Android 의존이 없는 순수 Kotlin 모듈입니다.
-- `impl:data`에 의존하는 것은 `:app`뿐입니다. ViewModel은 저장소를 `impl:domain`의 인터페이스나 `api`의 계약으로 받습니다.
+- `impl:data`에 의존하는 것은 `:app`뿐입니다. ViewModel은 저장된 데이터를 `impl:domain`의 저장소 인터페이스나 `api`의 계약으로 읽고 씁니다.
 
 빌드가 이 규칙을 검사하지는 않으니, 의존을 더할 때 직접 지켜 주세요.
 
@@ -45,10 +45,13 @@ core 모듈에는 어느 한 기능의 것이 아닌 것을 둡니다. 디자인
 학습 기록은 `feature:progress:impl:data`의 Room 데이터베이스입니다. 다른 기능은 `ProgressObserver`로 읽고 `ProgressCommands`로 씁니다.
 스키마를 `schemas/`에 커밋하므로, 스키마를 바꾸면 마이그레이션과 `ProgressMigrationTest`의 테스트가 함께 있어야 합니다.
 
-설정 같은 작은 상태는 기능마다 따로 둔 DataStore 파일에 저장합니다. 파일은 `core:datastore`의 `DataStoreFactory`로 만듭니다.
+설정 같은 작은 상태는 기능마다 따로 둔 DataStore 파일에 저장합니다. 파일은 `core:datastore`의 `DataStoreFactory`로 `lesson_prefs` 같은 이름을 붙여 만듭니다.
+읽을 때는 `dataOrEmpty()`, 쓸 때는 `editCatching {}`을 거칩니다. 그래서 파일을 읽거나 쓰지 못해도 앱이 죽지 않고 기본값이나 `DataError.Local`이 돌아옵니다.
 
-저장소는 바뀌는 데이터에는 `Flow`를, 한 번 읽거나 쓰는 일에는 `suspend` 함수를 돌려줍니다.
-ViewModel은 이것들을 모아 화면 상태 `StateFlow` 하나로 만듭니다.
+학습일은 현지 시각 새벽 4시에 시작합니다. 그래서 새벽 1시에 한 수업은 전날 저녁 학습으로 셉니다. 기록은 만든 날의 `StudyDay`와 함께 저장하고, 지금의 학습일은 `StudyClock`이 알려 줍니다. 테스트에서는 `FakeStudyClock`으로 바꿉니다.
+
+저장소(repository)는 바뀌는 저장 데이터에는 `Flow`를 돌려주고, 한 번 읽거나 쓰는 일은 `suspend` 함수로 합니다.
+ViewModel은 읽은 것을 모아 화면 상태 `StateFlow` 하나로 만듭니다.
 
 ## 오류
 
@@ -65,8 +68,9 @@ Hilt를 쓰고, 그래프는 `:app`에서 닫습니다. `impl:data` 모듈마다
 
 Navigation 3을 씁니다. 기능의 라우트는 그 기능의 `api` 모듈에 `NavKey`를 구현한 `@Serializable` 클래스로 있고, `"lesson.player"` 같은 `@SerialName`을 붙입니다. 라우트에는 ID 같은 작은 값만 담고, 불러온 데이터는 담지 않습니다.
 
-화면이 있는 `impl:presentation` 모듈마다 `lessonEntries(navigator)` 같은 `EntryProviderScope<NavKey>` 확장 함수가 있어서 라우트를 화면에 연결합니다. `:app`이 `MainHost.kt`에서 이 함수들을 부릅니다.
+화면이 있는 `impl:presentation` 모듈마다 `lessonEntries(navigator)` 같은 `EntryProviderScope<NavKey>` 확장 함수가 있어서 라우트를 화면에 연결합니다. `:app`이 `MainHost.kt`에서 이 함수들을 부르고, 온보딩 항목은 `OnboardingHost.kt`에서 부릅니다.
 다른 기능의 화면을 열 때는 그 기능 `api` 모듈의 라우트를 만들어 `Navigator.goTo`에 넘깁니다.
+`Navigator`는 컴포지션에서 만들어 항목 함수에 넘기고, Hilt 그래프에는 넣지 않습니다. 그래서 ViewModel은 직접 화면을 옮기지 않습니다. ViewModel이 이벤트를 보내면 `Root` 컴포저블이 콜백을 부르고, 그 콜백은 `lessonEntries`처럼 항목 함수가 내비게이터에 연결해 둔 것입니다.
 
 메인 화면에는 탭이 네 개 있고, 탭마다 백 스택이 따로 있습니다.
 알림, 위젯, 앱 바로가기는 `gil://` 링크로 앱을 엽니다. `:app`의 `GilDeepLinkResolver`가 이 링크를 탭 하나와 그 위에 열 라우트로 바꿉니다.
