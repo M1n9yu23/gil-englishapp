@@ -44,6 +44,11 @@ class KoreanProseTest {
     }
 
     @Test
+    fun proseOf_apostropheInEnglish_isTypographic() {
+        assertThat(proseOf("`I'm`은 `I am`이에요.").text).isEqualTo("I’m⁠은 I am⁠이에요.")
+    }
+
+    @Test
     fun proseOf_unmatchedBacktick_keepsTheText() {
         assertThat(proseOf("`Hi.는").text).isEqualTo("`Hi.는")
     }

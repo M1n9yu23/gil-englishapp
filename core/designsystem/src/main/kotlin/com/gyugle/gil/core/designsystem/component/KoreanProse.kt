@@ -47,7 +47,8 @@ fun KoreanProse(
 }
 
 /**
- * Odd-numbered parts between backticks are English. An unmatched backtick is kept as text.
+ * Odd-numbered parts between backticks are English, set with the typographic apostrophe like
+ * other English in the app (`I'm` shows as I’m). An unmatched backtick is kept as text.
  *
  * Lines may break where the English locale starts or ends, which would leave the particle of
  * "`Hi.`도" alone at the start of a line. A word joiner keeps English together with Korean that
@@ -64,7 +65,7 @@ internal fun proseOf(text: String): AnnotatedString = buildAnnotatedString {
             append(part)
         } else {
             if (parts[index - 1].lastOrNull()?.isWhitespace() == false) append(WORD_JOINER)
-            appendEnglish(part)
+            appendEnglish(part.replace('\'', '’'))
             if (parts[index + 1].firstOrNull()?.isWhitespace() == false) append(WORD_JOINER)
         }
     }
