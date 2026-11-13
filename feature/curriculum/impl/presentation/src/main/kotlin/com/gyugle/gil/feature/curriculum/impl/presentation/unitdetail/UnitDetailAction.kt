@@ -15,6 +15,18 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.presentation.unitdetail
 
+import com.gyugle.gil.feature.curriculum.api.LessonId
+
 sealed interface UnitDetailAction {
     data object OnRetryClick : UnitDetailAction
+
+    data class OnLessonClick(val id: LessonId) : UnitDetailAction
+
+    /** Starts the lesson picked although an earlier one is not done. */
+    data object OnSkipAheadConfirm : UnitDetailAction
+
+    /** Starts the earlier lesson instead. */
+    data object OnSkipAheadToEarlier : UnitDetailAction
+
+    data object OnSkipAheadDismiss : UnitDetailAction
 }

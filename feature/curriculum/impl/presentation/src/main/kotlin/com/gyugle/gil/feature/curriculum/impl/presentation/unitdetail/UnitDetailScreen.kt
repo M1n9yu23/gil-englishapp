@@ -31,7 +31,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -43,6 +45,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -52,7 +56,10 @@ import com.gyugle.gil.core.designsystem.R as CoreR
 import com.gyugle.gil.core.designsystem.component.ErrorState
 import com.gyugle.gil.core.designsystem.component.GilTopBar
 import com.gyugle.gil.core.designsystem.component.PressableSurface
+import com.gyugle.gil.core.designsystem.component.TextActionButton
+import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
+import com.gyugle.gil.core.presentation.ObserveAsEvents
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.UnitId
 import com.gyugle.gil.feature.curriculum.impl.presentation.ContentErrorUi
@@ -79,7 +86,12 @@ fun UnitDetailRoot(
     )
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    UnitDetailScreen(state = state, onAction = viewModel::onAction, onBack = onBack, onLessonClick = onLessonClick)
+    ObserveAsEvents(viewModel.events) { event ->
+        when (event) {
+            is UnitDetailEvent.OpenLesson -> onLessonClick(event.id)
+        }
+    }
+    UnitDetailScreen(state = state, onAction = viewModel::onAction, onBack = onBack)
 }
 
 @Composable
@@ -87,7 +99,6 @@ fun UnitDetailScreen(
     state: UnitDetailState,
     onAction: (UnitDetailAction) -> Unit,
     onBack: () -> Unit,
-    onLessonClick: (LessonId) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier.fillMaxSize()) {
@@ -101,10 +112,31 @@ fun UnitDetailScreen(
             when (content) {
                 UnitDetailContent.Loading -> UnitLoading()
                 is UnitDetailContent.Failed -> UnitError(content.error, onAction, onBack)
-                is UnitDetailContent.Loaded -> LessonList(content.unit, onLessonClick)
+                is UnitDetailContent.Loaded -> LessonList(content.unit, onAction)
             }
         }
     }
+    state.skipAhead?.let { SkipAheadDialog(it, onAction) }
+}
+
+/** Lessons are never locked; picking one past a lesson not done yet only asks first. */
+@Composable
+private fun SkipAheadDialog(skipAhead: SkipAheadUi, onAction: (UnitDetailAction) -> Unit) {
+    AlertDialog(
+        onDismissRequest = { onAction(UnitDetailAction.OnSkipAheadDismiss) },
+        title = { Text(stringResource(R.string.curriculum_skip_ahead_title)) },
+        text = { Text(stringResource(R.string.curriculum_skip_ahead_body, skipAhead.earlierTitle.asString())) },
+        confirmButton = {
+            TextActionButton(text = stringResource(R.string.curriculum_skip_ahead_earlier), onClick = {
+                onAction(UnitDetailAction.OnSkipAheadToEarlier)
+            })
+        },
+        dismissButton = {
+            TextActionButton(text = stringResource(R.string.curriculum_skip_ahead_confirm), onClick = {
+                onAction(UnitDetailAction.OnSkipAheadConfirm)
+            })
+        }
+    )
 }
 
 private sealed interface UnitDetailContent {
@@ -133,7 +165,7 @@ private fun UnitError(error: ContentErrorUi, onAction: (UnitDetailAction) -> Uni
 }
 
 @Composable
-private fun LessonList(unit: UnitDetailUi, onLessonClick: (LessonId) -> Unit) {
+private fun LessonList(unit: UnitDetailUi, onAction: (UnitDetailAction) -> Unit) {
     val spacing = GilTheme.spacing
     // A pushed screen has no bottom bar, so it keeps its last row clear of the navigation bar.
     val navigationBar = WindowInsets.navigationBars.asPaddingValues()
@@ -156,18 +188,24 @@ private fun LessonList(unit: UnitDetailUi, onLessonClick: (LessonId) -> Unit) {
         }
         itemsIndexed(unit.lessons, key = { _, lesson -> lesson.id.value }) { index, lesson ->
             if (index > 0) HorizontalDivider(modifier = Modifier.padding(start = UnitDetailTokens.TextStart))
-            LessonRow(lesson, onClick = { onLessonClick(lesson.id) })
+            LessonRow(lesson, onClick = { onAction(UnitDetailAction.OnLessonClick(lesson.id)) })
         }
     }
 }
 
-/** A lesson with its number on the first line of the title, however far the goal wraps. */
+/**
+ * A lesson with its number on the first line of the title, however far the goal wraps, and a check
+ * once it is done.
+ */
 @Composable
 private fun LessonRow(lesson: LessonRowUi, onClick: () -> Unit) {
+    val done = stringResource(R.string.curriculum_lesson_done)
     PressableSurface(
         onClick = onClick,
         clickLabel = stringResource(R.string.curriculum_lesson_open),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .semantics { if (lesson.done) stateDescription = done }
     ) {
         LessonRowContent(lesson)
     }
@@ -202,6 +240,15 @@ private fun LessonRowContent(lesson: LessonRowUi) {
                 text = lesson.goal.asString(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        if (lesson.done) {
+            Icon(
+                painter = GilIcons.Check,
+                // The row says it is done.
+                contentDescription = null,
+                modifier = Modifier.alignBy(FirstBaseline),
+                tint = MaterialTheme.colorScheme.primary
             )
         }
     }
@@ -248,8 +295,7 @@ private fun UnitDetailScreenPreview() {
             UnitDetailScreen(
                 state = UnitDetailState(isLoading = false, unit = UnitDetailPreviewData.unit),
                 onAction = {},
-                onBack = {},
-                onLessonClick = {}
+                onBack = {}
             )
         }
     }

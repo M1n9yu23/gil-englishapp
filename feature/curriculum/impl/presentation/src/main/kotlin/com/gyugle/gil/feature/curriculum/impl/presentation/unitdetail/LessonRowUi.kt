@@ -19,6 +19,12 @@ import androidx.compose.runtime.Immutable
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
 
-/** A lesson in a unit. [number] counts from 1 in the unit's order. */
+/** A lesson in a unit. [number] counts from 1 in the unit's order; [done] once the learner finished it. */
 @Immutable
-data class LessonRowUi(val id: LessonId, val number: Int, val title: LocalizedTextUi, val goal: LocalizedTextUi)
+data class LessonRowUi(
+    val id: LessonId,
+    val number: Int,
+    val title: LocalizedTextUi,
+    val goal: LocalizedTextUi,
+    val done: Boolean = false
+)

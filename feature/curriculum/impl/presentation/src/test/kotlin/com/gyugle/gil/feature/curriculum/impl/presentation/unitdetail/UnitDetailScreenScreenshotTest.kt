@@ -33,7 +33,7 @@ class UnitDetailScreenScreenshotTest {
     @get:Rule val composeRule = createComposeRule()
 
     private fun capture(state: UnitDetailState) = composeRule.captureScreen {
-        UnitDetailScreen(state = state, onAction = {}, onBack = {}, onLessonClick = {})
+        UnitDetailScreen(state = state, onAction = {}, onBack = {})
     }
 
     private val loaded = UnitDetailState(isLoading = false, unit = UnitDetailPreviewData.unit)
@@ -47,6 +47,17 @@ class UnitDetailScreenScreenshotTest {
     @Test
     @Config(qualifiers = "en-w360dp-h760dp-xhdpi", fontScale = 2f)
     fun lessons_englishFontScale2_wrapsTitleAndGoals() = capture(loaded)
+
+    @Test
+    fun skipAhead_light_suggestsTheEarlierLesson() = capture(
+        loaded.copy(
+            skipAhead = SkipAheadUi(
+                picked = UnitDetailPreviewData.unit.lessons[3].id,
+                earlier = UnitDetailPreviewData.unit.lessons[1].id,
+                earlierTitle = UnitDetailPreviewData.unit.lessons[1].title
+            )
+        )
+    )
 
     @Test fun loading_light_showsPlaceholders() = capture(UnitDetailState())
 

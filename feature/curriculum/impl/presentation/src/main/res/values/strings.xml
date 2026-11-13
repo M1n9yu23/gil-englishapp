@@ -30,4 +30,10 @@
     <string name="curriculum_error_retry">Try again</string>
     <string name="curriculum_error_back">Back to the path</string>
     <string name="curriculum_lesson_open">Open the lesson</string>
+    <!-- Screen reader state of a lesson the learner has finished. -->
+    <string name="curriculum_lesson_done">Done</string>
+    <string name="curriculum_skip_ahead_title">Try the earlier lesson first</string>
+    <string name="curriculum_skip_ahead_body">You haven’t done “%1$s” yet. Each lesson uses words from the ones before it.</string>
+    <string name="curriculum_skip_ahead_earlier">Do the earlier one</string>
+    <string name="curriculum_skip_ahead_confirm">Start this one</string>
 </resources>

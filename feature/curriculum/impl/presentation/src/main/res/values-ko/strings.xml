@@ -22,4 +22,9 @@
     <string name="curriculum_error_retry">다시 열기</string>
     <string name="curriculum_error_back">길로 돌아가기</string>
     <string name="curriculum_lesson_open">수업 열기</string>
+    <string name="curriculum_lesson_done">완료</string>
+    <string name="curriculum_skip_ahead_title">앞 수업을 먼저 하길 권해요</string>
+    <string name="curriculum_skip_ahead_body">\"%1$s\" 수업을 아직 하지 않았어요. 수업마다 앞에서 배운 말을 이어서 써요.</string>
+    <string name="curriculum_skip_ahead_earlier">앞 수업 할게요</string>
+    <string name="curriculum_skip_ahead_confirm">이 수업 할게요</string>
 </resources>

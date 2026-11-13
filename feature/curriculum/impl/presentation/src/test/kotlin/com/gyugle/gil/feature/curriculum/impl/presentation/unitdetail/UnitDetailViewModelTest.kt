@@ -15,12 +15,15 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.presentation.unitdetail
 
+import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.containsExactly
 import assertk.assertions.isEqualTo
 import assertk.assertions.isFalse
 import assertk.assertions.isNull
 import com.gyugle.gil.feature.curriculum.api.ContentError
+import com.gyugle.gil.feature.curriculum.api.FakeCourseObserver
+import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.UnitId
@@ -28,6 +31,7 @@ import com.gyugle.gil.feature.curriculum.impl.domain.model.LessonSummary
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.domain.repository.FakeCourseRepository
 import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
+import com.gyugle.gil.feature.progress.api.FakeProgressObserver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -39,6 +43,7 @@ import org.junit.jupiter.api.Test
 
 class UnitDetailViewModelTest {
     private val repository = FakeCourseRepository()
+    private val progress = FakeProgressObserver()
     private val unitId = UnitId("unit.s1-01")
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
@@ -59,7 +64,18 @@ class UnitDetailViewModelTest {
         )
     )
 
-    private fun viewModel() = UnitDetailViewModel(unitId.value, repository)
+    private fun courseLesson(id: String) = Lesson(
+        id = LessonId(id),
+        title = text(id),
+        goal = text("goal"),
+        steps = emptyList(),
+        introduced = emptyList(),
+        next = null
+    )
+
+    private val course = FakeCourseObserver(courseLesson("lesson.s1-01.1"), courseLesson("lesson.s1-01.2"))
+
+    private fun viewModel() = UnitDetailViewModel(unitId.value, repository, course, progress)
 
     @Test
     fun init_knownUnit_showsLessonsNumberedFromOne() = runTest {
@@ -101,5 +117,62 @@ class UnitDetailViewModelTest {
 
         assertThat(viewModel.state.value.error).isNull()
         assertThat(viewModel.state.value.unit?.title).isEqualTo(ui("unit"))
+    }
+
+    @Test
+    fun state_finishedLesson_isMarkedDoneAsTheRecordChanges() = runTest {
+        repository.units = mapOf(unitId to unit)
+        val viewModel = viewModel()
+        assertThat(viewModel.state.value.unit?.lessons?.map { it.done }).isEqualTo(listOf(false, false))
+
+        progress.completedLessons.value = setOf(LessonId("lesson.s1-01.1"))
+
+        assertThat(viewModel.state.value.unit?.lessons?.map { it.done }).isEqualTo(listOf(true, false))
+    }
+
+    @Test
+    fun onLessonClick_nextLesson_opensIt() = runTest {
+        repository.units = mapOf(unitId to unit)
+        val viewModel = viewModel()
+
+        viewModel.events.test {
+            viewModel.onAction(UnitDetailAction.OnLessonClick(LessonId("lesson.s1-01.1")))
+
+            assertThat(awaitItem()).isEqualTo(UnitDetailEvent.OpenLesson(LessonId("lesson.s1-01.1")))
+        }
+        assertThat(viewModel.state.value.skipAhead).isNull()
+    }
+
+    @Test
+    fun onLessonClick_pastAnUnfinishedLesson_asksOnceThenOpensWhatIsChosen() = runTest {
+        repository.units = mapOf(unitId to unit)
+        val viewModel = viewModel()
+
+        viewModel.events.test {
+            viewModel.onAction(UnitDetailAction.OnLessonClick(LessonId("lesson.s1-01.2")))
+            assertThat(viewModel.state.value.skipAhead).isEqualTo(
+                SkipAheadUi(LessonId("lesson.s1-01.2"), LessonId("lesson.s1-01.1"), ui("lesson.s1-01.1"))
+            )
+
+            viewModel.onAction(UnitDetailAction.OnSkipAheadToEarlier)
+            assertThat(awaitItem()).isEqualTo(UnitDetailEvent.OpenLesson(LessonId("lesson.s1-01.1")))
+            assertThat(viewModel.state.value.skipAhead).isNull()
+
+            viewModel.onAction(UnitDetailAction.OnLessonClick(LessonId("lesson.s1-01.2")))
+            assertThat(awaitItem()).isEqualTo(UnitDetailEvent.OpenLesson(LessonId("lesson.s1-01.2")))
+        }
+    }
+
+    @Test
+    fun onLessonClick_finishedLesson_opensWithoutAsking() = runTest {
+        repository.units = mapOf(unitId to unit)
+        progress.completedLessons.value = setOf(LessonId("lesson.s1-01.2"))
+        val viewModel = viewModel()
+
+        viewModel.events.test {
+            viewModel.onAction(UnitDetailAction.OnLessonClick(LessonId("lesson.s1-01.2")))
+
+            assertThat(awaitItem()).isEqualTo(UnitDetailEvent.OpenLesson(LessonId("lesson.s1-01.2")))
+        }
     }
 }

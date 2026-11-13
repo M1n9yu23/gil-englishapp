@@ -20,11 +20,13 @@ import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
 
 /** A sample unit for previews and screenshot tests. */
 internal object UnitDetailPreviewData {
+    // The first lesson is done.
     private fun lesson(number: Int, titleKo: String, titleEn: String, goalKo: String, goalEn: String) = LessonRowUi(
         id = LessonId("lesson.s1-01.$number"),
         number = number,
         title = LocalizedTextUi(ko = titleKo, en = titleEn),
-        goal = LocalizedTextUi(ko = goalKo, en = goalEn)
+        goal = LocalizedTextUi(ko = goalKo, en = goalEn),
+        done = number == 1
     )
 
     val unit = UnitDetailUi(

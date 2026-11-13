@@ -27,5 +27,6 @@ dependencies {
     implementation(projects.feature.progress.api)
     implementation(projects.feature.review.api)
     implementation(libs.timber)
+    testImplementation(testFixtures(projects.feature.curriculum.api))
     testImplementation(testFixtures(projects.feature.progress.api))
 }

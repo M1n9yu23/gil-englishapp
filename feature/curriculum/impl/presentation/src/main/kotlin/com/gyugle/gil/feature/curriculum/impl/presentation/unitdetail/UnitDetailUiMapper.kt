@@ -15,10 +15,11 @@
  */
 package com.gyugle.gil.feature.curriculum.impl.presentation.unitdetail
 
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.impl.domain.model.UnitDetail
 import com.gyugle.gil.feature.curriculum.impl.presentation.toLocalizedTextUi
 
-fun UnitDetail.toUnitDetailUi(): UnitDetailUi = UnitDetailUi(
+fun UnitDetail.toUnitDetailUi(completed: Set<LessonId>): UnitDetailUi = UnitDetailUi(
     title = title.toLocalizedTextUi(),
     stageTitle = stageTitle.toLocalizedTextUi(),
     lessons = lessons.mapIndexed { index, lesson ->
@@ -26,7 +27,8 @@ fun UnitDetail.toUnitDetailUi(): UnitDetailUi = UnitDetailUi(
             id = lesson.id,
             number = index + 1,
             title = lesson.title.toLocalizedTextUi(),
-            goal = lesson.goal.toLocalizedTextUi()
+            goal = lesson.goal.toLocalizedTextUi(),
+            done = lesson.id in completed
         )
     }
 )

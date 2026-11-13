@@ -16,11 +16,19 @@
 package com.gyugle.gil.feature.curriculum.impl.presentation.unitdetail
 
 import androidx.compose.runtime.Immutable
+import com.gyugle.gil.feature.curriculum.api.LessonId
 import com.gyugle.gil.feature.curriculum.impl.presentation.ContentErrorUi
+import com.gyugle.gil.feature.curriculum.impl.presentation.LocalizedTextUi
 
+/** [skipAhead] asks before a lesson that comes after one not done yet. */
 @Immutable
 data class UnitDetailState(
     val isLoading: Boolean = true,
     val unit: UnitDetailUi? = null,
-    val error: ContentErrorUi? = null
+    val error: ContentErrorUi? = null,
+    val skipAhead: SkipAheadUi? = null
 )
+
+/** The learner picked [picked], but [earlier], the course's next lesson, is not done yet. */
+@Immutable
+data class SkipAheadUi(val picked: LessonId, val earlier: LessonId, val earlierTitle: LocalizedTextUi)
