@@ -40,6 +40,7 @@ import com.gyugle.gil.feature.reminder.impl.data.repository.DataStoreReminderRep
 import java.io.File
 import java.nio.file.Files
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -109,6 +110,27 @@ class RemindersTest {
 
         assertThat(posted()).single().transform { it.extras.getCharSequence(Notification.EXTRA_TEXT).toString() }
             .isEqualTo("복습 12개, 약 6분")
+    }
+
+    @Test
+    fun remind_arrivingAnHourLate_stillReminds() = runTest {
+        repository.setTimes(listOf(ReminderTime(20, 0)))
+
+        reminders.remind(dueAt = clock.now() - 1.hours)
+
+        assertThat(posted()).hasSize(1)
+    }
+
+    // Setting the clock forward past a reminder time fires that alarm at once.
+    @Test
+    fun remind_arrivingHoursLate_showsNothingButKeepsTheNextAlarm() = runTest {
+        repository.setTimes(listOf(ReminderTime(20, 0)))
+        alarmManager.cancelAll()
+
+        reminders.remind(dueAt = clock.now() - 26.hours)
+
+        assertThat(posted()).isEmpty()
+        assertThat(alarmCount()).isEqualTo(1)
     }
 
     @Test

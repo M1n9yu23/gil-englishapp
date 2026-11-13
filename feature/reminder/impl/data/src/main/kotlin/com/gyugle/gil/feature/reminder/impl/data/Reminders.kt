@@ -24,6 +24,8 @@ import com.gyugle.gil.feature.reminder.impl.domain.model.ReminderMessage
 import com.gyugle.gil.feature.reminder.impl.domain.reminderMessageFor
 import javax.inject.Inject
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Instant
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.first
@@ -52,12 +54,14 @@ internal class Reminders @Inject constructor(
 
     /**
      * A reminder time has come. Sets the next alarm, then shows today's reminder unless reminders
-     * were just turned off or the goal is already met.
+     * were just turned off, the goal is already met or the alarm arrived long after [dueAt].
      */
-    suspend fun remind() {
+    suspend fun remind(dueAt: Instant? = null) {
         // Failing to set the next alarm is no reason to drop this one.
         val times = reschedule(keepPending = false)
         if (times != null && times.isEmpty()) return
+        // An alarm the clock jumped past fires at once; a reminder hours off its time only confuses.
+        if (dueAt != null && clock.now() - dueAt > LATE_LIMIT) return
         val message = attempt("Could not read today's record for the reminder") { todayMessage() } ?: return
         notifier.show(message)
     }
@@ -81,5 +85,10 @@ internal class Reminders @Inject constructor(
         currentCoroutineContext().ensureActive()
         Timber.w("%s: %s", what, e::class.simpleName)
         null
+    }
+
+    private companion object {
+        /** Doze can hold an alarm for a while; past this, the reminder is skipped. */
+        val LATE_LIMIT = 2.hours
     }
 }

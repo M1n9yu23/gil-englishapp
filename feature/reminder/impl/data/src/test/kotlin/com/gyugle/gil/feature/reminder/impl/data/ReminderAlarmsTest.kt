@@ -95,6 +95,15 @@ class ReminderAlarmsTest {
         assertThat(intent.component?.className).isEqualTo(ReminderAlarmReceiver::class.java.name)
     }
 
+    @Test
+    fun schedule_carriesTheTimeItIsFor() {
+        alarms.schedule(listOf(ReminderTime(20, 0)))
+
+        val alarm = scheduled().single()
+        val intent = shadowOf(alarm.operation).savedIntent
+        assertThat(intent.getLongExtra(ReminderAlarms.EXTRA_DUE_AT, 0L)).isEqualTo(alarm.triggerAtTime)
+    }
+
     // At 20:33 an alarm for 20:30 may still be on its way; restarting the app must not move it.
     @Test
     fun schedule_keepPendingWithAlarmSet_keepsItsTime() {

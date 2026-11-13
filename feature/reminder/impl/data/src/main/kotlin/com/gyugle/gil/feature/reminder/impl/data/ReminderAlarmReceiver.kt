@@ -18,10 +18,12 @@ package com.gyugle.gil.feature.reminder.impl.data
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import kotlin.time.Instant
 
 /** A reminder time has come. */
 internal class ReminderAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        runInBackground(context) { remind() }
+        val dueAt = intent.getLongExtra(ReminderAlarms.EXTRA_DUE_AT, 0L)
+        runInBackground(context) { remind(dueAt = if (dueAt > 0) Instant.fromEpochMilliseconds(dueAt) else null) }
     }
 }

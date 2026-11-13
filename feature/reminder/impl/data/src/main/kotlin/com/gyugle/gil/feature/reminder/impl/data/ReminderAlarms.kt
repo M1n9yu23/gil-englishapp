@@ -68,7 +68,7 @@ internal class ReminderAlarms(
                     AlarmManager.RTC_WAKEUP,
                     triggerAt,
                     WINDOW.inWholeMilliseconds,
-                    alarmIntent(slot)
+                    alarmIntent(slot, dueAt = triggerAt)
                 )
             }
         }
@@ -83,10 +83,11 @@ internal class ReminderAlarms(
     ) != null
 
     // The slot is the request code, so the two alarms are two different pending intents.
-    private fun alarmIntent(slot: Int): PendingIntent = PendingIntent.getBroadcast(
+    // The time rides along as an extra, which the pending intent's identity ignores.
+    private fun alarmIntent(slot: Int, dueAt: Long? = null): PendingIntent = PendingIntent.getBroadcast(
         context,
         slot,
-        alarmReceiverIntent(),
+        alarmReceiverIntent().apply { if (dueAt != null) putExtra(EXTRA_DUE_AT, dueAt) },
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
 
@@ -95,5 +96,8 @@ internal class ReminderAlarms(
     companion object {
         /** Android stretches any shorter window to ten minutes on recent versions. */
         val WINDOW = 10.minutes
+
+        /** Epoch milliseconds the alarm was set for. */
+        const val EXTRA_DUE_AT = "due_at"
     }
 }
