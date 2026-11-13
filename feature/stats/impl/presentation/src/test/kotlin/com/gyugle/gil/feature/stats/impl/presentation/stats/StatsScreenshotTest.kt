@@ -21,6 +21,7 @@ import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.stats.impl.presentation.stats.StatsPreviewData as Data
+import java.time.DayOfWeek
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -89,6 +90,27 @@ class StatsScreenshotTest {
                 }
             }
         }
+        composeRule.onRoot().captureRoboImage()
+    }
+
+    /** A month gone by: no today, nothing ahead, and the way forward open. */
+    @Test
+    fun calendar_pastMonth_canGoForward() {
+        val studied = setOf(5, 6, 7, 12, 20, 21, 30)
+        val october = CalendarUi(
+            year = 2026,
+            month = 10,
+            weekdays = List(7) { DayOfWeek.MONDAY.plus(it.toLong()) },
+            weeks = (List(3) { null } + (1..31).toList() + List(1) { null }).chunked(7).map { week ->
+                week.map { date ->
+                    date?.let { CalendarDayUi(it, studied = it in studied, isToday = false, ahead = false) }
+                }
+            },
+            studiedDays = studied.size,
+            hasPrevious = false,
+            hasNext = true
+        )
+        composeRule.setContent { GilTheme { Surface { StudyCalendar(october, onPrevious = {}, onNext = {}) } } }
         composeRule.onRoot().captureRoboImage()
     }
 
