@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
@@ -39,6 +38,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.core.presentation.ObserveAsEvents
 import com.gyugle.gil.feature.goal.api.DailyGoal
@@ -79,7 +79,7 @@ fun GoalStepScreen(
         stepContent = {
             Column(modifier = Modifier.selectableGroup()) {
                 DailyGoal.entries.forEachIndexed { index, goal ->
-                    if (index > 0) HorizontalDivider()
+                    if (index > 0) RowDivider()
                     GoalRow(
                         goal = goal,
                         selected = goal == state.selected,

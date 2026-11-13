@@ -28,7 +28,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -52,6 +51,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.component.EmptyState
 import com.gyugle.gil.core.designsystem.component.GilTopBar
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.dictionary.impl.presentation.R
@@ -165,7 +165,7 @@ private fun WordList(
 
 private fun LazyListScope.rows(rows: List<ItemRowUi>, onOpenEntry: (String) -> Unit) {
     itemsIndexed(rows, key = { _, row -> row.id }) { index, row ->
-        if (index > 0) HorizontalDivider()
+        if (index > 0) RowDivider()
         ItemRow(item = row, onClick = { onOpenEntry(row.id) })
     }
 }

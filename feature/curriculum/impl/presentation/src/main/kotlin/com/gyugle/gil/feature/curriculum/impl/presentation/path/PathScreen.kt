@@ -245,11 +245,19 @@ private fun StageItem(
         if (stage.units.isNotEmpty()) {
             Column(modifier = Modifier.padding(top = spacing.inlineGap)) {
                 stage.units.forEachIndexed { index, unit ->
-                    if (index > 0) HorizontalDivider(modifier = Modifier.padding(start = PathTokens.ContentStart))
+                    if (index >
+                        0
+                    ) {
+                        HorizontalDivider(
+                            modifier = Modifier.padding(start = PathTokens.ContentStart, end = spacing.screenMargin)
+                        )
+                    }
                     UnitRow(unit, onClick = { onUnitClick(unit.id) })
                 }
                 stage.testQuestions?.let { questions ->
-                    HorizontalDivider(modifier = Modifier.padding(start = PathTokens.ContentStart))
+                    HorizontalDivider(
+                        modifier = Modifier.padding(start = PathTokens.ContentStart, end = spacing.screenMargin)
+                    )
                     TestRow(questions, onClick = onTestClick)
                 }
             }

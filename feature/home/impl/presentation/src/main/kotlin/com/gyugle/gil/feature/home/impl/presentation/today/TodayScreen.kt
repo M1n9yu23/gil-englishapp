@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +47,7 @@ import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.component.ListRow
 import com.gyugle.gil.core.designsystem.component.LoadingState
 import com.gyugle.gil.core.designsystem.component.PrimaryActionButton
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.curriculum.api.LessonId
@@ -187,12 +187,7 @@ private fun Blocks(today: TodayUi, onOpenBlock: (BlockUi) -> Unit) {
     val colors = MaterialTheme.colorScheme
     Column {
         today.blocks.forEachIndexed { index, block ->
-            if (index > 0) {
-                HorizontalDivider(
-                    modifier = Modifier.padding(horizontal = GilTheme.spacing.screenMargin),
-                    color = colors.outlineVariant
-                )
-            }
+            if (index > 0) RowDivider()
             val chevron: @Composable () -> Unit = {
                 Icon(painter = GilIcons.ChevronRight, contentDescription = null, tint = colors.onSurfaceVariant)
             }

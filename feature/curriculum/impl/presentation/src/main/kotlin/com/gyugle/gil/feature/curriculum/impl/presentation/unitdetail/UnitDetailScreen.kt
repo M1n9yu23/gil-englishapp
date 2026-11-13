@@ -187,7 +187,16 @@ private fun LessonList(unit: UnitDetailUi, onAction: (UnitDetailAction) -> Unit)
             )
         }
         itemsIndexed(unit.lessons, key = { _, lesson -> lesson.id.value }) { index, lesson ->
-            if (index > 0) HorizontalDivider(modifier = Modifier.padding(start = UnitDetailTokens.TextStart))
+            if (index >
+                0
+            ) {
+                HorizontalDivider(
+                    modifier = Modifier.padding(
+                        start = UnitDetailTokens.TextStart,
+                        end = GilTheme.spacing.screenMargin
+                    )
+                )
+            }
             LessonRow(lesson, onClick = { onAction(UnitDetailAction.OnLessonClick(lesson.id)) })
         }
     }
@@ -269,7 +278,16 @@ private fun UnitLoading() {
             modifier = Modifier.padding(start = UnitDetailTokens.TextStart, bottom = spacing.inlineGap)
         )
         repeat(UnitDetailTokens.PLACEHOLDER_ROWS) { index ->
-            if (index > 0) HorizontalDivider(modifier = Modifier.padding(start = UnitDetailTokens.TextStart))
+            if (index >
+                0
+            ) {
+                HorizontalDivider(
+                    modifier = Modifier.padding(
+                        start = UnitDetailTokens.TextStart,
+                        end = GilTheme.spacing.screenMargin
+                    )
+                )
+            }
             Column(
                 modifier = Modifier
                     .heightIn(min = UnitDetailTokens.RowMinHeight)

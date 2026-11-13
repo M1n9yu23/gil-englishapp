@@ -19,7 +19,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
@@ -36,6 +35,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.gyugle.gil.core.designsystem.component.ListRow
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.component.TextActionButton
 import com.gyugle.gil.core.designsystem.icon.GilIcons
 import com.gyugle.gil.core.designsystem.theme.GilTheme
@@ -167,7 +167,7 @@ private fun TimesStage(
         stepContent = {
             Column {
                 state.times.forEachIndexed { index, time ->
-                    if (index > 0) HorizontalDivider()
+                    if (index > 0) RowDivider()
                     TimeRow(
                         time = time,
                         onClick = { onAction(ReminderStepAction.OnTimeClick(index)) },

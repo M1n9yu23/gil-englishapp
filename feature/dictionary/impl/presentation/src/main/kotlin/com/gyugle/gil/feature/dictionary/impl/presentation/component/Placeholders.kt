@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,6 +34,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.gyugle.gil.core.designsystem.R as CoreR
+import com.gyugle.gil.core.designsystem.component.RowDivider
 import com.gyugle.gil.core.designsystem.theme.GilTheme
 
 private object PlaceholderTokens {
@@ -49,7 +49,7 @@ internal fun ListLoading(modifier: Modifier = Modifier) {
     val spacing = GilTheme.spacing
     PlaceholderColumn(modifier) {
         PlaceholderTokens.RowFractions.forEachIndexed { index, fraction ->
-            if (index > 0) HorizontalDivider()
+            if (index > 0) RowDivider()
             Column(
                 modifier = Modifier
                     .heightIn(min = PlaceholderTokens.RowMinHeight)
