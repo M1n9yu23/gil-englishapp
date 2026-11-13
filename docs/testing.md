@@ -25,6 +25,7 @@ A test class is named after the class it tests: `LessonViewModelTest`, `RoomProg
 
 Replace a dependency with a fake, a small working implementation of its interface, named `Fake` plus what it replaces. One fake can implement a feature's observer and commands together, as `FakeGoalRepository` does for `GoalObserver` and `GoalCommands`.
 A fake sits in the same package as the interface it implements.
+A double that differs from the shared fake on purpose is named for the difference and kept with the tests that need it, such as `ZonedStudyClock`, which keeps the real 04:00 day boundary.
 
 - Put a fake that other modules' tests need in the `testFixtures` of the module that declares the interface, such as `FakeProgressObserver` in `feature:progress:api`. Other modules use it with `testImplementation(testFixtures(projects.feature.progress.api))`.
 - A fake that only one module's tests use lives in that module's `src/test`, such as `FakeLessonRunRepository` in `feature:lesson:impl:presentation`.

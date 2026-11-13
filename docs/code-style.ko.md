@@ -47,7 +47,7 @@ Room, DataStore, Compose는 감싸지 않고 바로 씁니다.
 
 | 타입 | 담는 것 |
 |---|---|
-| `LessonState` | 화면이 그리는 모든 것. data class이고, `Loading`·`Failed`처럼 단계가 나뉘는 화면이면 sealed interface |
+| `LessonState` | 화면이 그리는 모든 것. data class이고, `TodayState`처럼 화면 전체가 불러오는 중·실패·준비됨 중 하나이면 sealed interface. `LessonState`는 제목처럼 모든 단계가 함께 쓰는 값 곁에 단계를 sealed `LessonPhase`로 둡니다 |
 | `LessonAction` | 학습자가 한 일, sealed interface: `OnCloseClick`, `OnCheckClick` |
 | `LessonEvent` | 화면이 한 번 처리하는 일: 닫기, 다른 화면 열기, 권한 요청 |
 | `LessonViewModel` | `state: StateFlow<LessonState>`, `events: Flow<LessonEvent>`, `onAction(action)` |

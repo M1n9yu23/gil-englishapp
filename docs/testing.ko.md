@@ -25,6 +25,7 @@ fun load_missingLesson_failsWithoutRetry() { ... }
 
 의존하는 것은 Fake로 바꿉니다. Fake는 인터페이스를 간단하지만 실제로 동작하게 구현한 클래스이고, 이름은 `Fake` 뒤에 바꾸는 대상의 이름을 붙입니다. `FakeGoalRepository`가 `GoalObserver`와 `GoalCommands`를 함께 구현하듯, Fake 하나가 한 기능의 읽기와 쓰기 계약을 같이 구현해도 됩니다.
 Fake는 자기가 구현하는 인터페이스와 같은 패키지에 둡니다.
+공용 Fake와 일부러 다르게 동작하는 대역은 그 차이를 이름으로 삼고, 쓰는 테스트 곁에 둡니다. 새벽 4시 학습일 경계를 그대로 지키는 `ZonedStudyClock`이 그 예입니다.
 
 - 다른 모듈의 테스트도 쓰는 Fake는 인터페이스를 선언한 모듈의 `testFixtures`에 둡니다. `feature:progress:api`의 `FakeProgressObserver`가 그렇습니다. 다른 모듈은 `testImplementation(testFixtures(projects.feature.progress.api))`로 가져다 씁니다.
 - 한 모듈의 테스트만 쓰는 Fake는 그 모듈의 `src/test`에 둡니다. `feature:lesson:impl:presentation`의 `FakeLessonRunRepository`가 그 예입니다.

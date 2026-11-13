@@ -48,7 +48,7 @@ Its schemas are committed in `schemas/`, so a schema change needs a migration an
 Settings and other small state live in DataStore files, one per feature, each created with `DataStoreFactory` from `core:datastore` under a name such as `lesson_prefs`.
 Read them through `dataOrEmpty()` and write them through `editCatching {}`, so a file that cannot be read or written gives defaults or a `DataError.Local` instead of a crash.
 
-A study day starts at 04:00 local time, so a lesson at 1 a.m. counts toward the evening before. Records are stored with the `StudyDay` they were made on, and `StudyClock` gives the current one; tests replace it with `FakeStudyClock`.
+A study day starts at 04:00 local time, so a lesson at 1 a.m. counts toward the evening before. Records are stored with the `StudyDay` they were made on, and `StudyClock` gives the current one; tests replace it with `FakeStudyClock`, or with `ZonedStudyClock` where the 04:00 boundary itself is under test.
 
 A repository returns a `Flow` for stored data that changes and uses `suspend` functions for single reads and writes of storage.
 A ViewModel combines what it reads into one `StateFlow` of screen state.

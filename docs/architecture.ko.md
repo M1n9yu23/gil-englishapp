@@ -48,7 +48,7 @@ core 모듈에는 어느 한 기능의 것이 아닌 것을 둡니다. 디자인
 설정 같은 작은 상태는 기능마다 따로 둔 DataStore 파일에 저장합니다. 파일은 `core:datastore`의 `DataStoreFactory`로 `lesson_prefs` 같은 이름을 붙여 만듭니다.
 읽을 때는 `dataOrEmpty()`, 쓸 때는 `editCatching {}`을 거칩니다. 그래서 파일을 읽거나 쓰지 못해도 앱이 죽지 않고 기본값이나 `DataError.Local`이 돌아옵니다.
 
-학습일은 현지 시각 새벽 4시에 시작합니다. 그래서 새벽 1시에 한 수업은 전날 저녁 학습으로 셉니다. 기록은 만든 날의 `StudyDay`와 함께 저장하고, 지금의 학습일은 `StudyClock`이 알려 줍니다. 테스트에서는 `FakeStudyClock`으로 바꿉니다.
+학습일은 현지 시각 새벽 4시에 시작합니다. 그래서 새벽 1시에 한 수업은 전날 저녁 학습으로 셉니다. 기록은 만든 날의 `StudyDay`와 함께 저장하고, 지금의 학습일은 `StudyClock`이 알려 줍니다. 테스트에서는 `FakeStudyClock`으로 바꾸고, 새벽 4시 경계 자체를 시험할 때는 `ZonedStudyClock`을 씁니다.
 
 저장소(repository)는 바뀌는 저장 데이터에는 `Flow`를 돌려주고, 한 번 읽거나 쓰는 일은 `suspend` 함수로 합니다.
 ViewModel은 읽은 것을 모아 화면 상태 `StateFlow` 하나로 만듭니다.
@@ -62,7 +62,8 @@ ViewModel은 읽은 것을 모아 화면 상태 `StateFlow` 하나로 만듭니�
 
 ## 의존성 주입
 
-Hilt를 쓰고, 그래프는 `:app`에서 닫습니다. `impl:data` 모듈마다 `di/` 패키지가 있고, 그 안의 모듈이 `@Binds`로 구현을 인터페이스에 연결합니다.ViewModel은 `@HiltViewModel`입니다. 라우트 인자가 필요한 ViewModel은 `LessonViewModel`처럼 assisted injection으로 받습니다.
+Hilt를 쓰고, 그래프는 `:app`에서 닫습니다. `impl:data` 모듈마다 `di/` 패키지가 있고, 그 안의 모듈이 `@Binds`로 구현을 인터페이스에 연결합니다.
+ViewModel은 `@HiltViewModel`입니다. 라우트 인자가 필요한 ViewModel은 `LessonViewModel`처럼 assisted injection으로 받습니다.
 
 ## 내비게이션
 

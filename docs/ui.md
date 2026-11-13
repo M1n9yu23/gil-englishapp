@@ -40,7 +40,7 @@ Icons come from `GilIcons`, which holds Material Symbols Outlined as vector draw
 
 ## English text
 
-Every English sentence the learner reads goes through `EnglishText`. It sets English in a serif and marks it as English, so screen readers pronounce it with an English voice.
+Every English sentence the learner reads in a Compose screen goes through `EnglishText`. It sets English in a serif and marks it as English, so screen readers pronounce it with an English voice. The home screen widget is drawn with Glance and sets its sentence in the device serif.
 English inside a Korean sentence uses `appendEnglish`, and Korean content text with English in backticks uses `KoreanProse`.
 
 ## Strings

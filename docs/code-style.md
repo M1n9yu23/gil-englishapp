@@ -47,7 +47,7 @@ A screen has a State, an Action and an Event type, a ViewModel and a screen file
 
 | Type | Holds |
 |---|---|
-| `LessonState` | everything the screen draws: a data class, or a sealed interface when the screen has separate phases such as `Loading` and `Failed` |
+| `LessonState` | everything the screen draws: a data class, or a sealed interface when the whole screen is either loading, failed or ready, as `TodayState` is. `LessonState` keeps its phases in a sealed `LessonPhase` next to fields every phase shares, such as the title |
 | `LessonAction` | what the learner did, as a sealed interface: `OnCloseClick`, `OnCheckClick` |
 | `LessonEvent` | one-off effects the screen carries out: closing, opening another screen, asking for a permission |
 | `LessonViewModel` | `state: StateFlow<LessonState>`, `events: Flow<LessonEvent>` and `onAction(action)` |
