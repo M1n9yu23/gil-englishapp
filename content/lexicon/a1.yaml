@@ -971,9 +971,15 @@
       examples:
         - en: It's an old book.
           ko: 오래된 책이에요.
+    - id: sense.old.adj.age
+      pos: adjective
+      ko: 나이 든, ~살의
+      examples:
+        - en: "How {old|sense.old.adj.age} are you?"
+          ko: 몇 살이에요?
   notes:
     - kind: usage
-      ko: "사람에게 쓰면 \"나이 든\"이라는 뜻이 돼요. 그 뜻은 나중에 배워요."
+      ko: "물건이 낡았다고 할 때는 \"오래된\", 사람에게 쓰면 \"나이 든\"이에요. 나이를 물을 때는 젊은 사람에게도, 물건에도 `How old`예요."
 
 # a1-06 this and that, things around you
 - word: that
@@ -1205,3 +1211,783 @@
   notes:
     - kind: usage
       ko: "첫음절 `beau`를 세게 말해요."
+
+# a1-07 plurals, these and those
+- word: apple
+  id: word.apple
+  senses:
+    - id: sense.apple.n.fruit
+      pos: noun
+      ko: 사과
+      examples:
+        - en: An apple, please.
+          ko: 사과 하나 주세요.
+- word: egg
+  id: word.egg
+  senses:
+    - id: sense.egg.n.food
+      pos: noun
+      ko: 달걀, 계란
+      examples:
+        - en: "[The eggs]{who} [are]{do} [in the box]{where}."
+          ko: 달걀은 상자 안에 있어요.
+          literal: 달걀들은 / 있다 / 상자 안에
+- word: car
+  id: word.car
+  senses:
+    - id: sense.car.n.vehicle
+      pos: noun
+      ko: 자동차, 차
+      examples:
+        - en: My car is old.
+          ko: 제 차는 오래됐어요.
+- word: bike
+  id: word.bike
+  senses:
+    - id: sense.bike.n.bicycle
+      pos: noun
+      ko: 자전거
+      examples:
+        - en: This bike is new.
+          ko: 이 자전거는 새 거예요.
+  notes:
+    - kind: usage
+      ko: "`bicycle`을 줄인 말이에요. 말할 때는 거의 `bike`라고 해요."
+- word: bus
+  id: word.bus
+  senses:
+    - id: sense.bus.n.vehicle
+      pos: noun
+      ko: 버스
+      examples:
+        - en: The bus is late.
+          ko: 버스가 늦네요.
+- word: dish
+  id: word.dish
+  senses:
+    - id: sense.dish.n.plate
+      pos: noun
+      ko: 접시, 그릇
+      examples:
+        - en: The dishes are white.
+          ko: 접시들이 흰색이에요.
+- word: baby
+  id: word.baby
+  senses:
+    - id: sense.baby.n.infant
+      pos: noun
+      ko: 아기
+      examples:
+        - en: The baby is hungry.
+          ko: 아기가 배고파해요.
+- word: country
+  id: word.country
+  senses:
+    - id: sense.country.n.nation
+      pos: noun
+      ko: 나라
+      examples:
+        - en: Korea is a small country.
+          ko: 한국은 작은 나라예요.
+- word: story
+  id: word.story
+  senses:
+    - id: sense.story.n.tale
+      pos: noun
+      ko: 이야기
+      examples:
+        - en: "It's a funny story."
+          ko: 웃긴 이야기예요.
+- word: man
+  id: word.man
+  forms: { plural: men }
+  senses:
+    - id: sense.man.n.adult
+      pos: noun
+      ko: 남자, 남성
+      examples:
+        - en: He's a tall man.
+          ko: 그 사람은 키 큰 남자예요.
+- word: woman
+  id: word.woman
+  forms: { plural: women }
+  senses:
+    - id: sense.woman.n.adult
+      pos: noun
+      ko: 여자, 여성
+      examples:
+        - en: The women are doctors.
+          ko: 그 여자분들은 의사예요.
+  notes:
+    - kind: usage
+      ko: "복수 `women`은 \"위민\"처럼 읽어요. 철자는 `a`와 `e` 한 글자만 다르지만 앞의 `o` 소리가 \"우\"에서 \"이\"로 바뀌어요."
+- word: child
+  id: word.child
+  forms: { plural: children }
+  senses:
+    - id: sense.child.n.young
+      pos: noun
+      ko: 아이, 어린이
+      examples:
+        - en: "[The children]{who} [are]{do} [very happy]{what}."
+          ko: 아이들이 아주 즐거워해요.
+          literal: 아이들은 / ~이다 / 아주 즐거운
+- word: person
+  id: word.person
+  forms: { plural: people }
+  senses:
+    - id: sense.person.n.human
+      pos: noun
+      ko: 사람
+      examples:
+        - en: The people here are kind.
+          ko: 여기 사람들은 친절해요.
+  notes:
+    - kind: mistake
+      ko: "`person`의 복수는 보통 `people`이에요. `people`은 이미 여럿이라서 \"사람들\"이라는 뜻으로는 `peoples`라고 하지 않아요."
+- word: kid
+  id: word.kid
+  senses:
+    - id: sense.kid.n.child
+      pos: noun
+      ko: 아이, 애
+      examples:
+        - en: The kids are hungry.
+          ko: 애들이 배고파해요.
+  notes:
+    - kind: usage
+      ko: "말할 때는 `child`보다 `kid`를 더 자주 써요. 복수는 그냥 `kids`예요."
+- word: these
+  id: word.these
+  senses:
+    - id: sense.these.pron.near
+      pos: pronoun
+      ko: 이것들, 이 사람들, 이
+      examples:
+        - en: "[These]{who} [are]{do} [my photos]{what}."
+          ko: 이건 제 사진들이에요.
+          literal: 이것들은 / ~이다 / 내 사진들
+  notes:
+    - kind: usage
+      ko: "`this`의 복수예요. `these shoes`처럼 명사 앞에 붙으면 \"이 ~\"예요. `this`보다 모음을 길게 끌고 끝을 \"즈\"로 내요."
+- word: those
+  id: word.those
+  senses:
+    - id: sense.those.pron.far
+      pos: pronoun
+      ko: 저것들, 그것들, 저 사람들, 저
+      examples:
+        - en: What are those?
+          ko: 저것들은 뭐예요?
+  notes:
+    - kind: usage
+      ko: "`that`의 복수예요. `those flowers`처럼 명사 앞에 붙으면 \"저 ~, 그 ~\"예요."
+- word: shoe
+  id: word.shoe
+  senses:
+    - id: sense.shoe.n.foot
+      pos: noun
+      ko: 신발, 구두
+      examples:
+        - en: These are my shoes.
+          ko: 이건 제 신발이에요.
+  notes:
+    - kind: usage
+      ko: "두 짝이 한 켤레라서 보통 `shoes`로 말해요. 우리말로 \"신발\"이라고 해도 영어로는 `my shoes`예요."
+- word: flower
+  id: word.flower
+  senses:
+    - id: sense.flower.n.plant
+      pos: noun
+      ko: 꽃
+      examples:
+        - en: Those flowers are beautiful.
+          ko: 저 꽃들 예쁘네요.
+- word: photo
+  id: word.photo
+  senses:
+    - id: sense.photo.n.picture
+      pos: noun
+      ko: 사진
+      examples:
+        - en: "It's a photo of my dog."
+          ko: 우리 개 사진이에요.
+
+# a1-08 my, your, 's
+- word: your
+  id: word.your
+  ipa: jʊr
+  senses:
+    - id: sense.your.det.listener
+      pos: determiner
+      ko: 너의, 네
+      examples:
+        - en: "[This]{who} [is]{do} [your bag]{what}."
+          ko: 이거 네 가방이야.
+          literal: 이것은 / ~이다 / 너의 가방
+  notes:
+    - kind: usage
+      ko: "듣는 사람이 여럿이어도 `your`예요. \"너희의\"도 `your`로 말해요."
+- word: our
+  id: word.our
+  ipa: aʊr
+  senses:
+    - id: sense.our.det.us
+      pos: determiner
+      ko: 우리의, 우리
+      examples:
+        - en: Our office is small.
+          ko: 우리 사무실은 작아요.
+  notes:
+    - kind: mistake
+      ko: "우리말은 내 집도 \"우리 집\"이라고 하지만 영어는 내 것이면 보통 `my`예요. `our`는 나와 다른 사람이 함께 가진 것에 써요."
+- word: their
+  id: word.their
+  ipa: ðɛr
+  senses:
+    - id: sense.their.det.them
+      pos: determiner
+      ko: 그들의, 그 사람들의
+      examples:
+        - en: Their house is big.
+          ko: 그 사람들 집은 커요.
+  notes:
+    - kind: usage
+      ko: "`there`, `they're`와 소리가 같아요. 쓸 때 철자를 조심해요."
+- word: house
+  id: word.house
+  senses:
+    - id: sense.house.n.home
+      pos: noun
+      ko: 집, 주택
+      examples:
+        - en: "That's my house."
+          ko: 저게 제 집이에요.
+  notes:
+    - kind: usage
+      ko: "복수 `houses`는 \"하우지즈\"처럼 읽어요. `house`의 `s`가 `z` 소리로 바뀌어요."
+- word: office
+  id: word.office
+  senses:
+    - id: sense.office.n.work
+      pos: noun
+      ko: 사무실, 회사
+      examples:
+        - en: My office is over there.
+          ko: 제 사무실은 저기 있어요.
+- word: his
+  id: word.his
+  ipa: hɪz
+  senses:
+    - id: sense.his.det.male
+      pos: determiner
+      ko: 그의, 그 남자의
+      examples:
+        - en: His desk is over there.
+          ko: 그 사람 책상은 저기 있어요.
+- word: her
+  id: word.her
+  ipa: hɝ
+  senses:
+    - id: sense.her.det.female
+      pos: determiner
+      ko: 그녀의, 그 여자의
+      examples:
+        - en: "[Her name]{who} [is]{do} [@Ana]{what}."
+          ko: 그분 이름은 아나예요.
+          literal: 그녀의 이름은 / ~이다 / 아나
+  notes:
+    - kind: mistake
+      ko: "물건이 아니라 주인을 보고 골라요. 주인이 여자면 `her`, 남자면 `his`예요."
+- word: its
+  id: word.its
+  ipa: ɪts
+  senses:
+    - id: sense.its.det.thing
+      pos: determiner
+      ko: 그것의
+      examples:
+        - en: The cat is in its bed.
+          ko: 고양이가 자기 침대에 있어요.
+  notes:
+    - kind: mistake
+      ko: "`it's`는 `it is`를 줄인 말이고, \"그것의\"는 아포스트로피 없이 `its`예요."
+- word: desk
+  id: word.desk
+  senses:
+    - id: sense.desk.n.furniture
+      pos: noun
+      ko: 책상
+      examples:
+        - en: Her desk is very small.
+          ko: 그 여자 책상은 아주 작아요.
+- word: wallet
+  id: word.wallet
+  senses:
+    - id: sense.wallet.n.money
+      pos: noun
+      ko: 지갑
+      examples:
+        - en: Is this your wallet?
+          ko: 이거 네 지갑이야?
+- word: coat
+  id: word.coat
+  senses:
+    - id: sense.coat.n.clothing
+      pos: noun
+      ko: 코트, 외투
+      examples:
+        - en: "This is @Mina's coat."
+          ko: 이건 미나 씨 코트예요.
+- word: notebook
+  id: word.notebook
+  senses:
+    - id: sense.notebook.n.paper
+      pos: noun
+      ko: 공책, 수첩
+      examples:
+        - en: "[This]{who} [is]{do} [@Mina's notebook]{what}."
+          ko: 이건 미나 씨 공책이에요.
+          literal: 이것은 / ~이다 / 미나의 공책
+  notes:
+    - kind: konglish
+      ko: "우리가 \"노트북\"이라고 부르는 컴퓨터는 영어로 보통 `laptop`이에요. `notebook`은 주로 종이 공책이에요."
+- word: ticket
+  id: word.ticket
+  ipa: ˈtɪkɪt
+  senses:
+    - id: sense.ticket.n.pass
+      pos: noun
+      ko: 표, 티켓
+      examples:
+        - en: "It's my friend's ticket."
+          ko: 제 친구 표예요.
+- word: seat
+  id: word.seat
+  senses:
+    - id: sense.seat.n.place
+      pos: noun
+      ko: 자리, 좌석
+      examples:
+        - en: "Is this @Leo's seat?"
+          ko: 여기 레오 씨 자리예요?
+- word: whose
+  id: word.whose
+  senses:
+    - id: sense.whose.det.question
+      pos: determiner
+      ko: 누구의
+      examples:
+        - en: Whose jacket is this?
+          ko: 이거 누구 재킷이에요?
+  notes:
+    - kind: usage
+      ko: "`who's`(`who is`)와 소리가 같아요. 뒤에 물건 이름이 오면 `whose`예요."
+- word: mine
+  id: word.mine
+  senses:
+    - id: sense.mine.pron.possessive
+      pos: pronoun
+      ko: 내 것, 제 것
+      examples:
+        - en: "[It]{who} [is]{do} [mine]{what}."
+          ko: 제 거예요.
+          literal: 그것은 / ~이다 / 내 것
+  notes:
+    - kind: mistake
+      ko: "`my`는 뒤에 명사가 와야 해요. \"내 거예요\"는 `It's my`가 아니라 `It's mine`이에요."
+- word: yours
+  id: word.yours
+  ipa: jʊrz
+  senses:
+    - id: sense.yours.pron.possessive
+      pos: pronoun
+      ko: 네 것, 너의 것
+      examples:
+        - en: Is this yours?
+          ko: 이거 네 거야?
+- word: hat
+  id: word.hat
+  senses:
+    - id: sense.hat.n.head
+      pos: noun
+      ko: 모자
+      examples:
+        - en: Whose hat is this?
+          ko: 이거 누구 모자예요?
+  notes:
+    - kind: usage
+      ko: "앞에 챙이 달린 야구 모자는 `cap`이라고도 해요."
+- word: jacket
+  id: word.jacket
+  ipa: ˈdʒækɪt
+  senses:
+    - id: sense.jacket.n.clothing
+      pos: noun
+      ko: 재킷, 겉옷
+      examples:
+        - en: Is this jacket yours?
+          ko: 이 재킷 네 거야?
+
+# a1-09 family
+- word: family
+  id: word.family
+  ipa: ˈfæməli
+  senses:
+    - id: sense.family.n.relatives
+      pos: noun
+      ko: 가족
+      examples:
+        - en: "[This]{who} [is]{do} [my family]{what}."
+          ko: 우리 가족이에요.
+          literal: 이것은 / ~이다 / 내 가족
+  notes:
+    - kind: mistake
+      ko: "\"우리 가족\"이라고 해도 영어는 보통 `my family`예요."
+- word: mother
+  id: word.mother
+  senses:
+    - id: sense.mother.n.parent
+      pos: noun
+      ko: 어머니
+      examples:
+        - en: "That's my mother."
+          ko: 저분이 저희 어머니예요.
+- word: father
+  id: word.father
+  senses:
+    - id: sense.father.n.parent
+      pos: noun
+      ko: 아버지
+      examples:
+        - en: Her father is a nurse.
+          ko: 그 친구 아버지는 간호사예요.
+- word: mom
+  id: word.mom
+  senses:
+    - id: sense.mom.n.parent
+      pos: noun
+      ko: 엄마
+      examples:
+        - en: My mom is a teacher.
+          ko: 우리 엄마는 선생님이에요.
+  notes:
+    - kind: usage
+      ko: "영어는 어른도 말할 때 `mom`이라고 많이 해요. 영국에서는 `mum`이라고 써요."
+- word: dad
+  id: word.dad
+  senses:
+    - id: sense.dad.n.parent
+      pos: noun
+      ko: 아빠
+      examples:
+        - en: My dad is a chef.
+          ko: 우리 아빠는 요리사예요.
+- word: parent
+  id: word.parent
+  senses:
+    - id: sense.parent.n.mother-father
+      pos: noun
+      ko: 부모(아버지나 어머니)
+      examples:
+        - en: My parents are from @Busan.
+          ko: 우리 부모님은 부산 분이에요.
+  notes:
+    - kind: usage
+      ko: "엄마와 아빠 두 분을 함께 말할 때는 복수 `parents`예요. 우리말 \"부모님\"에 가장 가까워요."
+- word: brother
+  id: word.brother
+  senses:
+    - id: sense.brother.n.sibling
+      pos: noun
+      ko: 형제(형, 오빠, 남동생)
+      examples:
+        - en: "He's my big brother."
+          ko: 우리 형이에요.
+- word: sister
+  id: word.sister
+  senses:
+    - id: sense.sister.n.sibling
+      pos: noun
+      ko: 자매(언니, 누나, 여동생)
+      examples:
+        - en: "[She]{who} [is]{do} [my sister]{what}."
+          ko: 제 언니예요.
+          literal: 그녀는 / ~이다 / 내 언니
+  notes:
+    - kind: usage
+      ko: "`sister`라는 말에는 나이가 들어 있지 않아요. 꼭 나누고 싶으면 `big sister`, `little sister`라고 해요."
+- word: little
+  id: word.little
+  senses:
+    - id: sense.little.adj.young
+      pos: adjective
+      ko: 어린, 손아래의
+      examples:
+        - en: "She's my little sister."
+          ko: 제 여동생이에요.
+  notes:
+    - kind: usage
+      ko: "`little`은 \"작은\"이라는 뜻도 있어요. `brother`, `sister` 앞에 붙으면 손아래라는 말이에요."
+- word: only
+  id: word.only
+  senses:
+    - id: sense.only.adj.single
+      pos: adjective
+      ko: 하나뿐인, 유일한
+      examples:
+        - en: "I'm an only child."
+          ko: 저는 외동이에요.
+- word: twin
+  id: word.twin
+  senses:
+    - id: sense.twin.n.sibling
+      pos: noun
+      ko: 쌍둥이
+      examples:
+        - en: "They're twins."
+          ko: 그 둘은 쌍둥이예요.
+- word: husband
+  id: word.husband
+  senses:
+    - id: sense.husband.n.spouse
+      pos: noun
+      ko: 남편
+      examples:
+        - en: "[This]{who} [is]{do} [my husband]{what}."
+          ko: 제 남편이에요.
+          literal: 이 사람은 / ~이다 / 내 남편
+- word: wife
+  id: word.wife
+  forms: { plural: wives }
+  senses:
+    - id: sense.wife.n.spouse
+      pos: noun
+      ko: 아내
+      examples:
+        - en: "This is my wife, @Sora."
+          ko: 제 아내 소라예요.
+- word: son
+  id: word.son
+  senses:
+    - id: sense.son.n.child
+      pos: noun
+      ko: 아들
+      examples:
+        - en: Our son is very tall.
+          ko: 우리 아들은 키가 아주 커요.
+  notes:
+    - kind: usage
+      ko: "`sun`(해)과 소리가 같아요."
+- word: daughter
+  id: word.daughter
+  senses:
+    - id: sense.daughter.n.child
+      pos: noun
+      ko: 딸
+      examples:
+        - en: Our daughter is a student.
+          ko: 우리 딸은 학생이에요.
+  notes:
+    - kind: usage
+      ko: "`gh`는 소리 내지 않아요. \"도터\"처럼 읽어요."
+- word: cute
+  id: word.cute
+  senses:
+    - id: sense.cute.adj.sweet
+      pos: adjective
+      ko: 귀여운
+      examples:
+        - en: "@Mina's son is very cute."
+          ko: 미나 씨 아들은 정말 귀여워요.
+- word: grandmother
+  id: word.grandmother
+  senses:
+    - id: sense.grandmother.n.relative
+      pos: noun
+      ko: 할머니
+      examples:
+        - en: My grandmother is very kind.
+          ko: 우리 할머니는 정말 다정하세요.
+  notes:
+    - kind: usage
+      ko: "말할 때는 `grandma`라고도 해요. 친할머니와 외할머니를 나누지 않아요."
+- word: grandfather
+  id: word.grandfather
+  ipa: ˈgrænˌfɑːðɚ
+  senses:
+    - id: sense.grandfather.n.relative
+      pos: noun
+      ko: 할아버지
+      examples:
+        - en: "[My grandfather]{who} [is]{do} [very kind]{what}."
+          ko: 우리 할아버지는 정말 다정하세요.
+          literal: 내 할아버지는 / ~이다 / 아주 다정한
+  notes:
+    - kind: usage
+      ko: "말할 때는 `grandpa`라고도 해요."
+- word: aunt
+  id: word.aunt
+  ipa: ænt
+  senses:
+    - id: sense.aunt.n.relative
+      pos: noun
+      ko: 이모, 고모, 숙모
+      examples:
+        - en: My aunt is a doctor.
+          ko: 우리 이모는 의사예요.
+- word: uncle
+  id: word.uncle
+  senses:
+    - id: sense.uncle.n.relative
+      pos: noun
+      ko: 삼촌, 외삼촌, 고모부, 이모부
+      examples:
+        - en: "He's my uncle."
+          ko: 우리 삼촌이에요.
+- word: cousin
+  id: word.cousin
+  senses:
+    - id: sense.cousin.n.relative
+      pos: noun
+      ko: 사촌
+      examples:
+        - en: "@Jun is my cousin."
+          ko: 준은 제 사촌이에요.
+  notes:
+    - kind: usage
+      ko: "나이나 성별과 상관없이 모두 `cousin`이에요. \"커즌\"처럼 읽어요."
+
+# a1-10 age and contact details
+- word: year
+  id: word.year
+  senses:
+    - id: sense.year.n.time
+      pos: noun
+      ko: 해, 년, (나이) 살
+      examples:
+        - en: "[I]{who} [am]{do} [29 years {old|sense.old.adj.age}]{what}."
+          ko: 저는 스물아홉 살이에요.
+          literal: 나는 / ~이다 / 29살
+- word: young
+  id: word.young
+  senses:
+    - id: sense.young.adj.age
+      pos: adjective
+      ko: 젊은, 어린
+      examples:
+        - en: My teacher is very young.
+          ko: 우리 선생님은 아주 젊어요.
+- word: birthday
+  id: word.birthday
+  senses:
+    - id: sense.birthday.n.day
+      pos: noun
+      ko: 생일
+      examples:
+        - en: Happy birthday!
+          ko: 생일 축하해요.
+- word: number
+  id: word.number
+  senses:
+    - id: sense.number.n.digits
+      pos: noun
+      ko: 번호, 숫자
+      examples:
+        - en: "What's your phone number?"
+          ko: 전화번호가 어떻게 돼요?
+- word: call
+  id: word.call
+  senses:
+    - id: sense.call.v.phone
+      pos: verb
+      ko: 전화하다
+      examples:
+        - en: "[Call]{do} [me]{what} [tomorrow]{when}."
+          ko: 내일 전화 주세요.
+          literal: 전화해라 / 나에게 / 내일
+  notes:
+    - kind: usage
+      ko: "`Call me Mina`처럼 뒤에 이름이 오면 \"~라고 부르다\"예요."
+- word: text
+  id: word.text
+  senses:
+    - id: sense.text.v.message
+      pos: verb
+      ko: 문자를 보내다
+      examples:
+        - en: Text me later.
+          ko: 이따 문자 줘요.
+  notes:
+    - kind: usage
+      ko: "문자를 보낸다고 할 때는 `text`를 동사로 써서 `Text me`라고 해요."
+- word: wrong
+  id: word.wrong
+  senses:
+    - id: sense.wrong.adj.incorrect
+      pos: adjective
+      ko: 틀린, 잘못된
+      examples:
+        - en: "Sorry, wrong number."
+          ko: 죄송한데 잘못 거셨어요.
+- word: slowly
+  id: word.slowly
+  senses:
+    - id: sense.slowly.adv.not-fast
+      pos: adverb
+      ko: 천천히
+      examples:
+        - en: "Slowly, please."
+          ko: 천천히 말해 주세요.
+- word: first name
+  id: word.first-name
+  ipa: ˈfɝst ˌneɪm
+  senses:
+    - id: sense.first-name.n.given
+      pos: noun
+      ko: (성을 뺀) 이름
+      examples:
+        - en: "[My first name]{who} [is]{do} [@Yuna]{what}."
+          ko: 제 이름은 유나예요.
+          literal: 내 이름은 / ~이다 / 유나
+- word: last name
+  id: word.last-name
+  ipa: ˈlæst ˌneɪm
+  senses:
+    - id: sense.last-name.n.family
+      pos: noun
+      ko: 성
+      examples:
+        - en: My last name is @Kim.
+          ko: 제 성은 김이에요.
+  notes:
+    - kind: usage
+      ko: "영어 이름은 성이 뒤에 와서 `last name`이라고 해요. 김유나는 영어로 보통 `Yuna Kim`이에요."
+- word: email
+  id: word.email
+  senses:
+    - id: sense.email.n.message
+      pos: noun
+      ko: 이메일
+      examples:
+        - en: "What's your email address?"
+          ko: 이메일 주소가 뭐예요?
+- word: address
+  id: word.address
+  ipa: ˈæˌdrɛs
+  senses:
+    - id: sense.address.n.place
+      pos: noun
+      ko: 주소
+      examples:
+        - en: My address is 25 Green Street.
+          ko: 제 주소는 그린가 25번지예요.
+- word: street
+  id: word.street
+  senses:
+    - id: sense.street.n.road
+      pos: noun
+      ko: 거리, 길
+      examples:
+        - en: "It's 25 Green Street."
+          ko: 그린가 25번지예요.

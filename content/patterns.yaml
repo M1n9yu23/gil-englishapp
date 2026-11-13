@@ -102,21 +102,39 @@
     - en: It's over there.
       ko: 저기 있어요.
 
+# Age and contact details (a1-10)
+- id: pattern.how-old
+  text: How old ~?
+  ko: ~는 몇 살이에요?
+  note: "사람뿐 아니라 물건의 나이도 `How old is your car?`처럼 물어요."
+  examples:
+    - en: "How {old|sense.old.adj.age} is your son?"
+      ko: 아드님은 몇 살이에요?
+- id: pattern.how-do-you-spell
+  text: How do you spell ~?
+  ko: ~ 철자가 어떻게 돼요?
+  note: "통째로 외워 두면 돼요. 이름이나 이메일을 받아 적을 때 자주 써요."
+  examples:
+    - en: How do you spell that?
+      ko: 철자가 어떻게 돼요?
+
 # Inflections. course.yaml gates each kind of form on one of these.
 - id: pattern.plural-s
   text: ~s
   ko: 둘 이상을 말할 때(복수)
   level: a1
   examples:
-    - en: I have two cats.
-      ko: 저는 고양이가 두 마리 있어요.
+    - en: "[The cats]{who} [are]{do} [small]{what}."
+      ko: 고양이들이 작아요.
+      literal: 고양이들은 / ~이다 / 작은
 - id: pattern.possessive-s
   text: ~'s
   ko: ~의(소유)
   level: a1
   examples:
-    - en: This is Mina's book.
-      ko: 이건 미나의 책이에요.
+    - en: "[This]{who} [is]{do} [@Mina's book]{what}."
+      ko: 이건 미나 씨 책이에요.
+      literal: 이것은 / ~이다 / 미나의 책
 - id: pattern.third-person-s
   text: He ~s
   ko: 그 사람이 하는 일(3인칭 단수 현재)

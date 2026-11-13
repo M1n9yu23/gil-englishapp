@@ -45,6 +45,10 @@ stages:
       - unit.a1-04
       - unit.a1-05
       - unit.a1-06
+      - unit.a1-07
+      - unit.a1-08
+      - unit.a1-09
+      - unit.a1-10
   - id: stage.a2
     title: { ko: 일상, en: Everyday life }
     units: []

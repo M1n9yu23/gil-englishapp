@@ -1,0 +1,344 @@
+id: unit.a1-08
+title: { ko: "누구의 것: my, your, 's", en: "Whose is it: my, your, 's" }
+lessons:
+  - id: lesson.a1-08.1
+    title: { ko: "my, your, our, their", en: "My, your, our, their" }
+    goal: { ko: "my, your, our, their로 누구 것인지 말할 수 있어요", en: "Say whose things are with my, your, our and their" }
+    introduces: [sense.your.det.listener, sense.our.det.us, sense.their.det.them, sense.house.n.home, sense.office.n.work]
+    steps:
+      - type: listen
+        en: "Is this your bag, @Sam?"
+        ko: 샘 씨, 이 가방 샘 씨 거예요?
+      - type: listen
+        en: Our office is small.
+        ko: 우리 사무실은 작아요.
+      - type: explain
+        text: |
+          누구 것인지는 명사 앞에 `my` 같은 말을 붙여서 나타내요. `I`는 `my`, `you`는 `your`, `we`는 `our`, `they`는 `their`가 돼요. `my bag`, `your bag`, `our office`, `their house`처럼요.
+
+          우리말은 혼자 사는 집도 "우리 집"이라고 하지만, 영어는 내 것이면 `my house`예요. `our`는 가족처럼 나와 다른 사람이 함께 가진 것에 써요.
+        examples:
+          - en: "[This]{who} [is]{do} [your bag]{what}."
+            ko: 이거 네 가방이야.
+            literal: 이것은 / ~이다 / 너의 가방
+          - en: Is this your phone?
+            ko: 이거 네 휴대폰이야?
+          - en: Our office is small.
+            ko: 우리 사무실은 작아요.
+          - en: Their house is big.
+            ko: 그 사람들 집은 커요.
+          - en: "That's my house."
+            ko: 저게 제 집이에요.
+      - type: explain
+        text: |
+          `their`는 `there`, `they're`와 소리가 같아요. 들을 때는 문장 뜻으로 구별하고, 쓸 때는 철자를 조심해요.
+        examples:
+          - en: Their car is red.
+            ko: 그 사람들 차는 빨간색이에요.
+          - en: "They're over there."
+            ko: 그 사람들은 저기 있어요.
+      - type: chooseMeaning
+        en: Their house is big.
+        item: sense.their.det.them
+        options:
+          - { ko: 그 사람들 집은 커요., correct: true }
+          - { ko: 우리 집은 커요., why: "\"우리\"는 `our`예요. `their`는 \"그 사람들의\"예요." }
+          - { ko: 저기 집이 커요., why: "`there`와 소리는 같지만 집 앞에 온 `their`는 \"그 사람들의\"예요." }
+      - type: listenChoose
+        en: Our office is big.
+        item: sense.our.det.us
+        options:
+          - { ko: 우리 사무실은 커요., correct: true }
+          - { ko: 제 사무실은 커요., why: "\"제\"는 `my`예요. `my`는 \"마이\", `our`는 \"아워\"처럼 들려요." }
+          - { ko: 그 사람들 사무실은 커요., why: "그 사람들 것은 `their`예요. 들린 말은 `our`예요." }
+      - type: chooseEnglish
+        ko: 이거 네 휴대폰이야?
+        item: sense.your.det.listener
+        options:
+          - { en: Is this your phone?, correct: true }
+          - { en: Is this you phone?, why: "\"너의\"는 `you`가 아니라 `your`예요." }
+          - { en: Is this my phone?, why: "`my`는 \"나의\"예요. 상대의 것은 `your`예요." }
+      - type: fillBlank
+        item: sense.our.det.us
+        en: ___ office is very big.
+        ko: 우리 사무실은 아주 커요.
+        options:
+          - { en: Our, correct: true }
+          - { en: We, why: "`we`는 \"우리는\"이에요. 명사 앞에서 \"우리\"는 `our`예요." }
+          - { en: Their, why: "`their`는 \"그 사람들의\"예요. \"우리\"는 `our`예요." }
+      - type: dialogue
+        item: sense.your.det.listener
+        lines:
+          - { speaker: Ana, en: Is this your umbrella?, ko: 이거 준 씨 우산이에요? }
+        question: 그 우산은 준 우산이 아니에요. 준이 할 말을 골라요.
+        options:
+          - { en: "No, it's not my umbrella.", correct: true }
+          - { en: "No, it's not your umbrella.", why: "내 우산이 아니라는 말이니까 `my`예요." }
+          - { en: "Yes, it's my umbrella.", why: "준의 우산이 아니니까 `No`로 대답해요." }
+      - type: fillBlank
+        item: sense.their.det.them
+        en: Is this ___ house?
+        ko: 여기가 그 사람들 집이에요?
+        answers: [their]
+      - type: arrange
+        item: sense.office.n.work
+        ko: 우리 사무실은 저기 있어요.
+        en: Our office is over there.
+        extra: [we, their]
+      - type: dictation
+        item: sense.their.det.them
+        en: Their car is red.
+        ko: 그 사람들 차는 빨간색이에요.
+      - type: spell
+        sense: sense.house.n.home
+      - type: shadow
+        en: "Is this your house? It's beautiful."
+        ko: 여기가 네 집이야? 예쁘다.
+  - id: lesson.a1-08.2
+    title: { ko: "his와 her", en: "His and her" }
+    goal: { ko: "다른 사람과 동물의 것을 his, her, its로 말할 수 있어요", en: "Talk about people's and animals' things with his, her and its" }
+    introduces: [sense.his.det.male, sense.her.det.female, sense.its.det.thing, sense.desk.n.furniture, sense.wallet.n.money]
+    steps:
+      - type: listen
+        en: "This is @Leo. His desk is over there."
+        ko: 이쪽은 레오 씨예요. 레오 씨 책상은 저기 있어요.
+      - type: listen
+        en: Her name is @Ana.
+        ko: 그분 이름은 아나예요.
+      - type: explain
+        text: |
+          `he`는 `his`, `she`는 `her`가 돼요. 우리말은 "그 사람 가방" 하나로 말하지만, 영어는 가방 주인이 남자면 `his bag`, 여자면 `her bag`이에요. 물건이 아니라 주인을 보고 골라요.
+
+          사람이 아닌 것은 `its`예요. `it's`(`it is`)와 소리가 같지만 `its`에는 아포스트로피가 없어요. 이름을 붙인 반려동물은 `his`, `her`로도 말해요.
+        examples:
+          - en: "He's my coworker. His desk is here."
+            ko: 제 직장 동료예요. 그 사람 책상은 여기 있어요.
+          - en: "[Her name]{who} [is]{do} [@Ana]{what}."
+            ko: 그분 이름은 아나예요.
+            literal: 그녀의 이름은 / ~이다 / 아나
+          - en: The dog is small. Its bed is small, too.
+            ko: 개가 작아요. 개 침대도 작아요.
+          - en: The cat is in its bed.
+            ko: 고양이가 자기 침대에 있어요.
+      - type: chooseMeaning
+        en: Her wallet is black.
+        item: sense.her.det.female
+        options:
+          - { ko: 그 여자 지갑은 검은색이에요., correct: true }
+          - { ko: 그 남자 지갑은 검은색이에요., why: "남자의 것은 `his`예요. `her`는 여자의 것이에요." }
+          - { ko: 제 지갑은 검은색이에요., why: "\"제\"는 `my`예요. `her`는 그 여자의 것이에요." }
+      - type: listenChoose
+        en: His name is @Omar.
+        item: sense.his.det.male
+        options:
+          - { en: His name is @Omar., correct: true }
+          - { en: Her name is @Omar., why: "`his`는 \"히즈\", `her`는 \"허\"처럼 들려요. 끝에 \"즈\" 소리가 났어요." }
+      - type: chooseEnglish
+        ko: 그 여자 책상은 저기 있어요.
+        item: sense.desk.n.furniture
+        options:
+          - { en: Her desk is over there., correct: true }
+          - { en: His desk is over there., why: "주인이 여자니까 `her`예요." }
+          - { en: She desk is over there., why: "`she`는 \"그녀는\"이에요. 명사 앞에서는 `her`예요." }
+      - type: fillBlank
+        item: sense.his.det.male
+        en: "He's my coworker. ___ desk is here."
+        ko: 제 직장 동료예요. 그 사람 책상은 여기 있어요.
+        options:
+          - { en: His, correct: true }
+          - { en: He, why: "`he`는 \"그는\"이에요. 명사 앞에서는 `his`예요." }
+          - { en: Her, why: "앞에서 `He's`라고 했으니 남자예요. 남자의 것은 `his`예요." }
+      - type: dialogue
+        item: sense.wallet.n.money
+        lines:
+          - { speaker: Priya, en: Is this your wallet?, ko: 이거 샘 씨 지갑이에요? }
+        question: 그 지갑은 저기 있는 디에고 거예요. 샘이 디에고를 가리키며 할 말을 골라요.
+        options:
+          - { en: "No, it's his wallet.", correct: true }
+          - { en: "No, it's her wallet.", why: "디에고는 남자라서 `his`예요." }
+          - { en: "No, it's he wallet.", why: "명사 앞에서는 `he`가 아니라 `his`예요." }
+      - type: fillBlank
+        item: sense.her.det.female
+        en: "She's my friend, and ___ name is @Yuna."
+        ko: 제 친구고 이름은 유나예요.
+        answers: [her]
+      - type: arrange
+        item: sense.its.det.thing
+        ko: 고양이가 자기 침대에 있어요.
+        en: The cat is in its bed.
+        extra: ["it's", it]
+      - type: dictation
+        item: sense.desk.n.furniture
+        en: Her desk is very small.
+        ko: 그 여자 책상은 아주 작아요.
+      - type: spell
+        sense: sense.wallet.n.money
+      - type: shadow
+        en: "This is @Ana. Her desk is over there."
+        ko: 이쪽은 아나 씨예요. 아나 씨 책상은 저기 있어요.
+  - id: lesson.a1-08.3
+    title: { ko: "이름 뒤의 's", en: "'s after a name" }
+    goal: { ko: "이름 뒤에 's를 붙여 누구 것인지 말할 수 있어요", en: "Add 's to a name to say whose something is" }
+    introduces: [pattern.possessive-s, sense.coat.n.clothing, sense.notebook.n.paper, sense.ticket.n.pass, sense.seat.n.place]
+    steps:
+      - type: listen
+        en: "This is @Mina's coat."
+        ko: 이건 미나 씨 코트예요.
+      - type: listen
+        en: "The teacher's desk is big."
+        ko: 선생님 책상은 커요.
+      - type: explain
+        text: |
+          사람 이름이나 사람을 가리키는 말 뒤에 `'s`를 붙이면 "~의"가 돼요. `Mina's coat`는 "미나의 코트", `the teacher's desk`는 "선생님 책상"이에요. 우리말처럼 주인이 먼저 와요.
+
+          `'s`는 `She's`의 `'s`(`is`)와 모양이 같아요. `Mina's coat`처럼 뒤에 물건 이름이 오면 "~의"예요. 물건 이름 없이 `It's Mina's`라고 하면 "미나 거예요"예요.
+        examples:
+          - en: "[This]{who} [is]{do} [@Mina's notebook]{what}."
+            ko: 이건 미나 씨 공책이에요.
+            literal: 이것은 / ~이다 / 미나의 공책
+          - en: "The teacher's desk is big."
+            ko: 선생님 책상은 커요.
+          - en: "Is this @Leo's seat?"
+            ko: 여기 레오 씨 자리예요?
+          - en: "It's my friend's ticket."
+            ko: 제 친구 표예요.
+      - type: chooseMeaning
+        en: "Is this @Leo's seat?"
+        item: sense.seat.n.place
+        options:
+          - { ko: 여기 레오 씨 자리예요?, correct: true }
+          - { ko: 레오 씨 여기 있어요?, why: "`Leo's` 뒤에 `seat`(자리)가 와서 \"레오의 자리\"예요." }
+          - { ko: 이거 레오 씨 표예요?, why: "표는 `ticket`이에요. `seat`은 앉는 자리예요." }
+      - type: listenChoose
+        en: "It's my friend's ticket."
+        item: pattern.possessive-s
+        options:
+          - { ko: 제 친구 표예요., correct: true }
+          - { ko: 제 표예요., why: "`my` 다음에 `friend's`가 들렸어요. 친구의 표예요." }
+          - { ko: 제 친구 자리예요., why: "자리는 `seat`이에요. 들린 단어는 `ticket`이에요." }
+      - type: chooseEnglish
+        ko: 이건 아나 씨 공책이에요.
+        item: sense.notebook.n.paper
+        options:
+          - { en: "This is @Ana's notebook.", correct: true }
+          - { en: "This is the notebook of @Ana.", why: "사람 것은 `of`보다 `Ana's notebook`처럼 `'s`로 말해요." }
+          - { en: "This is @Ana notebook.", why: "이름 뒤에 `'s`를 붙여야 \"아나의\"가 돼요." }
+      - type: fillBlank
+        item: pattern.possessive-s
+        en: "That's the ___ coat."
+        ko: 저건 선생님 코트예요.
+        options:
+          - { en: "teacher's", correct: true }
+          - { en: teacher, why: "\"선생님의\"는 `'s`를 붙여 `teacher's`예요." }
+          - { en: teachers, why: "`teachers`는 선생님 여러 명이에요. \"~의\"는 아포스트로피를 넣은 `'s`예요." }
+      - type: dialogue
+        item: pattern.possessive-s
+        lines:
+          - { speaker: Ana, en: Is this your coat?, ko: 이거 하린 씨 코트예요? }
+        question: 그 코트는 민호 거예요. 하린이 할 말을 골라요.
+        options:
+          - { en: "No, it's @Minho's.", correct: true }
+          - { en: "No, it's @Minho.", why: "`'s`가 빠지면 \"민호예요\"가 돼요. \"민호 거예요\"는 `Minho's`예요." }
+          - { en: "Yes, it's @Minho's.", why: "하린의 코트가 아니니까 `No`로 대답해요." }
+      - type: fillBlank
+        item: sense.notebook.n.paper
+        en: "It's @Sam's ___."
+        ko: 샘 씨 공책이에요.
+        answers: [notebook]
+      - type: arrange
+        item: pattern.possessive-s
+        ko: 선생님 책상은 저기 있어요.
+        en: "The teacher's desk is over there."
+        extra: [teacher, his]
+      - type: dictation
+        item: sense.seat.n.place
+        en: "This is my friend's seat."
+        ko: 여기는 제 친구 자리예요.
+      - type: spell
+        sense: sense.ticket.n.pass
+      - type: shadow
+        en: "Is this @Mina's coat? No, it's @Yuna's."
+        ko: 이거 미나 씨 코트예요? 아니요, 유나 씨 거예요.
+  - id: lesson.a1-08.4
+    title: { ko: 누구 거예요?, en: Whose is it? }
+    goal: { ko: "누구 것인지 묻고 mine, yours로 말할 수 있어요", en: "Ask whose something is and talk about it with mine and yours" }
+    introduces: [sense.whose.det.question, sense.mine.pron.possessive, sense.yours.pron.possessive, sense.hat.n.head, sense.jacket.n.clothing]
+    steps:
+      - type: listen
+        en: Whose hat is this?
+        ko: 이거 누구 모자예요?
+      - type: listen
+        en: "It's mine."
+        ko: 제 거예요.
+      - type: explain
+        text: |
+          누구 것인지 물을 때는 `Whose hat is this?`라고 해요. 물건 이름을 빼고 `Whose is this?`라고도 해요. `whose`는 `who's`(`who is`)와 소리가 같지만 뜻은 "누구의"예요.
+
+          대답할 때는 `my hat`을 줄여 `mine`, `your hat`을 줄여 `yours`라고 해요. `mine`과 `yours` 뒤에는 명사를 붙이지 않아요.
+        examples:
+          - en: Whose jacket is this?
+            ko: 이거 누구 재킷이에요?
+          - en: "[It]{who} [is]{do} [mine]{what}."
+            ko: 제 거예요.
+            literal: 그것은 / ~이다 / 내 것
+          - en: Is this yours?
+            ko: 이거 네 거야?
+          - en: "No, it's @Leo's."
+            ko: 아니, 레오 거야.
+      - type: chooseMeaning
+        en: Is this hat yours?
+        item: sense.yours.pron.possessive
+        options:
+          - { ko: 이 모자 네 거야?, correct: true }
+          - { ko: 이 모자 내 거야?, why: "\"내 거\"는 `mine`이에요. `yours`는 듣는 사람의 것이에요." }
+          - { ko: 이 모자 누구 거야?, why: "\"누구 거\"는 `Whose`로 물어요." }
+      - type: listenChoose
+        en: Whose jacket is this?
+        item: sense.whose.det.question
+        options:
+          - { ko: 이거 누구 재킷이에요?, correct: true }
+          - { ko: 이 사람은 누구예요?, why: "`who's`와 소리는 같지만 뒤에 `jacket`이 와서 \"누구의 재킷\"이에요." }
+          - { ko: 이건 제 재킷이에요., why: "`Whose`로 시작하니까 누구 것인지 묻는 말이에요." }
+      - type: chooseEnglish
+        ko: 그거 내 거야.
+        item: sense.mine.pron.possessive
+        options:
+          - { en: "It's mine.", correct: true }
+          - { en: "It's my.", why: "`my`는 뒤에 명사가 와야 해요. 혼자 쓸 때는 `mine`이에요." }
+          - { en: "It's me.", why: "`It's me`는 \"나야\"예요. \"내 거\"는 `mine`이에요." }
+      - type: fillBlank
+        item: sense.yours.pron.possessive
+        en: Is this bag ___?
+        ko: 이 가방 네 거야?
+        options:
+          - { en: yours, correct: true }
+          - { en: your, why: "`your`는 뒤에 명사가 와야 해요. 혼자 쓸 때는 `yours`예요." }
+          - { en: you, why: "`you`는 \"너\"예요. \"네 거\"는 `yours`예요." }
+      - type: dialogue
+        item: sense.mine.pron.possessive
+        lines:
+          - { speaker: Omar, en: Whose hat is this?, ko: 이거 누구 모자예요? }
+        question: 그 모자는 하린 거예요. 하린이 할 말을 골라요.
+        options:
+          - { en: "It's mine.", correct: true }
+          - { en: "Yes, it's mine.", why: "`Whose`로 물으면 `Yes`나 `No` 없이 대답해요." }
+          - { en: "It's yours.", why: "`yours`는 오마르의 것이라는 말이에요. 하린의 것이니까 `mine`이에요." }
+      - type: fillBlank
+        item: sense.jacket.n.clothing
+        en: Whose ___ is this?
+        ko: 이거 누구 재킷이에요?
+        answers: [jacket]
+      - type: arrange
+        item: sense.whose.det.question
+        ko: 이거 누구 모자예요?
+        en: Whose hat is this?
+        extra: ["who's", what]
+      - type: dictation
+        item: sense.yours.pron.possessive
+        en: Is this jacket yours?
+        ko: 이 재킷 네 거야?
+      - type: spell
+        sense: sense.jacket.n.clothing
+      - type: shadow
+        en: "Whose hat is this? Is it yours?"
+        ko: 이거 누구 모자야? 네 거야?

@@ -523,6 +523,9 @@
       examples:
         - en: The dog is big.
           ko: 그 개는 커요.
+  notes:
+    - kind: usage
+      ko: "`big sister`처럼 `brother`, `sister` 앞에 붙으면 손위라는 말이에요."
 - word: small
   id: word.small
   hangul: 스몰

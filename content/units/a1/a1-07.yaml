@@ -1,0 +1,356 @@
+id: unit.a1-07
+title: { ko: "복수형과 these, those", en: "Plurals, these and those" }
+lessons:
+  - id: lesson.a1-07.1
+    title: { ko: 둘 이상이면 -s, en: Two or more takes -s }
+    goal: { ko: 물건이 둘 이상일 때 -s를 붙여 말할 수 있어요, en: Add -s when there are two or more things }
+    introduces: [pattern.plural-s, sense.apple.n.fruit, sense.egg.n.food, sense.car.n.vehicle, sense.bike.n.bicycle]
+    steps:
+      - type: listen
+        en: "One apple, two apples."
+        ko: 사과 하나, 사과 둘.
+      - type: listen
+        en: The cars are new.
+        ko: 그 차들은 새 차예요.
+      - type: explain
+        text: |
+          영어는 둘 이상이면 명사 끝에 `-s`를 붙여요. 우리말은 "사과 세 개"처럼 "들"을 붙이지 않아도 되지만, 영어는 `three apple`이라고 하면 틀려요.
+
+          `a`와 `an`은 하나일 때만 써요. 주어가 여럿이면 `is` 대신 `are`를 쓰고, 여럿을 다시 말할 때는 `it` 대신 `they`라고 해요.
+        examples:
+          - en: "[The eggs]{who} [are]{do} [in the box]{where}."
+            ko: 달걀은 상자 안에 있어요.
+            literal: 달걀들은 / 있다 / 상자 안에
+          - en: An apple.
+            ko: 사과 하나.
+          - en: Three apples.
+            ko: 사과 세 개.
+          - en: The bikes are red.
+            ko: 자전거들이 빨간색이에요.
+          - en: "They're my books."
+            ko: 그건 제 책들이에요.
+      - type: chooseMeaning
+        en: "Two eggs, please."
+        item: sense.egg.n.food
+        options:
+          - { ko: 달걀 두 개 주세요., correct: true }
+          - { ko: 달걀 하나 주세요., why: "`two eggs`라서 두 개예요. 하나면 `an egg`예요." }
+          - { ko: 사과 두 개 주세요., why: "사과는 `apple`이에요. `egg`는 달걀이에요." }
+      - type: listenChoose
+        en: The cars are red.
+        item: pattern.plural-s
+        options:
+          - { en: The cars are red., correct: true }
+          - { en: The car is red., why: "`cars`의 끝소리 \"즈\"와 `are`가 들렸어요. 차가 여러 대예요." }
+      - type: chooseEnglish
+        ko: 사과 세 개 주세요.
+        item: sense.apple.n.fruit
+        options:
+          - { en: "Three apples, please.", correct: true }
+          - { en: "Three apple, please.", why: "셋이니까 `-s`를 붙여 `apples`라고 해요." }
+          - { en: "Three eggs, please.", why: "`eggs`는 달걀이에요. 사과는 `apples`예요." }
+      - type: fillBlank
+        item: pattern.plural-s
+        en: The bikes ___ new.
+        ko: 그 자전거들은 새 거예요.
+        options:
+          - { en: are, correct: true }
+          - { en: is, why: "`bikes`는 여럿이라서 `are`를 써요. `is`는 하나일 때예요." }
+      - type: dialogue
+        item: pattern.plural-s
+        lines:
+          - { speaker: Leo, en: One egg?, ko: 달걀 하나요? }
+        question: 미나는 달걀이 두 개 필요해요. 미나가 할 말을 골라요.
+        options:
+          - { en: "No, two eggs, please.", correct: true }
+          - { en: "No, two egg, please.", why: "둘이니까 `eggs`라고 해요." }
+          - { en: "Yes, two eggs, please.", why: "하나냐고 물었는데 두 개가 필요하니 `No`로 대답해요." }
+      - type: fillBlank
+        item: sense.apple.n.fruit
+        en: "Two ___, please."
+        ko: 사과 두 개 주세요.
+        answers: [apples]
+      - type: arrange
+        item: sense.car.n.vehicle
+        ko: 그 차들은 오래됐어요.
+        en: The cars are old.
+        extra: [is, car]
+      - type: dictation
+        item: sense.egg.n.food
+        en: The eggs are in the box.
+        ko: 달걀은 상자 안에 있어요.
+      - type: spell
+        sense: sense.apple.n.fruit
+      - type: shadow
+        en: "One apple and two eggs, please."
+        ko: 사과 하나하고 달걀 두 개 주세요.
+  - id: lesson.a1-07.2
+    title: { ko: "-es와 -ies", en: "-es and -ies" }
+    goal: { ko: "-es와 -ies로 끝나는 복수형을 쓰고 말할 수 있어요", en: "Write and say plurals that end in -es and -ies" }
+    introduces: [sense.bus.n.vehicle, sense.dish.n.plate, sense.baby.n.infant, sense.country.n.nation, sense.story.n.tale]
+    steps:
+      - type: listen
+        en: The buses are late.
+        ko: 버스가 늦네요.
+      - type: listen
+        en: The babies are tired.
+        ko: 아기들이 졸려해요.
+      - type: explain
+        text: |
+          `s`, `x`, `sh`, `ch`로 끝나는 말은 `-es`를 붙여요. `bus`는 `buses`, `box`는 `boxes`, `dish`는 `dishes`예요. 이때 끝에 "이즈" 소리가 한 음절 더 붙어요.
+
+          자음 뒤에 `y`로 끝나면 `y`를 `i`로 바꾸고 `-es`를 붙여요. `city`는 `cities`, `baby`는 `babies`예요. `key`처럼 모음 뒤의 `y`는 그냥 `-s`를 붙여 `keys`예요.
+        examples:
+          - en: The buses are big.
+            ko: 버스가 커요.
+          - en: The dishes are in the box.
+            ko: 접시는 상자 안에 있어요.
+          - en: Brazil and Canada are big countries.
+            ko: 브라질과 캐나다는 큰 나라예요.
+          - en: The babies are happy.
+            ko: 아기들이 기분이 좋아요.
+          - en: The stories are funny.
+            ko: 그 이야기들은 웃겨요.
+      - type: explain
+        text: |
+          끝소리는 세 가지예요. `books`는 "스", `dogs`는 "즈", `buses`는 "이즈"처럼 들려요. 소리는 앞 소리에 따라 저절로 정해지니까 외우지 않아도 돼요. 들을 때 끝소리를 놓치지 않는 게 중요해요. `-ies`는 음절이 늘지 않아서 `babies`는 "베이비즈"예요.
+        examples:
+          - en: Books.
+            ko: 책들.
+          - en: Dogs.
+            ko: 개들.
+          - en: Boxes.
+            ko: 상자들.
+      - type: chooseMeaning
+        en: The dishes are in the box.
+        item: sense.dish.n.plate
+        options:
+          - { ko: 접시는 상자 안에 있어요., correct: true }
+          - { ko: 컵은 상자 안에 있어요., why: "컵은 `cup`이에요. `dish`는 접시예요." }
+          - { ko: 접시는 가방 안에 있어요., why: "가방은 `bag`이에요. `box`는 상자예요." }
+      - type: listenChoose
+        en: The buses are here.
+        item: sense.bus.n.vehicle
+        options:
+          - { en: The buses are here., correct: true }
+          - { en: The bus is here., why: "`buses`는 끝에 \"이즈\" 소리가 붙어요. 그리고 `are`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 아기들이 아주 작아요.
+        item: sense.baby.n.infant
+        options:
+          - { en: The babies are very small., correct: true }
+          - { en: The baby is very small., why: "\"아기들\"이라서 여럿이에요. `baby`의 복수는 `babies`예요." }
+          - { en: The baby are very small., why: "여럿이니까 `babies`, 그리고 `are`예요." }
+      - type: fillBlank
+        item: sense.bus.n.vehicle
+        en: The ___ are late.
+        ko: 버스가 늦네요.
+        options:
+          - { en: buses, correct: true }
+          - { en: bus, why: "`are`가 왔으니 여럿이에요. `bus`는 `s`로 끝나서 `-es`를 붙여요." }
+      - type: dialogue
+        item: sense.dish.n.plate
+        lines:
+          - { speaker: Sam, en: Where are the dishes?, ko: 접시 어디 있어요? }
+        question: 접시는 상자 안에 있어요. 하린이 할 말을 골라요.
+        options:
+          - { en: "They're in the box.", correct: true }
+          - { en: "It's in the box.", why: "접시가 여럿이라서 `it`이 아니라 `they`로 받아요." }
+          - { en: "They're in the bag.", why: "가방은 `bag`이에요. 접시는 상자, `box` 안에 있어요." }
+      - type: fillBlank
+        item: sense.country.n.nation
+        en: My friends are from different ___.
+        ko: 제 친구들은 여러 나라에서 왔어요.
+        answers: [countries]
+      - type: arrange
+        item: sense.story.n.tale
+        ko: 그 이야기들은 아주 웃겨요.
+        en: The stories are very funny.
+        extra: [is, story]
+      - type: dictation
+        item: sense.baby.n.infant
+        en: The babies are hungry.
+        ko: 아기들이 배고파해요.
+      - type: spell
+        sense: sense.country.n.nation
+      - type: shadow
+        en: The buses are late again.
+        ko: 버스가 또 늦네요.
+  - id: lesson.a1-07.3
+    title: { ko: "men, women, children", en: "Men, women, children" }
+    goal: { ko: 모양이 바뀌는 복수형을 쓸 수 있어요, en: Use plurals that change shape }
+    introduces: [sense.man.n.adult, sense.woman.n.adult, sense.child.n.young, sense.person.n.human, sense.kid.n.child]
+    steps:
+      - type: listen
+        en: Two men and two women.
+        ko: 남자 둘, 여자 둘.
+      - type: listen
+        en: The children are happy.
+        ko: 아이들이 즐거워해요.
+      - type: explain
+        text: |
+          몇몇 단어는 `-s`를 붙이지 않고 모양이 바뀌어요. `man`은 `men`, `woman`은 `women`, `child`는 `children`, `person`은 `people`이에요. 많지 않으니 이 넷부터 익히면 돼요.
+
+          `women`은 "위민"처럼 읽어요. 앞의 `o`가 "이" 소리예요. `people`은 이미 여럿이라서 "사람들"이라는 뜻으로는 `peoples`라고 하지 않아요.
+        examples:
+          - en: A man and a woman.
+            ko: 남자 한 명, 여자 한 명.
+          - en: Two men and two women.
+            ko: 남자 둘, 여자 둘.
+          - en: "[The children]{who} [are]{do} [very happy]{what}."
+            ko: 아이들이 아주 즐거워해요.
+            literal: 아이들은 / ~이다 / 아주 즐거운
+          - en: The people here are kind.
+            ko: 여기 사람들은 친절해요.
+      - type: explain
+        text: |
+          `kid`도 "아이"예요. 말할 때는 `child`보다 `kid`를 더 자주 써요. `kid`는 그냥 `-s`를 붙여 `kids`예요.
+        examples:
+          - en: The kids are hungry.
+            ko: 애들이 배고파해요.
+          - en: "She's a nice kid."
+            ko: 착한 아이예요.
+      - type: chooseMeaning
+        en: The people are nice.
+        item: sense.person.n.human
+        options:
+          - { ko: 그 사람들은 친절해요., correct: true }
+          - { ko: 그 사람은 친절해요., why: "`people`은 `person`의 복수라서 여러 사람이에요." }
+          - { ko: 그 아이들은 친절해요., why: "아이들은 `children`이나 `kids`예요. `people`은 사람들이에요." }
+      - type: listenChoose
+        en: The women are doctors.
+        item: sense.woman.n.adult
+        options:
+          - { en: The women are doctors., correct: true }
+          - { en: The woman is a doctor., why: "\"위민\"으로 들리면 `women`, 여러 명이에요. 한 명인 `woman`은 \"워먼\"처럼 들려요." }
+      - type: chooseEnglish
+        ko: 아이들이 여기 있어요.
+        item: sense.child.n.young
+        options:
+          - { en: The children are here., correct: true }
+          - { en: The child is here., why: "\"아이들\"이라서 여럿이에요. `child`의 복수는 `children`이에요." }
+          - { en: The child are here., why: "여럿이니까 `children`, 그리고 `are`예요." }
+      - type: fillBlank
+        item: sense.man.n.adult
+        en: Two ___ are here.
+        ko: 남자 두 명이 여기 있어요.
+        options:
+          - { en: men, correct: true }
+          - { en: man, why: "두 명이니까 복수를 써요. `man`은 `-s`를 붙이지 않고 `men`이 돼요." }
+          - { en: women, why: "`women`은 여자들이에요. 남자들은 `men`이에요." }
+      - type: dialogue
+        item: sense.kid.n.child
+        lines:
+          - { speaker: Ana, en: Who are they?, ko: 저 아이들은 누구예요? }
+        question: 저 아이들은 레오의 아이들이에요. 레오가 할 말을 골라요.
+        options:
+          - { en: "They're my kids.", correct: true }
+          - { en: "They're my kid.", why: "여러 명이니까 `kids`예요." }
+          - { en: "He's my kids.", why: "여러 명은 `he`가 아니라 `they`로 받아요." }
+      - type: fillBlank
+        item: sense.person.n.human
+        en: The ___ here are very kind.
+        ko: 여기 사람들은 아주 친절해요.
+        answers: [people]
+      - type: arrange
+        item: sense.kid.n.child
+        ko: 그 아이들은 아주 똑똑해요.
+        en: The kids are very smart.
+        extra: [is, kid]
+      - type: dictation
+        item: sense.child.n.young
+        en: The children are tired.
+        ko: 아이들이 피곤해해요.
+      - type: spell
+        sense: sense.woman.n.adult
+      - type: shadow
+        en: Two women and three children are here.
+        ko: 여자 두 명하고 아이 세 명이 여기 있어요.
+  - id: lesson.a1-07.4
+    title: { ko: "these와 those", en: "These and those" }
+    goal: { ko: 가까운 것과 먼 것 여럿을 가리켜 말할 수 있어요, en: Point to several things near and far }
+    introduces: [sense.these.pron.near, sense.those.pron.far, sense.shoe.n.foot, sense.flower.n.plant, sense.photo.n.picture]
+    steps:
+      - type: listen
+        en: These are my shoes.
+        ko: 이건 제 신발이에요.
+      - type: listen
+        en: Those flowers are beautiful.
+        ko: 저 꽃들 예쁘다.
+      - type: explain
+        text: |
+          여럿을 가리킬 때는 `this`가 `these`, `that`이 `those`로 바뀌어요. `These are my photos`는 "이건 제 사진들이에요"예요. 명사 앞에 붙어서 `these shoes`, `those flowers`처럼도 쓰고, 이때 뒤 명사도 복수예요.
+
+          `these`는 `this`보다 "이"를 길게 끌고 끝을 "즈"로 내요. 대답은 `They're photos`처럼 `they`로 해요.
+        examples:
+          - en: "[These]{who} [are]{do} [my photos]{what}."
+            ko: 이건 제 사진들이에요.
+            literal: 이것들은 / ~이다 / 내 사진들
+          - en: What are those?
+            ko: 저것들은 뭐예요?
+          - en: "They're flowers."
+            ko: 꽃이에요.
+          - en: These shoes are new.
+            ko: 이 신발은 새 거예요.
+      - type: explain
+        text: |
+          신발은 두 짝이 한 켤레라서 보통 `shoes`처럼 복수로 말해요. 우리말로 "내 신발"이라고 할 때 영어로는 `my shoes`예요. 한 짝만 말할 때는 `a shoe`예요.
+        examples:
+          - en: Where are my shoes?
+            ko: 내 신발 어디 있지?
+      - type: chooseMeaning
+        en: What are those?
+        item: sense.those.pron.far
+        options:
+          - { ko: 저것들은 뭐예요?, correct: true }
+          - { ko: 이것들은 뭐예요?, why: "가까이 있는 것들은 `these`예요. `those`는 떨어져 있는 것들이에요." }
+          - { ko: 저 사람들은 누구예요?, why: "누구인지 물을 때는 `Who are they?`예요. `What`은 \"무엇\"이에요." }
+      - type: listenChoose
+        en: These are my photos.
+        item: sense.these.pron.near
+        options:
+          - { en: These are my photos., correct: true }
+          - { en: This is my photo., why: "\"이\"를 길게 끌고 끝이 \"즈\"로 들렸어요. 그리고 `are`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 이 꽃들 예뻐요.
+        item: sense.flower.n.plant
+        options:
+          - { en: These flowers are beautiful., correct: true }
+          - { en: This flowers are beautiful., why: "꽃이 여럿이니까 `this`가 아니라 `these`예요." }
+          - { en: These flower are beautiful., why: "`these` 뒤에는 복수 `flowers`가 와요." }
+      - type: fillBlank
+        item: sense.those.pron.far
+        en: ___ shoes are new.
+        ko: 저 신발은 새 거예요.
+        options:
+          - { en: Those, correct: true }
+          - { en: That, why: "`shoes`가 복수라서 `that`이 아니라 `those`예요." }
+          - { en: These, why: "\"저 신발\"은 떨어져 있으니 `those`예요. `these`는 \"이 신발\"이에요." }
+      - type: dialogue
+        item: sense.photo.n.picture
+        lines:
+          - { speaker: Mina, en: What are these?, ko: 이것들은 뭐예요? }
+        question: 디에고가 사진 몇 장을 들고 있어요. 미나가 묻자 디에고가 할 말을 골라요.
+        options:
+          - { en: "They're photos.", correct: true }
+          - { en: "It's photos.", why: "여럿은 `it`이 아니라 `they`로 받아요." }
+          - { en: "They're photo.", why: "여럿이니까 `photos`예요." }
+      - type: fillBlank
+        item: sense.shoe.n.foot
+        en: Those are my ___.
+        ko: 저건 제 신발이에요.
+        answers: [shoes]
+      - type: arrange
+        item: sense.these.pron.near
+        ko: 이 사진들 멋지다.
+        en: These photos are cool.
+        extra: [this, photo]
+      - type: dictation
+        item: sense.flower.n.plant
+        en: Those flowers are white.
+        ko: 저 꽃들은 흰색이에요.
+      - type: spell
+        sense: sense.photo.n.picture
+      - type: shadow
+        en: "Look, those flowers are beautiful."
+        ko: 봐, 저 꽃들 예쁘다.

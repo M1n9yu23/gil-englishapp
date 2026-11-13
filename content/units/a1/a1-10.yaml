@@ -1,0 +1,276 @@
+id: unit.a1-10
+title: { ko: "나이와 연락처", en: "Age and contact details" }
+lessons:
+  - id: lesson.a1-10.1
+    title: { ko: 몇 살이에요?, en: How old are you? }
+    goal: { ko: 나이를 묻고 말할 수 있어요, en: Ask and say how old someone is }
+    introduces: [pattern.how-old, sense.old.adj.age, sense.year.n.time, sense.young.adj.age, sense.birthday.n.day]
+    steps:
+      - type: listen
+        en: "How {old|sense.old.adj.age} are you?"
+        ko: 몇 살이에요?
+      - type: listen
+        en: "I'm 29 years {old|sense.old.adj.age}."
+        ko: 저는 스물아홉 살이에요.
+      - type: explain
+        text: |
+          나이를 물을 때는 `How old are you?`라고 해요. 대답은 `I'm 29 years old`처럼 숫자 뒤에 `years old`를 붙이거나 줄여서 `I'm 29`라고 해요.
+
+          영어로 말하는 나이는 만 나이예요. 태어나면 0살이고 생일마다 한 살씩 늘어요. 흔히 세는 나이보다 한두 살 적을 수 있어요. 한 살은 `one year old`처럼 `year`를 단수로 써요.
+        examples:
+          - en: "How {old|sense.old.adj.age} are you?"
+            ko: 몇 살이에요?
+          - en: "[I]{who} [am]{do} [29 years {old|sense.old.adj.age}]{what}."
+            ko: 저는 스물아홉 살이에요.
+            literal: 나는 / ~이다 / 29살
+          - en: "How {old|sense.old.adj.age} is your son?"
+            ko: 아드님은 몇 살이에요?
+          - en: "He's 7."
+            ko: 일곱 살이에요.
+          - en: "The baby is one year {old|sense.old.adj.age}."
+            ko: 아기는 한 살이에요.
+      - type: explain
+        text: |
+          사람에게 `old`는 "나이 든", `young`은 "젊은, 어린"이에요. 생일에는 `Happy birthday`라고 축하해요.
+        examples:
+          - en: "My grandmother is {old|sense.old.adj.age}. My mom is young."
+            ko: 우리 할머니는 연세가 많으시고, 엄마는 젊으세요.
+          - en: Happy birthday!
+            ko: 생일 축하해요.
+      - type: chooseMeaning
+        en: "How {old|sense.old.adj.age} is your daughter?"
+        item: pattern.how-old
+        options:
+          - { ko: 따님은 몇 살이에요?, correct: true }
+          - { ko: 따님은 어디 출신이에요?, why: "출신을 물을 때는 `Where is she from?`이에요. `How old`는 나이를 묻는 말이에요." }
+          - { ko: 따님은 키가 커요?, why: "키를 물을 때는 `Is she tall?`이에요. `How old`는 나이를 묻는 말이에요." }
+      - type: listenChoose
+        en: "I'm 30."
+        item: sense.thirty.num.count
+        options:
+          - { en: "I'm 30.", correct: true }
+          - { en: "I'm 13.", why: "앞 `thir`를 세게 말하고 끝이 짧았어요. `thirteen`은 뒤를 길게 끌다 `n`으로 닫아요." }
+      - type: chooseEnglish
+        ko: 저는 스물다섯 살이에요.
+        item: sense.year.n.time
+        options:
+          - { en: "I'm 25 years {old|sense.old.adj.age}.", correct: true }
+          - { en: "I'm 25 year {old|sense.old.adj.age}.", why: "둘 이상이니까 `years`예요. 한 살일 때만 `year`예요." }
+          - { en: "I'm 25 years.", why: "`years old`까지 말하거나 숫자만 말해요." }
+      - type: fillBlank
+        item: pattern.how-old
+        en: How ___ are you?
+        ko: 몇 살이에요?
+        options:
+          - { en: "{old|sense.old.adj.age}", correct: true }
+          - { en: young, why: "젊은 사람에게도 나이는 늘 `How old`로 물어요." }
+      - type: dialogue
+        item: sense.old.adj.age
+        lines:
+          - { speaker: Leo, en: "How {old|sense.old.adj.age} is your son?", ko: 아드님은 몇 살이에요? }
+        question: 미나의 아들은 여섯 살이에요. 미나가 할 말을 골라요.
+        options:
+          - { en: "He's six.", correct: true }
+          - { en: "He's six years.", why: "`years old`까지 말하거나 `six`만 말해요." }
+          - { en: "She's six.", why: "아들이니까 `he`로 받아요." }
+      - type: dialogue
+        item: sense.birthday.n.day
+        lines:
+          - { speaker: Ana, en: "It's my birthday.", ko: 오늘 제 생일이에요. }
+        question: 준이 할 말을 골라요.
+        options:
+          - { en: Happy birthday!, correct: true }
+          - { en: Nice to meet you., why: "처음 만났을 때 하는 인사예요. 생일에는 `Happy birthday`라고 해요." }
+          - { en: "You're welcome.", why: "고맙다는 말에 하는 대답이에요." }
+      - type: fillBlank
+        item: sense.year.n.time
+        en: "My grandmother is 80 ___ {old|sense.old.adj.age}."
+        ko: 우리 할머니는 여든 살이세요.
+        answers: [years]
+      - type: arrange
+        item: sense.young.adj.age
+        ko: 우리 선생님은 아주 젊어요.
+        en: My teacher is very young.
+        extra: [old, years]
+      - type: spell
+        sense: sense.birthday.n.day
+      - type: shadow
+        en: "How {old|sense.old.adj.age} are you? I'm 21."
+        ko: 몇 살이에요? 스물한 살이에요.
+  - id: lesson.a1-10.2
+    title: { ko: 전화번호, en: Phone numbers }
+    goal: { ko: 전화번호를 묻고 알려 줄 수 있어요, en: Ask for and give a phone number }
+    introduces: [sense.number.n.digits, sense.call.v.phone, sense.text.v.message, sense.wrong.adj.incorrect, sense.slowly.adv.not-fast]
+    steps:
+      - type: listen
+        en: "What's your phone number?"
+        ko: 전화번호가 어떻게 돼요?
+      - type: listen
+        en: "It's five five five, zero one four two."
+        ko: 555-0142예요.
+      - type: explain
+        text: |
+          전화번호는 `What's your phone number?`로 물어요. 대답은 `It's`로 시작해서 숫자를 한 자리씩 읽어요. 0은 `zero`나 `oh`로 읽어요.
+
+          `call`은 "전화하다", `text`는 "문자를 보내다"예요. `Call me`로 끝나거나 `Call me tomorrow`처럼 뒤에 때가 오면 "전화 주세요"예요. 앞에서 배운 `Call me Jun`처럼 바로 이름이 오면 "준이라고 불러 주세요"예요.
+        examples:
+          - en: "What's your phone number?"
+            ko: 전화번호가 어떻게 돼요?
+          - en: "[Call]{do} [me]{what} [tomorrow]{when}."
+            ko: 내일 전화 주세요.
+            literal: 전화해라 / 나에게 / 내일
+          - en: Text me later.
+            ko: 이따 문자 주세요.
+      - type: explain
+        text: |
+          숫자를 놓쳤으면 `Slowly, please`라고 부탁해요. 전화가 잘못 걸려 왔을 때도, 내가 잘못 걸었을 때도 `Sorry, wrong number`라고 해요.
+        examples:
+          - en: "Slowly, please."
+            ko: 천천히 말해 주세요.
+          - en: "Sorry, wrong number."
+            ko: 죄송한데 잘못 거셨어요.
+      - type: chooseMeaning
+        en: Call me tomorrow.
+        item: sense.call.v.phone
+        options:
+          - { ko: 내일 전화 주세요., correct: true }
+          - { ko: 내일 문자 주세요., why: "문자는 `text`예요. `call`은 전화예요." }
+          - { ko: 내일 봐요., why: "\"내일 봐요\"는 `See you tomorrow`예요." }
+      - type: listenChoose
+        en: "It's five five five, zero one three nine."
+        item: sense.nine.num.count
+        options:
+          - { en: "555-0139", correct: true }
+          - { en: "555-0193", why: "`three`가 먼저, `nine`이 나중에 나왔어요." }
+          - { en: "555-0130", why: "마지막은 `zero`가 아니라 `nine`이었어요." }
+      - type: chooseEnglish
+        ko: 천천히 말해 주세요.
+        item: sense.slowly.adv.not-fast
+        options:
+          - { en: "Slowly, please.", correct: true }
+          - { en: "Again, please.", why: "`again`은 \"한 번 더\"예요. 천천히는 `slowly`예요." }
+      - type: fillBlank
+        item: sense.wrong.adj.incorrect
+        en: "Sorry, ___ number."
+        ko: 죄송한데 잘못 거셨어요.
+        options:
+          - { en: wrong, correct: true }
+          - { en: right, why: "`right`는 \"맞는\"이에요. 잘못 걸린 번호는 `wrong number`예요." }
+          - { en: bad, why: "잘못 걸린 번호는 `bad`가 아니라 `wrong number`라고 해요." }
+      - type: dialogue
+        item: sense.wrong.adj.incorrect
+        lines:
+          - { speaker: Sam, en: "Hello? Is this @Mina?", ko: 여보세요? 미나 씨예요? }
+        question: 유나에게 모르는 사람이 전화했어요. 유나가 할 말을 골라요.
+        options:
+          - { en: "Sorry, wrong number.", correct: true }
+          - { en: "Yes, it's @Mina.", why: "유나는 미나가 아니에요. 번호가 잘못 걸렸어요." }
+          - { en: "Slowly, please.", why: "천천히 말해 달라는 말이에요. 잘못 걸린 전화에는 `wrong number`예요." }
+      - type: fillBlank
+        item: sense.number.n.digits
+        en: "What's your phone ___?"
+        ko: 전화번호가 어떻게 돼요?
+        answers: [number]
+      - type: arrange
+        item: sense.text.v.message
+        ko: 내일 문자 주세요.
+        en: "Text me tomorrow, please."
+        extra: [call, to]
+      - type: dictation
+        item: sense.call.v.phone
+        en: Call me later.
+        ko: 이따 전화 주세요.
+      - type: spell
+        sense: sense.number.n.digits
+      - type: shadow
+        en: "What's your phone number? It's five five five, zero one four two."
+        ko: 전화번호가 어떻게 돼요? 555-0142예요.
+  - id: lesson.a1-10.3
+    title: { ko: "이름, 이메일, 주소", en: "Names, email and address" }
+    goal: { ko: 이름 철자와 주소를 묻고 말할 수 있어요, en: Ask for and give a spelling and an address }
+    introduces: [sense.first-name.n.given, sense.last-name.n.family, pattern.how-do-you-spell, sense.email.n.message, sense.address.n.place, sense.street.n.road]
+    steps:
+      - type: listen
+        en: "What's your last name?"
+        ko: 성이 뭐예요?
+      - type: listen
+        en: How do you spell that?
+        ko: 철자가 어떻게 돼요?
+      - type: explain
+        text: |
+          영어권에서는 `Yuna Kim`처럼 성을 뒤에 말해요. 그래서 성은 `last name`, 성을 뺀 이름은 `first name`이에요. `Kim Yuna`라고 써도 `first name`은 `Yuna`예요.
+
+          철자를 물을 때는 `How do you spell that?`이라고 해요. 대답은 알파벳을 한 글자씩 말해요.
+        examples:
+          - en: "[My first name]{who} [is]{do} [@Yuna]{what}."
+            ko: 제 이름은 유나예요.
+            literal: 내 이름은 / ~이다 / 유나
+          - en: My last name is @Kim.
+            ko: 제 성은 김이에요.
+          - en: How do you spell that?
+            ko: 철자가 어떻게 돼요?
+      - type: explain
+        text: |
+          이메일 주소는 `email address`예요. `@`는 `at`, 점은 `dot`이라고 읽어요. 집 주소는 `25 Green Street`처럼 건물 번호가 길 이름 앞에 와요. 우리 도로명 주소는 "세종대로 110"처럼 길 이름이 먼저라서 순서가 반대예요.
+        examples:
+          - en: "What's your email address?"
+            ko: 이메일 주소가 뭐예요?
+          - en: My address is 25 Green Street.
+            ko: 제 주소는 그린가 25번지예요.
+      - type: listenChoose
+        en: "K, I, M."
+        checkVocab: false
+        options:
+          - { en: "K-I-M", correct: true }
+          - { en: "K-E-M", why: "`E`는 \"이\", `I`는 \"아이\"라고 읽어요. 들린 글자는 `I`예요." }
+          - { en: "G-I-M", why: "`G`는 \"쥐\", `K`는 \"케이\"예요. 들린 글자는 `K`예요." }
+      - type: listenChoose
+        en: How do you spell that?
+        item: pattern.how-do-you-spell
+        options:
+          - { ko: 철자가 어떻게 돼요?, correct: true }
+          - { ko: 그게 뭐예요?, why: "\"그게 뭐예요?\"는 `What's that?`이에요. `spell`은 \"철자를 말하다\"예요." }
+          - { ko: 몇 살이에요?, why: "나이는 `How old`로 물어요. 들린 말은 `How do you spell`이에요." }
+      - type: chooseEnglish
+        ko: 제 이름은 유나예요.
+        item: sense.first-name.n.given
+        options:
+          - { en: "My first name is @Yuna.", correct: true }
+          - { en: "My last name is @Yuna.", why: "`last name`은 성이에요. 성을 뺀 이름은 `first name`이에요." }
+          - { en: "My first name @Yuna.", why: "`is`가 빠졌어요." }
+      - type: fillBlank
+        item: sense.last-name.n.family
+        en: "My ___ is @Kim."
+        ko: 제 성은 김이에요.
+        options:
+          - { en: last name, correct: true }
+          - { en: first name, why: "`first name`은 성을 뺀 이름이에요. 성은 `last name`이에요." }
+      - type: dialogue
+        item: sense.street.n.road
+        lines:
+          - { speaker: Diego, en: "What's your address?", ko: 주소가 어떻게 돼요? }
+        question: 하린의 주소는 그린가 25번지예요. 하린이 할 말을 골라요.
+        options:
+          - { en: "It's 25 Green Street.", correct: true }
+          - { en: "It's Green Street 25.", why: "영어 주소는 건물 번호가 길 이름 앞에 와요." }
+          - { en: "I'm 25 Green Street.", why: "주소는 `It's`나 `My address is`로 말해요. `I'm 25`는 \"스물다섯 살이에요\"로 들려요." }
+      - type: fillBlank
+        item: sense.address.n.place
+        en: "What's your email ___?"
+        ko: 이메일 주소가 뭐예요?
+        answers: [address]
+      - type: arrange
+        item: pattern.how-do-you-spell
+        ko: 철자가 어떻게 돼요?
+        en: How do you spell that?
+        extra: [what, is]
+      - type: dictation
+        item: sense.first-name.n.given
+        en: "What's your first name?"
+        ko: 성 말고 이름은 뭐예요?
+      - type: spell
+        sense: sense.address.n.place
+      - type: shadow
+        en: "My last name is @Kim. K, I, M."
+        checkVocab: false
+        ko: 제 성은 김이에요. 케이, 아이, 엠.
