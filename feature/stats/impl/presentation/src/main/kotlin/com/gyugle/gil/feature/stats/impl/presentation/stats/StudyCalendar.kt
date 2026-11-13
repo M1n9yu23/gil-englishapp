@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -55,6 +56,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 
 private object StudyCalendarTokens {
+    /** At the default text size; the circle grows with the font scale so the day number fits. */
     val DaySize = 36.dp
     val DayGap = 2.dp
     val TodayBorder = 2.dp
@@ -134,10 +136,11 @@ internal fun StudyCalendar(calendar: CalendarUi, onPrevious: () -> Unit, onNext:
 @Composable
 private fun DayCell(day: CalendarDayUi) {
     val colors = MaterialTheme.colorScheme
+    val maxSize = StudyCalendarTokens.DaySize * LocalDensity.current.fontScale
     // As wide as the cell allows up to DaySize, so neighbours never touch when the text is large.
     val shape = Modifier
         .padding(horizontal = StudyCalendarTokens.DayGap)
-        .widthIn(max = StudyCalendarTokens.DaySize)
+        .widthIn(max = maxSize)
         .fillMaxWidth()
         .aspectRatio(1f)
     val modifier = when {
