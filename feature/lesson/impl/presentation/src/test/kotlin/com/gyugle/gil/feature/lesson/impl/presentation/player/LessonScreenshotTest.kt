@@ -82,6 +82,17 @@ class LessonScreenshotTest {
 
     @Test fun fillBlank_typed_readyToCheck() = capture(Data.playing(Data.fillBlankTyped, canCheck = true))
 
+    @Test fun fillBlank_choose_beforeAnswering() = capture(
+        Data.playing(
+            StepUi.Choice(
+                ChoicePrompt.Blank("My ___ is Mina.", "제 이름은 미나예요."),
+                listOf(OptionUi("name", true), OptionUi("game", true), OptionUi("same", true)),
+                picked = null,
+                correct = null
+            )
+        )
+    )
+
     @Test fun arrange_halfBuilt() = capture(Data.playing(Data.arrange, canCheck = true))
 
     @Test fun spell_close_showsTheSpelling() = capture(
@@ -103,6 +114,11 @@ class LessonScreenshotTest {
     )
 
     @Test fun result_listsTheItems() = capture(Data.result)
+
+    @Test fun result_saveFailed_offersToTryAgain() {
+        val finished = Data.result.phase as LessonPhase.Finished
+        capture(Data.result.copy(phase = LessonPhase.Finished(finished.result.copy(saveFailed = true))))
+    }
 
     @Test
     fun exitDialog_asksBeforeLeaving() = capture(Data.playing(Data.chooseMeaning).copy(isExitConfirmShown = true))
