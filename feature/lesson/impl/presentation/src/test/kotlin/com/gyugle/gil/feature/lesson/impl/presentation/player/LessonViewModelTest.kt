@@ -394,6 +394,61 @@ class LessonViewModelTest {
     }
 
     @Test
+    fun finish_studyTimeNotSaved_retrySavesOnlyWhatFailed() {
+        progress.studyTimeError = DataError.Local.DISK_FULL
+        val viewModel = playToPassage()
+        viewModel.onAction(LessonAction.OnResumed)
+        clock.now += 2.minutes
+        viewModel.pickText("부채")
+        viewModel.continueStep()
+        viewModel.pickText("하나")
+        viewModel.continueStep()
+
+        assertThat((viewModel.state.value.phase as LessonPhase.Finished).result.saveFailed).isTrue()
+        assertThat(progress.completed.size).isEqualTo(1)
+
+        progress.studyTimeError = null
+        viewModel.onAction(LessonAction.OnSaveRetryClick)
+
+        assertThat((viewModel.state.value.phase as LessonPhase.Finished).result.saveFailed).isFalse()
+        assertThat(progress.completed.size).isEqualTo(1)
+        assertThat(progress.studyTime).containsExactly(2.minutes)
+    }
+
+    @Test
+    fun result_timeOnTheResultScreen_isNotStudyTime() {
+        val viewModel = playToPassage()
+        viewModel.onAction(LessonAction.OnResumed)
+        clock.now += 2.minutes
+        viewModel.pickText("부채")
+        viewModel.continueStep()
+        viewModel.pickText("하나")
+        viewModel.continueStep()
+        clock.now += 10.minutes
+        viewModel.onAction(LessonAction.OnPaused)
+
+        assertThat(progress.studyTime).containsExactly(2.minutes)
+    }
+
+    @Test
+    fun result_afterProcessDeathWithTimeNotSaved_savesTheTimeOnly() {
+        val handle = SavedStateHandle(
+            mapOf(
+                "started" to true,
+                "result_minutes" to 2,
+                "result_ratings" to arrayListOf("sound.v=GOOD"),
+                "result_saved" to true,
+                "result_study_millis" to 120_000L
+            )
+        )
+
+        viewModel(handle)
+
+        assertThat(progress.completed).isEmpty()
+        assertThat(progress.studyTime).containsExactly(2.minutes)
+    }
+
+    @Test
     fun open_runLeftHalfway_asksAndContinuesWhereItStopped() {
         runs.runs[lesson.id] = LessonRun.start(5).next().answer(AnswerGrade.CORRECT).next()
         val viewModel = viewModel()

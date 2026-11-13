@@ -18,6 +18,7 @@ package com.gyugle.gil.feature.lesson.impl.presentation.player
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.core.domain.onFailure
 import com.gyugle.gil.core.domain.onSuccess
 import com.gyugle.gil.core.presentation.permissions.PermissionState
@@ -443,15 +444,17 @@ class LessonViewModel @AssistedInject constructor(
         val loaded = lesson ?: return
         val finished = run ?: return
         val millis = takeStudyTime()
+        // Time on the result screen is not study time.
+        activeSince = null
         pendingRatings = introducedRatings(loaded.introduced.map { it.id }, loaded.steps, finished)
         val minutes = minutesOf(run?.studiedMillis ?: finished.studiedMillis)
         savedStateHandle[KEY_RESULT_MINUTES] = minutes
         savedStateHandle[KEY_RESULT_RATINGS] =
             ArrayList(pendingRatings.map { (item, rating) -> "${item.value}=${rating.name}" })
+        savedStateHandle[KEY_RESULT_STUDY_MILLIS] = millis
         result = resultOf(loaded, minutes, pendingRatings)
         render()
         saveResult()
-        viewModelScope.launch { recordStudyTime(millis) }
     }
 
     /** After process death on the result: the same result, saved again if it was not saved yet. */
@@ -465,7 +468,7 @@ class LessonViewModel @AssistedInject constructor(
             id to rating
         }.toMap()
         result = resultOf(loaded, minutes, pendingRatings)
-        if (savedStateHandle.get<Boolean>(KEY_RESULT_SAVED) == true) {
+        if (savedStateHandle.get<Boolean>(KEY_RESULT_SAVED) == true && unsavedStudyMillis() == 0L) {
             result = result?.copy(isSaving = false)
             render()
         } else {
@@ -473,6 +476,8 @@ class LessonViewModel @AssistedInject constructor(
         }
         return true
     }
+
+    private fun unsavedStudyMillis(): Long = savedStateHandle.get<Long>(KEY_RESULT_STUDY_MILLIS) ?: 0L
 
     private fun resultOf(loaded: Lesson, minutes: Int, ratings: Map<StudyItemId, ReviewRating>) = ResultUi(
         minutes = minutes,
@@ -485,25 +490,33 @@ class LessonViewModel @AssistedInject constructor(
         saveFailed = false
     )
 
+    /**
+     * Saves the finished lesson and the study time since the last pause. A retry writes only the
+     * part that failed, so neither is counted twice.
+     */
     private fun saveResult() {
         if (result == null) return
         result = result?.copy(isSaving = true, saveFailed = false)
         render()
         val ratings = pendingRatings
         viewModelScope.launch {
-            // Leaving the result while it saves must not cut the write short.
-            val saved = withContext(NonCancellable) {
-                progress.completeLesson(lessonId, ratings).onSuccess { runs.clear(lessonId) }
+            // Leaving the result while it saves must not cut the writes short.
+            val failed = withContext(NonCancellable) {
+                val lessonFailed = savedStateHandle.get<Boolean>(KEY_RESULT_SAVED) != true &&
+                    progress.completeLesson(lessonId, ratings)
+                        .onSuccess {
+                            runs.clear(lessonId)
+                            savedStateHandle[KEY_RESULT_SAVED] = true
+                        }
+                        .onFailure { Timber.w("Could not save a finished lesson: %s", it) } is Outcome.Failure
+                val millis = unsavedStudyMillis()
+                val timeFailed = millis > 0 &&
+                    progress.recordStudyTime(millis.milliseconds)
+                        .onSuccess { savedStateHandle[KEY_RESULT_STUDY_MILLIS] = 0L }
+                        .onFailure { Timber.w("Could not record study time: %s", it) } is Outcome.Failure
+                lessonFailed || timeFailed
             }
-            saved
-                .onSuccess {
-                    savedStateHandle[KEY_RESULT_SAVED] = true
-                    result = result?.copy(isSaving = false)
-                }
-                .onFailure {
-                    Timber.w("Could not save a finished lesson: %s", it)
-                    result = result?.copy(isSaving = false, saveFailed = true)
-                }
+            result = result?.copy(isSaving = false, saveFailed = failed)
             render()
         }
     }
@@ -743,6 +756,7 @@ class LessonViewModel @AssistedInject constructor(
         private const val KEY_RESULT_MINUTES = "result_minutes"
         private const val KEY_RESULT_RATINGS = "result_ratings"
         private const val KEY_RESULT_SAVED = "result_saved"
+        private const val KEY_RESULT_STUDY_MILLIS = "result_study_millis"
 
         /** How long a new lesson waits for the speech engine before treating it as missing. */
         private val VOICE_WAIT = 3.seconds

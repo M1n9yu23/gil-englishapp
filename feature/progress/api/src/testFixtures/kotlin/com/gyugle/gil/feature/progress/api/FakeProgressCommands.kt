@@ -23,8 +23,9 @@ import com.gyugle.gil.feature.curriculum.api.StudyItemId
 import kotlin.time.Duration
 
 /**
- * Records the calls made to it. [completeError], [saveError] and [reviewError], when set, fail
- * [completeLesson] and [skipLessons], [setSaved], and [recordReview]. With an [observer], [setSaved] also changes its
+ * Records the calls made to it. [completeError], [saveError], [reviewError] and [studyTimeError],
+ * when set, fail [completeLesson] and [skipLessons], [setSaved], [recordReview], and
+ * [recordStudyTime]. With an [observer], [setSaved] also changes its
  * word list, newest first, [recordReview] moves the item's card to [nextDueDay], and
  * [clearMistake] takes the item off its mistakes.
  */
@@ -39,6 +40,7 @@ class FakeProgressCommands(private val observer: FakeProgressObserver? = null) :
     var completeError: DataError.Local? = null
     var saveError: DataError.Local? = null
     var reviewError: DataError.Local? = null
+    var studyTimeError: DataError.Local? = null
     var nextDueDay = StudyDay(100)
 
     override suspend fun completeLesson(
@@ -76,6 +78,7 @@ class FakeProgressCommands(private val observer: FakeProgressObserver? = null) :
     }
 
     override suspend fun recordStudyTime(duration: Duration): EmptyOutcome<DataError.Local> {
+        studyTimeError?.let { return Outcome.Failure(it) }
         studyTime += duration
         return Outcome.Success(Unit)
     }
