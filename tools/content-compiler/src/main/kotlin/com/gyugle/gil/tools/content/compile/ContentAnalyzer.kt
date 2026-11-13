@@ -31,6 +31,7 @@ import com.gyugle.gil.tools.content.database.StepPayload
 import com.gyugle.gil.tools.content.english.FormKind
 import com.gyugle.gil.tools.content.english.Inflector
 import com.gyugle.gil.tools.content.english.Tokenizer
+import com.gyugle.gil.tools.content.english.apostrophes
 import com.gyugle.gil.tools.content.english.normalizeEnglish
 import com.gyugle.gil.tools.content.english.typographic
 import com.gyugle.gil.tools.content.font.FontCoverage
@@ -398,10 +399,10 @@ class ContentAnalyzer(
                 "unitId" to placed.unit.id,
                 "position" to placed.unit.lessons.indexOf(lesson),
                 "coursePosition" to index,
-                "titleKo" to lesson.title.ko,
-                "titleEn" to lesson.title.en,
-                "goalKo" to lesson.goal.ko,
-                "goalEn" to lesson.goal.en
+                "titleKo" to apostrophes(lesson.title.ko),
+                "titleEn" to apostrophes(lesson.title.en),
+                "goalKo" to apostrophes(lesson.goal.ko),
+                "goalEn" to apostrophes(lesson.goal.en)
             )
             introduced.forEachIndexed { i, item ->
                 rows.add(
@@ -446,16 +447,16 @@ class ContentAnalyzer(
                 "stage",
                 "id" to stage.id,
                 "position" to i,
-                "titleKo" to stage.title.ko,
-                "titleEn" to stage.title.en
+                "titleKo" to apostrophes(stage.title.ko),
+                "titleEn" to apostrophes(stage.title.en)
             )
             stage.canDo.forEachIndexed { k, canDo ->
                 rows.add(
                     "stage_can_do",
                     "stageId" to stage.id,
                     "position" to k,
-                    "textKo" to canDo.ko,
-                    "textEn" to canDo.en
+                    "textKo" to apostrophes(canDo.ko),
+                    "textEn" to apostrophes(canDo.en)
                 )
             }
         }
@@ -465,8 +466,8 @@ class ContentAnalyzer(
                 "id" to unit.id,
                 "stageId" to stage.id,
                 "position" to stage.units.indexOf(unit.id),
-                "titleKo" to unit.title.ko,
-                "titleEn" to unit.title.en
+                "titleKo" to apostrophes(unit.title.ko),
+                "titleEn" to apostrophes(unit.title.en)
             )
         }
         for (word in lexicon.words.values) {

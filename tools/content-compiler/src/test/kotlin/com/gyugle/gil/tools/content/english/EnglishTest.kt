@@ -78,6 +78,11 @@ class EnglishTest {
     }
 
     @Test
+    fun apostrophes_onlyBetweenLetters_becomeTypographic() {
+        assertThat(apostrophes("What's your name? 'Hi' 인사")).isEqualTo("What’s your name? 'Hi' 인사")
+    }
+
+    @Test
     fun parse_allMarks_removedWithOffsetsKept() {
         val result = SentenceMarkup.parse("[@Mina]{who} [{runs|sense.run.v.manage}]{do} [a cafe]{what}.")
 

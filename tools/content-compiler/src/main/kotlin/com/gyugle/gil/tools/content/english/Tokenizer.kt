@@ -61,3 +61,11 @@ fun normalizeEnglish(text: String): String = text.replace('’', '\'').lowercase
 
 /** Replaces the typing apostrophe with the typographic one for display. */
 fun typographic(text: String): String = text.replace('\'', '’')
+
+/**
+ * [typographic] for text that is not all English, such as titles in either language: only an
+ * apostrophe between two letters changes, so a quote mark around a word stays as written.
+ */
+fun apostrophes(text: String): String = BETWEEN_LETTERS.replace(text, "’")
+
+private val BETWEEN_LETTERS = Regex("(?<=\\p{L})'(?=\\p{L})")
