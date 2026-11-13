@@ -21,8 +21,8 @@ If you changed how a screen looks, also run `./gradlew recordRoborazziDebug` and
 
 ## Rules the build enforces
 
-- Lint warnings fail the build. To keep one on purpose, suppress it at the narrowest place and add a comment that says why.
-- Every user-facing string needs an English (`values/`) and a Korean (`values-ko/`) version.
+- Lint treats warnings as errors, so `lintDebug` fails on any warning. To keep one on purpose, suppress it at the narrowest place and add a comment that says why.
+- A string resource in `values/` without a Korean version in `values-ko/` fails lint. Lint does not catch text written straight into a composable, so put every user-facing string in resources.
 - `.kt` and `.kts` files need the license header; `spotlessApply` adds it.
 - The app must not request the INTERNET permission, from its own manifest or from a library.
 - Learning content in `content/` must pass its checks. See [content.md](content.md).

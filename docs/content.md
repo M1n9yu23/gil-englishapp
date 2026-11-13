@@ -123,7 +123,7 @@ Examples and `listen` steps can add `literal`, a word-by-word Korean gloss.
 
 ## What fails the check
 
-- A sentence uses a word the learner has not met by that lesson, or a form such as a plural, `-ing` or past before the lesson that `inflections` in `course.yaml` names for that form.
+- A sentence uses a word the learner has not met by that lesson, or a form such as a plural, `-ing` or past before the lesson that introduces the pattern `inflections` in `course.yaml` maps that form to.
 - An ID is malformed, duplicated or points at nothing, or a locked ID is gone.
 - An item is introduced twice, or no lesson introduces it and it has no `level`.
 - A sense has no example, or a choice step has no single correct option, a wrong option without `why`, or the same option twice.
