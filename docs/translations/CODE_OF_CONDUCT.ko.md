@@ -1,6 +1,6 @@
 # 기여자 행동 강령 규약
 
-[English](CODE_OF_CONDUCT.md)
+[English](../../CODE_OF_CONDUCT.md)
 
 ## 서약
 

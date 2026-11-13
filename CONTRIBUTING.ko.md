@@ -3,7 +3,7 @@
 [English](CONTRIBUTING.md)
 
 버그 신고, 학습 내용 고치기, 코드 변경 모두 환영합니다.
-참여하는 모든 사람은 [행동 강령](CODE_OF_CONDUCT.ko.md)을 따릅니다.
+참여하는 모든 사람은 [행동 강령](docs/translations/CODE_OF_CONDUCT.ko.md)을 따릅니다.
 
 ## 이슈
 
