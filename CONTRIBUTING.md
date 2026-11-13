@@ -26,6 +26,8 @@ Report security problems as described in [SECURITY.md](SECURITY.md), not in an i
 Open an issue first for anything bigger than a small fix, so the approach is settled before you write the code.
 Keep one change per pull request, and run the checks in [docs/build.md](docs/build.md#before-a-pull-request) before you open it.
 
+How the code is laid out and the rules it follows: [architecture](docs/architecture.md), [code style](docs/code-style.md), [testing](docs/testing.md) and [UI](docs/ui.md).
+
 The build does not check these:
 
 - Do not add libraries that send data off the phone, such as analytics, crash reporting or ads.

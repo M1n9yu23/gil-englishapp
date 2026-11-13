@@ -21,6 +21,7 @@
 ## 기여
 
 이슈나 풀 리퀘스트를 열기 전에 [기여 안내](CONTRIBUTING.ko.md)를 읽어 주세요.
+코드 구성은 [아키텍처 문서](docs/architecture.ko.md)부터 보면 됩니다.
 보안 문제는 [보안 정책](SECURITY.ko.md)에 적힌 방법으로 알려 주세요.
 
 ## 라이선스

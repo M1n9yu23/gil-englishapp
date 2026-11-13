@@ -21,6 +21,7 @@ Build types and the checks to run before a pull request: [docs/build.md](docs/bu
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before you open an issue or a pull request.
+To see how the code is organized, start with [docs/architecture.md](docs/architecture.md).
 To report a security problem, see [SECURITY.md](SECURITY.md).
 
 ## License
