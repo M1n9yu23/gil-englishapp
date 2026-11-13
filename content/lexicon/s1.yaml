@@ -405,6 +405,12 @@
       examples:
         - en: Are you cold?
           ko: 추워요?
+    - id: sense.cold.n.illness
+      pos: noun
+      ko: 감기
+      examples:
+        - en: "I have a {cold|sense.cold.n.illness}."
+          ko: 감기에 걸렸어요.
 
 - word: a
   id: word.a

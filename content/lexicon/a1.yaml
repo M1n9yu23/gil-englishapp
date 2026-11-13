@@ -1991,3 +1991,354 @@
       examples:
         - en: "It's 25 Green Street."
           ko: 그린가 25번지예요.
+
+# a1-11 have and has
+- word: have
+  id: word.have
+  ipa: hæv
+  forms: { third: has, past: had, pastParticiple: had }
+  senses:
+    - id: sense.have.v.own
+      pos: verb
+      ko: 가지고 있다, (~가) 있다
+      examples:
+        - en: "[I]{who} [have]{do} [a question]{what}."
+          ko: 질문이 있어요.
+          literal: 나는 / 가지고 있다 / 질문 하나
+  notes:
+    - kind: mistake
+      ko: "\"언니가 있어요\"를 `I am a sister`처럼 옮기지 않아요. 가진 것, 가족, 키우는 동물은 `I have ~`로 말해요."
+    - kind: usage
+      ko: "`he`, `she`, `it` 뒤나 `my sister`처럼 한 사람이나 하나를 가리키는 말 뒤에서는 `has`가 돼요."
+- word: pet
+  id: word.pet
+  senses:
+    - id: sense.pet.n.animal
+      pos: noun
+      ko: 반려동물
+      examples:
+        - en: We have a pet.
+          ko: 우리는 반려동물을 키워요.
+- word: question
+  id: word.question
+  ipa: ˈkwɛstʃən
+  senses:
+    - id: sense.question.n.ask
+      pos: noun
+      ko: 질문, 물음
+      examples:
+        - en: I have a question.
+          ko: 질문이 있어요.
+- word: money
+  id: word.money
+  senses:
+    - id: sense.money.n.cash
+      pos: noun
+      ko: 돈
+      examples:
+        - en: I have a little money.
+          ko: 돈이 조금 있어요.
+  notes:
+    - kind: mistake
+      ko: "셀 수 없는 말이라서 `moneys`라고 하지 않아요."
+- word: problem
+  id: word.problem
+  senses:
+    - id: sense.problem.n.trouble
+      pos: noun
+      ko: 문제
+      examples:
+        - en: I have a problem.
+          ko: 문제가 생겼어요.
+  notes:
+    - kind: usage
+      ko: "`No problem`은 \"문제없어요, 괜찮아요\"예요. 고맙다는 말에 대답할 때도 써요."
+- word: hair
+  id: word.hair
+  senses:
+    - id: sense.hair.n.head
+      pos: noun
+      ko: 머리카락, 머리
+      examples:
+        - en: She has long hair.
+          ko: 그 사람은 머리가 길어요.
+  notes:
+    - kind: mistake
+      ko: "머리카락 전체를 말할 때는 `hairs`라고 하지 않아요."
+- word: long
+  id: word.long
+  senses:
+    - id: sense.long.adj.length
+      pos: adjective
+      ko: 긴
+      examples:
+        - en: My sister has long hair.
+          ko: 우리 언니는 머리가 길어요.
+- word: eye
+  id: word.eye
+  senses:
+    - id: sense.eye.n.body
+      pos: noun
+      ko: 눈
+      examples:
+        - en: He has brown eyes.
+          ko: 그 사람은 눈이 갈색이에요.
+- word: brown
+  id: word.brown
+  senses:
+    - id: sense.brown.adj.color
+      pos: adjective
+      ko: 갈색의
+      examples:
+        - en: My dad has brown hair.
+          ko: 우리 아빠는 머리가 갈색이에요.
+- word: today
+  id: word.today
+  ipa: təˈdeɪ
+  senses:
+    - id: sense.today.adv.this-day
+      pos: adverb
+      ko: 오늘
+      examples:
+        - en: I have a meeting today.
+          ko: 오늘 회의가 있어요.
+- word: meeting
+  id: word.meeting
+  senses:
+    - id: sense.meeting.n.work
+      pos: noun
+      ko: 회의, 모임
+      examples:
+        - en: "[I]{who} [have]{do} [a meeting]{what} [today]{when}."
+          ko: 오늘 회의가 있어요.
+          literal: 나는 / 가지고 있다 / 회의를 / 오늘
+- word: test
+  id: word.test
+  senses:
+    - id: sense.test.n.exam
+      pos: noun
+      ko: 시험
+      examples:
+        - en: She has a test tomorrow.
+          ko: 그 친구는 내일 시험이 있어요.
+- word: headache
+  id: word.headache
+  senses:
+    - id: sense.headache.n.pain
+      pos: noun
+      ko: 두통
+      examples:
+        - en: I have a headache.
+          ko: 머리가 아파요.
+  notes:
+    - kind: usage
+      ko: "`head`(머리)와 `ache`(아픔)를 붙인 말이에요. `ache`의 `ch`는 `k` 소리예요."
+
+# a1-12 present simple
+- word: eat
+  id: word.eat
+  forms: { past: ate, pastParticiple: eaten }
+  senses:
+    - id: sense.eat.v.food
+      pos: verb
+      ko: 먹다
+      examples:
+        - en: I eat breakfast and drink coffee.
+          ko: 저는 아침을 먹고 커피를 마셔요.
+- word: drink
+  id: word.drink
+  forms: { past: drank, pastParticiple: drunk }
+  senses:
+    - id: sense.drink.v.liquid
+      pos: verb
+      ko: 마시다
+      examples:
+        - en: "[I]{who} [drink]{do} [coffee]{what}."
+          ko: 저는 커피를 마셔요.
+          literal: 나는 / 마신다 / 커피를
+- word: coffee
+  id: word.coffee
+  ipa: ˈkɑːfi
+  senses:
+    - id: sense.coffee.n.drink
+      pos: noun
+      ko: 커피
+      examples:
+        - en: I drink coffee in the morning.
+          ko: 저는 아침에 커피를 마셔요.
+- word: water
+  id: word.water
+  senses:
+    - id: sense.water.n.drink
+      pos: noun
+      ko: 물
+      examples:
+        - en: I drink water.
+          ko: 저는 물을 마셔요.
+  notes:
+    - kind: usage
+      ko: "미국 영어에서는 가운데 `t`가 약해져서 \"워러\"처럼 들려요."
+- word: breakfast
+  id: word.breakfast
+  senses:
+    - id: sense.breakfast.n.meal
+      pos: noun
+      ko: 아침 식사, 아침밥
+      examples:
+        - en: I eat breakfast and drink coffee.
+          ko: 저는 아침을 먹고 커피를 마셔요.
+  notes:
+    - kind: usage
+      ko: "`eat breakfast`라고도 하고 `have breakfast`라고도 해요. 보통 앞에 `a`를 붙이지 않아요."
+- word: live
+  id: word.live
+  ipa: lɪv
+  senses:
+    - id: sense.live.v.home
+      pos: verb
+      ko: 살다
+      examples:
+        - en: "[I]{who} [live]{do} [in @Seoul]{where}."
+          ko: 저는 서울에 살아요.
+          literal: 나는 / 산다 / 서울에
+- word: study
+  id: word.study
+  senses:
+    - id: sense.study.v.learn
+      pos: verb
+      ko: 공부하다
+      examples:
+        - en: I study English and {Japanese|sense.japanese.n.language}.
+          ko: 저는 영어랑 일본어를 공부해요.
+- word: apartment
+  id: word.apartment
+  senses:
+    - id: sense.apartment.n.home
+      pos: noun
+      ko: 아파트, 공동 주택
+      examples:
+        - en: They live in an apartment.
+          ko: 그 사람들은 아파트에 살아요.
+  notes:
+    - kind: konglish
+      ko: "\"아파트\"는 영어로 `apartment`예요. 영국에서는 `flat`이라고 해요."
+- word: university
+  id: word.university
+  senses:
+    - id: sense.university.n.school
+      pos: noun
+      ko: 대학교
+      examples:
+        - en: We live near the university.
+          ko: 우리는 대학교 근처에 살아요.
+  notes:
+    - kind: usage
+      ko: "`u`가 \"유\" 소리라서 앞에는 `an`이 아니라 `a`를 써요. `a university`예요."
+- word: near
+  id: word.near
+  senses:
+    - id: sense.near.prep.close
+      pos: preposition
+      ko: 가까이, 근처에
+      examples:
+        - en: We live near the school.
+          ko: 우리는 학교 근처에 살아요.
+- word: read
+  id: word.read
+  ipa: riːd
+  forms: { past: read, pastParticiple: read }
+  senses:
+    - id: sense.read.v.text
+      pos: verb
+      ko: 읽다
+      examples:
+        - en: They read books in the morning.
+          ko: 그 사람들은 아침에 책을 읽어요.
+- word: watch
+  id: word.watch
+  ipa: wɑːtʃ
+  senses:
+    - id: sense.watch.v.screen
+      pos: verb
+      ko: 보다, 지켜보다
+      examples:
+        - en: We watch movies in the afternoon.
+          ko: 우리는 오후에 영화를 봐요.
+  notes:
+    - kind: usage
+      ko: "영화, 텔레비전, 경기처럼 움직이는 것을 한동안 볼 때 써요."
+- word: movie
+  id: word.movie
+  senses:
+    - id: sense.movie.n.film
+      pos: noun
+      ko: 영화
+      examples:
+        - en: We watch movies.
+          ko: 우리는 영화를 봐요.
+  notes:
+    - kind: usage
+      ko: "영국에서는 `film`이라고 많이 해요."
+- word: music
+  id: word.music
+  senses:
+    - id: sense.music.n.sound
+      pos: noun
+      ko: 음악
+      examples:
+        - en: "[I]{who} [listen to]{do} [music]{what}."
+          ko: 저는 음악을 들어요.
+          literal: 나는 / 듣는다 / 음악을
+- word: listen
+  id: word.listen
+  senses:
+    - id: sense.listen.v.hear
+      pos: verb
+      ko: 듣다, 귀 기울이다
+      examples:
+        - en: I listen to music.
+          ko: 저는 음악을 들어요.
+  notes:
+    - kind: mistake
+      ko: "무엇을 듣는지 말할 때는 `listen to`예요. `listen music`이라고 하지 않아요. `t`는 소리 내지 않아요."
+- word: play
+  id: word.play
+  senses:
+    - id: sense.play.v.game
+      pos: verb
+      ko: (게임, 운동을) 하다
+      examples:
+        - en: We play games together.
+          ko: 우리는 같이 게임을 해요.
+- word: game
+  id: word.game
+  senses:
+    - id: sense.game.n.play
+      pos: noun
+      ko: 게임, 경기
+      examples:
+        - en: We play games every day.
+          ko: 우리는 매일 게임을 해요.
+- word: together
+  id: word.together
+  senses:
+    - id: sense.together.adv.with
+      pos: adverb
+      ko: 같이, 함께
+      examples:
+        - en: We walk together every day.
+          ko: 우리는 매일 같이 걸어요.
+- word: walk
+  id: word.walk
+  ipa: wɔːk
+  senses:
+    - id: sense.walk.v.foot
+      pos: verb
+      ko: 걷다, 걸어가다
+      examples:
+        - en: "[I]{who} [walk]{do} [to school]{where} [every day]{when}."
+          ko: 저는 매일 학교에 걸어가요.
+          literal: 나는 / 걷는다 / 학교에 / 매일
+  notes:
+    - kind: usage
+      ko: "`l`은 소리 내지 않아요. 입을 동그랗게 열고 \"웍\"에 가깝게 읽어요. `work`는 혀를 마는 `r` 소리가 들어가서 달라요."

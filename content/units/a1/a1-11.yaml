@@ -1,0 +1,264 @@
+id: unit.a1-11
+title: { ko: "have와 has", en: "Have and has" }
+lessons:
+  - id: lesson.a1-11.1
+    title: { ko: "I have", en: "I have" }
+    goal: { ko: "가진 것과 있는 것을 have로 말할 수 있어요", en: "Say what you have with have" }
+    introduces: [sense.have.v.own, sense.pet.n.animal, sense.question.n.ask, sense.money.n.cash, sense.problem.n.trouble]
+    steps:
+      - type: listen
+        en: I have a question.
+        ko: 질문이 있어요.
+      - type: listen
+        en: I have a cat and a dog.
+        ko: 저는 고양이랑 개를 키워요.
+      - type: explain
+        text: |
+          가진 것을 말할 때 우리말은 "~가 있어요"라고 하지만 영어는 `I have ~`라고 해요. `I have a sister`는 "언니가 있어요", `I have a question`은 "질문이 있어요"예요. 동물을 키울 때도 `have`예요. 반려동물은 `pet`이에요.
+
+          `I`, `you`, `we`, `they` 뒤에는 `have`를 써요. 가진 것을 말할 때는 `am`이나 `is`를 쓰지 않아요. `My key is there`처럼 어디 있는지 말할 때는 `is`예요.
+        examples:
+          - en: "[I]{who} [have]{do} [a question]{what}."
+            ko: 질문이 있어요.
+            literal: 나는 / 가지고 있다 / 질문 하나
+          - en: We have a dog.
+            ko: 우리는 개를 키워요.
+          - en: They have two kids.
+            ko: 그 사람들은 아이가 둘이에요.
+          - en: We have a pet.
+            ko: 우리는 반려동물을 키워요.
+          - en: I have an idea.
+            ko: 좋은 생각이 있어요.
+      - type: explain
+        text: |
+          `problem`은 "문제"예요. `No problem`은 "문제없어요, 괜찮아요"라는 뜻이라 고맙다는 말에 대답할 때도 써요. `money`는 셀 수 없어서 `-s`를 붙이지 않아요.
+        examples:
+          - en: I have a problem.
+            ko: 문제가 생겼어요.
+          - en: "Thanks. No problem."
+            ko: 고마워요. 뭘요.
+          - en: I have a little money.
+            ko: 돈이 조금 있어요.
+      - type: chooseMeaning
+        en: I have a question.
+        item: sense.question.n.ask
+        options:
+          - { ko: 질문이 있어요., correct: true }
+          - { ko: 문제가 있어요., why: "문제는 `problem`이에요. `question`은 질문이에요." }
+          - { ko: 저는 질문이에요., why: "`I am`이 아니라 `I have`라서 \"~가 있어요\"예요." }
+      - type: listenChoose
+        en: We have a pet.
+        item: sense.pet.n.animal
+        options:
+          - { ko: 우리는 반려동물을 키워요., correct: true }
+          - { ko: 우리는 반려동물이에요., why: "`We are`가 아니라 `We have`가 들렸어요. 키운다는 말이에요." }
+          - { ko: 우리는 펜이 있어요., why: "`pen`은 `n`으로 끝나요. 들린 단어는 `t`로 끝나는 `pet`이에요." }
+      - type: chooseEnglish
+        ko: 저는 돈이 조금 있어요.
+        item: sense.money.n.cash
+        options:
+          - { en: I have a little money., correct: true }
+          - { en: I am a little money., why: "\"~가 있어요\"는 `I have`예요. `I am`은 \"저는 ~예요\"예요." }
+          - { en: I have a little moneys., why: "`money`는 셀 수 없어서 `-s`를 붙이지 않아요." }
+      - type: fillBlank
+        item: sense.have.v.own
+        en: They ___ two cats.
+        ko: 그 사람들은 고양이를 두 마리 키워요.
+        options:
+          - { en: have, correct: true }
+          - { en: are, why: "\"키워요, 있어요\"는 `have`예요. `are`는 \"~예요\"예요." }
+          - { en: is, why: "\"키워요, 있어요\"는 `have`예요. `they` 뒤에 `is`는 오지 않아요." }
+      - type: dialogue
+        item: sense.have.v.own
+        lines:
+          - { speaker: Leo, en: "Yes, @Mina?", ko: "네, 미나 씨?" }
+        question: 미나가 손을 들었어요. 묻고 싶은 게 있어요. 미나가 할 말을 골라요.
+        options:
+          - { en: "I have a question.", correct: true }
+          - { en: "I'm a question.", why: "\"질문이 있어요\"는 `I have a question`이에요. `I'm`은 \"저는 ~예요\"예요." }
+          - { en: "I have a problem.", why: "`problem`은 문제예요. 묻고 싶은 건 `question`이에요." }
+      - type: fillBlank
+        item: sense.problem.n.trouble
+        en: "Sorry, I have a ___."
+        ko: 미안해요, 문제가 생겼어요.
+        answers: [problem]
+      - type: arrange
+        item: sense.have.v.own
+        ko: 우리는 개를 키워요.
+        en: We have a dog.
+        extra: [are, is]
+      - type: dictation
+        item: sense.money.n.cash
+        en: I have a little money.
+        ko: 돈이 조금 있어요.
+      - type: spell
+        sense: sense.question.n.ask
+      - type: shadow
+        en: "Sorry, I have a question."
+        ko: 죄송한데 질문이 있어요.
+  - id: lesson.a1-11.2
+    title: { ko: "She has", en: "She has" }
+    goal: { ko: "다른 사람이 가진 것과 생김새를 has로 말할 수 있어요", en: "Say what someone has and looks like with has" }
+    introduces: [pattern.third-person-s, sense.hair.n.head, sense.long.adj.length, sense.eye.n.body, sense.brown.adj.color]
+    steps:
+      - type: listen
+        en: She has long hair.
+        ko: 그 사람은 머리가 길어요.
+      - type: listen
+        en: My dog has brown eyes.
+        ko: 우리 개는 눈이 갈색이에요.
+      - type: explain
+        text: |
+          주어가 `he`, `she`, `it`이면 `have`가 `has`로 바뀌어요. `my sister`, `my dog`처럼 한 사람이나 하나를 가리키는 말도 같아요. `I`와 `you`는 한 사람이어도 `have`예요. 다른 동사는 이 자리에서 보통 끝에 `-s`가 붙어요. 그건 뒤에서 따로 배워요.
+
+          생김새도 `have`로 말해요. "머리가 길어요"는 `She has long hair`예요. `hair`는 머리카락 전체라서 `-s`를 붙이지 않아요. `has`의 끝소리는 `z`예요.
+        examples:
+          - en: "[She]{who} [has]{do} [long hair]{what}."
+            ko: 그 사람은 머리가 길어요.
+            literal: 그녀는 / 가지고 있다 / 긴 머리
+          - en: He has brown eyes.
+            ko: 그 사람은 눈이 갈색이에요.
+          - en: "@Mina has a cat."
+            ko: 미나는 고양이를 키워요.
+          - en: My sister has two kids.
+            ko: 우리 언니는 아이가 둘이에요.
+      - type: chooseMeaning
+        en: He has brown eyes.
+        item: sense.eye.n.body
+        options:
+          - { ko: 그 사람은 눈이 갈색이에요., correct: true }
+          - { ko: 그 사람은 머리가 갈색이에요., why: "머리카락은 `hair`예요. `eyes`는 눈이에요." }
+          - { ko: 그 사람은 눈이 파래요., why: "파란색은 `blue`예요. `brown`은 갈색이에요." }
+      - type: listenChoose
+        en: She has long hair.
+        item: sense.long.adj.length
+        options:
+          - { en: She has long hair., correct: true }
+          - { en: She is long hair., why: "`is`가 아니라 `has`가 들렸어요. 생김새는 `has`로 말해요." }
+          - { en: She has brown hair., why: "`brown`이 아니라 `long`이 들렸어요. `long`은 \"긴\"이에요." }
+      - type: chooseEnglish
+        ko: 우리 형은 차가 있어요.
+        item: pattern.third-person-s
+        options:
+          - { en: My brother has a car., correct: true }
+          - { en: My brother have a car., why: "`my brother`는 `he`로 바꿀 수 있어서 `has`예요." }
+          - { en: My brother is a car., why: "\"차가 있어요\"는 `has a car`예요. `is a car`는 \"차예요\"예요." }
+      - type: fillBlank
+        item: pattern.third-person-s
+        en: "@Leo ___ a new bike."
+        ko: 레오는 새 자전거가 있어요.
+        options:
+          - { en: has, correct: true }
+          - { en: have, why: "레오는 `he`로 바꿀 수 있어서 `has`예요." }
+          - { en: is, why: "\"자전거가 있어요\"는 `has`예요." }
+      - type: dialogue
+        item: sense.hair.n.head
+        lines:
+          - { speaker: Sam, en: "Who's @Yuna?", ko: 유나가 누구예요? }
+        question: 샘이 사람들 속에서 유나를 찾아요. 유나는 키가 크고 머리가 길어요. 아나가 할 말을 골라요.
+        options:
+          - { en: "She's tall, and she has long hair.", correct: true }
+          - { en: "She's tall, and she have long hair.", why: "주어가 `she`라서 `has`예요." }
+          - { en: "She's tall, and she's long hair.", why: "\"머리가 길어요\"는 `she has long hair`예요." }
+      - type: fillBlank
+        item: sense.eye.n.body
+        en: My cat has green ___.
+        ko: 우리 고양이는 눈이 초록색이에요.
+        answers: [eyes]
+      - type: arrange
+        item: sense.brown.adj.color
+        ko: 우리 아빠는 머리가 갈색이에요.
+        en: My dad has brown hair.
+        extra: [have, is]
+      - type: dictation
+        item: pattern.third-person-s
+        en: He has blue eyes.
+        ko: 그 사람은 눈이 파래요.
+      - type: spell
+        sense: sense.hair.n.head
+      - type: shadow
+        en: She has long hair and brown eyes.
+        ko: 그 사람은 머리가 길고 눈이 갈색이에요.
+  - id: lesson.a1-11.3
+    title: { ko: "회의가 있어요, 감기에 걸렸어요", en: "A meeting, a cold" }
+    goal: { ko: "일정과 몸 상태를 have로 말할 수 있어요", en: "Talk about plans and how you feel with have" }
+    introduces: [sense.today.adv.this-day, sense.meeting.n.work, sense.test.n.exam, sense.headache.n.pain, sense.cold.n.illness]
+    steps:
+      - type: listen
+        en: I have a meeting today.
+        ko: 오늘 회의가 있어요.
+      - type: listen
+        en: "I have a {cold|sense.cold.n.illness}."
+        ko: 감기에 걸렸어요.
+      - type: explain
+        text: |
+          일정도 `have`로 말해요. `I have a meeting today`는 "오늘 회의가 있어요", `I have a test tomorrow`는 "내일 시험이 있어요"예요.
+
+          아픈 것도 `have`로 말해요. `I have a cold`는 "감기에 걸렸어요", `I have a headache`는 "머리가 아파요"예요. `cold`와 `headache` 앞에는 `a`를 붙여요. `I'm cold`는 "추워요"라서 뜻이 달라요.
+        examples:
+          - en: "[I]{who} [have]{do} [a meeting]{what} [today]{when}."
+            ko: 오늘 회의가 있어요.
+            literal: 나는 / 가지고 있다 / 회의를 / 오늘
+          - en: She has a test tomorrow.
+            ko: 그 친구는 내일 시험이 있어요.
+          - en: I have a headache.
+            ko: 머리가 아파요.
+          - en: "He has a {cold|sense.cold.n.illness}."
+            ko: 그 사람은 감기에 걸렸어요.
+      - type: chooseMeaning
+        en: I have a headache.
+        item: sense.headache.n.pain
+        options:
+          - { ko: 머리가 아파요., correct: true }
+          - { ko: 감기에 걸렸어요., why: "감기는 `a cold`예요. `headache`는 머리가 아픈 거예요." }
+          - { ko: 머리가 길어요., why: "머리가 긴 건 `long hair`예요. `headache`는 머리가 아픈 거예요." }
+      - type: listenChoose
+        en: He has a test today.
+        item: sense.test.n.exam
+        options:
+          - { ko: 그 사람은 오늘 시험이 있어요., correct: true }
+          - { ko: 그 사람은 내일 시험이 있어요., why: "`tomorrow`가 아니라 `today`가 들렸어요." }
+          - { ko: 그 사람은 오늘 회의가 있어요., why: "회의는 `meeting`이에요. 들린 단어는 `test`예요." }
+      - type: chooseEnglish
+        ko: 감기에 걸렸어요.
+        item: sense.cold.n.illness
+        options:
+          - { en: "I have a {cold|sense.cold.n.illness}.", correct: true }
+          - { en: "I have {cold|sense.cold.n.illness}.", why: "감기는 `a cold`예요. `a`를 빼지 않아요." }
+          - { en: "I'm {cold|sense.cold.adj.temperature}.", why: "`I'm cold`는 \"추워요\"예요. 감기는 `I have a cold`예요." }
+      - type: fillBlank
+        item: sense.have.v.own
+        en: I ___ a meeting today.
+        ko: 오늘 회의가 있어요.
+        options:
+          - { en: have, correct: true }
+          - { en: has, why: "`I` 뒤에는 `have`예요. `has`는 `he`, `she`, `it` 뒤에 와요." }
+          - { en: am, why: "\"회의가 있어요\"는 `have a meeting`이에요." }
+      - type: dialogue
+        item: sense.headache.n.pain
+        lines:
+          - { speaker: Ana, en: "Are you OK?", ko: 괜찮아요? }
+        question: 준은 머리가 아파요. 준이 할 말을 골라요.
+        options:
+          - { en: "No, I have a headache.", correct: true }
+          - { en: "No, I'm a headache.", why: "\"머리가 아파요\"는 `I have a headache`예요." }
+          - { en: "No, I have a meeting.", why: "`meeting`은 회의예요. 머리가 아픈 건 `headache`예요." }
+      - type: fillBlank
+        item: sense.test.n.exam
+        en: We have a ___ tomorrow.
+        ko: 내일 시험이 있어요.
+        answers: [test]
+      - type: arrange
+        item: sense.meeting.n.work
+        ko: 우리 엄마는 오늘 회의가 있어요.
+        en: My mom has a meeting today.
+        extra: [have, is]
+      - type: dictation
+        item: sense.today.adv.this-day
+        en: I have a test today.
+        ko: 저 오늘 시험 있어요.
+      - type: spell
+        sense: sense.meeting.n.work
+      - type: shadow
+        en: "Sorry, I have a headache today."
+        ko: 미안해요, 오늘 머리가 아파요.

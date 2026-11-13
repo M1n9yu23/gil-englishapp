@@ -1,0 +1,337 @@
+id: unit.a1-12
+title: { ko: 매일 하는 일, en: Things you do every day }
+lessons:
+  - id: lesson.a1-12.1
+    title: { ko: 먹고 마시기, en: Eating and drinking }
+    goal: { ko: 무엇을 먹고 마시는지 말할 수 있어요, en: Say what you eat and drink }
+    introduces: [sense.eat.v.food, sense.drink.v.liquid, sense.coffee.n.drink, sense.water.n.drink, sense.breakfast.n.meal]
+    steps:
+      - type: listen
+        en: I drink coffee.
+        ko: 저는 커피를 마셔요.
+      - type: listen
+        en: I eat breakfast and drink coffee.
+        ko: 저는 아침을 먹고 커피를 마셔요.
+      - type: explain
+        text: |
+          영어 문장은 "누가, 한다, 무엇을" 순서예요. "저는 커피를 마셔요"는 `I drink coffee`예요. 동사가 가운데 와요.
+
+          `I`, `you`, `we`, `they` 뒤에서 `drink`, `eat` 같은 동사는 사전에 나온 모양 그대로 써요. 늘 하는 일을 말할 때 이렇게 써요. 동사가 있으니 `am`, `are`를 붙이지 않아요. `he`, `she` 뒤에서는 모양이 바뀌는데 다음 단원에서 배워요.
+        examples:
+          - en: "[I]{who} [drink]{do} [coffee]{what}."
+            ko: 저는 커피를 마셔요.
+            literal: 나는 / 마신다 / 커피를
+          - en: I eat breakfast and drink coffee.
+            ko: 저는 아침을 먹고 커피를 마셔요.
+          - en: They drink tea.
+            ko: 그 사람들은 차를 마셔요.
+          - en: You drink tea in the morning.
+            ko: 아침에는 차를 드시네요.
+      - type: explain
+        text: |
+          `coffee`, `water`, `tea`는 보통 `a` 없이 써요. 셀 수 없는 것으로 보기 때문이에요.
+        examples:
+          - en: I drink water.
+            ko: 저는 물을 마셔요.
+      - type: chooseMeaning
+        en: I eat breakfast and drink coffee.
+        item: sense.breakfast.n.meal
+        options:
+          - { ko: 저는 아침을 먹고 커피를 마셔요., correct: true }
+          - { ko: 저는 저녁을 먹고 커피를 마셔요., why: "`breakfast`는 아침밥이에요." }
+          - { ko: 저는 아침을 먹고 물을 마셔요., why: "물은 `water`예요. 문장에는 `coffee`가 있어요." }
+      - type: listenChoose
+        en: I drink water.
+        item: sense.water.n.drink
+        options:
+          - { ko: 저는 물을 마셔요., correct: true }
+          - { ko: 저는 차를 마셔요., why: "차는 `tea`예요. 들린 단어는 `water`예요." }
+          - { ko: 저는 커피를 마셔요., why: "커피는 `coffee`예요. 들린 단어는 `water`예요." }
+      - type: chooseEnglish
+        ko: 저는 커피를 마셔요.
+        item: sense.drink.v.liquid
+        options:
+          - { en: I drink coffee., correct: true }
+          - { en: I coffee drink., why: "영어는 동사가 가운데 와요. `I drink coffee`예요." }
+          - { en: I am drink coffee., why: "동사 `drink`가 있으니 `am`을 붙이지 않아요." }
+      - type: fillBlank
+        item: sense.drink.v.liquid
+        en: They ___ tea.
+        ko: 그 사람들은 차를 마셔요.
+        options:
+          - { en: drink, correct: true }
+          - { en: drinks, why: "`they` 뒤에서는 동사 모양이 그대로예요." }
+          - { en: are, why: "\"마셔요\"는 `drink`예요. `are`는 \"~예요\"예요." }
+      - type: dialogue
+        item: sense.water.n.drink
+        lines:
+          - { speaker: Sam, en: "Coffee?", ko: 커피 드릴까요? }
+        question: 하린은 커피를 안 마셔요. 늘 물을 마셔요. 하린이 할 말을 골라요.
+        options:
+          - { en: "No, thanks. I drink water.", correct: true }
+          - { en: "No, thanks. I'm drink water.", why: "동사 `drink`가 있으니 `I'm`이 아니라 `I`예요." }
+          - { en: "No, thanks. I water drink.", why: "동사가 가운데 와요. `I drink water`예요." }
+      - type: fillBlank
+        item: sense.eat.v.food
+        en: I ___ breakfast and drink coffee.
+        ko: 저는 아침을 먹고 커피를 마셔요.
+        answers: [eat, have]
+      - type: arrange
+        item: sense.coffee.n.drink
+        ko: 저는 아침에 커피를 마셔요.
+        en: I drink coffee in the morning.
+        extra: [am, eat]
+      - type: dictation
+        item: sense.drink.v.liquid
+        en: We drink tea in the morning.
+        ko: 우리는 아침에 차를 마셔요.
+      - type: spell
+        sense: sense.breakfast.n.meal
+      - type: shadow
+        en: I drink coffee in the morning.
+        ko: 저는 아침에 커피를 마셔요.
+  - id: lesson.a1-12.2
+    title: { ko: 사는 곳과 공부, en: Where you live and study }
+    goal: { ko: 어디에 살고 무엇을 공부하는지 말할 수 있어요, en: Say where you live and what you study }
+    introduces: [sense.live.v.home, sense.study.v.learn, sense.apartment.n.home, sense.university.n.school, sense.near.prep.close]
+    steps:
+      - type: listen
+        en: I live in @Seoul.
+        ko: 저는 서울에 살아요.
+      - type: listen
+        en: We study English.
+        ko: 우리는 영어를 공부해요.
+      - type: explain
+        text: |
+          도시나 집 앞에는 `in`을 써요. "서울에 살아요"는 `I live in Seoul`이에요. `in`을 빼거나 `I'm live`라고 하지 않아요. `my parents`처럼 둘 이상인 주어도 `they`와 같아요.
+
+          `study`는 "공부하다"예요. `near`는 "가까이"라서 `I live near the school`은 "학교 근처에 살아요"예요.
+        examples:
+          - en: "[I]{who} [live]{do} [in @Seoul]{where}."
+            ko: 저는 서울에 살아요.
+            literal: 나는 / 산다 / 서울에
+          - en: They live in an apartment.
+            ko: 그 사람들은 아파트에 살아요.
+          - en: We live near the university.
+            ko: 우리는 대학교 근처에 살아요.
+          - en: I study English and {Japanese|sense.japanese.n.language}.
+            ko: 저는 영어랑 일본어를 공부해요.
+      - type: chooseMeaning
+        en: They live in an apartment.
+        item: sense.apartment.n.home
+        options:
+          - { ko: 그 사람들은 아파트에 살아요., correct: true }
+          - { ko: 그 사람들은 주택에 살아요., why: "주택은 `house`예요. `apartment`는 아파트예요." }
+          - { ko: 그 사람들은 아파트에서 일해요., why: "일하는 건 `work`예요. `live`는 사는 거예요." }
+      - type: listenChoose
+        en: We study English.
+        item: sense.study.v.learn
+        options:
+          - { ko: 우리는 영어를 공부해요., correct: true }
+          - { ko: 우리는 영어를 해요., why: "\"영어를 해요\"는 `speak English`예요. 들린 단어는 `study`예요." }
+          - { ko: 그 사람들은 영어를 공부해요., why: "그 사람들은 `they`예요. 들린 단어는 `we`예요." }
+      - type: chooseEnglish
+        ko: 저는 서울에 살아요.
+        item: sense.live.v.home
+        options:
+          - { en: I live in @Seoul., correct: true }
+          - { en: I live @Seoul., why: "사는 곳 앞에는 `in`이 와요." }
+          - { en: "I'm live in @Seoul.", why: "동사 `live`가 있으니 `I'm`이 아니라 `I`예요." }
+      - type: fillBlank
+        item: sense.live.v.home
+        en: My parents ___ in @Busan.
+        ko: 우리 부모님은 부산에 사세요.
+        options:
+          - { en: live, correct: true }
+          - { en: lives, why: "부모님은 두 분이라서 동사 모양이 그대로예요." }
+          - { en: are, why: "`are in Busan`은 지금 부산에 있다는 말이에요. 사는 곳은 `live`예요." }
+      - type: dialogue
+        item: sense.university.n.school
+        lines:
+          - { speaker: Ana, en: I live near the university., ko: 저는 대학교 근처에 살아요. }
+        question: 소라도 대학교 근처에 살아요. 소라가 할 말을 골라요.
+        options:
+          - { en: Me too., correct: true }
+          - { en: Me neither., why: "`Me neither`는 \"저는 안 해요\"처럼 부정하는 말에 \"저도요\" 할 때 써요." }
+          - { en: "You're welcome.", why: "고맙다는 말에 하는 대답이에요." }
+      - type: fillBlank
+        item: sense.study.v.learn
+        en: I ___ English in the morning.
+        ko: 저는 아침에 영어를 공부해요.
+        answers: [study]
+      - type: arrange
+        item: sense.near.prep.close
+        ko: 우리는 학교 근처에 살아요.
+        en: We live near the school.
+        extra: [are, in]
+      - type: dictation
+        item: sense.apartment.n.home
+        en: They live in a big apartment.
+        ko: 그 사람들은 큰 아파트에 살아요.
+      - type: spell
+        sense: sense.apartment.n.home
+      - type: shadow
+        en: "I live in @Seoul, and I study English."
+        ko: 저는 서울에 살고 영어를 공부해요.
+  - id: lesson.a1-12.3
+    title: { ko: "읽기, 보기, 듣기", en: "Reading, watching, listening" }
+    goal: { ko: 쉴 때 하는 일을 말할 수 있어요, en: Say what you do in your free time }
+    introduces: [sense.read.v.text, sense.watch.v.screen, sense.movie.n.film, sense.music.n.sound, sense.listen.v.hear]
+    steps:
+      - type: listen
+        en: I listen to music.
+        ko: 저는 음악을 들어요.
+      - type: listen
+        en: We watch movies in the afternoon.
+        ko: 우리는 오후에 영화를 봐요.
+      - type: explain
+        text: |
+          무엇을 듣는지 말할 때는 `listen` 뒤에 `to`를 붙여요. "음악을 들어요"는 `I listen to music`이에요. `listen music`이라고 하면 틀려요.
+
+          `watch`는 영화처럼 움직이는 것을 한동안 볼 때 써요. `look`도 "보다"지만 영화를 볼 때는 `watch`를 써요. 책은 `read`예요.
+        examples:
+          - en: "[I]{who} [listen to]{do} [music]{what}."
+            ko: 저는 음악을 들어요.
+            literal: 나는 / 듣는다 / 음악을
+          - en: We watch movies in the afternoon.
+            ko: 우리는 오후에 영화를 봐요.
+          - en: They read books in the morning.
+            ko: 그 사람들은 아침에 책을 읽어요.
+      - type: chooseMeaning
+        en: We watch movies in the afternoon.
+        item: sense.watch.v.screen
+        options:
+          - { ko: 우리는 오후에 영화를 봐요., correct: true }
+          - { ko: 우리는 오후에 음악을 들어요., why: "음악을 듣는 건 `listen to music`이에요." }
+          - { ko: 우리는 아침에 영화를 봐요., why: "아침은 `morning`이에요. `afternoon`은 오후예요." }
+      - type: listenChoose
+        en: I read books in the morning.
+        item: sense.read.v.text
+        options:
+          - { en: I read books in the morning., correct: true }
+          - { en: I watch movies in the morning., why: "`watch`가 아니라 `read`가 들렸어요." }
+          - { en: I listen to music in the morning., why: "`listen`이 아니라 `read`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 저는 음악을 들어요.
+        item: sense.listen.v.hear
+        options:
+          - { en: I listen to music., correct: true }
+          - { en: I listen music., why: "`listen` 뒤에는 `to`를 붙여요." }
+          - { en: I am listen to music., why: "동사 `listen`이 있으니 `am`을 붙이지 않아요." }
+      - type: fillBlank
+        item: sense.read.v.text
+        en: They ___ books.
+        ko: 그 사람들은 책을 읽어요.
+        options:
+          - { en: read, correct: true }
+          - { en: watch, why: "책은 `read`로 읽어요. `watch`는 영화처럼 움직이는 것을 볼 때예요." }
+          - { en: listen, why: "`listen`은 듣는 거예요. 책은 `read`예요." }
+      - type: dialogue
+        item: sense.music.n.sound
+        lines:
+          - { speaker: Yuna, en: I read books in the morning., ko: 저는 아침에 책을 읽어요. }
+        question: 준은 아침에 음악을 들어요. 준이 할 말을 골라요.
+        options:
+          - { en: I listen to music., correct: true }
+          - { en: I listen music., why: "`listen` 뒤에는 `to`를 붙여요." }
+          - { en: I watch music., why: "음악은 보는 게 아니라 듣는 거예요. `listen to music`이에요." }
+      - type: fillBlank
+        item: sense.listen.v.hear
+        en: I ___ to music.
+        ko: 저는 음악을 들어요.
+        answers: [listen]
+      - type: arrange
+        item: sense.movie.n.film
+        ko: 우리는 오후에 영화를 봐요.
+        en: We watch movies in the afternoon.
+        extra: [look, read]
+      - type: dictation
+        item: sense.read.v.text
+        en: They read books in the morning.
+        ko: 그 사람들은 아침에 책을 읽어요.
+      - type: spell
+        sense: sense.music.n.sound
+      - type: shadow
+        en: I read books and listen to music.
+        ko: 저는 책을 읽고 음악을 들어요.
+  - id: lesson.a1-12.4
+    title: { ko: "매일 하는 일, 같이 하는 일", en: Together every day }
+    goal: { ko: 매일 하는 일과 함께 하는 일을 말할 수 있어요, en: Say what you do every day and with others }
+    introduces: [sense.play.v.game, sense.game.n.play, sense.together.adv.with, pattern.every-day, sense.walk.v.foot]
+    steps:
+      - type: listen
+        en: We play games together.
+        ko: 우리는 같이 게임을 해요.
+      - type: listen
+        en: I walk to school every day.
+        ko: 저는 매일 학교에 걸어가요.
+      - type: explain
+        text: |
+          `play`는 게임이나 운동을 "하다"예요. `together`는 "같이"예요. `walk`는 "걷다"라서 `walk to school`은 "학교에 걸어가다"예요.
+
+          `every day`는 "매일"이에요. 보통 문장 끝에 와요. 붙여 쓴 `everyday`는 "일상적인"이라는 다른 말이에요.
+        examples:
+          - en: We play games together.
+            ko: 우리는 같이 게임을 해요.
+          - en: "[I]{who} [walk]{do} [to school]{where} [every day]{when}."
+            ko: 저는 매일 학교에 걸어가요.
+            literal: 나는 / 걷는다 / 학교에 / 매일
+          - en: They study English every day.
+            ko: 그 사람들은 매일 영어를 공부해요.
+      - type: chooseMeaning
+        en: I walk to school every day.
+        item: sense.walk.v.foot
+        options:
+          - { ko: 저는 매일 학교에 걸어가요., correct: true }
+          - { ko: 저는 오늘 학교에 걸어가요., why: "오늘은 `today`예요. `every day`는 매일이에요." }
+          - { ko: 저는 매일 학교에서 일해요., why: "일하는 건 `work`예요. `walk`는 걷는 거예요." }
+      - type: listenChoose
+        en: They play games together.
+        item: sense.together.adv.with
+        options:
+          - { ko: 그 사람들은 같이 게임을 해요., correct: true }
+          - { ko: 그 사람들은 같이 게임을 봐요., why: "보는 건 `watch`예요. 들린 단어는 `play`예요." }
+          - { ko: 그 사람들은 매일 게임을 해요., why: "매일은 `every day`예요. 들린 단어는 \"같이\"라는 뜻의 `together`예요." }
+      - type: chooseEnglish
+        ko: 우리는 매일 영어를 공부해요.
+        item: pattern.every-day
+        options:
+          - { en: We study English every day., correct: true }
+          - { en: We every day study English., why: "`every day`는 주어와 동사 사이에 오지 않아요. 보통 문장 끝에 와요." }
+          - { en: We study every day English., why: "`study English`를 붙여 말하고 `every day`는 끝에 와요." }
+      - type: fillBlank
+        item: sense.play.v.game
+        en: They ___ games together.
+        ko: 그 사람들은 같이 게임을 해요.
+        options:
+          - { en: play, correct: true }
+          - { en: walk, why: "`walk`는 걷는 거예요. 게임은 `play`로 해요." }
+          - { en: watch, why: "`watch`는 보는 거예요. 게임을 \"하다\"는 `play`예요." }
+      - type: dialogue
+        item: sense.walk.v.foot
+        lines:
+          - { speaker: Mina, en: I walk to the office every day., ko: 저는 매일 사무실에 걸어가요. }
+        question: 소라도 매일 사무실에 걸어가요. 소라가 할 말을 골라요.
+        options:
+          - { en: "I walk to the office, too.", correct: true }
+          - { en: "I walk to the office, to.", why: "\"~도\"는 `o`가 둘인 `too`예요. 소리는 같아요." }
+          - { en: "I'm walk to the office, too.", why: "동사 `walk`가 있으니 `I'm`이 아니라 `I`예요." }
+      - type: fillBlank
+        item: pattern.every-day
+        en: I study English every ___.
+        ko: 저는 매일 영어를 공부해요.
+        answers: [day]
+      - type: arrange
+        item: sense.together.adv.with
+        ko: 우리는 매일 같이 걸어요.
+        en: We walk together every day.
+        extra: [play, is]
+      - type: dictation
+        item: sense.game.n.play
+        en: We play games every day.
+        ko: 우리는 매일 게임을 해요.
+      - type: spell
+        sense: sense.together.adv.with
+      - type: shadow
+        en: We walk to school together every day.
+        ko: 우리는 매일 같이 학교에 걸어가요.
