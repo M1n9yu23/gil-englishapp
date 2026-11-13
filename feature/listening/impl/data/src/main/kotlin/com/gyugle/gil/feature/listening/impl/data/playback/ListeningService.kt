@@ -120,14 +120,21 @@ class ListeningService : MediaSessionService() {
     /**
      * A finished list leaves no notification: Media3 would keep it, and it could not be swiped
      * away while the service stays. The player screen offers to start over, which brings it back.
+     *
+     * This is the async variant on purpose: once the default `onUpdateNotification` has run, Media3
+     * posts its notification after that method returns, so skipping the call there would still bring
+     * the notification back, and try to start the service in the foreground from the background.
      */
-    override fun onUpdateNotification(session: MediaSession, startInForegroundRequired: Boolean) {
+    override fun onUpdateNotificationAsync(
+        session: MediaSession,
+        startInForegroundRequired: Boolean
+    ): ListenableFuture<Void?> {
         if (session.player.playbackState == Player.STATE_ENDED) {
             ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
             NotificationManagerCompat.from(this).cancel(DefaultMediaNotificationProvider.DEFAULT_NOTIFICATION_ID)
-            return
+            return Futures.immediateVoidFuture()
         }
-        super.onUpdateNotification(session, startInForegroundRequired)
+        return super.onUpdateNotificationAsync(session, startInForegroundRequired)
     }
 
     override fun onDestroy() {
