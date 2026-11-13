@@ -3,6 +3,7 @@
 [한국어](testing.ko.md)
 
 Unit tests use JUnit Jupiter, AssertK, Turbine and kotlinx-coroutines-test. The project uses no mocking library.
+Tests that run on Robolectric, such as screenshot and Room tests, use JUnit 4, because Robolectric's runner is a JUnit 4 runner.
 
 ```
 ./gradlew testDebugUnitTest                                   # every module
@@ -11,7 +12,7 @@ Unit tests use JUnit Jupiter, AssertK, Turbine and kotlinx-coroutines-test. The 
 
 ## Names
 
-Test methods are named `subject_condition_expectedResult`:
+Test methods are named `subject_condition_expectedResult`, or `subject_expectedResult` when there is no condition:
 
 ```kotlin
 @Test

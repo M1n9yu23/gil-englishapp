@@ -14,7 +14,7 @@ Wrap content in `GilTheme`. Colors come from `MaterialTheme.colorScheme` and tex
 The app does not use dynamic color, so the palette is the same on every phone.
 
 Spacing and animation durations come from `GilTheme.spacing` and `GilTheme.motion`.
-A size used in only one file goes in a private object at the top of that file, such as `PathTokens` in `PathScreen.kt`.
+A size used in only one file is a named private value at the top of that file, often grouped in an object such as `PathTokens` in `PathScreen.kt`.
 
 ## Components
 
@@ -22,7 +22,7 @@ Use the design system component for a role before you build your own: `PrimaryAc
 Their KDoc says when to use each one.
 For a pressable layout that no component covers, start from `PressableSurface`, which brings the touch target, ripple and button semantics.
 
-Icons come from `GilIcons`, which holds Material Symbols as vector drawables in `core:designsystem`. To add one, copy the symbol's path data from Material Symbols into a new drawable there.
+Icons come from `GilIcons`, which holds Material Symbols as vector drawables in `core:designsystem`. To add one, copy the symbol's path data from Material Symbols into a new drawable there and add a property for it to `GilIcons`.
 
 ## English text
 
@@ -39,4 +39,4 @@ Mark placeholders with `<xliff:g>` and give an `example`. Korean plurals use onl
 
 - An icon button needs a `contentDescription` that names the action. A decorative icon next to a text label gets `contentDescription = null`.
 - Name a custom click action with `clickLabel` ("open unit") so screen readers say what happens.
-- Text must still fit at the largest font size. Each screen's screenshot test has a case with `fontScale = 2f`.
+- Text must still fit at the largest font size. Every screenshot test class for a screen has at least one case at `fontScale = 2f`.

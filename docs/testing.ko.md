@@ -3,6 +3,7 @@
 [English](testing.md)
 
 단위 테스트에는 JUnit Jupiter, AssertK, Turbine, kotlinx-coroutines-test를 씁니다. 목(mock) 라이브러리는 쓰지 않습니다.
+스크린샷 테스트나 Room 테스트처럼 Robolectric에서 도는 테스트는 JUnit 4를 씁니다. Robolectric의 러너가 JUnit 4 러너이기 때문입니다.
 
 ```
 ./gradlew testDebugUnitTest                                   # 모든 모듈
@@ -11,7 +12,7 @@
 
 ## 이름
 
-테스트 메서드 이름은 `대상_조건_기대결과` 순서입니다.
+테스트 메서드 이름은 `대상_조건_기대결과` 순서이고, 조건이 없으면 `대상_기대결과`로 씁니다.
 
 ```kotlin
 @Test

@@ -59,14 +59,13 @@ ViewModel은 이것들을 모아 화면 상태 `StateFlow` 하나로 만듭니�
 
 ## 의존성 주입
 
-Hilt를 쓰고, 그래프는 `:app`에서 닫습니다. `impl:data` 모듈마다 `di/` 패키지가 있고, 그 안의 모듈이 `@Binds`로 구현을 인터페이스에 연결합니다.
-ViewModel은 `@HiltViewModel`입니다. 라우트 인자가 필요한 ViewModel은 `LessonViewModel`처럼 assisted injection으로 받습니다.
+Hilt를 쓰고, 그래프는 `:app`에서 닫습니다. `impl:data` 모듈마다 `di/` 패키지가 있고, 그 안의 모듈이 `@Binds`로 구현을 인터페이스에 연결합니다.ViewModel은 `@HiltViewModel`입니다. 라우트 인자가 필요한 ViewModel은 `LessonViewModel`처럼 assisted injection으로 받습니다.
 
 ## 내비게이션
 
-Navigation 3을 씁니다. 기능의 라우트는 그 기능의 `api` 모듈에 `NavKey`를 구현한 `@Serializable` 클래스로 있고, `"lesson.player"` 같은 `@SerialName`을 붙입니다. 라우트에는 ID만 담습니다.
+Navigation 3을 씁니다. 기능의 라우트는 그 기능의 `api` 모듈에 `NavKey`를 구현한 `@Serializable` 클래스로 있고, `"lesson.player"` 같은 `@SerialName`을 붙입니다. 라우트에는 ID 같은 작은 값만 담고, 불러온 데이터는 담지 않습니다.
 
-`impl:presentation` 모듈마다 `lessonEntries(navigator)` 같은 `EntryProviderScope<NavKey>` 확장 함수가 있어서 라우트를 화면에 연결합니다. `:app`이 `MainHost.kt`에서 이 함수들을 부릅니다.
+화면이 있는 `impl:presentation` 모듈마다 `lessonEntries(navigator)` 같은 `EntryProviderScope<NavKey>` 확장 함수가 있어서 라우트를 화면에 연결합니다. `:app`이 `MainHost.kt`에서 이 함수들을 부릅니다.
 다른 기능의 화면을 열 때는 그 기능 `api` 모듈의 라우트를 만들어 `Navigator.goTo`에 넘깁니다.
 
 메인 화면에는 탭이 네 개 있고, 탭마다 백 스택이 따로 있습니다.

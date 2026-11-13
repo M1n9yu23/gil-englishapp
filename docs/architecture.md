@@ -64,9 +64,9 @@ ViewModels are `@HiltViewModel`. A ViewModel that needs a route argument gets it
 
 ## Navigation
 
-Navigation 3. A feature's routes live in its `api` module as `@Serializable` classes that implement `NavKey`, with a `@SerialName` such as `"lesson.player"`. Routes carry IDs only.
+Navigation 3. A feature's routes live in its `api` module as `@Serializable` classes that implement `NavKey`, with a `@SerialName` such as `"lesson.player"`. Routes carry IDs and other small values, never loaded data.
 
-Each `impl:presentation` module has an `EntryProviderScope<NavKey>` extension, such as `lessonEntries(navigator)`, that maps its routes to screens. `:app` calls them in `MainHost.kt`.
+Each `impl:presentation` module with screens has an `EntryProviderScope<NavKey>` extension, such as `lessonEntries(navigator)`, that maps its routes to screens. `:app` calls them in `MainHost.kt`.
 To open another feature's screen, build that feature's route from its `api` module and pass it to `Navigator.goTo`.
 
 The main screen has four tabs, each with its own back stack.

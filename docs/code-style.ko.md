@@ -13,11 +13,10 @@
 
 - `impl:domain`: `model/`, `repository/`(인터페이스).
 - `impl:data`: `di/`, `repository/`, 그리고 필요할 때 `dto/`, `mapper/`, `dao/`, `entity/`.
-- `impl:presentation`: 화면마다 패키지 하나(`player/`, `path/` 등), 여러 화면이 같이 쓰는 컴포저블은 `component/`.
+- `impl:presentation`: 화면마다 패키지 하나(`player/`, `path/` 등), 여러 화면이 같이 쓰는 컴포저블은 `component/`, 모듈이 무언가를 바인딩하면 `di/`.
 
 구현 클래스 이름 앞에는 무엇으로 만들었는지를 붙입니다(`RoomProgressRepository`, `DataStoreLessonRunRepository`, `AndroidTextToSpeechSpeaker`).
-ID는 `LessonId` 같은 value class로 씁니다.
-다른 모듈이 쓰지 않는 선언은 `internal`로 둡니다.
+`feature:curriculum:api`의 콘텐츠 ID는 `LessonId`, `WordId` 같은 value class입니다.
 
 ## 화면
 
@@ -32,13 +31,14 @@ ID는 `LessonId` 같은 value class로 씁니다.
 | `LessonScreen.kt` | ViewModel을 받아 이벤트를 처리하는 `LessonRoot`, 그리기만 하는 `LessonScreen(state, onAction, modifier)` |
 
 화면을 돌린 뒤에도 남아 있어야 하는 것은 이벤트가 아니라 상태입니다.
-미리보기와 스크린샷 테스트는 상태를 넣어 `LessonScreen`을 그리므로, 여기에는 ViewModel과 Hilt가 들어오면 안 됩니다.
+미리보기와 스크린샷 테스트는 상태를 넣어 `Screen` 컴포저블을 그리므로, 여기에는 ViewModel과 Hilt가 들어오면 안 됩니다.
 화면은 자기 UI 모델(`StepUi`, `OptionUi`)을 그리고, 도메인 모델을 이 모델로 바꾸는 일은 presentation 모듈에서 합니다.
-ViewModel이 고르는 문구는 `UiText`로 두고, 실제 문자열은 컴포저블에서 꺼냅니다.
+스낵바 문구처럼 ViewModel이 보내는 메시지는 `UiText`로 두고, 실제 문자열은 컴포저블에서 꺼냅니다.
 
 ## 오류
 
 호출하는 쪽이 처리해야 하는 실패는 `Outcome`으로 돌려주고, 예외는 생기는 곳인 data 모듈에서 잡습니다.
+저장소의 `Flow`를 모으는 ViewModel은 `.catch {}`를 붙여서, 그 데이터 없이도 화면이 뜨게 합니다. `PathViewModel`이 그렇게 합니다.
 코루틴 안에서 `Exception`을 잡았다면 다른 일을 하기 전에 `currentCoroutineContext().ensureActive()`를 불러서 취소를 삼키지 않게 합니다. `feature:curriculum:impl:data`의 `ContentReads.kt`가 그렇게 합니다.
 예외 메시지는 화면에 내보내지 않습니다. 오류를 문자열 리소스로 바꿔서 보여 주세요.
 

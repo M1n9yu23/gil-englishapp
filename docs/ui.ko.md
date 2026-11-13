@@ -14,7 +14,7 @@
 다이내믹 컬러는 쓰지 않으므로 어느 폰에서나 색이 같습니다.
 
 간격과 애니메이션 시간은 `GilTheme.spacing`과 `GilTheme.motion`에서 가져옵니다.
-한 파일에서만 쓰는 크기는 그 파일 위쪽의 private object에 모아 둡니다. `PathScreen.kt`의 `PathTokens`가 그 예입니다.
+한 파일에서만 쓰는 크기는 그 파일 위쪽에 이름 붙인 private 값으로 둡니다. `PathScreen.kt`의 `PathTokens`처럼 object 하나에 모으는 경우가 많습니다.
 
 ## 컴포넌트
 
@@ -22,7 +22,7 @@
 언제 무엇을 쓰는지는 각 컴포넌트의 KDoc에 있습니다.
 누를 수 있는 레이아웃인데 맞는 컴포넌트가 없다면 `PressableSurface`에서 시작하세요. 터치 영역, 물결 효과, 버튼 시맨틱스가 들어 있습니다.
 
-아이콘은 `GilIcons`에서 가져옵니다. Material Symbols를 `core:designsystem`의 벡터 드로어블로 옮겨 둔 것입니다. 새 아이콘은 Material Symbols의 path 데이터를 그대로 복사해 그 폴더에 드로어블로 더합니다.
+아이콘은 `GilIcons`에서 가져옵니다. Material Symbols를 `core:designsystem`의 벡터 드로어블로 옮겨 둔 것입니다. 새 아이콘은 Material Symbols의 path 데이터를 그대로 복사해 그 폴더에 드로어블로 더하고, `GilIcons`에 속성을 하나 추가합니다.
 
 ## 영어 문장
 
@@ -39,4 +39,4 @@
 
 - 아이콘 버튼에는 동작을 말하는 `contentDescription`을 붙입니다. 글자 옆에 붙은 장식 아이콘은 `contentDescription = null`로 둡니다.
 - 직접 만든 클릭 동작에는 `clickLabel`("단원 열기")을 붙여서, 화면 낭독기가 누르면 무슨 일이 생기는지 읽게 합니다.
-- 가장 큰 글꼴 크기에서도 글자가 잘리지 않아야 합니다. 화면마다 스크린샷 테스트에 `fontScale = 2f` 경우가 있습니다.
+- 가장 큰 글꼴 크기에서도 글자가 잘리지 않아야 합니다. 화면의 스크린샷 테스트 클래스에는 모두 `fontScale = 2f` 경우가 하나 이상 있습니다.

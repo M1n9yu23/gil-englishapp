@@ -13,11 +13,10 @@ Inside a module, code is grouped by what it is:
 
 - `impl:domain`: `model/` and `repository/` (interfaces).
 - `impl:data`: `di/`, `repository/`, and `dto/`, `mapper/`, `dao/`, `entity/` where the module needs them.
-- `impl:presentation`: one package per screen, such as `player/` or `path/`, and `component/` for composables that several of its screens share.
+- `impl:presentation`: one package per screen, such as `player/` or `path/`, `component/` for composables that several of its screens share, and `di/` when the module binds something.
 
 An implementation is named after what it is built on: `RoomProgressRepository`, `DataStoreLessonRunRepository`, `AndroidTextToSpeechSpeaker`.
-IDs are value classes, such as `LessonId`, not bare strings.
-Keep declarations `internal` unless another module uses them.
+Content IDs in `feature:curriculum:api` are value classes, such as `LessonId` and `WordId`.
 
 ## Screens
 
@@ -32,13 +31,14 @@ Each screen is a set of files with one prefix, as in `feature/lesson/impl/presen
 | `LessonScreen.kt` | `LessonRoot`, which gets the ViewModel and handles events, and `LessonScreen(state, onAction, modifier)`, which only draws |
 
 Something that must still be there after the screen rotates is state, not an event.
-Previews and screenshot tests render `LessonScreen` with a state, so keep it free of ViewModels and Hilt.
+Previews and screenshot tests render the `Screen` composable with a state, so keep it free of ViewModels and Hilt.
 The screen draws its own UI models (`StepUi`, `OptionUi`), mapped from the domain models in the presentation module.
-Text that a ViewModel picks is a `UiText`, resolved in the composable.
+A message the ViewModel sends, such as the text of a snackbar, is a `UiText` and is resolved in the composable.
 
 ## Errors
 
-Return an `Outcome` for a failure the caller has to handle, and catch exceptions where they happen, in the data module.
+Return an `Outcome` for a failure the caller has to handle, and catch exceptions in the data module, where they are thrown.
+A ViewModel that collects a `Flow` from storage adds `.catch {}`, so the screen still shows without that data, as `PathViewModel` does.
 After catching `Exception` inside a coroutine, call `currentCoroutineContext().ensureActive()` before anything else, so a cancellation is not swallowed. `ContentReads.kt` in `feature:curriculum:impl:data` shows the pattern.
 An exception message never reaches the screen. Map the error to a string resource instead.
 
