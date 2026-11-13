@@ -37,7 +37,8 @@ The app reads English aloud with the text-to-speech engine installed on your pho
 only the text of the lesson. Listening mode has the same engine read the course's words, meanings
 and sentences into audio files, and shows a media notification while it plays. Reminders are
 scheduled on the phone and shown as notifications. If you add the home screen widget, it shows
-how many reviews are due today and an example sentence for a word you have studied.
+how many reviews are due today and an example sentence for a word or phrase you studied before
+today.
 
 ## Backup
 
@@ -46,7 +47,9 @@ settings in that backup and restore them on a new phone. Google runs this backup
 terms, and the developer has no access to it. You can turn it off in the system settings.
 
 In the app's settings you can also save your progress, goal, reminder times and settings to a file
-you choose and restore them later. The app reads and writes only that file and never sends it out.
+you choose and restore them later. The app never sends that file anywhere. Just before a restore,
+it saves a copy of the data the restore replaces in its own storage, outside Android backup.
+Erasing your learning progress deletes that copy too.
 
 ## Reporting a content error
 
