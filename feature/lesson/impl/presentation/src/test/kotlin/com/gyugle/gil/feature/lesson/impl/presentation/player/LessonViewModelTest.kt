@@ -436,6 +436,43 @@ class LessonViewModelTest {
     }
 
     @Test
+    fun open_afterProcessDeath_keepsTheTilesInTheirOrder() {
+        val arrange = LessonStep.Arrange(
+            ko = "나는 다섯을 봐요.",
+            answer = Sentence(1, "I see five.", "나는 다섯을 봐요."),
+            tiles = listOf("I", "see", "five"),
+            accepted = emptyList(),
+            extra = emptyList(),
+            item = null
+        )
+        course.lessons[0] = lesson.copy(steps = listOf(LessonStep.Listen(Sentence(1, "Five.", "다섯.")), arrange))
+        val handle = SavedStateHandle()
+        val before = viewModel(handle)
+        before.continueStep()
+        before.onAction(LessonAction.OnTileClick(2))
+        before.onAction(LessonAction.OnTileClick(0))
+
+        val after = viewModel(handle)
+
+        assertThat((after.playing.step as StepUi.Arrange).chosen).containsExactly(2, 0)
+    }
+
+    @Test
+    fun open_afterProcessDeathOnAPassage_staysOnTheSecondQuestion() {
+        val handle = SavedStateHandle()
+        val before = playToPassage(handle)
+        before.pickText("밴")
+        before.continueStep()
+
+        val after = viewModel(handle)
+
+        val prompt = (after.playing.step as StepUi.Choice).prompt as ChoicePrompt.Passage
+        assertThat(prompt.questionNumber).isEqualTo(2)
+        after.pickText("하나")
+        assertThat(runs.runs.getValue(lesson.id).outcomes.getValue(4).first).isEqualTo(AnswerGrade.WRONG)
+    }
+
+    @Test
     fun open_afterProcessDeathOnAnAnsweredStep_movesOn() {
         runs.runs[lesson.id] = LessonRun.start(5).next().answer(AnswerGrade.CORRECT)
 

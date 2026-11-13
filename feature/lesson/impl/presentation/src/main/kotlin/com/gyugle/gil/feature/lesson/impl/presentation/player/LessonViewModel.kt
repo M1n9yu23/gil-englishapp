@@ -124,6 +124,14 @@ class LessonViewModel @AssistedInject constructor(
     private var savedRun: LessonRun? = null
     private var layout: StepLayout? = null
     private var input = StepInput()
+        set(value) {
+            field = value
+            // What the learner did on an unanswered step, so it comes back as it was after process death.
+            savedStateHandle[KEY_TEXT] = value.text
+            savedStateHandle[KEY_CHOSEN] = ArrayList(value.chosen)
+            savedStateHandle[KEY_QUESTION] = value.question
+            savedStateHandle[KEY_MISSED] = value.missedQuestion
+        }
     private var recording: VoiceRecording? = null
     private var isRecording = false
     private var recordingFailed = false
@@ -207,10 +215,7 @@ class LessonViewModel @AssistedInject constructor(
                 }
             }
 
-            is LessonAction.OnTextChange -> {
-                savedStateHandle[KEY_TEXT] = action.text
-                updateInput { if (it.feedback != null) it else it.copy(text = action.text) }
-            }
+            is LessonAction.OnTextChange -> updateInput { if (it.feedback != null) it else it.copy(text = action.text) }
 
             LessonAction.OnCheckClick -> check()
 
@@ -347,8 +352,7 @@ class LessonViewModel @AssistedInject constructor(
             enterStep()
             return
         }
-        input = if (keepInput) StepInput(text = savedStateHandle[KEY_TEXT] ?: "") else StepInput()
-        if (!keepInput) savedStateHandle[KEY_TEXT] = ""
+        input = if (keepInput) restoredInput() else StepInput()
         layout = StepLayout(step, seed = seedFor(index, current.isRetry))
         render()
         autoPlay(step)
@@ -678,6 +682,13 @@ class LessonViewModel @AssistedInject constructor(
 
     private fun currentStep(): LessonStep? = run?.currentStep?.let { lesson?.steps?.getOrNull(it) }
 
+    private fun restoredInput() = StepInput(
+        text = savedStateHandle[KEY_TEXT] ?: "",
+        chosen = savedStateHandle.get<ArrayList<Int>>(KEY_CHOSEN).orEmpty(),
+        question = savedStateHandle[KEY_QUESTION] ?: 0,
+        missedQuestion = savedStateHandle[KEY_MISSED] ?: false
+    )
+
     private fun updateInput(transform: (StepInput) -> StepInput) {
         input = transform(input)
         render()
@@ -726,6 +737,9 @@ class LessonViewModel @AssistedInject constructor(
     companion object {
         private const val KEY_STARTED = "started"
         private const val KEY_TEXT = "text"
+        private const val KEY_CHOSEN = "chosen"
+        private const val KEY_QUESTION = "question"
+        private const val KEY_MISSED = "missed_question"
         private const val KEY_RESULT_MINUTES = "result_minutes"
         private const val KEY_RESULT_RATINGS = "result_ratings"
         private const val KEY_RESULT_SAVED = "result_saved"
