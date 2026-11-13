@@ -20,9 +20,15 @@ import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-/** Java and Kotlin must agree on the JVM target, or the build fails. Pair this with compileOptions. */
+/**
+ * Java and Kotlin must agree on the JVM target, or the build fails. Pair this with compileOptions.
+ *
+ * Test code may use the coroutine test APIs still marked experimental, such as
+ * `Dispatchers.setMain`, without an opt-in in every file.
+ */
 internal fun Project.configureKotlinJvmTarget() {
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+        if ("Test" in name) compilerOptions.optIn.add("kotlinx.coroutines.ExperimentalCoroutinesApi")
     }
 }
