@@ -59,9 +59,31 @@ class ReviewScreenshotTest {
 
     @Test fun letter_noVoice_readsTheName() = capture(Data.letterNoVoice)
 
+    @Test fun letter_byEar_hidesTheName() = capture(
+        ReviewState(
+            (Data.letterNoVoice.phase as ReviewPhase.Asking).copy(
+                kind = CardKindUi.CHOOSE_LETTER_BY_EAR,
+                card = CardUi.Choice(
+                    prompt = ChoicePromptUi.Letter(nameIpa = "dʒiː", showsIpa = false),
+                    options = listOf("G g", "J j", "Z z", "E e").map { AnswerUi(it, english = true) }
+                ),
+                hasVoice = true
+            )
+        )
+    )
+
     @Test fun sound_wrong_showsIpaAndTheDescription() = capture(Data.soundAnswered)
 
     @Test fun spell_typed_readyToCheck() = capture(Data.spellTyping)
+
+    @Test fun spell_byMeaning_hasNoSpeaker() = capture(
+        ReviewState(
+            (Data.spellTyping.phase as ReviewPhase.Asking).copy(
+                kind = CardKindUi.SPELL_BY_MEANING,
+                card = CardUi.Typed(TypedPromptUi.Spell("수요일", "ˈwɛnzdeɪ", speakable = false), text = "")
+            )
+        )
+    )
 
     @Test fun blank_close_showsTheSpelling() = capture(Data.blankClose)
 
@@ -100,6 +122,11 @@ class ReviewScreenshotTest {
     @Test fun test_passed_saysWhatWasRecorded() = capture(Data.testPassed)
 
     @Test fun test_failedEarly_saysWhyItStopped() = capture(Data.testFailedEarly)
+
+    @Test fun test_failedAtTheEnd_answeredEveryQuestion() {
+        val passed = (Data.testPassed.phase as ReviewPhase.TestFinished).result
+        capture(Data.testPassed.copy(phase = ReviewPhase.TestFinished(passed.copy(passed = false, right = 14))))
+    }
 
     @Test fun test_failed_namesTheTest() = capture(Data.testFailed)
 
