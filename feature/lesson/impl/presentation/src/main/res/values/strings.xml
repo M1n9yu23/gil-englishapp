@@ -20,8 +20,8 @@
     <string name="lesson_instruction_listen_choose">Listen and choose the answer.</string>
     <string name="lesson_instruction_minimal_pair">Choose the word you heard.</string>
     <string name="lesson_instruction_arrange">Tap the words to build the sentence.</string>
-    <string name="lesson_instruction_fill_blank_choose">Choose the word for the blank.</string>
-    <string name="lesson_instruction_fill_blank_type">Write the word for the blank.</string>
+    <string name="lesson_instruction_fill_blank_choose">Choose what goes in the blank.</string>
+    <string name="lesson_instruction_fill_blank_type">Write what goes in the blank.</string>
     <string name="lesson_instruction_spell">Listen and spell the word.</string>
     <string name="lesson_instruction_dictation">Listen and write the sentence.</string>
     <string name="lesson_instruction_shadow">Listen, then copy it out loud.</string>
