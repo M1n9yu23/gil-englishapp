@@ -107,7 +107,7 @@ Each option has `en` or `ko`. Mark exactly one `correct: true` and give every ot
 
 `checkVocab: false` turns off the vocabulary check for one step, for letter drills and the first lessons. `spell` and `minimalPair` do not take it.
 
-In Korean text, put English in backticks.
+In Korean text, put English in backticks. When a Korean particle follows an English sentence, leave out its period: `` `Hello`는 ``, not `` `Hello.`는 ``. Keep `?`, `!` and the period of an abbreviation such as `Mr.`.
 
 ## Sentences
 

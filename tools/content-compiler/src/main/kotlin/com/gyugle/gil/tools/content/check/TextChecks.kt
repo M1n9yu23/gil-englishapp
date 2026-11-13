@@ -61,6 +61,15 @@ class TextChecks(
         BANNED_KO.firstOrNull { it.first in text }?.let { (phrase, advice) ->
             issues.add(Rule.STYLE_KO, where, "'$phrase': $advice")
         }
+        PERIOD_BEFORE_PARTICLE.findAll(text)
+            .firstOrNull { it.groupValues[1].substringAfterLast(' ') !in ABBREVIATIONS }
+            ?.let {
+                issues.add(
+                    Rule.STYLE_KO,
+                    where,
+                    "drop the period before a Korean particle: '${it.value}' -> '`${it.groupValues[1]}`${it.groupValues[2]}'"
+                )
+            }
     }
 
     /** App chrome text in English, drawn with the UI font. */
@@ -134,6 +143,14 @@ class TextChecks(
 
         /** Two or more capitals in a row, such as TV or USA. `I` and `OK` are read correctly. */
         val ABBREVIATION = Regex("\\b(?!OK\\b)[A-Z]{2,}\\b")
+
+        /**
+         * "`Hello.`는": an English sentence in backticks whose period is followed by a particle.
+         * Korean may leave out the period of a quoted sentence, and without quotation marks the
+         * period reads like the end of the Korean sentence. ? and ! stay.
+         */
+        val PERIOD_BEFORE_PARTICLE = Regex("`([^`]*[A-Za-z])\\.`([가-힣])")
+        val ABBREVIATIONS = setOf("Mr", "Mrs", "Ms", "Dr", "St", "a.m", "p.m", "etc")
 
         val BANNED_KO = listOf(
             "성공적으로" to "빼거나 결과를 바로 쓰세요",

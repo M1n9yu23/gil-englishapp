@@ -362,6 +362,18 @@ class RuleTest {
     }
 
     @Test
+    fun styleKo_periodBeforeParticle_isReported() {
+        assertCaught(sample().edit(lesson1, "`I run`처럼", "`I run.`처럼").compile(), Rule.STYLE_KO)
+    }
+
+    @Test
+    fun styleKo_abbreviationOrQuestionBeforeParticle_isNotReported() {
+        val result = sample().edit(lesson1, "`I run`처럼", "`Mr.`나 `I run?`처럼").compile()
+
+        assertThat(result.rules()).doesNotContain(Rule.STYLE_KO)
+    }
+
+    @Test
     fun styleEn_sentenceWithoutClosingPunctuation_isReported() {
         assertCaught(
             sample().edit(lesson1, shadow, "      - type: shadow\n        en: I run every morning").compile(),

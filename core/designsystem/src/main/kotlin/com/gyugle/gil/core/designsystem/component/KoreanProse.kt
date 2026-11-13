@@ -29,7 +29,7 @@ import androidx.compose.ui.text.intl.LocaleList
 private val KoreanLocale = LocaleList("ko-KR")
 
 /**
- * Korean content text, where English is wrapped in backticks: "`Hello.`는 인사예요". The English
+ * Korean content text, where English is wrapped in backticks: "`Hello`는 인사예요". The English
  * parts are set and read as English.
  *
  * The text is marked Korean even when the app runs in English, so lines still break between
@@ -51,7 +51,7 @@ fun KoreanProse(
  * other English in the app (`I'm` shows as I’m). An unmatched backtick is kept as text.
  *
  * Lines may break where the English locale starts or ends, which would leave the particle of
- * "`Hi.`도" alone at the start of a line. A word joiner keeps English together with Korean that
+ * "`Hi`도" alone at the start of a line. A word joiner keeps English together with Korean that
  * touches it; screen readers skip it.
  */
 internal fun proseOf(text: String): AnnotatedString = buildAnnotatedString {
