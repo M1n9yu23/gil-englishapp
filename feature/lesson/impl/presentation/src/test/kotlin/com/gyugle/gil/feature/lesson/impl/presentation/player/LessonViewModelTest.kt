@@ -726,10 +726,11 @@ class LessonViewModelTest {
     }
 
     @Test
-    fun minutesOf_roundsUpAndNeverZero() {
+    fun minutesOf_roundsDownLikeTodayAndNeverZero() {
         assertThat(minutesOf(0)).isEqualTo(1)
-        assertThat(minutesOf(60_000)).isEqualTo(1)
-        assertThat(minutesOf(60_001)).isEqualTo(2)
+        assertThat(minutesOf(119_999)).isEqualTo(1)
+        assertThat(minutesOf(120_000)).isEqualTo(2)
+        assertThat(minutesOf(299_999)).isEqualTo(4)
     }
 
     /** Answers every step before the passage right. */
