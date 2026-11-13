@@ -17,8 +17,10 @@ package com.gyugle.gil.feature.review.impl.domain
 
 import assertk.assertThat
 import assertk.assertions.containsExactlyInAnyOrder
+import assertk.assertions.containsNone
 import assertk.assertions.doesNotContain
 import assertk.assertions.isEqualTo
+import assertk.assertions.isIn
 import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import assertk.assertions.isNull
@@ -65,6 +67,8 @@ class ReviewDeckTest {
     private val f = SoundId("sound.f")
     private val v = SoundId("sound.v")
     private val p = SoundId("sound.p")
+    private val blendL = SoundId("sound.blend-l")
+    private val linking = SoundId("sound.linking")
 
     private val lexicon = FakeLexiconObserver(
         word(
@@ -84,7 +88,23 @@ class ReviewDeckTest {
         SoundEntry(letterA, "eɪ", "A a", "이름은 에이", stage, listOf(SoundExample("apple", "ˈæpəl"))),
         SoundEntry(f, "f", "f, ph", "윗니를 아랫입술에", stage, listOf(SoundExample("fan", "fæn"))),
         SoundEntry(v, "v", "v", "목을 울려요", stage, listOf(SoundExample("five", "faɪv"), SoundExample("van", "væn"))),
-        SoundEntry(p, "p", "p", "두 입술", stage, listOf(SoundExample("pen", "pɛn")))
+        SoundEntry(p, "p", "p", "두 입술", stage, listOf(SoundExample("pen", "pɛn"))),
+        SoundEntry(
+            blendL,
+            "bl",
+            "bl, cl, fl, gl, pl, sl",
+            "두 자음을 이어서",
+            stage,
+            listOf(SoundExample("black", "blæk"), SoundExample("play", "pleɪ"), SoundExample("flag", "flæg"))
+        ),
+        SoundEntry(
+            linking,
+            "‿",
+            "",
+            "이어 읽기",
+            stage,
+            listOf(SoundExample("stand up", "stænd ʌp"), SoundExample("wake up", "weɪk ʌp"))
+        )
     ).apply {
         sentences += SentenceBreakdown(
             sentence = Sentence(1, "Two, three, four.", "둘, 셋, 넷."),
@@ -239,6 +259,28 @@ class ReviewDeckTest {
                 assertThat(it.options.map { option -> option.text })
                     .containsExactlyInAnyOrder("fan", "van", "pen", "apple")
             }
+        }
+    }
+
+    @Test
+    fun cardFor_soundForAGroup_answersWithAnExampleThatHasTheShownSymbol() = runTest {
+        for (seed in 1..10) {
+            val made = cardFor(card(blendL), pool(blendL, f, v, p), seed = seed)
+
+            assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+                // play and flag are l blends too, but not the bl the card shows.
+                assertThat(it.options[it.answer].text).isEqualTo("black")
+                assertThat(it.options.map { option -> option.text }).containsNone("play", "flag")
+            }
+        }
+    }
+
+    @Test
+    fun cardFor_symbolNoExampleSpells_answersWithAnyExample() = runTest {
+        val made = cardFor(card(linking), pool(linking, f))
+
+        assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+            assertThat(it.options[it.answer].text).isIn("stand up", "wake up")
         }
     }
 

@@ -182,7 +182,12 @@ class ReviewDeck @Inject constructor(private val lexicon: LexiconObserver) {
             is Outcome.Failure -> return read
             is Outcome.Success -> read.data ?: return Outcome.Success(null)
         }
-        val right = entry.examples.randomOrNull(random) ?: return Outcome.Success(null)
+        // A sound that stands for a group shows one symbol, such as bl for every l blend, so only
+        // the examples with that symbol answer it. A symbol no example spells, such as linking,
+        // leaves them all.
+        val right = entry.examples.filter { it.ipa.contains(entry.symbol) }
+            .ifEmpty { entry.examples }
+            .randomOrNull(random) ?: return Outcome.Success(null)
         val ownWords = entry.examples.map { it.text }.toSet()
         val others = pool.mapNotNull { other -> (other.id as? SoundId)?.takeIf { it != id } }
             .shuffled(random)
