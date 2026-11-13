@@ -34,4 +34,22 @@ class ReflowTest {
             "Apache License Version 2.0, January 2004\n\n1. Definitions. \"License\" shall mean the terms and conditions."
         )
     }
+
+    @Test
+    fun reflow_shortCapitalHeading_keepsItsOwnLine() {
+        val text = "PREAMBLE\nThe goals of the Open Font License (OFL) are\nto stimulate development.\n"
+
+        assertThat(reflow(text)).isEqualTo(
+            "PREAMBLE\nThe goals of the Open Font License (OFL) are to stimulate development."
+        )
+    }
+
+    @Test
+    fun reflow_capitalizedParagraph_isJoined() {
+        val text = "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\"AS IS\" AND ANY EXPRESS\n"
+
+        assertThat(reflow(text)).isEqualTo(
+            "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS"
+        )
+    }
 }

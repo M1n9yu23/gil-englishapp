@@ -71,10 +71,21 @@ class OpenSourceLicenses @Inject constructor(@param:ApplicationContext private v
 /**
  * License files are wrapped at about 80 columns for a terminal; on a phone that leaves ragged half
  * lines. Lines within a paragraph are joined so the text wraps to the screen; blank lines still
- * separate paragraphs.
+ * separate paragraphs, and a short capitalized heading such as PREAMBLE in the OFL keeps its own
+ * line.
  */
 internal fun reflow(text: String): String = text.replace("\r\n", "\n")
     .split(Regex("\n[ \t]*\n"))
-    .map { paragraph -> paragraph.lines().joinToString(" ") { it.trim() }.trim() }
+    .map { paragraph ->
+        val lines = paragraph.lines().map { it.trim() }.filter { it.isNotEmpty() }
+        val heading = lines.firstOrNull()?.takeIf { lines.size > 1 && it.isHeading() }
+        val body = (if (heading != null) lines.drop(1) else lines).joinToString(" ")
+        listOfNotNull(heading, body).joinToString("\n")
+    }
     .filter { it.isNotEmpty() }
     .joinToString("\n\n")
+
+private fun String.isHeading(): Boolean =
+    length <= MAX_HEADING_LENGTH && any { it.isLetter() } && none { it.isLowerCase() }
+
+private const val MAX_HEADING_LENGTH = 30
