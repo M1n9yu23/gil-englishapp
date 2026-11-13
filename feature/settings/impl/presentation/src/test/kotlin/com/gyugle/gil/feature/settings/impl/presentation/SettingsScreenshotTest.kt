@@ -125,6 +125,10 @@ class SettingsScreenshotTest {
 
     @Test fun home_goalDialog() = dialog(SettingsDialog.Goal)
 
+    @Test fun home_themeDialog() = dialog(SettingsDialog.Theme)
+
+    @Test fun home_clearDialog() = dialog(SettingsDialog.Clear)
+
     @Test fun home_clearAgainDialog() = dialog(SettingsDialog.ClearAgain)
 
     @Test fun home_languageDialog() = dialog(SettingsDialog.Language, AppLanguage.KOREAN)
@@ -140,6 +144,26 @@ class SettingsScreenshotTest {
             onAction = {},
             onBack = {}
         )
+    }
+
+    @Test
+    fun reminders_timeDialog() {
+        composeRule.setContent {
+            GilTheme {
+                Surface {
+                    RemindersScreen(
+                        state = RemindersState(
+                            times = values.reminders,
+                            editing = 1,
+                            notifications = PermissionState.GRANTED
+                        ),
+                        onAction = {},
+                        onBack = {}
+                    )
+                }
+            }
+        }
+        captureScreenRoboImage()
     }
 
     @Test
@@ -187,6 +211,26 @@ class SettingsScreenshotTest {
     }
 
     @Test
+    @Config(qualifiers = "ko-w360dp-h1000dp-xhdpi")
+    fun sound_checkingVoices() = capture {
+        SoundScreen(state = SoundState(accent = Accent.AMERICAN), onAction = {}, onBack = {})
+    }
+
+    @Test
+    @Config(qualifiers = "ko-w360dp-h1000dp-xhdpi")
+    fun sound_bothVoicesPlaying() = capture {
+        SoundScreen(
+            state = SoundState(
+                accent = Accent.BRITISH,
+                voices = VoicesUi.Known(VoiceState.INSTALLED, VoiceState.INSTALLED),
+                isPlaying = true
+            ),
+            onAction = {},
+            onBack = {}
+        )
+    }
+
+    @Test
     @Config(qualifiers = "en-w360dp-h1000dp-xhdpi")
     fun sound_noEngineEnglish() = capture {
         SoundScreen(state = SoundState(accent = Accent.AMERICAN, voices = VoicesUi.NoEngine), onAction = {
@@ -199,6 +243,27 @@ class SettingsScreenshotTest {
 
     @Test
     fun backup_exporting() = capture { BackupScreen(state = BackupState.Exporting, onAction = {}, onBack = {}) }
+
+    @Test
+    fun backup_reading() = capture { BackupScreen(state = BackupState.Reading, onAction = {}, onBack = {}) }
+
+    @Test
+    fun backup_exportFailed() = capture {
+        BackupScreen(
+            state = BackupState.Failed(BackupStep.EXPORT, UiText.StringResource(R.string.settings_error_disk_full)),
+            onAction = {},
+            onBack = {}
+        )
+    }
+
+    @Test
+    fun backup_readFailed() = capture {
+        BackupScreen(
+            state = BackupState.Failed(BackupStep.READ, UiText.StringResource(R.string.settings_error_newer)),
+            onAction = {},
+            onBack = {}
+        )
+    }
 
     @Test
     fun backup_summary() = capture { BackupScreen(state = BackupState.Preview(preview), onAction = {}, onBack = {}) }
@@ -239,6 +304,11 @@ class SettingsScreenshotTest {
     @Test
     fun licenses_list() = capture {
         LicensesScreen(LicensesState.Loaded(PreviewLibraries), onBack = {}, onOpenLibrary = {}, onRetry = {})
+    }
+
+    @Test
+    fun licenses_failed() = capture {
+        LicensesScreen(LicensesState.Failed, onBack = {}, onOpenLibrary = {}, onRetry = {})
     }
 
     @Test
