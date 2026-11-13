@@ -28,6 +28,9 @@ import kotlinx.coroutines.withContext
 internal interface BackupSnapshots {
     /** Whether [text] is safely on disk. */
     suspend fun save(text: String): Boolean
+
+    /** Removes the copy. The copy holds the learner's record, so erasing the record removes it too. */
+    suspend fun delete()
 }
 
 /**
@@ -58,4 +61,7 @@ internal class FileBackupSnapshots internal constructor(private val file: () -> 
             false
         }
     }
+
+    // AtomicFile also removes the backup and new files a write that was cut short leaves behind.
+    override suspend fun delete() = withContext(Dispatchers.IO) { AtomicFile(file()).delete() }
 }

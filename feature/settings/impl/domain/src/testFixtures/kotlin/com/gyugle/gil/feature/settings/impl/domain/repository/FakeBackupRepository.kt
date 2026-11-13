@@ -51,4 +51,11 @@ class FakeBackupRepository : BackupRepository {
         pending?.await()
         return restoreResult
     }
+
+    /** Whether a copy from an earlier restore is still kept; [deleteSnapshot] clears it. */
+    var hasSnapshot = true
+
+    override suspend fun deleteSnapshot() {
+        hasSnapshot = false
+    }
 }

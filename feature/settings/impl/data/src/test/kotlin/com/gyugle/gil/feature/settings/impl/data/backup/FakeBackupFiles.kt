@@ -36,4 +36,6 @@ internal class FakeBackupSnapshots : BackupSnapshots {
         if (writable) saved += text
         return writable
     }
+
+    override suspend fun delete() = saved.clear()
 }

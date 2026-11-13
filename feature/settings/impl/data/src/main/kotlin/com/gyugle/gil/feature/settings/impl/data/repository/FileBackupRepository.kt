@@ -136,6 +136,8 @@ internal class FileBackupRepository internal constructor(
             }
     }
 
+    override suspend fun deleteSnapshot() = mutex.withLock { snapshots.delete() }
+
     private suspend fun read(uri: String): Outcome<BackupFile, BackupError> {
         val text = documents.read(uri) ?: return Outcome.Failure(BackupError.FileUnavailable)
         return withContext(jsonDispatcher) { BackupFileCodec.decode(text) }

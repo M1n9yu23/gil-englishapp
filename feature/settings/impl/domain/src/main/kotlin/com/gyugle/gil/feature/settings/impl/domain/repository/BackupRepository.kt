@@ -36,4 +36,7 @@ interface BackupRepository {
      * current ones first; when any part fails to write, puts that copy back.
      */
     suspend fun restore(uri: String): EmptyOutcome<BackupError>
+
+    /** Deletes the copy [restore] keeps of what it replaced, for when the learner erases their record. */
+    suspend fun deleteSnapshot()
 }

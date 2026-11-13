@@ -29,6 +29,7 @@ import com.gyugle.gil.feature.progress.api.ProgressBackup
 import com.gyugle.gil.feature.reminder.api.ReminderObserver
 import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 import com.gyugle.gil.feature.settings.impl.domain.repository.AppLanguageRepository
+import com.gyugle.gil.feature.settings.impl.domain.repository.BackupRepository
 import com.gyugle.gil.feature.settings.impl.domain.repository.SettingsRepository
 import com.gyugle.gil.feature.settings.impl.presentation.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -56,7 +57,8 @@ class SettingsHomeViewModel @Inject constructor(
     private val goalCommands: GoalCommands,
     private val settingsRepository: SettingsRepository,
     private val appLanguage: AppLanguageRepository,
-    private val progressBackup: ProgressBackup
+    private val progressBackup: ProgressBackup,
+    private val backups: BackupRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(SettingsHomeState(language = readLanguage()))
@@ -113,7 +115,11 @@ class SettingsHomeViewModel @Inject constructor(
         _state.update { it.copy(dialog = null, isClearing = true) }
         viewModelScope.launch {
             progressBackup.clear()
-                .onSuccess { send(UiText.StringResource(R.string.settings_cleared)) }
+                .onSuccess {
+                    // The copy a restore kept still holds the record that was just erased.
+                    backups.deleteSnapshot()
+                    send(UiText.StringResource(R.string.settings_cleared))
+                }
                 .onFailure { error -> send(error.toUiText()) }
             _state.update { it.copy(isClearing = false) }
         }

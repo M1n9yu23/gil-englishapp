@@ -119,6 +119,16 @@ class FileBackupRepositoryTest {
     }
 
     @Test
+    fun deleteSnapshot_afterRestore_removesTheCopy() = runTest {
+        val repository = repository()
+        repository.restore(FILE)
+
+        repository.deleteSnapshot()
+
+        assertThat(snapshots.saved).isEmpty()
+    }
+
+    @Test
     fun restore_lastPartFailsToWrite_putsEverythingBack() = runTest {
         settings.error = DataError.Local.DISK_FULL
 

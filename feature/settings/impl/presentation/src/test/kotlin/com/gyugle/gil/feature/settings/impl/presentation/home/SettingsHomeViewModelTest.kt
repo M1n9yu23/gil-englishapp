@@ -18,7 +18,9 @@ package com.gyugle.gil.feature.settings.impl.presentation.home
 import app.cash.turbine.test
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isFalse
 import assertk.assertions.isNull
+import assertk.assertions.isTrue
 import com.gyugle.gil.core.domain.DataError
 import com.gyugle.gil.core.presentation.UiText
 import com.gyugle.gil.core.presentation.toUiText
@@ -31,6 +33,7 @@ import com.gyugle.gil.feature.settings.api.AppSettings
 import com.gyugle.gil.feature.settings.api.ThemeMode
 import com.gyugle.gil.feature.settings.impl.domain.model.AppLanguage
 import com.gyugle.gil.feature.settings.impl.domain.repository.FakeAppLanguageRepository
+import com.gyugle.gil.feature.settings.impl.domain.repository.FakeBackupRepository
 import com.gyugle.gil.feature.settings.impl.domain.repository.FakeSettingsRepository
 import com.gyugle.gil.feature.settings.impl.presentation.R
 import kotlinx.coroutines.Dispatchers
@@ -48,12 +51,13 @@ class SettingsHomeViewModelTest {
     private val settings = FakeSettingsRepository()
     private val progress = FakeProgressBackup(record = RECORD)
     private var language = FakeAppLanguageRepository()
+    private val backups = FakeBackupRepository()
 
     @BeforeEach fun setUp() = Dispatchers.setMain(UnconfinedTestDispatcher())
 
     @AfterEach fun tearDown() = Dispatchers.resetMain()
 
-    private fun viewModel() = SettingsHomeViewModel(goal, reminders, goal, settings, language, progress)
+    private fun viewModel() = SettingsHomeViewModel(goal, reminders, goal, settings, language, progress, backups)
 
     @Test
     fun init_showsTheGoalRemindersAndSettings() {
@@ -109,6 +113,7 @@ class SettingsHomeViewModelTest {
             viewModel.onAction(SettingsHomeAction.OnClearConfirmClick)
 
             assertThat(progress.record).isEqualTo(FakeProgressBackup.EMPTY)
+            assertThat(backups.hasSnapshot).isFalse()
             assertThat(viewModel.state.value.dialog).isNull()
             assertThat(
                 awaitItem()
@@ -138,6 +143,7 @@ class SettingsHomeViewModelTest {
             assertThat(awaitItem()).isEqualTo(SettingsHomeEvent.ShowMessage(DataError.Local.UNKNOWN.toUiText()))
         }
         assertThat(progress.record).isEqualTo(RECORD)
+        assertThat(backups.hasSnapshot).isTrue()
         assertThat(viewModel.state.value.isClearing).isEqualTo(false)
     }
 
