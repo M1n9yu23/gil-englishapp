@@ -29,6 +29,7 @@ import com.gyugle.gil.feature.curriculum.api.LessonStep
 import com.gyugle.gil.feature.curriculum.api.LocalizedText
 import com.gyugle.gil.feature.curriculum.api.SenseId
 import com.gyugle.gil.feature.curriculum.api.Sentence
+import com.gyugle.gil.feature.curriculum.api.SoundId
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.goal.api.GoalObserver
 import com.gyugle.gil.feature.progress.api.CardState
@@ -184,6 +185,21 @@ class TodayViewModelTest {
 
             assertThat(week.take(start).all { it.muted }).isEqualTo(true)
             assertThat(week.subList(start, start + 2).none { it.muted }).isEqualTo(true)
+        }
+    }
+
+    @Test
+    fun state_onlySoundsMet_offersNoListening() = runTest(dispatcher) {
+        progress.completedLessons.value = setOf(first.id)
+        progress.cards.value = listOf(card("a", due = 5).copy(itemId = SoundId("sound.b")))
+
+        viewModel().state.test {
+            assertThat(ready().blocks.none { it is BlockUi.Listening }).isEqualTo(true)
+
+            progress.cards.value += card("hi", due = 5)
+
+            assertThat(readyWhen { it.blocks.any { block -> block is BlockUi.Listening } }.blocks.last())
+                .isEqualTo(BlockUi.Listening)
         }
     }
 

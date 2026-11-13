@@ -24,18 +24,20 @@ import com.gyugle.gil.feature.progress.api.dayOfWeek
 /**
  * The plan for [today] as the screen shows it, with the [week], whose days are in order, the
  * [studyTime] on record up to its end, and the [streak]. Days of the week before the first day on
- * record are muted like days to come: the learner had not started yet.
+ * record are muted like days to come: the learner had not started yet. Listening practice is
+ * offered when [canListen].
  */
 internal fun TodayPlan.toTodayUi(
     today: StudyDay,
     goalMinutes: Int,
     week: List<StudyDay>,
     studyTime: List<DailyStudyTime>,
-    streak: Int
+    streak: Int,
+    canListen: Boolean
 ): TodayUi {
     val byDay = studyTime.associateBy { it.day }
     val start = studyTime.minOfOrNull { it.day } ?: today.takeIf { firstDay }
-    val blocks = blocks()
+    val blocks = blocks(canListen)
     return TodayUi(
         message = when {
             firstDay -> TodayMessage.FIRST_DAY
@@ -64,7 +66,7 @@ internal fun TodayPlan.toTodayUi(
     )
 }
 
-private fun TodayPlan.blocks(): List<BlockUi> = buildList {
+private fun TodayPlan.blocks(canListen: Boolean): List<BlockUi> = buildList {
     val first = review
     when {
         first != null -> add(BlockUi.Review(first.count, first.minutes, more = false))
@@ -88,5 +90,5 @@ private fun TodayPlan.blocks(): List<BlockUi> = buildList {
     }
     moreReview?.let { add(BlockUi.Review(it.count, it.minutes, more = true)) }
     // Practice comes last, once there is something learned to hear.
-    if (!firstDay) add(BlockUi.Listening)
+    if (canListen) add(BlockUi.Listening)
 }

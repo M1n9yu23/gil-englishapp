@@ -20,6 +20,7 @@ import androidx.lifecycle.viewModelScope
 import com.gyugle.gil.core.domain.Outcome
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.api.LessonId
+import com.gyugle.gil.feature.curriculum.api.SoundId
 import com.gyugle.gil.feature.goal.api.DailyGoal
 import com.gyugle.gil.feature.goal.api.GoalObserver
 import com.gyugle.gil.feature.home.impl.domain.introducedOn
@@ -121,7 +122,9 @@ class TodayViewModel @Inject constructor(
             nextLesson = next,
             hasRecord = record.cards.isNotEmpty() || record.completed.isNotEmpty()
         )
-        return TodayState.Ready(plan.toTodayUi(day, goal.minutes, week, record.studyTime, record.streak))
+        // Listening leaves out sounds, so a learner who has met only sounds has nothing to hear yet.
+        val canListen = record.cards.any { it.itemId !is SoundId }
+        return TodayState.Ready(plan.toTodayUi(day, goal.minutes, week, record.studyTime, record.streak, canListen))
     }
 
     private fun firstDayOfWeek(): DayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
