@@ -22,6 +22,7 @@ import com.gyugle.gil.tools.content.english.MarkedSentence
 import com.gyugle.gil.tools.content.english.SenseMark
 import com.gyugle.gil.tools.content.english.Token
 import com.gyugle.gil.tools.content.english.Tokenizer
+import com.gyugle.gil.tools.content.english.normalizeEnglish
 import com.gyugle.gil.tools.content.source.PartOfSpeech
 import com.gyugle.gil.tools.content.source.SenseSource
 
@@ -89,7 +90,8 @@ class SentenceResolver(
                         covered.forEach { result += ResolvedToken(it.start, it.end, phrase.word.id, sense) }
                         i += covered.size
                     } else {
-                        result += resolveWord(token, knowledge, where)
+                        result +=
+                            resolveHyphenated(token, knowledge, where) ?: listOf(resolveWord(token, knowledge, where))
                         i++
                     }
                 }
@@ -151,6 +153,26 @@ class SentenceResolver(
             }
         }
         return mark.senseId
+    }
+
+    /**
+     * A hyphenated word that is not a headword itself: the same word written solid (`co-worker`
+     * for `coworker`), or else each part on its own (`twenty-one`). Null when [token] has no
+     * hyphen or is a headword.
+     */
+    private fun resolveHyphenated(token: Token, knowledge: Knowledge?, where: String): List<ResolvedToken>? {
+        if ('-' !in token.text || lexicon.matches(token.key).isNotEmpty()) return null
+        val solid = token.text.replace("-", "")
+        if (lexicon.matches(normalizeEnglish(solid)).isNotEmpty()) {
+            val resolved = resolveWord(Token(token.start, token.end, solid), knowledge, where)
+            return listOf(resolved)
+        }
+        var start = token.start
+        return token.text.split('-').map { part ->
+            val resolved = resolveWord(Token(start, start + part.length, part), knowledge, where)
+            start += part.length + 1
+            resolved
+        }
     }
 
     private fun resolveWord(token: Token, knowledge: Knowledge?, where: String): ResolvedToken {

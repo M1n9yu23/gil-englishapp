@@ -89,6 +89,21 @@ class VocabularyTest {
     }
 
     @Test
+    fun hyphenated_knownParts_areAccepted() {
+        assertThat(withShadow("I run every-morning.").compile().errors).isEmpty()
+    }
+
+    @Test
+    fun hyphenated_solidSpellingIsAHeadword_isAccepted() {
+        assertThat(withShadow("I run every mor-ning.").compile().errors).isEmpty()
+    }
+
+    @Test
+    fun hyphenated_unknownPart_isUnknown() {
+        assertThat(withShadow("I run every morning-ish.").compile().rules()).contains(Rule.VOCAB_UNKNOWN)
+    }
+
+    @Test
     fun patternWords_withoutThePattern_areUnknown() {
         val result = SampleContent(File(temp, "content"))
             .edit(lesson, "sense.student.n.learner, pattern.nice-to-meet-you]", "sense.student.n.learner]")
