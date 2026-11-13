@@ -165,7 +165,8 @@ private fun ColumnScope.SentenceBlock(sentence: SentenceUi?) {
             style = TextStyle(
                 color = GlanceTheme.colors.onSurface,
                 fontSize = EnglishTextSize.Body.fontSize,
-                fontFamily = FontFamily.Serif // design-allow(design.text.font-family): widgets get system fonts only
+                // A widget cannot load the app's font files, so the English sentence uses the device serif.
+                fontFamily = FontFamily.Serif
             ),
             maxLines = 2
         )
