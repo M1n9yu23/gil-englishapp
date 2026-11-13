@@ -292,4 +292,19 @@ class StatsViewModelTest {
             assertThat(settled()).isInstanceOf(StatsState.Empty::class)
         }
     }
+
+    @Test
+    fun state_recordUnreadable_failsAndRetryRecovers() = runTest(dispatcher) {
+        progress.failure = IllegalStateException("database is closed")
+        val viewModel = viewModel()
+
+        viewModel.state.test {
+            assertThat(settled()).isEqualTo(StatsState.Failed)
+
+            progress.failure = null
+            viewModel.onAction(StatsAction.OnRetryClick)
+
+            assertThat(settled()).isInstanceOf(StatsState.Empty::class)
+        }
+    }
 }
