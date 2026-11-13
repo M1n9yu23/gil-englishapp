@@ -392,7 +392,8 @@ private fun ColumnScope.TypedContent(
         value = step.text,
         onValueChange = { onAction(LessonAction.OnTextChange(it)) },
         modifier = Modifier.fillMaxWidth(),
-        enabled = !answered,
+        // Read-only rather than disabled once checked, so the answer stays readable next to the right one.
+        readOnly = answered,
         label = { Text(stringResource(R.string.lesson_answer_label)) },
         // Typed English is read back in English by screen readers.
         textStyle = MaterialTheme.typography.bodyLarge.copy(localeList = EnglishLocale),
