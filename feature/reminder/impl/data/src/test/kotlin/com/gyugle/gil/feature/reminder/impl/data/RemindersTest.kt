@@ -41,6 +41,7 @@ import java.io.File
 import java.nio.file.Files
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.minutes
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -119,6 +120,24 @@ class RemindersTest {
         reminders.remind(dueAt = clock.now() - 1.hours)
 
         assertThat(posted()).hasSize(1)
+    }
+
+    @Test
+    fun remind_arrivingExactlyTwoHoursLate_stillReminds() = runTest {
+        repository.setTimes(listOf(ReminderTime(20, 0)))
+
+        reminders.remind(dueAt = clock.now() - 2.hours)
+
+        assertThat(posted()).hasSize(1)
+    }
+
+    @Test
+    fun remind_arrivingJustOverTwoHoursLate_showsNothing() = runTest {
+        repository.setTimes(listOf(ReminderTime(20, 0)))
+
+        reminders.remind(dueAt = clock.now() - 2.hours - 1.milliseconds)
+
+        assertThat(posted()).isEmpty()
     }
 
     // Setting the clock forward past a reminder time fires that alarm at once.
