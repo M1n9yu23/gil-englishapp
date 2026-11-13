@@ -2,7 +2,7 @@
 
 [한국어](PRIVACY.ko.md)
 
-Last updated: November 10, 2026
+Last updated: November 13, 2026
 
 This policy covers the Gil app for Android (application ID `com.gyugle.gil`).
 
@@ -31,12 +31,13 @@ offline English speech recognition installed, the recording is also passed to th
 the phone to show which words it heard. The app asks only for on-device recognition. Without the
 permission, the rest of the app works as usual.
 
-## Speech and reminders
+## Speech, reminders and the widget
 
 The app reads English aloud with the text-to-speech engine installed on your phone and passes it
 only the text of the lesson. Listening mode has the same engine read the course's words, meanings
 and sentences into audio files, and shows a media notification while it plays. Reminders are
-scheduled on the phone and shown as notifications.
+scheduled on the phone and shown as notifications. If you add the home screen widget, it shows
+how many reviews are due today and an example sentence for a word you have studied.
 
 ## Backup
 
@@ -44,9 +45,8 @@ If Android backup is turned on for your Google account, Android may include your
 settings in that backup and restore them on a new phone. Google runs this backup under its own
 terms, and the developer has no access to it. You can turn it off in the system settings.
 
-In the app's settings you can also save your progress, daily goal, reminder times and settings to
-a file in a place you choose, and restore them from such a file later. The app reads and writes
-only the file you pick and does not send it anywhere.
+In the app's settings you can also save your progress, goal, reminder times and settings to a file
+you choose and restore them later. The app reads and writes only that file and never sends it out.
 
 ## Reporting a content error
 
