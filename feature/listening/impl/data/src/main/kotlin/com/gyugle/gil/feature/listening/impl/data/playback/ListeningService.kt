@@ -20,6 +20,8 @@ package com.gyugle.gil.feature.listening.impl.data.playback
 import android.app.PendingIntent
 import android.content.Intent
 import androidx.annotation.OptIn
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.ServiceCompat
 import androidx.core.net.toUri
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -114,6 +116,19 @@ class ListeningService : MediaSessionService() {
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = session
+
+    /**
+     * A finished list leaves no notification: Media3 would keep it, and it could not be swiped
+     * away while the service stays. The player screen offers to start over, which brings it back.
+     */
+    override fun onUpdateNotification(session: MediaSession, startInForegroundRequired: Boolean) {
+        if (session.player.playbackState == Player.STATE_ENDED) {
+            ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
+            NotificationManagerCompat.from(this).cancel(DefaultMediaNotificationProvider.DEFAULT_NOTIFICATION_ID)
+            return
+        }
+        super.onUpdateNotification(session, startInForegroundRequired)
+    }
 
     override fun onDestroy() {
         session?.let { session ->
