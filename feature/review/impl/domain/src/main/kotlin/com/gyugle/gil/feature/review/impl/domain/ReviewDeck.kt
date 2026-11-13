@@ -199,6 +199,9 @@ class ReviewDeck @Inject constructor(private val lexicon: LexiconObserver) {
                 is Outcome.Failure -> return read
                 is Outcome.Success -> read.data ?: continue
             }
+            // A screen reader names the sound by its spelling, so a sound spelled the same way,
+            // such as th in think for the th in this, would be a second right answer to it.
+            if (otherEntry.spelling == entry.spelling) continue
             otherEntry.examples
                 .filter { example ->
                     example.text !in ownWords &&
@@ -211,7 +214,14 @@ class ReviewDeck @Inject constructor(private val lexicon: LexiconObserver) {
         if (wrong.isEmpty()) return Outcome.Success(null)
         val options = (wrong + right).shuffled(random)
         return Outcome.Success(
-            ReviewCard.FindSound(id, entry.symbol, entry.descriptionKo, options, options.indexOf(right))
+            ReviewCard.FindSound(
+                id,
+                entry.symbol,
+                entry.spelling,
+                entry.descriptionKo,
+                options,
+                options.indexOf(right)
+            )
         )
     }
 

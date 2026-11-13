@@ -85,7 +85,7 @@ private fun ColumnScope.ChoiceContent(card: CardUi.Choice, hasVoice: Boolean, on
             if (prompt.showsIpa) IpaText(ipa = prompt.nameIpa, spokenWord = null, prominent = !hasVoice)
         }
 
-        is ChoicePromptUi.Sound -> IpaText(ipa = prompt.symbol, spokenWord = null, prominent = true)
+        is ChoicePromptUi.Sound -> IpaText(ipa = prompt.symbol, spokenWord = prompt.spelling, prominent = true)
     }
     AnswerOptionList(count = card.options.size) { index, modifier ->
         val option = card.options[index]

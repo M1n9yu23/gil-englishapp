@@ -87,7 +87,7 @@ internal object ReviewPreviewData {
             count = 4,
             kind = CardKindUi.FIND_SOUND,
             card = CardUi.Choice(
-                prompt = ChoicePromptUi.Sound("θ"),
+                prompt = ChoicePromptUi.Sound("θ", "th"),
                 options = listOf(
                     AnswerUi("this", english = true, ipa = "ðɪs"),
                     AnswerUi("think", english = true, ipa = "θɪŋk"),

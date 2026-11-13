@@ -31,6 +31,6 @@ sealed interface ChoicePromptUi {
     /** A letter's name, read as [nameIpa] when there is no voice or once the card is answered. */
     data class Letter(val nameIpa: String, val showsIpa: Boolean) : ChoicePromptUi
 
-    /** A sound's symbol, as IPA. */
-    data class Sound(val symbol: String) : ChoicePromptUi
+    /** A sound's symbol, as IPA, and the [spelling] screen readers read in its place. */
+    data class Sound(val symbol: String, val spelling: String?) : ChoicePromptUi
 }

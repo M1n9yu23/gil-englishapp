@@ -69,6 +69,8 @@ class ReviewDeckTest {
     private val p = SoundId("sound.p")
     private val blendL = SoundId("sound.blend-l")
     private val linking = SoundId("sound.linking")
+    private val thVoiced = SoundId("sound.th-voiced")
+    private val thVoiceless = SoundId("sound.th-voiceless")
 
     private val lexicon = FakeLexiconObserver(
         word(
@@ -104,7 +106,9 @@ class ReviewDeckTest {
             "이어 읽기",
             stage,
             listOf(SoundExample("stand up", "stænd ʌp"), SoundExample("wake up", "weɪk ʌp"))
-        )
+        ),
+        SoundEntry(thVoiced, "ð", "th", "목을 울려요", stage, listOf(SoundExample("this", "ðɪs"))),
+        SoundEntry(thVoiceless, "θ", "th", "바람만", stage, listOf(SoundExample("think", "θɪŋk")))
     ).apply {
         sentences += SentenceBreakdown(
             sentence = Sentence(1, "Two, three, four.", "둘, 셋, 넷."),
@@ -271,6 +275,27 @@ class ReviewDeckTest {
                 // play and flag are l blends too, but not the bl the card shows.
                 assertThat(it.options[it.answer].text).isEqualTo("black")
                 assertThat(it.options.map { option -> option.text }).containsNone("play", "flag")
+            }
+        }
+    }
+
+    @Test
+    fun cardFor_sound_namesItForScreenReadersBySpelling() = runTest {
+        val made = cardFor(card(f), pool(f, v))
+
+        assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+            assertThat(it.spelling).isEqualTo("f, ph")
+        }
+    }
+
+    @Test
+    fun cardFor_soundSpelledLikeAnother_takesNoWrongOptionFromIt() = runTest {
+        for (seed in 1..10) {
+            val made = cardFor(card(thVoiced), pool(thVoiced, thVoiceless, p), seed = seed)
+
+            assertThat(made).isNotNull().isInstanceOf<ReviewCard.FindSound>().given {
+                // Read as "th", think would answer the card as well as this.
+                assertThat(it.options.map { option -> option.text }).containsExactlyInAnyOrder("this", "pen")
             }
         }
     }

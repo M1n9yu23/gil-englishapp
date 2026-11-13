@@ -120,7 +120,7 @@ fun AnnotatedString.Builder.appendEnglish(text: String) {
 
 /**
  * A pronunciation such as `ˈwɔːtər`, shown between slashes. Screen readers cannot read IPA
- * symbols, so they read [spokenWord], the English word it spells, with an English voice. With a
+ * symbols, so they read [spokenWord], the English it spells, with an English voice. With a
  * null [spokenWord] they skip it: where the word is already read out, or must not be given away.
  * [prominent] sets it at the size of a focus sentence, for a question that is the IPA itself.
  */

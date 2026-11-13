@@ -72,10 +72,14 @@ sealed interface ReviewCard {
         override val optionCount: Int get() = options.size
     }
 
-    /** A sound's symbol to the word that has the sound. [descriptionKo] explains it once answered. */
+    /**
+     * A sound's symbol to the word that has the sound. [spelling] names the sound for screen readers,
+     * which cannot read the symbol. [descriptionKo] explains it once answered.
+     */
     data class FindSound(
         override val itemId: StudyItemId,
         val symbol: String,
+        val spelling: String,
         val descriptionKo: String,
         val options: List<SoundExample>,
         override val answer: Int

@@ -66,7 +66,7 @@ internal fun ReviewCard.toCardUi(hasVoice: Boolean, picked: Int?, text: String):
 
     // The IPA would give the answer away, so it shows only once the card is answered.
     is ReviewCard.FindSound -> choice(
-        ChoicePromptUi.Sound(symbol),
+        ChoicePromptUi.Sound(symbol, spelling.takeIf { it.isNotBlank() }),
         options.map { AnswerUi(it.text, english = true, ipa = it.ipa.takeIf { picked != null }) },
         picked
     )
