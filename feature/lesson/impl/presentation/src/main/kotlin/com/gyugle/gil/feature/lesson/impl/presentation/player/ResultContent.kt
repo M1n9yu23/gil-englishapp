@@ -145,14 +145,15 @@ private fun ResultItemRow(item: ResultItemUi) {
             .semantics(mergeDescendants = true) {},
         horizontalArrangement = Arrangement.spacedBy(GilTheme.spacing.itemGap)
     ) {
-        Column(modifier = Modifier.weight(1f)) {
+        // The meaning or note lines up with the word, not with the top of the row.
+        Column(modifier = Modifier.weight(1f).alignByBaseline()) {
             EnglishText(text = item.text)
             // The row is read as one, and the word is already in it.
             item.ipa?.let { IpaText(ipa = it, spokenWord = null) }
         }
         // A meaning that wraps keeps the same right edge as the short ones.
         val trailing = MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.End)
-        Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.End) {
+        Column(modifier = Modifier.weight(1f).alignByBaseline(), horizontalAlignment = Alignment.End) {
             item.meaningKo?.let { KoreanProse(text = it, style = trailing) }
             if (item.comesBackSoon) {
                 Text(

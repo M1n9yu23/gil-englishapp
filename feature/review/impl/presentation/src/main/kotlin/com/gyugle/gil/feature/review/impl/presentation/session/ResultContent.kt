@@ -122,10 +122,11 @@ internal fun ResultItemRow(item: ResultItemUi) {
             .semantics(mergeDescendants = true) {},
         horizontalArrangement = Arrangement.spacedBy(GilTheme.spacing.itemGap)
     ) {
-        EnglishText(text = item.text, modifier = Modifier.weight(1f))
+        // The meaning or symbol lines up with the word, not with the top of the row.
+        EnglishText(text = item.text, modifier = Modifier.weight(1f).alignByBaseline())
         // A meaning that wraps keeps the same right edge as the short ones.
         val trailing = MaterialTheme.typography.bodyMedium.copy(textAlign = TextAlign.End)
-        Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.End) {
+        Column(modifier = Modifier.weight(1f).alignByBaseline(), horizontalAlignment = Alignment.End) {
             item.detail?.let {
                 if (item.detailIsIpa) IpaText(ipa = it, spokenWord = null) else KoreanProse(text = it, style = trailing)
             }
