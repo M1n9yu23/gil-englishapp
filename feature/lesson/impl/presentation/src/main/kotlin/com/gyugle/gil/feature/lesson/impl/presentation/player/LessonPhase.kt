@@ -16,7 +16,6 @@
 package com.gyugle.gil.feature.lesson.impl.presentation.player
 
 import androidx.compose.runtime.Immutable
-import com.gyugle.gil.core.presentation.UiText
 
 @Immutable
 sealed interface LessonPhase {

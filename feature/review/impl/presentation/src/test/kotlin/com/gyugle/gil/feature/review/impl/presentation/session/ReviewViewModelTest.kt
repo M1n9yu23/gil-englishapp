@@ -46,7 +46,6 @@ import com.gyugle.gil.feature.progress.api.FakeProgressObserver
 import com.gyugle.gil.feature.progress.api.FakeStudyClock
 import com.gyugle.gil.feature.progress.api.Mistake
 import com.gyugle.gil.feature.progress.api.ReviewRating
-import com.gyugle.gil.feature.progress.api.StudyDay
 import com.gyugle.gil.feature.review.impl.domain.ReviewDeck
 import com.gyugle.gil.feature.settings.api.FakeAppSettingsObserver
 import kotlin.time.Duration.Companion.minutes

@@ -23,7 +23,6 @@ import com.gyugle.gil.feature.lesson.impl.domain.gradeArrange
 import com.gyugle.gil.feature.lesson.impl.domain.gradeFillBlank
 import com.gyugle.gil.feature.lesson.impl.domain.gradeSpelling
 import com.gyugle.gil.feature.lesson.impl.domain.model.AnswerGrade
-import kotlin.random.Random
 internal fun LessonStep.toStepUi(
     input: StepInput,
     layout: StepLayout,

@@ -15,7 +15,6 @@
  */
 package com.gyugle.gil.feature.review.impl.presentation.session
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
@@ -42,7 +41,6 @@ import com.gyugle.gil.core.designsystem.component.EnglishTextSize
 import com.gyugle.gil.core.designsystem.component.IpaText
 import com.gyugle.gil.core.designsystem.component.KoreanProse
 import com.gyugle.gil.core.designsystem.component.SoundButton
-import com.gyugle.gil.core.designsystem.theme.GilTheme
 import com.gyugle.gil.feature.review.impl.presentation.R
 
 /** The prompt of a card and its options or answer field. */

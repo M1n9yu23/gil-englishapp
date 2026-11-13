@@ -15,6 +15,4 @@
  */
 package com.gyugle.gil.feature.lesson.impl.presentation.player
 
-import androidx.compose.runtime.Immutable
-
 enum class GradeUi { CORRECT, CLOSE, WRONG }

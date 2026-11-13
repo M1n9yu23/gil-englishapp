@@ -20,7 +20,6 @@ import androidx.lifecycle.viewModelScope
 import com.gyugle.gil.core.domain.onFailure
 import com.gyugle.gil.core.domain.onSuccess
 import com.gyugle.gil.core.speech.Speaker
-import com.gyugle.gil.core.speech.SpeechLanguage
 import com.gyugle.gil.core.speech.SpeechRate
 import com.gyugle.gil.core.speech.englishVoice
 import com.gyugle.gil.feature.curriculum.api.LexiconObserver

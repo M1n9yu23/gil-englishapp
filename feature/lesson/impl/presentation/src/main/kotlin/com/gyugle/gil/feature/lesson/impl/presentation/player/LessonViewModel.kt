@@ -20,7 +20,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gyugle.gil.core.domain.onFailure
 import com.gyugle.gil.core.domain.onSuccess
-import com.gyugle.gil.core.presentation.UiText
 import com.gyugle.gil.core.presentation.permissions.PermissionState
 import com.gyugle.gil.core.speech.OnDeviceRecognizer
 import com.gyugle.gil.core.speech.RecognitionError
@@ -34,7 +33,6 @@ import com.gyugle.gil.core.speech.VoiceRecorder
 import com.gyugle.gil.core.speech.VoiceRecording
 import com.gyugle.gil.core.speech.VoiceState
 import com.gyugle.gil.core.speech.englishVoice
-import com.gyugle.gil.feature.curriculum.api.ContentError
 import com.gyugle.gil.feature.curriculum.api.CourseObserver
 import com.gyugle.gil.feature.curriculum.api.Lesson
 import com.gyugle.gil.feature.curriculum.api.LessonId
@@ -47,7 +45,6 @@ import com.gyugle.gil.feature.lesson.impl.domain.model.LessonRun
 import com.gyugle.gil.feature.lesson.impl.domain.repository.LessonRunRepository
 import com.gyugle.gil.feature.lesson.impl.domain.repository.ScoringNoticeRepository
 import com.gyugle.gil.feature.lesson.impl.domain.stepsThatNeedSound
-import com.gyugle.gil.feature.lesson.impl.presentation.R
 import com.gyugle.gil.feature.progress.api.ProgressCommands
 import com.gyugle.gil.feature.progress.api.ReviewRating
 import com.gyugle.gil.feature.progress.api.StudyClock
