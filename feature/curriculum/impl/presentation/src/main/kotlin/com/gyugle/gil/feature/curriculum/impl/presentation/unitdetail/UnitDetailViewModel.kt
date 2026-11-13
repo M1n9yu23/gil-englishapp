@@ -115,7 +115,14 @@ class UnitDetailViewModel @AssistedInject constructor(
             null
         } else {
             // Without the course order there is nothing to suggest, and the lesson opens as picked.
-            (course.getNextLesson(completed) as? Outcome.Success)?.data?.takeIf { it.id != id }
+            when (val next = course.getNextLesson(completed)) {
+                is Outcome.Failure -> {
+                    Timber.w("Could not read the course order: %s", next.error)
+                    null
+                }
+
+                is Outcome.Success -> next.data?.takeIf { it.id != id }
+            }
         }
         if (earlier == null) {
             eventChannel.send(UnitDetailEvent.OpenLesson(id))

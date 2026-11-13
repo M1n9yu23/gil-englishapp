@@ -175,4 +175,18 @@ class UnitDetailViewModelTest {
             assertThat(awaitItem()).isEqualTo(UnitDetailEvent.OpenLesson(LessonId("lesson.s1-01.2")))
         }
     }
+
+    @Test
+    fun onLessonClick_courseOrderUnreadable_opensWhatWasPicked() = runTest {
+        repository.units = mapOf(unitId to unit)
+        course.error = ContentError.UNAVAILABLE
+        val viewModel = viewModel()
+
+        viewModel.events.test {
+            viewModel.onAction(UnitDetailAction.OnLessonClick(LessonId("lesson.s1-01.2")))
+
+            assertThat(awaitItem()).isEqualTo(UnitDetailEvent.OpenLesson(LessonId("lesson.s1-01.2")))
+        }
+        assertThat(viewModel.state.value.skipAhead).isNull()
+    }
 }
