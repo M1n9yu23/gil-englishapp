@@ -1,0 +1,256 @@
+id: unit.a1-15
+title: { ko: 묻고 대답하기, en: "Do you? Does she?" }
+lessons:
+  - id: lesson.a1-15.1
+    title: { ko: "Do you ~?", en: "Do you ~?" }
+    goal: { ko: "상대에게 \"~해요?\" 하고 묻고 짧게 대답할 수 있어요", en: Ask yes/no questions with Do you and give short answers }
+    introduces: [pattern.do-you, pattern.short-answer-do, sense.food.n.eat, sense.spicy.adj.hot, sense.swim.v.water]
+    steps:
+      - type: listen
+        en: Do you speak English?
+        ko: 영어 할 줄 알아요?
+      - type: listen
+        en: "Do you eat spicy food? Yes, I do."
+        ko: 매운 음식 먹어요? 네, 먹어요.
+      - type: explain
+        text: |
+          `speak`, `eat` 같은 동사가 있는 문장으로 물을 때는 문장 앞에 `Do`를 붙여요. `You speak English`는 `Do you speak English?`가 돼요. 뒤의 동사는 그대로이고 보통 끝을 올려 말해요.
+
+          대답할 때는 동사를 다시 말하지 않고 `Yes, I do`나 `No, I don't`라고 짧게 해요. 우리말은 "네, 먹어요"처럼 동사를 다시 말하지만 영어는 `do`로 받아요. `Yes`, `No`만 해도 되지만 짧은 대답까지 붙이면 더 자연스러워요.
+        examples:
+          - en: "Do [you]{who} [speak]{do} [English]{what}?"
+            ko: 영어 할 줄 알아요?
+            literal: 너는 / 말하니 / 영어를
+          - en: "Do you eat spicy food? Yes, I do."
+            ko: 매운 음식 먹어요? 네, 먹어요.
+          - en: "Do they live here? No, they don't."
+            ko: 그 사람들은 여기 살아요? 아니요, 안 살아요.
+      - type: explain
+        text: |
+          `am`, `is`, `are`가 있는 문장은 `Do`를 붙이지 않아요. `Are you hungry?`처럼 순서만 바꿔요. 대답도 `Yes, I am`이에요. `Do you hungry?`라고 하지 않아요.
+        examples:
+          - en: "Are you hungry? Yes, I am."
+            ko: 배고파요? 네, 배고파요.
+          - en: "Do you swim? No, I don't."
+            ko: 수영해요? 아니요, 안 해요.
+      - type: chooseMeaning
+        en: Do you eat spicy food?
+        item: sense.spicy.adj.hot
+        options:
+          - { ko: 매운 음식 먹어요?, correct: true }
+          - { ko: 저는 매운 음식을 먹어요., why: "`Do`로 시작하면 묻는 말이에요." }
+          - { ko: 단 음식 먹어요?, why: "`spicy`는 \"매운\"이에요." }
+      - type: listenChoose
+        en: Do you swim every day?
+        item: sense.swim.v.water
+        options:
+          - { en: Do you swim every day?, correct: true }
+          - { en: Are you swim every day?, why: "`swim`은 동사라서 `Do`로 물어요. `Do`가 들렸어요." }
+          - { en: Do you walk every day?, why: "`walk`가 아니라 `swim`이 들렸어요." }
+      - type: chooseEnglish
+        ko: 영어 할 줄 알아요?
+        item: pattern.do-you
+        options:
+          - { en: Do you speak English?, correct: true }
+          - { en: Are you speak English?, why: "`speak`는 동사라서 `Are`가 아니라 `Do`로 물어요." }
+          - { en: Speak you English?, why: "영어는 동사를 앞으로 보내지 않고 앞에 `Do`를 붙여요." }
+      - type: fillBlank
+        item: pattern.do-you
+        en: ___ you live near here?
+        ko: 이 근처에 살아요?
+        options:
+          - { en: Do, correct: true }
+          - { en: Are, why: "`live`는 동사라서 `Do`로 물어요." }
+          - { en: Does, why: "`you` 앞에는 `Do`예요. `Does`는 `he`, `she`, `it` 앞에 써요." }
+      - type: dialogue
+        item: pattern.short-answer-do
+        lines:
+          - { speaker: Sam, en: Do you eat spicy food?, ko: 매운 음식 먹어요? }
+        question: 유나는 매운 음식을 잘 먹어요. 유나가 할 말을 골라요.
+        options:
+          - { en: "Yes, I do.", correct: true }
+          - { en: "Yes, I am.", why: "`Do`로 물었으니 `do`로 대답해요." }
+          - { en: "Yes, I eat.", why: "짧게 대답할 때는 동사를 다시 쓰지 않고 `do`로 대신해요." }
+      - type: fillBlank
+        item: pattern.short-answer-do
+        en: "Do you swim? No, I ___."
+        ko: 수영해요? 아니요, 안 해요.
+        answers: ["don't", "do not"]
+      - type: arrange
+        item: pattern.do-you
+        ko: 매운 음식 먹어요?
+        en: Do you eat spicy food?
+        extra: [are, eats]
+      - type: dictation
+        item: sense.food.n.eat
+        en: Do you eat spicy food?
+        ko: 매운 음식 먹어요?
+      - type: spell
+        sense: sense.spicy.adj.hot
+      - type: shadow
+        en: "Do you speak English? Yes, I do. A little."
+        ko: 영어 할 줄 알아요? 네, 조금요.
+  - id: lesson.a1-15.2
+    title: { ko: "Does she ~?", en: "Does she ~?" }
+    goal: { ko: 다른 사람이 늘 하는 일을 묻고 대답할 수 있어요, en: Ask and answer about what someone else does }
+    introduces: [pattern.does-he, pattern.short-answer-does, sense.wear.v.clothing, sense.glasses.n.eyes, sense.soccer.n.sport]
+    steps:
+      - type: listen
+        en: Does he wear glasses?
+        ko: 그 사람은 안경을 써요?
+      - type: listen
+        en: "Does your brother play soccer? Yes, he does."
+        ko: 형은 축구를 해요? 네, 해요.
+      - type: explain
+        text: |
+          주어가 `he`, `she`, `it`이면 `Do` 대신 `Does`로 물어요. `Mina`, `my dad`처럼 한 사람을 가리키는 주어도 같아요. 여기서도 `-s`는 `Does`가 가져가서 뒤의 동사는 그대로예요. `Does she work here?`예요. `Does she works`라고 하지 않아요.
+
+          대답은 `Yes, she does`나 `No, she doesn't`예요. `wear`는 안경, 옷, 모자처럼 몸에 걸치는 것에 다 써요.
+        examples:
+          - en: "Does [he]{who} [wear]{do} [glasses]{what}?"
+            ko: 그 사람은 안경을 써요?
+            literal: 그는 / 쓰니 / 안경을
+          - en: "Does your brother play soccer? Yes, he does."
+            ko: 형은 축구를 해요? 네, 해요.
+          - en: "Does @Mina live near here? No, she doesn't."
+            ko: 미나는 이 근처에 살아요? 아니요, 안 살아요.
+      - type: chooseMeaning
+        en: Does he wear glasses?
+        item: sense.glasses.n.eyes
+        options:
+          - { ko: 그 사람은 안경을 써요?, correct: true }
+          - { ko: 그 사람은 안경이 있어요?, why: "\"있어요\"는 `has`예요. `wear`는 몸에 쓰거나 입는 거예요." }
+          - { ko: 그 사람은 모자를 써요?, why: "모자는 `hat`이에요. `glasses`는 안경이에요." }
+      - type: listenChoose
+        en: Does your brother play soccer?
+        item: sense.soccer.n.sport
+        options:
+          - { ko: 형은 축구를 해요?, correct: true }
+          - { ko: 형은 축구를 봐요?, why: "보는 건 `watch`예요. 들린 단어는 `play`예요." }
+          - { ko: 형은 게임을 해요?, why: "게임은 `game`이에요. 들린 단어는 `soccer`예요." }
+      - type: chooseEnglish
+        ko: 미나는 이 근처에 살아요?
+        item: pattern.does-he
+        options:
+          - { en: "Does @Mina live near here?", correct: true }
+          - { en: "Do @Mina live near here?", why: "미나는 `she`로 바꿀 수 있어서 `Does`예요." }
+          - { en: "Does @Mina lives near here?", why: "`-s`는 `Does`가 가져가요. 뒤의 동사는 `live` 그대로예요." }
+      - type: fillBlank
+        item: pattern.does-he
+        en: ___ your dad drive?
+        ko: 아버지는 운전하세요?
+        options:
+          - { en: Does, correct: true }
+          - { en: Do, why: "아버지는 `he`로 바꿀 수 있어서 `Does`예요." }
+          - { en: Is, why: "`drive`는 동사라서 `Is`가 아니라 `Does`로 물어요." }
+      - type: dialogue
+        item: pattern.short-answer-does
+        lines:
+          - { speaker: Ana, en: Does your sister wear glasses?, ko: 여동생은 안경을 써요? }
+        question: 레오의 여동생은 안경을 안 써요. 레오가 할 말을 골라요.
+        options:
+          - { en: "No, she doesn't.", correct: true }
+          - { en: "No, she don't.", why: "`she` 뒤라서 `doesn't`예요." }
+          - { en: "No, she isn't.", why: "`Does`로 물었으니 `doesn't`로 대답해요." }
+      - type: fillBlank
+        item: pattern.short-answer-does
+        en: "Does he play soccer? Yes, he ___."
+        ko: 그 사람은 축구를 해요? 네, 해요.
+        answers: [does]
+      - type: arrange
+        item: sense.soccer.n.sport
+        ko: 그 사람은 축구를 해요?
+        en: Does he play soccer?
+        extra: [plays, do]
+      - type: dictation
+        item: sense.wear.v.clothing
+        en: Does your mom wear glasses?
+        ko: 어머니는 안경을 쓰세요?
+      - type: spell
+        sense: sense.soccer.n.sport
+      - type: shadow
+        en: "Does she wear glasses? No, she doesn't."
+        ko: 그 사람은 안경을 써요? 아니요, 안 써요.
+  - id: lesson.a1-15.3
+    title: { ko: "무슨 뜻이에요?", en: "What does it mean?" }
+    goal: { ko: 모르는 말의 뜻과 영어 표현을 물을 수 있어요, en: Ask what a word means and how to say something in English }
+    introduces: [sense.mean.v.meaning, sense.word.n.vocabulary, pattern.how-do-you-say, sense.say.v.words, sense.spanish.n.language]
+    steps:
+      - type: listen
+        en: What does this word mean?
+        ko: 이 단어는 무슨 뜻이에요?
+      - type: listen
+        en: How do you say this in English?
+        ko: 이거 영어로 뭐라고 해요?
+      - type: explain
+        text: |
+          `what`, `where` 같은 말은 `do`, `does` 앞에 와요. `Where do you live?`, `What does it mean?`이에요. 대답은 `Yes`, `No`가 아니라 물은 것을 말해요.
+
+          모르는 말이 나오면 `What does it mean?`이나 `How do you say this in English?`라고 물어요. 영어를 배울 때 아주 자주 쓰는 질문이에요. 여기서 `you`는 상대 한 사람이 아니라 사람들 모두를 말해요. 앞에서 배운 `How do you spell ~?`도 같아요.
+        examples:
+          - en: "[What]{what} does [this word]{who} [mean]{do}?"
+            ko: 이 단어는 무슨 뜻이에요?
+            literal: 무엇을 / 이 단어는 / 뜻하니
+          - en: "Where do you live? I live in @Daejeon."
+            ko: 어디 살아요? 대전에 살아요.
+          - en: "What do you study? I study Spanish."
+            ko: 뭐 공부해요? 스페인어를 공부해요.
+          - en: How do you say this in English?
+            ko: 이거 영어로 뭐라고 해요?
+      - type: chooseMeaning
+        en: What does this word mean?
+        item: sense.word.n.vocabulary
+        options:
+          - { ko: 이 단어는 무슨 뜻이에요?, correct: true }
+          - { ko: 이 단어는 어떻게 읽어요?, why: "읽는 법이 아니라 뜻을 묻는 말이에요. `mean`은 \"뜻하다\"예요." }
+          - { ko: 이거 영어로 뭐라고 해요?, why: "그건 `How do you say this in English?`예요." }
+      - type: listenChoose
+        en: How do you say this in English?
+        item: pattern.how-do-you-say
+        options:
+          - { ko: 이거 영어로 뭐라고 해요?, correct: true }
+          - { ko: 이거 철자가 어떻게 돼요?, why: "철자는 `How do you spell ~?`예요. 들린 단어는 `say`예요." }
+          - { ko: 이게 무슨 뜻이에요?, why: "그건 `What does it mean?`이에요." }
+      - type: chooseEnglish
+        ko: 어디 살아요?
+        item: sense.do.v.helper
+        options:
+          - { en: Where do you live?, correct: true }
+          - { en: Where you live?, why: "`do`가 빠졌어요. `Where do you live?`예요." }
+          - { en: Where are you live?, why: "`live`는 동사라서 `are`가 아니라 `do`로 물어요." }
+      - type: fillBlank
+        item: sense.mean.v.meaning
+        en: What ___ it mean?
+        ko: 그게 무슨 뜻이에요?
+        options:
+          - { en: does, correct: true }
+          - { en: do, why: "`it` 앞이라서 `does`예요." }
+          - { en: is, why: "`mean`은 동사라서 `is`가 아니라 `does`로 물어요." }
+      - type: dialogue
+        item: sense.spanish.n.language
+        lines:
+          - { speaker: Mina, en: What do you study?, ko: 뭐 공부해요? }
+        question: 레오는 스페인어를 공부해요. 레오가 할 말을 골라요.
+        options:
+          - { en: I study Spanish., correct: true }
+          - { en: "Yes, I do.", why: "`What`으로 물었으니 무엇인지 말해요." }
+          - { en: I studies Spanish., why: "`I` 뒤에서는 `study` 그대로예요." }
+      - type: fillBlank
+        item: sense.say.v.words
+        en: How do you ___ this in English?
+        ko: 이거 영어로 뭐라고 해요?
+        answers: [say]
+      - type: arrange
+        item: sense.mean.v.meaning
+        ko: 이 단어는 무슨 뜻이에요?
+        en: What does this word mean?
+        extra: [do, means]
+      - type: dictation
+        item: sense.do.v.helper
+        en: Where does your sister live?
+        ko: 언니는 어디 살아요?
+      - type: spell
+        sense: sense.word.n.vocabulary
+      - type: shadow
+        en: "Sorry, what does this word mean?"
+        ko: 죄송한데 이 단어는 무슨 뜻이에요?

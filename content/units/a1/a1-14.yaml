@@ -1,0 +1,271 @@
+id: unit.a1-14
+title: { ko: 안 해요, en: "Don't and doesn't" }
+lessons:
+  - id: lesson.a1-14.1
+    title: { ko: "I don't", en: "I don't" }
+    goal: { ko: "하지 않는 일을 don't로 말할 수 있어요", en: "Say what you don't do" }
+    introduces: [sense.do.v.helper, sense.meat.n.food, sense.milk.n.drink, sense.fish.n.food, sense.understand.v.meaning]
+    steps:
+      - type: listen
+        en: "I don't eat meat."
+        ko: 저는 고기를 안 먹어요.
+      - type: listen
+        en: "Sorry, I don't understand."
+        ko: 미안해요, 무슨 말인지 모르겠어요.
+      - type: explain
+        text: |
+          "안 해요"라고 할 때는 동사 앞에 `don't`를 넣어요. `I eat meat`은 `I don't eat meat`이 돼요. `don't`는 `do not`을 줄인 말인데 말할 때는 거의 늘 `don't`로 줄여요.
+
+          `not`은 `am`, `is`, `are` 뒤에 붙고, 다른 동사 앞에는 `don't`가 와요. 그래서 `I'm not eat`이라고 하지 않아요.
+        examples:
+          - en: "[I]{who} [don't eat]{do} [meat]{what}."
+            ko: 저는 고기를 안 먹어요.
+            literal: 나는 / 먹지 않는다 / 고기를
+          - en: "We don't eat fish."
+            ko: 우리는 생선을 안 먹어요.
+          - en: "They don't live here."
+            ko: 그 사람들은 여기 안 살아요.
+      - type: explain
+        text: |
+          `I don't understand`는 "무슨 말인지 모르겠어요"예요. 못 알아들었을 때 바로 쓸 수 있어요. `Slowly, please`를 붙이면 천천히 다시 말해 달라는 부탁이 돼요.
+        examples:
+          - en: "Sorry, I don't understand. Slowly, please."
+            ko: 미안해요, 무슨 말인지 모르겠어요. 천천히 말해 주세요.
+      - type: chooseMeaning
+        en: "They don't drink milk."
+        item: sense.milk.n.drink
+        options:
+          - { ko: 그 사람들은 우유를 안 마셔요., correct: true }
+          - { ko: 그 사람들은 우유를 마셔요., why: "`don't`가 있으니 \"안 마셔요\"예요." }
+          - { ko: 그 사람들은 물을 안 마셔요., why: "물은 `water`예요. `milk`는 우유예요." }
+      - type: listenChoose
+        en: "We don't eat fish."
+        item: sense.fish.n.food
+        options:
+          - { en: "We don't eat fish.", correct: true }
+          - { en: We eat fish., why: "`don't`가 들렸어요. 끝의 `t`는 약해서 \"도운\"처럼 들릴 때가 많아요." }
+          - { en: "We don't eat meat.", why: "`meat`이 아니라 `fish`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 저는 고기를 안 먹어요.
+        item: sense.do.v.helper
+        options:
+          - { en: "I don't eat meat.", correct: true }
+          - { en: "I'm not eat meat.", why: "동사 `eat`이 있으니 `I'm not`이 아니라 `I don't`예요." }
+          - { en: I not eat meat., why: "`not` 혼자 동사 앞에 오지 않아요. `I don't eat`이에요." }
+      - type: fillBlank
+        item: sense.do.v.helper
+        en: They ___ live here.
+        ko: 그 사람들은 여기 안 살아요.
+        options:
+          - { en: "don't", correct: true }
+          - { en: "aren't", why: "동사 `live`가 있으니 `aren't`가 아니라 `don't`예요." }
+          - { en: not, why: "동사 앞에 `not` 혼자 오지 않아요. `don't`를 써요." }
+      - type: dialogue
+        item: sense.understand.v.meaning
+        lines:
+          - { speaker: Sam, en: "What's your last name?", ko: 성이 뭐예요? }
+        question: 하나는 샘의 말이 너무 빨라서 못 알아들었어요. 하나가 할 말을 골라요.
+        options:
+          - { en: "Sorry, I don't understand.", correct: true }
+          - { en: "Sorry, I'm not understand.", why: "동사 `understand`가 있으니 `I'm not`이 아니라 `I don't`예요." }
+          - { en: "Sorry, I understand.", why: "알아들었다는 말이에요. 못 알아들었으면 `don't`를 넣어요." }
+      - type: fillBlank
+        item: sense.do.v.helper
+        en: We ___ eat fish.
+        ko: 우리는 생선을 안 먹어요.
+        answers: ["don't", "do not"]
+      - type: arrange
+        item: sense.milk.n.drink
+        ko: 저는 우유를 안 마셔요.
+        en: "I don't drink milk."
+        extra: [not, am]
+      - type: dictation
+        item: sense.meat.n.food
+        en: "My parents don't eat meat."
+        ko: 우리 부모님은 고기를 안 드세요.
+      - type: spell
+        sense: sense.meat.n.food
+      - type: shadow
+        en: "Sorry, I don't understand. Slowly, please."
+        ko: 미안해요, 무슨 말인지 모르겠어요. 천천히 말해 주세요.
+  - id: lesson.a1-14.2
+    title: { ko: "She doesn't", en: "She doesn't" }
+    goal: { ko: "다른 사람이 하지 않는 일을 doesn't로 말할 수 있어요", en: "Say what someone else doesn't do" }
+    introduces: [sense.know.v.fact, sense.need.v.require, sense.want.v.wish, sense.answer.n.reply, sense.sugar.n.sweet]
+    steps:
+      - type: listen
+        en: "He doesn't need a car."
+        ko: 그 사람은 차가 필요 없어요.
+      - type: listen
+        en: "I don't know."
+        ko: 몰라요.
+      - type: explain
+        text: |
+          주어가 `he`, `she`, `it`이면 `don't` 대신 `doesn't`를 써요. `Mina`, `my dad`처럼 한 사람을 가리키는 주어도 같아요. `-s`는 `doesn't`가 가져가서 뒤의 동사는 그대로예요.
+
+          `She works`를 부정하면 `She doesn't work`예요. `She doesn't works`라고 하지 않아요. `has`도 `doesn't` 뒤에서는 `have`로 돌아가서 `She doesn't have a car`예요.
+
+          `I don't know`는 "몰라요, 모르겠어요"예요. 영어에서 아주 자주 하는 말이에요.
+        examples:
+          - en: "[He]{who} [doesn't need]{do} [a car]{what}."
+            ko: 그 사람은 차가 필요 없어요.
+            literal: 그는 / 필요로 하지 않는다 / 차를
+          - en: "@Mina doesn't eat meat."
+            ko: 미나는 고기를 안 먹어요.
+          - en: "I don't know the answer."
+            ko: 답을 모르겠어요.
+          - en: "I don't want sugar."
+            ko: 설탕은 넣고 싶지 않아요.
+      - type: chooseMeaning
+        en: "He doesn't need a car."
+        item: sense.need.v.require
+        options:
+          - { ko: 그 사람은 차가 필요 없어요., correct: true }
+          - { ko: 그 사람은 차가 있어요., why: "\"있어요\"는 `has`예요. `need`는 \"필요하다\"예요." }
+          - { ko: 그 사람은 차가 필요해요., why: "`doesn't`가 있으니 \"필요 없어요\"예요." }
+      - type: listenChoose
+        en: "She doesn't know the answer."
+        item: sense.know.v.fact
+        options:
+          - { ko: 그 사람은 답을 몰라요., correct: true }
+          - { ko: 그 사람은 답을 알아요., why: "`doesn't`가 들렸어요. 모른다는 말이에요." }
+          - { ko: 그 사람은 이름을 몰라요., why: "이름은 `name`이에요. 들린 단어는 `answer`예요." }
+      - type: chooseEnglish
+        ko: 미나는 고기를 안 먹어요.
+        item: sense.do.v.helper
+        options:
+          - { en: "@Mina doesn't eat meat.", correct: true }
+          - { en: "@Mina don't eat meat.", why: "미나는 `she`로 바꿀 수 있어서 `doesn't`예요." }
+          - { en: "@Mina doesn't eats meat.", why: "`-s`는 `doesn't`가 가져가요. 뒤의 동사는 `eat` 그대로예요." }
+      - type: fillBlank
+        item: sense.do.v.helper
+        en: My dad ___ drink coffee.
+        ko: 우리 아빠는 커피를 안 드세요.
+        options:
+          - { en: "doesn't", correct: true }
+          - { en: "don't", why: "아빠는 `he`로 바꿀 수 있어서 `doesn't`예요." }
+          - { en: "isn't", why: "동사 `drink`가 있으니 `isn't`가 아니라 `doesn't`예요." }
+      - type: dialogue
+        item: sense.know.v.fact
+        lines:
+          - { speaker: Ana, en: "Where's @Leo?", ko: 레오 어디 있어요? }
+        question: 준도 레오가 어디 있는지 몰라요. 준이 할 말을 골라요.
+        options:
+          - { en: "I don't know.", correct: true }
+          - { en: "I'm not know.", why: "동사 `know`가 있으니 `I'm not`이 아니라 `I don't`예요." }
+          - { en: "I doesn't know.", why: "`I` 뒤에서는 `don't`예요. `doesn't`는 `he`, `she`, `it` 뒤에 써요." }
+      - type: fillBlank
+        item: sense.need.v.require
+        en: "He doesn't ___ a car."
+        ko: 그 사람은 차가 필요 없어요.
+        answers: [need]
+      - type: arrange
+        item: sense.want.v.wish
+        ko: 커피는 마시고 싶지 않아요.
+        en: "I don't want coffee."
+        extra: ["doesn't", wants]
+      - type: dictation
+        item: sense.answer.n.reply
+        en: "My sister doesn't know the answer."
+        ko: 우리 언니는 답을 몰라요.
+      - type: spell
+        sense: sense.answer.n.reply
+      - type: shadow
+        en: "He doesn't need a car. He walks to the office."
+        ko: 그 사람은 차가 필요 없어요. 사무실에 걸어가요.
+  - id: lesson.a1-14.3
+    title: { ko: "not과 don't", en: "Not or don't" }
+    goal: { ko: "not과 don't를 골라 쓸 수 있어요", en: "Choose between not and don't" }
+    introduces: [sense.time.n.duration, sense.much.det.amount, sense.many.det.number, sense.homework.n.school, sense.sleep.v.rest]
+    steps:
+      - type: listen
+        en: "I'm busy. I don't have much time."
+        ko: 제가 바빠서 시간이 별로 없어요.
+      - type: explain
+        text: |
+          `am`, `is`, `are`가 있는 문장은 그 뒤에 `not`을 붙여요. `I'm not busy`예요. 다른 동사가 있는 문장은 동사 앞에 `don't`나 `doesn't`를 넣어요. `I don't sleep`이에요. `I'm not eat`이나 `I don't busy`처럼 둘을 섞지 않아요.
+
+          `busy`, `tired`, `hungry`는 동사가 아니라서 `am`, `is`, `are` 뒤에 `not`을 붙여요.
+        examples:
+          - en: "I'm not tired."
+            ko: 저는 안 피곤해요.
+          - en: "He doesn't sleep in class."
+            ko: 그 사람은 수업 시간에 안 자요.
+          - en: "She isn't busy today."
+            ko: 그 사람은 오늘 안 바빠요.
+      - type: explain
+        text: |
+          `much`와 `many`는 "많은"이에요. 셀 수 있는 것 여럿에는 `many`, `time`이나 `money`처럼 셀 수 없는 것에는 `much`를 써요. `don't`나 `doesn't`와 같이 쓰면 "별로 없어요"가 돼요. `much`는 주로 이렇게 부정문에 쓰고, `I have much time`이라고는 잘 하지 않아요.
+        examples:
+          - en: "[I]{who} [don't have]{do} [much time]{what}."
+            ko: 저는 시간이 별로 없어요.
+            literal: 나는 / 가지고 있지 않다 / 많은 시간을
+          - en: "She doesn't have many books."
+            ko: 그 사람은 책이 별로 없어요.
+          - en: "We don't have homework today."
+            ko: 오늘은 숙제가 없어요.
+      - type: chooseMeaning
+        en: "I don't have much time."
+        item: sense.much.det.amount
+        options:
+          - { ko: 저는 시간이 별로 없어요., correct: true }
+          - { ko: 저는 시간이 많아요., why: "`don't`가 있으니 \"별로 없어요\"예요." }
+          - { ko: 저는 돈이 별로 없어요., why: "돈은 `money`예요. `time`은 시간이에요." }
+      - type: listenChoose
+        en: "We don't have homework today."
+        item: sense.homework.n.school
+        options:
+          - { ko: 오늘은 숙제가 없어요., correct: true }
+          - { ko: 오늘은 시험이 없어요., why: "시험은 `test`예요. 들린 단어는 `homework`예요." }
+          - { ko: 오늘은 숙제가 있어요., why: "`don't`가 들렸어요. 숙제가 없다는 말이에요." }
+      - type: chooseEnglish
+        ko: 저는 안 피곤해요.
+        item: sense.not.adv.negative
+        options:
+          - { en: "I'm not tired.", correct: true }
+          - { en: "I don't tired.", why: "`tired`는 동사가 아니에요. `am` 뒤에 `not`을 붙여요." }
+          - { en: I not tired., why: "`am`이 빠졌어요. `I'm not tired`예요." }
+      - type: fillBlank
+        item: sense.sleep.v.rest
+        en: He ___ sleep in class.
+        ko: 그 사람은 수업 시간에 안 자요.
+        options:
+          - { en: "doesn't", correct: true }
+          - { en: "isn't", why: "`sleep`은 동사라서 `isn't`가 아니라 `doesn't`예요." }
+          - { en: "don't", why: "`he` 뒤라서 `doesn't`예요." }
+      - type: fillBlank
+        item: sense.not.adv.negative
+        en: She ___ busy today.
+        ko: 그 사람은 오늘 안 바빠요.
+        options:
+          - { en: "isn't", correct: true }
+          - { en: "doesn't", why: "`busy`는 동사가 아니라서 `is` 뒤에 `not`을 붙여요. `isn't`예요." }
+          - { en: "don't", why: "`busy`는 동사가 아니에요. 그리고 `she` 뒤에는 `don't`를 쓰지 않아요." }
+      - type: dialogue
+        item: sense.homework.n.school
+        lines:
+          - { speaker: Mina, en: Are you busy today?, ko: 오늘 바빠요? }
+        question: 레오는 오늘 숙제가 없어서 안 바빠요. 레오가 할 말을 골라요.
+        options:
+          - { en: "No. I don't have homework today.", correct: true }
+          - { en: "No. I'm not have homework today.", why: "동사 `have`가 있으니 `I'm not`이 아니라 `I don't`예요." }
+          - { en: "No. I don't busy today.", why: "`busy`는 동사가 아니라서 `I'm not busy`라고 해요." }
+      - type: fillBlank
+        item: sense.many.det.number
+        en: "I don't have ___ friends here."
+        ko: 저는 여기에 친구가 별로 없어요.
+        answers: [many]
+      - type: arrange
+        item: sense.time.n.duration
+        ko: 저는 시간이 별로 없어요.
+        en: "I don't have much time."
+        extra: [many, am]
+      - type: dictation
+        item: sense.sleep.v.rest
+        en: "My son doesn't sleep in the afternoon."
+        ko: 우리 아들은 오후에 낮잠을 안 자요.
+      - type: spell
+        sense: sense.homework.n.school
+      - type: shadow
+        en: "I'm busy. I don't have much time."
+        ko: 제가 바빠서 시간이 별로 없어요.

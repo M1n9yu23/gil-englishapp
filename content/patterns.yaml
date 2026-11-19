@@ -125,6 +125,70 @@
     - en: They study English every day.
       ko: 그 사람들은 매일 영어를 공부해요.
 
+# Questions with do and does (a1-15)
+- id: pattern.do-you
+  text: Do you ~?
+  ko: ~해요?(묻기)
+  note: "`speak`, `eat` 같은 동사로 말하는 문장은 앞에 `Do`를 붙여 물어요. 뒤의 동사는 그대로예요. `am`, `is`, `are` 문장은 `Are you ~?`처럼 순서만 바꿔요."
+  examples:
+    - en: "Do [you]{who} [speak]{do} [English]{what}?"
+      ko: 영어 할 줄 알아요?
+      literal: 너는 / 말하니 / 영어를
+- id: pattern.short-answer-do
+  text: "Yes, I do. / No, I don't."
+  ko: 네, 그래요. / 아니요, 안 그래요.
+  note: "`Do`로 물으면 동사를 다시 말하지 않고 `do`, `don't`로 짧게 대답해요."
+  examples:
+    - en: "Do you eat spicy food? Yes, I do."
+      ko: 매운 음식 먹어요? 네, 먹어요.
+- id: pattern.does-he
+  text: Does he ~?
+  ko: 그 사람은 ~해요?(묻기)
+  note: "주어가 `he`, `she`, `it`이면 `Does`로 물어요. `-s`는 `Does`가 가져가서 뒤의 동사는 그대로예요."
+  examples:
+    - en: "Does [he]{who} [wear]{do} [glasses]{what}?"
+      ko: 그 사람은 안경을 써요?
+      literal: 그는 / 쓰니 / 안경을
+- id: pattern.short-answer-does
+  text: "Yes, he does. / No, he doesn't."
+  ko: 네, 그래요. / 아니요, 안 그래요.
+  note: "`Does`로 물으면 `does`, `doesn't`로 짧게 대답해요. 여자면 `she`, 물건이면 `it`으로 바꿔요."
+  examples:
+    - en: "Does your brother play soccer? Yes, he does."
+      ko: 형은 축구를 해요? 네, 해요.
+- id: pattern.how-do-you-say
+  text: How do you say ~ in English?
+  ko: ~를 영어로 뭐라고 해요?
+  note: "모르는 말을 물을 때 써요. 가리키면서 `How do you say this in English?`라고 해도 돼요."
+  examples:
+    - en: How do you say this in English?
+      ko: 이거 영어로 뭐라고 해요?
+
+# Time and days (a1-16)
+- id: pattern.what-time-is-it
+  text: What time is it?
+  ko: 몇 시예요?
+  note: "대답은 `It's`로 시작해요. 정각은 `It's seven o'clock`, 7시 30분은 `It's seven thirty`, 7시 5분은 `It's seven oh five`예요."
+  examples:
+    - en: "What time is it? It's seven o'clock."
+      ko: 몇 시예요? 7시예요.
+- id: pattern.what-day-is-it
+  text: What day is it today?
+  ko: 오늘 무슨 요일이에요?
+  note: "요일을 묻는 말이에요. `It's Saturday`처럼 `on` 없이 대답해요."
+  examples:
+    - en: "What day is it today? It's Saturday."
+      ko: 오늘 무슨 요일이에요? 토요일이에요.
+
+# Daily routine (a1-17)
+- id: pattern.how-often
+  text: How often ~?
+  ko: 얼마나 자주 ~해요?
+  note: "`every day`, `once a week`, `twice a week`처럼 대답해요."
+  examples:
+    - en: How often do you go to the gym?
+      ko: 헬스장에 얼마나 자주 가요?
+
 # Inflections. course.yaml gates each kind of form on one of these.
 - id: pattern.plural-s
   text: ~s

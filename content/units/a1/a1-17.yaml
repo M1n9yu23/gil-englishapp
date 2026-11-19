@@ -1,0 +1,355 @@
+id: unit.a1-17
+title: { ko: 하루 일과, en: My day }
+lessons:
+  - id: lesson.a1-17.1
+    title: { ko: 아침과 밤, en: Morning and night }
+    goal: { ko: 하루 일과를 순서대로 말할 수 있어요, en: Say what you do in your day in order }
+    introduces: [sense.get-up.v.bed, sense.take-a-shower.v.wash, sense.leave.v.depart, sense.go-to-bed.v.sleep, sense.then.adv.next]
+    steps:
+      - type: listen
+        en: I get up at seven.
+        ko: 저는 7시에 일어나요.
+      - type: listen
+        en: I take a shower. Then I eat breakfast.
+        ko: 저는 샤워를 해요. 그다음에 아침을 먹어요.
+      - type: explain
+        text: |
+          `get up`은 "일어나다", `go to bed`는 "자러 가다"예요. 두세 단어가 한 덩어리라서 통째로 익혀요. 주어가 `she`면 앞의 동사만 바뀌어서 `she gets up`, `she goes to bed`예요.
+
+          `take a shower`는 "샤워하다"예요. `leave home`은 "집을 나서다"예요. `then`은 "그다음에"라서 하는 일을 순서대로 말할 때 써요.
+        examples:
+          - en: "[I]{who} [get up]{do} [at seven]{when}."
+            ko: 저는 7시에 일어나요.
+            literal: 나는 / 일어난다 / 7시에
+          - en: She takes a shower. Then she eats breakfast.
+            ko: 그 사람은 샤워를 해요. 그다음에 아침을 먹어요.
+          - en: I leave home at eight.
+            ko: 저는 8시에 집을 나서요.
+          - en: He goes to bed at eleven.
+            ko: 그 사람은 11시에 자러 가요.
+      - type: chooseMeaning
+        en: I leave home at eight.
+        item: sense.leave.v.depart
+        options:
+          - { ko: 저는 8시에 집을 나서요., correct: true }
+          - { ko: 저는 8시에 집에 와요., why: "`leave`는 떠나는 거예요. 집에 오는 게 아니에요." }
+          - { ko: 저는 8시에 일어나요., why: "일어나는 건 `get up`이에요." }
+      - type: listenChoose
+        en: She gets up at six.
+        item: sense.get-up.v.bed
+        options:
+          - { en: She gets up at six., correct: true }
+          - { en: She get up at six., why: "`she` 뒤라서 `gets up`이에요. `gets`의 `s` 소리가 `up`에 붙어서 들렸어요." }
+          - { en: She goes to bed at six., why: "`goes to bed`가 아니라 `gets up`이 들렸어요." }
+      - type: chooseEnglish
+        ko: 그 사람은 11시에 자러 가요.
+        item: sense.go-to-bed.v.sleep
+        options:
+          - { en: He goes to bed at eleven., correct: true }
+          - { en: He go to bed at eleven., why: "`he` 뒤라서 `goes`예요." }
+          - { en: He goes to the bed at eleven., why: "\"자러 가다\"는 `the` 없이 `go to bed`예요." }
+      - type: fillBlank
+        item: sense.then.adv.next
+        en: I get up. ___ I take a shower.
+        ko: 저는 일어나요. 그다음에 샤워를 해요.
+        options:
+          - { en: Then, correct: true }
+          - { en: Now, why: "`now`는 \"지금\"이에요. \"그다음에\"는 `then`이에요." }
+          - { en: Too, why: "`too`는 \"~도\"예요. 순서를 말할 때는 `then`이에요." }
+      - type: dialogue
+        item: sense.get-up.v.bed
+        lines:
+          - { speaker: Sam, en: What time do you get up?, ko: 몇 시에 일어나요? }
+        question: 유나는 6시 반에 일어나요. 유나가 할 말을 골라요.
+        options:
+          - { en: I get up at six thirty., correct: true }
+          - { en: I get up on six thirty., why: "시각 앞에는 `at`을 써요." }
+          - { en: I gets up at six thirty., why: "`I` 뒤에서는 `get` 그대로예요." }
+      - type: fillBlank
+        item: sense.take-a-shower.v.wash
+        en: She ___ a shower in the morning.
+        ko: 그 사람은 아침에 샤워를 해요.
+        answers: [takes]
+      - type: arrange
+        item: sense.leave.v.depart
+        ko: 저는 8시에 집을 나서요.
+        en: I leave home at eight.
+        extra: [leaves, "on"]
+      - type: dictation
+        item: sense.go-to-bed.v.sleep
+        en: He goes to bed at eleven.
+        ko: 그 사람은 11시에 자러 가요.
+      - type: spell
+        sense: sense.leave.v.depart
+      - type: shadow
+        en: I get up at seven. Then I take a shower.
+        ko: 저는 7시에 일어나요. 그다음에 샤워를 해요.
+  - id: lesson.a1-17.2
+    title: { ko: "늘, 보통, 가끔", en: "Always, usually, sometimes" }
+    goal: { ko: 어떤 일을 얼마나 자주 하는지 말할 수 있어요, en: Say how often you do things }
+    introduces: [sense.always.adv.every-time, sense.usually.adv.most-times, sense.sometimes.adv.some-times, sense.never.adv.not-ever, sense.evening.n.time]
+    steps:
+      - type: listen
+        en: I usually drink coffee in the morning.
+        ko: 저는 아침에 보통 커피를 마셔요.
+      - type: explain
+        text: |
+          얼마나 자주 하는지는 `always`(늘), `usually`(보통), `sometimes`(가끔), `never`(전혀 안)로 말해요. 이런 말은 대개 동사 앞에 와서 `I always eat breakfast`예요.
+
+          `am`, `is`, `are`가 있으면 그 뒤에 와서 `I'm always tired`예요. `never`에는 이미 "안"이 들어 있어서 `don't`를 같이 쓰지 않아요. `I never eat meat`이에요. `evening`은 때를 말하는 "저녁"이고, 저녁밥은 `dinner`예요.
+        examples:
+          - en: "[I]{who} [always eat]{do} [breakfast]{what}."
+            ko: 저는 늘 아침을 먹어요.
+            literal: 나는 / 늘 먹는다 / 아침밥을
+          - en: She's always tired in the evening.
+            ko: 그 사람은 저녁에는 늘 피곤해해요.
+          - en: I sometimes watch movies in the evening.
+            ko: 저는 저녁에 가끔 영화를 봐요.
+          - en: I never eat meat.
+            ko: 저는 고기를 전혀 안 먹어요.
+      - type: chooseMeaning
+        en: I usually drink coffee in the morning.
+        item: sense.usually.adv.most-times
+        options:
+          - { ko: 저는 아침에 보통 커피를 마셔요., correct: true }
+          - { ko: 저는 아침에 늘 커피를 마셔요., why: "\"늘\"은 `always`예요. `usually`는 \"보통\"이에요." }
+          - { ko: 저는 아침에 가끔 커피를 마셔요., why: "\"가끔\"은 `sometimes`예요." }
+      - type: listenChoose
+        en: He never eats breakfast.
+        item: sense.never.adv.not-ever
+        options:
+          - { ko: 그 사람은 아침을 전혀 안 먹어요., correct: true }
+          - { ko: 그 사람은 아침을 늘 먹어요., why: "`never`가 들렸어요. 전혀 안 먹는다는 말이에요." }
+          - { ko: 그 사람은 아침을 가끔 먹어요., why: "\"가끔\"은 `sometimes`예요. 들린 단어는 `never`예요." }
+      - type: chooseEnglish
+        ko: 저는 가끔 영화를 봐요.
+        item: sense.sometimes.adv.some-times
+        options:
+          - { en: I sometimes watch movies., correct: true }
+          - { en: I watch sometimes movies., why: "`sometimes`는 동사 `watch` 앞에 와요." }
+          - { en: I sometimes watches movies., why: "`I` 뒤에서는 `watch` 그대로예요." }
+      - type: chooseEnglish
+        ko: 저는 고기를 전혀 안 먹어요.
+        item: sense.never.adv.not-ever
+        options:
+          - { en: I never eat meat., correct: true }
+          - { en: "I don't never eat meat.", why: "`never`에 이미 \"안\"이 들어 있어서 `don't`를 같이 쓰지 않아요." }
+          - { en: I eat never meat., why: "`never`는 동사 `eat` 앞에 와요." }
+      - type: chooseEnglish
+        item: sense.always.adv.every-time
+        ko: 그 사람은 늘 늦어요.
+        options:
+          - { en: "She's always late.", correct: true }
+          - { en: She always late., why: "`late`는 동사가 아니라서 `is`가 있어야 해요." }
+          - { en: Always she is late., why: "`always`는 `is` 뒤에 와요." }
+      - type: dialogue
+        item: sense.usually.adv.most-times
+        lines:
+          - { speaker: Ana, en: Do you cook dinner?, ko: 저녁은 직접 해요? }
+        question: 준은 보통 저녁을 직접 해요. 준이 할 말을 골라요.
+        options:
+          - { en: "Yes, I usually cook dinner.", correct: true }
+          - { en: "Yes, I cook usually dinner.", why: "`usually`는 동사 `cook` 앞에 와요." }
+          - { en: "Yes, I usually cooks dinner.", why: "`I` 뒤에서는 `cook` 그대로예요." }
+      - type: fillBlank
+        item: sense.never.adv.not-ever
+        en: I ___ eat meat.
+        ko: 저는 고기를 전혀 안 먹어요.
+        answers: [never]
+      - type: arrange
+        item: sense.evening.n.time
+        ko: 저는 저녁에 보통 책을 읽어요.
+        en: I usually read books in the evening.
+        extra: [reads, am]
+      - type: dictation
+        item: sense.always.adv.every-time
+        en: "She's always tired in the evening."
+        ko: 그 사람은 저녁에는 늘 피곤해해요.
+      - type: spell
+        sense: sense.evening.n.time
+      - type: shadow
+        en: I always eat breakfast, and I never drink coffee.
+        ko: 저는 늘 아침을 먹고 커피는 전혀 안 마셔요.
+  - id: lesson.a1-17.3
+    title: { ko: 얼마나 자주요?, en: How often? }
+    goal: { ko: 얼마나 자주 하는지 묻고 대답할 수 있어요, en: Ask and answer how often someone does something }
+    introduces: [pattern.how-often, sense.often.adv.many-times, sense.once.adv.one-time, sense.twice.adv.two-times, sense.gym.n.exercise]
+    steps:
+      - type: listen
+        en: How often do you go to the gym?
+        ko: 헬스장에 얼마나 자주 가요?
+      - type: listen
+        en: I go to the gym twice a week.
+        ko: 저는 일주일에 두 번 헬스장에 가요.
+      - type: explain
+        text: |
+          `How often do you ~?`는 "얼마나 자주 ~해요?"예요. 대답은 `every day`, `once a week`(일주일에 한 번), `twice a week`(일주일에 두 번)처럼 해요. `a week`의 `a`는 "일주일에"의 "에"와 같고, `every day`처럼 문장 끝에 와요.
+
+          세 번부터는 `three times a week`라고 해요. `often`은 "자주"예요. `always`처럼 보통 동사 앞에 와요.
+        examples:
+          - en: How often do you go to the gym?
+            ko: 헬스장에 얼마나 자주 가요?
+          - en: "[I]{who} [go]{do} [to the gym]{where} [twice a week]{when}."
+            ko: 저는 일주일에 두 번 헬스장에 가요.
+            literal: 나는 / 간다 / 헬스장에 / 일주일에 두 번
+          - en: She often walks to school.
+            ko: 그 사람은 학교에 자주 걸어가요.
+          - en: I call my grandmother once a week.
+            ko: 저는 일주일에 한 번 할머니께 전화드려요.
+      - type: chooseMeaning
+        en: I go to the gym twice a week.
+        item: sense.twice.adv.two-times
+        options:
+          - { ko: 저는 일주일에 두 번 헬스장에 가요., correct: true }
+          - { ko: 저는 일주일에 한 번 헬스장에 가요., why: "한 번은 `once`예요. `twice`는 두 번이에요." }
+          - { ko: 저는 매일 헬스장에 가요., why: "매일은 `every day`예요." }
+      - type: listenChoose
+        en: How often do you go to the gym?
+        item: pattern.how-often
+        options:
+          - { ko: 헬스장에 얼마나 자주 가요?, correct: true }
+          - { ko: 헬스장에 몇 시에 가요?, why: "시각은 `What time`으로 물어요. 들린 말은 `How often`이에요." }
+          - { ko: 헬스장에 매일 가요?, why: "\"매일\"은 `every day`예요. `How often`은 얼마나 자주인지 묻는 말이에요." }
+      - type: chooseEnglish
+        ko: 그 사람은 학교에 자주 걸어가요.
+        item: sense.often.adv.many-times
+        options:
+          - { en: She often walks to school., correct: true }
+          - { en: She walks often to school., why: "`often`은 동사 `walks` 앞에 와요." }
+          - { en: She often walk to school., why: "`she` 뒤라서 `walks`예요." }
+      - type: fillBlank
+        item: sense.once.adv.one-time
+        en: I call my grandmother ___ a week.
+        ko: 저는 일주일에 한 번 할머니께 전화드려요.
+        options:
+          - { en: once, correct: true }
+          - { en: one, why: "\"한 번\"은 `one`이 아니라 `once`예요." }
+          - { en: twice, why: "`twice`는 두 번이에요." }
+      - type: dialogue
+        item: pattern.how-often
+        lines:
+          - { speaker: Leo, en: How often do you play soccer?, ko: 축구는 얼마나 자주 해요? }
+        question: 하린은 일요일마다 축구를 해요. 하린이 할 말을 골라요.
+        options:
+          - { en: Every Sunday., correct: true }
+          - { en: "Yes, I do.", why: "`How often`으로 물었으니 얼마나 자주인지 말해요." }
+          - { en: At seven., why: "시각이 아니라 얼마나 자주인지 물었어요." }
+      - type: fillBlank
+        item: sense.often.adv.many-times
+        en: How ___ do you go to the gym?
+        ko: 헬스장에 얼마나 자주 가요?
+        answers: [often]
+      - type: arrange
+        item: sense.gym.n.exercise
+        ko: 저는 일주일에 두 번 헬스장에 가요.
+        en: I go to the gym twice a week.
+        extra: [two, "on"]
+      - type: dictation
+        item: sense.often.adv.many-times
+        en: She often walks to school.
+        ko: 그 사람은 학교에 자주 걸어가요.
+      - type: spell
+        sense: sense.often.adv.many-times
+      - type: shadow
+        en: How often do you go to the gym? Twice a week.
+        ko: 헬스장에 얼마나 자주 가요? 일주일에 두 번요.
+  - id: lesson.a1-17.4
+    title: { ko: 미나의 하루, en: "Mina's day" }
+    goal: { ko: 다른 사람의 하루를 읽고 언제 무엇을 하는지 말할 수 있어요, en: Read about someone's day and say when they do things }
+    introduces: [sense.before.prep.earlier, sense.after.prep.later, sense.come.v.arrive, sense.clean.v.tidy, sense.relax.v.rest]
+    steps:
+      - type: listen
+        en: She comes home at seven.
+        ko: 그 사람은 7시에 집에 와요.
+      - type: listen
+        en: I clean my room after dinner.
+        ko: 저는 저녁을 먹고 나서 방을 청소해요.
+      - type: explain
+        text: |
+          `before`는 "전에", `after`는 "뒤에"예요. `before breakfast`는 "아침 먹기 전에", `after dinner`는 "저녁 먹고 나서"예요. 한국어와 달리 `before`, `after`가 앞에 와요.
+
+          `come home`은 "집에 오다"예요. `come home`, `go home`, `leave home`에서는 `home` 앞에 `to`나 `from`을 붙이지 않아요. 집에서 쉰다고 할 때는 `at home`이라고 해요.
+        examples:
+          - en: "[I]{who} [clean]{do} [my room]{what} [after dinner]{when}."
+            ko: 저는 저녁을 먹고 나서 방을 청소해요.
+            literal: 나는 / 청소한다 / 내 방을 / 저녁 뒤에
+          - en: She takes a shower before breakfast.
+            ko: 그 사람은 아침을 먹기 전에 샤워를 해요.
+          - en: I relax at home on the weekend.
+            ko: 저는 주말에는 집에서 쉬어요.
+      - type: readPassage
+        sentences:
+          - { en: "@Mina gets up at six thirty.", ko: 미나는 6시 반에 일어나요. }
+          - { en: She takes a shower before breakfast., ko: 아침을 먹기 전에 샤워를 해요. }
+          - { en: She leaves home at seven thirty and goes to the office by subway., ko: 7시 반에 집을 나서서 지하철로 출근해요. }
+          - { en: She comes home at seven., ko: 7시에 집에 와요. }
+          - { en: "After dinner, she usually cleans her room.", ko: 저녁을 먹고 나서는 보통 방을 청소해요. }
+          - { en: She goes to bed at eleven., ko: 11시에 자러 가요. }
+        questions:
+          - ko: 미나는 몇 시에 집을 나서요?
+            options:
+              - { ko: 7시 반, correct: true }
+              - { ko: 6시 반, why: "6시 반에는 일어나요." }
+              - { ko: 7시, why: "7시에는 집에 와요." }
+          - ko: 미나는 저녁을 먹고 나서 보통 뭘 해요?
+            options:
+              - { ko: 방을 청소해요, correct: true }
+              - { ko: 샤워를 해요, why: "샤워는 아침을 먹기 전에 해요." }
+              - { ko: 집에서 쉬어요, why: "글에는 쉰다는 말이 없어요. `After dinner` 뒤에는 `cleans her room`이 나와요." }
+          - ko: 미나는 언제 샤워를 해요?
+            options:
+              - { ko: 아침을 먹기 전에, correct: true }
+              - { ko: 아침을 먹고 나서, why: "`before breakfast`예요. 먹기 전이에요." }
+              - { ko: 저녁을 먹고 나서, why: "저녁을 먹고 나서는 방을 청소해요." }
+      - type: chooseMeaning
+        en: I take a shower before breakfast.
+        item: sense.before.prep.earlier
+        options:
+          - { ko: 저는 아침을 먹기 전에 샤워를 해요., correct: true }
+          - { ko: 저는 아침을 먹고 나서 샤워를 해요., why: "\"뒤에\"는 `after`예요. `before`는 \"전에\"예요." }
+          - { ko: 저는 저녁을 먹기 전에 샤워를 해요., why: "저녁은 `dinner`예요. `breakfast`는 아침밥이에요." }
+      - type: listenChoose
+        en: He comes home at six.
+        item: sense.come.v.arrive
+        options:
+          - { ko: 그 사람은 6시에 집에 와요., correct: true }
+          - { ko: 그 사람은 6시에 집을 나서요., why: "집을 나서는 건 `leaves home`이에요. 들린 단어는 `comes`예요." }
+          - { ko: 그 사람은 6시에 일어나요., why: "일어나는 건 `gets up`이에요." }
+      - type: chooseEnglish
+        ko: 저는 저녁을 먹고 나서 방을 청소해요.
+        item: sense.after.prep.later
+        options:
+          - { en: I clean my room after dinner., correct: true }
+          - { en: I clean my room dinner after., why: "`after`는 `dinner` 앞에 와요." }
+          - { en: I clean my room before dinner., why: "`before`는 \"전에\"예요. \"먹고 나서\"는 `after`예요." }
+      - type: fillBlank
+        item: sense.come.v.arrive
+        en: She comes ___ at seven.
+        ko: 그 사람은 7시에 집에 와요.
+        options:
+          - { en: home, correct: true }
+          - { en: to home, why: "`home` 앞에는 `to`를 붙이지 않아요. `come home`이에요." }
+          - { en: house, why: "\"집에 오다\"는 `come home`이라고 해요." }
+      - type: dialogue
+        item: sense.relax.v.rest
+        lines:
+          - { speaker: Sam, en: What do you do on the weekend?, ko: 주말에는 뭐 해요? }
+        question: 레오는 주말에 보통 집에서 쉬어요. 레오가 할 말을 골라요.
+        options:
+          - { en: I usually relax at home., correct: true }
+          - { en: I usually relax in home., why: "\"집에서\"는 `at home`이에요." }
+          - { en: I relax usually at home., why: "`usually`는 동사 `relax` 앞에 와요." }
+      - type: arrange
+        item: sense.relax.v.rest
+        ko: 저는 주말에는 집에서 쉬어요.
+        en: I relax at home on the weekend.
+        extra: [in, to]
+      - type: dictation
+        item: sense.clean.v.tidy
+        en: She cleans her room after dinner.
+        ko: 그 사람은 저녁을 먹고 나서 방을 청소해요.
+      - type: spell
+        sense: sense.relax.v.rest
+      - type: shadow
+        en: I come home at seven and relax after dinner.
+        ko: 저는 7시에 집에 와서 저녁 먹고 쉬어요.

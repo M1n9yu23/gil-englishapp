@@ -1,0 +1,266 @@
+id: unit.a1-13
+title: { ko: "그 사람이 하는 일", en: What other people do }
+lessons:
+  - id: lesson.a1-13.1
+    title: { ko: "일하는 곳, 사는 곳", en: "He works" }
+    goal: { ko: 다른 사람이 어디에서 일하고 사는지 말할 수 있어요, en: Say where other people work and live }
+    introduces: [sense.bank.n.money, sense.store.n.shop, sense.hotel.n.stay, sense.factory.n.building, sense.far.adv.distance]
+    steps:
+      - type: listen
+        en: My brother works in a bank.
+        ko: 우리 형은 은행에서 일해요.
+      - type: listen
+        en: She lives near the hotel.
+        ko: 그 사람은 호텔 근처에 살아요.
+      - type: explain
+        text: |
+          `have`가 `has`로 바뀌듯이, 다른 동사도 주어가 `he`, `she`, `it`이면 끝에 `-s`가 붙어요. `I work`는 `he works`, `I live`는 `she lives`가 돼요. 주어가 `my brother`, `Mina`처럼 한 사람일 때도 같아요.
+
+          `I`, `you`, `we`, `they` 뒤에서는 그대로예요. 한국어에는 없는 규칙이라 처음에는 자주 빠뜨려요. `-s`를 빠뜨려도 뜻은 통해요. 들을 때마다 끝소리에 귀를 기울여 봐요.
+        examples:
+          - en: "[My brother]{who} [works]{do} [in a bank]{where}."
+            ko: 우리 형은 은행에서 일해요.
+            literal: 우리 형은 / 일한다 / 은행에서
+          - en: "@Mina lives in @Busan."
+            ko: 미나는 부산에 살아요.
+          - en: They work in a factory.
+            ko: 그 사람들은 공장에서 일해요.
+      - type: explain
+        text: |
+          `far`는 "멀리"예요. `She lives far from here`는 "그 사람은 여기서 멀리 살아요"예요. 가까이 살면 `near`를 써요. `near the store`처럼 `near`는 바로 쓰고, `far`는 `far from the store`처럼 `from`을 붙여요.
+        examples:
+          - en: She lives far from here.
+            ko: 그 사람은 여기서 멀리 살아요.
+          - en: He lives near the store.
+            ko: 그 사람은 가게 근처에 살아요.
+      - type: chooseMeaning
+        en: My dad works in a factory.
+        item: sense.factory.n.building
+        options:
+          - { ko: 우리 아빠는 공장에서 일해요., correct: true }
+          - { ko: 우리 아빠는 사무실에서 일해요., why: "사무실은 `office`예요. `factory`는 공장이에요." }
+          - { ko: 우리 아빠는 공장 근처에 살아요., why: "사는 건 `lives`예요. `works`는 일하는 거예요." }
+      - type: listenChoose
+        en: She works in a store.
+        item: sense.store.n.shop
+        options:
+          - { en: She works in a store., correct: true }
+          - { en: She work in a store., why: "`she` 뒤라서 `works`예요. 끝의 \"스\" 소리를 들어 봐요." }
+          - { en: She walks to the store., why: "`walks`가 아니라 `works`가 들렸어요. `works`에는 혀를 마는 `r` 소리가 있고, `walks`의 `l`은 소리가 나지 않아요." }
+      - type: chooseEnglish
+        ko: 우리 언니는 호텔에서 일해요.
+        item: pattern.third-person-s
+        options:
+          - { en: My sister works in a hotel., correct: true }
+          - { en: My sister work in a hotel., why: "`my sister`는 `she`로 바꿀 수 있어서 `works`예요." }
+          - { en: My sister is work in a hotel., why: "동사 `works`가 있으니 `is`를 붙이지 않아요." }
+      - type: fillBlank
+        item: pattern.third-person-s
+        en: "@Jun ___ near the bank."
+        ko: 준은 은행 근처에 살아요.
+        options:
+          - { en: lives, correct: true }
+          - { en: live, why: "준은 `he`로 바꿀 수 있어서 `lives`예요." }
+          - { en: is, why: "`is near the bank`는 지금 은행 근처에 있다는 말이에요. 사는 곳은 `lives`예요." }
+      - type: dialogue
+        item: sense.bank.n.money
+        lines:
+          - { speaker: Ana, en: Is your brother a teacher?, ko: 오빠는 선생님이에요? }
+        question: 하린의 오빠는 은행에서 일해요. 하린이 할 말을 골라요.
+        options:
+          - { en: "No, he works in a bank.", correct: true }
+          - { en: "No, he work in a bank.", why: "`he` 뒤라서 `works`예요." }
+          - { en: "No, he's work in a bank.", why: "동사 `works`가 있으니 `he's`가 아니라 `he`예요." }
+      - type: fillBlank
+        item: pattern.third-person-s
+        en: My mom ___ in a hospital.
+        ko: 우리 엄마는 병원에서 일해요.
+        answers: [works]
+      - type: arrange
+        item: sense.far.adv.distance
+        ko: 그 사람은 여기서 멀리 살아요.
+        en: She lives far from here.
+        extra: [live, in]
+      - type: dictation
+        item: sense.hotel.n.stay
+        en: My dad works in a hotel.
+        ko: 우리 아빠는 호텔에서 일해요.
+      - type: spell
+        sense: sense.factory.n.building
+      - type: shadow
+        en: "She lives in @Seoul and works in a bank."
+        ko: 그 사람은 서울에 살고 은행에서 일해요.
+  - id: lesson.a1-13.2
+    title: { ko: "-s, -es, -ies", en: "Watches, goes, studies" }
+    goal: { ko: 가족이 집에서 매일 하는 일을 말할 수 있어요, en: Say what your family does at home every day }
+    introduces: [sense.teach.v.lesson, sense.cook.v.food, sense.wash.v.clean, sense.lunch.n.meal, sense.dinner.n.meal]
+    steps:
+      - type: listen
+        en: She teaches English.
+        ko: 그 사람은 영어를 가르쳐요.
+      - type: listen
+        en: My dad cooks dinner every day.
+        ko: 우리 아빠는 매일 저녁을 해요.
+      - type: explain
+        text: |
+          `s`, `x`, `sh`, `ch`로 끝나는 동사는 `-es`를 붙여요. `watch`는 `watches`, `teach`는 `teaches`예요. 자음 뒤에 `y`로 끝나면 `y`를 `i`로 바꾸고 `-es`를 붙여서 `studies`예요. `play`는 `y` 앞이 모음이라 `plays`예요. `go`는 따로 `goes`라고 외워요.
+
+          붙이는 방법은 복수형과 거의 같아요. 끝소리도 같아서 `works`는 "스", `plays`는 "즈", `watches`는 "이즈"처럼 들려요.
+        examples:
+          - en: "[She]{who} [teaches]{do} [English]{what}."
+            ko: 그 사람은 영어를 가르쳐요.
+            literal: 그녀는 / 가르친다 / 영어를
+          - en: "@Mina studies English every day."
+            ko: 미나는 매일 영어를 공부해요.
+          - en: My son goes to school.
+            ko: 우리 아들은 학교에 다녀요.
+          - en: He watches movies.
+            ko: 그 사람은 영화를 봐요.
+      - type: explain
+        text: |
+          `cook`은 "요리하다"인데 `cook dinner`는 "저녁을 하다"예요. `wash`는 "씻다"라서 `wash the dishes`는 "설거지하다"예요. 점심은 `lunch`, 저녁은 `dinner`이고 보통 `a` 없이 써요.
+        examples:
+          - en: My mom cooks lunch every day.
+            ko: 우리 엄마는 매일 점심을 해요.
+          - en: He washes the dishes.
+            ko: 그 사람은 설거지를 해요.
+      - type: chooseMeaning
+        en: My dad cooks dinner every day.
+        item: sense.cook.v.food
+        options:
+          - { ko: 우리 아빠는 매일 저녁을 해요., correct: true }
+          - { ko: 우리 아빠는 매일 저녁을 먹어요., why: "먹는 건 `eats`예요. `cooks`는 요리하는 거예요." }
+          - { ko: 우리 아빠는 매일 점심을 해요., why: "점심은 `lunch`예요. `dinner`는 저녁밥이에요." }
+      - type: listenChoose
+        en: He washes the dishes.
+        item: sense.wash.v.clean
+        options:
+          - { en: He washes the dishes., correct: true }
+          - { en: He watches the dishes., why: "`watch`는 끝이 \"치\", `wash`는 \"시\"에 가까워요. 들린 건 `washes`예요." }
+          - { en: He washes the dish., why: "`dishes`의 끝에 \"이즈\" 소리가 들렸어요. 접시가 여러 개예요." }
+      - type: chooseEnglish
+        ko: 미나는 매일 영어를 공부해요.
+        item: pattern.third-person-s
+        options:
+          - { en: "@Mina studies English every day.", correct: true }
+          - { en: "@Mina study English every day.", why: "미나는 `she`로 바꿀 수 있어서 `studies`예요." }
+          - { en: "@Mina is study English every day.", why: "동사 `studies`가 있으니 `is`를 붙이지 않아요." }
+      - type: fillBlank
+        item: pattern.third-person-s
+        en: My son ___ to school every day.
+        ko: 우리 아들은 매일 학교에 가요.
+        options:
+          - { en: goes, correct: true }
+          - { en: go, why: "아들은 `he`로 바꿀 수 있어서 `go`에 `-es`가 붙어요." }
+          - { en: is, why: "\"가요\"는 동사 `goes`예요. `is`는 \"~예요\"예요." }
+      - type: dialogue
+        item: sense.dinner.n.meal
+        lines:
+          - { speaker: Sam, en: Who cooks dinner?, ko: 저녁은 누가 해요? }
+        question: 준의 집에서는 아빠가 저녁을 해요. 준이 할 말을 골라요.
+        options:
+          - { en: My dad cooks dinner., correct: true }
+          - { en: My dad cook dinner., why: "아빠는 `he`로 바꿀 수 있어서 `cooks`예요." }
+          - { en: My dad cooks lunch., why: "점심은 `lunch`예요. 샘은 저녁을 물었어요." }
+      - type: fillBlank
+        item: sense.teach.v.lesson
+        en: She ___ English in @Seoul.
+        ko: 그 사람은 서울에서 영어를 가르쳐요.
+        answers: [teaches]
+      - type: arrange
+        item: sense.lunch.n.meal
+        ko: 우리 엄마는 매일 점심을 해요.
+        en: My mom cooks lunch every day.
+        extra: [cook, eats]
+      - type: dictation
+        item: pattern.third-person-s
+        en: My brother studies English every day.
+        ko: 우리 형은 매일 영어를 공부해요.
+      - type: spell
+        sense: sense.dinner.n.meal
+      - type: shadow
+        en: "She teaches English and studies {Japanese|sense.japanese.n.language}."
+        ko: 그 사람은 영어를 가르치고 일본어를 공부해요.
+  - id: lesson.a1-13.3
+    title: { ko: "버스로, 기차로", en: "By bus, by train" }
+    goal: { ko: 다른 사람이 무엇을 타고 다니는지 말할 수 있어요, en: Say how other people get around }
+    introduces: [sense.drive.v.car, sense.train.n.rail, sense.subway.n.train, sense.by.prep.transport, sense.station.n.train]
+    steps:
+      - type: listen
+        en: My dad drives to the office.
+        ko: 우리 아빠는 운전해서 출근해요.
+      - type: listen
+        en: She goes to school by bus.
+        ko: 그 사람은 버스로 학교에 가요.
+      - type: explain
+        text: |
+          `by` 뒤에 탈것을 쓰면 "~로, ~를 타고"예요. `by bus`, `by train`, `by subway`처럼 `a`나 `the` 없이 써요. 걸어가면 `walk`, 직접 차를 몰고 가면 `drive`예요.
+
+          주어가 `he`, `she`면 여기서도 `drives`, `goes`처럼 끝이 바뀌어요.
+        examples:
+          - en: "[My dad]{who} [drives]{do} [to the office]{where}."
+            ko: 우리 아빠는 운전해서 출근해요.
+            literal: 우리 아빠는 / 운전해서 간다 / 사무실로
+          - en: We go to @Busan by train.
+            ko: 우리는 기차로 부산에 가요.
+          - en: I go to school by subway.
+            ko: 저는 지하철로 학교에 가요.
+          - en: "@Leo walks to the station."
+            ko: 레오는 역까지 걸어가요.
+      - type: chooseMeaning
+        en: We go to @Busan by train.
+        item: sense.train.n.rail
+        options:
+          - { ko: 우리는 기차로 부산에 가요., correct: true }
+          - { ko: 우리는 버스로 부산에 가요., why: "버스는 `bus`예요. `train`은 기차예요." }
+          - { ko: 우리는 지하철로 부산에 가요., why: "지하철은 `subway`예요. `train`은 기차예요." }
+      - type: listenChoose
+        en: He drives to the office.
+        item: sense.drive.v.car
+        options:
+          - { en: He drives to the office., correct: true }
+          - { en: He drive to the office., why: "`he` 뒤라서 `drives`예요. 끝에 \"즈\" 소리가 들렸어요." }
+          - { en: He walks to the office., why: "`walks`가 아니라 `drives`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 저는 지하철로 학교에 가요.
+        item: sense.by.prep.transport
+        options:
+          - { en: I go to school by subway., correct: true }
+          - { en: I go to school by the subway., why: "`by` 뒤의 탈것에는 `the`를 붙이지 않아요." }
+          - { en: I go to school in subway., why: "무엇을 타고 가는지는 `by`로 말해요." }
+      - type: fillBlank
+        item: pattern.third-person-s
+        en: My sister ___ to the station.
+        ko: 우리 언니는 역까지 걸어가요.
+        options:
+          - { en: walks, correct: true }
+          - { en: walk, why: "언니는 `she`로 바꿀 수 있어서 `walks`예요." }
+          - { en: drives, why: "`drives`는 차를 몰고 가는 거예요. 걸어가는 건 `walks`예요." }
+      - type: dialogue
+        item: sense.drive.v.car
+        lines:
+          - { speaker: Ana, en: I walk to the office., ko: 저는 사무실에 걸어가요. }
+        question: 레오는 사무실이 멀어서 차를 몰고 가요. 레오가 할 말을 골라요.
+        options:
+          - { en: I drive to the office., correct: true }
+          - { en: I drives to the office., why: "`I` 뒤에서는 `-s`를 붙이지 않아요. `I drive`예요." }
+          - { en: "I'm drive to the office.", why: "동사 `drive`가 있으니 `I'm`이 아니라 `I`예요." }
+      - type: fillBlank
+        item: sense.train.n.rail
+        en: We go to @Busan by ___.
+        ko: 우리는 기차로 부산에 가요.
+        answers: [train]
+      - type: arrange
+        item: sense.by.prep.transport
+        ko: 그 사람은 버스로 학교에 가요.
+        en: He goes to school by bus.
+        extra: [go, the]
+      - type: dictation
+        item: sense.station.n.train
+        en: She walks to the station every day.
+        ko: 그 사람은 매일 역까지 걸어가요.
+      - type: spell
+        sense: sense.station.n.train
+      - type: shadow
+        en: "My dad drives to the office, and I go by subway."
+        ko: 우리 아빠는 운전해서 출근하고 저는 지하철로 가요.

@@ -2342,3 +2342,1075 @@
   notes:
     - kind: usage
       ko: "`l`은 소리 내지 않아요. 입을 동그랗게 열고 \"웍\"에 가깝게 읽어요. `work`는 혀를 마는 `r` 소리가 들어가서 달라요."
+
+# a1-13 third person -s
+- word: bank
+  id: word.bank
+  senses:
+    - id: sense.bank.n.money
+      pos: noun
+      ko: 은행
+      examples:
+        - en: "[My brother]{who} [works]{do} [in a bank]{where}."
+          ko: 우리 형은 은행에서 일해요.
+          literal: 우리 형은 / 일한다 / 은행에서
+- word: store
+  id: word.store
+  senses:
+    - id: sense.store.n.shop
+      pos: noun
+      ko: 가게, 상점
+      examples:
+        - en: She works in a store.
+          ko: 그 사람은 가게에서 일해요.
+  notes:
+    - kind: usage
+      ko: "미국에서는 가게를 보통 `store`라고 해요. 영국에서는 `shop`을 더 많이 써요."
+- word: hotel
+  id: word.hotel
+  senses:
+    - id: sense.hotel.n.stay
+      pos: noun
+      ko: 호텔
+      examples:
+        - en: My dad works in a hotel.
+          ko: 우리 아빠는 호텔에서 일해요.
+  notes:
+    - kind: usage
+      ko: "강세가 뒤에 있어요. \"호우텔\"처럼 읽고 \"텔\"을 세게 말해요."
+- word: factory
+  id: word.factory
+  senses:
+    - id: sense.factory.n.building
+      pos: noun
+      ko: 공장
+      examples:
+        - en: They work in a factory.
+          ko: 그 사람들은 공장에서 일해요.
+- word: far
+  id: word.far
+  senses:
+    - id: sense.far.adv.distance
+      pos: adverb
+      ko: 멀리
+      examples:
+        - en: "[She]{who} [lives]{do} [far from here]{where}."
+          ko: 그 사람은 여기서 멀리 살아요.
+          literal: 그녀는 / 산다 / 여기서 멀리
+  notes:
+    - kind: usage
+      ko: "`She lives far`보다 `far from here`처럼 어디서 먼지 같이 말해요."
+- word: teach
+  id: word.teach
+  forms: { past: taught, pastParticiple: taught }
+  senses:
+    - id: sense.teach.v.lesson
+      pos: verb
+      ko: 가르치다
+      examples:
+        - en: "[She]{who} [teaches]{do} [English]{what}."
+          ko: 그 사람은 영어를 가르쳐요.
+          literal: 그녀는 / 가르친다 / 영어를
+- word: cook
+  id: word.cook
+  senses:
+    - id: sense.cook.v.food
+      pos: verb
+      ko: 요리하다, (밥을) 하다
+      examples:
+        - en: My dad cooks dinner every day.
+          ko: 우리 아빠는 매일 저녁을 해요.
+  notes:
+    - kind: mistake
+      ko: "요리하는 사람은 `cook`이에요. `cooker`는 `rice cooker`(밥솥)처럼 요리 기구예요."
+- word: wash
+  id: word.wash
+  ipa: wɑːʃ
+  senses:
+    - id: sense.wash.v.clean
+      pos: verb
+      ko: 씻다, 빨다
+      examples:
+        - en: He washes the dishes.
+          ko: 그 사람은 설거지를 해요.
+  notes:
+    - kind: usage
+      ko: "`wash the dishes`는 \"설거지하다\"예요. `watch`(보다)와 끝소리가 달라요."
+- word: lunch
+  id: word.lunch
+  senses:
+    - id: sense.lunch.n.meal
+      pos: noun
+      ko: 점심 식사, 점심밥
+      examples:
+        - en: My mom cooks lunch every day.
+          ko: 우리 엄마는 매일 점심을 해요.
+- word: dinner
+  id: word.dinner
+  senses:
+    - id: sense.dinner.n.meal
+      pos: noun
+      ko: 저녁 식사, 저녁밥
+      examples:
+        - en: "[My dad]{who} [cooks]{do} [dinner]{what}."
+          ko: 우리 아빠는 저녁을 해요.
+          literal: 우리 아빠는 / 요리한다 / 저녁밥을
+  notes:
+    - kind: usage
+      ko: "`breakfast`, `lunch`처럼 보통 앞에 `a`를 붙이지 않아요."
+- word: drive
+  id: word.drive
+  forms: { past: drove, pastParticiple: driven }
+  senses:
+    - id: sense.drive.v.car
+      pos: verb
+      ko: 운전하다, 차를 몰고 가다
+      examples:
+        - en: "[My dad]{who} [drives]{do} [to the office]{where}."
+          ko: 우리 아빠는 운전해서 출근해요.
+          literal: 우리 아빠는 / 운전해서 간다 / 사무실로
+- word: train
+  id: word.train
+  senses:
+    - id: sense.train.n.rail
+      pos: noun
+      ko: 기차, 열차
+      examples:
+        - en: We go to @Busan by train.
+          ko: 우리는 기차로 부산에 가요.
+- word: subway
+  id: word.subway
+  senses:
+    - id: sense.subway.n.train
+      pos: noun
+      ko: 지하철
+      examples:
+        - en: I go to school by subway.
+          ko: 저는 지하철로 학교에 가요.
+  notes:
+    - kind: usage
+      ko: "미국 영어예요. 영국 런던에서는 `the Underground`나 `the Tube`라고 해요."
+- word: by
+  id: word.by
+  senses:
+    - id: sense.by.prep.transport
+      pos: preposition
+      ko: (탈것) ~로, ~를 타고
+      examples:
+        - en: "[She]{who} [goes]{do} [to school]{where} by bus."
+          ko: 그 사람은 버스로 학교에 가요.
+          literal: 그녀는 / 간다 / 학교에 / 버스로
+  notes:
+    - kind: mistake
+      ko: "`by` 뒤의 탈것에는 `a`나 `the`를 붙이지 않아요. `by the bus`가 아니라 `by bus`예요. 걸어가면 `by foot`이 아니라 `on foot`이라고 하거나 그냥 `walk`라고 해요."
+- word: station
+  id: word.station
+  senses:
+    - id: sense.station.n.train
+      pos: noun
+      ko: 역
+      examples:
+        - en: "@Leo walks to the station."
+          ko: 레오는 역까지 걸어가요.
+  notes:
+    - kind: usage
+      ko: "버스 정류장은 `bus stop`이에요. `bus station`은 버스 터미널이에요."
+
+# a1-14 don't and doesn't
+- word: do
+  id: word.do
+  ipa: duː
+  forms: { past: did, pastParticiple: done }
+  senses:
+    - id: sense.do.v.helper
+      pos: verb
+      ko: (부정문과 질문을 만드는 말)
+      examples:
+        - en: "[I]{who} [don't eat]{do} [meat]{what}."
+          ko: 저는 고기를 안 먹어요.
+          literal: 나는 / 먹지 않는다 / 고기를
+  notes:
+    - kind: usage
+      ko: "`don't`는 `do not`, `doesn't`는 `does not`을 줄인 말이에요. `he`, `she`, `it` 뒤에서는 `doesn't`를 쓰고, 뒤의 동사에는 `-s`를 붙이지 않아요."
+- word: meat
+  id: word.meat
+  senses:
+    - id: sense.meat.n.food
+      pos: noun
+      ko: 고기
+      examples:
+        - en: "@Mina doesn't eat meat."
+          ko: 미나는 고기를 안 먹어요.
+  notes:
+    - kind: usage
+      ko: "`meet`(만나다)과 소리가 같아요. 셀 수 없는 말이라서 보통 `a`나 `-s`를 붙이지 않아요."
+- word: milk
+  id: word.milk
+  senses:
+    - id: sense.milk.n.drink
+      pos: noun
+      ko: 우유
+      examples:
+        - en: "They don't drink milk."
+          ko: 그 사람들은 우유를 안 마셔요.
+- word: fish
+  id: word.fish
+  forms: { plural: fish }
+  senses:
+    - id: sense.fish.n.food
+      pos: noun
+      ko: 생선, 물고기
+      examples:
+        - en: "We don't eat fish."
+          ko: 우리는 생선을 안 먹어요.
+  notes:
+    - kind: mistake
+      ko: "여러 마리여도 보통 `fish` 그대로 써요. 음식으로 말할 때는 `a`도 붙이지 않아요."
+- word: understand
+  id: word.understand
+  forms: { past: understood, pastParticiple: understood }
+  senses:
+    - id: sense.understand.v.meaning
+      pos: verb
+      ko: 이해하다, 알아듣다
+      examples:
+        - en: "Sorry, I don't understand."
+          ko: 미안해요, 무슨 말인지 모르겠어요.
+- word: know
+  id: word.know
+  forms: { past: knew, pastParticiple: known }
+  senses:
+    - id: sense.know.v.fact
+      pos: verb
+      ko: 알다
+      examples:
+        - en: "I don't know the answer."
+          ko: 답을 모르겠어요.
+  notes:
+    - kind: usage
+      ko: "`k`는 소리 내지 않아요. `no`와 소리가 같아요."
+- word: need
+  id: word.need
+  senses:
+    - id: sense.need.v.require
+      pos: verb
+      ko: 필요하다, ~가 있어야 하다
+      examples:
+        - en: "[He]{who} [doesn't need]{do} [a car]{what}."
+          ko: 그 사람은 차가 필요 없어요.
+          literal: 그는 / 필요로 하지 않는다 / 차를
+- word: want
+  id: word.want
+  ipa: wɑːnt
+  senses:
+    - id: sense.want.v.wish
+      pos: verb
+      ko: 원하다, 갖고 싶다
+      examples:
+        - en: "I don't want sugar."
+          ko: 설탕은 넣고 싶지 않아요.
+          literal: 나는 / 원하지 않는다 / 설탕을
+  notes:
+    - kind: usage
+      ko: "가게나 식당에서 `I want ~`는 조금 직접적으로 들려요. 정중하게 주문하는 말은 뒤에서 따로 배워요."
+- word: answer
+  id: word.answer
+  senses:
+    - id: sense.answer.n.reply
+      pos: noun
+      ko: 답, 대답
+      examples:
+        - en: "My sister doesn't know the answer."
+          ko: 우리 언니는 답을 몰라요.
+  notes:
+    - kind: usage
+      ko: "`w`는 소리 내지 않아요. \"앤서\"에 가깝게 읽어요."
+- word: sugar
+  id: word.sugar
+  senses:
+    - id: sense.sugar.n.sweet
+      pos: noun
+      ko: 설탕
+      examples:
+        - en: "She doesn't eat sugar."
+          ko: 그 사람은 설탕을 안 먹어요.
+  notes:
+    - kind: usage
+      ko: "`s`가 `sh` 소리예요. \"슈거\"에 가깝게 읽어요."
+- word: time
+  id: word.time
+  senses:
+    - id: sense.time.n.duration
+      pos: noun
+      ko: 시간
+      examples:
+        - en: "[I]{who} [don't have]{do} [much time]{what}."
+          ko: 저는 시간이 별로 없어요.
+          literal: 나는 / 가지고 있지 않다 / 많은 시간을
+- word: much
+  id: word.much
+  senses:
+    - id: sense.much.det.amount
+      pos: determiner
+      ko: (셀 수 없는 것이) 많은
+      examples:
+        - en: "I don't have much money."
+          ko: 저는 돈이 별로 없어요.
+  notes:
+    - kind: usage
+      ko: "주로 `don't` 문장이나 질문에 써요. \"돈이 많아요\"처럼 긍정문에서는 `a lot of`를 더 자주 써요."
+- word: many
+  id: word.many
+  senses:
+    - id: sense.many.det.number
+      pos: determiner
+      ko: (셀 수 있는 것이) 많은
+      examples:
+        - en: "She doesn't have many books."
+          ko: 그 사람은 책이 별로 없어요.
+  notes:
+    - kind: mistake
+      ko: "`many` 뒤에는 여럿을 뜻하는 모양이 와요. 보통 `-s`를 붙여서 `many book`이 아니라 `many books`예요. `many people`, `many children`처럼 모양이 따로 있는 말도 있어요."
+- word: homework
+  id: word.homework
+  senses:
+    - id: sense.homework.n.school
+      pos: noun
+      ko: 숙제
+      examples:
+        - en: "We don't have homework today."
+          ko: 오늘은 숙제가 없어요.
+  notes:
+    - kind: mistake
+      ko: "셀 수 없는 말이라서 `homeworks`나 `a homework`라고 하지 않아요."
+- word: sleep
+  id: word.sleep
+  forms: { past: slept, pastParticiple: slept }
+  senses:
+    - id: sense.sleep.v.rest
+      pos: verb
+      ko: 자다
+      examples:
+        - en: "He doesn't sleep in class."
+          ko: 그 사람은 수업 시간에 안 자요.
+
+# a1-15 questions with do and does
+- word: food
+  id: word.food
+  senses:
+    - id: sense.food.n.eat
+      pos: noun
+      ko: 음식
+      examples:
+        - en: Do you eat spicy food?
+          ko: 매운 음식 먹어요?
+- word: spicy
+  id: word.spicy
+  senses:
+    - id: sense.spicy.adj.hot
+      pos: adjective
+      ko: 매운
+      examples:
+        - en: My dad doesn't eat spicy food.
+          ko: 우리 아빠는 매운 음식을 안 드세요.
+  notes:
+    - kind: mistake
+      ko: "`hot`도 \"매운\"이라는 뜻으로 쓰지만 \"뜨거운\"과 헷갈릴 수 있어요. 매운맛은 `spicy`라고 하면 분명해요."
+- word: swim
+  id: word.swim
+  forms: { past: swam, pastParticiple: swum }
+  senses:
+    - id: sense.swim.v.water
+      pos: verb
+      ko: 수영하다, 헤엄치다
+      examples:
+        - en: "Do you swim? No, I don't."
+          ko: 수영해요? 아니요, 안 해요.
+- word: wear
+  id: word.wear
+  forms: { past: wore, pastParticiple: worn }
+  senses:
+    - id: sense.wear.v.clothing
+      pos: verb
+      ko: (옷을) 입다, (안경, 모자를) 쓰다, (신발을) 신다
+      examples:
+        - en: "Does [he]{who} [wear]{do} [glasses]{what}?"
+          ko: 그 사람은 안경을 써요?
+          literal: 그는 / 쓰니 / 안경을
+  notes:
+    - kind: usage
+      ko: "한국어는 옷은 \"입다\", 모자는 \"쓰다\", 신발은 \"신다\"로 나누지만 영어는 모두 `wear`예요."
+- word: glasses
+  id: word.glasses
+  ipa: ˈglæsɪz
+  senses:
+    - id: sense.glasses.n.eyes
+      pos: noun
+      ko: 안경
+      examples:
+        - en: My mom wears glasses.
+          ko: 우리 엄마는 안경을 써요.
+  notes:
+    - kind: mistake
+      ko: "알이 둘이라서 늘 `glasses`예요. 안경 하나를 말할 때도 `a glass`가 아니라 `glasses`라고 해요. `glass`는 유리나 유리잔이에요. `My glasses are new`처럼 동사도 `are`를 써요."
+- word: soccer
+  id: word.soccer
+  ipa: ˈsɑːkɚ
+  senses:
+    - id: sense.soccer.n.sport
+      pos: noun
+      ko: 축구
+      examples:
+        - en: "Does your brother play soccer? Yes, he does."
+          ko: 형은 축구를 해요? 네, 해요.
+  notes:
+    - kind: usage
+      ko: "미국 영어예요. 영국에서는 축구를 `football`이라고 해요. 미국에서 `football`은 미식축구예요. 운동을 한다고 할 때는 `play soccer`처럼 `the`를 붙이지 않아요."
+- word: mean
+  id: word.mean
+  forms: { past: meant, pastParticiple: meant }
+  senses:
+    - id: sense.mean.v.meaning
+      pos: verb
+      ko: 뜻하다, 의미하다
+      examples:
+        - en: What does it mean?
+          ko: 그게 무슨 뜻이에요?
+- word: word
+  id: word.word
+  senses:
+    - id: sense.word.n.vocabulary
+      pos: noun
+      ko: 단어, 말
+      examples:
+        - en: "[What]{what} does [this word]{who} [mean]{do}?"
+          ko: 이 단어는 무슨 뜻이에요?
+          literal: 무엇을 / 이 단어는 / 뜻하니
+- word: say
+  id: word.say
+  forms: { past: said, pastParticiple: said }
+  senses:
+    - id: sense.say.v.words
+      pos: verb
+      ko: 말하다
+      examples:
+        - en: How do you say this in English?
+          ko: 이거 영어로 뭐라고 해요?
+  notes:
+    - kind: usage
+      ko: "`says`는 \"세즈\"처럼 읽어요. 철자와 소리가 달라요."
+- word: Spanish
+  id: word.spanish
+  senses:
+    - id: sense.spanish.n.language
+      pos: noun
+      ko: 스페인어
+      examples:
+        - en: I study Spanish.
+          ko: 저는 스페인어를 공부해요.
+
+# a1-16 time and days
+- word: "o'clock"
+  id: word.oclock
+  ipa: əˈklɑːk
+  senses:
+    - id: sense.oclock.adv.hour
+      pos: adverb
+      ko: (정각) ~시
+      examples:
+        - en: "It's seven o'clock."
+          ko: 7시예요.
+  notes:
+    - kind: mistake
+      ko: "정각에만 붙여요. 7시 30분은 `seven thirty o'clock`이 아니라 `seven thirty`예요."
+- word: now
+  id: word.now
+  senses:
+    - id: sense.now.adv.present
+      pos: adverb
+      ko: 지금
+      examples:
+        - en: "It's nine thirty now."
+          ko: 지금 9시 반이에요.
+- word: minute
+  id: word.minute
+  ipa: ˈmɪnɪt
+  senses:
+    - id: sense.minute.n.time
+      pos: noun
+      ko: 분
+      examples:
+        - en: I have ten minutes.
+          ko: 시간이 10분 있어요.
+- word: early
+  id: word.early
+  senses:
+    - id: sense.early.adj.not-late
+      pos: adjective
+      ko: 이른
+      examples:
+        - en: "It's six o'clock. It's early."
+          ko: 6시예요. 아직 일러요.
+- word: at
+  id: word.at
+  senses:
+    - id: sense.at.prep.point
+      pos: preposition
+      ko: (시각) ~에, (한 곳) ~에, ~에서
+      examples:
+        - en: "[My class]{who} [starts]{do} [at nine]{when}."
+          ko: 제 수업은 9시에 시작해요.
+          literal: 내 수업은 / 시작한다 / 9시에
+  notes:
+    - kind: usage
+      ko: "시각 앞에 써요. `at seven`은 \"7시에\"예요. 요일 앞에는 `on`을 써요. `at home`처럼 한 곳을 가리킬 때도 써요."
+- word: start
+  id: word.start
+  senses:
+    - id: sense.start.v.begin
+      pos: verb
+      ko: 시작하다, 시작되다
+      examples:
+        - en: My class starts at nine.
+          ko: 제 수업은 9시에 시작해요.
+- word: finish
+  id: word.finish
+  senses:
+    - id: sense.finish.v.end
+      pos: verb
+      ko: 끝나다, 끝내다
+      examples:
+        - en: The meeting finishes at three.
+          ko: 회의는 3시에 끝나요.
+- word: open
+  id: word.open
+  senses:
+    - id: sense.open.v.business
+      pos: verb
+      ko: (가게, 은행이) 문을 열다
+      examples:
+        - en: The store opens at ten.
+          ko: 가게는 10시에 문을 열어요.
+- word: close
+  id: word.close
+  ipa: kloʊz
+  senses:
+    - id: sense.close.v.business
+      pos: verb
+      ko: (가게, 은행이) 문을 닫다
+      examples:
+        - en: The bank closes at four.
+          ko: 은행은 4시에 문을 닫아요.
+  notes:
+    - kind: usage
+      ko: "\"닫다\"일 때는 끝소리가 `z`예요. \"가까운\"이라는 뜻의 `close`는 끝소리가 `s`라서 소리가 달라요."
+- word: Monday
+  id: word.monday
+  ipa: ˈmʌndeɪ
+  senses:
+    - id: sense.monday.n.day
+      pos: noun
+      ko: 월요일
+      examples:
+        - en: I have a meeting on Monday.
+          ko: 월요일에 회의가 있어요.
+- word: Tuesday
+  id: word.tuesday
+  ipa: ˈtuːzdeɪ
+  senses:
+    - id: sense.tuesday.n.day
+      pos: noun
+      ko: 화요일
+      examples:
+        - en: We have English class on Tuesday.
+          ko: 화요일에 영어 수업이 있어요.
+- word: Wednesday
+  id: word.wednesday
+  ipa: ˈwɛnzdeɪ
+  senses:
+    - id: sense.wednesday.n.day
+      pos: noun
+      ko: 수요일
+      examples:
+        - en: "We don't have class on Wednesday."
+          ko: 우리는 수요일에 수업이 없어요.
+  notes:
+    - kind: usage
+      ko: "`Wed`의 `d`와 `nes`의 `e`는 소리 내지 않아요. \"웬즈데이\"에 가깝게 읽어요."
+- word: Thursday
+  id: word.thursday
+  ipa: ˈθɝzdeɪ
+  senses:
+    - id: sense.thursday.n.day
+      pos: noun
+      ko: 목요일
+      examples:
+        - en: The meeting is on Thursday.
+          ko: 회의는 목요일이에요.
+- word: Friday
+  id: word.friday
+  ipa: ˈfraɪdeɪ
+  senses:
+    - id: sense.friday.n.day
+      pos: noun
+      ko: 금요일
+      examples:
+        - en: "[I]{who} [have]{do} [a test]{what} [on Friday]{when}."
+          ko: 금요일에 시험이 있어요.
+          literal: 나는 / 가지고 있다 / 시험을 / 금요일에
+- word: "on"
+  id: word.on
+  ipa: ɑːn
+  senses:
+    - id: sense.on.prep.day
+      pos: preposition
+      ko: (요일, 날) ~에
+      examples:
+        - en: "The meeting is {on|sense.on.prep.day} Thursday."
+          ko: 회의는 목요일이에요.
+    - id: sense.on.prep.surface
+      pos: preposition
+      ko: (닿아서) ~위에, ~에
+      examples:
+        - en: "[My keys]{who} [are]{do} [{on|sense.on.prep.surface} the floor]{where}."
+          ko: 제 열쇠가 바닥에 있어요.
+          literal: 내 열쇠들은 / 있다 / 바닥 위에
+  notes:
+    - kind: mistake
+      ko: "요일 앞에는 `at`이나 `in`이 아니라 `on`이에요. 다만 `every Monday`처럼 `every`가 오면 보통 `on`을 붙이지 않아요."
+    - kind: usage
+      ko: "자리를 말할 때 `on`은 닿아 있을 때 써요. 벽에 걸린 그림도 `on the wall`이에요. 닿지 않고 위에 떠 있으면 `on`이 아니에요."
+- word: Saturday
+  id: word.saturday
+  ipa: ˈsætɚdeɪ
+  senses:
+    - id: sense.saturday.n.day
+      pos: noun
+      ko: 토요일
+      examples:
+        - en: "What day is it today? It's Saturday."
+          ko: 오늘 무슨 요일이에요? 토요일이에요.
+- word: Sunday
+  id: word.sunday
+  ipa: ˈsʌndeɪ
+  senses:
+    - id: sense.sunday.n.day
+      pos: noun
+      ko: 일요일
+      examples:
+        - en: We play soccer every Sunday.
+          ko: 우리는 일요일마다 축구를 해요.
+- word: weekend
+  id: word.weekend
+  ipa: ˈwiːkɛnd
+  senses:
+    - id: sense.weekend.n.days
+      pos: noun
+      ko: 주말
+      examples:
+        - en: "[I]{who} [don't work]{do} [on the weekend]{when}."
+          ko: 저는 주말에는 일 안 해요.
+          literal: 나는 / 일하지 않는다 / 주말에
+  notes:
+    - kind: usage
+      ko: "미국에서는 `on the weekend`라고 해요. 영국에서는 `at the weekend`도 많이 써요."
+- word: every
+  id: word.every
+  ipa: ˈɛvri
+  senses:
+    - id: sense.every.det.each
+      pos: determiner
+      ko: ~마다, 모든
+      examples:
+        - en: We play soccer every Sunday.
+          ko: 우리는 일요일마다 축구를 해요.
+  notes:
+    - kind: usage
+      ko: "`every` 뒤에는 하나를 말하는 모양이 와요. `every Sundays`가 아니라 `every Sunday`예요. `every`가 오면 보통 앞에 `on`을 붙이지 않아요."
+- word: week
+  id: word.week
+  senses:
+    - id: sense.week.n.days
+      pos: noun
+      ko: 주, 일주일
+      examples:
+        - en: I call my mom every week.
+          ko: 저는 매주 엄마한테 전화해요.
+
+# a1-17 daily routine
+- word: get up
+  id: word.get-up
+  ipa: ˌgɛt ˈʌp
+  forms: { past: got up, pastParticiple: gotten up }
+  senses:
+    - id: sense.get-up.v.bed
+      pos: verb
+      ko: 일어나다(잠자리에서)
+      examples:
+        - en: "[I]{who} [get up]{do} [at seven]{when}."
+          ko: 저는 7시에 일어나요.
+          literal: 나는 / 일어난다 / 7시에
+  notes:
+    - kind: usage
+      ko: "`wake up`은 잠에서 깨는 것, `get up`은 자리에서 일어나는 거예요. 둘을 섞어 쓸 때도 많아요."
+- word: take a shower
+  id: word.take-a-shower
+  ipa: ˌteɪk ə ˈʃaʊɚ
+  forms: { past: took a shower, pastParticiple: taken a shower }
+  senses:
+    - id: sense.take-a-shower.v.wash
+      pos: verb
+      ko: 샤워하다
+      examples:
+        - en: She takes a shower in the morning.
+          ko: 그 사람은 아침에 샤워를 해요.
+  notes:
+    - kind: konglish
+      ko: "\"샤워하다\"를 `do a shower`라고 하지 않아요. 미국에서는 `take a shower`, 영국에서는 `have a shower`라고 많이 해요."
+- word: leave
+  id: word.leave
+  forms: { past: left, pastParticiple: left }
+  senses:
+    - id: sense.leave.v.depart
+      pos: verb
+      ko: 떠나다, (집, 회사를) 나서다
+      examples:
+        - en: I leave home at eight.
+          ko: 저는 8시에 집을 나서요.
+  notes:
+    - kind: mistake
+      ko: "\"집을 나서다\"는 `from` 없이 `leave home`이에요."
+- word: go to bed
+  id: word.go-to-bed
+  ipa: ˌgoʊ tə ˈbɛd
+  forms: { past: went to bed, pastParticiple: gone to bed }
+  senses:
+    - id: sense.go-to-bed.v.sleep
+      pos: verb
+      ko: 자러 가다, 잠자리에 들다
+      examples:
+        - en: He goes to bed at eleven.
+          ko: 그 사람은 11시에 자러 가요.
+  notes:
+    - kind: mistake
+      ko: "`bed` 앞에 `the`나 `my`를 붙이지 않아요. `go to the bed`라고 하지 않아요."
+- word: then
+  id: word.then
+  senses:
+    - id: sense.then.adv.next
+      pos: adverb
+      ko: 그다음에, 그러고 나서
+      examples:
+        - en: I take a shower. Then I eat breakfast.
+          ko: 저는 샤워를 해요. 그다음에 아침을 먹어요.
+- word: always
+  id: word.always
+  ipa: ˈɔːlweɪz
+  senses:
+    - id: sense.always.adv.every-time
+      pos: adverb
+      ko: 늘, 항상
+      examples:
+        - en: "[I]{who} [always eat]{do} [breakfast]{what}."
+          ko: 저는 늘 아침을 먹어요.
+          literal: 나는 / 늘 먹는다 / 아침밥을
+- word: usually
+  id: word.usually
+  ipa: ˈjuːʒuəli
+  senses:
+    - id: sense.usually.adv.most-times
+      pos: adverb
+      ko: 보통, 대개
+      examples:
+        - en: I usually drink coffee in the morning.
+          ko: 저는 아침에 보통 커피를 마셔요.
+- word: sometimes
+  id: word.sometimes
+  ipa: ˈsʌmtaɪmz
+  senses:
+    - id: sense.sometimes.adv.some-times
+      pos: adverb
+      ko: 가끔, 때때로
+      examples:
+        - en: I sometimes watch movies in the evening.
+          ko: 저는 저녁에 가끔 영화를 봐요.
+  notes:
+    - kind: usage
+      ko: "`always`, `never`와 달리 `Sometimes I ~`처럼 문장 맨 앞에도 자주 와요."
+- word: never
+  id: word.never
+  senses:
+    - id: sense.never.adv.not-ever
+      pos: adverb
+      ko: 전혀 안, 한 번도 안
+      examples:
+        - en: I never eat meat.
+          ko: 저는 고기를 전혀 안 먹어요.
+  notes:
+    - kind: mistake
+      ko: "`never`에 이미 \"안\"이 들어 있어서 `don't`와 같이 쓰지 않아요."
+- word: evening
+  id: word.evening
+  senses:
+    - id: sense.evening.n.time
+      pos: noun
+      ko: 저녁
+      examples:
+        - en: I usually read books in the evening.
+          ko: 저는 저녁에 보통 책을 읽어요.
+  notes:
+    - kind: usage
+      ko: "해가 질 무렵부터 잘 때까지예요. 저녁밥은 `dinner`예요."
+- word: often
+  id: word.often
+  ipa: ˈɔːfən
+  senses:
+    - id: sense.often.adv.many-times
+      pos: adverb
+      ko: 자주
+      examples:
+        - en: She often walks to school.
+          ko: 그 사람은 학교에 자주 걸어가요.
+  notes:
+    - kind: usage
+      ko: "`t`를 소리 내지 않을 때가 많지만 살려 말하는 사람도 있어요. 첫소리는 입술을 무는 `f`라서 `open`과 소리가 달라요."
+- word: once
+  id: word.once
+  senses:
+    - id: sense.once.adv.one-time
+      pos: adverb
+      ko: 한 번
+      examples:
+        - en: I call my grandmother once a week.
+          ko: 저는 일주일에 한 번 할머니께 전화드려요.
+  notes:
+    - kind: usage
+      ko: "`one`처럼 \"원\" 소리로 시작해요. \"온스\"가 아니에요."
+- word: twice
+  id: word.twice
+  senses:
+    - id: sense.twice.adv.two-times
+      pos: adverb
+      ko: 두 번
+      examples:
+        - en: "[I]{who} [go]{do} [to the gym]{where} [twice a week]{when}."
+          ko: 저는 일주일에 두 번 헬스장에 가요.
+          literal: 나는 / 간다 / 헬스장에 / 일주일에 두 번
+- word: gym
+  id: word.gym
+  senses:
+    - id: sense.gym.n.exercise
+      pos: noun
+      ko: 헬스장, 체육관
+      examples:
+        - en: I go to the gym twice a week.
+          ko: 저는 일주일에 두 번 헬스장에 가요.
+  notes:
+    - kind: konglish
+      ko: "\"헬스장\"은 영어로 `gym`이에요. `health`는 \"건강\"이라는 뜻이에요."
+- word: before
+  id: word.before
+  ipa: bɪˈfɔːr
+  senses:
+    - id: sense.before.prep.earlier
+      pos: preposition
+      ko: ~전에
+      examples:
+        - en: She takes a shower before breakfast.
+          ko: 그 사람은 아침을 먹기 전에 샤워를 해요.
+- word: after
+  id: word.after
+  senses:
+    - id: sense.after.prep.later
+      pos: preposition
+      ko: ~뒤에, ~하고 나서
+      examples:
+        - en: "[I]{who} [clean]{do} [my room]{what} [after dinner]{when}."
+          ko: 저는 저녁을 먹고 나서 방을 청소해요.
+          literal: 나는 / 청소한다 / 내 방을 / 저녁 뒤에
+- word: come
+  id: word.come
+  forms: { past: came, pastParticiple: come }
+  senses:
+    - id: sense.come.v.arrive
+      pos: verb
+      ko: 오다
+      examples:
+        - en: She comes home at seven.
+          ko: 그 사람은 7시에 집에 와요.
+- word: clean
+  id: word.clean
+  senses:
+    - id: sense.clean.v.tidy
+      pos: verb
+      ko: 청소하다, 치우다
+      examples:
+        - en: She cleans her room after dinner.
+          ko: 그 사람은 저녁을 먹고 나서 방을 청소해요.
+- word: relax
+  id: word.relax
+  ipa: rɪˈlæks
+  senses:
+    - id: sense.relax.v.rest
+      pos: verb
+      ko: 쉬다, 느긋하게 지내다
+      examples:
+        - en: I relax at home on the weekend.
+          ko: 저는 주말에는 집에서 쉬어요.
+
+# a1-18 where things are
+- word: under
+  id: word.under
+  senses:
+    - id: sense.under.prep.below
+      pos: preposition
+      ko: ~밑에, ~아래에
+      examples:
+        - en: The cat is under the bed.
+          ko: 고양이가 침대 밑에 있어요.
+- word: floor
+  id: word.floor
+  senses:
+    - id: sense.floor.n.ground
+      pos: noun
+      ko: 바닥
+      examples:
+        - en: "My bag is {on|sense.on.prep.surface} the floor."
+          ko: 제 가방이 바닥에 있어요.
+- word: sofa
+  id: word.sofa
+  senses:
+    - id: sense.sofa.n.seat
+      pos: noun
+      ko: 소파
+      examples:
+        - en: "Your phone is {on|sense.on.prep.surface} the sofa."
+          ko: 휴대폰은 소파 위에 있어요.
+  notes:
+    - kind: usage
+      ko: "미국에서는 `couch`라고도 많이 해요."
+- word: shelf
+  id: word.shelf
+  forms: { plural: shelves }
+  senses:
+    - id: sense.shelf.n.storage
+      pos: noun
+      ko: 선반, 책꽂이 칸
+      examples:
+        - en: "The books are {on|sense.on.prep.surface} the shelf."
+          ko: 책은 선반 위에 있어요.
+  notes:
+    - kind: mistake
+      ko: "여럿이면 `shelfs`가 아니라 `shelves`예요. `f`를 `ves`로 바꿔요."
+- word: next to
+  id: word.next-to
+  ipa: ˈnɛkst tuː
+  senses:
+    - id: sense.next-to.prep.beside
+      pos: preposition
+      ko: ~옆에
+      examples:
+        - en: "[The bank]{who} [is]{do} [next to the hospital]{where}."
+          ko: 은행은 병원 옆에 있어요.
+          literal: 은행은 / 있다 / 병원 옆에
+  notes:
+    - kind: mistake
+      ko: "`next`만 쓰지 않고 `to`까지 붙여요. `next the bank`가 아니라 `next to the bank`예요."
+- word: behind
+  id: word.behind
+  senses:
+    - id: sense.behind.prep.back
+      pos: preposition
+      ko: ~뒤에
+      examples:
+        - en: The park is behind the school.
+          ko: 공원은 학교 뒤에 있어요.
+  notes:
+    - kind: mistake
+      ko: "`behind` 뒤에는 `of`를 붙이지 않아요. `behind of the school`이 아니라 `behind the school`이에요."
+- word: in front of
+  id: word.in-front-of
+  ipa: ɪn ˈfrʌnt əv
+  senses:
+    - id: sense.in-front-of.prep.front
+      pos: preposition
+      ko: ~앞에
+      examples:
+        - en: My car is in front of the house.
+          ko: 제 차는 집 앞에 있어요.
+- word: between
+  id: word.between
+  ipa: bɪˈtwiːn
+  senses:
+    - id: sense.between.prep.middle
+      pos: preposition
+      ko: (둘) 사이에
+      examples:
+        - en: "It's between the bank and the store."
+          ko: 은행과 가게 사이에 있어요.
+- word: park
+  id: word.park
+  senses:
+    - id: sense.park.n.green
+      pos: noun
+      ko: 공원
+      examples:
+        - en: We walk in the park every day.
+          ko: 우리는 매일 공원에서 걸어요.
+- word: cafe
+  id: word.cafe
+  ipa: kæˈfeɪ
+  senses:
+    - id: sense.cafe.n.coffee
+      pos: noun
+      ko: 카페
+      examples:
+        - en: The cafe is in front of the supermarket.
+          ko: 카페는 슈퍼마켓 앞에 있어요.
+  notes:
+    - kind: usage
+      ko: "`café`라고도 써요. 미국에서는 `coffee shop`이라고도 많이 해요."
+- word: library
+  id: word.library
+  ipa: ˈlaɪbrɛri
+  senses:
+    - id: sense.library.n.books
+      pos: noun
+      ko: 도서관
+      examples:
+        - en: I study in the library.
+          ko: 저는 도서관에서 공부해요.
+  notes:
+    - kind: mistake
+      ko: "책을 파는 서점은 `bookstore`예요. `library`는 책을 빌리거나 공부하는 도서관이에요."
+- word: supermarket
+  id: word.supermarket
+  senses:
+    - id: sense.supermarket.n.food
+      pos: noun
+      ko: 슈퍼마켓
+      examples:
+        - en: The supermarket is next to the station.
+          ko: 슈퍼마켓은 역 옆에 있어요.
+- word: pharmacy
+  id: word.pharmacy
+  senses:
+    - id: sense.pharmacy.n.medicine
+      pos: noun
+      ko: 약국
+      examples:
+        - en: The pharmacy is next to the bank.
+          ko: 약국은 은행 옆에 있어요.
+  notes:
+    - kind: usage
+      ko: "`ph`는 `f` 소리예요. 미국에서는 `drugstore`라고도 해요."
+- word: post office
+  id: word.post-office
+  ipa: ˈpoʊst ˌɔːfɪs
+  senses:
+    - id: sense.post-office.n.mail
+      pos: noun
+      ko: 우체국
+      examples:
+        - en: The post office is between the bank and the pharmacy.
+          ko: 우체국은 은행과 약국 사이에 있어요.
