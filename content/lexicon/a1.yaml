@@ -216,6 +216,12 @@
       examples:
         - en: I'm not sure.
           ko: 잘 모르겠어요.
+    - id: sense.sure.interj.yes
+      pos: interjection
+      ko: 그럼요, 물론이죠(부탁이나 허락에 대답할 때)
+      examples:
+        - en: "Can I sit here? {Sure|sense.sure.interj.yes}."
+          ko: 여기 앉아도 돼요? 그럼요.
 - word: right
   id: word.right
   senses:
@@ -1163,9 +1169,20 @@
       examples:
         - en: My bag is there.
           ko: 제 가방은 저기 있어요.
+    - id: sense.there.pron.exists
+      pos: pronoun
+      ko: (There is, There are로) ~이 있다
+      examples:
+        - en: "[{There|sense.there.pron.exists} is]{do} [a clock]{who} [{on|sense.on.prep.surface} the wall]{where}."
+          ko: 벽에 시계가 있어요.
+          literal: 있다 / 시계가 / 벽에
+        - en: "{There|sense.there.pron.exists} are two parks near my house."
+          ko: 우리 집 근처에 공원이 두 개 있어요.
   notes:
     - kind: usage
       ko: "가까운 곳은 `here`, 떨어진 곳은 `there`예요. `this`와 `that`처럼 짝을 이뤄요."
+    - kind: usage
+      ko: "`There is ~`의 `there`는 \"거기\"라는 뜻이 없어요. 무엇이 있다고 말을 꺼내는 말이라 옮기지 않아요."
 - word: cool
   id: word.cool
   senses:
@@ -3414,3 +3431,914 @@
       examples:
         - en: The post office is between the bank and the pharmacy.
           ko: 우체국은 은행과 약국 사이에 있어요.
+# a1-19 there is and there are
+- word: wall
+  id: word.wall
+  senses:
+    - id: sense.wall.n.side
+      pos: noun
+      ko: 벽
+      examples:
+        - en: "{There|sense.there.pron.exists} are three photos {on|sense.on.prep.surface} the wall."
+          ko: 벽에 사진이 세 장 있어요.
+- word: clock
+  id: word.clock
+  senses:
+    - id: sense.clock.n.time
+      pos: noun
+      ko: 시계(벽시계, 탁상시계)
+      examples:
+        - en: "The clock {on|sense.on.prep.surface} the wall is {old|sense.old.adj.not-new}."
+          ko: 벽에 걸린 시계는 오래됐어요.
+  notes:
+    - kind: usage
+      ko: "손목에 차는 시계는 `watch`예요. 벽이나 책상에 두는 시계가 `clock`이에요."
+- word: lamp
+  id: word.lamp
+  senses:
+    - id: sense.lamp.n.light
+      pos: noun
+      ko: 스탠드, 램프
+      examples:
+        - en: "{There|sense.there.pron.exists} is a lamp next to the bed."
+          ko: 침대 옆에 스탠드가 있어요.
+  notes:
+    - kind: konglish
+      ko: "책상이나 침대 옆에 두는 \"스탠드\"는 영어로 `lamp`예요. `stand`는 물건을 올려 두는 받침대예요."
+- word: plant
+  id: word.plant
+  senses:
+    - id: sense.plant.n.green
+      pos: noun
+      ko: 식물, 화분
+      examples:
+        - en: "{There|sense.there.pron.exists} is a plant next to the window."
+          ko: 창문 옆에 화분이 있어요.
+  notes:
+    - kind: usage
+      ko: "집에서 키우는 식물을 \"화분\"이라고 많이 하지만, 흙을 담는 그릇은 `pot`이에요."
+- word: restroom
+  id: word.restroom
+  senses:
+    - id: sense.restroom.n.toilet
+      pos: noun
+      ko: (가게, 식당 같은 곳의) 화장실
+      examples:
+        - en: "Excuse me. Where's the restroom?"
+          ko: 저기요, 화장실이 어디예요?
+  notes:
+    - kind: usage
+      ko: "집에 있는 화장실은 보통 `bathroom`이라고 해요. 미국에서 `toilet`은 주로 변기를 말해요."
+- word: convenience store
+  id: word.convenience-store
+  ipa: kənˈviːniəns ˌstɔːr
+  senses:
+    - id: sense.convenience-store.n.shop
+      pos: noun
+      ko: 편의점
+      examples:
+        - en: "{There|sense.there.pron.exists} is a convenience store next to the station."
+          ko: 역 옆에 편의점이 있어요.
+- word: bus stop
+  id: word.bus-stop
+  ipa: ˈbʌs ˌstɑːp
+  senses:
+    - id: sense.bus-stop.n.bus
+      pos: noun
+      ko: 버스 정류장
+      examples:
+        - en: The bus stop is in front of the bank.
+          ko: 버스 정류장은 은행 앞에 있어요.
+- word: upstairs
+  id: word.upstairs
+  senses:
+    - id: sense.upstairs.adv.above
+      pos: adverb
+      ko: 위층에, 위층으로
+      examples:
+        - en: The restroom is upstairs.
+          ko: 화장실은 위층에 있어요.
+  notes:
+    - kind: mistake
+      ko: "`upstairs` 앞에는 `in`이나 `to`를 붙이지 않아요. `go upstairs`, `is upstairs`처럼 써요."
+- word: downstairs
+  id: word.downstairs
+  senses:
+    - id: sense.downstairs.adv.below
+      pos: adverb
+      ko: 아래층에, 아래층으로
+      examples:
+        - en: My office is downstairs.
+          ko: 제 사무실은 아래층에 있어요.
+- word: classroom
+  id: word.classroom
+  senses:
+    - id: sense.classroom.n.school
+      pos: noun
+      ko: 교실
+      examples:
+        - en: "{There|sense.there.pron.exists} are ten classrooms in my school."
+          ko: 우리 학교에는 교실이 열 개 있어요.
+- word: building
+  id: word.building
+  senses:
+    - id: sense.building.n.structure
+      pos: noun
+      ko: 건물
+      examples:
+        - en: My office is in a big building.
+          ko: 제 사무실은 큰 건물 안에 있어요.
+- word: elevator
+  id: word.elevator
+  senses:
+    - id: sense.elevator.n.lift
+      pos: noun
+      ko: 엘리베이터
+      examples:
+        - en: "{There|sense.there.pron.exists} are two elevators in the building."
+          ko: 건물에 엘리베이터가 두 대 있어요.
+  notes:
+    - kind: usage
+      ko: "영국에서는 `lift`라고 해요."
+- word: map
+  id: word.map
+  senses:
+    - id: sense.map.n.place
+      pos: noun
+      ko: 지도
+      examples:
+        - en: "{There|sense.there.pron.exists} is a map {on|sense.on.prep.surface} the wall."
+          ko: 벽에 지도가 있어요.
+# a1-20 home and rooms
+- word: kitchen
+  id: word.kitchen
+  senses:
+    - id: sense.kitchen.n.room
+      pos: noun
+      ko: 부엌, 주방
+      examples:
+        - en: I cook dinner in the kitchen.
+          ko: 저는 부엌에서 저녁을 만들어요.
+- word: bathroom
+  id: word.bathroom
+  senses:
+    - id: sense.bathroom.n.room
+      pos: noun
+      ko: 화장실, 욕실
+      examples:
+        - en: "{There|sense.there.pron.exists} are two bathrooms in my house."
+          ko: 우리 집에는 화장실이 두 개 있어요.
+  notes:
+    - kind: usage
+      ko: "미국에서는 집 화장실을 욕조가 없어도 `bathroom`이라고 해요. 식당이나 가게 화장실은 `restroom`이라고 많이 해요."
+- word: bedroom
+  id: word.bedroom
+  senses:
+    - id: sense.bedroom.n.room
+      pos: noun
+      ko: 침실, 자는 방
+      examples:
+        - en: "[My apartment]{who} [has]{do} [two bedrooms]{what}."
+          ko: 우리 집은 방이 두 개예요.
+          literal: 내 아파트는 / 가지고 있다 / 침실 두 개를
+- word: living room
+  id: word.living-room
+  ipa: ˈlɪvɪŋ ˌruːm
+  senses:
+    - id: sense.living-room.n.room
+      pos: noun
+      ko: 거실
+      examples:
+        - en: We watch movies in the living room.
+          ko: 우리는 거실에서 영화를 봐요.
+- word: balcony
+  id: word.balcony
+  senses:
+    - id: sense.balcony.n.outside
+      pos: noun
+      ko: 발코니, (아파트의) 베란다
+      examples:
+        - en: "Is {there|sense.there.pron.exists} a balcony in your apartment?"
+          ko: 집에 베란다 있어요?
+  notes:
+    - kind: konglish
+      ko: "아파트의 \"베란다\"는 영어로 보통 `balcony`예요. 영어 `veranda`는 집 1층 바깥에 지붕을 씌워 붙인 공간이고, 미국에서는 이런 곳을 보통 `porch`라고 해요."
+    - kind: mistake
+      ko: "베란다에 있다고 할 때는 `in the balcony`가 아니라 `on the balcony`예요."
+- word: fridge
+  id: word.fridge
+  senses:
+    - id: sense.fridge.n.cold
+      pos: noun
+      ko: 냉장고
+      examples:
+        - en: The milk is in the fridge.
+          ko: 우유는 냉장고에 있어요.
+  notes:
+    - kind: usage
+      ko: "`refrigerator`를 줄인 말이에요. 말할 때는 `fridge`를 훨씬 많이 써요."
+- word: mirror
+  id: word.mirror
+  senses:
+    - id: sense.mirror.n.glass
+      pos: noun
+      ko: 거울
+      examples:
+        - en: "{There|sense.there.pron.exists} is a mirror in the bathroom."
+          ko: 욕실에 거울이 있어요.
+  notes:
+    - kind: mistake
+      ko: "\"거울을 보다\"는 `see the mirror`가 아니라 `look in the mirror`예요."
+- word: closet
+  id: word.closet
+  senses:
+    - id: sense.closet.n.clothes
+      pos: noun
+      ko: 옷장, 붙박이장
+      examples:
+        - en: My coat is in the closet.
+          ko: 제 코트는 옷장에 있어요.
+  notes:
+    - kind: usage
+      ko: "미국에서 `closet`은 보통 벽에 붙박이로 만든 수납장이에요. 따로 세워 두는 장롱은 `wardrobe`라고도 해요."
+- word: microwave
+  id: word.microwave
+  senses:
+    - id: sense.microwave.n.oven
+      pos: noun
+      ko: 전자레인지
+      examples:
+        - en: The microwave is in the kitchen.
+          ko: 전자레인지는 부엌에 있어요.
+  notes:
+    - kind: konglish
+      ko: "\"전자레인지\"를 `range`나 `electric range`라고 하지 않아요. `range`는 위에 화구, 아래에 오븐이 달린 조리 기구이고, `electric range`는 전기로 데우는 그런 기구예요."
+- word: washing machine
+  id: word.washing-machine
+  ipa: ˈwɑːʃɪŋ məˌʃiːn
+  senses:
+    - id: sense.washing-machine.n.clothes
+      pos: noun
+      ko: 세탁기
+      examples:
+        - en: "The washing machine is {on|sense.on.prep.surface} the balcony."
+          ko: 세탁기는 베란다에 있어요.
+- word: quiet
+  id: word.quiet
+  senses:
+    - id: sense.quiet.adj.not-noisy
+      pos: adjective
+      ko: 조용한
+      examples:
+        - en: My apartment is very quiet.
+          ko: 우리 집은 아주 조용해요.
+  notes:
+    - kind: mistake
+      ko: "\"꽤\"라는 뜻의 `quite`와 철자가 비슷해요. 조용한 건 `quiet`, 끝이 `-et`예요. `quiet`은 \"콰이엇\"처럼 두 박자, `quite`는 \"콰잇\"처럼 한 박자예요."
+- word: noisy
+  id: word.noisy
+  senses:
+    - id: sense.noisy.adj.loud
+      pos: adjective
+      ko: 시끄러운
+      examples:
+        - en: The street is very noisy at night.
+          ko: 밤에는 길이 정말 시끄러워요.
+- word: comfortable
+  id: word.comfortable
+  ipa: ˈkʌmftɚbəl
+  senses:
+    - id: sense.comfortable.adj.cozy
+      pos: adjective
+      ko: 편한, 편안한
+      examples:
+        - en: This sofa is very comfortable.
+          ko: 이 소파는 정말 편해요.
+  notes:
+    - kind: mistake
+      ko: "\"교통이 편해요\"처럼 편리하다는 뜻이면 `comfortable`이 아니라 `convenient`예요."
+    - kind: usage
+      ko: "철자대로 \"컴포터블\"이라고 읽지 않고, 맨 앞에 힘을 주고 \"컴프터블\"처럼 줄여 읽어요."
+- word: bright
+  id: word.bright
+  senses:
+    - id: sense.bright.adj.light
+      pos: adjective
+      ko: 밝은
+      examples:
+        - en: "[My room]{who} [is]{do} [small and bright]{what}."
+          ko: 제 방은 작고 밝아요.
+          literal: 내 방은 / ~이다 / 작고 밝은
+- word: dark
+  id: word.dark
+  senses:
+    - id: sense.dark.adj.no-light
+      pos: adjective
+      ko: 어두운
+      examples:
+        - en: The kitchen is dark.
+          ko: 부엌이 어두워요.
+# a1-21 food and drinks, some and any
+- word: bread
+  id: word.bread
+  senses:
+    - id: sense.bread.n.food
+      pos: noun
+      ko: 빵
+      examples:
+        - en: I eat bread and cheese in the morning.
+          ko: 저는 아침에 빵과 치즈를 먹어요.
+  notes:
+    - kind: mistake
+      ko: "`bread`는 세지 않는 말이라 `a bread`라고 하지 않아요. 한 덩이는 `a loaf of bread`, 한 조각은 `a slice of bread`예요."
+- word: rice
+  id: word.rice
+  senses:
+    - id: sense.rice.n.food
+      pos: noun
+      ko: 쌀, 밥
+      examples:
+        - en: "[I]{who} [eat]{do} [rice]{what} [every day]{when}."
+          ko: 저는 매일 밥을 먹어요.
+          literal: 나는 / 먹는다 / 밥을 / 매일
+  notes:
+    - kind: usage
+      ko: "영어는 쌀과 밥을 나누지 않고 둘 다 `rice`라고 해요. 세지 않는 말이라 `a`나 `-s`를 붙이지 않아요."
+- word: fruit
+  id: word.fruit
+  forms: { plural: fruit }
+  senses:
+    - id: sense.fruit.n.food
+      pos: noun
+      ko: 과일
+      examples:
+        - en: We eat fruit after dinner.
+          ko: 우리는 저녁을 먹고 과일을 먹어요.
+- word: vegetable
+  id: word.vegetable
+  ipa: ˈvɛdʒtəbəl
+  senses:
+    - id: sense.vegetable.n.food
+      pos: noun
+      ko: 채소
+      examples:
+        - en: "My kids don't eat vegetables."
+          ko: 우리 아이들은 채소를 안 먹어요.
+- word: chicken
+  id: word.chicken
+  senses:
+    - id: sense.chicken.n.food
+      pos: noun
+      ko: 닭고기
+      examples:
+        - en: I eat chicken and rice.
+          ko: 저는 닭고기와 밥을 먹어요.
+  notes:
+    - kind: konglish
+      ko: "한국에서 \"치킨\"이라고 하는 튀긴 닭은 영어로 `fried chicken`이에요. `chicken`만 쓰면 닭고기예요. `a chicken`이라고 하면 살아 있는 닭이나 통닭 한 마리예요."
+- word: cheese
+  id: word.cheese
+  senses:
+    - id: sense.cheese.n.food
+      pos: noun
+      ko: 치즈
+      examples:
+        - en: "{There|sense.there.pron.exists} is cheese in the fridge."
+          ko: 냉장고에 치즈가 있어요.
+- word: some
+  id: word.some
+  senses:
+    - id: sense.some.det.amount
+      pos: determiner
+      ko: 조금, 몇몇, 좀(정확한 양을 말하지 않을 때)
+      examples:
+        - en: "[{There|sense.there.pron.exists} are]{do} [some cookies]{who} [{on|sense.on.prep.surface} the table]{where}."
+          ko: 탁자 위에 쿠키가 몇 개 있어요.
+          literal: 있다 / 쿠키 몇 개가 / 탁자 위에
+        - en: I want some water.
+          ko: 물 좀 마시고 싶어요.
+  notes:
+    - kind: usage
+      ko: "셀 수 있는 말은 `some cookies`처럼 여럿 꼴, 세지 않는 말은 `some water`처럼 써요. 우리말로는 옮기지 않거나 \"좀\"이라고 할 때가 많아요."
+- word: juice
+  id: word.juice
+  senses:
+    - id: sense.juice.n.drink
+      pos: noun
+      ko: 주스
+      examples:
+        - en: I want some juice.
+          ko: 주스 좀 마시고 싶어요.
+- word: bottle
+  id: word.bottle
+  senses:
+    - id: sense.bottle.n.container
+      pos: noun
+      ko: 병
+      examples:
+        - en: Two bottles of water, please.
+          ko: 물 두 병 주세요.
+- word: snack
+  id: word.snack
+  senses:
+    - id: sense.snack.n.food
+      pos: noun
+      ko: 간식, 과자
+      examples:
+        - en: I have some snacks in my bag.
+          ko: 가방에 과자가 좀 있어요.
+- word: cookie
+  id: word.cookie
+  senses:
+    - id: sense.cookie.n.sweet
+      pos: noun
+      ko: 쿠키
+      examples:
+        - en: The kids eat cookies after school.
+          ko: 아이들은 학교가 끝나고 쿠키를 먹어요.
+- word: any
+  id: word.any
+  senses:
+    - id: sense.any.det.amount
+      pos: determiner
+      ko: (질문에서) 조금이라도, (not과 함께) 하나도
+      examples:
+        - en: "[I]{who} [don't have]{do} [any money]{what}."
+          ko: 저는 돈이 하나도 없어요.
+          literal: 나는 / 가지고 있지 않다 / 어떤 돈도
+        - en: "Is {there|sense.there.pron.exists} any milk in the fridge?"
+          ko: 냉장고에 우유 있어요?
+  notes:
+    - kind: usage
+      ko: "질문과 `not`이 들어간 문장에 보통 써요. 무엇을 권하거나 부탁할 때는 질문이어도 `some`을 써요."
+- word: salt
+  id: word.salt
+  senses:
+    - id: sense.salt.n.seasoning
+      pos: noun
+      ko: 소금
+      examples:
+        - en: "{There|sense.there.pron.exists} isn't any salt."
+          ko: 소금이 없어요.
+- word: butter
+  id: word.butter
+  senses:
+    - id: sense.butter.n.food
+      pos: noun
+      ko: 버터
+      examples:
+        - en: "We don't have any butter."
+          ko: 버터가 없어요.
+- word: buy
+  id: word.buy
+  forms: { past: bought, pastParticiple: bought }
+  senses:
+    - id: sense.buy.v.shop
+      pos: verb
+      ko: 사다
+      examples:
+        - en: I buy bread at the supermarket.
+          ko: 저는 슈퍼마켓에서 빵을 사요.
+- word: sandwich
+  id: word.sandwich
+  ipa: ˈsænwɪtʃ
+  senses:
+    - id: sense.sandwich.n.food
+      pos: noun
+      ko: 샌드위치
+      examples:
+        - en: "{There|sense.there.pron.exists} are some sandwiches in the fridge."
+          ko: 냉장고에 샌드위치가 몇 개 있어요.
+# a1-22 ordering
+- word: menu
+  id: word.menu
+  senses:
+    - id: sense.menu.n.list
+      pos: noun
+      ko: 메뉴, 메뉴판
+      examples:
+        - en: The menu, please.
+          ko: 메뉴판 주세요.
+  notes:
+    - kind: usage
+      ko: "음식 목록도, 그 목록이 적힌 메뉴판도 `menu`예요."
+- word: pizza
+  id: word.pizza
+  senses:
+    - id: sense.pizza.n.food
+      pos: noun
+      ko: 피자
+      examples:
+        - en: "I'd like a pizza, please."
+          ko: 피자 하나 주세요.
+- word: salad
+  id: word.salad
+  senses:
+    - id: sense.salad.n.food
+      pos: noun
+      ko: 샐러드
+      examples:
+        - en: "[I'd like]{do} [a salad]{what}, please."
+          ko: 샐러드 하나 주세요.
+          literal: 나는 원한다(정중하게) / 샐러드 하나를
+- word: noodle
+  id: word.noodle
+  senses:
+    - id: sense.noodle.n.food
+      pos: noun
+      ko: 국수, 면
+      examples:
+        - en: "I'd like the noodles, please."
+          ko: 국수로 할게요.
+  notes:
+    - kind: usage
+      ko: "가락이 여럿이라 보통 `noodles`처럼 `-s`를 붙여 말해요."
+- word: check
+  id: word.check
+  senses:
+    - id: sense.check.n.bill
+      pos: noun
+      ko: 계산서
+      examples:
+        - en: "Can I have the check, please?"
+          ko: 계산서 주세요.
+  notes:
+    - kind: usage
+      ko: "미국에서는 `check`, 영국에서는 `bill`이라고 해요. 미국에서도 `bill`이라고 하면 알아들어요."
+- word: spoon
+  id: word.spoon
+  senses:
+    - id: sense.spoon.n.eat
+      pos: noun
+      ko: 숟가락
+      examples:
+        - en: "Can I have a spoon, please?"
+          ko: 숟가락 하나 주세요.
+- word: fork
+  id: word.fork
+  senses:
+    - id: sense.fork.n.eat
+      pos: noun
+      ko: 포크
+      examples:
+        - en: "Can I have a fork, please?"
+          ko: 포크 하나 주세요.
+- word: napkin
+  id: word.napkin
+  senses:
+    - id: sense.napkin.n.paper
+      pos: noun
+      ko: 냅킨
+      examples:
+        - en: "Can I have a napkin, please?"
+          ko: 냅킨 하나 주세요.
+- word: large
+  id: word.large
+  senses:
+    - id: sense.large.adj.size
+      pos: adjective
+      ko: 큰
+      examples:
+        - en: A large coffee, please.
+          ko: 커피 큰 걸로 주세요.
+  notes:
+    - kind: usage
+      ko: "`big`과 뜻이 비슷해요. 음료나 옷의 크기를 말할 때는 `large`를 많이 써요."
+- word: medium
+  id: word.medium
+  senses:
+    - id: sense.medium.adj.size
+      pos: adjective
+      ko: 중간 크기의
+      examples:
+        - en: A medium tea, please.
+          ko: 차 중간 크기로 주세요.
+- word: muffin
+  id: word.muffin
+  senses:
+    - id: sense.muffin.n.sweet
+      pos: noun
+      ko: 머핀
+      examples:
+        - en: A coffee and a muffin, please.
+          ko: 커피 한 잔이랑 머핀 하나 주세요.
+- word: iced
+  id: word.iced
+  ipa: aɪst
+  senses:
+    - id: sense.iced.adj.cold
+      pos: adjective
+      ko: 얼음을 넣은, 아이스(음료)
+      examples:
+        - en: A large iced coffee, please.
+          ko: 아이스커피 큰 걸로 주세요.
+  notes:
+    - kind: konglish
+      ko: "\"아이스 아메리카노\"는 `iced americano`예요. 차갑게 만든 음료에는 `ice`가 아니라 `iced`를 붙여요."
+# a1-23 can and can't
+- word: can
+  id: word.can
+  ipa: kæn
+  senses:
+    - id: sense.can.modal.ability
+      pos: modal
+      ko: ~할 수 있다, ~할 줄 알다, (Can I ~?) ~해도 되다, (Can you ~?) ~해 줄래요
+      examples:
+        - en: "[I]{who} [can swim]{do}."
+          ko: 저는 수영할 줄 알아요.
+          literal: 나는 / 수영할 수 있다
+        - en: "She can't ride a bike."
+          ko: 그 사람은 자전거를 못 타요.
+  notes:
+    - kind: mistake
+      ko: "`can` 뒤의 동사는 그대로 써요. `She can swims`가 아니라 `She can swim`이에요. `can`에도 `-s`를 붙이지 않아요."
+    - kind: usage
+      ko: "문장 안에서 동사 앞에 오는 `can`은 약하게 \"큰\"처럼 들리고, `can't`는 세고 길게 \"캔(트)\"처럼 들려요. `Yes, I can`처럼 끝에 오면 `can`도 세게 말해요."
+- word: ride
+  id: word.ride
+  forms: { past: rode, pastParticiple: ridden }
+  senses:
+    - id: sense.ride.v.bike
+      pos: verb
+      ko: (자전거, 말 등을) 타다
+      examples:
+        - en: "I can ride a bike."
+          ko: 저는 자전거를 탈 줄 알아요.
+  notes:
+    - kind: mistake
+      ko: "차를 운전한다고 할 때는 `drive`예요. 자전거나 말처럼 올라타는 것은 `ride`예요."
+- word: dance
+  id: word.dance
+  senses:
+    - id: sense.dance.v.move
+      pos: verb
+      ko: 춤추다
+      examples:
+        - en: My brother can sing and dance.
+          ko: 남동생은 노래도 하고 춤도 출 줄 알아요.
+- word: sing
+  id: word.sing
+  forms: { past: sang, pastParticiple: sung }
+  senses:
+    - id: sense.sing.v.song
+      pos: verb
+      ko: 노래하다
+      examples:
+        - en: "She can't sing."
+          ko: 그 사람은 노래를 못 해요.
+- word: draw
+  id: word.draw
+  forms: { past: drew, pastParticiple: drawn }
+  senses:
+    - id: sense.draw.v.picture
+      pos: verb
+      ko: (그림을) 그리다
+      examples:
+        - en: "I can't draw."
+          ko: 저는 그림을 못 그려요.
+- word: well
+  id: word.well
+  senses:
+    - id: sense.well.adv.good
+      pos: adverb
+      ko: 잘
+      examples:
+        - en: I can swim well.
+          ko: 저는 수영을 잘해요.
+  notes:
+    - kind: mistake
+      ko: "어떻게 하는지 말하는 \"잘\"은 `well`이에요. `speak English well`처럼 동사 뒤, 목적어가 있으면 그 뒤에 와요. `good`은 `It's good`처럼 어떤지 말할 때 써서 보통 `swim good`이라고 하지 않아요."
+- word: write
+  id: word.write
+  forms: { past: wrote, pastParticiple: written }
+  senses:
+    - id: sense.write.v.text
+      pos: verb
+      ko: (글, 글자를) 쓰다
+      examples:
+        - en: Can you write in {Korean|sense.korean.n.language}?
+          ko: 한국어로 쓸 줄 알아요?
+  notes:
+    - kind: usage
+      ko: "앞의 `w`는 소리 내지 않아요. `right`와 소리가 같아요."
+- word: French
+  id: word.french
+  senses:
+    - id: sense.french.n.language
+      pos: noun
+      ko: 프랑스어
+      examples:
+        - en: "Can [you]{who} [speak]{do} [French]{what}?"
+          ko: 프랑스어 할 줄 알아요?
+          literal: 너는 / 말할 수 있니 / 프랑스어를
+- word: fix
+  id: word.fix
+  senses:
+    - id: sense.fix.v.repair
+      pos: verb
+      ko: 고치다
+      examples:
+        - en: He can fix computers.
+          ko: 그 사람은 컴퓨터를 고칠 줄 알아요.
+- word: help
+  id: word.help
+  senses:
+    - id: sense.help.v.assist
+      pos: verb
+      ko: 돕다, 도와주다
+      examples:
+        - en: "Can you help me, please?"
+          ko: 좀 도와주실래요?
+- word: sit
+  id: word.sit
+  forms: { past: sat, pastParticiple: sat }
+  senses:
+    - id: sense.sit.v.seat
+      pos: verb
+      ko: 앉다
+      examples:
+        - en: "Can [I]{who} [sit]{do} [here]{where}?"
+          ko: 여기 앉아도 돼요?
+          literal: 내가 / 앉아도 되니 / 여기에
+- word: use
+  id: word.use
+  ipa: juːz
+  senses:
+    - id: sense.use.v.utilize
+      pos: verb
+      ko: 쓰다, 사용하다
+      examples:
+        - en: Can I use your phone?
+          ko: 휴대폰 좀 써도 돼요?
+- word: wait
+  id: word.wait
+  senses:
+    - id: sense.wait.v.stay
+      pos: verb
+      ko: 기다리다
+      examples:
+        - en: Can you wait a minute?
+          ko: 잠깐만 기다려 줄래요?
+  notes:
+    - kind: mistake
+      ko: "\"~를 기다리다\"는 `wait for ~`예요. `wait me`라고 하지 않아요."
+- word: borrow
+  id: word.borrow
+  senses:
+    - id: sense.borrow.v.take
+      pos: verb
+      ko: 빌리다
+      examples:
+        - en: Can I borrow your pen?
+          ko: 펜 좀 빌려도 돼요?
+  notes:
+    - kind: mistake
+      ko: "`borrow`는 내가 빌리는 거예요. 남에게 빌려주는 것은 `lend`예요."
+# a1-24 present continuous
+- word: right now
+  id: word.right-now
+  ipa: ˌraɪt ˈnaʊ
+  senses:
+    - id: sense.right-now.adv.this-moment
+      pos: adverb
+      ko: 지금, 바로 지금
+      examples:
+        - en: "I'm cooking dinner right now."
+          ko: 저는 지금 저녁을 만들고 있어요.
+- word: make
+  id: word.make
+  forms: { past: made, pastParticiple: made }
+  senses:
+    - id: sense.make.v.create
+      pos: verb
+      ko: 만들다
+      examples:
+        - en: "[She]{who} [is making]{do} [a sandwich]{what}."
+          ko: 그 사람은 샌드위치를 만들고 있어요.
+          literal: 그녀는 / 만들고 있다 / 샌드위치를
+- word: talk
+  id: word.talk
+  ipa: tɔːk
+  senses:
+    - id: sense.talk.v.speak
+      pos: verb
+      ko: 이야기하다, 말하다
+      examples:
+        - en: "He's talking to his dad."
+          ko: 그 사람은 아빠랑 이야기하고 있어요.
+  notes:
+    - kind: usage
+      ko: "`l`은 소리 내지 않아요. 누구와 이야기하는지는 `talk to ~`로 말해요. 미국에서는 `talk with ~`도 써요."
+- word: run
+  id: word.run
+  forms: { past: ran, pastParticiple: run }
+  senses:
+    - id: sense.run.v.move
+      pos: verb
+      ko: 달리다, 뛰다
+      examples:
+        - en: "They're running in the park."
+          ko: 그 사람들은 공원에서 뛰고 있어요.
+- word: look for
+  id: word.look-for
+  ipa: ˈlʊk fɔːr
+  senses:
+    - id: sense.look-for.v.search
+      pos: verb
+      ko: 찾다
+      examples:
+        - en: "[She]{who} [is looking for]{do} [her bag]{what}."
+          ko: 그 사람은 가방을 찾고 있어요.
+          literal: 그녀는 / 찾고 있다 / 그녀의 가방을
+  notes:
+    - kind: mistake
+      ko: "`look`만 쓰면 \"보다\"예요. 무엇을 찾을 때는 `for`까지 붙여 `look for`라고 해요."
+- word: take a photo
+  id: word.take-a-photo
+  ipa: ˌteɪk ə ˈfoʊtoʊ
+  forms: { past: took a photo, pastParticiple: taken a photo }
+  senses:
+    - id: sense.take-a-photo.v.camera
+      pos: verb
+      ko: 사진을 찍다
+      examples:
+        - en: "Are you taking a photo? Yes, I am."
+          ko: 사진 찍고 있어요? 네, 찍고 있어요.
+  notes:
+    - kind: mistake
+      ko: "사진은 \"찍는다\"고 하지만 영어로는 `take a photo`예요. `take a picture`라고도 해요."
+- word: smile
+  id: word.smile
+  senses:
+    - id: sense.smile.v.face
+      pos: verb
+      ko: 웃다, 미소 짓다
+      examples:
+        - en: "He isn't smiling."
+          ko: 그 사람은 웃고 있지 않아요.
+  notes:
+    - kind: mistake
+      ko: "소리 내어 웃는 건 `laugh`예요. `smile`은 소리 없이 웃는 거예요."
+- word: carry
+  id: word.carry
+  ipa: ˈkɛri
+  senses:
+    - id: sense.carry.v.hold
+      pos: verb
+      ko: 들고 가다, 들고 다니다, 나르다
+      examples:
+        - en: "He's carrying two bags."
+          ko: 그 사람은 가방 두 개를 들고 있어요.
+- word: these days
+  id: word.these-days
+  ipa: ˈðiːz ˌdeɪz
+  senses:
+    - id: sense.these-days.adv.recently
+      pos: adverb
+      ko: 요즘
+      examples:
+        - en: "[I]{who} [am learning]{do} [English]{what} [these days]{when}."
+          ko: 저는 요즘 영어를 배우고 있어요.
+          literal: 나는 / 배우고 있다 / 영어를 / 요즘
+- word: learn
+  id: word.learn
+  senses:
+    - id: sense.learn.v.study
+      pos: verb
+      ko: 배우다
+      examples:
+        - en: "I'm learning a little French."
+          ko: 저는 프랑스어를 조금 배우고 있어요.
+  notes:
+    - kind: usage
+      ko: "`study`는 책상에 앉아 공부하는 것, `learn`은 새로 배워 알게 되는 거예요. 둘을 섞어 쓸 때도 많아요."
+- word: travel
+  id: word.travel
+  senses:
+    - id: sense.travel.v.trip
+      pos: verb
+      ko: 여행하다
+      examples:
+        - en: "She's traveling in Japan."
+          ko: 그 사람은 일본을 여행하고 있어요.
+  notes:
+    - kind: usage
+      ko: "미국에서는 `traveling`처럼 `l`을 한 번 쓰고, 영국에서는 `travelling`처럼 두 번 써요."
+- word: stay
+  id: word.stay
+  senses:
+    - id: sense.stay.v.remain
+      pos: verb
+      ko: 머무르다, 묵다
+      examples:
+        - en: "We're staying at a hotel near the station."
+          ko: 우리는 역 근처 호텔에 묵고 있어요.
+- word: visit
+  id: word.visit
+  senses:
+    - id: sense.visit.v.see
+      pos: verb
+      ko: 방문하다, (사람을) 보러 가다
+      examples:
+        - en: "I'm visiting my cousin in Canada."
+          ko: 저는 캐나다에 사는 사촌을 보러 와 있어요.

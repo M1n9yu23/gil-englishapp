@@ -189,6 +189,86 @@
     - en: How often do you go to the gym?
       ko: 헬스장에 얼마나 자주 가요?
 
+# There is and there are (a1-19)
+- id: pattern.is-there
+  text: Is there ~?
+  ko: ~이 있어요?(묻기)
+  note: "대답은 `Yes, there is`, 없으면 `No, there isn't`예요. 둘 이상이면 `Are there ~?`로 묻고 `Yes, there are`로 대답해요."
+  examples:
+    - en: "[Is {there|sense.there.pron.exists}]{do} [a bank]{who} [near here]{where}?"
+      ko: 근처에 은행 있어요?
+      literal: 있니 / 은행이 / 이 근처에
+- id: pattern.how-many
+  text: How many ~?
+  ko: 몇 개, 몇 명(묻기)
+  note: "`How many` 뒤에는 `chairs`, `people`처럼 둘 이상을 뜻하는 꼴이 와요. 몇 개 있는지 물을 때는 `How many chairs are there?`처럼 말해요."
+  examples:
+    - en: "[How many people]{who} [are {there|sense.there.pron.exists}]{do} [in your family]{where}?"
+      ko: 가족이 몇 명이에요?
+      literal: 사람이 몇 명 / 있니 / 네 가족 안에
+
+# Ordering (a1-22)
+- id: pattern.id-like
+  text: "I'd like ~."
+  ko: ~로 할게요, ~를 주세요(주문)
+  note: "`I would like`를 줄인 말이에요. `I want ~`보다 부드러워서 주문할 때 많이 써요. 좋아한다는 `I like ~`와 다른 말이에요."
+  examples:
+    - en: "I'd like a salad, please."
+      ko: 샐러드 하나 주세요.
+- id: pattern.what-would-you-like
+  text: What would you like?
+  ko: 뭐 드릴까요?
+  note: "식당이나 카페에서 주문을 받을 때 하는 말이에요. `I'd like ~`로 대답해요."
+  examples:
+    - en: "What would you like? I'd like the noodles, please."
+      ko: 뭐 드릴까요? 국수로 할게요.
+- id: pattern.can-i-have
+  text: Can I have ~?
+  ko: ~를 주세요(부탁)
+  note: "무엇을 달라고 부탁하는 말이에요. 끝에 `please`를 붙이면 더 공손해요. 부탁하는 질문에는 보통 `some`을 써요."
+  examples:
+    - en: "Can I have some water, please?"
+      ko: 물 좀 주세요.
+- id: pattern.for-here-or-to-go
+  text: For here or to go?
+  ko: 드시고 가세요, 가져가세요?
+  note: "카페나 패스트푸드점에서 묻는 말이에요. `For here, please`나 `To go, please`로 대답해요. 영국에서는 `Eat in or take away?`라고 해요."
+  examples:
+    - en: "For here or to go? To go, please."
+      ko: 드시고 가세요, 가져가세요? 가져갈게요.
+- id: pattern.anything-else
+  text: Anything else?
+  ko: 더 필요한 거 있으세요?
+  note: "주문을 받는 사람이 더 주문할 게 있는지 묻는 말이에요."
+  examples:
+    - en: "Anything else? No, that's all."
+      ko: 더 필요한 거 있으세요? 아니요, 그거면 돼요.
+- id: pattern.thats-all
+  text: "That's all."
+  ko: 그거면 돼요, 그게 다예요
+  note: "더 주문할 게 없을 때 말해요. `No, thanks`라고 해도 되고, 미국에서는 `That's it`도 많이 써요."
+  examples:
+    - en: "No, that's all. Thank you."
+      ko: 아니요, 그거면 돼요. 고마워요.
+
+# Can and can't (a1-23)
+- id: pattern.short-answer-can
+  text: "Yes, I can. / No, I can't."
+  ko: 네, 할 수 있어요. / 아니요, 못 해요.
+  note: "`Can`으로 물으면 동사를 다시 말하지 않고 `can`, `can't`로 짧게 대답해요. `Yes, I do`라고 하지 않아요. 대답 끝의 `can`은 세게 말해요."
+  examples:
+    - en: "Can you swim? Yes, I can."
+      ko: 수영할 줄 알아요? 네, 할 줄 알아요.
+
+# Present continuous (a1-24)
+- id: pattern.what-are-you-doing
+  text: What are you doing?
+  ko: 뭐 하고 있어요?
+  note: "지금 하고 있는 일을 묻는 말이에요. `What do you do?`는 직업을 묻는 말이라서 달라요."
+  examples:
+    - en: "What are you doing? I'm looking for my keys."
+      ko: 뭐 하고 있어요? 열쇠를 찾고 있어요.
+
 # Inflections. course.yaml gates each kind of form on one of these.
 - id: pattern.plural-s
   text: ~s
@@ -218,6 +298,7 @@
   text: be ~ing
   ko: 지금 하고 있는 일
   level: a1
+  note: "`am`, `is`, `are` 뒤에 동사의 `-ing` 꼴을 써서 지금 하고 있는 일이나 요즘 한동안 하는 일을 말해요. `make`는 `making`처럼 `e`를 빼고, `run`은 `running`처럼 끝 글자를 한 번 더 써요."
   examples:
     - en: I'm reading a book.
       ko: 저는 책을 읽고 있어요.

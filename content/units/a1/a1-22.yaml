@@ -1,0 +1,266 @@
+id: unit.a1-22
+title: { ko: 주문하기, en: Ordering food }
+lessons:
+  - id: lesson.a1-22.1
+    title: { ko: 샐러드로 할게요, en: "I'd like a salad" }
+    goal: { ko: 식당에서 먹고 싶은 것을 주문할 수 있어요, en: Order food at a restaurant }
+    introduces: [pattern.id-like, pattern.what-would-you-like, sense.menu.n.list, sense.pizza.n.food, sense.salad.n.food, sense.noodle.n.food]
+    steps:
+      - type: listen
+        en: What would you like?
+        ko: 뭐 드릴까요?
+      - type: listen
+        en: "I'd like a pizza, please."
+        ko: 피자 하나 주세요.
+      - type: explain
+        text: |
+          주문할 때는 `I'd like ~`라고 해요. `I would like`를 줄인 말이고 "~로 할게요", "~를 주세요"라는 뜻이에요. `I want ~`보다 부드러워서 식당이나 카페에서 많이 써요. 메뉴에 있는 그 요리를 가리킬 때는 `the noodles`처럼 `the`를 써요.
+
+          `I like pizza`는 피자를 좋아한다는 말이에요. `like`로 주문할 때는 꼭 `'d`를 넣어 `I'd like`라고 해요. `I'd`의 `d`는 작게 들려서 `I like`처럼 들리기도 해요. 뒤에 `please`가 붙으면 주문하는 말이에요.
+
+          카페에서 주문할 때는 한 잔을 `a coffee`, `a tea`처럼 말해요. 두 잔이면 `two coffees`예요. 점원은 보통 `What would you like?`(뭐 드릴까요?)라고 물어요.
+        examples:
+          - en: "[I'd like]{do} [a salad]{what}, please."
+            ko: 샐러드 하나 주세요.
+            literal: 나는 원한다(정중하게) / 샐러드 하나를
+          - en: "I'd like the noodles, please."
+            ko: 국수로 할게요.
+          - en: The menu, please.
+            ko: 메뉴판 주세요.
+      - type: chooseMeaning
+        en: "I'd like a salad, please."
+        item: sense.salad.n.food
+        options:
+          - { ko: 샐러드 하나 주세요., correct: true }
+          - { ko: 저는 샐러드를 좋아해요., why: "`I'd like`는 주문하는 말이에요. 좋아한다는 말은 `I like`예요." }
+          - { ko: 피자 하나 주세요., why: "피자는 `pizza`예요. `salad`는 샐러드예요." }
+      - type: listenChoose
+        en: "I'd like the noodles, please."
+        item: sense.noodle.n.food
+        options:
+          - { ko: 국수로 할게요., correct: true }
+          - { ko: 피자로 할게요., why: "`pizza`가 아니라 `noodles`가 들렸어요." }
+          - { ko: 저는 국수를 좋아해요., why: "`I'd like ~, please`가 들렸어요. 끝에 `please`가 있으면 주문하는 말이에요." }
+      - type: chooseEnglish
+        ko: 피자 하나 주세요.
+        item: pattern.id-like
+        options:
+          - { en: "I'd like a pizza, please.", correct: true }
+          - { en: "I like a pizza, please.", why: "주문할 때는 `I'd like`예요. `I like`는 좋아한다는 말이에요." }
+          - { en: "I'd like pizza one, please.", why: "영어는 수를 먼저 말해요. 하나면 `a pizza`예요." }
+      - type: fillBlank
+        item: pattern.id-like
+        en: "I'd ___ a coffee, please."
+        ko: 커피 한 잔 주세요.
+        options:
+          - { en: like, correct: true }
+          - { en: want, why: "주문할 때 `'d`와 같이 쓰는 말은 `like`예요. `want`로 말하면 `I want a coffee`예요." }
+          - { en: need, why: "주문할 때는 `I'd like`로 통째로 말해요." }
+      - type: dialogue
+        item: pattern.what-would-you-like
+        lines:
+          - { speaker: Maria, en: What would you like?, ko: 뭐 드릴까요? }
+        question: 은우는 샐러드를 주문해요. 은우가 할 말을 골라요.
+        options:
+          - { en: "I'd like a salad, please.", correct: true }
+          - { en: I like a salad., why: "`I like`는 좋아한다는 말이에요. 주문할 때는 `I'd like`예요." }
+          - { en: "Yes, I'd like.", why: "`I'd like` 뒤에 주문할 음식을 붙여 말해요." }
+      - type: fillBlank
+        item: sense.menu.n.list
+        en: The ___, please.
+        ko: 메뉴판 주세요.
+        answers: [menu]
+      - type: arrange
+        item: sense.noodle.n.food
+        ko: 국수로 할게요.
+        en: "I'd like the noodles, please."
+        extra: [a, noodle]
+      - type: dictation
+        item: pattern.what-would-you-like
+        en: What would you like?
+        ko: 뭐 드릴까요?
+      - type: spell
+        sense: sense.salad.n.food
+      - type: shadow
+        en: "I'd like a pizza and a salad, please."
+        ko: 피자 하나랑 샐러드 하나 주세요.
+  - id: lesson.a1-22.2
+    title: { ko: 물 좀 주세요, en: Can I have some water? }
+    goal: { ko: 식당에서 필요한 것을 달라고 할 수 있어요, en: Ask for what you need at a restaurant }
+    introduces: [pattern.can-i-have, sense.check.n.bill, sense.spoon.n.eat, sense.fork.n.eat, sense.napkin.n.paper]
+    steps:
+      - type: listen
+        en: "Can I have some water, please?"
+        ko: 물 좀 주세요.
+      - type: listen
+        en: "Can I have the check, please?"
+        ko: 계산서 주세요.
+      - type: explain
+        text: |
+          무엇을 달라고 할 때는 `Can I have ~?`라고 해요. 물, 숟가락, 계산서처럼 식당에서 필요한 것을 부탁할 때 많이 써요. 끝에 `please`를 붙이면 더 공손해요.
+
+          달라고 부탁할 때는 질문이어도 보통 `some`을 써요. 그래서 `Can I have some water?`예요. 있는지 물을 때는 앞 단원처럼 `Is there any water?`예요. 미국에서는 계산서를 `check`라고 해요.
+        examples:
+          - en: "[Can I have]{do} [some water]{what}, please?"
+            ko: 물 좀 주세요.
+            literal: 내가 받아도 될까 / 물 좀
+          - en: "Can I have a fork, please?"
+            ko: 포크 하나 주세요.
+          - en: "Can I have the check, please?"
+            ko: 계산서 주세요.
+      - type: chooseMeaning
+        en: "Can I have a spoon, please?"
+        item: sense.spoon.n.eat
+        options:
+          - { ko: 숟가락 하나 주세요., correct: true }
+          - { ko: 포크 하나 주세요., why: "포크는 `fork`예요. `spoon`은 숟가락이에요." }
+          - { ko: 저는 숟가락이 있어요., why: "`I have`는 가지고 있다는 말이에요. 앞에 `Can`이 붙으면 달라고 부탁하는 말이에요." }
+      - type: listenChoose
+        en: "Can I have the check, please?"
+        item: sense.check.n.bill
+        options:
+          - { ko: 계산서 주세요., correct: true }
+          - { ko: 메뉴판 주세요., why: "`menu`가 아니라 `check`가 들렸어요." }
+          - { ko: 물 좀 주세요., why: "`water`가 아니라 `check`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 물 좀 주세요.
+        item: pattern.can-i-have
+        options:
+          - { en: "Can I have some water, please?", correct: true }
+          - { en: "Can I have any water, please?", why: "달라고 부탁할 때는 보통 `some`을 써요." }
+          - { en: "I have some water, please?", why: "부탁할 때는 앞에 `Can`을 붙여 `Can I have`로 말해요." }
+      - type: fillBlank
+        item: sense.napkin.n.paper
+        en: "Can I have a ___, please?"
+        ko: 냅킨 하나 주세요.
+        options:
+          - { en: napkin, correct: true }
+          - { en: fork, why: "`fork`는 포크예요. 냅킨은 `napkin`이에요." }
+          - { en: spoon, why: "`spoon`은 숟가락이에요. 냅킨은 `napkin`이에요." }
+      - type: dialogue
+        item: sense.fork.n.eat
+        lines:
+          - { speaker: Maria, en: "Here's your pizza.", ko: 피자 나왔어요. }
+        question: 사라는 포크가 없어요. 사라가 할 말을 골라요.
+        options:
+          - { en: "Can I have a fork, please?", correct: true }
+          - { en: "Can I have a spoon, please?", why: "`spoon`은 숟가락이에요. 포크는 `fork`예요." }
+          - { en: "I have a fork, please.", why: "달라고 할 때는 앞에 `Can`을 붙여 `Can I have`라고 해요." }
+      - type: fillBlank
+        item: sense.check.n.bill
+        en: "Can I have the ___, please?"
+        ko: 계산서 주세요.
+        answers: [check]
+      - type: arrange
+        item: sense.spoon.n.eat
+        ko: 숟가락 하나 주세요.
+        en: "Can I have a spoon, please?"
+        extra: [any, do]
+      - type: dictation
+        item: pattern.can-i-have
+        en: "Can I have some water, please?"
+        ko: 물 좀 주세요.
+      - type: spell
+        sense: sense.napkin.n.paper
+      - type: shadow
+        en: "Excuse me. Can I have the check, please?"
+        ko: 저기요, 계산서 주세요.
+  - id: lesson.a1-22.3
+    title: { ko: 카페에서, en: At the cafe }
+    goal: { ko: 카페에서 크기를 골라 음료를 주문할 수 있어요, en: Order a drink in the size you want at a cafe }
+    introduces: [pattern.anything-else, pattern.thats-all, pattern.for-here-or-to-go, sense.large.adj.size, sense.medium.adj.size, sense.iced.adj.cold, sense.muffin.n.sweet]
+    steps:
+      - type: listen
+        en: A large iced coffee, please.
+        ko: 아이스커피 큰 걸로 주세요.
+      - type: listen
+        en: Anything else?
+        ko: 더 필요한 거 있으세요?
+      - type: explain
+        text: |
+          카페에서는 `A large coffee, please`처럼 크기를 음료 앞에 말해요. 크기는 `small`, `medium`, `large`예요. 얼음을 넣은 음료에는 `iced`를 붙여요. 순서는 `a large iced coffee`처럼 크기, `iced`, 음료예요.
+
+          점원이 `Anything else?`(더 필요한 거 있으세요?)라고 물으면 더 없을 때는 `That's all`(그거면 돼요)이나 `No, thanks`라고 해요.
+
+          `For here or to go?`(드시고 가세요, 가져가세요?)라고 묻기도 해요. `To go, please`라고 하면 가져간다는 말이에요.
+        examples:
+          - en: "[I'd like]{do} [a large iced coffee]{what}."
+            ko: 아이스커피 큰 걸로 주세요.
+            literal: 나는 원한다(정중하게) / 큰 아이스커피 하나를
+          - en: A medium tea, please.
+            ko: 차 중간 크기로 주세요.
+          - en: A coffee and a muffin, please.
+            ko: 커피 한 잔이랑 머핀 하나 주세요.
+          - en: For here or to go?
+            ko: 드시고 가세요, 가져가세요?
+          - en: "No, that's all. Thank you."
+            ko: 아니요, 그거면 돼요. 고마워요.
+      - type: chooseMeaning
+        en: A small tea and a medium coffee, please.
+        item: sense.medium.adj.size
+        options:
+          - { ko: 차 작은 거랑 커피 중간 크기로 주세요., correct: true }
+          - { ko: 차 큰 거랑 커피 중간 크기로 주세요., why: "큰 건 `large`예요. `small`은 작은 거예요." }
+          - { ko: 차 작은 거랑 커피 큰 걸로 주세요., why: "`medium`은 중간 크기예요. 큰 건 `large`예요." }
+      - type: listenChoose
+        en: A large iced coffee, please.
+        item: sense.large.adj.size
+        options:
+          - { en: "A large iced coffee, please.", correct: true }
+          - { en: "A large hot coffee, please.", why: "`hot`이 아니라 `iced`가 들렸어요." }
+          - { en: "A medium iced coffee, please.", why: "`medium`이 아니라 `large`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 아이스티 하나 주세요.
+        item: sense.iced.adj.cold
+        options:
+          - { en: "An iced tea, please.", correct: true }
+          - { en: "A iced tea, please.", why: "`iced`는 모음 소리로 시작해서 `an`이에요." }
+          - { en: "A hot tea, please.", why: "`hot`은 뜨거운 거예요. 얼음을 넣으면 `iced`예요." }
+      - type: fillBlank
+        item: pattern.anything-else
+        en: Anything ___?
+        ko: 더 필요한 거 있으세요?
+        options:
+          - { en: else, correct: true }
+          - { en: all, why: "`That's all`은 그거면 된다는 대답이에요. 더 필요한 걸 물을 때는 `Anything else?`예요." }
+          - { en: too, why: "`too`는 \"~도\"라는 뜻이에요. 더 필요한 걸 물을 때는 `Anything else?`예요." }
+      - type: dialogue
+        item: pattern.thats-all
+        lines:
+          - { speaker: Yuna, en: Anything else?, ko: 더 필요한 거 있으세요? }
+        question: 톰은 더 주문할 게 없어요. 톰이 할 말을 골라요.
+        options:
+          - { en: "No, that's all. Thank you.", correct: true }
+          - { en: "Yes, a muffin, please.", why: "더 주문할 게 없으니 `No, that's all`이에요." }
+          - { en: "No, {there|sense.there.pron.exists} isn't.", why: "`Anything else?`에는 `No, that's all`이나 `No, thanks`로 대답해요." }
+      - type: dialogue
+        item: pattern.for-here-or-to-go
+        lines:
+          - { speaker: Leo, en: For here or to go?, ko: "드시고 가세요, 가져가세요?" }
+        question: 사라는 커피를 가져가려고 해요. 사라가 할 말을 골라요.
+        options:
+          - { en: "To go, please.", correct: true }
+          - { en: "For here, please.", why: "`For here`는 가게에서 먹고 간다는 말이에요." }
+          - { en: "Go, please.", why: "가져간다고 할 때는 `To go`까지 말해요." }
+      - type: fillBlank
+        item: sense.large.adj.size
+        en: A ___ coffee, please.
+        ko: 커피 큰 걸로 주세요.
+        options:
+          - { en: large, correct: true }
+          - { en: big, why: "`big`도 크다는 뜻이지만 음료 크기를 고를 때는 `large`라고 해요." }
+          - { en: medium, why: "`medium`은 중간 크기예요. 큰 건 `large`예요." }
+      - type: arrange
+        item: sense.iced.adj.cold
+        ko: 아이스커피 중간 크기로 주세요.
+        en: A medium iced coffee, please.
+        extra: [an, hot]
+      - type: dictation
+        item: pattern.thats-all
+        en: "No, that's all. Thank you."
+        ko: 아니요, 그거면 돼요. 고마워요.
+      - type: spell
+        sense: sense.medium.adj.size
+      - type: shadow
+        en: A large iced coffee and a muffin, please.
+        ko: 아이스커피 큰 거 하나랑 머핀 하나 주세요.

@@ -1,0 +1,271 @@
+id: unit.a1-19
+title: { ko: 뭐가 있어요?, en: "There is, there are" }
+lessons:
+  - id: lesson.a1-19.1
+    title: { ko: 벽에 시계가 있어요, en: "There's a clock on the wall" }
+    goal: { ko: 어떤 곳에 무엇이 있는지 말할 수 있어요, en: "Say what's in a place" }
+    introduces: [sense.there.pron.exists, sense.wall.n.side, sense.clock.n.time, sense.lamp.n.light, sense.plant.n.green]
+    steps:
+      - type: listen
+        en: "There's a clock {on|sense.on.prep.surface} the wall."
+        ko: 벽에 시계가 있어요.
+      - type: listen
+        en: "{There|sense.there.pron.exists} are two lamps in the room."
+        ko: 방에 스탠드가 두 개 있어요.
+      - type: explain
+        text: |
+          어떤 곳에 무엇이 있다고 처음 말할 때는 `There is ~`를 써요. 하나면 `There is`, 둘 이상이면 `There are`예요. 말할 때는 `There is`를 줄여 `There's`라고 많이 해요.
+
+          여기서 `there`는 "거기"라는 뜻이 아니라 말을 꺼내는 말이라서 옮기지 않아요. 장소는 보통 문장 끝에 와요. "벽에 시계가 있어요"처럼 새 물건을 꺼낼 때는 `There is`, "그 시계는 벽에 있어요"처럼 아는 물건을 말할 때는 앞에서 배운 대로 `The clock is ~`예요.
+        examples:
+          - en: "[{There|sense.there.pron.exists} is]{do} [a clock]{who} [{on|sense.on.prep.surface} the wall]{where}."
+            ko: 벽에 시계가 있어요.
+            literal: 있다 / 시계가 / 벽에
+          - en: "{There|sense.there.pron.exists} are two lamps in the room."
+            ko: 방에 스탠드가 두 개 있어요.
+          - en: "There's a plant next to the window."
+            ko: 창문 옆에 화분이 있어요.
+          - en: "The clock is {on|sense.on.prep.surface} the wall."
+            ko: 그 시계는 벽에 걸려 있어요.
+      - type: chooseMeaning
+        en: "There's a plant next to the window."
+        item: sense.plant.n.green
+        options:
+          - { ko: 창문 옆에 화분이 있어요., correct: true }
+          - { ko: 창문 옆에 꽃이 있어요., why: "꽃은 `flower`예요. `plant`는 식물, 화분이에요." }
+          - { ko: 거기 창문 옆에 화분이 있어요., why: "여기서 `there`는 \"거기\"가 아니에요. 무엇이 있다고 말을 꺼내는 말이에요." }
+      - type: listenChoose
+        en: "{There|sense.there.pron.exists} are two clocks in the room."
+        item: sense.clock.n.time
+        options:
+          - { en: "{There|sense.there.pron.exists} are two clocks in the room.", correct: true }
+          - { en: "There's a clock in the room.", why: "`a clock`이 아니라 `two clocks`가 들렸어요." }
+          - { en: "{There|sense.there.pron.exists} are two lamps in the room.", why: "`lamps`가 아니라 `clocks`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 벽에 사진이 세 장 있어요.
+        item: sense.wall.n.side
+        options:
+          - { en: "{There|sense.there.pron.exists} are three photos {on|sense.on.prep.surface} the wall.", correct: true }
+          - { en: "{There|sense.there.pron.exists} is three photos {on|sense.on.prep.surface} the wall.", why: "사진이 셋이라 `is`가 아니라 `are`예요." }
+          - { en: "{There|sense.there.pron.exists} are three photos {on|sense.on.prep.surface} the window.", why: "`window`는 창문이에요. 벽은 `wall`이에요." }
+      - type: fillBlank
+        item: sense.lamp.n.light
+        en: "{There|sense.there.pron.exists} ___ a lamp next to the bed."
+        ko: 침대 옆에 스탠드가 있어요.
+        options:
+          - { en: is, correct: true }
+          - { en: are, why: "스탠드가 하나라 `is`예요. `are`는 둘 이상일 때 써요." }
+          - { en: has, why: "`has`는 \"가지고 있다\"예요. 어디에 무엇이 있다고 할 때는 `There is`예요." }
+      - type: dialogue
+        item: sense.there.pron.exists
+        lines:
+          - { speaker: Yuna, en: "What's in your room?", ko: 방에 뭐가 있어요? }
+        question: 방에 의자가 두 개 있어요. 벤이 할 말을 골라요.
+        options:
+          - { en: "{There|sense.there.pron.exists} are two chairs.", correct: true }
+          - { en: "{There|sense.there.pron.exists} is two chairs.", why: "의자가 둘이라 `are`예요." }
+          - { en: "{There|sense.there.pron.exists} are two chair.", why: "둘 이상이면 `chairs`처럼 `-s`를 붙여요." }
+      - type: fillBlank
+        item: sense.there.pron.exists
+        en: "{There|sense.there.pron.exists} ___ three books {on|sense.on.prep.surface} the desk."
+        ko: 책상 위에 책이 세 권 있어요.
+        answers: [are]
+      - type: arrange
+        item: sense.clock.n.time
+        ko: 벽에 시계가 있어요.
+        en: "{There|sense.there.pron.exists} is a clock {on|sense.on.prep.surface} the wall."
+        extra: [are, in]
+      - type: dictation
+        item: sense.plant.n.green
+        en: "{There|sense.there.pron.exists} are two plants in the room."
+        ko: 방에 화분이 두 개 있어요.
+      - type: spell
+        sense: sense.clock.n.time
+      - type: shadow
+        en: "There's a plant next to the window."
+        ko: 창문 옆에 화분이 있어요.
+  - id: lesson.a1-19.2
+    title: { ko: 근처에 있어요?, en: "Is there one near here?" }
+    goal: { ko: 근처에 무엇이 있는지 묻고 답할 수 있어요, en: "Ask and say what's near you" }
+    introduces: [pattern.is-there, sense.restroom.n.toilet, sense.convenience-store.n.shop, sense.bus-stop.n.bus, sense.upstairs.adv.above, sense.downstairs.adv.below]
+    steps:
+      - type: listen
+        en: "Excuse me. Is {there|sense.there.pron.exists} a restroom near here?"
+        ko: 저기요, 근처에 화장실 있어요?
+      - type: listen
+        en: "Yes, {there|sense.there.pron.exists} is. It's downstairs."
+        ko: 네, 있어요. 아래층에 있어요.
+      - type: explain
+        text: |
+          무엇이 있는지 물을 때는 순서를 바꿔 `Is there ~?`라고 해요. 대답은 `Yes, there is`, 없으면 `No, there isn't`예요. 둘 이상이면 `Are there ~?`로 묻고 `Yes, there are`, `No, there aren't`로 대답해요.
+
+          짧은 대답 `Yes, there is`는 `there's`로 줄이지 않아요. "이 근처에"는 `near here`예요. 미국에서는 가게나 식당의 화장실을 `restroom`이라고 많이 해요. 위층은 `upstairs`, 아래층은 `downstairs`예요.
+        examples:
+          - en: "[Is {there|sense.there.pron.exists}]{do} [a bank]{who} [near here]{where}?"
+            ko: 근처에 은행 있어요?
+            literal: 있니 / 은행이 / 이 근처에
+          - en: "No, {there|sense.there.pron.exists} isn't."
+            ko: 아니요, 없어요.
+          - en: "{There|sense.there.pron.exists} isn't a convenience store near here."
+            ko: 이 근처에는 편의점이 없어요.
+          - en: The restroom is upstairs.
+            ko: 화장실은 위층에 있어요.
+      - type: chooseMeaning
+        en: "{There|sense.there.pron.exists} isn't a bus stop near here."
+        item: sense.bus-stop.n.bus
+        options:
+          - { ko: 이 근처에는 버스 정류장이 없어요., correct: true }
+          - { ko: 이 근처에 버스 정류장이 있어요., why: "`isn't`는 없다는 말이에요." }
+          - { ko: 이 근처에는 지하철역이 없어요., why: "지하철역은 `subway station`이에요. `bus stop`은 버스 정류장이에요." }
+      - type: listenChoose
+        en: The restroom is upstairs.
+        item: sense.upstairs.adv.above
+        options:
+          - { ko: 화장실은 위층에 있어요., correct: true }
+          - { ko: 화장실은 아래층에 있어요., why: "아래층은 `downstairs`예요. 들린 말은 `upstairs`예요." }
+          - { ko: 화장실은 위층에 없어요., why: "`isn't`가 아니라 `is`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 근처에 편의점 있어요?
+        item: sense.convenience-store.n.shop
+        options:
+          - { en: "Is {there|sense.there.pron.exists} a convenience store near here?", correct: true }
+          - { en: "Are {there|sense.there.pron.exists} a convenience store near here?", why: "편의점 하나를 물으니 `Is there`예요. `Are`는 둘 이상일 때 써요." }
+          - { en: "Is {there|sense.there.pron.exists} a convenience store here near?", why: "\"이 근처에\"는 `near here`예요. 순서가 바뀌었어요." }
+      - type: fillBlank
+        item: pattern.is-there
+        en: "Is {there|sense.there.pron.exists} a bank near here? No, {there|sense.there.pron.exists} ___."
+        ko: 근처에 은행 있어요? 아니요, 없어요.
+        options:
+          - { en: "isn't", correct: true }
+          - { en: "aren't", why: "은행 하나를 물었으니 `isn't`예요." }
+          - { en: "don't", why: "`Is there`로 물으면 `is`로 대답해요. `don't`는 `Do`로 물을 때예요." }
+      - type: dialogue
+        item: sense.downstairs.adv.below
+        lines:
+          - { speaker: Sam, en: "Excuse me. Is {there|sense.there.pron.exists} a restroom near here?", ko: "저기요, 근처에 화장실 있어요?" }
+        question: 화장실은 아래층에 있어요. 소라가 할 말을 골라요.
+        options:
+          - { en: "Yes, {there|sense.there.pron.exists} is. It's downstairs.", correct: true }
+          - { en: "Yes, {there|sense.there.pron.exists} is. It's upstairs.", why: "`upstairs`는 위층이에요. 아래층은 `downstairs`예요." }
+          - { en: "Yes, it is. It's downstairs.", why: "`Is there`로 물으면 `Yes, there is`로 대답해요." }
+      - type: fillBlank
+        item: pattern.is-there
+        en: "___ {there|sense.there.pron.exists} restrooms upstairs? Yes, {there|sense.there.pron.exists} are."
+        ko: 위층에 화장실 있어요? 네, 있어요.
+        options:
+          - { en: Are, correct: true }
+          - { en: Is, why: "`restrooms`는 둘 이상이라 `Are`예요." }
+          - { en: Do, why: "있는지 물을 때는 `Do`가 아니라 `Is`나 `Are`로 물어요." }
+      - type: arrange
+        item: pattern.is-there
+        ko: 근처에 약국 있어요?
+        en: "Is {there|sense.there.pron.exists} a pharmacy near here?"
+        extra: [are, do]
+      - type: dictation
+        item: sense.convenience-store.n.shop
+        en: "Is {there|sense.there.pron.exists} a convenience store near here?"
+        ko: 근처에 편의점 있어요?
+      - type: spell
+        sense: sense.restroom.n.toilet
+      - type: shadow
+        en: "Excuse me. Is {there|sense.there.pron.exists} a restroom near here? Yes, {there|sense.there.pron.exists} is."
+        ko: 저기요, 근처에 화장실 있어요? 네, 있어요.
+  - id: lesson.a1-19.3
+    title: { ko: 몇 개 있어요?, en: How many are there? }
+    goal: { ko: "몇 개, 몇 명 있는지 묻고 답할 수 있어요", en: Ask and say how many there are }
+    introduces: [pattern.how-many, sense.classroom.n.school, sense.building.n.structure, sense.elevator.n.lift, sense.map.n.place]
+    steps:
+      - type: listen
+        en: "How many elevators are {there|sense.there.pron.exists} in the building?"
+        ko: 건물에 엘리베이터가 몇 대 있어요?
+      - type: listen
+        en: "{There|sense.there.pron.exists} are two elevators in the building."
+        ko: 건물에 엘리베이터가 두 대 있어요.
+      - type: explain
+        text: |
+          몇 개, 몇 명 있는지 물을 때는 `How many students are there?`처럼 말해요. `How many` 뒤에는 `students`처럼 둘 이상을 뜻하는 꼴이 와요. 사람 여럿은 `people`이라고 해요. `persons`는 거의 쓰지 않아요.
+
+          대답은 `There are twenty students`처럼 해요. 짧게 `Twenty`라고만 해도 돼요. 하나면 `There's one`이에요.
+        examples:
+          - en: "[How many people]{who} [are {there|sense.there.pron.exists}]{do} [in the building]{where}?"
+            ko: 건물 안에 사람이 몇 명 있어요?
+            literal: 사람이 몇 명 / 있니 / 건물 안에
+          - en: "{There|sense.there.pron.exists} are twenty students in my class."
+            ko: 우리 반에는 학생이 스무 명 있어요.
+          - en: "How many classrooms are {there|sense.there.pron.exists}?"
+            ko: 교실이 몇 개 있어요?
+      - type: readPassage
+        sentences:
+          - { en: My school is a big building., ko: 우리 학교는 큰 건물이에요. }
+          - { en: "{There|sense.there.pron.exists} are ten classrooms.", ko: 교실이 열 개 있어요. }
+          - { en: "{There|sense.there.pron.exists} is a library upstairs.", ko: 위층에 도서관이 있어요. }
+          - { en: "{There|sense.there.pron.exists} are two restrooms downstairs.", ko: 아래층에 화장실이 두 개 있어요. }
+          - { en: "{There|sense.there.pron.exists} isn't an elevator.", ko: 엘리베이터는 없어요. }
+        questions:
+          - ko: 교실은 몇 개 있어요?
+            options:
+              - { ko: 열 개, correct: true }
+              - { ko: 두 개, why: "두 개 있는 건 화장실이에요." }
+              - { ko: 스무 개, why: "`ten`은 열이에요." }
+          - ko: 이 학교에 없는 것은 뭐예요?
+            options:
+              - { ko: 엘리베이터, correct: true }
+              - { ko: 도서관, why: "도서관은 위층에 있어요." }
+              - { ko: 화장실, why: "화장실은 아래층에 두 개 있어요." }
+      - type: chooseMeaning
+        en: "There's a map {on|sense.on.prep.surface} the wall."
+        item: sense.map.n.place
+        options:
+          - { ko: 벽에 지도가 있어요., correct: true }
+          - { ko: 벽에 사진이 있어요., why: "사진은 `photo`예요. `map`은 지도예요." }
+          - { ko: 벽에 시계가 있어요., why: "시계는 `clock`이에요. `map`은 지도예요." }
+      - type: listenChoose
+        en: "How many people are {there|sense.there.pron.exists}?"
+        item: pattern.how-many
+        options:
+          - { en: "How many people are {there|sense.there.pron.exists}?", correct: true }
+          - { en: "How many pens are {there|sense.there.pron.exists}?", why: "`pens`가 아니라 `people`이 들렸어요." }
+          - { en: "How many people are here?", why: "`here`가 아니라 `there`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 여기는 엘리베이터가 없어요.
+        item: sense.elevator.n.lift
+        options:
+          - { en: "{There|sense.there.pron.exists} isn't an elevator here.", correct: true }
+          - { en: "{There|sense.there.pron.exists} isn't a elevator here.", why: "`elevator`는 모음 소리로 시작해서 `an`이에요." }
+          - { en: "{There|sense.there.pron.exists} aren't an elevator here.", why: "하나니까 `isn't`예요." }
+      - type: fillBlank
+        item: pattern.how-many
+        en: "How ___ classrooms are {there|sense.there.pron.exists}?"
+        ko: 교실이 몇 개 있어요?
+        options:
+          - { en: many, correct: true }
+          - { en: much, why: "`classrooms`처럼 하나, 둘 셀 수 있으면 `many`예요." }
+          - { en: "{old|sense.old.adj.age}", why: "`How old`는 나이를 물을 때 써요." }
+      - type: dialogue
+        item: pattern.how-many
+        lines:
+          - { speaker: Emma, en: "How many people are {there|sense.there.pron.exists} in your family?", ko: 가족이 몇 명이에요? }
+        question: 가족은 네 명이에요. 준이 할 말을 골라요.
+        options:
+          - { en: "{There|sense.there.pron.exists} are four people in my family.", correct: true }
+          - { en: "{There|sense.there.pron.exists} is four people in my family.", why: "넷이라 `is`가 아니라 `are`예요." }
+          - { en: "{There|sense.there.pron.exists} are four person in my family.", why: "둘 이상이면 `person`이 아니라 `people`이에요." }
+      - type: fillBlank
+        item: sense.elevator.n.lift
+        en: "{There|sense.there.pron.exists} are two ___ in the building."
+        ko: 건물에 엘리베이터가 두 대 있어요.
+        answers: [elevators]
+      - type: arrange
+        item: sense.classroom.n.school
+        ko: 교실이 몇 개 있어요?
+        en: "How many classrooms are {there|sense.there.pron.exists}?"
+        extra: [much, is]
+      - type: dictation
+        item: sense.building.n.structure
+        en: "{There|sense.there.pron.exists} are ten classrooms in the building."
+        ko: 건물에 교실이 열 개 있어요.
+      - type: spell
+        sense: sense.building.n.structure
+      - type: shadow
+        en: "How many students are {there|sense.there.pron.exists} in your class?"
+        ko: 반에 학생이 몇 명 있어요?

@@ -1,0 +1,255 @@
+id: unit.a1-21
+title: { ko: 먹고 마시는 것, en: Food and drinks }
+lessons:
+  - id: lesson.a1-21.1
+    title: { ko: "밥, 빵, 채소", en: "Rice, bread and vegetables" }
+    goal: { ko: 평소에 무엇을 먹는지 말할 수 있어요, en: Say what you usually eat }
+    introduces: [sense.bread.n.food, sense.rice.n.food, sense.fruit.n.food, sense.vegetable.n.food, sense.chicken.n.food, sense.cheese.n.food]
+    steps:
+      - type: listen
+        en: I eat rice every day.
+        ko: 저는 매일 밥을 먹어요.
+      - type: listen
+        en: Do you eat bread in the morning?
+        ko: 아침에 빵 먹어요?
+      - type: explain
+        text: |
+          `rice`는 쌀도 되고 밥도 돼요. `rice`, `bread`(빵), `cheese`(치즈)처럼 하나, 둘 세지 않는 음식에는 보통 `a`도 `-s`도 붙이지 않아요. `I eat bread`처럼 그대로 써요.
+
+          `vegetables`(채소)는 보통 여럿을 말해서 `-s`를 붙이고, `fruit`(과일)는 보통 그대로 써요. `chicken`은 닭도 되고 닭고기도 돼요. 음식으로 말할 때는 보통 `I eat chicken`처럼 `a` 없이 써요. `a chicken`은 닭 한 마리예요.
+        examples:
+          - en: "[I]{who} [eat]{do} [rice]{what} [every day]{when}."
+            ko: 저는 매일 밥을 먹어요.
+            literal: 나는 / 먹는다 / 밥을 / 매일
+          - en: I eat bread and cheese in the morning.
+            ko: 저는 아침에 빵과 치즈를 먹어요.
+          - en: "My kids don't eat vegetables."
+            ko: 우리 아이들은 채소를 안 먹어요.
+          - en: We eat fruit after dinner.
+            ko: 우리는 저녁을 먹고 과일을 먹어요.
+          - en: I eat chicken and rice.
+            ko: 저는 닭고기와 밥을 먹어요.
+      - type: chooseMeaning
+        en: "My kids don't eat vegetables."
+        item: sense.vegetable.n.food
+        options:
+          - { ko: 우리 아이들은 채소를 안 먹어요., correct: true }
+          - { ko: 우리 아이들은 과일을 안 먹어요., why: "과일은 `fruit`예요. `vegetables`는 채소예요." }
+          - { ko: 우리 아이들은 채소를 잘 먹어요., why: "`don't eat`은 안 먹는다는 말이에요." }
+      - type: listenChoose
+        en: I eat chicken and rice.
+        item: sense.chicken.n.food
+        options:
+          - { en: I eat chicken and rice., correct: true }
+          - { en: I eat cheese and rice., why: "`cheese`가 아니라 `chicken`이 들렸어요." }
+          - { en: I eat chicken and bread., why: "`bread`가 아니라 `rice`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 저는 아침에 빵을 먹어요.
+        item: sense.bread.n.food
+        options:
+          - { en: I eat bread in the morning., correct: true }
+          - { en: I eat a bread in the morning., why: "`bread`는 세지 않는 말이라 `a`를 붙이지 않아요." }
+          - { en: I eat breads in the morning., why: "`bread`에는 보통 `-s`도 붙이지 않아요." }
+      - type: fillBlank
+        item: sense.fruit.n.food
+        en: We eat ___ after dinner.
+        ko: 우리는 저녁을 먹고 과일을 먹어요.
+        options:
+          - { en: fruit, correct: true }
+          - { en: vegetables, why: "`vegetables`는 채소예요. 과일은 `fruit`예요." }
+          - { en: a fruit, why: "과일을 통틀어 말할 때는 `a` 없이 `fruit`라고 해요. `a fruit`는 과일 한 개예요." }
+      - type: dialogue
+        item: sense.vegetable.n.food
+        lines:
+          - { speaker: Tom, en: Do you eat meat?, ko: 고기 먹어요? }
+        question: 유나는 고기는 안 먹고 채소와 생선을 먹어요. 유나가 할 말을 골라요.
+        options:
+          - { en: "No, I don't. I eat vegetables and fish.", correct: true }
+          - { en: "No, I don't. I eat vegetable and fish.", why: "채소는 보통 여럿을 말해서 `vegetables`예요." }
+          - { en: "Yes, I do. I eat vegetables and fish.", why: "고기를 안 먹으니까 `No, I don't`예요." }
+      - type: fillBlank
+        item: sense.rice.n.food
+        en: I eat ___ every day.
+        ko: 저는 매일 밥을 먹어요.
+        answers: [rice]
+      - type: arrange
+        item: sense.cheese.n.food
+        ko: 저는 아침에 빵과 치즈를 먹어요.
+        en: I eat bread and cheese in the morning.
+        accept: [I eat cheese and bread in the morning.]
+        extra: [a, at]
+      - type: dictation
+        item: sense.vegetable.n.food
+        en: "My kids don't eat vegetables."
+        ko: 우리 아이들은 채소를 안 먹어요.
+      - type: spell
+        sense: sense.vegetable.n.food
+      - type: shadow
+        en: I eat rice and vegetables every day.
+        ko: 저는 매일 밥과 채소를 먹어요.
+  - id: lesson.a1-21.2
+    title: { ko: 물 좀 마시고 싶어요, en: Some water }
+    goal: { ko: some을 넣어 먹을 것과 마실 것을 말할 수 있어요, en: Talk about food and drinks with some }
+    introduces: [sense.some.det.amount, sense.juice.n.drink, sense.bottle.n.container, sense.snack.n.food, sense.cookie.n.sweet]
+    steps:
+      - type: listen
+        en: I want some water.
+        ko: 물 좀 마시고 싶어요.
+      - type: listen
+        en: "{There|sense.there.pron.exists} are some cookies {on|sense.on.prep.surface} the table."
+        ko: 탁자 위에 쿠키가 몇 개 있어요.
+      - type: explain
+        text: |
+          `some`은 "조금", "몇 개"처럼 양을 정확히 말하지 않을 때 써요. 셀 수 있는 말은 `some cookies`처럼 `-s`가 붙은 꼴로, 세지 않는 말은 `some water`처럼 써요. 한국어로는 옮기지 않거나 "좀"이라고 할 때가 많아요.
+
+          물이나 주스는 병이나 컵으로 세어요. `a bottle of water`는 물 한 병, `two bottles of water`는 물 두 병이에요. `a cup of coffee`는 커피 한 잔이에요.
+        examples:
+          - en: "[{There|sense.there.pron.exists} are]{do} [some cookies]{who} [{on|sense.on.prep.surface} the table]{where}."
+            ko: 탁자 위에 쿠키가 몇 개 있어요.
+            literal: 있다 / 쿠키 몇 개가 / 탁자 위에
+          - en: I have some snacks in my bag.
+            ko: 가방에 과자가 좀 있어요.
+          - en: I want some juice.
+            ko: 주스 좀 마시고 싶어요.
+          - en: Two bottles of water, please.
+            ko: 물 두 병 주세요.
+      - type: chooseMeaning
+        en: I have some snacks in my bag.
+        item: sense.snack.n.food
+        options:
+          - { ko: 가방에 과자가 좀 있어요., correct: true }
+          - { ko: 가방에 과자가 하나도 없어요., why: "`some`은 조금이라도 있다는 말이에요." }
+          - { ko: 가방에 쿠키가 하나 있어요., why: "하나면 `a cookie`예요. `some snacks`는 과자 몇 개예요." }
+      - type: listenChoose
+        en: Two bottles of water, please.
+        item: sense.bottle.n.container
+        options:
+          - { ko: 물 두 병 주세요., correct: true }
+          - { ko: 물 한 병 주세요., why: "`a bottle`이 아니라 `two bottles`가 들렸어요." }
+          - { ko: 주스 두 병 주세요., why: "`juice`가 아니라 `water`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 탁자 위에 쿠키가 몇 개 있어요.
+        item: sense.some.det.amount
+        options:
+          - { en: "{There|sense.there.pron.exists} are some cookies {on|sense.on.prep.surface} the table.", correct: true }
+          - { en: "{There|sense.there.pron.exists} is some cookie {on|sense.on.prep.surface} the table.", why: "쿠키는 셀 수 있어서 여럿이면 `cookies`이고 `are`예요." }
+          - { en: "{There|sense.there.pron.exists} are a cookies {on|sense.on.prep.surface} the table.", why: "`a`는 하나일 때만 써요. 여럿이면 `some cookies`예요." }
+      - type: fillBlank
+        item: sense.some.det.amount
+        en: I want ___ juice.
+        ko: 주스 좀 마시고 싶어요.
+        options:
+          - { en: some, correct: true }
+          - { en: many, why: "`many`는 셀 수 있는 말 앞에 써요. `juice`는 보통 세지 않아요." }
+          - { en: two, why: "주스는 하나, 둘 세지 않아서 `two`를 바로 붙이지 않아요. 두 병이면 `two bottles of juice`예요." }
+      - type: dialogue
+        item: sense.cookie.n.sweet
+        lines:
+          - { speaker: Jun, en: "I'm hungry.", ko: 배고파요. }
+        question: 하린은 가방에 쿠키가 몇 개 있어요. 하린이 할 말을 골라요.
+        options:
+          - { en: I have some cookies in my bag., correct: true }
+          - { en: I have a cookies in my bag., why: "`a`는 하나일 때만 써요. 여럿이면 `some cookies`예요." }
+          - { en: I have some cookie in my bag., why: "쿠키가 여럿이면 `cookies`처럼 `-s`를 붙여요." }
+      - type: fillBlank
+        item: sense.bottle.n.container
+        en: Two ___ of water, please.
+        ko: 물 두 병 주세요.
+        answers: [bottles]
+      - type: arrange
+        item: sense.snack.n.food
+        ko: 가방에 과자가 좀 있어요.
+        en: I have some snacks in my bag.
+        extra: [a, much]
+      - type: dictation
+        item: sense.juice.n.drink
+        en: I want some juice.
+        ko: 주스 좀 마시고 싶어요.
+      - type: spell
+        sense: sense.bottle.n.container
+      - type: shadow
+        en: "I'm thirsty. I want some water."
+        ko: 목말라요. 물 좀 마시고 싶어요.
+  - id: lesson.a1-21.3
+    title: { ko: 우유 있어요?, en: Is there any milk? }
+    goal: { ko: any로 있는지 묻고 없다고 말할 수 있어요, en: "Ask if there's any and say there isn't any" }
+    introduces: [sense.any.det.amount, sense.salt.n.seasoning, sense.butter.n.food, sense.buy.v.shop, sense.sandwich.n.food]
+    steps:
+      - type: listen
+        en: "Is {there|sense.there.pron.exists} any milk in the fridge?"
+        ko: 냉장고에 우유 있어요?
+      - type: listen
+        en: "No, {there|sense.there.pron.exists} isn't. I buy milk {on|sense.on.prep.day} Fridays."
+        ko: 아니요, 없어요. 우유는 금요일마다 사요.
+      - type: explain
+        text: |
+          `some`은 보통 `I want some water`처럼 `not`이 없는 문장에 써요. 질문과 `not`이 들어간 문장에는 보통 `any`를 써요. `Is there any milk?`는 "우유 있어요?", `I don't have any money`는 "돈이 하나도 없어요"예요.
+
+          `any`는 따로 옮기지 않을 때가 많아요. 셀 수 있으면 보통 `Are there any eggs?`처럼 여럿을 뜻하는 꼴을 써요. 무엇을 권하거나 부탁하는 질문에는 `some`을 쓰기도 하는데, 이건 다음 단원에서 봐요.
+        examples:
+          - en: "[I]{who} [don't have]{do} [any money]{what}."
+            ko: 저는 돈이 하나도 없어요.
+            literal: 나는 / 가지고 있지 않다 / 어떤 돈도
+          - en: "We don't have any butter."
+            ko: 버터가 없어요.
+          - en: "Are {there|sense.there.pron.exists} any sandwiches?"
+            ko: 샌드위치 있어요?
+          - en: "{There|sense.there.pron.exists} isn't any salt."
+            ko: 소금이 없어요.
+      - type: chooseMeaning
+        en: "We don't have any butter."
+        item: sense.butter.n.food
+        options:
+          - { ko: 버터가 없어요., correct: true }
+          - { ko: 버터가 조금 있어요., why: "`don't have any`는 없다는 말이에요." }
+          - { ko: 치즈가 없어요., why: "치즈는 `cheese`예요. `butter`는 버터예요." }
+      - type: listenChoose
+        en: "Are {there|sense.there.pron.exists} any eggs?"
+        item: sense.any.det.amount
+        options:
+          - { en: "Are {there|sense.there.pron.exists} any eggs?", correct: true }
+          - { en: "Are {there|sense.there.pron.exists} any apples?", why: "`apples`가 아니라 `eggs`가 들렸어요." }
+          - { en: "Is {there|sense.there.pron.exists} an egg?", why: "`an egg`가 아니라 `any eggs`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 소금이 없어요.
+        item: sense.salt.n.seasoning
+        options:
+          - { en: "{There|sense.there.pron.exists} isn't any salt.", correct: true }
+          - { en: "{There|sense.there.pron.exists} isn't some salt.", why: "`not`이 들어간 문장에는 보통 `any`를 써요." }
+          - { en: "{There|sense.there.pron.exists} aren't any salt.", why: "`salt`는 세지 않는 말이라 `isn't`예요." }
+      - type: fillBlank
+        item: sense.any.det.amount
+        en: "I don't have ___ money."
+        ko: 저는 돈이 하나도 없어요.
+        options:
+          - { en: any, correct: true }
+          - { en: some, why: "`don't`가 들어간 문장에는 보통 `any`를 써요." }
+          - { en: many, why: "`money`는 세지 않는 말이에요. `many`는 셀 수 있는 말 앞에 써요." }
+      - type: dialogue
+        item: sense.sandwich.n.food
+        lines:
+          - { speaker: Ana, en: "Are {there|sense.there.pron.exists} any sandwiches?", ko: 샌드위치 있어요? }
+        question: 냉장고에 샌드위치가 몇 개 있어요. 벤이 할 말을 골라요.
+        options:
+          - { en: "Yes, {there|sense.there.pron.exists} are some.", correct: true }
+          - { en: "Yes, {there|sense.there.pron.exists} is some.", why: "`sandwiches`는 여럿이라 `are`예요." }
+          - { en: "Yes, {there|sense.there.pron.exists} are any.", why: "있다고 말할 때는 `any`가 아니라 `some`이에요." }
+      - type: fillBlank
+        item: sense.buy.v.shop
+        en: I ___ bread at the supermarket.
+        ko: 저는 슈퍼마켓에서 빵을 사요.
+        answers: [buy]
+      - type: arrange
+        item: sense.any.det.amount
+        ko: 냉장고에 우유 있어요?
+        en: "Is {there|sense.there.pron.exists} any milk in the fridge?"
+        extra: [a, are]
+      - type: dictation
+        item: sense.butter.n.food
+        en: "We don't have any butter."
+        ko: 버터가 없어요.
+      - type: spell
+        sense: sense.sandwich.n.food
+      - type: shadow
+        en: "Is {there|sense.there.pron.exists} any milk in the fridge? No, {there|sense.there.pron.exists} isn't."
+        ko: 냉장고에 우유 있어요? 아니요, 없어요.

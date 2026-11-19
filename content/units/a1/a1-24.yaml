@@ -1,0 +1,277 @@
+id: unit.a1-24
+title: { ko: 지금 하고 있는 일, en: "What you're doing now" }
+lessons:
+  - id: lesson.a1-24.1
+    title: { ko: 저녁을 만들고 있어요, en: "I'm cooking dinner" }
+    goal: { ko: 지금 하고 있는 일을 말할 수 있어요, en: Say what you are doing now }
+    introduces: [pattern.present-continuous, sense.right-now.adv.this-moment, sense.make.v.create, sense.talk.v.speak, sense.run.v.move]
+    steps:
+      - type: listen
+        en: "I'm cooking dinner right now."
+        ko: 저는 지금 저녁을 만들고 있어요.
+      - type: listen
+        en: "She's talking to her mom."
+        ko: 그 사람은 엄마랑 이야기하고 있어요.
+      - type: explain
+        text: |
+          지금 하고 있는 일은 `am`, `is`, `are` 뒤에 동사의 `-ing` 꼴을 써서 말해요. `I'm cooking`은 "요리하고 있어요"예요. `am`을 빼고 `I cooking`이라고 하지 않아요.
+
+          `make`처럼 소리 나지 않는 `e`로 끝나면 `e`를 빼고 `making`이에요. `run`, `sit`처럼 모음 글자 하나와 자음 글자 하나로 끝나는 한 음절 동사는 끝 글자를 한 번 더 써서 `running`, `sitting`이에요. `y`, `w`, `x`로 끝나면 그대로 붙여요(`playing`, `fixing`).
+
+          `right now`는 "지금", "바로 지금"이에요. `now`만 써도 돼요.
+        examples:
+          - en: "[She]{who} [is making]{do} [a sandwich]{what}."
+            ko: 그 사람은 샌드위치를 만들고 있어요.
+            literal: 그녀는 / 만들고 있다 / 샌드위치를
+          - en: "I'm cooking dinner right now."
+            ko: 저는 지금 저녁을 만들고 있어요.
+          - en: "They're running in the park."
+            ko: 그 사람들은 공원에서 뛰고 있어요.
+          - en: "He's talking to his dad."
+            ko: 그 사람은 아빠랑 이야기하고 있어요.
+      - type: chooseMeaning
+        en: "They're running in the park."
+        item: sense.run.v.move
+        options:
+          - { ko: 그 사람들은 공원에서 뛰고 있어요., correct: true }
+          - { ko: 그 사람들은 공원에서 걷고 있어요., why: "걷는 건 `walk`예요. `run`은 달리다, 뛰다예요." }
+          - { ko: 그 사람들은 매일 공원에서 뛰어요., why: "`are running`은 지금 하고 있는 일이에요. 매일 하는 일은 `They run`이에요." }
+      - type: listenChoose
+        en: "She's making a sandwich."
+        item: sense.make.v.create
+        options:
+          - { en: "She's making a sandwich.", correct: true }
+          - { en: "She's making a salad.", why: "`salad`가 아니라 `sandwich`가 들렸어요." }
+          - { en: "He's making a sandwich.", why: "`He's`가 아니라 `She's`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 저는 지금 저녁을 만들고 있어요.
+        item: pattern.present-continuous
+        options:
+          - { en: "I'm cooking dinner right now.", correct: true }
+          - { en: I cooking dinner right now., why: "`am`이 빠졌어요. `I'm cooking`이에요." }
+          - { en: "I'm cook dinner right now.", why: "`am` 뒤에는 `cooking`처럼 `-ing` 꼴을 써요." }
+      - type: fillBlank
+        item: sense.talk.v.speak
+        en: "He's ___ to his dad."
+        ko: 그 사람은 아빠랑 이야기하고 있어요.
+        options:
+          - { en: talking, correct: true }
+          - { en: talk, why: "`is` 뒤에는 `talking`처럼 `-ing` 꼴을 써요." }
+          - { en: talks, why: "지금 하고 있는 일이라 `is talking`이에요." }
+      - type: dialogue
+        item: pattern.present-continuous
+        lines:
+          - { speaker: Ana, en: "Where's @Leo?", ko: 레오는 어디 있어요? }
+        question: 레오는 지금 부엌에서 요리하고 있어요. 수진이 할 말을 골라요.
+        options:
+          - { en: "He's cooking in the kitchen.", correct: true }
+          - { en: He cooks in the kitchen., why: "지금 하고 있는 일은 `He's cooking`이에요." }
+          - { en: "He's cook in the kitchen.", why: "`is` 뒤 동사에는 `-ing`를 붙여요." }
+      - type: fillBlank
+        item: sense.run.v.move
+        en: "They're ___ in the park."
+        ko: 그 사람들은 공원에서 뛰고 있어요.
+        answers: [running]
+      - type: arrange
+        item: sense.make.v.create
+        ko: 그 사람은 샌드위치를 만들고 있어요.
+        en: "She's making a sandwich."
+        extra: [makes, are]
+      - type: dictation
+        item: sense.right-now.adv.this-moment
+        en: "I'm cooking dinner right now."
+        ko: 저는 지금 저녁을 만들고 있어요.
+      - type: spell
+        sense: sense.talk.v.speak
+      - type: shadow
+        en: "I'm cooking dinner right now."
+        ko: 저는 지금 저녁을 만들고 있어요.
+  - id: lesson.a1-24.2
+    title: { ko: 뭐 하고 있어요?, en: What are you doing? }
+    goal: { ko: 지금 무엇을 하는지 묻고 대답할 수 있어요, en: Ask and answer what someone is doing }
+    introduces: [pattern.what-are-you-doing, sense.look-for.v.search, sense.take-a-photo.v.camera, sense.smile.v.face, sense.carry.v.hold]
+    steps:
+      - type: listen
+        en: What are you doing?
+        ko: 뭐 하고 있어요?
+      - type: listen
+        en: "I'm looking for my keys."
+        ko: 열쇠를 찾고 있어요.
+      - type: explain
+        text: |
+          "뭐 하고 있어요?"는 `What are you doing?`이에요. 하고 있는지 물을 때는 `Are you ~ing?`, `Is he ~ing?`처럼 앞으로 보내요. 대답은 `Yes, I am`이나 `No, I'm not`이고, `Yes, I'm`으로 끝내지 않아요. 안 하고 있으면 `I'm not ~ing`, `He isn't ~ing`라고 해요.
+
+          `look`만 쓰면 "보다"지만 `look for`는 "찾다"예요. 사진을 "찍는다"는 `take a photo`예요. `What do you do?`는 직업을 묻는 말이라서 `What are you doing?`과 달라요.
+        examples:
+          - en: "[She]{who} [is looking for]{do} [her bag]{what}."
+            ko: 그 사람은 가방을 찾고 있어요.
+            literal: 그녀는 / 찾고 있다 / 그녀의 가방을
+          - en: What are you doing?
+            ko: 뭐 하고 있어요?
+          - en: "Are you taking a photo? Yes, I am."
+            ko: 사진 찍고 있어요? 네, 찍고 있어요.
+          - en: "He isn't smiling."
+            ko: 그 사람은 웃고 있지 않아요.
+          - en: "He's carrying two bags."
+            ko: 그 사람은 가방 두 개를 들고 있어요.
+      - type: chooseMeaning
+        en: "I'm looking for my keys."
+        item: sense.look-for.v.search
+        options:
+          - { ko: 열쇠를 찾고 있어요., correct: true }
+          - { ko: 열쇠를 보고 있어요., why: "`for`가 붙은 `look for`는 \"보다\"가 아니라 \"찾다\"예요." }
+          - { ko: 열쇠를 들고 다녀요., why: "`look for`는 \"찾다\"예요. 들고 다니는 건 `carry`예요." }
+      - type: listenChoose
+        en: Are you taking a photo?
+        item: sense.take-a-photo.v.camera
+        options:
+          - { ko: 사진 찍고 있어요?, correct: true }
+          - { ko: 사진 찍어 줄래요?, why: "`Can you`가 아니라 `Are you`가 들렸어요. 지금 하고 있는지 묻는 말이에요." }
+          - { ko: 휴대폰 찾고 있어요?, why: "`looking for`가 아니라 `taking a photo`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 그 사람은 가방 두 개를 들고 있어요.
+        item: sense.carry.v.hold
+        options:
+          - { en: "He's carrying two bags.", correct: true }
+          - { en: He carrying two bags., why: "`is`가 빠졌어요. `He's carrying`이에요." }
+          - { en: "He's carry two bags.", why: "`is` 뒤 동사에는 `-ing`를 붙여요." }
+      - type: fillBlank
+        item: pattern.what-are-you-doing
+        en: What ___ you doing?
+        ko: 뭐 하고 있어요?
+        options:
+          - { en: are, correct: true }
+          - { en: do, why: "지금 하는 일을 물을 때는 `are`예요. `What do you do?`는 직업을 묻는 말이에요." }
+          - { en: is, why: "`you` 앞에는 `are`예요." }
+      - type: dialogue
+        item: pattern.present-continuous
+        lines:
+          - { speaker: Jun, en: Are you sleeping?, ko: 자고 있어요? }
+        question: 유나는 자지 않고 책을 읽고 있어요. 유나가 할 말을 골라요.
+        options:
+          - { en: "No, I'm not. I'm reading.", correct: true }
+          - { en: "No, I don't. I'm reading.", why: "`Are you`로 물으면 `No, I'm not`으로 대답해요." }
+          - { en: "Yes, I am. I'm reading.", why: "자고 있지 않으니 `No`예요." }
+      - type: fillBlank
+        item: sense.look-for.v.search
+        en: "I'm looking ___ my keys."
+        ko: 열쇠를 찾고 있어요.
+        answers: [for]
+      - type: arrange
+        item: sense.smile.v.face
+        ko: 우리 언니는 웃고 있지 않아요.
+        en: "My sister isn't smiling."
+        extra: ["don't", smile]
+      - type: dictation
+        item: pattern.what-are-you-doing
+        en: What are you doing?
+        ko: 뭐 하고 있어요?
+      - type: spell
+        sense: sense.carry.v.hold
+      - type: shadow
+        en: "What are you doing? I'm looking for my keys."
+        ko: 뭐 하고 있어요? 열쇠를 찾고 있어요.
+  - id: lesson.a1-24.3
+    title: { ko: 요즘 하고 있는 일, en: These days }
+    goal: { ko: 요즘 하고 있는 일을 말할 수 있어요, en: Talk about what you are doing these days }
+    introduces: [sense.these-days.adv.recently, sense.learn.v.study, sense.travel.v.trip, sense.stay.v.remain, sense.visit.v.see]
+    steps:
+      - type: listen
+        en: "I'm learning English these days."
+        ko: 저는 요즘 영어를 배우고 있어요.
+      - type: listen
+        en: "We're staying at a hotel near the station."
+        ko: 우리는 역 근처 호텔에 묵고 있어요.
+      - type: explain
+        text: |
+          `-ing`는 바로 지금 하는 일뿐 아니라 요즘 한동안 하고 있는 일에도 써요. `I'm learning English these days`는 "요즘 영어를 배우고 있어요"예요.
+
+          늘 하는 일은 그냥 현재형으로 말해요. `I'm staying at a hotel`은 잠깐 묵고 있는 거고, `I live in Seoul`은 늘 사는 곳이에요. 우리말로 "서울에 살고 있어요"라고 해도 영어로는 보통 `I live in Seoul`이에요.
+
+          `visit`, `travel`처럼 두 음절인 동사는 대부분 겹쳐 쓰지 않아요(`visiting`, `traveling`). "가지고 있어요", "알고 있어요"라고 해도 `have`, `know`는 보통 `-ing`를 쓰지 않고 `I have a car`, `I know`라고 해요.
+        examples:
+          - en: "[I]{who} [am learning]{do} [English]{what} [these days]{when}."
+            ko: 저는 요즘 영어를 배우고 있어요.
+            literal: 나는 / 배우고 있다 / 영어를 / 요즘
+          - en: "We're staying at a hotel near the station."
+            ko: 우리는 역 근처 호텔에 묵고 있어요.
+          - en: "She's traveling in Japan."
+            ko: 그 사람은 일본을 여행하고 있어요.
+          - en: "I'm visiting my cousin in Canada."
+            ko: 저는 캐나다에 사는 사촌을 보러 와 있어요.
+      - type: readPassage
+        sentences:
+          - { en: "Hi, @Mina!", ko: "안녕, 미나야." }
+          - { en: "I'm in Canada these days.", ko: 나 요즘 캐나다에 있어. }
+          - { en: "I'm visiting my cousin.", ko: 사촌 보러 왔어. }
+          - { en: "I'm staying at her apartment.", ko: 사촌네 아파트에서 지내고 있어. }
+          - { en: "I'm learning a little French, too.", ko: 프랑스어도 조금 배우고 있어. }
+          - { en: "It's very {cold|sense.cold.adj.temperature} here!", ko: 여기 정말 추워. }
+        questions:
+          - ko: 글쓴이는 어디에서 지내고 있어요?
+            options:
+              - { ko: 사촌네 아파트, correct: true }
+              - { ko: 호텔, why: "호텔 이야기는 없어요. 사촌네 아파트에서 지내요." }
+              - { ko: 친구 집, why: "친구가 아니라 사촌(`cousin`)이에요." }
+          - ko: 요즘 무엇을 배우고 있어요?
+            options:
+              - { ko: 프랑스어, correct: true }
+              - { ko: 영어, why: "`French`는 프랑스어예요." }
+              - { ko: 스페인어, why: "스페인어는 `Spanish`예요. 배우는 건 `French`예요." }
+      - type: chooseMeaning
+        en: "She's traveling in Japan."
+        item: sense.travel.v.trip
+        options:
+          - { ko: 그 사람은 일본을 여행하고 있어요., correct: true }
+          - { ko: 그 사람은 일본에 살아요., why: "사는 건 `live`예요. `traveling`은 여행하고 있다는 말이에요." }
+          - { ko: 그 사람은 일본어를 배우고 있어요., why: "배우는 건 `learning`이에요." }
+      - type: listenChoose
+        en: "We're staying at a hotel."
+        item: sense.stay.v.remain
+        options:
+          - { en: "We're staying at a hotel.", correct: true }
+          - { en: We stay at a hotel., why: "`stay` 뒤에 `-ing` 소리가 있었어요. `We're staying`이에요." }
+          - { en: "We're staying at home.", why: "`home`이 아니라 `a hotel`이 들렸어요." }
+      - type: chooseEnglish
+        ko: 저는 요즘 영어를 배우고 있어요.
+        item: sense.learn.v.study
+        options:
+          - { en: "I'm learning English these days.", correct: true }
+          - { en: I learning English these days., why: "`am`이 빠졌어요. `I'm learning`이에요." }
+          - { en: "I'm learn English these days.", why: "`am` 뒤에는 `learning`처럼 `-ing` 꼴을 써요." }
+      - type: fillBlank
+        item: pattern.present-continuous
+        en: My brother ___ in @Seoul.
+        ko: 형은 서울에 살아요.
+        options:
+          - { en: lives, correct: true }
+          - { en: living, why: "`living`만 쓰면 `is`가 빠져요. 늘 사는 곳은 `lives`예요." }
+          - { en: live, why: "`my brother`는 `he`처럼 `lives`예요." }
+      - type: dialogue
+        item: sense.stay.v.remain
+        lines:
+          - { speaker: Priya, en: Where are you staying?, ko: 어디에서 묵고 있어요? }
+        question: 은우는 역 근처 호텔에 묵고 있어요. 은우가 할 말을 골라요.
+        options:
+          - { en: At a hotel near the station., correct: true }
+          - { en: At a hotel next to the bank., why: "은행 옆이 아니라 역 근처예요." }
+          - { en: "I'm living near the station.", why: "은우는 거기 사는 게 아니라 호텔에 잠깐 묵고 있어요." }
+      - type: fillBlank
+        item: sense.learn.v.study
+        en: "I'm ___ English these days."
+        ko: 저는 요즘 영어를 배우고 있어요.
+        answers: [learning]
+      - type: arrange
+        item: sense.travel.v.trip
+        ko: 그 사람은 일본을 여행하고 있어요.
+        en: "She's traveling in Japan."
+        extra: [travels, is]
+      - type: dictation
+        item: sense.these-days.adv.recently
+        en: "I'm learning English these days."
+        ko: 저는 요즘 영어를 배우고 있어요.
+      - type: spell
+        sense: sense.travel.v.trip
+      - type: shadow
+        en: "I'm visiting my cousin in Canada."
+        ko: 저는 캐나다에 사는 사촌을 보러 와 있어요.

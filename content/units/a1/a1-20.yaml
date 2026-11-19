@@ -1,0 +1,275 @@
+id: unit.a1-20
+title: { ko: 우리 집, en: My home }
+lessons:
+  - id: lesson.a1-20.1
+    title: { ko: 집에 있는 방, en: Rooms in a home }
+    goal: { ko: 우리 집에 어떤 방이 있는지 말할 수 있어요, en: Say what rooms your home has }
+    introduces: [sense.kitchen.n.room, sense.bathroom.n.room, sense.bedroom.n.room, sense.living-room.n.room, sense.balcony.n.outside]
+    steps:
+      - type: listen
+        en: My apartment has two bedrooms.
+        ko: 우리 집은 방이 두 개예요.
+      - type: listen
+        en: The kitchen is next to the living room.
+        ko: 부엌은 거실 옆에 있어요.
+      - type: explain
+        text: |
+          집에 있는 방은 `kitchen`(부엌), `bathroom`(화장실, 욕실), `bedroom`(침실), `living room`(거실)이에요. `bedroom`은 `bed`와 `room`을 붙인 말이에요.
+
+          집에 무엇이 있는지는 두 가지로 말할 수 있어요. `There are two bedrooms in my apartment`라고 해도 되고, `My apartment`를 앞에 두고 `has`로 말해도 돼요. "방이 두 개"는 `two rooms`가 아니라 `two bedrooms`예요. 거실도 `room`이기 때문이에요.
+
+          아파트의 "베란다"는 영어로 보통 `balcony`예요. 그 위에 서는 곳이라 `in`이 아니라 `on the balcony`라고 해요.
+        examples:
+          - en: "[My apartment]{who} [has]{do} [two bedrooms]{what}."
+            ko: 우리 집은 방이 두 개예요.
+            literal: 내 아파트는 / 가지고 있다 / 침실 두 개를
+          - en: "{There|sense.there.pron.exists} are two bedrooms in my apartment."
+            ko: 우리 집에는 방이 두 개 있어요.
+          - en: The kitchen is next to the living room.
+            ko: 부엌은 거실 옆에 있어요.
+          - en: "{There|sense.there.pron.exists} is a balcony in my apartment."
+            ko: 우리 집에는 베란다가 있어요.
+      - type: chooseMeaning
+        en: The bathroom is next to the bedroom.
+        item: sense.bathroom.n.room
+        options:
+          - { ko: 화장실은 침실 옆에 있어요., correct: true }
+          - { ko: 부엌은 침실 옆에 있어요., why: "부엌은 `kitchen`이에요. `bathroom`은 화장실이에요." }
+          - { ko: 화장실은 거실 옆에 있어요., why: "거실은 `living room`이에요. `bedroom`은 침실이에요." }
+      - type: listenChoose
+        en: We watch movies in the living room.
+        item: sense.living-room.n.room
+        options:
+          - { ko: 우리는 거실에서 영화를 봐요., correct: true }
+          - { ko: 우리는 침실에서 영화를 봐요., why: "침실은 `bedroom`이에요. 들린 말은 `living room`이에요." }
+          - { ko: 우리는 거실에서 음악을 들어요., why: "`music`이 아니라 `movies`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 우리 집은 방이 세 개예요.
+        item: sense.bedroom.n.room
+        options:
+          - { en: My house has three bedrooms., correct: true }
+          - { en: My house have three bedrooms., why: "`my house`는 `it`처럼 `has`를 써요." }
+          - { en: My house has three bedroom., why: "셋이니까 `bedrooms`처럼 `-s`를 붙여요." }
+      - type: fillBlank
+        item: sense.kitchen.n.room
+        en: I cook dinner in the ___.
+        ko: 저는 부엌에서 저녁을 만들어요.
+        options:
+          - { en: kitchen, correct: true }
+          - { en: bedroom, why: "`bedroom`은 자는 방이에요. 부엌은 `kitchen`이에요." }
+          - { en: bathroom, why: "`bathroom`은 화장실, 욕실이에요." }
+      - type: dialogue
+        item: sense.balcony.n.outside
+        lines:
+          - { speaker: Carlos, en: "Is {there|sense.there.pron.exists} a balcony in your apartment?", ko: 집에 베란다 있어요? }
+        question: 베란다는 거실 옆에 있어요. 미나가 할 말을 골라요.
+        options:
+          - { en: "Yes, next to the living room.", correct: true }
+          - { en: "Yes, next to the bedroom.", why: "`bedroom`은 침실이에요. 거실은 `living room`이에요." }
+          - { en: "No, {there|sense.there.pron.exists} isn't.", why: "`No, there isn't`는 없다는 말이에요. 미나네 집에는 베란다가 있어요." }
+      - type: fillBlank
+        item: sense.bedroom.n.room
+        en: My apartment ___ two bedrooms.
+        ko: 우리 집은 방이 두 개예요.
+        answers: [has]
+      - type: arrange
+        item: sense.living-room.n.room
+        ko: 부엌은 거실 옆에 있어요.
+        en: The kitchen is next to the living room.
+        accept: [The living room is next to the kitchen.]
+        extra: [of, are]
+      - type: dictation
+        item: sense.bathroom.n.room
+        en: "{There|sense.there.pron.exists} are two bathrooms in my house."
+        ko: 우리 집에는 화장실이 두 개 있어요.
+      - type: spell
+        sense: sense.kitchen.n.room
+      - type: shadow
+        en: My apartment has two bedrooms and a balcony.
+        ko: 우리 집은 방이 두 개고 베란다도 있어요.
+  - id: lesson.a1-20.2
+    title: { ko: 집 안의 물건, en: Things at home }
+    goal: { ko: 집 안의 물건이 어디 있는지 말할 수 있어요, en: Say where things are at home }
+    introduces: [sense.fridge.n.cold, sense.mirror.n.glass, sense.closet.n.clothes, sense.microwave.n.oven, sense.washing-machine.n.clothes]
+    steps:
+      - type: listen
+        en: "There's a mirror in the bathroom."
+        ko: 욕실에 거울이 있어요.
+      - type: listen
+        en: The milk is in the fridge.
+        ko: 우유는 냉장고에 있어요.
+      - type: explain
+        text: |
+          냉장고나 옷장처럼 어떤 것 안에 들어 있으면 `in`을 써요. 그래서 `in the fridge`(냉장고에), `in the closet`(옷장에)이에요. `fridge`는 `refrigerator`를 줄인 말이고, 말할 때는 대개 `fridge`라고 해요.
+
+          "전자레인지"는 영어로 `microwave`예요. 영어 `range`는 위에 화구, 아래에 오븐이 달린 큰 조리 기구라서 전자레인지와 달라요. 세탁기는 `washing machine`이에요.
+        examples:
+          - en: "[The milk]{who} [is]{do} [in the fridge]{where}."
+            ko: 우유는 냉장고에 있어요.
+            literal: 우유는 / 있다 / 냉장고 안에
+          - en: "There's a mirror in the bathroom."
+            ko: 욕실에 거울이 있어요.
+          - en: My coat is in the closet.
+            ko: 제 코트는 옷장에 있어요.
+          - en: The microwave is in the kitchen.
+            ko: 전자레인지는 부엌에 있어요.
+          - en: "The washing machine is {on|sense.on.prep.surface} the balcony."
+            ko: 세탁기는 베란다에 있어요.
+      - type: chooseMeaning
+        en: My coat is in the closet.
+        item: sense.closet.n.clothes
+        options:
+          - { ko: 제 코트는 옷장에 있어요., correct: true }
+          - { ko: 제 코트는 침실에 있어요., why: "침실은 `bedroom`이에요. `closet`은 옷장이에요." }
+          - { ko: 제 코트는 세탁기에 있어요., why: "세탁기는 `washing machine`이에요. `closet`은 옷장이에요." }
+      - type: listenChoose
+        en: "The washing machine is {on|sense.on.prep.surface} the balcony."
+        item: sense.washing-machine.n.clothes
+        options:
+          - { en: "The washing machine is {on|sense.on.prep.surface} the balcony.", correct: true }
+          - { en: The washing machine is in the kitchen., why: "`kitchen`이 아니라 `balcony`가 들렸어요." }
+          - { en: "The fridge is {on|sense.on.prep.surface} the balcony.", why: "`fridge`가 아니라 `washing machine`이 들렸어요." }
+      - type: chooseEnglish
+        ko: 냉장고에 우유가 있어요.
+        item: sense.fridge.n.cold
+        options:
+          - { en: "There's milk in the fridge.", correct: true }
+          - { en: "There's milk {on|sense.on.prep.surface} the fridge.", why: "`on`은 위에 놓여 있을 때 써요. 냉장고 안에 있으면 `in`이에요." }
+          - { en: "There's milk in the closet.", why: "`closet`은 옷장이에요. 냉장고는 `fridge`예요." }
+      - type: fillBlank
+        item: sense.mirror.n.glass
+        en: I look in the ___ every morning.
+        ko: 저는 아침마다 거울을 봐요.
+        options:
+          - { en: mirror, correct: true }
+          - { en: window, why: "`window`는 창문이에요. 거울은 `mirror`예요." }
+          - { en: closet, why: "`closet`은 옷장이에요. 거울은 `mirror`예요." }
+      - type: dialogue
+        item: sense.microwave.n.oven
+        lines:
+          - { speaker: Ben, en: "Where's the microwave?", ko: 전자레인지는 어디 있어요? }
+        question: 전자레인지는 부엌에 있어요. 아나가 할 말을 골라요.
+        options:
+          - { en: "It's in the kitchen.", correct: true }
+          - { en: "It's in the living room.", why: "`living room`은 거실이에요. 부엌은 `kitchen`이에요." }
+          - { en: "There's in the kitchen.", why: "`There's` 뒤에는 `a microwave`처럼 있는 물건이 와야 해요. 이미 말한 물건이 어디 있는지는 `It's`로 대답해요." }
+      - type: fillBlank
+        item: sense.fridge.n.cold
+        en: The milk is in the ___.
+        ko: 우유는 냉장고에 있어요.
+        answers: [fridge]
+      - type: arrange
+        item: sense.closet.n.clothes
+        ko: 제 코트는 옷장에 있어요.
+        en: My coat is in the closet.
+        extra: [are, has]
+      - type: dictation
+        item: sense.mirror.n.glass
+        en: "There's a mirror in the bathroom."
+        ko: 욕실에 거울이 있어요.
+      - type: spell
+        sense: sense.mirror.n.glass
+      - type: shadow
+        en: "Where's the microwave? It's in the kitchen."
+        ko: 전자레인지는 어디 있어요? 부엌에 있어요.
+  - id: lesson.a1-20.3
+    title: { ko: 집이 어때요?, en: What is your home like? }
+    goal: { ko: 집과 방이 어떤지 말할 수 있어요, en: Say what your home and rooms are like }
+    introduces: [sense.quiet.adj.not-noisy, sense.noisy.adj.loud, sense.comfortable.adj.cozy, sense.bright.adj.light, sense.dark.adj.no-light]
+    steps:
+      - type: listen
+        en: My room is small and bright.
+        ko: 제 방은 작고 밝아요.
+      - type: listen
+        en: The street is very noisy at night.
+        ko: 밤에는 길이 정말 시끄러워요.
+      - type: explain
+        text: |
+          집이나 방이 어떤지는 `My room is bright`처럼 `is` 뒤에 말해요. 명사 앞에 두면 `a bright room`(밝은 방)이에요. 반대말끼리 짝으로 익혀요. `quiet`(조용한)와 `noisy`(시끄러운), `bright`(밝은)와 `dark`(어두운)예요.
+
+          `comfortable`은 소파, 침대, 방이 편하다는 말이에요. 철자대로 "컴포터블"이라고 읽지 않고, 맨 앞 `com`에 힘을 주고 "컴프터블"처럼 짧게 줄여 읽어요.
+        examples:
+          - en: "[My room]{who} [is]{do} [small and bright]{what}."
+            ko: 제 방은 작고 밝아요.
+            literal: 내 방은 / ~이다 / 작고 밝은
+          - en: My apartment is very quiet.
+            ko: 우리 집은 아주 조용해요.
+          - en: This sofa is very comfortable.
+            ko: 이 소파는 정말 편해요.
+          - en: The kitchen is dark.
+            ko: 부엌이 어두워요.
+      - type: readPassage
+        sentences:
+          - { en: I live in a small apartment., ko: 저는 작은 아파트에 살아요. }
+          - { en: "{There|sense.there.pron.exists} are two bedrooms and a bathroom.", ko: 방 두 개와 화장실 하나가 있어요. }
+          - { en: My bedroom is bright., ko: 제 방은 밝아요. }
+          - { en: "There's a comfortable sofa in the living room.", ko: 거실에는 편한 소파가 있어요. }
+          - { en: The street is noisy at night., ko: 밤에는 길이 시끄러워요. }
+        questions:
+          - ko: 거실에 뭐가 있어요?
+            options:
+              - { ko: 편한 소파, correct: true }
+              - { ko: 큰 거울, why: "거울 이야기는 없어요. 거실에는 편한 소파가 있어요." }
+              - { ko: 세탁기, why: "세탁기 이야기는 없어요." }
+          - ko: 밤에 시끄러운 곳은 어디예요?
+            options:
+              - { ko: 길, correct: true }
+              - { ko: 침실, why: "침실은 밝다고 했어요." }
+              - { ko: 거실, why: "거실에는 편한 소파가 있다고만 했어요." }
+      - type: chooseMeaning
+        en: My apartment is very quiet.
+        item: sense.quiet.adj.not-noisy
+        options:
+          - { ko: 우리 집은 아주 조용해요., correct: true }
+          - { ko: 우리 집은 아주 시끄러워요., why: "시끄러운 건 `noisy`예요. `quiet`은 \"조용한\"이에요." }
+          - { ko: 우리 집은 아주 작아요., why: "작은 건 `small`이에요." }
+      - type: listenChoose
+        en: The kitchen is dark.
+        item: sense.dark.adj.no-light
+        options:
+          - { en: The kitchen is dark., correct: true }
+          - { en: The kitchen is bright., why: "`bright`가 아니라 `dark`가 들렸어요." }
+          - { en: The kitchen is big., why: "`big`이 아니라 `dark`가 들렸어요." }
+      - type: chooseEnglish
+        ko: 이 침대는 정말 편해요.
+        item: sense.comfortable.adj.cozy
+        options:
+          - { en: This bed is really comfortable., correct: true }
+          - { en: This bed really comfortable., why: "`is`가 빠졌어요. 어떤지 말할 때도 `is`를 넣어요." }
+          - { en: This bed is really quiet., why: "`quiet`은 \"조용한\"이에요. 편한 건 `comfortable`이에요." }
+      - type: fillBlank
+        item: sense.noisy.adj.loud
+        en: The street is very ___ at night.
+        ko: 밤에는 길이 정말 시끄러워요.
+        options:
+          - { en: noisy, correct: true }
+          - { en: quiet, why: "`quiet`은 \"조용한\"이에요. 시끄럽다고 했으니 `noisy`예요." }
+          - { en: dark, why: "`dark`는 어두운 거예요. 시끄러운 건 `noisy`예요." }
+      - type: dialogue
+        item: sense.comfortable.adj.cozy
+        lines:
+          - { speaker: Priya, en: "Is your new apartment nice?", ko: 새 집은 괜찮아요? }
+        question: 새 집은 조용하고 편해요. 레오가 할 말을 골라요.
+        options:
+          - { en: "Yes, it's quiet and comfortable.", correct: true }
+          - { en: "Yes, it's noisy and comfortable.", why: "`noisy`는 시끄러운 거예요. 조용한 건 `quiet`이에요." }
+          - { en: "Yes, there's quiet and comfortable.", why: "집이 어떤지 말할 때는 `it's`로 말해요." }
+      - type: fillBlank
+        item: sense.bright.adj.light
+        en: My room is small and ___.
+        ko: 제 방은 작고 밝아요.
+        answers: [bright]
+      - type: arrange
+        item: sense.comfortable.adj.cozy
+        ko: 거실에는 편한 소파가 있어요.
+        en: "There's a comfortable sofa in the living room."
+        extra: [are, of]
+      - type: dictation
+        item: sense.quiet.adj.not-noisy
+        en: My apartment is very quiet.
+        ko: 우리 집은 아주 조용해요.
+      - type: spell
+        sense: sense.quiet.adj.not-noisy
+      - type: shadow
+        en: My apartment is small and quiet.
+        ko: 우리 집은 작고 조용해요.
