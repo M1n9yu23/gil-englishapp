@@ -58,7 +58,7 @@ content/
 
 `pos`에는 품사를 풀어 쓰고(`noun`, `verb`, `number`), 뜻 ID에는 줄임말(`n`, `v`, `num`)을 씁니다. 뜻마다 예문이 하나 이상 있어야 합니다.
 
-`forms`에는 불규칙형만 적습니다. 키는 `plural`, `third`, `past`, `pastParticiple`, `ing`, `comparative`, `superlative`입니다. 불규칙 `past`를 적었다면 `pastParticiple`도 함께 적으세요.
+`forms`에는 불규칙형만 적습니다. 키는 `plural`, `third`, `past`, `pastParticiple`, `ing`, `comparative`, `superlative`입니다. 불규칙 `past`를 적었다면 `pastParticiple`도 함께 적으세요. 여러 단어로 된 표제어는 앞의 동사나 끝의 명사에 규칙형이 붙습니다(`get up` → `gets up`, `first name` → `first names`). `past: got up` 같은 불규칙형은 그대로 `forms`에 적습니다.
 
 발음은 CMUdict에서 가져옵니다. CMUdict에 없는 단어는 `ipa`를 직접 적어야 합니다. 발음이 여러 개면 첫 번째를 쓰고 보고서에 경고가 나옵니다. 다른 발음을 쓰려면 `ipa`를 적으세요.
 

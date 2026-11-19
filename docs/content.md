@@ -58,7 +58,7 @@ Learners' progress points at IDs, so an ID in `ids.lock` must never change or be
 
 `pos` is written in full (`noun`, `verb`, `number`); the sense ID uses the short form (`n`, `v`, `num`). Every sense needs an example.
 
-`forms` lists irregular forms only: `plural`, `third`, `past`, `pastParticiple`, `ing`, `comparative`, `superlative`. Give `pastParticiple` together with an irregular `past`.
+`forms` lists irregular forms only: `plural`, `third`, `past`, `pastParticiple`, `ing`, `comparative`, `superlative`. Give `pastParticiple` together with an irregular `past`. A headword of several words takes its regular forms on the verb at the front (`get up`, `gets up`) or the noun at the end (`first name`, `first names`). Irregular ones such as `past: got up` still go in `forms`.
 
 Pronunciation comes from CMUdict. A word CMUdict does not have needs `ipa`. When CMUdict has several pronunciations, the first is used and the report warns; set `ipa` to pick another.
 

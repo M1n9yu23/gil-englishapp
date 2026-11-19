@@ -30,8 +30,15 @@ data class FormMatch(val word: WordSource, val kind: FormKind?, val pos: Set<Par
     val senses: List<SenseSource> get() = word.senses.filter { kind == null || it.pos in pos }
 }
 
-/** A headword of more than one word, such as `next to`, as lowercase keys. */
-data class Phrase(val word: WordSource, val keys: List<String>)
+/**
+ * A headword of more than one word, such as `next to`, as lowercase keys. [kind] is the form this
+ * spelling is (`gets up` for `get up`), or null for the headword itself.
+ */
+data class Phrase(val word: WordSource, val keys: List<String>, val kind: FormKind? = null) {
+    /** Senses of [word] this spelling can stand for. */
+    val senses: List<SenseSource>
+        get() = word.senses.filter { kind == null || it.pos in LexiconIndex.posFor(kind) }
+}
 
 /** Lookup from every spelling of every word (headword, irregular and regular forms) to the word. */
 class LexiconIndex(words: List<WordSource>, private val inflector: Inflector) {
@@ -46,14 +53,15 @@ class LexiconIndex(words: List<WordSource>, private val inflector: Inflector) {
 
     init {
         for (word in words) {
-            val keys = Tokenizer.tokenize(word.word).map { it.key }
+            val keys = keysOf(word.word)
+            val wordForms = formsOf(word)
+            allForms[word.id] = wordForms
             if (keys.size > 1) {
-                phrases.getOrPut(keys.first()) { mutableListOf() } += Phrase(word, keys)
+                addPhrase(Phrase(word, keys))
+                for ((kind, text) in wordForms) addPhrase(Phrase(word, keysOf(text), kind))
                 continue
             }
             add(normalizeEnglish(word.word), FormMatch(word, null, word.senses.map { it.pos }.toSet()))
-            val wordForms = formsOf(word)
-            allForms[word.id] = wordForms
             for ((kind, text) in wordForms) add(normalizeEnglish(text), FormMatch(word, kind, posFor(kind)))
         }
         phrases.values.forEach { list -> list.sortByDescending { it.keys.size } }
@@ -71,6 +79,29 @@ class LexiconIndex(words: List<WordSource>, private val inflector: Inflector) {
         forms.getOrPut(key) { mutableListOf() } += match
     }
 
+    private fun addPhrase(phrase: Phrase) {
+        phrases.getOrPut(phrase.keys.first()) { mutableListOf() } += phrase
+    }
+
+    private fun keysOf(text: String): List<String> = Tokenizer.tokenize(text).map { it.key }
+
+    /**
+     * The regular form of a headword. A phrase inflects its verb, which comes first (`gets up`),
+     * or its noun, which comes last (`first names`).
+     */
+    private fun regular(headword: String, kind: FormKind): String? {
+        val parts = headword.split(' ')
+        if (parts.size == 1) return inflector.regular(headword, kind)
+        return when (kind) {
+            FormKind.PLURAL -> inflector.regular(parts.last(), kind)?.let { (parts.dropLast(1) + it).joinToString(" ") }
+
+            FormKind.THIRD, FormKind.PAST, FormKind.PAST_PARTICIPLE, FormKind.ING ->
+                inflector.regular(parts.first(), kind)?.let { (listOf(it) + parts.drop(1)).joinToString(" ") }
+
+            FormKind.COMPARATIVE, FormKind.SUPERLATIVE, FormKind.POSSESSIVE -> null
+        }
+    }
+
     private fun formsOf(word: WordSource): Map<FormKind, String> {
         val pos = word.senses.map { it.pos }.toSet()
         val result = linkedMapOf<FormKind, String>()
@@ -80,7 +111,7 @@ class LexiconIndex(words: List<WordSource>, private val inflector: Inflector) {
             // regular form like goed is guessed for a missing one. Likewise good, better, best.
             val irregular = IRREGULAR_GROUPS.firstOrNull { kind in it }.orEmpty().any { word.forms.get(it) != null }
             val regular = if (!irregular && posFor(kind).any { it in pos } && kind.regularFor(pos)) {
-                inflector.regular(word.word, kind)
+                regular(word.word, kind)
             } else {
                 null
             }

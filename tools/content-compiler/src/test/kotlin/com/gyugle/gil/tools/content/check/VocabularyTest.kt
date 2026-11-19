@@ -142,6 +142,44 @@ class VocabularyTest {
         }
     }
 
+    private fun withPhrasalVerb(sentence: String) = withShadow(sentence)
+        .write(
+            "lexicon/phrases.yaml",
+            """
+            - word: run away
+              id: word.run-away
+              forms: { past: ran away, pastParticiple: run away }
+              senses:
+                - id: sense.run-away.v.escape
+                  pos: verb
+                  ko: 달아나다
+                  examples:
+                    - en: I run away.
+                      ko: 저는 달아나요.
+            """
+        )
+        .edit(lesson, "sense.morning.n.early-day]\n", "sense.morning.n.early-day, sense.run-away.v.escape]\n")
+
+    @Test
+    fun phrase_regularVerbForm_isAccepted() {
+        assertThat(withPhrasalVerb("@Mina runs away every morning.").compile().errors).isEmpty()
+    }
+
+    @Test
+    fun phrase_irregularVerbForm_isGatedAsThatForm() {
+        val errors = withPhrasalVerb("I ran away.").compile().errors.map { it.toString() }
+
+        assertThat(errors.joinToString()).contains("'ran away' is a past form")
+        assertThat(errors.joinToString()).doesNotContain(Rule.VOCAB_UNKNOWN.id)
+    }
+
+    @Test
+    fun phrase_verbFormBeforeItsGate_isReported() {
+        assertThat(
+            withPhrasalVerb("@Mina runs away every morning.").gate("third").compile().rules()
+        ).contains(Rule.VOCAB_FORM_NOT_YET)
+    }
+
     @Test
     fun phrase_notTaught_fallsBackToSingleWords() {
         val result = SampleContent(File(temp, "content")).write(

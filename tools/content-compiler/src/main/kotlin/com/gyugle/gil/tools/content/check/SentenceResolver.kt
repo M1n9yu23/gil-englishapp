@@ -84,9 +84,13 @@ class SentenceResolver(
                     val phrase = matchPhrase(tokens, i, sentence, knowledge)
                     if (phrase != null) {
                         val covered = tokens.subList(i, i + phrase.keys.size)
-                        val senses = candidateSenses(phrase.word.senses, knowledge)
+                        val shown = covered.joinToString(" ") { it.text }
+                        val senses = candidateSenses(phrase.senses, knowledge)
                         val sense = senses.singleOrNull()?.id
-                        if (senses.size > 1) warnAmbiguous(covered.joinToString(" ") { it.text }, senses, where)
+                        if (senses.size > 1) warnAmbiguous(shown, senses, where)
+                        if (knowledge != null && !gateOpen(phrase.kind, knowledge)) {
+                            issues.add(Rule.VOCAB_FORM_NOT_YET, where, formMessage(shown, phrase.kind!!))
+                        }
                         covered.forEach { result += ResolvedToken(it.start, it.end, phrase.word.id, sense) }
                         i += covered.size
                     } else {
@@ -113,7 +117,7 @@ class SentenceResolver(
                     sentence.senseMarks.any { token.end > it.start && token.start < it.end } ||
                         sentence.properNouns.any { token.start in it }
                 } &&
-                (knowledge == null || phrase.word.senses.any { it.id in knowledge.items })
+                (knowledge == null || phrase.senses.any { it.id in knowledge.items })
         }
 
     private fun resolveMarked(
@@ -134,8 +138,8 @@ class SentenceResolver(
             lexicon.matches(tokens.single().key).firstOrNull { it.word.id == owner.id && sense in it.senses }
         } else {
             lexicon.phrasesStartingWith(tokens.first().key)
-                .firstOrNull { p -> p.word.id == owner.id && p.keys == tokens.map { it.key } }
-                ?.let { FormMatch(it.word, null, emptySet()) }
+                .firstOrNull { p -> p.word.id == owner.id && p.keys == tokens.map { it.key } && sense in p.senses }
+                ?.let { FormMatch(it.word, it.kind, it.kind?.let(LexiconIndex::posFor).orEmpty()) }
         }
         if (match == null) {
             issues.add(
